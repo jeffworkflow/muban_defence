@@ -1,0 +1,52 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "运行",
+            "type": "shell",
+            "command": "D:\\fengchao\\w3x2lni_v2.4.1\\build.bat",
+            "args": [
+                "${workspaceRoot}"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }, 
+        {
+            "label": "启动",
+            "command": "D:\\fengchao\\w3x2lni_v2.4.1\\builda.bat",  
+            "args": [
+                "${workspaceRoot}"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },  
+        {
+            "label": "4开测试",
+            "command": "D:\\fengchao\\w3x2lni_v2.4.1\\host_test.bat",
+            "args": [
+                "${workspaceRoot}"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "slk",
+            "command": "D:\\fengchao\\w3x2lni_v2.4.1\\slk.bat",
+            "args": [
+                "${workspaceRoot}"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+    ]
+}

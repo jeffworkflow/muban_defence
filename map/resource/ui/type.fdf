@@ -1,0 +1,553 @@
+IncludeFile "UI\FrameDef\Glue\StandardTemplates.fdf",
+IncludeFile "UI\FrameDef\Glue\BattleNetTemplates.fdf",
+
+Frame "TEXTBUTTON" "ChooBlankButtonTemplatetA" {
+    ControlStyle "AUTOTRACK",
+}
+
+//背景模板
+Frame "BACKDROP" "panel" {
+	BackdropBackground  "Transparent.tga",
+	BackdropBlendAll,
+}
+//按钮模板
+Frame "GLUETEXTBUTTON" "button" {
+  SetAllPoints,
+}
+//字体
+Frame "TEXT" "text" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 10, "", 
+}
+
+Frame "SPRITE" "model" {
+    //BackgroundArt "",
+    //SetAllPoints,
+}
+
+   Frame "TEXT" "old_text" {
+        LayerStyle "IGNORETRACKEVENTS",
+        FrameFont "MasterFont", 1, "", 
+    }
+
+Frame "TEXT" "text1" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.001, "",
+}
+
+Frame "TEXT" "text2" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.002, "",
+}
+
+Frame "TEXT" "text3" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.003, "",
+}
+
+Frame "TEXT" "text4" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.004, "",
+}
+
+Frame "TEXT" "text5" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.005, "",
+}
+
+Frame "TEXT" "text6" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.006, "",
+}
+
+Frame "TEXT" "text7" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.007, "",
+}
+
+Frame "TEXT" "text8" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.008, "",
+}
+
+Frame "TEXT" "text9" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.009, "",
+}
+
+Frame "TEXT" "text10" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.01, "",
+}
+
+Frame "TEXT" "text11" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.011, "",
+}
+
+Frame "TEXT" "text12" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.012, "",
+}
+
+Frame "TEXT" "text13" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.013, "",
+}
+
+Frame "TEXT" "text14" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.014, "",
+}
+
+Frame "TEXT" "text15" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.015, "",
+}
+
+Frame "TEXT" "text16" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.016, "",
+}
+
+Frame "TEXT" "text17" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.017, "",
+}
+
+Frame "TEXT" "text18" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.018, "",
+}
+
+Frame "TEXT" "text19" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.019, "",
+}
+
+Frame "TEXT" "text20" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.02, "",
+}
+
+Frame "TEXT" "text21" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.021, "",
+}
+
+Frame "TEXT" "text22" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.022, "",
+}
+
+Frame "TEXT" "text23" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.023, "",
+}
+
+Frame "TEXT" "text24" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.024, "",
+}
+
+Frame "TEXT" "text25" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.025, "",
+}
+
+Frame "TEXT" "text26" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.026, "",
+}
+
+Frame "TEXT" "text27" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.027, "",
+}
+
+Frame "TEXT" "text28" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.028, "",
+}
+
+Frame "TEXT" "text29" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.029, "",
+}
+
+Frame "TEXT" "text30" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.03, "",
+}
+
+Frame "TEXT" "text31" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.031, "",
+}
+
+Frame "TEXT" "text32" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.032, "",
+}
+
+Frame "TEXT" "text33" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.033, "",
+}
+
+Frame "TEXT" "text34" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.034, "",
+}
+
+Frame "TEXT" "text35" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.035, "",
+}
+
+Frame "TEXT" "text36" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.036, "",
+}
+
+Frame "TEXT" "text37" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.037, "",
+}
+
+Frame "TEXT" "text38" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.038, "",
+}
+
+Frame "TEXT" "text39" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.039, "",
+}
+
+Frame "TEXT" "text40" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.04, "",
+}
+
+Frame "TEXT" "text41" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.041, "",
+}
+
+Frame "TEXT" "text42" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.042, "",
+}
+
+Frame "TEXT" "text43" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.043, "",
+}
+
+Frame "TEXT" "text44" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.044, "",
+}
+
+Frame "TEXT" "text45" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.045, "",
+}
+
+Frame "TEXT" "text46" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.046, "",
+}
+
+Frame "TEXT" "text47" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.047, "",
+}
+
+Frame "TEXT" "text48" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.048, "",
+}
+
+Frame "TEXT" "text49" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.049, "",
+}
+
+Frame "TEXT" "text50" {
+LayerStyle "IGNORETRACKEVENTS",
+FrameFont "resource\fonts\FZHTJW.TTF", 0.05, "",
+}
+
+    Frame "EDITBOX" "edit1" {
+    EditTextFrame "edit_text1",
+    Frame "TEXT" "edit_text1" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.001, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit2" {
+    EditTextFrame "edit_text2",
+    Frame "TEXT" "edit_text2" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.002, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit3" {
+    EditTextFrame "edit_text3",
+    Frame "TEXT" "edit_text3" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.003, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit4" {
+    EditTextFrame "edit_text4",
+    Frame "TEXT" "edit_text4" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.004, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit5" {
+    EditTextFrame "edit_text5",
+    Frame "TEXT" "edit_text5" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.005, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit6" {
+    EditTextFrame "edit_text6",
+    Frame "TEXT" "edit_text6" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.006, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit7" {
+    EditTextFrame "edit_text7",
+    Frame "TEXT" "edit_text7" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.007, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit8" {
+    EditTextFrame "edit_text8",
+    Frame "TEXT" "edit_text8" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.008, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit9" {
+    EditTextFrame "edit_text9",
+    Frame "TEXT" "edit_text9" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.009, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit10" {
+    EditTextFrame "edit_text10",
+    Frame "TEXT" "edit_text10" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.01, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit11" {
+    EditTextFrame "edit_text11",
+    Frame "TEXT" "edit_text11" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.011, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit12" {
+    EditTextFrame "edit_text12",
+    Frame "TEXT" "edit_text12" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.012, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit13" {
+    EditTextFrame "edit_text13",
+    Frame "TEXT" "edit_text13" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.013, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit14" {
+    EditTextFrame "edit_text14",
+    Frame "TEXT" "edit_text14" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.014, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit15" {
+    EditTextFrame "edit_text15",
+    Frame "TEXT" "edit_text15" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.015, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit16" {
+    EditTextFrame "edit_text16",
+    Frame "TEXT" "edit_text16" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.016, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit17" {
+    EditTextFrame "edit_text17",
+    Frame "TEXT" "edit_text17" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.017, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit18" {
+    EditTextFrame "edit_text18",
+    Frame "TEXT" "edit_text18" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.018, "", 
+    }
+    }
+    
+    Frame "EDITBOX" "edit19" {
+    EditTextFrame "edit_text19",
+    Frame "TEXT" "edit_text19" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.019, "", 
+    }
+    }
+    
+Frame "EDITBOX" "edit20" {
+    EditTextFrame "edit_text20",
+    Frame "TEXT" "edit_text20" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.02, "", 
+    }
+}
+    
+Frame "EDITBOX" "edit21" {
+    EditTextFrame "edit_text21",
+    Frame "TEXT" "edit_text21" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.021, "", 
+    }
+}
+    
+Frame "EDITBOX" "edit22" {
+    EditTextFrame "edit_text22",
+    Frame "TEXT" "edit_text22" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.022, "", 
+    }
+}
+    
+Frame "EDITBOX" "edit23" {
+    EditTextFrame "edit_text23",
+    Frame "TEXT" "edit_text23" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.023, "", 
+    }
+}
+    
+Frame "EDITBOX" "edit24" {
+    EditTextFrame "edit_text24",
+    Frame "TEXT" "edit_text24" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.024, "", 
+    }
+}
+    
+Frame "EDITBOX" "edit25" {
+    EditTextFrame "edit_text25",
+    Frame "TEXT" "edit_text25" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.025, "", 
+    }
+}
+    
+Frame "EDITBOX" "edit26" {
+    EditTextFrame "edit_text26",
+    Frame "TEXT" "edit_text26" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.026, "", 
+    }
+}
+    
+Frame "EDITBOX" "edit27" {
+    EditTextFrame "edit_text27",
+    Frame "TEXT" "edit_text27" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.027, "", 
+    }
+}
+
+Frame "EDITBOX" "edit28" {
+    EditTextFrame "edit_text28",
+    Frame "TEXT" "edit_text28" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.028, "", 
+    }
+}
+
+Frame "EDITBOX" "edit29" {
+    EditTextFrame "edit_text29",
+    Frame "TEXT" "edit_text29" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.029, "", 
+    }
+}
+
+Frame "EDITBOX" "edit30" {
+    EditTextFrame "edit_text30",
+    Frame "TEXT" "edit_text30" {
+    LayerStyle "IGNORETRACKEVENTS",
+    FrameFont "resource\fonts\FZHTJW.TTF", 0.03, "", 
+    }
+}
+
+Frame "SPRITE" "mtp719_cd" {
+    LayerStyle "IGNORETRACKEVENTS",
+    BackgroundArt "mtp719_cd.mdx",
+    //SetAllPoints,
+}
+
+Frame "SPRITE" "mp" {
+    //LayerStyle "IGNORETRACKEVENTS",
+    BackgroundArt "mp.mdx",
+    //SetAllPoints,
+}
+
+Frame "SPRITE" "hp" {
+    //LayerStyle "IGNORETRACKEVENTS",
+    BackgroundArt "hp.mdx",
+}
+
+Frame "SPRITE" "exp" {
+    LayerStyle "IGNORETRACKEVENTS",
+    BackgroundArt "exp.mdx",
+}
+
+Frame "SPRITE" "allied_mp" {
+    //LayerStyle "IGNORETRACKEVENTS",
+    BackgroundArt "allied_mp.mdx",
+}
+
+Frame "SPRITE" "allied_hp" {
+    //LayerStyle "IGNORETRACKEVENTS",
+    BackgroundArt "allied_hp.mdx",
+}

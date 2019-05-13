@@ -1,0 +1,81 @@
+事件
+    MapInitializationEvent
+条件
+动作
+    CustomScriptCode
+        常量: 'call AbilityId("exec-lua:main")'
+    DzTriggerRegisterMouseEventMultiple
+        函数: GetLocalPlayer
+        预设: GameKeyAction_Press
+        预设: MouseKey_Mouse_Left
+        列表
+        动作
+            CustomScriptCode
+                常量: 'call SetTeams(1)'
+    DzTriggerRegisterMouseEventMultiple
+        函数: GetLocalPlayer
+        预设: GameKeyAction_Release
+        预设: MouseKey_Mouse_Left
+        列表
+        动作
+            CustomScriptCode
+                常量: 'call SetTeams(2)'
+    DzTriggerRegisterMouseEventMultiple
+        函数: GetLocalPlayer
+        预设: GameKeyAction_Press
+        预设: MouseKey_Mouse_Right
+        列表
+        动作
+            CustomScriptCode
+                常量: 'call SetTeams(3)'
+    DzTriggerRegisterMouseEventMultiple
+        函数: GetLocalPlayer
+        预设: GameKeyAction_Release
+        预设: MouseKey_Mouse_Right
+        列表
+        动作
+            CustomScriptCode
+                常量: 'call SetTeams(4)'
+    DzTriggerRegisterMouseMoveEventMultiple
+        函数: GetLocalPlayer
+        列表
+        动作
+            CustomScriptCode
+                常量: 'call SetTeams(5)'
+    DzTriggerRegisterMouseWheelEventMultiple
+        函数: GetLocalPlayer
+        列表
+        动作
+            CustomScriptCode
+                常量: 'call SetTeams(6)'
+    CustomScriptCode
+        常量: '#define DzTriggerRegisterKeyEventByCode(a,b,c,d,f) DzTriggerRegisterKeyEventByCode(a,udg_i,c,d,f)'
+    ForLoopAMultiple
+        常量: 0
+        常量: 255
+        动作
+            SetVariable
+                变量: i
+                预设: bj_forLoopAIndex
+            DzTriggerRegisterKeyEventMultiple
+                函数: GetLocalPlayer
+                预设: GameKeyAction_Press
+                预设: MouseKey_Mouse_Left
+                列表
+                动作
+                    CustomScriptCode
+                        常量: 'call SetTeams(7)'
+            DzTriggerRegisterKeyEventMultiple
+                函数: GetLocalPlayer
+                预设: GameKeyAction_Release
+                预设: MouseKey_Mouse_Left
+                列表
+                动作
+                    CustomScriptCode
+                        常量: 'call SetTeams(8)'
+    DzTriggerRegisterWindowResizeEventMultiple
+        函数: GetLocalPlayer
+        列表
+        动作
+            CustomScriptCode
+                常量: 'call SetTeams(9)'
