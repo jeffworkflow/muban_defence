@@ -81,7 +81,9 @@ D:\one-map\muban_map\map\script\ui\base\sprite.lua
 D:\one-map\muban_map\map\script\ui\base\text.lua
 D:\one-map\muban_map\map\script\ui\base\texture.lua
 D:\one-map\muban_map\map\script\ui\base\timer.lua
+D:\one-map\muban_map\map\script\ui\client\boshu_ranking.lua
 D:\one-map\muban_map\map\script\ui\client\cus_server.lua
+D:\one-map\muban_map\map\script\ui\client\gold_ranking.lua
 D:\one-map\muban_map\map\script\ui\client\init.lua
 D:\one-map\muban_map\map\script\ui\client\kzt.lua
 D:\one-map\muban_map\map\script\ui\client\ranking.lua
@@ -127,6 +129,8 @@ D:\one-map\muban_map\map\script\平台\翅膀管理.lua
 D:\one-map\muban_map\map\script\平台\英雄熟练度.lua
 D:\one-map\muban_map\map\script\平台\荣耀称号.lua
 D:\one-map\muban_map\map\script\平台\重置版奖励.lua
+D:\one-map\muban_map\map\script\平台\base\init.lua
+D:\one-map\muban_map\map\script\平台\base\存档.lua
 D:\one-map\muban_map\map\script\平台\活动\init.lua
 D:\one-map\muban_map\map\script\平台\活动\五一.lua
 D:\one-map\muban_map\map\script\平台\道具\init.lua

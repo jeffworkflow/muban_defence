@@ -2,23 +2,7 @@ local japi = require("jass.japi")
 local dbg = require 'jass.debug'
 local unit = require 'types.unit'
 
-local hero_key = {
-    ['Pa'] = 'SLPA', 
-    ['亚瑟王'] = 'SLYSW', 
-    ['凯撒'] = 'SLKS',
-    ['卜算子'] = 'SLPSZ', 
-    ['小昭君'] = 'SLXZJ', 
-    ['小黑'] = 'SLXH', 
-    ['山丘王'] = 'SLSQW', 
-    ['影歌'] = 'SLYG', 
-    ['悟空'] = 'SLWK', 
-    ['扁鹊'] = 'SLBQ', 
-    ['火焰领主'] = 'SLHYLZ', 
-    ['牛魔王'] = 'SLNMW', 
-    ['诸葛亮'] = 'SLZGL', 
-    ['鲁大师'] = 'SLLDS', 
-}
-ac.hero_key = hero_key
+local hero_key = ac.hero_key
 local strong_attr = {
     ['肉盾'] = {
         {0,100,'格挡',0,'新手肉盾'},

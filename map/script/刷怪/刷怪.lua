@@ -860,7 +860,7 @@ ac.wait(20,function()
         { name = "普通" },
         { name = "噩梦（可进入无尽）" },
         { name = "地狱（可进入无尽 新手慎入）" },
-        { name = "圣人（新欢挑战的来）" },
+        { name = "圣人（喜欢挑战的来）" },
     }
     ac.player.self:sendMsg("正在选择 |cffffff00模式、难度|r")
     if player then 
