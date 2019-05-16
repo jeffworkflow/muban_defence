@@ -224,7 +224,7 @@ function mt:start(player)
     --可能会引起掉线
     -- local p = player or ac.player.self
     local tip = self.tip or ''
-    ac.player.self:sendMsg('怪物开始刷新:' .. tip, 5)
+    ac.player.self:sendMsg(tip, 5)
     -- self.trg_player = p
 
     if self.is_leave_region_replace then 
@@ -288,13 +288,16 @@ function mt:next()
         self:finish() 
         return
     end    
-    
-    if not self.force_timer and self.force_cool then 
+    -- if self.force_timer then 
+    --     self.force_timer:remove()
+    --     self.force_timer = nil
+    -- end    
+    if  self.force_cool then 
         --创建计时器窗口
         self.force_timer = ac.timer_ex 
         {
             time = self.force_cool,
-            title = self.timer_ex_title or "距离怪物进攻",
+            title = self.timer_ex_title ,
             func = function ()
                 self:next()   
             end,
@@ -336,7 +339,7 @@ function mt:next()
             print('lni 数据 没有被加载')
             return 
         end
-        local timer = ac.timer(0.1 * 1000,tonumber(v),function(t)
+        local timer = ac.timer((self.create_unit_cool or 0.1) * 1000,tonumber(v),function(t)
             local where 
             if region.type == 'rect' and self.is_random then
                 local minx, miny, maxx, maxy = region:get()
@@ -354,9 +357,9 @@ function mt:next()
                 u.gold = data.gold
             end    
             u.exp = data.exp
-            
-            u.attr_mul = data.attr_mul
-            u.food = data.food
+            u.wood = data.wood
+            u.fire_seed = data.fire_seed
+
             u.data = data
 
             --设置模型大小
@@ -372,10 +375,10 @@ function mt:next()
             --将单位添加进单位组
             table.insert(self.group,u)
         
-            local hero = find_hero(u)
-            if hero then
-                u:issue_order('attack',hero:get_point())
-            end 
+            -- local hero = find_hero(u)
+            -- if hero then
+            --     u:issue_order('attack',hero:get_point())
+            -- end 
             --监听这个单位挂掉
             self.trg = u:event '单位-死亡' (function(_,unit,killer)
                 self.current_count = self.current_count - 1

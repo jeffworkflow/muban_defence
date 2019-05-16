@@ -4,49 +4,6 @@ local jass = require 'jass.common'
 
 ac.game.challenge_cnt = 1
 
--- 同一时间 全部玩家死亡，游戏失败
-ac.game:event '游戏-开始' (function()
-	print('游戏开始8')
-	for i = 1 ,10 do 
-		local hero = ac.player(i).hero
-		if hero then 
-			hero.all_die_trg = hero:event '单位-死亡' (function()
-				--标准模式下 1 标准模式
-				if ac.g_game_mode and ac.g_game_mode ~= 1 then 
-					return
-				end	
-				--获取死亡人数
-				local dead_count = get_dead_count()
-				--获取在线人数
-				local player_count = get_player_count()
-				if dead_count >= player_count then 
-					ac.game.challenge_cnt = ac.game.challenge_cnt - 1	
-					if ac.game.challenge_cnt < 0 then 
-						ac.game:event_notify('游戏-结束') --失败
-					else
-						ac.player.self:sendMsg('|cff00ffff【系统消息】全部玩家死亡，剩余额外 |r|cffff0000'..ac.game.challenge_cnt..'|r'..' |cff00ffff挑战次数,务必小心中央boss倒计时结束造成80%伤害|r',10)
-						ac.player.self:sendMsg('|cff00ffff【系统消息】全部玩家死亡，剩余额外 |r|cffff0000'..ac.game.challenge_cnt..'|r'..' |cff00ffff挑战次数,务必小心中央boss倒计时结束造成80%伤害|r',10)
-						ac.player.self:sendMsg('|cff00ffff【系统消息】全部玩家死亡，剩余额外 |r|cffff0000'..ac.game.challenge_cnt..'|r'..' |cff00ffff挑战次数,务必小心中央boss倒计时结束造成80%伤害|r',10)
-					end	
-				end	
-			end);
-		end
-	end
-	print('游戏开始9')
-end);
---进入 无尽 改变游戏结束的触发
-ac.game:event '游戏-无尽开始' (function()
-	print('进入无尽啦')
-	--先移除
-	-- for i = 1 ,10 do 
-	-- 	local hero = ac.player(i).hero
-	-- 	if hero and hero.all_die_trg then 
-	-- 		hero.all_die_trg:remove()
-	-- 	end
-	-- end	
-	
-end)
-
 --基地爆炸的时候结算胜负
 ac.game:event '游戏-结束' (function(trg,flag)
 

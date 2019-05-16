@@ -3,17 +3,40 @@ UndeadClass=有机生物
 [CustomSkin]
 AllyTownUnderAttackSound=Flare4
 AllyUnderAttackSound=Flare4
-ChatFont=resource\fonts\FZHTJW.TTF
+ChatFont=resource\fonts\fonts.ttf
 CommandButtonCooldown=war3mapImported\cooldown ui.mdx
-EscMenuTextFont=resource\fonts\FZHTJW.TTF
+EscMenuTextFont=resource\fonts\fonts.ttf
 IdlePeon=ReplaceableTextures\CommandButtons\BTNStop.blp
-InfoPanelTextFont=resource\fonts\FZHTJW.TTF
-MasterFont=resource\fonts\FZHTJW.TTF
-MessageFont=resource\fonts\FZHTJW.TTF
+InfoPanelTextFont=resource\fonts\fonts.ttf
+MasterFont=resource\fonts\fonts.ttf
+MessageFont=resource\fonts\fonts.ttf
 MinimapHeroTexture=minimap\minimap-hero.blp
 MinimapNeutral=UI\Minimap\MiniMap-Hero.mdl
 MinimapNeutralTexture=minimap\minimap-hero.blp
-TextTagFont=resource\fonts\FZHTJW.TTF
+TextTagFont=resource\fonts\fonts.ttf
+
+ConsoleButtonBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
+EscMenuEditBoxBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
+ToolTipBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
+
+EscMenuEditBoxBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
+QuestDialogBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
+EscMenuButtonBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
+EscMenuButtonDisabledBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
+EscMenuButtonPushedBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
+EscMenuButtonDisabledPushedBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
+EscMenuBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
+EscMenuButtonBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
+EscMenuButtonDisabledBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
+EscMenuButtonPushedBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
+EscMenuButtonDisabledPushedBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
+MultiboardBorder=UI\Widgets\BattleNet\bnet-tooltip-border.blp
+EscMenuBorder=UI\Widgets\EscMenu\Human\editbox-background.blp
+
+ConsoleButtonBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
+QuestDialogBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
+ToolTipBackground=UI\Widgets\EscMenu\Human\editbox-background.blp
+
 [FrameDef]
 BONUS_ATTACK_SPEED= - 每点提高|cffffff00 0.01% |r会心伤害
 BONUS_DAMAGE= - 每点加|cffffff00 3 |r攻击力

@@ -477,7 +477,7 @@ function helper:add_item(str,cnt)
 end
 --进入地狱，7个光环
 function helper:tt()
-	ac.creep['刷怪'].index = 59
+	-- ac.creep['刷怪'].index = 59
 	ac.item.add_skill_item('战鼓光环',self)
 	ac.item.add_skill_item('攻速光环',self)
 	ac.item.add_skill_item('辉煌光环',self)
@@ -703,9 +703,11 @@ end
 
 --测试副本
 function helper:fb(str)
-	ac.creep['刷怪'].index = tonumber(str) - 1
-	self:add_restriction '免死'
-	ac.creep['刷怪']:next()
+	for i=1,3 do 
+		local creep = ac.creep['刷怪'..i]
+		creep.index = tonumber(str) - 1
+		ac.creep['刷怪']:next()
+	end	
 end
 --测试商店
 function helper:cs()

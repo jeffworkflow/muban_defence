@@ -226,11 +226,8 @@ ac.game:event '游戏-开始' (function()
                 p.each_index_damage={}
             end  
             local index = 1
-            if ac.creep['刷怪'].index>=1 then
-                index = ac.creep['刷怪'].index 
-            end	
-            if ac.creep['刷怪-无尽'].index>=1 then
-                index = ac.creep['刷怪-无尽'].index 
+            if ac.creep['刷怪1'].index>=1 then
+                index = ac.creep['刷怪1'].index 
             end	
             if not p.each_index_damage[index] then 
                 p.each_index_damage[index] =0
@@ -269,9 +266,9 @@ ac.game:event '游戏-开始' (function()
         --统计用，使用杀敌数后，不减少
         p.total_kill_count = p.total_kill_count + 1
         local jf_mul = 0.5
-        if ac.creep['刷怪-无尽'].index and ac.creep['刷怪-无尽'].index >=1 then
-            jf_mul = 1
-        end    
+        -- if ac.creep['刷怪-无尽'].index and ac.creep['刷怪-无尽'].index >=1 then
+        --     jf_mul = 1
+        -- end    
         p.putong_jifen = (p.putong_jifen or 0) + jf_mul
         ac.total_putong_jifen = (ac.total_putong_jifen or 0) + jf_mul
         --魔兽自带的多面板统计
@@ -311,9 +308,9 @@ ac.game:event '游戏-回合开始'(function(_,index,creep)
         return 
     end
     local tip =''
-    if creep.name == '刷怪-无尽' then 
-        tip = '(无尽)'
-    end    
+    -- if creep.name == '刷怪-无尽' then 
+    --     tip = '(无尽)'
+    -- end    
     local degree 
     if ac.g_game_degree == 1 then 
         degree = '普通'

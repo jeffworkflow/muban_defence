@@ -29,7 +29,7 @@ require '物品'
 -- print(8)
 require '技能'
 -- print(9)
--- require '英雄'
+require '英雄'
 -- print(10)
 require '刷怪'
 -- print(11)
@@ -60,18 +60,14 @@ ac.wait(100,function ()
     light(3)
 
     --开局锁定镜头
-    local fogmodifier = require 'types.fogmodifier'
-    for i = 1, 10 do
-		local p = ac.player[i]
-		--在选人区域创建可见度修整器(对每个玩家,永久)
-		fogmodifier.create(p, ac.map.rects['选人区域'])
-		local minx, miny, maxx, maxy = ac.map.rects['选人区域']:get()
-		p:setCameraBounds(minx+900, miny+900, maxx-900, maxy-900)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
-		p:setCamera(ac.map.rects['选人区域'])
-		--禁止框选
-		p:disableDragSelect()
+    local point = ac.map.rects['出生点']:get_point()
+    local p = ac.player(1)
+    local hero = p:createHero('鲁大师',point);
+    p.hero = hero
+	p:event_notify('玩家-注册英雄', p, p.hero)
+    p:setCamera(ac.map.rects['出生点'])
 
-	end
+
 
 
     -- 没10分钟切换一次光照模型
@@ -87,9 +83,9 @@ ac.wait(100,function ()
     -- end)
    
     --设置联盟模式0,1,2
-    jass.SetAllyColorFilterState(0)
-    --设置玩家16（中立被动颜色 绿） 1-16
-    ac.player(16):setColor(7)
+    -- jass.SetAllyColorFilterState(0)
+    -- --设置玩家16（中立被动颜色 绿） 1-16
+    -- ac.player(16):setColor(7)
 
 
     ac.game:event '游戏-开始' (function()

@@ -95,25 +95,25 @@ local function multiboard_init()
 	-- mtb:setText(2,2,'怪物总数')
 	--怪物总数
 	
-	ac.loop(1*1000,function()
-		local current_count = 0
-		if ac.creep['刷怪'].index>=1 then
-			current_count = ac.creep['刷怪'].current_count 
-		end	
-		if ac.creep['刷怪-无尽'].index>=1 then
-			current_count = ac.creep['刷怪-无尽'].current_count 
-		end	
-		mtb:setText(1,2,'怪物总数：'..current_count)
+	-- ac.loop(1*1000,function()
+	-- 	local current_count = 0
+	-- 	if ac.creep['刷怪'].index>=1 then
+	-- 		current_count = ac.creep['刷怪'].current_count 
+	-- 	end	
+	-- 	if ac.creep['刷怪-无尽'].index>=1 then
+	-- 		current_count = ac.creep['刷怪-无尽'].current_count 
+	-- 	end	
+	-- 	mtb:setText(1,2,'怪物总数：'..current_count)
 
-		--设置倒计时
-		if ac.creep['刷怪'] and ac.creep['刷怪'].boss then  
-			local buff = ac.creep['刷怪'].boss:find_buff '时停'
-			if buff then 
-				--最终boss死亡之指倒计时 
-				mtb:setText(2,2,'|cffff0000死亡之指|r倒计时：|cffff0000'..(buff.time-1)..'|r')
-			end	
-		end	 
-	end)
+	-- 	--设置倒计时
+	-- 	if ac.creep['刷怪'] and ac.creep['刷怪'].boss then  
+	-- 		local buff = ac.creep['刷怪'].boss:find_buff '时停'
+	-- 		if buff then 
+	-- 			--最终boss死亡之指倒计时 
+	-- 			mtb:setText(2,2,'|cffff0000死亡之指|r倒计时：|cffff0000'..(buff.time-1)..'|r')
+	-- 		end	
+	-- 	end	 
+	-- end)
 
 	
 end
