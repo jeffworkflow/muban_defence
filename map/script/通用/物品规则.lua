@@ -142,9 +142,10 @@
         local mutou = player:getlumber()
         local kill_count = player.kill_count or 0
         local jifen = 0
-        -- if ac.GetServerValue then  
-        jifen= tonumber(ZZBase64.decode(player.jifen)) or 0
-        -- end
+
+        if player.jifen then 
+            jifen= tonumber(ZZBase64.decode(player.jifen)) or 0
+        end
 
         local golds = it:buy_price()
         local mutous = it:buy_mutou()

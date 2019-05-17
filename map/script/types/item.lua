@@ -774,7 +774,11 @@ function unit.__index:add_item(it,is_fall)
 		it.recycle = false
 		return it
 	end	
-	
+	--如果物品指定所有者，不是所有者就返回
+	if it.owner_ship and it.owner_ship ~= self then 
+	   self.owner:showSysWarning('不是你的')
+	   return 
+	end   	
 	--为了合成装备
 	-- print('装备2',it)
 	if self:event_dispatch('单位-合成装备', self, it) then

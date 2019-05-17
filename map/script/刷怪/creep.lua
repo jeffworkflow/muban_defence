@@ -223,8 +223,10 @@ function mt:start(player)
     end    
     --可能会引起掉线
     -- local p = player or ac.player.self
-    local tip = self.tip or ''
-    ac.player.self:sendMsg(tip, 5)
+    local tip = self.tip 
+    if tip then 
+        ac.player.self:sendMsg(tip, 5)
+    end    
     -- self.trg_player = p
 
     if self.is_leave_region_replace then 

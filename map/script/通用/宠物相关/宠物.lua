@@ -2,7 +2,7 @@ local player = require 'ac.player'
 
 function player.__index:create_pets()
     local x,y = ac.map.rects['出生点']:get_point():get()
-    local u = self:create_unit('n003',ac.point(x-500,y))
+    local u = self:create_unit('宠物',ac.point(x-500,y))
     u.unit_type = '宠物'
     u:set('移动速度',522)
     self.peon = u

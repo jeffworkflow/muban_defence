@@ -33,7 +33,7 @@ ac.map.rects={
 	['杀鸡敬猴3'] =rect.j_rect('sjjh3') ,
 	
 
-	--练功房 不设置区域，直接生成。
+	--练功房 
 	['练功房11'] =rect.j_rect('lgf11') ,
 	['练功房12'] =rect.j_rect('lgf12') ,
 	['练功房13'] =rect.j_rect('lgf13') ,
@@ -45,6 +45,30 @@ ac.map.rects={
 	['练功房23'] =rect.j_rect('lgf23') ,
 	['练功房24'] =rect.j_rect('lgf24') ,
 	['练功房刷怪2'] =rect.j_rect('lgfsg2') ,
+
+	['练功房31'] =rect.j_rect('lgf31') ,
+	['练功房32'] =rect.j_rect('lgf32') ,
+	['练功房33'] =rect.j_rect('lgf33') ,
+	['练功房34'] =rect.j_rect('lgf34') ,
+	['练功房刷怪3'] =rect.j_rect('lgfsg3') ,
+
+	['练功房41'] =rect.j_rect('lgf41') ,
+	['练功房42'] =rect.j_rect('lgf42') ,
+	['练功房43'] =rect.j_rect('lgf43') ,
+	['练功房44'] =rect.j_rect('lgf44') ,
+	['练功房刷怪4'] =rect.j_rect('lgfsg4') ,
+
+	['练功房51'] =rect.j_rect('lgf51') ,
+	['练功房52'] =rect.j_rect('lgf52') ,
+	['练功房53'] =rect.j_rect('lgf53') ,
+	['练功房54'] =rect.j_rect('lgf54') ,
+	['练功房刷怪5'] =rect.j_rect('lgfsg5') ,
+
+	['练功房61'] =rect.j_rect('lgf61') ,
+	['练功房62'] =rect.j_rect('lgf62') ,
+	['练功房63'] =rect.j_rect('lgf63') ,
+	['练功房64'] =rect.j_rect('lgf64') ,
+	['练功房刷怪6'] =rect.j_rect('lgfsg6') ,
 	
 	--武器
 	['传送-武器1'] =rect.j_rect('wuqi11') ,
