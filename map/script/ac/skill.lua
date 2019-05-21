@@ -1877,13 +1877,13 @@ function unit.__index:each_skill(type, ignore_level)
 		if not self.skills[type] then
 			return function () end
 		end
-		for _, v in sortpairs(self.skills[type]) do
+		for _, v in pairs(self.skills[type]) do
 			if ignore_level or v:get_level() > 0 then
 				table_insert(result, v)
 			end
 		end
 	else
-		for _, type_skills in sortpairs(self.skills) do
+		for _, type_skills in pairs(self.skills) do
 			for _, v in pairs(type_skills) do
 				if ignore_level or v:get_level() > 0 then
 					table_insert(result, v)

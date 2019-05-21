@@ -1,7 +1,5 @@
 require '平台.道具.天使之光'
 require '平台.道具.齐天大圣'
-require '平台.道具.金币礼包'
-require '平台.道具.木材礼包'
 require '平台.道具.双倍积分卡'
 require '平台.道具.天空的宝藏会员'
 require '平台.道具.小翅膀'
@@ -19,3 +17,11 @@ require '平台.道具.黑魔导'
 
 require '平台.道具.永久超级赞助'
 require '平台.道具.魔龙之心'
+
+
+
+require '平台.道具.金币礼包'
+require '平台.道具.木材礼包'
+require '平台.道具.五星好评礼包'
+require '平台.道具.群号礼包'
+

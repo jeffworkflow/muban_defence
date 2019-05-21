@@ -30,16 +30,6 @@ table.sort(ac.all_item,function (strA,strB)
     return strA<strB
 end)
 
-
--- for k,v in sortpairs(ac.quality_item) do
---     print('物品个数：',k,#v)
---     for _,v1 in ipairs(v) do
---         print(k,v1)
---     end    
--- end    
-
-
-
 --英雄技能，钥匙怪掉落表
 ac.skill_list2 = ac.skill_list2
 
@@ -103,19 +93,7 @@ ac.on_texttag =  on_texttag
 --先列出所有奖励 再按概率抽取
 local reward = {
     ['符文'] = function (player,hero,unit,level)
-    
         local list = {'力量符文','敏捷符文','智力符文','血质符文','魔力符文','生命符文','魔法符文'}
-        
-        -- if level == nil then 
-        --     if g_game_min < 10 then 
-        --         level = 1 
-        --     elseif g_game_min < 20 then 
-        --         level = 2 
-        --     else 
-        --         level = 3
-        --     end 
-        -- end 
-
         local name = list[math.random(#list)] .. level 
         local x,y = unit:get_point():get() 
         local item = hero:add_item(name)
@@ -245,6 +223,16 @@ ac.reward = reward
 
 
 local unit_reward = {
+    ['武器boss1'] = {rand =100,name = '凝脂剑'},
+    ['武器boss2'] = {rand =100,name = '凝脂剑'},
+    ['武器boss3'] = {rand =100,name = '凝脂剑'},
+    ['武器boss4'] = {rand =100,name = '凝脂剑'},
+    ['武器boss5'] = {rand =100,name = '凝脂剑'},
+    ['武器boss6'] = {rand =100,name = '凝脂剑'},
+    ['武器boss7'] = {rand =100,name = '凝脂剑'},
+    ['武器boss8'] = {rand =100,name = '凝脂剑'},
+    ['武器boss9'] = {rand =100,name = '凝脂剑'},
+    ['武器boss10'] = {rand =100,name = '凝脂剑'},
     ['进攻怪'] =  {
         -- { rand = 97.5,         name = '无'},
         { rand = 2.5,      name = {

@@ -21,7 +21,7 @@ require 'ac'
 require 'ui'
 -- print(5)
 require '通用'
--- require '平台'
+require '平台'
 -- print(6)
 require '游戏'
 -- print(7)
@@ -64,7 +64,8 @@ ac.wait(100,function ()
     local p = ac.player(1)
     local hero = p:createHero('鲁大师',point);
     p.hero = hero
-	p:event_notify('玩家-注册英雄', p, p.hero)
+    p:event_notify('玩家-注册英雄', p, p.hero)
+    hero:add_skill('凌波微步','英雄',6)
     p:setCamera(ac.map.rects['出生点'])
 
 

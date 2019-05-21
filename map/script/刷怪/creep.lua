@@ -260,11 +260,16 @@ function mt:start(player)
     
 end
 --暂停计时
-function mt:PauseTimer()
+function mt:PauseTimer(time)
     if not self.force_timer then 
         return 
     end
     self.force_timer:PauseTimer()   
+    if time then 
+        ac.wait(time*1000,function()
+            self:ResumeTimer()
+        end)
+    end    
     return self.force_timer
 end    
 

@@ -7,7 +7,7 @@ mt.tip = [[
 ]]
 
 --影响三维值 (怪物为：生命上限，护甲，攻击力)
-mt.value = 27.5
+-- mt.value = 27.5
 
 --重生时间
 mt.time = 2
@@ -20,10 +20,10 @@ function mt:on_add()
 
     local hero = self.owner 
     -- 降低三维(生命上限，护甲，攻击)
-    hero:add('生命上限%', -self.value)
-    hero:add('护甲%', -self.value)
-    hero:add('攻击%', -self.value)
-    hero:add('魔抗%', -self.value)
+    -- hero:add('生命上限%', -self.value)
+    -- hero:add('护甲%', -self.value)
+    -- hero:add('攻击%', -self.value)
+    -- hero:add('魔抗%', -self.value)
 
     --重生相关
     self.trg = hero:event '单位-即将死亡' (function (_,unit,killer)
@@ -48,7 +48,7 @@ function mt:on_add()
             --重生次数 -1 小于1时 ,无法重生，技能移除
             self.cnt = self.cnt - 1 
             if self.cnt < 1 then 
-                self.trg:remove()
+                self:remove()
             end 
         end)
         -- 中断死亡
@@ -63,10 +63,10 @@ function mt:on_remove()
 
     local hero = self.owner 
     -- 提升三维(生命上限，护甲，攻击)
-    hero:add('生命上限%', self.value)
-    hero:add('护甲%', self.value)
-    hero:add('攻击%', self.value)
-    hero:add('魔抗%', self.value)
+    -- hero:add('生命上限%', self.value)
+    -- hero:add('护甲%', self.value)
+    -- hero:add('攻击%', self.value)
+    -- hero:add('魔抗%', self.value)
 
     if self.trg then
         self.trg:remove()

@@ -14,3 +14,5 @@ require '平台.重置版奖励'
 require '平台.活动'
 require '平台.英雄熟练度'
 require '平台.商城管理'
+
+-- require '平台.皮肤碎片'

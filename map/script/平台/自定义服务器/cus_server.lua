@@ -4,7 +4,7 @@ local json = require 'util.json'
 local player = require 'ac.player'
 
 local config = {
-    map_name = '天空的宝藏',
+    map_name = '第三张防守图',
     url = 'www.91mtp.com/api/maptest' , --类似官方对战平台的服务器存档
     url2 = 'www.91mtp.com/api/mapdb' --统一存储过程入口
 }
@@ -87,17 +87,19 @@ end
 --copy 所有servervalue
 function player.__index:CopyAllServerValue()
     for i,v in ipairs(ac.server_key) do 
-        local key = v[1]
-        self:CopyServerValue(key,function (retval)  
-            local tbl = json.decode(retval)
-            -- print(tbl.code)
-            if tbl.code == 0 then 
-                -- print(self:get_name(),'上传成功')
-            else
-                print(self:get_name(),key,'上传失败')
-            end        
-            -- end    
-        end);
+        local key = v[1] 
+        ac.wait(1000*i,function()
+            self:CopyServerValue(key,function (retval)  
+                local tbl = json.decode(retval)
+                -- print(tbl.code)
+                if tbl.code == 0 then 
+                    -- print(self:get_name(),'上传成功')
+                else
+                    print(self:get_name(),key,'上传失败')
+                end        
+                -- end    
+            end);
+        end)    
     end    
 end   
 --初始化自定义服务器的数据

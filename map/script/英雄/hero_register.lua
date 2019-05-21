@@ -126,7 +126,7 @@ ac.game:event '玩家-选择单位后' (function(self, player, hero)
 		return 
 	end 
 	player.selected = hero 
-	for skill in hero:each_skill '英雄' do 
+	for skill in hero:each_skill('英雄',true) do 
 		skill:fresh()
 	end 
 end)

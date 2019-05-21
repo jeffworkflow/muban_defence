@@ -32,21 +32,32 @@ local mt = ac.skill['英雄属性面板']
 法爆几率: %magic_rate% %  法爆伤害:  %magic_damage% %
 会心几率: %heart_rate% %  会心伤害:  %heart_damage% %
 
-召 唤 物加成： %dummy%   
-召唤物属性加成： %dummy_attr% %
-法术攻击加成： %magic_attack% % 
-
-金币加成：   %moregold% %
-经验加成：   %moreexp% %
-物品获取率： %item_rate% %
+金币加成：   %moregold% %  木头加成： %morewood% %
+经验加成：   %moreexp% %  火种加成： %morefireseed% %
+物品获取率： %item_rate% %  杀敌数加成： %morekillcount% %
 
 杀怪加力量： %kill_str%     每秒金币:   %per_gold%  
 杀怪加敏捷： %kill_agi%     每秒全属性: %per_allattr% 
 杀怪加智力： %kill_int%
 杀怪加全属性： %kill_all_attr%
 杀怪加护甲： %kill_defence%
+杀怪加攻击： %kill_attack%
 ]],
 }
+
+function mt:morewood()
+	return ('|cffF9C801%.f|r'):format(self.owner:get '木头加成')
+end
+function mt:morefireseed()
+	return ('|cffF9C801%.f|r'):format(self.owner:get '火种加成')
+end
+function mt:morekillcount()
+	return ('|cffF9C801%.f|r'):format(self.owner:get '杀敌数加成')
+end
+
+function mt:kill_attack()
+	return ('|cffF9C801%.2f|r'):format(self.owner:get '杀怪攻击')
+end
 
 function mt:duochongshe()
 	return ('|cffF9C801%.2f|r'):format(self.owner:get '多重射')

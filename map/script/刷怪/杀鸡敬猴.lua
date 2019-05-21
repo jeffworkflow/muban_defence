@@ -5,7 +5,6 @@ for i =1,3 do
         cool = 1,
         is_random = true,
         creep_player = ac.player.com[2],
-        tip =""
     }
     --进攻怪刷新时的初始化
     function mt:on_start()

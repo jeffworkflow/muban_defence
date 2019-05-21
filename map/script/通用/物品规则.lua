@@ -65,6 +65,9 @@
             end    
             --使用物品，类似消耗品
             it:on_use_state()
+            --额外支持 施法完成
+            --应用 魔鬼的交易
+            it:_call_event 'on_cast_finish' 
 
             it:_call_event 'on_remove'
             --表示购买成功
@@ -139,10 +142,10 @@
         --先判断钱是否够
         local player = u.owner
         local gold = u.owner.gold
-        local mutou = player:getlumber()
+        local mutou = player:get_wood()
         local kill_count = player.kill_count or 0
         local jifen = 0
-
+        it.seller = seller
         if player.jifen then 
             jifen= tonumber(ZZBase64.decode(player.jifen)) or 0
         end
@@ -194,13 +197,15 @@
         if flag then 
             ac.item.add_skill_item(it.name,u,true)
         else    
-            u:add_item(it.name)   
+            local item = ac.item.create_item(it.name,nil,true)
+            item.seller = seller
+            u:add_item(item)   
         end    
         --给单位添加物品时，会进行一系列逻辑处理，处理完后会改变 buy_suc 状态
         if u.buy_suc then 
             -- print('扣钱')
             player:addGold( - golds,u)
-            player:addlumber( - mutous)
+            player:add_wood( - mutous)
             player.kill_count =  player.kill_count - kill_counts
 
             if jifens > 0 then 

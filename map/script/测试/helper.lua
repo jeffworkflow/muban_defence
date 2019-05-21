@@ -369,8 +369,10 @@ function helper:power()
 	if not ac.wtf then
 		helper.wtf(self)
 	end
+	local player = self:get_owner()
 	self:add_restriction '免死'
-	self:addGold(999999)
+	player:addGold(599999)
+	player:add_wood(599999)
 end
 
 --强制游戏结束
@@ -397,7 +399,8 @@ function helper:create(str,cnt, playerid)
 	end
 	local p = ac.player[tonumber(playerid)]
 	for i = 1 ,(cnt or 1) do
-		local unit = p:create_unit(str,ac.point(0,0))
+		local point = ac.map.rects['出生点']
+		local unit = p:create_unit(str,point)
 		local data = ac.table.UnitData[str]
 		-- print(unit:get('护甲'),unit:get('护甲%'),data.attribute['护甲'])
 		unit:set('移动速度',455)
@@ -442,8 +445,26 @@ end
 --读取 属性
 function helper:get(key)
 	print(self:get(key))
-
 end	
+
+--读取 单位属性
+function helper:get_u(unit,str)
+	for key,val in pairs(ac.unit.all_units) do 
+		if val:get_name() == unit then 
+			print(val:get(str))
+			break
+		end	
+	end	
+end	
+--增加 单位属性
+function helper:add_u(unit,str,cnt)
+	for key,val in pairs(ac.unit.all_units) do 
+		if val:get_name() == unit then 
+			print(val:add(str,tonumber(cnt)))
+		end	
+	end	
+end	
+
 --增加技能物品
 function helper:add_skill(str,cnt)
 	local cnt = cnt or 1

@@ -1,0 +1,36 @@
+
+local rect = require 'types.rect'
+
+--物品名称
+local mt = ac.skill['挑战最终boss']
+mt{
+--等久
+level = 1,
+--图标
+art = [[tzzzbs.blp]],
+--说明
+tip = [[直接挑战最终boss]],
+--物品类型
+item_type = '神符',
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+--售价 500000
+mutou = 50000,
+--冷却
+cool = 0,
+content_tip = '',
+--物品技能
+is_skill = true,
+--商店名词缀
+store_affix = ''
+}
+
+function mt:on_cast_start()
+    local hero = self.owner
+    local p = hero:get_owner()
+    
+    if not ac.final_boss then 
+        ac.game:event_dispatch('游戏-最终boss')
+        ac.player.self:sendMsg('【系统消息】 最终boss 已出现，请大侠前往击杀')
+    end     
+end

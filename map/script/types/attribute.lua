@@ -32,6 +32,7 @@ local attribute = {
 	['力量']	=	true,--默认基础值  
 	['敏捷']	=	true,--默认基础值
 	['智力']	=	true,--默认基础值
+	['全属性']	=	true,--默认基础值
 	['生命']       = true,--默认基础值
 	['生命上限']    = true,--默认基础值
 	['生命恢复']    = true,--默认基础值
@@ -74,8 +75,13 @@ local attribute = {
 	['减伤']		    =	true, --默认表示为基础值
 	['法术伤害减免']			=	true, --默认表示为%
 	['法术伤害减伤']		    =	true, --默认表示为基础值
+	
 	['金币加成']		=	true,--默认表示为%
 	['经验加成']		=	true,--默认表示为%
+	['木头加成']		=	true,--默认表示为%
+	['杀敌数加成']		=	true,--默认表示为%
+	['火种加成']		=	true,--默认表示为%
+
 	['天赋触发几率']	=	true,--默认表示为%
 	['多重射']	=	true,--默认表示为基础值
 	['额外投射物数量']	=	true,--默认表示为基础值
@@ -104,8 +110,10 @@ local attribute = {
 	['杀怪智力'] = true,  --默认表示为基础值
 	['杀怪全属性'] = true,  --默认表示为基础值
 	['杀怪护甲'] = true,  --默认表示为基础值
+	['杀怪攻击'] = true,  --默认表示为基础值
 
 	['每秒金币'] = true,  --默认表示为基础值
+	['每秒木头'] = true,  --默认表示为基础值
 	['每秒力量'] = true,  --默认表示为基础值
 	['每秒敏捷'] = true,  --默认表示为基础值
 	['每秒智力'] = true,  --默认表示为基础值
@@ -122,12 +130,12 @@ local on_set = {}
 
 --基础值
 local base_attr =[[
-力量 敏捷 智力 生命 生命上限 生命恢复 生命脱战恢复 魔法 
+力量 敏捷 智力 全属性 生命 生命上限 生命恢复 生命脱战恢复 魔法 
 魔法上限 魔法脱战恢复 攻击 护甲 魔抗 攻击间隔 攻击距离 移动速度 减耗 破甲 
 破魔 护盾 减伤 技能基础伤害 多重射 额外连锁 额外范围 攻击回血 击杀回血 基础金币 积分加成 熟练度加成
 额外伤害 召唤物 
-杀怪力量 杀怪敏捷 杀怪智力 杀怪全属性 杀怪护甲
-每秒金币 每秒力量 每秒敏捷 每秒智力 每秒全属性 每秒护甲
+杀怪力量 杀怪敏捷 杀怪智力 杀怪全属性 杀怪护甲 杀怪攻击
+每秒金币 每秒木头 每秒力量 每秒敏捷 每秒智力 每秒全属性 每秒护甲
 减甲
 ]]
 
@@ -341,7 +349,16 @@ set['力量'] = function(self, val)
 	end	
 end
 
-
+on_set['全属性'] = function(self)
+    -- print("新值：",self:get '力量', "老值：",old_value)
+	local old_value =  self:get '全属性' --老值
+	return function()
+		local value = self:get '全属性' - old_value
+		self:add('力量',  value )
+		self:add('敏捷',  value )
+		self:add('智力',  value )
+	end		
+end	
 on_set['力量'] = function(self)
     -- print("新值：",self:get '力量', "老值：",old_value)
 	local old_value =  self:get '力量' --老值
@@ -769,6 +786,8 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
 	-- print('杀怪增加护甲：',defence)
 	hero:add('护甲',defence)
 	
+	hero:add('攻击',hero:get('杀怪攻击'))
+	
 end) 
 
 --每秒金币
@@ -779,8 +798,11 @@ ac.loop(1*1000,function(t)
 			--每秒金币
 			local gold = player.hero:get('每秒金币') 
 			player:addGold(gold) --不显示漂浮文字
+			--每秒木头
+			local wood = player.hero:get('每秒木头') 
+			player:add_wood(wood) 
+
 			local hero = player.hero
-			
 			--每秒属性 
 			local str = hero:get('每秒力量') + hero:get('每秒全属性')
 			local int = hero:get('每秒智力') + hero:get('每秒全属性')

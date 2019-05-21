@@ -77,7 +77,8 @@ mt.sell = true
 mt.discount = 0.5
 --默认物品图标 书籍
 mt.art = [[ReplaceableTextures\CommandButtons\BTNSnazzyScrollPurple.blp]]
-
+--物品最大使用次数
+mt.max_use_count = 99999
 --商品最大库存
 
 
@@ -196,6 +197,7 @@ function mt:set_name(name)
 
 	local str = '|cff'..color..tostring(name)..show_lv..'|r'
 	self.store_name = str
+	self.color_name = str
 	japi.EXSetItemDataString(base.string2id(id),4,str)
 end
 
@@ -587,6 +589,15 @@ function mt:on_use_state()
 	if self.item_type == '消耗品' then
 		--让宠物使用物品时给英雄增加对应的属性
 		hero = hero:get_owner().hero
+	end	
+	--最大使用次数相关
+	if not hero.use_item then 
+		hero.use_item = {}
+	end	
+	hero.use_item[self.name] = (hero.use_item[self.name] or 0) + 1
+	if hero.use_item[self.name] > self.max_use_count then 
+		hero:get_owner():sendMsg('【系统消息】 '..self.color_name..' 超过使用次数')
+		return 
 	end	
 	--播放特效
 	hero:add_effect('chest','Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx'):remove()

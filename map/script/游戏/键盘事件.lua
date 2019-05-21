@@ -81,16 +81,6 @@ ac.game:event '玩家-聊天' (function(self, player, str)
         hero:blink(rect.j_rect('wq'),true,false,true)
     end
 
-    --输入 hg 回城
-    if string.lower(str) == '849223207' then
-        
-        if not player.is_qq_qum  then 
-            player:addGold(1000)
-            player.is_qq_qum = true
-            local tip = '|cffff0000'..player:get_name()..'|r输入群号：|cffffff00849223207|r，获得|cffffff001000金币|r'
-            ac.player.self:sendMsg(tip)
-        end    
-    end
     -- '++' 调整镜头大小
     if str == '++' then
         --最大3000

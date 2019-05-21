@@ -1,39 +1,33 @@
-
 local rect = require 'types.rect'
-
 --物品名称
-local mt = ac.skill['退出小黑屋']
+local mt = ac.skill['兑换10木头']
 mt{
 --等久
 level = 1,
-
 --图标
-art = [[xiaoheiwu.blp]],
-
+art = [[ReplaceableTextures\CommandButtons\BTNChestOfGold.blp]],
 --说明
-tip = [[退出小黑屋|r]],
-
+tip = [[10万金币换10木头
+]],
 --物品类型
 item_type = '神符',
-
+--售价 500000
+gold = 100000,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-
 --冷却
 cool = 0,
-
+award_wood = 10,
 content_tip = '',
 --物品技能
 is_skill = true,
---增加值
-value = 0.02,
---商店名词缀
-store_affix = ''
 
 }
 
 function mt:on_cast_start()
+    local unit = self.seller
     local hero = self.owner
-    hero:blink(ac.point(0,0),true,false,true)
-    
+    local player = hero:get_owner()
+    hero = player.hero
+    hero:add_wood(self.award_wood)
 end

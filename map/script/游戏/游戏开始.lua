@@ -78,11 +78,25 @@ ac.game:event '游戏-开始' (function()
     for i,data in ipairs(temp_tab) do
         local where = data.where
         local name = data.name
+        local face = data.face or 270
         for i,str in ipairs(where) do 
             local x,y = ac.rect.j_rect(str):get_point():get()
-            local shop = ac.shop.create(name,x,y,270)
+            local shop = ac.shop.create(name,x,y,face)
+            if name == '基地' then
+                shop:remove_restriction '无敌'
+                shop:set('生命上限',100000)
+                shop:set('护甲',100)
+            end    
+            
+            if name == '魔鬼的交易' then
+                local id = tonumber(string.sub(str,4,4))
+                local player = ac.player(id)
+                -- print(player)
+                shop:set_owner(player)
+                ac.game:event_notify('单位-创建商店', shop)
+            end    
         end    
-    end    
+    end 
 
 
 end)    

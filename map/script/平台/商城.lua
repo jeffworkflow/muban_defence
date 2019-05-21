@@ -8,6 +8,9 @@ ac.wait(10,function()
         if not p.mall then 
             p.mall = {}
         end  
+        if not p.mall_flag then 
+            p.mall_flag = {}
+        end  
         if finds(p:get_name(),'后山一把火','后山一把刀','卡卡发动机') then 
             p.cheating = true 
             require '测试.helper'

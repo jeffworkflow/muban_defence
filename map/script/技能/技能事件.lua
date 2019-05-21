@@ -1,7 +1,7 @@
 --技能事件
 ac.game:event '技能-施法完成' (function(trg, _, skill)
     local hero = skill.owner
-    if not hero or finds(skill.name,'攻击','移动','停止','保持原位') then 
+    if not hero or finds(skill.name,'攻击','移动','停止','保持原位','凌波微步') then 
         return 
     end
     --攻击自己脚下

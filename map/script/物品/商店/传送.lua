@@ -3,16 +3,16 @@ local rect = require 'types.rect'
 -- 传送 快速达到
 ac.quick_arrive ={
     --商品名 = 目的区域,图标,说明,消费钱,消费木头
-    ['武器boss1'] = {ac.map.rects['传送-武器1'],'','挑着boss',500} ,
-    ['武器boss2'] = {ac.map.rects['传送-武器1'],'','挑着boss',500} ,
-    ['武器boss3'] = {ac.map.rects['传送-武器1'],'','挑着boss',500} ,
-    ['武器boss4'] = {ac.map.rects['传送-武器1'],'','挑着boss',500} ,
-    ['武器boss5'] = {ac.map.rects['传送-武器1'],'','挑着boss',500} ,
-    ['武器boss6'] = {ac.map.rects['传送-武器1'],'','挑着boss',500} ,
-    ['武器boss7'] = {ac.map.rects['传送-武器1'],'','挑着boss',500} ,
-    ['武器boss8'] = {ac.map.rects['传送-武器1'],'','挑着boss',500} ,
-    ['武器boss9'] = {ac.map.rects['传送-武器1'],'','挑着boss',500} ,
-    ['武器boss10'] = {ac.map.rects['传送-武器1'],'','挑着boss',500} ,
+    ['神兵挑战-凝脂剑'] = {ac.map.rects['传送-武器1'],'wuqi2.blp','挑着boss',500} ,
+    ['神兵挑战-元烟剑'] = {ac.map.rects['传送-武器2'],'wuqi18.blp','挑着boss',500} ,
+    ['神兵挑战-暗影'] = {ac.map.rects['传送-武器3'],'wuqi20.blp','挑着boss',500} ,
+    ['神兵挑战-青涛魔剑'] = {ac.map.rects['传送-武器4'],'wuqi19.blp','挑着boss',500} ,
+    ['神兵挑战-青虹紫霄剑'] = {ac.map.rects['传送-武器5'],'wuqi7.blp','挑着boss',500} ,
+    ['神兵挑战-熔炉炎刀'] = {ac.map.rects['传送-武器6'],'wuqi4.blp','挑着boss',500} ,
+    ['神兵挑战-紫炎光剑'] = {ac.map.rects['传送-武器7'],'wuqi6.blp','挑着boss',500} ,
+    ['神兵挑战-封神冰心剑'] = {ac.map.rects['传送-武器8'],'wuqi3.blp','挑着boss',500} ,
+    ['神兵挑战-冰莲穿山剑'] = {ac.map.rects['传送-武器9'],'wuqi15.blp','挑着boss',500} ,
+    ['神兵挑战-十绝冰火剑'] = {ac.map.rects['传送-武器10'],'wuqi17.blp','挑着boss',500} ,
 
     ['防具boss1'] = {ac.map.rects['传送-甲1'],'','挑着boss'} ,
     ['防具boss2'] = {ac.map.rects['传送-甲1'],'','挑着boss'} ,

@@ -1,8 +1,87 @@
 
+
 --游戏全局设置
 --ac.rect.map 全图 rect.create(-4000,-4000,4000,4000) or
 local rect = require("types.rect")
 local region = require("types.region")
+local slk = require 'jass.slk'
+local effect = require 'types.effect'
+local jass = require 'jass.common'
+local player = require 'ac.player'
+local Unit = require 'types.unit'
+local fogmodifier = require 'types.fogmodifier'
+
+ac.game:event '玩家-金币变化' (function(_,data) 
+	local gold = data.gold
+	local player = data.player
+	--大于100W 转为 100 木头
+	local target_gold = 1000000
+	if player.gold >=target_gold then
+		player:addGold(-target_gold) 
+		player:add_wood(100)
+	end	
+end)
+
+--火种相关
+player.fire_seed = 0
+function player.__index:get_fire_seed()
+	return (self.fire_seed or 0) 
+end	
+--获得火种
+--	火种数量
+--	[漂浮文字显示位置]
+--	[不抛出加木头事件]
+function player.__index:add_fire_seed(fire_seed, where, flag)
+	if fire_seed == 0 then 
+		return 
+	end	
+	local data = {player = self, fire_seed = fire_seed}
+	if fire_seed > 0 and not flag then
+		self:event_notify('玩家-即将获得火种', data)
+		fire_seed = data.fire_seed
+	end
+	self.fire_seed = (self.fire_seed or 0) + fire_seed
+	self:event_notify('玩家-火种变化', data)
+
+	if not where  then
+		return
+	end
+	if not where:is_visible(self) then
+		where = self.hero
+		if not where then
+			return
+		end
+	end
+	local x, y = where:get_point():get()
+	local z = where:get_point():getZ()
+	local position = ac.point(x - 30, y, z + 30)
+	--modify by jeff 金币小于0 也显示文字出来
+	local str = nil
+	if fire_seed < 0 then 
+		 str =  math.floor(fire_seed)
+	else
+		 str = '+' .. math.floor(fire_seed)
+	end	
+	ac.texttag
+	{
+		string = str,
+		size = 12,
+		position = position,
+		speed = 86,
+		red = 223,
+		green = 25,
+		blue = 208,
+		player = self,
+		show = ac.texttag.SHOW_SELF
+	}
+end
+--单位获得火种
+function Unit.__index:add_fire_seed(num)
+	self:get_owner():add_fire_seed(num, where or self, flag)
+end
+
+
+
 
 ac.map = {}
 ac.map_area =  ac.rect.map
@@ -71,101 +150,132 @@ ac.map.rects={
 	['练功房刷怪6'] =rect.j_rect('lgfsg6') ,
 	
 	--武器
-	['传送-武器1'] =rect.j_rect('wuqi11') ,
-	['传送-武器2'] =rect.j_rect('wuqi22') ,
-	['传送-武器3'] =rect.j_rect('wuqi33') ,
-	['传送-武器4'] =rect.j_rect('wuqi44') ,
-	['传送-武器5'] =rect.j_rect('wuqi55') ,
-	['传送-武器6'] =rect.j_rect('wuqi66') ,
-	['传送-武器7'] =rect.j_rect('wuqi77') ,
-	['传送-武器8'] =rect.j_rect('wuqi88') ,
-	['传送-武器9'] =rect.j_rect('wuqi99') ,
-	['传送-武器10'] =rect.j_rect('wuqi1010') ,
+	['传送-武器1'] =rect.j_rect('wuqi1') ,
+	['传送-武器2'] =rect.j_rect('wuqi2') ,
+	['传送-武器3'] =rect.j_rect('wuqi3') ,
+	['传送-武器4'] =rect.j_rect('wuqi4') ,
+	['传送-武器5'] =rect.j_rect('wuqi5') ,
+	['传送-武器6'] =rect.j_rect('wuqi6') ,
+	['传送-武器7'] =rect.j_rect('wuqi7') ,
+	['传送-武器8'] =rect.j_rect('wuqi8') ,
+	['传送-武器9'] =rect.j_rect('wuqi9') ,
+	['传送-武器10'] =rect.j_rect('wuqi10') ,
 
-	['boss-武器1'] =rect.j_rect('wuqi1') ,
-	['boss-武器2'] =rect.j_rect('wuqi2') ,
-	['boss-武器3'] =rect.j_rect('wuqi3') ,
-	['boss-武器4'] =rect.j_rect('wuqi4') ,
-	['boss-武器5'] =rect.j_rect('wuqi5') ,
-	['boss-武器6'] =rect.j_rect('wuqi6') ,
-	['boss-武器7'] =rect.j_rect('wuqi7') ,
-	['boss-武器8'] =rect.j_rect('wuqi8') ,
-	['boss-武器9'] =rect.j_rect('wuqi9') ,
-	['boss-武器10'] =rect.j_rect('wuqi10') ,
+	['boss-武器1'] =rect.j_rect('wuqi11') ,
+	['boss-武器2'] =rect.j_rect('wuqi22') ,
+	['boss-武器3'] =rect.j_rect('wuqi33') ,
+	['boss-武器4'] =rect.j_rect('wuqi44') ,
+	['boss-武器5'] =rect.j_rect('wuqi55') ,
+	['boss-武器6'] =rect.j_rect('wuqi66') ,
+	['boss-武器7'] =rect.j_rect('wuqi77') ,
+	['boss-武器8'] =rect.j_rect('wuqi88') ,
+	['boss-武器9'] =rect.j_rect('wuqi99') ,
+	['boss-武器10'] =rect.j_rect('wuqi1010') ,
 
 	--甲
-	['传送-甲1'] =rect.j_rect('jia11') ,
-	['传送-甲2'] =rect.j_rect('jia22') ,
-	['传送-甲3'] =rect.j_rect('jia33') ,
-	['传送-甲4'] =rect.j_rect('jia44') ,
-	['传送-甲5'] =rect.j_rect('jia55') ,
-	['传送-甲6'] =rect.j_rect('jia66') ,
-	['传送-甲7'] =rect.j_rect('jia77') ,
-	['传送-甲8'] =rect.j_rect('jia88') ,
-	['传送-甲9'] =rect.j_rect('jia99') ,
-	['传送-甲10'] =rect.j_rect('jia1010') ,
+	['传送-甲1'] =rect.j_rect('jia1') ,
+	['传送-甲2'] =rect.j_rect('jia2') ,
+	['传送-甲3'] =rect.j_rect('jia3') ,
+	['传送-甲4'] =rect.j_rect('jia4') ,
+	['传送-甲5'] =rect.j_rect('jia5') ,
+	['传送-甲6'] =rect.j_rect('jia6') ,
+	['传送-甲7'] =rect.j_rect('jia7') ,
+	['传送-甲8'] =rect.j_rect('jia8') ,
+	['传送-甲9'] =rect.j_rect('jia9') ,
+	['传送-甲10'] =rect.j_rect('jia10') ,
 
-	['boss-甲1'] =rect.j_rect('jia1') ,
-	['boss-甲2'] =rect.j_rect('jia2') ,
-	['boss-甲3'] =rect.j_rect('jia3') ,
-	['boss-甲4'] =rect.j_rect('jia4') ,
-	['boss-甲5'] =rect.j_rect('jia5') ,
-	['boss-甲6'] =rect.j_rect('jia6') ,
-	['boss-甲7'] =rect.j_rect('jia7') ,
-	['boss-甲8'] =rect.j_rect('jia8') ,
-	['boss-甲9'] =rect.j_rect('jia9') ,
-	['boss-甲10'] =rect.j_rect('jia10') ,
+	['boss-甲1'] =rect.j_rect('jia11') ,
+	['boss-甲2'] =rect.j_rect('jia22') ,
+	['boss-甲3'] =rect.j_rect('jia33') ,
+	['boss-甲4'] =rect.j_rect('jia44') ,
+	['boss-甲5'] =rect.j_rect('jia55') ,
+	['boss-甲6'] =rect.j_rect('jia66') ,
+	['boss-甲7'] =rect.j_rect('jia77') ,
+	['boss-甲8'] =rect.j_rect('jia88') ,
+	['boss-甲9'] =rect.j_rect('jia99') ,
+	['boss-甲10'] =rect.j_rect('jia1010') ,
 
 	--技能
-	['传送-技能1'] =rect.j_rect('jn11') ,
-	['传送-技能2'] =rect.j_rect('jn22') ,
-	['传送-技能3'] =rect.j_rect('jn33') ,
-	['传送-技能4'] =rect.j_rect('jn44') ,
+	['传送-技能1'] =rect.j_rect('jn1') ,
+	['传送-技能2'] =rect.j_rect('jn2') ,
+	['传送-技能3'] =rect.j_rect('jn3') ,
+	['传送-技能4'] =rect.j_rect('jn4') ,
 	
-	['boss-技能1'] =rect.j_rect('jn1') ,
-	['boss-技能2'] =rect.j_rect('jn2') ,
-	['boss-技能3'] =rect.j_rect('jn3') ,
-	['boss-技能4'] =rect.j_rect('jn4') ,
+	['boss-技能1'] =rect.j_rect('jn11') ,
+	['boss-技能2'] =rect.j_rect('jn22') ,
+	['boss-技能3'] =rect.j_rect('jn33') ,
+	['boss-技能4'] =rect.j_rect('jn44') ,
 
 	--洗练石
-	['传送-洗练石1'] =rect.j_rect('xls11') ,
-	['传送-洗练石2'] =rect.j_rect('xls22') ,
-	['传送-洗练石3'] =rect.j_rect('xls33') ,
-	['传送-洗练石4'] =rect.j_rect('xls44') ,
+	['传送-洗练石1'] =rect.j_rect('xls1') ,
+	['传送-洗练石2'] =rect.j_rect('xls2') ,
+	['传送-洗练石3'] =rect.j_rect('xls3') ,
+	['传送-洗练石4'] =rect.j_rect('xls4') ,
 	
-	['boss-洗练石1'] =rect.j_rect('xls1') ,
-	['boss-洗练石2'] =rect.j_rect('xls2') ,
-	['boss-洗练石3'] =rect.j_rect('xls3') ,
-	['boss-洗练石4'] =rect.j_rect('xls4') ,
+	['boss-洗练石1'] =rect.j_rect('xls11') ,
+	['boss-洗练石2'] =rect.j_rect('xls22') ,
+	['boss-洗练石3'] =rect.j_rect('xls33') ,
+	['boss-洗练石4'] =rect.j_rect('xls44') ,
 
 	--境界
-	['传送-境界1'] =rect.j_rect('jj11') ,
-	['传送-境界2'] =rect.j_rect('jj22') ,
-	['传送-境界3'] =rect.j_rect('jj33') ,
-	['传送-境界4'] =rect.j_rect('jj44') ,
-	['传送-境界5'] =rect.j_rect('jj55') ,
-	['传送-境界6'] =rect.j_rect('jj66') ,
-	['传送-境界7'] =rect.j_rect('jj77') ,
-	['传送-境界8'] =rect.j_rect('jj88') ,
-	['传送-境界9'] =rect.j_rect('jj99') ,
-	['传送-境界10'] =rect.j_rect('jj1010') ,
+	['传送-境界1'] =rect.j_rect('jj1') ,
+	['传送-境界2'] =rect.j_rect('jj2') ,
+	['传送-境界3'] =rect.j_rect('jj3') ,
+	['传送-境界4'] =rect.j_rect('jj4') ,
+	['传送-境界5'] =rect.j_rect('jj5') ,
+	['传送-境界6'] =rect.j_rect('jj6') ,
+	['传送-境界7'] =rect.j_rect('jj7') ,
+	['传送-境界8'] =rect.j_rect('jj8') ,
+	['传送-境界9'] =rect.j_rect('jj9') ,
+	['传送-境界10'] =rect.j_rect('jj10') ,
 
-	['boss-境界1'] =rect.j_rect('jj1') ,
-	['boss-境界2'] =rect.j_rect('jj2') ,
-	['boss-境界3'] =rect.j_rect('jj3') ,
-	['boss-境界4'] =rect.j_rect('jj4') ,
-	['boss-境界5'] =rect.j_rect('jj5') ,
-	['boss-境界6'] =rect.j_rect('jj6') ,
-	['boss-境界7'] =rect.j_rect('jj7') ,
-	['boss-境界8'] =rect.j_rect('jj8') ,
-	['boss-境界9'] =rect.j_rect('jj9') ,
-	['boss-境界10'] =rect.j_rect('jj10') ,
+	['boss-境界1'] =rect.j_rect('jj11') ,
+	['boss-境界2'] =rect.j_rect('jj22') ,
+	['boss-境界3'] =rect.j_rect('jj33') ,
+	['boss-境界4'] =rect.j_rect('jj44') ,
+	['boss-境界5'] =rect.j_rect('jj55') ,
+	['boss-境界6'] =rect.j_rect('jj66') ,
+	['boss-境界7'] =rect.j_rect('jj77') ,
+	['boss-境界8'] =rect.j_rect('jj88') ,
+	['boss-境界9'] =rect.j_rect('jj99') ,
+	['boss-境界10'] =rect.j_rect('jj1010') ,
 }
 
 -- local minx, miny, maxx, maxy = ac.map.rects['刷怪']:get()
 -- local point = rect.j_rect('sg002'):get_point()
 -- print(minx, miny, maxx, maxy)
+local minx, miny, maxx, maxy = ac.map_area:get()
+-- print(minx, miny, maxx, maxy)
 
+local function pathRegionInit(minx, miny, maxx, maxy)
+	jass.EnumDestructablesInRect(jass.Rect(minx, miny, maxx, maxy), nil, function()
+		local dstrct = jass.GetEnumDestructable()
+		local id = jass.GetDestructableTypeId(dstrct)
+		if tonumber(slk.destructable[id].walkable) == 1 then
+			return
+		end
+		local x0, y0 = jass.GetDestructableX(dstrct), jass.GetDestructableY(dstrct)
+		
+		--将附近的区域加入不可通行区域
+		--local rng = 64
+		--point.path_region = point.path_region + rect.create(x - rng, y - rng, x + rng, y + rng)
+		local fly = false
+		if id == base.string2id 'YTfb' then
+			fly = true
+		end
+		--关闭附近的通行
+		for x = x0 - 64, x0 + 64, 32 do
+			for y = y0 - 64, y0 + 64, 32 do
+				jass.SetTerrainPathable(x, y, 1, false)
+				if fly then
+					jass.SetTerrainPathable(x, y, 2, false)
+				end
+			end
+		end
+		
+	end)
+end
+pathRegionInit(minx, miny, maxx, maxy)
 
 --召唤物倍数 波数
 local function get_summon_mul(lv)

@@ -42,10 +42,12 @@ ac.nick_name = on_texttag
 --创建一个商店
 function shop.create(name,x,y,face,is_selling)
 	local unit = ac.player[11]:create_unit(name,ac.point(x,y),face)
-	unit:add_restriction '无敌'
-	unit:add_restriction '缴械'
 	--继承商店
 	setmetatable(unit, shop)
+
+	unit:add_restriction '无敌'
+	unit:add_restriction '缴械'
+	
 	if not unit.sell then 
 		unit.sell = {}
 	end	

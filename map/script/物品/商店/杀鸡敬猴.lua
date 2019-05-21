@@ -29,6 +29,11 @@ function mt:on_cast_start()
     local hero = self.owner
     local p = hero:get_owner()
     hero = p.hero
+    --发小地图的ping提示
+    for i=1,3 do  
+        local point = ac.map.rects['杀鸡敬猴'..i]:get_point()
+        p:pingMinimap(point, 3)
+    end    
     if p.sjjh_flg then
         p:sendMsg('已接过任务，不许重复接')
     else
@@ -46,11 +51,26 @@ function mt:on_cast_start()
 
                 if p.sjjh_flg == self.kill_cnt then
                     --给物品
-                    local item = ac.item.create_item(self.award_item)
-                    item.owner_ship = hero 
-                    hero:add_item(item,true)
+                    --创建 猴
+		            local point = hero:get_point()-{hero:get_facing(),100}--在英雄附近 100 到 400 码 随机点
+                    local unit = ac.player(12):create_unit('猴',point)
+                    unit:add_buff '定身'{
+                        time = 2
+                    }
+                    unit:add_buff '无敌'{
+                        time = 2
+                    }
+                    p:sendMsg('【系统提示】猴 已出现，击杀获取成长型装备 ')
+                    
                     self.trg:remove()
                     self.trg = nil
+
+                    unit:event '单位-死亡' (function(_,unit,killer) 
+                        local item = ac.item.create_item(self.award_item)
+                        item.owner_ship = hero 
+                        hero:add_item(item,true)
+                    end)    
+
                 end    
             end
         end)  

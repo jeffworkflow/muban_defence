@@ -41,6 +41,8 @@ mt.id = 0
 
 --金钱
 mt.gold = 0
+--木头
+mt.wood = 0
 
 --零钱
 mt.gold_pool = 0
@@ -237,8 +239,8 @@ function mt:addGold(gold, where, flag)
 	if gold == 0 then 
 		return 
 	end	
+	local data = {player = self, gold = gold}
 	if gold > 0 and not flag then
-		local data = {player = self, gold = gold}
 		self:event_notify('玩家-即将获得金钱', data)
 		gold = data.gold
 	end
@@ -247,6 +249,8 @@ function mt:addGold(gold, where, flag)
 	gold = math.floor(gold)
 	self.gold = self.gold + gold
 	jass.SetPlayerState(self.handle, jass.ConvertUnitState(0x01), self.gold)
+	self:event_notify('玩家-金币变化', data)
+
 	if not where  then
 		return
 	end
@@ -290,6 +294,9 @@ function mt:addGold(gold, where, flag)
 end
 --增加，获取玩家木材，已使用人口
 function mt.addlumber(self,lumber)
+	if lumber == 0 then 
+		return 
+	end	
 	jass.SetPlayerState(self.handle,jass.PLAYER_STATE_RESOURCE_LUMBER,jass.GetPlayerState(self.handle,jass.PLAYER_STATE_RESOURCE_LUMBER)+lumber)
 end
 function mt.addusedfood(self,food)
@@ -305,6 +312,74 @@ end
 function mt:getGold()
 	return self.gold
 end
+--获得玩家身上的木头
+function mt:get_wood()
+	return self.wood
+end
+--获得木头
+--	木头数量
+--	[漂浮文字显示位置]
+--	[不抛出加木头事件]
+function mt:add_wood(wood, where, flag)
+	if wood == 0 then 
+		return 
+	end	
+	local data = {player = self, wood = wood}
+	if wood > 0 and not flag then
+		self:event_notify('玩家-即将获得木头', data)
+		wood = data.wood
+	end
+	self.wood = self.wood + wood
+	self:addlumber(wood) --魔兽端显示
+	self:event_notify('玩家-木头变化', data)
+
+	if not where  then
+		return
+	end
+	if not where:is_visible(self) then
+		where = self.hero
+		if not where then
+			return
+		end
+	end
+	local x, y = where:get_point():get()
+	local z = where:get_point():getZ()
+	local position = ac.point(x - 30, y, z + 30)
+	--modify by jeff 金币小于0 也显示文字出来
+	local str = nil
+	if wood < 0 then 
+		 str =  math.floor(wood)
+	else
+		 str = '+' .. math.floor(wood)
+	end	
+	ac.texttag
+	{
+		string = str,
+		size = 12,
+		position = position,
+		speed = 86,
+		red = 9,
+		green = 211,
+		blue = 7,
+		player = self,
+		show = ac.texttag.SHOW_SELF
+	}
+	
+end
+--杀敌数
+function mt.add_kill_count(self,num)
+	local num = tonumber(num)
+	if num == 0 then 
+		return 
+	end	
+	--当前杀敌数
+	self.kill_count = (self.kill_count or 0 ) + num
+	--总杀敌数
+	if num > 0 then 
+		self.total_kill_count = (self.total_kill_count or 0 ) + num
+    end
+end	
+
 
 --禁用技能
 	function mt:enable_ability(ability_id)

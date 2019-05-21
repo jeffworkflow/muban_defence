@@ -15,7 +15,7 @@ ac.attack_boss = {
 }  
 local force_cool = 5*60  
 if global_test then 
-    force_cool = 25
+    force_cool = 40
 end    
 local skill_list = ac.skill_list
 for i =1,3 do 
@@ -84,7 +84,7 @@ for i =1,3 do
         if self.attack_hero_timer then 
             self.attack_hero_timer:remove()
         end  
-        ac.game:event_dispatch('游戏-最终boss',self.index,self)
+        -- ac.game:event_dispatch('游戏-最终boss',self.index,self)
     end   
 end    
 --注册boss进攻事件
@@ -97,8 +97,14 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
     local ix = math.ceil(ac.creep['刷怪1'].index / 5)
     if value == 0 then 
         local point = ac.map.rects['刷怪-boss']:get_point()
-        local boss = ac.player.com[2]:create_unit(ac.attack_boss[ix],point)
-        table.insert(ac.creep['刷怪1'].group,boss)
+        --最后一波时，发布最终波数
+        if ix == #ac.attack_boss then
+            ac.game:event_dispatch('游戏-最终boss')
+        else
+            local boss = ac.player.com[2]:create_unit(ac.attack_boss[ix],point)
+            table.insert(ac.creep['刷怪1'].group,boss)
+        end    
+
     end    
 end)    
 
@@ -137,11 +143,13 @@ ac.game:event '单位-死亡' (function(_,unit,killer)
     end  
     --加木头 加火种
     if unit.wood then 
-        wood = unit.wood * ( 1 + killer:get('金币加成')/100)
+        wood = unit.wood * ( 1 + killer:get('木头加成')/100)
     end    
     if unit.fire_seed then 
-        fire_seed = unit.fire_seed * ( 1 + killer:get('金币加成')/100)
-    end    
+        fire_seed = unit.fire_seed * ( 1 + killer:get('火种加成')/100)
+    end   
+    --杀敌数加成
+    local kill_cnt = 1 + killer:get('杀敌数加成')/100
 
     local source = killer
     local target = unit
@@ -149,10 +157,12 @@ ac.game:event '单位-死亡' (function(_,unit,killer)
     if source:is_alive() and source:is_hero() then 
         source:addXp(exp)
     end	
-    --加钱
+    --加资源
     player:addGold(gold,unit)
-    player:addlumber(wood)
-    player.fire_seed = (player.fire_seed or 0) + fire_seed
+    player:add_wood(wood,unit)
+    player:add_fire_seed(fire_seed,unit)
+    player:add_kill_count(kill_cnt)
+    
 
 end);
 
