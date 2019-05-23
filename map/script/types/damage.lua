@@ -180,8 +180,8 @@ function mt:on_attribute_attack()
 	if not self['吸血'] then
 		self['吸血'] = source:get '吸血'
 	end
-	if not self['溅射'] then
-		self['溅射'] = source:get '溅射'
+	if not self['分裂伤害'] then
+		self['分裂伤害'] = source:get '分裂伤害'
 	end
 	--self.attack and 
 	if self.damage_type == '物理' then	
@@ -320,7 +320,7 @@ local function on_splash(self)
 		return
 	end
 	local source, target = self.source, self.target
-	local splash = self['溅射']
+	local splash = self['分裂伤害']
 	if splash == 0 then
 		return
 	end
@@ -344,13 +344,13 @@ local function on_splash(self)
 	target:get_point():add_effect([[ModelDEKAN\Weapon\Dekan_Weapon_Sputtering.mdl]]):remove()
 end
 
---攻击溅射(直接加深AOE伤害)
+--攻击分裂伤害(直接加深AOE伤害)
 local function on_splash_aoe(self)
 	if not self:is_attack() or not self:is_aoe() then
 		return
 	end
 	local source, target = self.source, self.target
-	local splash = self['溅射']
+	local splash = self['分裂伤害']
 	if splash == 0 then
 		return
 	end
@@ -1041,7 +1041,7 @@ function damage:__call()
 		if not target:is_type('建筑') then
 			--吸血
 			on_life_steal(self)
-			--溅射
+			--分裂伤害
 			on_splash(self)
 			--攻击减甲
 			self:on_reduce_defence()

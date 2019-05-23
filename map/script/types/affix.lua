@@ -14,7 +14,7 @@ affix.list = {
 	{'life_steal',		'吸血+%s%%'},
 	{'pene',			'破甲+%s'},
 	{'pene_rate_ex',	'穿透+%s%%'},
-	{'splash',			'溅射+%s'},
+	{'splash',			'分裂伤害+%s'},
 	{'life',			'生命+%s'},
 	{'mana',			'法力+%s'},
 	{'restore',			'回复+%s'},

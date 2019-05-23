@@ -69,6 +69,21 @@ function api:in_sector(p, r, angle, section)
 	return self
 end
 
+--区域选取
+function api:in_rect(rect)
+	self.filter_in = 3 
+	self.rect = rect 
+
+	return self
+end 
+
+function api:in_player(player)
+	self.filter_in = 4 
+	self.player = player
+
+	return self
+end 
+
 --直线范围
 --	起点
 --	角度
@@ -113,6 +128,14 @@ function api:of_hero()
 		return dest:is_type('英雄')
 	end)
 end
+
+--必须是英雄
+function api:is_type(type)
+	return self:add_filter(function(dest)
+		return dest:is_type(type)
+	end)
+end
+
 
 --必须不是英雄
 function api:of_not_hero()
@@ -288,9 +311,39 @@ function api:select(select_unit)
 				end
 			end
 		end
+	elseif self.filter_in == 3 then 
+		local handle = ac.rect.j_temp(self.rect or ac.rect.map)
+		--选取矩形范围
+		GroupEnumUnitsInRect(dummy_group,handle,nil)
+		local u
+		while true do
+			u = FirstOfGroup(dummy_group)
+			if u == nil or u == 0 then
+				break
+			end
+			GroupRemoveUnit(dummy_group, u)
+			local u = ac_unit(u)
+			if u and self:do_filter(u) then 
+				select_unit(u)
+			end 
+		end 
+	
+	elseif self.filter_in == 4 then 
+		GroupEnumUnitsOfPlayer(dummy_group,self.player.handle,nil)
+		local u
+		while true do
+			u = FirstOfGroup(dummy_group)
+			if u == nil or u == 0 then
+				break
+			end
+			GroupRemoveUnit(dummy_group, u)
+			local u = ac_unit(u)
+			if u and self:do_filter(u) then 
+				select_unit(u)
+			end 
+		end 
 	end
 end
-
 
 function api:get()
 	local units = {}
@@ -298,26 +351,7 @@ function api:get()
 	if self.sorter then
 		table_sort(units, self.sorter)
 	end
-
-	if self.sort_first then
-		units = self.sort_first
-	end
-	
-
 	return units
-end
-
---选取并遍历
-function api:ipairs()
-	return ipairs(self:get())
-end
-
---选取并选出随机单位
-function api:random()
-	local g = self:get()
-	if #g > 0 then
-		return g[math_random(1, #g)]
-	end
 end
 
 --选取并随机出x个单位，返回ipairs
@@ -355,6 +389,18 @@ function api:set_sort_first(u)
 	self.sort_first = g
 	return self
 
+end
+--选取并遍历
+function api:ipairs()
+	return ipairs(self:get())
+end
+
+--选取并选出随机单位
+function api:random()
+	local g = self:get()
+	if #g > 0 then
+		return g[math_random(1, #g)]
+	end
 end
 
 function ac.selector()

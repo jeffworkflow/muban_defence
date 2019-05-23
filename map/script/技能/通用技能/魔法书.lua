@@ -40,6 +40,28 @@ ac.game:event '技能-获得' (function (_,hero,self)
     end 
 end)
 
+ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
+    local self = book_skill
+    -- print(hero,book_skill,skl)
+    local player = hero:get_owner()
+    local page_type = self:get_type() .. '_' .. string.format("%01x",book_skill.slotid)
+    
+    local name = skl
+    local index = #self.skill_list
+    local skill = hero:add_skill(name,page_type,slots[index],{
+            book = self,
+        })
+
+    self.skill_map[name] = skill
+    table.insert(self.skill_list,skill)
+    table.insert(self.skill_book,skill)
+
+    if not skill:is_hide() then 
+        skill:hide()
+        skill:remove_ability(skill.ability_id)
+    end
+end)
+
 ac.game:event '技能-施法完成' (function (_,hero,self)
     if self.is_spellbook == nil or self.skills == nil then 
         return 

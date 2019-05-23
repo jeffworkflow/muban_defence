@@ -52,7 +52,7 @@ local attribute = {
 	['减耗']       = true,  --默认基础值 减少扣篮量
 	['技能冷却']    = true, --默认% 
 	['吸血']       = true,  --默认%
-	['溅射']       = true,  --默认%
+	['分裂伤害']       = true,  --默认%
 	['格挡']       = true,  --默认%
 	['格挡伤害']    = true,  --默认%
 	['暴击']       = true,   --默认%
@@ -705,7 +705,7 @@ on_get['吸血'] = function(self, value)
 	return value
 end
 
-on_get['溅射'] = function(self, splash)
+on_get['分裂伤害'] = function(self, splash)
 	if splash > 100 then
 		return 100
 	end

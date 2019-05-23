@@ -67,12 +67,29 @@ ac.wait(100,function ()
     p:event_notify('玩家-注册英雄', p, p.hero)
     hero:add_skill('凌波微步','英雄',6)
     hero:add_skill('神兵','英雄')
-    hero:add_skill('洗练石','英雄')
+    local book_skl = hero:add_skill('洗练石','英雄')
     hero:add_skill('境界','英雄')
+    
+    hero:add_skill('阿尔塞斯天赋','英雄')
     
     p:setCamera(ac.map.rects['出生点'])
 
+    --测试 动态插入魔法书
+-- ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
+    -- print(hero,book_skl,'F4战斗机')
+    -- ac.wait(1000,function()
+    --     ac.game:event_notify('技能-插入魔法书',hero,book_skl,'F4战斗机')
+        
+    --     ac.loop(1000,function()
+    --         for i=1,10 do
+    --             ac.player(12):create_unit('民兵',ac.point(0,4000))
+    --         end
+    --     end)
 
+    -- end)
+    
+    
+    
 
 
     -- 没10分钟切换一次光照模型

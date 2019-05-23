@@ -11,3 +11,4 @@ require '技能.通用技能.魔法书'
 require '技能.通用技能.魔法书demo'
 
 require '技能.通用技能.减少周围护甲'
+require '技能.通用技能.属性'

@@ -1384,6 +1384,7 @@ end
 
 local event_name = {
 	['on_add']          = '技能-获得',
+	['on_upgrade']      = '技能-升级',
 	['on_remove']       = '技能-失去',
 	['on_cast_start']   = '技能-施法开始',
 	['on_cast_break']   = '技能-施法打断',

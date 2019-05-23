@@ -540,7 +540,7 @@ function helper:tt()
 	self:add('暴击几率',90)
 	self:add('会心几率',90)
 	self:add('多重射',10)
-	self:add('溅射',100)
+	self:add('分裂伤害',100)
 	self:add('攻击',1000000000)
 	
 	if not ac.wtf then

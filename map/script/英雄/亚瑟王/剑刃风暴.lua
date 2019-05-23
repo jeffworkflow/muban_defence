@@ -11,7 +11,7 @@ mt{
 	
 	tip = [[
 		主动：对周围%area%码的敌人每 %pulse% 秒造成物理伤害，持续时间 %time% 秒
-		被动：提升溅射%life_rate% %
+		被动：提升分裂伤害%life_rate% %
 		|cff00bdec伤害计算：攻击力*%attack% |cff00bdec+力量*%power% |cff00bdec(%damage%|cff00bdec)|r
 		
 		%strong_skill_tip%
@@ -116,9 +116,9 @@ end
 function mt:on_upgrade()
 	local hero = self.owner
 	-- print(self.life_rate_now)
-	hero:add('溅射', -self.life_rate_now)
+	hero:add('分裂伤害', -self.life_rate_now)
 	self.life_rate_now = self.life_rate
-	hero:add('溅射', self.life_rate)
+	hero:add('分裂伤害', self.life_rate)
 end
 
 
@@ -151,7 +151,7 @@ function mt:on_remove()
 
     local hero = self.owner 
     -- 提升三维(生命上限，护甲，攻击)
-	hero:add('溅射', -self.life_rate)
+	hero:add('分裂伤害', -self.life_rate)
 	
     if self.trg then
         self.trg:remove()

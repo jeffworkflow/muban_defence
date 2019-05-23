@@ -520,10 +520,10 @@ end
 			self.melee = b
 		end
 
-	--获取技能的冷却(经过技能冷却和冷却加速计算)
+	--获取技能的冷却(经过冷却缩减和冷却加速计算)
 	function mt:getSkillCool(cool)
 		local cool = cool or 0
-		--先计算技能冷却
+		--先计算冷却缩减
 		cool = cool * (1 - self:get '技能冷却' / 100)
 		--再计算冷却加速
 		-- local cs = self:get '攻击速度' / 2
@@ -2034,20 +2034,41 @@ function unit.init()
 		unit.wait_to_remove_table1 = {}
 	end)
 
+	
 	--捕捉攻击伤害
-	local j_trg = war3.CreateTrigger(function()
+	local j_damage_trg
 
-		if jass.GetEventDamage() == 1 then
-			--认为是物理伤害
-			local source = unit.j_unit(jass.GetEventDamageSource())
-			local target = unit.j_unit(jass.GetTriggerUnit())
-			--todo: 传一个普通攻击的技能
-			source:attack_start(target, nil)
+	ac.loop(30 * 1000,function ()
+		if j_damage_trg then
+			war3.DestroyTrigger(j_damage_trg)
 		end
-	end)
+
+		j_damage_trg = war3.CreateTrigger(function()
+			if jass.GetEventDamage() == 1 then
+				--认为是物理伤害
+				local source = unit.j_unit(jass.GetEventDamageSource())
+				local target = unit.j_unit(jass.GetTriggerUnit())
+				if source then
+					--todo: 传一个普通攻击的技能
+					source:attack_start(target, nil)
+				end
+			end
+		end)
+
+		for _,u in ac.selector()
+			: in_rect()
+			: ipairs()
+		do
+			jass.TriggerRegisterUnitEvent(j_damage_trg, u.handle, jass.EVENT_UNIT_DAMAGED)
+		end
+
+	end):on_timer()
+
 	--每个单位创建时加入捕捉
 	ac.game:event '单位-创建' (function(self, u)
-		jass.TriggerRegisterUnitEvent(j_trg, u.handle, jass.EVENT_UNIT_DAMAGED)
+		if j_damage_trg then
+			jass.TriggerRegisterUnitEvent(j_damage_trg, u.handle, jass.EVENT_UNIT_DAMAGED)
+		end
 	end)
 
 	-- 创建一个dummy,用于使用马甲技能

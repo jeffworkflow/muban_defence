@@ -253,8 +253,8 @@ ac.wait(20,function()
         print('开始刷兵啦')
         for i=1 ,3 do 
             local creep = ac.creep['刷怪'..i] 
-            creep:start()
-            creep:attack_hero() 
+            -- creep:start()
+            -- creep:attack_hero() 
         end    
     end)    
    

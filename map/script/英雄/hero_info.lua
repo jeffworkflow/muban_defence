@@ -23,7 +23,7 @@ local mt = ac.skill['英雄属性面板']
 攻击:    %attack% （已加成 %attack_per% %）
 攻击间隔:    %attack_gip% 
 攻速:    %attack_speed% (每秒攻击%attack_rate%次)
-溅射:  %splash% % （近战有效）
+分裂伤害:  %splash% % （近战有效）
 多重射:  %duochongshe%     
 攻击减甲:    %pene%    免伤:  %defence_rate% %
 吸血:    %life_steal% %
@@ -260,7 +260,7 @@ function mt:crit_damage()
 end
 
 function mt:splash()
-	return self.owner:get '溅射'
+	return self.owner:get '分裂伤害'
 end
 
 function mt:pene()
