@@ -1099,7 +1099,13 @@ function ac.item.create_item(name,poi,is)
 	local blend = items.blend or blend_file[items.color or 'nil'] 
 	if blend then 
 		items.owner = ac.dummy
-		items:add_blend(blend, 'frame', 2)
+		if items.level >=1 then 
+			items.on_bland = items:add_blend(blend, 'frame', 2)
+		else
+			items.level = 1
+			items.on_bland = items:add_blend(blend, 'frame', 2)
+			items.level = 0
+		end	
 		items.owner = nil
 	end	
 	--是否可以丢弃
@@ -1176,7 +1182,13 @@ function item.create(name,pos)
 	local blend = items.blend or blend_file[items.color or 'nil'] 
 	if blend then 
 		items.owner = ac.dummy
-		items:add_blend(blend, 'frame', 2)
+		if items.level >=1 then 
+			items.on_bland = items:add_blend(blend, 'frame', 2)
+		else
+			items.level = 1
+			items.on_bland = items:add_blend(blend, 'frame', 2)
+			items.level = 0
+		end	
 		items.owner = nil
 	end	
 
@@ -1206,7 +1218,13 @@ function mt:set_sell_state()
 	local blend = self.blend or blend_file[self.color or 'nil'] 
 	if blend then 
 		self.owner = ac.dummy
-		self:add_blend(blend, 'frame', 2)
+		if self.level >=1 then 
+			self.on_bland = self:add_blend(blend, 'frame', 2)
+		else
+			self.level = 1
+			self.on_bland = self:add_blend(blend, 'frame', 2)
+			self.level = 0
+		end
 		self.owner = nil
 	end	
 	--设置tip

@@ -147,7 +147,7 @@ function mt:on_add()
 	hero:add('攻击%', self.attack)
 	hero:add('多重射', self.duochongshe)
 	hero:add('攻击距离', self.attack_range)
-	hero:add('减免', self.reduce_damage)
+	hero:add('免伤', self.reduce_damage)
 	hero:add('攻击间隔', self.attack_gap)
 
 
@@ -171,7 +171,7 @@ function mt:on_remove()
 	hero:add('攻击%', -self.attack)
 	hero:add('多重射', -self.duochongshe)
 	hero:add('攻击距离', -self.attack_range)
-	hero:add('减免', -self.reduce_damage)
+	hero:add('免伤', -self.reduce_damage)
 	hero:add('攻击间隔', -self.attack_gap)
     
 end

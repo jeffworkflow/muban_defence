@@ -496,6 +496,34 @@ function helper:add_item(str,cnt)
 		self:add_item(str,true)
 	end	
 end
+--增加套装 可能掉线
+function helper:add_suit(str)
+	local cnt = 5 
+	for name,data in pairs(ac.table.ItemData) do 
+		if data.suit_type and data.suit_type == str then 
+			if cnt > 0 then 
+				print(name)
+				self:add_item(name,true)
+				cnt = cnt -1
+			else
+				break;	
+			end	
+		end
+	end	
+end	
+
+--测试用的木桩
+function helper:tt_unit(where)
+	local cnt = 5 
+	for i=1,cnt do 
+		local unit = ac.player(12):create_unit('民兵',where or ac.point(-1000,0))
+		unit:set('生命上限',10000000000)
+		unit:set('生命恢复',10000000000)
+		unit:set('护甲',10000)
+		unit:set('攻击',10000)
+		-- unit:set('移动速度',0)
+	end	
+end	
 --进入地狱，7个光环
 function helper:tt()
 	-- ac.creep['刷怪'].index = 59
@@ -507,9 +535,9 @@ function helper:tt()
 	ac.item.add_skill_item('吸血光环',self)
 	ac.item.add_skill_item('寻宝光环',self)
 
-	self:add('杀怪全属性',3000)
+	self:add('杀怪加全属性',3000)
 	self:add('攻击距离',2000)
-	self:add('物爆几率',90)
+	self:add('暴击几率',90)
 	self:add('会心几率',90)
 	self:add('多重射',10)
 	self:add('溅射',100)

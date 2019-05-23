@@ -28,8 +28,8 @@ function mt:on_add()
     local hero = self.owner
     if not hero:is_hero() then return end
     hero:add('力量',self.str)
-    hero:add('杀怪力量',self.kill_str)
-    hero:add('杀怪护甲',self.kill_defence)
+    hero:add('杀怪加力量',self.kill_str)
+    hero:add('杀怪加护甲',self.kill_defence)
     --改变模型
     japi.SetUnitModel(hero.handle,self.effect)
     hero:set_size(self.model_size)
@@ -42,6 +42,6 @@ function mt:on_remove()
     end
     
     hero:add('力量',-self.str)
-    hero:add('杀怪力量',-self.kill_str)
-    hero:add('杀怪护甲',-self.kill_defence)
+    hero:add('杀怪加力量',-self.kill_str)
+    hero:add('杀怪加护甲',-self.kill_defence)
 end

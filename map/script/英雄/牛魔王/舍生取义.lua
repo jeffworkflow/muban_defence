@@ -74,7 +74,7 @@ end
 function mt:on_add()
     local skill = self
 	local hero = self.owner 
-	hero:add('减免',self.reduce_rate)
+	hero:add('免伤',self.reduce_rate)
 end	
 
 function mt:on_cast_shot()

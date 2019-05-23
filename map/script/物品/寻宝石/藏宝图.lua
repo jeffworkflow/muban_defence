@@ -195,9 +195,9 @@ function mt:add_content()
     elseif  rand_name == '吞噬丹' then
         hero:add_item('吞噬丹',true)
         ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 挖了|cff00ffff藏宝图|r, |cffff0000奖励：吞噬丹|r',10)
-    elseif  rand_name == '杀怪全属性5' then
+    elseif  rand_name == '杀怪加全属性5' then
         ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 挖了|cff00ffff藏宝图|r, |cffff0000杀怪 全属性+5 |r',10)
-        hero:add('杀怪全属性',5)
+        hero:add('杀怪加全属性',5)
     elseif  rand_name == '全属性加1000' then
         ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 挖了|cff00ffff藏宝图|r, |cffff0000全属性加1000 |r',10)
         hero:add('力量',1000)
@@ -211,15 +211,15 @@ function mt:add_content()
     elseif  rand_name == '护甲加50' then
         ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 挖了|cff00ffff藏宝图|r, |cffff0000护甲加25 |r',10)
         hero:add('护甲',25)    
-    elseif  rand_name == '杀怪力量5' then
+    elseif  rand_name == '杀怪加力量5' then
         ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 挖了|cff00ffff藏宝图|r, |cffff0000杀怪 力量+5 |r',10)
-        hero:add('杀怪力量',5)
-    elseif  rand_name == '杀怪敏捷5' then
+        hero:add('杀怪加力量',5)
+    elseif  rand_name == '杀怪加敏捷5' then
         ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 挖了|cff00ffff藏宝图|r, |cffff0000杀怪 敏捷+5 |r',10)
-        hero:add('杀怪敏捷',5)
-    elseif  rand_name == '杀怪智力5' then
+        hero:add('杀怪加敏捷',5)
+    elseif  rand_name == '杀怪加智力5' then
         ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 挖了|cff00ffff藏宝图|r, |cffff0000杀怪 智力+5 |r',10)
-        hero:add('杀怪智力',5)
+        hero:add('杀怪加智力',5)
     elseif  rand_name == '通关积分100' then
         local value =   100 * ((hero:get '积分加成' or 0) + 1)
         ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 挖了|cff00ffff藏宝图|r, |cffff0000 通关积分+'..value..' |r',10)

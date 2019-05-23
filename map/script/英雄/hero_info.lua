@@ -25,19 +25,19 @@ local mt = ac.skill['英雄属性面板']
 攻速:    %attack_speed% (每秒攻击%attack_rate%次)
 溅射:  %splash% % （近战有效）
 多重射:  %duochongshe%     
-减甲:    %pene%    减免:  %defence_rate% %
+攻击减甲:    %pene%    免伤:  %defence_rate% %
 吸血:    %life_steal% %
 
-物爆几率: %physical_rate% %  物爆伤害:  %physical_damage% %
-法爆几率: %magic_rate% %  法爆伤害:  %magic_damage% %
+暴击几率: %physical_rate% %  暴击加深:  %physical_damage% %
+技暴几率: %magic_rate% %  技暴加深:  %magic_damage% %
 会心几率: %heart_rate% %  会心伤害:  %heart_damage% %
 
 金币加成：   %moregold% %  木头加成： %morewood% %
 经验加成：   %moreexp% %  火种加成： %morefireseed% %
 物品获取率： %item_rate% %  杀敌数加成： %morekillcount% %
 
-杀怪加力量： %kill_str%     每秒金币:   %per_gold%  
-杀怪加敏捷： %kill_agi%     每秒全属性: %per_allattr% 
+杀怪加力量： %kill_str%     每秒加金币:   %per_gold%  
+杀怪加敏捷： %kill_agi%     每秒加全属性: %per_allattr% 
 杀怪加智力： %kill_int%
 杀怪加全属性： %kill_all_attr%
 杀怪加护甲： %kill_defence%
@@ -56,7 +56,7 @@ function mt:morekillcount()
 end
 
 function mt:kill_attack()
-	return ('|cffF9C801%.2f|r'):format(self.owner:get '杀怪攻击')
+	return ('|cffF9C801%.2f|r'):format(self.owner:get '杀怪加攻击')
 end
 
 function mt:duochongshe()
@@ -64,25 +64,25 @@ function mt:duochongshe()
 end
 
 function mt:per_allattr()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '每秒全属性')
+	return ('|cffF9C801%.f|r'):format(self.owner:get '每秒加全属性')
 end
 function mt:per_gold()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '每秒金币')
+	return ('|cffF9C801%.f|r'):format(self.owner:get '每秒加金币')
 end
 function mt:kill_defence()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '杀怪护甲')
+	return ('|cffF9C801%.f|r'):format(self.owner:get '杀怪加护甲')
 end
 function mt:kill_str()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '杀怪力量')
+	return ('|cffF9C801%.f|r'):format(self.owner:get '杀怪加力量')
 end
 function mt:kill_agi()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '杀怪敏捷')
+	return ('|cffF9C801%.f|r'):format(self.owner:get '杀怪加敏捷')
 end
 function mt:kill_int()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '杀怪智力')
+	return ('|cffF9C801%.f|r'):format(self.owner:get '杀怪加智力')
 end
 function mt:kill_all_attr()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '杀怪全属性')
+	return ('|cffF9C801%.f|r'):format(self.owner:get '杀怪加全属性')
 end
 function mt:attack()
 	return ('|cffF9C801%.f|r'):format(self.owner:get '攻击')
@@ -94,18 +94,18 @@ end
 
 
 function mt:physical_rate()
-	return ('|cffF9C801%.2f|r'):format(self.owner:get '物爆几率')
+	return ('|cffF9C801%.2f|r'):format(self.owner:get '暴击几率')
 end
 
 function mt:physical_damage()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '物爆伤害'+100)
+	return ('|cffF9C801%.f|r'):format(self.owner:get '暴击加深'+100)
 end
 
 function mt:magic_rate()
-	return ('|cffF9C801%.2f|r'):format(self.owner:get '法爆几率')
+	return ('|cffF9C801%.2f|r'):format(self.owner:get '技暴几率')
 end
 function mt:magic_damage()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '法爆伤害'+100)
+	return ('|cffF9C801%.f|r'):format(self.owner:get '技暴加深'+100)
 end
 
 function mt:heart_rate()
@@ -264,7 +264,7 @@ function mt:splash()
 end
 
 function mt:pene()
-	return ('|cffF9C801%.2f|r'):format(self.owner:get '减甲')
+	return ('|cffF9C801%.2f|r'):format(self.owner:get '攻击减甲')
 end
 
 function mt:pene_rate()
@@ -289,7 +289,7 @@ function mt:defence()
 end
 
 function mt:defence_rate()
-	return ('|cffF9C801%.2f|r'):format(self.owner:get '减免')
+	return ('|cffF9C801%.2f|r'):format(self.owner:get '免伤')
 end
 
 function mt:block_chance()

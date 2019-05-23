@@ -10,11 +10,11 @@ mt{
     color = '紫',
     tip = [[
 +%all_attr% 全属性
-+%per_all_attr% 每秒全属性        
++%per_all_attr% 每秒加全属性        
 +%attack% 攻击
 +%defence% 护甲
-+%per_gold% 每秒金币
-+%per_wood% 每秒木头
++%per_gold% 每秒加金币
++%per_wood% 每秒加木头
 +%heart_rate% 会心几率
 +%heart_damage% 会心伤害
 
@@ -24,15 +24,15 @@ mt{
     art = [[qiu305.blp]],
     --全属性
     all_attr = {100,500,2500,5000,25000,50000,250000,500000,1250000,2500000,5000000,},
-    --每秒全属性
+    --每秒加全属性
     per_all_attr = {0,1,3,10,30,90,270,810,2430,7290,21870,},
     --攻击
     attack = {0,0,2500,5000,25000,50000,250000,500000,1250000,2500000,5000000,},
     --护甲
     defence = {1,5,10,50,100,200,400,800,1250,2500,5000,},
-    --每秒金币
+    --每秒加金币
     per_gold = {0,50,100,500,1000,5000,5000,5000,5000,5000,5000,},
-    --每秒木头
+    --每秒加木头
     per_wood = {0,0,0,0,0,0,1,5,10,50,100,},
     --暴击几率
     heart_rate = {0,0,0,1,2,3,4,5,6,8,10,},
@@ -77,9 +77,9 @@ function mt:on_upgrade()
 	self.all_attr_now = self.all_attr
     hero:add('智力', self.all_attr)
 
-	hero:add('每秒全属性', -self.per_all_attr_now)
+	hero:add('每秒加全属性', -self.per_all_attr_now)
 	self.per_all_attr_now = self.per_all_attr
-    hero:add('每秒全属性', self.per_all_attr)
+    hero:add('每秒加全属性', self.per_all_attr)
     
 	hero:add('攻击', -self.attack_now)
 	self.attack_now = self.attack
@@ -89,13 +89,13 @@ function mt:on_upgrade()
 	self.defence_now = self.defence
     hero:add('护甲', self.defence)
 
-	hero:add('每秒金币', -self.per_gold_now)
+	hero:add('每秒加金币', -self.per_gold_now)
 	self.per_gold_now = self.per_gold
-    hero:add('每秒金币', self.per_gold)
+    hero:add('每秒加金币', self.per_gold)
 
-	hero:add('每秒木头', -self.per_wood_now)
+	hero:add('每秒加木头', -self.per_wood_now)
 	self.per_wood_now = self.per_wood
-    hero:add('每秒木头', self.per_wood)
+    hero:add('每秒加木头', self.per_wood)
 
 	hero:add('会心几率', -self.heart_rate_now)
 	self.heart_rate_now = self.heart_rate
@@ -134,11 +134,11 @@ function mt:on_add()
     hero:add('力量',self.all_attr)
     hero:add('敏捷',self.all_attr)
     hero:add('智力',self.all_attr)
-    hero:add('每秒全属性',self.per_all_attr)
+    hero:add('每秒加全属性',self.per_all_attr)
     hero:add('攻击',self.attack)
     hero:add('护甲',self.defence)
-    hero:add('每秒金币',self.per_gold)
-    hero:add('每秒木头',self.per_wood)
+    hero:add('每秒加金币',self.per_gold)
+    hero:add('每秒加木头',self.per_wood)
     hero:add('会心几率',self.heart_rate)
     hero:add('会心伤害',self.heart_damage)
 
@@ -183,11 +183,11 @@ function mt:on_remove()
     hero:add('力量',-self.all_attr)
     hero:add('敏捷',-self.all_attr)
     hero:add('智力',-self.all_attr)
-    hero:add('每秒全属性',-self.per_all_attr)
+    hero:add('每秒加全属性',-self.per_all_attr)
     hero:add('攻击',-self.attack)
     hero:add('护甲',-self.defence)
-    hero:add('每秒金币',-self.per_gold)
-    hero:add('每秒木头',-self.per_wood)
+    hero:add('每秒加金币',-self.per_gold)
+    hero:add('每秒加木头',-self.per_wood)
     hero:add('会心几率',-self.heart_rate)
     hero:add('会心伤害',-self.heart_damage)
 end

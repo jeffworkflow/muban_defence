@@ -10,7 +10,7 @@ mt{
 	target_type = ac.skill.TARGET_TYPE_NONE,
 	--介绍
 	tip = [[%active%
-|cffffff00特权：|r开局金币+1000， 每秒金币+6， 金币获取率+20%]],
+|cffffff00特权：|r开局金币+1000， 每秒加金币+6， 金币获取率+20%]],
     --是否激活状态
     active = function(self)
         local res = [[|cff00bdec需要：
@@ -26,7 +26,7 @@ mt{
 	effect = [[]],
     --开局金币
     add_gold = 1000,
-    --每秒金币
+    --每秒加金币
     per_gold = 6,
 	--金币加成
     gold_rate = 20,
@@ -38,7 +38,7 @@ function mt:on_add()
     local hero = self.owner
     if not hero:is_hero() then return end
     hero:addGold(self.add_gold)
-    hero:add('每秒金币',self.per_gold)
+    hero:add('每秒加金币',self.per_gold)
     hero:add('金币加成',self.gold_rate)
   
     
@@ -50,6 +50,6 @@ function mt:on_remove()
         self.trg = nil
     end
     
-    hero:add('每秒金币',-self.per_gold)
+    hero:add('每秒加金币',-self.per_gold)
     hero:add('金币加成',-self.gold_rate)
 end

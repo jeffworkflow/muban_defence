@@ -16,9 +16,9 @@ mt{
 	
 	tip = [[
 		|cff00ccff被动|r:
-		物爆几率+%physical_rate% % ，物爆伤害+%physical_damage% % 
+		暴击几率+%physical_rate% % ，暴击加深+%physical_damage% % 
 		会心几率+%physical_rate% % ，会心伤害+%physical_damage% %
-		法爆几率+%physical_rate% % ，法爆伤害+%physical_damage% %]],
+		技暴几率+%physical_rate% % ，技暴加深+%physical_damage% %]],
 	
 	--技能图标
 	art = [[ReplaceableTextures\PassiveButtons\PASBTNCriticalStrike.blp]],
@@ -45,13 +45,13 @@ mt.magic_damage_now = 0
 function mt:on_upgrade()
 	local hero = self.owner
 	-- print(self.life_rate_now)
-	hero:add('物爆几率', -self.physical_rate_now)
+	hero:add('暴击几率', -self.physical_rate_now)
 	self.physical_rate_now = self.physical_rate
-	hero:add('物爆几率', self.physical_rate)
+	hero:add('暴击几率', self.physical_rate)
 
-	hero:add('物爆伤害', -self.physical_damage_now)
+	hero:add('暴击加深', -self.physical_damage_now)
 	self.physical_damage_now = self.physical_damage
-	hero:add('物爆伤害', self.physical_damage)
+	hero:add('暴击加深', self.physical_damage)
 
 	hero:add('会心几率', -self.heart_rate_now)
 	self.heart_rate_now = self.heart_rate
@@ -61,13 +61,13 @@ function mt:on_upgrade()
 	self.heart_damage_now = self.heart_damage
 	hero:add('会心伤害', self.heart_damage)
 
-	hero:add('法爆几率', -self.magic_rate_now)
+	hero:add('技暴几率', -self.magic_rate_now)
 	self.magic_rate_now = self.magic_rate
-	hero:add('法爆几率', self.magic_rate)
+	hero:add('技暴几率', self.magic_rate)
 
-	hero:add('法爆伤害', -self.magic_damage_now)
+	hero:add('技暴加深', -self.magic_damage_now)
 	self.magic_damage_now = self.magic_damage
-	hero:add('法爆伤害', self.magic_damage)
+	hero:add('技暴加深', self.magic_damage)
 end
 
 
@@ -81,11 +81,11 @@ function mt:on_remove()
 
     local hero = self.owner 
 	
-	hero:add('物爆几率',-self.physical_rate)
-	hero:add('物爆伤害',-self.physical_damage)
+	hero:add('暴击几率',-self.physical_rate)
+	hero:add('暴击加深',-self.physical_damage)
 	hero:add('会心几率',-self.heart_rate)
 	hero:add('会心伤害',-self.heart_damage)
-	hero:add('法爆几率',-self.magic_rate)
-	hero:add('法爆伤害',-self.magic_damage)
+	hero:add('技暴几率',-self.magic_rate)
+	hero:add('技暴加深',-self.magic_damage)
 
 end

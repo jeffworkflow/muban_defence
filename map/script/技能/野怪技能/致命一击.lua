@@ -30,8 +30,8 @@ function mt:on_add()
 	local skill = self
 	local hero = self.owner 
 
-	hero:add('物爆几率',self.physical_rate)
-	hero:add('物爆伤害',self.physical_damage)
+	hero:add('暴击几率',self.physical_rate)
+	hero:add('暴击加深',self.physical_damage)
 
 end	
 
@@ -39,7 +39,7 @@ function mt:on_remove()
 
     local hero = self.owner 
 	
-	hero:add('物爆几率',-self.physical_rate)
-	hero:add('物爆伤害',-self.physical_damage)
+	hero:add('暴击几率',-self.physical_rate)
+	hero:add('暴击加深',-self.physical_damage)
 
 end

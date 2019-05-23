@@ -24,14 +24,14 @@ mt{
     --护甲
     defence = 650,
 
-    --物爆几率
+    --暴击几率
 	physical_rate = {0,5,10,15,15},
 	--会爆
 	heart_rate = {0,5,10,15,15},
 	--法爆
     magic_rate = {0,5,10,15,15},
     
-	--对boss 额外伤害
+	--对boss 全伤加深
     boss_damage = 250,
     
     --等级>=2 时新增的描述
@@ -41,8 +41,8 @@ mt{
             tip = tip .. '\n|cffFFE799【进阶】|r100级的英雄，携带此物，|cff00ffff找出生点的 天洁散人 |r'
         else    
             if self.level >=2  then 
-                tip = tip .. '|cffffff00+'..self.physical_rate ..'%|r 物爆几率\n'
-                tip = tip .. '|cffffff00+'..self.magic_rate ..'%|r 法爆几率\n'
+                tip = tip .. '|cffffff00+'..self.physical_rate ..'%|r 暴击几率\n'
+                tip = tip .. '|cffffff00+'..self.magic_rate ..'%|r 技暴几率\n'
                 tip = tip .. '|cffffff00+'..self.heart_rate ..'%|r 会心几率\n'
                 tip = tip .. '|cffffff00+20|r 杀怪获得全属性'..'\n'
                 tip = tip .. '|cffffff00+20%|r 杀怪收集灵魂（受物品获取率影响）\n'
@@ -93,17 +93,17 @@ function mt:on_upgrade()
     -- print(self.life_rate_now)   
     hero:add_effect('chest',self.effect):remove()
     self:set_name(self.name)
-	hero:add('物爆几率', -self.physical_rate_now)
+	hero:add('暴击几率', -self.physical_rate_now)
 	self.physical_rate_now = self.physical_rate
-	hero:add('物爆几率', self.physical_rate)
+	hero:add('暴击几率', self.physical_rate)
 
 	hero:add('会心几率', -self.heart_rate_now)
 	self.heart_rate_now = self.heart_rate
 	hero:add('会心几率', self.heart_rate)
 
-	hero:add('法爆几率', -self.magic_rate_now)
+	hero:add('技暴几率', -self.magic_rate_now)
 	self.magic_rate_now = self.magic_rate
-    hero:add('法爆几率', self.magic_rate)
+    hero:add('技暴几率', self.magic_rate)
     
     if self.level >=2 then 
         if not self.trg then 
@@ -146,9 +146,9 @@ function mt:on_add()
     hero:add('生命上限',self.life)
     hero:add('护甲',self.defence)
 
-	hero:add('物爆几率', self.physical_rate)
+	hero:add('暴击几率', self.physical_rate)
 	hero:add('会心几率', self.heart_rate)
-    hero:add('法爆几率', self.magic_rate)
+    hero:add('技暴几率', self.magic_rate)
 
     if self.level >=2 then 
         if not self.trg then 
@@ -197,9 +197,9 @@ function mt:on_remove()
     hero:add('生命上限',-self.life)
     hero:add('护甲',-self.defence)
 	
-	hero:add('物爆几率',-self.physical_rate)
+	hero:add('暴击几率',-self.physical_rate)
 	hero:add('会心几率',-self.heart_rate)
-    hero:add('法爆几率',-self.magic_rate)
+    hero:add('技暴几率',-self.magic_rate)
     
     if self.level == self.max_level then 
         hero:add('对BOSS额外伤害',-self.boss_damage)

@@ -10,7 +10,7 @@ mt{
 	target_type = ac.skill.TARGET_TYPE_NONE,
 	--介绍
     tip = [[%active%
-|cffffff00特权：|r杀怪全属性+5，经验获取率+25%，开局赠送一颗吞噬丹（发放至宠物背包）]],
+|cffffff00特权：|r杀怪加全属性+5，经验获取率+25%，开局赠送一颗吞噬丹（发放至宠物背包）]],
     --是否激活状态
     active = function(self)
         local res = [[|cff00bdec需要：
@@ -24,7 +24,7 @@ mt{
 	art = [[mlzx.blp]],
 	--特效
 	effect = [[]],
-    --杀怪全属性
+    --杀怪加全属性
     killer_attr = 5,
     --经验加成
     xp_rate = 25,
@@ -40,7 +40,7 @@ function mt:on_add()
     local p = hero:get_owner()
     local peon = p.peon
     hero:add('经验加成',self.xp_rate)
-    hero:add('杀怪全属性',self.killer_attr)
+    hero:add('杀怪加全属性',self.killer_attr)
     --加在宠物身上
     for i =1 ,self.tsd_cnt do 
         peon:add_item('吞噬丹',true)
@@ -55,5 +55,5 @@ function mt:on_remove()
     end
     
     hero:add('经验加成',-self.xp_rate)
-    hero:add('杀怪全属性',-self.killer_attr)
+    hero:add('杀怪加全属性',-self.killer_attr)
 end

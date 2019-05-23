@@ -9,6 +9,8 @@ ac.game:event '单位-创建' (function(_,unit)
     local data = ac.table.UnitData[name]
     if not data then return end 
     -- 再次初始化业务端字段，以免漏掉处理
+    unit.name = data.name
+    unit.category = data.category
     unit.unit_type= data.unit_type
     unit.missile_art= data.missile_art
     unit.index= data.index

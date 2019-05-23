@@ -145,7 +145,7 @@ mt.charge_cool = 0
 --触发系数
 mt.proc = 0
 
---技能不受冷却缩减影响
+--技能不受技能冷却影响
 mt.ignore_cool_save = false
 
 --自动刷新文本

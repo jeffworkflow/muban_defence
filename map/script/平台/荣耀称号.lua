@@ -16,7 +16,7 @@ mt{
 |cffffff00%nick_name5%（地图等级5可激活）:|r 
 %active5%物品获取率 +5%,经验加成 +5%，金币加成 +5%|r
 |cffffff00%nick_name10%（地图等级10可激活）:|r 
-%active10%攻击力 +25%,对boss额外伤害 +50%|r 
+%active10%攻击力 +25%,对BOSS额外伤害 +50%|r 
 |cffffff00%nick_name15%（地图等级15可激活）:|r 
 %active15%全属性 +1000,金币加成 +50%|r
 |cffffff00%nick_name25%（地图等级25可激活）:|r 

@@ -10,9 +10,9 @@ mt{
 	target_type = ac.skill.TARGET_TYPE_NONE,
 	--介绍
 	tip = [[%active%
-|cffffff00特权1：|r全属性+1000，杀怪全属性+18
-|cffffff00特权2：|r物爆几率+5%； 会心几率+5%； 法爆几率+5%
-|cffffff00特权3：|r吸血+0.5%； 减免+10%； 每秒回血1%；
+|cffffff00特权1：|r全属性+1000，杀怪加全属性+18
+|cffffff00特权2：|r暴击几率+5%； 会心几率+5%； 技暴几率+5%
+|cffffff00特权3：|r吸血+0.5%； 免伤+10%； 每秒回血1%；
 |cffffff00特权4：|r金币获取率+25%； 经验获取率+25%； 物品获取率+25%]],
 	--技能图标
 	art = [[cjhy.blp]],
@@ -29,9 +29,9 @@ mt{
     end,   
     --全属性
     all_attr = 1000,
-    --杀怪全属性
+    --杀怪加全属性
     killer_attr = 18,
-    --物爆几率 会心几率 法爆几率
+    --暴击几率 会心几率 技暴几率
     crite_rate = 5,
     --吸血
     steal_life = 0.5,
@@ -54,14 +54,14 @@ function mt:on_add()
     hero:add('力量',self.all_attr)
     hero:add('敏捷',self.all_attr)
     hero:add('智力',self.all_attr)
-    hero:add('杀怪全属性',self.killer_attr)
+    hero:add('杀怪加全属性',self.killer_attr)
 
-    hero:add('物爆几率',self.crite_rate)
-    hero:add('法爆几率',self.crite_rate)
+    hero:add('暴击几率',self.crite_rate)
+    hero:add('技暴几率',self.crite_rate)
     hero:add('会心几率',self.crite_rate)
 
     hero:add('吸血',self.steal_life)
-    hero:add('减免',self.reduce_rate)
+    hero:add('免伤',self.reduce_rate)
 
     hero:add('金币加成',self.value)
     hero:add('经验加成',self.value)
@@ -80,14 +80,14 @@ function mt:on_remove()
     hero:add('力量',-self.all_attr)
     hero:add('敏捷',-self.all_attr)
     hero:add('智力',-self.all_attr)
-    hero:add('杀怪全属性',-self.killer_attr)
+    hero:add('杀怪加全属性',-self.killer_attr)
 
-    hero:add('物爆几率',-self.crite_rate)
-    hero:add('法爆几率',-self.crite_rate)
+    hero:add('暴击几率',-self.crite_rate)
+    hero:add('技暴几率',-self.crite_rate)
     hero:add('会心几率',-self.crite_rate)
 
     hero:add('吸血',-self.steal_life)
-    hero:add('减免',-self.reduce_rate)
+    hero:add('免伤',-self.reduce_rate)
 
     hero:add('金币加成',-self.value)
     hero:add('经验加成',-self.value)

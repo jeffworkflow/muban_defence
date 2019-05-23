@@ -93,7 +93,7 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 		-- print('打印人物升级增加的属性',lv,k,value)
 		hero:add('护甲',value)
 
-		--hero:add('冷却缩减', 1.5)
+		--hero:add('技能冷却', 1.5)
 
 		
 

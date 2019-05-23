@@ -53,7 +53,7 @@ for i =1,3 do
         local point = ac.map.rects['主城']:get_point()
         unit:issue_order('attack',point)
     end
-    --每3秒刷新一次攻击目标
+    --每3秒刷新一次攻击目标 原地不动才发起攻击
     function mt:attack_hero() 
         self.attack_hero_timer = ac.loop(3 * 1000 ,function ()
             -- print('野怪区的怪数量',#mt.group)
@@ -62,7 +62,12 @@ for i =1,3 do
                 if unit:is_alive() then 
                     if unit.last_point then 
                         local distance =  unit.last_point * unit:get_point()
-                        if distance < 100 then 
+                        local hero = ac.find_hero(unit)
+                        local hero_distance = 0
+                        if hero then 
+                            hero_distance = hero:get_point() * unit:get_point()
+                        end    
+                        if distance < 100 or hero_distance >=1000 then 
                             unit:issue_order('attack',point)
                         end    
                     end  

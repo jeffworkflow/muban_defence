@@ -60,11 +60,11 @@ function mt:add_content()
             player.flag_ouhuang = true
             player.is_show_nickname = '(欧皇达人)'
             local hero = player.hero
-            hero:add('每秒全属性',5)
-            hero:add('减甲',5)
+            hero:add('每秒加全属性',5)
+            hero:add('攻击减甲',5)
             --给全部玩家发送消息
-            ac.player.self:sendMsg("【系统提示】玩家 |cffff0000"..player:get_name()..'|r |cff00ffff时来运转|r,获得唯一称号|cffff0000"欧皇达人" |r，奖励 |cffff0000抽奖券效果翻倍，每秒全属性+5，减甲+5|r',10)
-            ac.player.self:sendMsg("【系统提示】玩家 |cffff0000"..player:get_name()..'|r |cff00ffff时来运转|r,获得唯一称号|cffff0000"欧皇达人" |r，奖励 |cffff0000抽奖券效果翻倍，每秒全属性+5，减甲+5|r',10)
+            ac.player.self:sendMsg("【系统提示】玩家 |cffff0000"..player:get_name()..'|r |cff00ffff时来运转|r,获得唯一称号|cffff0000"欧皇达人" |r，奖励 |cffff0000抽奖券效果翻倍，每秒加全属性+5，攻击减甲+5|r',10)
+            ac.player.self:sendMsg("【系统提示】玩家 |cffff0000"..player:get_name()..'|r |cff00ffff时来运转|r,获得唯一称号|cffff0000"欧皇达人" |r，奖励 |cffff0000抽奖券效果翻倍，每秒加全属性+5，攻击减甲+5|r',10)
         else
             ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r |cff00ffff抽奖|r, |cffff0000什么事都没发生|r',10)
         end

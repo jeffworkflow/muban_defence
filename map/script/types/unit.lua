@@ -520,11 +520,11 @@ end
 			self.melee = b
 		end
 
-	--获取技能的冷却(经过冷却缩减和冷却加速计算)
+	--获取技能的冷却(经过技能冷却和冷却加速计算)
 	function mt:getSkillCool(cool)
 		local cool = cool or 0
-		--先计算冷却缩减
-		cool = cool * (1 - self:get '冷却缩减' / 100)
+		--先计算技能冷却
+		cool = cool * (1 - self:get '技能冷却' / 100)
 		--再计算冷却加速
 		-- local cs = self:get '攻击速度' / 2
 		-- if cs > 0 then

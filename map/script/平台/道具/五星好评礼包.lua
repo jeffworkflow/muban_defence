@@ -10,8 +10,8 @@ tip = [[
 领取条件：在平台评论区发表评论+评分5星
 属性：
 +%award_life% 生命上限
-+%award_physical_damage% 物爆伤害
-+%award_magic_damage% 法爆伤害
++%award_physical_damage% 暴击加深
++%award_magic_damage% 技暴加深
 被攻击10%概率获得5全属性 --没实现
 ]],
 --物品类型
@@ -44,8 +44,8 @@ function mt:on_cast_start()
     if map_level>=3 and not p.mall_flag[name] then 
         --添加给英雄
         hero:add('生命上限',self.award_life)
-        hero:add('物爆伤害',self.award_physical_damage)
-        hero:add('法爆伤害',self.award_magic_damage)
+        hero:add('暴击加深',self.award_physical_damage)
+        hero:add('技暴加深',self.award_magic_damage)
         p.mall_flag[name] = true
     else
         p:sendMsg('条件不足或已领取过')    

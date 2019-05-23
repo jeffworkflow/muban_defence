@@ -384,7 +384,10 @@
                 return
             end
 
-            item:_call_event 'on_cast_start'
+            if item:_call_event 'on_cast_start' then 
+                item._count = item._count - 1
+                return 
+            end   
             --额外支持施法出手
 			if item.cast_start_time > 0 then
 				hero:wait(math_floor(item.cast_start_time * 1000), function()

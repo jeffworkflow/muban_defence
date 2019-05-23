@@ -13,9 +13,9 @@ mt{
 	art = [[ReplaceableTextures\PassiveButtons\PASBTNFlakCannons.blp]],
 	--特效
 	effect = [[qtds.mdx]],
-	--物爆几率
+	--暴击几率
 	physical_rate = 10,
-	--物爆伤害
+	--暴击加深
 	physical_damage = 500,
 	
 }
@@ -23,8 +23,8 @@ function mt:on_add()
     local skill = self
     local hero = self.owner
     if not hero:is_hero() then return end
-    hero:add('物爆几率',self.physical_rate)
-    hero:add('物爆伤害',self.physical_damage)
+    hero:add('暴击几率',self.physical_rate)
+    hero:add('暴击加深',self.physical_damage)
     --改变模型
     japi.SetUnitModel(hero.handle,self.effect)
 end
@@ -35,6 +35,6 @@ function mt:on_remove()
         self.trg = nil
     end
     
-    hero:add('物爆几率',-self.physical_rate)
-    hero:add('物爆伤害',-self.physical_damage)
+    hero:add('暴击几率',-self.physical_rate)
+    hero:add('暴击加深',-self.physical_damage)
 end

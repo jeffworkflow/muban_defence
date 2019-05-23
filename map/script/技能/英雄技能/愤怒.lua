@@ -75,8 +75,8 @@ function mt:on_add()
 	local hero =self.target;
 	self.eff = hero:add_effect(self.ref,self.model)
 
-	hero:add('物爆几率',self.physical_rate * (1+hero:get('主动释放的增益效果')/100))
-	hero:add('法爆几率',self.magic_rate * (1+hero:get('主动释放的增益效果')/100))
+	hero:add('暴击几率',self.physical_rate * (1+hero:get('主动释放的增益效果')/100))
+	hero:add('技暴几率',self.magic_rate * (1+hero:get('主动释放的增益效果')/100))
 	hero:add('会心几率',self.heart_rate * (1+hero:get('主动释放的增益效果')/100))
 
 end
@@ -86,8 +86,8 @@ function mt:on_remove()
 	if self.trg then self.trg:remove() self.trg =nil end 
 
 	local hero =self.target;
-	hero:add('物爆几率',-self.physical_rate * (1+hero:get('主动释放的增益效果')/100))
-	hero:add('法爆几率',-self.magic_rate * (1+hero:get('主动释放的增益效果')/100))
+	hero:add('暴击几率',-self.physical_rate * (1+hero:get('主动释放的增益效果')/100))
+	hero:add('技暴几率',-self.magic_rate * (1+hero:get('主动释放的增益效果')/100))
 	hero:add('会心几率',-self.heart_rate * (1+hero:get('主动释放的增益效果')/100))
 
 end

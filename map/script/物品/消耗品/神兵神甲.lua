@@ -35,17 +35,25 @@ for key,tab in pairs(ac.magic_item) do
             for k, v in sortpairs(data) do
                 mt[k] = v
             end
-        end
+        end 
         --使用物品
         function mt:on_cast_start()
             local hero = self.owner
             local player = self.owner:get_owner()
             hero = player.hero 
+            --改变外观，添加武器
+            if hero.effect_wuqi then 
+                hero.effect_wuqi:remove()
+            end     
+            hero.effect_wuqi = hero:add_effect('hand',self.effect)
+
             local skl = hero:find_skill(self.name,nil,true)
             if skl and skl.level >=1 then 
                 player:sendMsg('神兵或神甲已入体，不允许重复')
                 --需要先增加一个，否则消耗品点击则无条件先消耗
-                self:add_item_count(1) 
+                if self.add_item_count then 
+                    self:add_item_count(1) 
+                end    
                 return 
             end    
             skl:set_level(1)
@@ -78,5 +86,20 @@ mt{
 }
 mt.skills = ac.magic_item['神甲']
 
-
-
+--解决暗图标 
+-- ac.game:event '物品-创建' (function (_,item)
+--     if item.level >=1 then 
+--         return 
+--     end
+--     if item.on_blend then 
+--         item.on_blend:remove()
+--     end    
+--     item.level = 1 
+--     local blend = item.blend or ac.blend_file[item.color or 'nil'] 
+-- 	if blend then 
+-- 		item.owner = ac.dummy
+-- 		item.on_bland = item:add_blend(blend, 'frame', 2)
+-- 		item.owner = nil
+-- 	end	
+--     item.level = 0 
+-- end)    

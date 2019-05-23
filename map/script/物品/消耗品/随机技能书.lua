@@ -2,31 +2,22 @@ local mt = ac.skill['随机技能书']
 mt{
     --等久
     level = 1,
-
     --图标
     art = [[other\suijijineng.blp]],
-
     --说明
     tip = [[点击获取 随机技能]],
-
     --物品类型
     item_type = '消耗品',
-
     --目标类型
     target_type = ac.skill.TARGET_TYPE_NONE,
-
     --冷却
     cool = 0,
-
     --购买价格
     gold = 1000,
-
     --物品技能
     is_skill = true,
-
     --随机技能个数
     cnt = 4,
-
     --技能模型
     _model = ac.zb_color_model['书'],
     model_size = 1.5,

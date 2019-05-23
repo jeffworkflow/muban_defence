@@ -10,3 +10,5 @@ require '物品.消耗品.恶魔果实'
 require '物品.消耗品.抽奖券'
 
 require '物品.消耗品.神兵神甲'
+require '物品.消耗品.技能升级书'
+require '物品.消耗品.洗练石'

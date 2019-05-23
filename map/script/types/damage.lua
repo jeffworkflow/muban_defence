@@ -187,12 +187,12 @@ function mt:on_attribute_attack()
 	if self.damage_type == '物理' then	
 		--致命一击
 		if self.physicals_crit_flag == nil then
-			self.physicals_crit_flag = (source:get '物爆几率' >= math.random(100)) or (source:get '物爆几率' >100)
+			self.physicals_crit_flag = (source:get '暴击几率' >= math.random(100)) or (source:get '暴击几率' >100)
 		end
 	else	
 		--法术暴击
 		if self.spells_crit_flag == nil then
-			self.spells_crit_flag =  (source:get '法爆几率' >= math.random(100)) or  (source:get  '法爆几率'>100)
+			self.spells_crit_flag =  (source:get '技暴几率' >= math.random(100)) or  (source:get  '技暴几率'>100)
 		end
 	end	
 	--会心一击
@@ -227,19 +227,20 @@ local function on_damage_a(self)
 		* (self.target:getDamagedRate() / 100)
 end
 
-local function show_block(u)
+local function show_block(u,str)
+	local str = str or '格挡!'
 	local x, y = u:get_point():get()
 	local z = u:get_point():getZ()
 	ac.texttag
 	{
-		string = '格挡!',
+		string = str,
 		size = 8,
 		position = ac.point(x - 60, y, z + 30),
 		speed = 86,
 		angle = 135,
-		red = 100,
-		green = 20,
-		blue = 20,
+		red = 100*100,
+		green = 20*100,
+		blue = 20*100,
 	}
 end
 
@@ -293,10 +294,10 @@ local function on_defence(self)
 end
 
 local function on_life_steal(self)
-	--是攻击就吸血
-	-- if not self:is_attack() then
-	-- 	return
-	-- end
+	--是攻击就吸血 普攻吸血
+	if not self:is_attack() then
+		return
+	end
 	local life_steal = self['吸血']
 	if life_steal == 0 then
 		return
@@ -458,7 +459,7 @@ local function on_texttag(self)
 		color['g'] = 152
 		color['b'] = 0
 		size = 10
-		str = '物爆'
+		str = '暴击'
 	end		
 	--法术暴击 颜色 蓝色
 	if self:is_spells_crit() then
@@ -466,7 +467,7 @@ local function on_texttag(self)
 		color['g'] = 165
 		color['b'] = 238
 		size = 10
-		str = '法爆'
+		str = '技暴'
 	end		
 	--会心一击 颜色 红色
 	if self:is_heart_crit() then
@@ -608,15 +609,15 @@ end
 	致命伤害 = 10
 	致命伤害% = 20%
 	
-	致命伤害 实际理解为 暴击额外伤害。 
+	致命伤害 实际理解为 暴击全伤加深。 
 
 ]]
 
 --计算物理暴击
 function mt:on_physicals_crit_damage()
 	local source = self.source
-	local dmg = source:get '物爆伤害'   
-	--物爆伤害 <=0 ,返回0
+	local dmg = source:get '暴击加深'   
+	--暴击加深 <=0 ,返回0
 	if dmg <= -100 then
 		self.current_damage = 0
 	end 
@@ -637,8 +638,8 @@ end
 --计算法术暴击
 function mt:on_spells_crit_damage()
 	local source = self.source
-	local dmg = source:get '法爆伤害'
-	--法爆伤害 <=0 ,返回0
+	local dmg = source:get '技暴加深'
+	--技暴加深 <=0 ,返回0
 	if dmg <=  -100 then
 		self.current_damage = 0
 	end 
@@ -646,14 +647,14 @@ function mt:on_spells_crit_damage()
 end
 
 
---计算boss额外伤害
+--计算boss全伤加深
 function mt:on_boss_damage()
 	local source = self.source
 	local target = self.target
-	--只对boss or 英雄 造成额外伤害
+	--只对boss or 英雄 造成全伤加深
 	if target:is_hero() then 
 		local dmg = source:get '对BOSS额外伤害'
-		--boss额外伤害 <=0 ,返回0
+		--boss全伤加深 <=0 ,返回0
 		if dmg <= -100 then
 			self.current_damage = 0
 		end 
@@ -730,17 +731,23 @@ end
 --计算减伤
 function mt:Injury()
 	local target = self.target
-	local dmg = target:get '减免'
+	local dmg = target:get '免伤'
 
 	if dmg <=0 then 
 		dmg = 0
 	end
 
-	if self.current_damage <= target:get '减伤'  then 
+	local hero = self.target
+	if target:get('免伤几率') > math.random(0, 99) then
+		show_block(hero,'免伤!')	
 		self.current_damage = 0
-	else 
-	    self.current_damage = (self.current_damage - target:get '减伤') * (1 - dmg/100)
-	end	
+	else
+		if self.current_damage <= target:get '伤害减少'  then 
+			self.current_damage = 0
+		else 
+			self.current_damage = (self.current_damage - target:get '伤害减少') * (1 - dmg/100)
+		end	
+	end
 
 end
 
@@ -820,10 +827,10 @@ function mt:count_damage_hp()
 
 end
 
---击杀回血
+--杀怪回血
 function mt:count_kill_hp()
 	local source = self.source
-	local a = source:get '击杀回血'
+	local a = source:get '杀怪回血'
 
 	if a > 0 then
 		self.source:heal
@@ -840,14 +847,14 @@ end
 --// add by jeff 
 --// end
 
---减甲 双抗
+--攻击减甲 双抗
 function mt:on_reduce_defence()
 	if not self:is_common_attack() then
 		return
 	end	
 	local source = self.source
 	local target = self.target
-	local val = source:get '减甲'
+	local val = source:get '攻击减甲'
     
 	if val > 0 then
 		target:add('护甲',-val)
@@ -968,7 +975,7 @@ function damage:__call()
 			self:on_heart_crit_damage()
 		end
 
-		--计算 对 boss 额外伤害
+		--计算 对 boss 全伤加深
 		self:on_boss_damage()
 
 		--判断伤害类型
@@ -982,17 +989,17 @@ function damage:__call()
 			--计算法术伤害减免
 			self:MagicInjury()
 		end	
-		--计算减伤
+		--计算免伤相关
 		self:Injury()
 
 		--计算格挡
 		on_block(self)
 
-		local ewsh = source:get '额外伤害'
-		--计算额外伤害
+		local ewsh = source:get '全伤加深'
+		--计算全伤加深
 		self.current_damage = (self.current_damage ) * (1 + ewsh/100)
 
-		--加成和减免
+		--加成
 		if not on_damage_mul_div(self) then 
 			return 
 		end	
@@ -1009,10 +1016,17 @@ function damage:__call()
 		return
 	end
 
+	if self:is_common_attack()  then
+		--攻击回血
+		self:count_damage_hp()
+	end
+
 	--消耗护盾
 	local effect_damage = cost_shield(self)
 	local life = target:get '生命'
 	if life <= effect_damage then
+		--杀怪回血
+		self:count_kill_hp()
 		self:kill()
 	else
 		target:set('生命', life - effect_damage)
@@ -1022,11 +1036,6 @@ function damage:__call()
 	--漂浮文字
 	on_texttag(self)
 	
-	if self:is_common_attack() and self.source:is_hero() then
-		--攻击回血
-		self:count_damage_hp()
-	end
-
 	if not self.real_damage then
 
 		if not target:is_type('建筑') then
@@ -1034,11 +1043,8 @@ function damage:__call()
 			on_life_steal(self)
 			--溅射
 			on_splash(self)
-			--减甲
+			--攻击减甲
 			self:on_reduce_defence()
-
-			--击杀回血
-			--self:count_kill_hp()
 		end
 		
 		--伤害效果

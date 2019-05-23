@@ -60,7 +60,7 @@ mt{
 function mt:on_add()
 	local hero = self.owner 
 	hero:add('护甲%',self.defence_rate)
-	hero:add('减免',self.reduce_rate)
+	hero:add('免伤',self.reduce_rate)
 end	
 
 function mt:on_cast_shot()
@@ -107,7 +107,7 @@ function mt:on_remove()
     local hero = self.owner 
     -- 提升三维(生命上限，护甲，攻击)
 	hero:add('护甲%',-self.defence_rate)
-    hero:add('减免',-self.reduce_rate)
+    hero:add('免伤',-self.reduce_rate)
     if self.trg then
         self.trg:remove()
         self.trg = nil

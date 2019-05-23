@@ -10,15 +10,15 @@ mt.model = [[]]
 function mt:on_add()
 	self.effect = self.target:add_effect(self.ref, self.model)
 
-	self.target:add('物爆几率', self.value)
-	self.target:add('法爆几率', self.value)
+	self.target:add('暴击几率', self.value)
+	self.target:add('技暴几率', self.value)
 	self.target:add('会心几率', self.value)
 end
 
 function mt:on_remove()
 	self.effect:remove()
-	self.target:add('物爆几率', - self.value)
-	self.target:add('法爆几率', - self.value)
+	self.target:add('暴击几率', - self.value)
+	self.target:add('技暴几率', - self.value)
 	self.target:add('会心几率', - self.value)
 end
 

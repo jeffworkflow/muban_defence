@@ -223,16 +223,23 @@ ac.reward = reward
 
 
 local unit_reward = {
-    ['武器boss1'] = {rand =100,name = '凝脂剑'},
-    ['武器boss2'] = {rand =100,name = '凝脂剑'},
-    ['武器boss3'] = {rand =100,name = '凝脂剑'},
-    ['武器boss4'] = {rand =100,name = '凝脂剑'},
-    ['武器boss5'] = {rand =100,name = '凝脂剑'},
-    ['武器boss6'] = {rand =100,name = '凝脂剑'},
-    ['武器boss7'] = {rand =100,name = '凝脂剑'},
-    ['武器boss8'] = {rand =100,name = '凝脂剑'},
-    ['武器boss9'] = {rand =100,name = '凝脂剑'},
-    ['武器boss10'] = {rand =100,name = '凝脂剑'},
+    ['武器boss1'] = {{rand =100,name = '短剑'}},
+    ['武器boss2'] = {{rand =100,name = '鱼饵'}},
+    ['武器boss3'] = {{rand =100,name = '凝脂剑'}},
+    ['武器boss4'] = {{rand =100,name = '凝脂剑'}},
+    ['武器boss5'] = {{rand =100,name = '凝脂剑'}},
+    ['武器boss6'] = {{rand =100,name = '凝脂剑'}},
+    ['武器boss7'] = {{rand =100,name = '凝脂剑'}},
+    ['武器boss8'] = {{rand =100,name = '凝脂剑'}},
+    ['武器boss9'] = {{rand =100,name = '凝脂剑'}},
+    ['武器boss10'] = {{rand =100,name = '凝脂剑'}},
+
+    ['技能BOSS1'] = {{rand =100,name = '技能升级书Lv1'}},
+    ['技能BOSS2'] = {{rand =100,name = '技能升级书Lv2'}},
+    ['技能BOSS3'] = {{rand =100,name = '技能升级书Lv3'}},
+    ['技能BOSS4'] = {{rand =100,name = '技能升级书Lv4'}},
+
+    
     ['进攻怪'] =  {
         -- { rand = 97.5,         name = '无'},
         { rand = 2.5,      name = {
@@ -259,13 +266,13 @@ local unit_reward = {
         {    rand = 30, name = '经验30',},
         {    rand = 5, name = '召唤boss',},
         {    rand = 1, name = '吞噬丹',},
-        {    rand = 5, name = '杀怪全属性5',},
+        {    rand = 5, name = '杀怪加全属性5',},
         {    rand = 5, name = '全属性1000',},
         {    rand = 1, name = '全属性10000',},
         {    rand = 8, name = '护甲加50',},
-        {    rand = 5, name = '杀怪力量10',},
-        {    rand = 5, name = '杀怪敏捷10',},
-        {    rand = 5, name = '杀怪智力10',},
+        {    rand = 5, name = '杀怪加力量10',},
+        {    rand = 5, name = '杀怪加敏捷10',},
+        {    rand = 5, name = '杀怪加智力10',},
     },
     ['挑战怪'] =  {
         { rand = 30,      name = '吞噬丹'}
@@ -304,13 +311,13 @@ local unit_reward = {
         {    rand = 0.5, name = '召唤boss',},
         {    rand = 0.5, name = '召唤练功怪',},
         {    rand = 0.5, name = '吞噬丹',},
-        {    rand = 1, name = '杀怪全属性5',},
+        {    rand = 1, name = '杀怪加全属性5',},
         {    rand = 3, name = '全属性加1000',},
         {    rand = 1, name = '全属性加10000',},
         {    rand = 5, name = '护甲加25',},
-        {    rand = 1, name = '杀怪力量5',},
-        {    rand = 1, name = '杀怪敏捷5',},
-        {    rand = 1, name = '杀怪智力5',},
+        {    rand = 1, name = '杀怪加力量5',},
+        {    rand = 1, name = '杀怪加敏捷5',},
+        {    rand = 1, name = '杀怪加智力5',},
         {    rand = 2, name = '十连挖',},
         {    rand = 2, name = '通关积分100',},
     },
@@ -407,39 +414,33 @@ end
 ac.hero_kill_unit = hero_kill_unit
 
 --如果死亡的是野怪的话
-ac.game:event '单位-死亡' (function (_,unit,killer)
-    -- 进攻怪 和 boss 掉落
+ac.game:event '单位-死亡' (function (_,unit,killer)  
+    if unit:is_hero() then 
+        return 
+    end 
+    local player = killer:get_owner()
+    local dummy_unit = player.hero or ac.dummy
+    -- 进攻怪 和 boss 掉落 日常掉落物品
     if unit.category and unit.category =='进攻怪' or unit.category =='boss'  then
-
-        local player = killer:get_owner()
-        local dummy_unit = player.hero or ac.dummy
         local fall_rate = unit.fall_rate *( 1 + dummy_unit:get('物品获取率')/100 )
         -- print('装备掉落概率：',fall_rate,unit.fall_rate)
         hero_kill_unit(player,killer,unit,fall_rate)
-        
     end
+    --boss 额外掉落物品
+    -- print(unit:get_name())
+    local tab = unit_reward[unit:get_name()]
+    if not tab then 
+        return 
+    end
+    local name = get_reward_name(tab) 
+    -- print(name)
+    if name then 
+        local item = ac.item.create_item(name,unit:get_point()) 
+    end    
+
 
 end)
 
--- 如果死亡的是钥匙怪的话
--- 按照玩家数 多产生掉落次数
--- ac.game:event '单位-死亡' (function (_,unit,killer)
---     if unit:get_name() ~='钥匙怪' then
--- 		return
---     end
-
---     local p_count = get_player_count()
---     for i = 1 ,p_count do  
---         local name = get_reward_name(unit_reward['钥匙怪'])
---         if name then 
---             local func = reward[name]
---             local player = killer:get_owner()
---             if func then 
---                 func(player,killer,unit)
---             end  
---         end    
---     end    
--- end)
 
 -- 如果死亡的是挑战怪的话
 ac.game:event '单位-死亡' (function (_,unit,killer)

@@ -1,6 +1,6 @@
 
 -- require '刷怪.游戏结束'
-ac.challege_boss = {
+ac.challenge_boss = {
     --boss名,区域string
     ['武器boss1'] = ac.map.rects['boss-武器1'],
     ['武器boss2'] = ac.map.rects['boss-武器2'],
@@ -34,15 +34,26 @@ ac.challege_boss = {
     ['洗练石boss3'] = ac.map.rects['boss-洗练石3'],
     ['洗练石boss4'] = ac.map.rects['boss-洗练石4'],
 
+    ['小斗气'] = ac.map.rects['boss-境界1'],
+    ['斗者'] = ac.map.rects['boss-境界2'],
+    ['斗师'] = ac.map.rects['boss-境界3'],
+    ['斗灵'] = ac.map.rects['boss-境界4'],
+    ['斗王'] = ac.map.rects['boss-境界5'],
+    ['斗皇'] = ac.map.rects['boss-境界6'],
+    ['斗宗'] = ac.map.rects['boss-境界7'],
+    ['斗尊'] = ac.map.rects['boss-境界8'],
+    ['斗圣'] = ac.map.rects['boss-境界9'],
+    ['斗帝'] = ac.map.rects['boss-境界10'],
+
 }
 --游戏初始化开启
 ac.game:event '游戏-开始' (function()
-    for key,val in pairs(ac.challege_boss) do 
+    for key,val in pairs(ac.challenge_boss) do 
         -- print(key,val)
         local mt = ac.creep[key]{    
             region = val,
             creeps_datas = key..'*1',
-            cool = 1,
+            cool = 5,
             creep_player = ac.player.com[2],
         }  
         --进攻怪刷新时的初始化
@@ -52,4 +63,6 @@ ac.game:event '游戏-开始' (function()
         mt:start()
     end   
 end)
+
+
 

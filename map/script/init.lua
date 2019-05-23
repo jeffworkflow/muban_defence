@@ -66,6 +66,10 @@ ac.wait(100,function ()
     p.hero = hero
     p:event_notify('玩家-注册英雄', p, p.hero)
     hero:add_skill('凌波微步','英雄',6)
+    hero:add_skill('神兵','英雄')
+    hero:add_skill('洗练石','英雄')
+    hero:add_skill('境界','英雄')
+    
     p:setCamera(ac.map.rects['出生点'])
 
 
