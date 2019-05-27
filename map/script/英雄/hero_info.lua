@@ -23,10 +23,12 @@ local mt = ac.skill['英雄属性面板']
 攻击:    %attack% （已加成 %attack_per% %）
 攻击间隔:    %attack_gip% 
 攻速:    %attack_speed% (每秒攻击%attack_rate%次)
-分裂伤害:  %splash% % （近战有效）
-多重射:  %duochongshe%     
-攻击减甲:    %pene%    免伤:  %defence_rate% %
+分裂伤害:  %splash% %  
+攻击减甲:    %pene%    
 吸血:    %life_steal% %
+免伤几率:  %wtf_rate% %  免伤:  %defence_rate% %  
+
+闪避:    %miss% %  攻击丢失:    %attack_drop% %
 
 暴击几率: %physical_rate% %  暴击加深:  %physical_damage% %
 技暴几率: %magic_rate% %  技暴加深:  %magic_damage% %
@@ -45,6 +47,15 @@ local mt = ac.skill['英雄属性面板']
 ]],
 }
 
+function mt:miss()
+	return ('|cffF9C801%.f|r'):format(self.owner:get '闪避')
+end
+function mt:attack_drop()
+	return ('|cffF9C801%.f|r'):format(self.owner:get '攻击丢失')
+end
+function mt:wtf_rate()
+	return ('|cffF9C801%.f|r'):format(self.owner:get '免伤几率')
+end
 function mt:morewood()
 	return ('|cffF9C801%.f|r'):format(self.owner:get '木头加成')
 end

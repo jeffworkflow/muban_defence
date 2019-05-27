@@ -515,8 +515,9 @@ end
 --测试用的木桩
 function helper:tt_unit(where)
 	local cnt = 5 
+	local point = ac.map.rects['出生点']:get_point()
 	for i=1,cnt do 
-		local unit = ac.player(12):create_unit('民兵',where or ac.point(-1000,0))
+		local unit = ac.player(12):create_unit('甲虫',point)
 		unit:set('生命上限',10000000000)
 		unit:set('生命恢复',10000000000)
 		unit:set('护甲',10000)

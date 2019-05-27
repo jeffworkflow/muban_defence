@@ -57,59 +57,32 @@ end
 local function hero_register_main()
 	--注册英雄
 	ac.game:event '玩家-注册英雄' (function(_, player, hero)
-		print('注册英雄3')
 		-- SelectUnitForPlayerSingle(hero.handle,player.handle)
 		-- 统一设置搜敌范围
 		hero:set_search_range(1000)
 		--添加技能
-		print('注册英雄4')
 		hero:add_all_hero_skills()
 
-		print('注册英雄5')
 		hero:add_skill('拾取','拾取',1)
 		hero:add_skill('攻击','英雄',9)
 		hero:add_skill('停止','英雄',10)
 		-- hero:add_skill('保持原位','英雄',11)
 		
 		
-		-- hero:add_skill('死亡飞镖','英雄')
-		-- hero:add_skill('妙手空空','英雄')
-		-- hero:add_skill('摔破罐子','英雄')
+		-- hero:add_item('新手礼包') 
 		
-		
-		-- hero:add('物品获取率',50)
-    	-- ac.item.add_skill_item('巨浪',hero)
-    
-		--  hero:add_item('食尸王之剑')
-		--hero:add_item('食尸王之剑')
-		
-		-- hero:add_item('新人寻宝石') 
-		-- hero:add_item('生命药水') 
-		print('注册英雄6')
-		hero:add_item('新手礼包') 
-		
-		-- hero:add_item('勇气之证')
-
-		-- hero:add_item('账簿')
-		-- hero:add_item('故事书')
-		-- hero:add_item('故事集')
-		-- hero:add_item('故事集')
-		-- hero:add_item('故事集')
-		-- hero:add_item('故事集')
-
-		-- hero:add_skill('魔法书', '英雄')
-		-- hero:add_skill('魔法书', '英雄')
 		--武器
 		-- hero:add_effect('hand',[[Abilities\Weapons\PhoenixMissile\Phoenix_Missile.mdl]])
 		-- hero:add_effect('hand',[[wuqi123.mdx]])
 		
-		print('注册英雄7')
 		--添加英雄属性面板
 		hero:add_skill('英雄属性面板', '英雄',12)
 		-- 测试魔法书
 		-- hero:add_skill('魔法书demo','英雄')
+
+		--添加通用技能
+		hero:add_skill('凌波微步','隐藏')
 		
-		print('注册英雄8')
 		--创建一个宠物
 		player:create_pets()
 	end)

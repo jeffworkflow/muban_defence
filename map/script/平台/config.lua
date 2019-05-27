@@ -151,20 +151,18 @@ end
 function ac.jiami(p,key,value)
     local v = ZZBase64.decode(p[key])
     v = v  + value
-    p[key] = ZZBase64.encode(v)
-
     ac.SaveServerValue(p,key,v)
-    
     if p:GetServerValueErrorCode() then
         p:Map_Stat_SetStat('JF',tostring(v))
     end
 end
 
---存档 加密存
-function ac.SaveServerValue(p,KEY,value)
+--存档
+function ac.SaveServerValue(p,key,value)
     value = tostring(value)
     local s = ZZBase64.encode(value)
-    p:Map_SaveServerValue(KEY,s)
+    p[key] = s
+    p:Map_SaveServerValue(key,s)
 end
 
 --读取 读解密

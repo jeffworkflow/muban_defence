@@ -93,7 +93,7 @@ ac.map.rects={
 	['主城'] = rect.j_rect('jg2_jd') ,
 	
     ['刷怪-boss'] = rect.j_rect('cgboss4') ,
-	['选人区域'] =rect.j_rect('xr') ,
+	['选人区域'] =rect.j_rect('jg2_jd') ,
 	['npc1'] =rect.j_rect('npc1') ,
 	['npc2'] =rect.j_rect('npc2') ,
 	['npc3'] =rect.j_rect('npc3') ,

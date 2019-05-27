@@ -487,6 +487,7 @@ local function on_texttag(self)
 
 	local x, y = self.target:get_point():get()
 	local z = self.target:get_point():getZ()
+	-- print(self.target:get_name(),z)
 	local tag = ac.texttag
 	{
 		string = str,
@@ -546,8 +547,7 @@ local function on_texttag(self)
 	
 end
 
-
-function mt:on_miss()
+function mt:on_attack_drop()
 	if self.source:get_owner() ~= ac.player.self and self.target ~= ac.player.self.hero then
 		return
 	end
@@ -559,6 +559,35 @@ function mt:on_miss()
 		local tag = ac.texttag
 		{
 			player = self.source:get_owner(),
+			string = '丢失!',
+			size = 12,
+			position = ac.point( x, y, 70),
+			speed = 86,
+			angle = 45,
+			red = 100*2.55,
+			green = 20*2.55,
+			blue = 20*2.55,
+			time = ac.clock(),
+		}
+	
+		self.target.damage_texttag_miss = tag
+
+	end
+	
+end 
+
+function mt:on_miss()
+	if self.source:get_owner() ~= ac.player.self and self.target ~= ac.player.self.hero then
+		return
+	end
+	local tag = self.target.damage_texttag
+	if tag and ac.clock() - tag.time < 1000 then
+
+	else 
+		local x, y = self.target:get_point():get()
+		local tag = ac.texttag
+		{
+			player = self.target:get_owner(),
 			string = 'miss',
 			size = 12,
 			position = ac.point( x, y, 70),
@@ -884,6 +913,15 @@ function damage:__call()
 			return
 		end
 	end
+	--不是技能造成的，进行攻击丢失处理
+	if not self:is_skill() then 
+		local rand = math.random(100)
+		if rand <= self.source:get('攻击丢失') then 
+			self:on_attack_drop()
+			return 
+		end 
+	end	
+
 	--不是技能造成的，进行闪避处理
 	if not self:is_skill() then 
 		local rand = math.random(100)

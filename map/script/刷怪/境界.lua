@@ -1,6 +1,5 @@
 
 --挑战完boss，境界，成就。
--- 神兵
 ac.prod_level = {
     ['小斗气'] = {{['全属性']=200},[[ReplaceableTextures\CommandButtons\BTNTomeBrown.blp]],[[
 +100全属性

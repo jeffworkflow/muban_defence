@@ -22,13 +22,13 @@ ac.game:event '单位-创建' (function(_,unit)
 
     --根据难度增强属性 
     if data.attribute then  
-        unit:set('攻击',data.attribute['攻击'] *  ac.g_game_degree_attr)
-        unit:set('护甲',data.attribute['护甲'] *  ac.g_game_degree_attr)
-        unit:set('生命上限',data.attribute['生命上限'] * ac.g_game_degree_attr)
-        unit:set('魔法上限',data.attribute['魔法上限'] * ac.g_game_degree_attr)
-        unit:set('生命恢复',data.attribute['生命恢复'] * ac.g_game_degree_attr)
-        unit:set('魔法恢复',data.attribute['魔法恢复'] * ac.g_game_degree_attr)
-        unit:set('魔抗',data.attribute['护甲'] * ac.g_game_degree_attr)
+        unit:set('攻击',data.attribute['攻击'] *  (ac.g_game_degree_attr or 1))
+        unit:set('护甲',data.attribute['护甲'] *  (ac.g_game_degree_attr or 1))
+        unit:set('生命上限',data.attribute['生命上限'] * (ac.g_game_degree_attr or 1))
+        unit:set('魔法上限',data.attribute['魔法上限'] * (ac.g_game_degree_attr or 1))
+        unit:set('生命恢复',data.attribute['生命恢复'] * (ac.g_game_degree_attr or 1))
+        unit:set('魔法恢复',data.attribute['魔法恢复'] * (ac.g_game_degree_attr or 1))
+        unit:set('魔抗',data.attribute['护甲'] * (ac.g_game_degree_attr or 1))
     end    
 
     --根据玩家数量，怪物属性倍数 5  20 . 5 40， 20*1.1 = 22

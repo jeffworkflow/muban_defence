@@ -82,8 +82,8 @@ local function showHeroState(p, u)
 	local tip = [[
 |cff00bdec定位   |cffffcc00%production%
 ]]
-
-	local tip2 ='|cff00bdec熟练度|r   |cffff0000'..ac.player.self.hero_xp[hero_name]..'|r  |cffffcc00(熟练度越高，团队和个人增益越大)|r'
+	local value = (ac.player.self.hero_xp and ac.player.self.hero_xp[hero_name] or 0)
+	local tip2 ='|cff00bdec熟练度|r   |cffff0000'..value..'|r  |cffffcc00(熟练度越高，团队和个人增益越大)|r'
 	
 	local difficulty_level = {
 		'|cffffaaaa★|r|cffeeeeee☆☆☆☆☆|r',
@@ -115,6 +115,8 @@ local function showHeroState(p, u)
 			else
 				local dest = hero_data.skill_datas[i]
 				if dest then
+					-- print(dest)
+					-- print(dest:get_tip(hero, 0, true))
 					skl:set_tip(dest:get_tip(hero, 0, true))
 					skl:set_title(dest:get_title(hero, 0, true))
 					skl:set_art(dest.art)
@@ -142,7 +144,7 @@ local function start()
 	
 		local hero = player[16]:createHero(name, cent - {r * i + 90, radius}, r * i - 90)
 		hero.name = name
-		hero:remove_ability 'Amov'
+		-- hero:remove_ability 'Amov'
 		hero:add_restriction '缴械'
 		hero:add_restriction '无敌'
 		hero:set_data('英雄类型', name)
@@ -243,7 +245,7 @@ local function start()
 			--等待初始化
 			p:hideInterface(1)
 			--创建英雄给选择者
-			local pnt	= map.rects['出生点']:get_point()
+			local pnt	= map.rects['选人出生点']:get_point()
 			-- local r		= 360 / 5 * p:get()
 			p.hero = p:createHero(hero_name, pnt, 270)
 	
@@ -251,8 +253,8 @@ local function start()
 			p:event_notify('玩家-注册英雄', p, p.hero)
 			p:event_notify('玩家-注册英雄后', p, p.hero)
 
-			local minx, miny, maxx, maxy = ac.rect.j_rect('sg001'):get()
-			p:setCameraBounds(minx-400, miny-400, maxx+400, maxy+400)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
+			local minx, miny, maxx, maxy = ac.map_area:get()
+			p:setCameraBounds(minx, miny, maxx, maxy)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
 			-- p:setCameraBounds('sg001')
 			--把镜头移动过去
 	

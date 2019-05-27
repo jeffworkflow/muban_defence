@@ -19,6 +19,7 @@ point.__index = mt
 
 --类型
 mt.type = 'point'
+mt.offsetZ = -256 --modify by jeff ,每个地图的初始地面高度都不一致，默认是0.有些会降低，有些隆起
 
 --坐标
 mt[1] = 0
@@ -34,7 +35,7 @@ end
 --计算地面的z轴坐标
 function mt:getZ()
 	jass.MoveLocation(point.dummy, self[1], self[2])
-	return jass.GetLocationZ(point.dummy)
+	return jass.GetLocationZ(point.dummy) + self.offsetZ
 end
 
 --获取点高度

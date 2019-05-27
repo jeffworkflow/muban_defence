@@ -21,7 +21,7 @@ require 'ac'
 require 'ui'
 -- print(5)
 require '通用'
-require '平台'
+-- require '平台'
 -- print(6)
 require '游戏'
 -- print(7)
@@ -57,23 +57,36 @@ ac.wait(100,function ()
         local name = light[tonumber(type)]
         jass.SetDayNightModels(([[Environment\DNC\DNC%s\DNC%sTerrain\DNC%sTerrain.mdx]]):format(name, name, name), ([[Environment\DNC\DNC%s\DNC%sUnit\DNC%sUnit.mdx]]):format(name, name, name))
     end
-    light(3)
+    -- light(3)
 
     --开局锁定镜头
     local point = ac.map.rects['出生点']:get_point()
-    local p = ac.player(1)
-    local hero = p:createHero('鲁大师',point);
-    p.hero = hero
-    p:event_notify('玩家-注册英雄', p, p.hero)
-    hero:add_skill('凌波微步','英雄',6)
-    hero:add_skill('神兵','英雄')
-    local book_skl = hero:add_skill('洗练石','英雄')
-    hero:add_skill('境界','英雄')
-    
-    hero:add_skill('阿尔塞斯天赋','英雄')
-    
-    p:setCamera(ac.map.rects['出生点'])
+    -- local p = ac.player(1)
+    -- local hero = p:createHero('鲁大师',point);
+    -- p.hero = hero
+    -- p:event_notify('玩家-注册英雄', p, p.hero)
+    -- hero:add_skill('神兵','英雄')
+    -- local book_skl = hero:add_skill('洗练石','英雄')
+    -- hero:add_skill('境界','英雄')
 
+    -- hero:add_skill('阿尔塞斯天赋','英雄')
+    
+    -- p:setCamera(ac.map.rects['出生点'])
+
+    --创建测试怪
+	-- local cnt = 5 
+	-- local x,y = ac.map.rects['出生点']:get_point():get()
+	-- for i=1,cnt do 
+	-- 	local unit = ac.player(12):create_unit('甲虫',ac.point(x-1000,y))
+	-- 	unit:set('生命上限',1000000000)
+	-- 	unit:set('生命恢复',1000000000)
+	-- 	unit:set('护甲',10000)
+	-- 	unit:set('攻击',1000)
+    --     unit:set('移动速度',0)
+    --     unit:set_search_range(500)
+    --     print(unit:get('攻击距离'))
+    -- end	
+    
     --测试 动态插入魔法书
 -- ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
     -- print(hero,book_skl,'F4战斗机')
@@ -88,7 +101,10 @@ ac.wait(100,function ()
 
     -- end)
     
-    
+    -- local unit =ac.player(16):create_unit('民兵',ac.point(x+1000,y))unit:set('生命上限',1000000000)
+    -- unit:set('生命恢复',1000000000)
+    -- unit:set('护甲',10000)
+    -- unit:set('攻击',1000)
     
 
 

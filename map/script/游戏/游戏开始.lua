@@ -55,6 +55,12 @@ ac.game:event '游戏-开始' (function()
         ac.player.force[2][0]:disableControl(ac.player[16])
     end
     print('游戏开始2')
+
+    
+    --开启按钮 F2 F3
+    c_ui.kzt.F2_home:show()
+    c_ui.kzt.F3_xiaoheiwu:show()
+
     --每个玩家初始化金币
     for i=1 ,12 do 
         local p = ac.player(i)
@@ -62,41 +68,6 @@ ac.game:event '游戏-开始' (function()
 
         end    
     end    
-    local temp_tab = {}
-    --创建 npc(商店)
-    for key,val in pairs(ac.table.UnitData) do 
-        if val.category =='商店' then
-            ac.table.UnitData[key].name = key
-            table.insert(temp_tab,ac.table.UnitData[key])
-        end    
-    end
-    --排序
-    table.sort(temp_tab,function(a,b)
-         return a.id < b.id
-    end)
-
-    for i,data in ipairs(temp_tab) do
-        local where = data.where
-        local name = data.name
-        local face = data.face or 270
-        for i,str in ipairs(where) do 
-            local x,y = ac.rect.j_rect(str):get_point():get()
-            local shop = ac.shop.create(name,x,y,face)
-            if name == '基地' then
-                shop:remove_restriction '无敌'
-                shop:set('生命上限',100000)
-                shop:set('护甲',100)
-            end    
-            
-            if name == '魔鬼的交易' then
-                local id = tonumber(string.sub(str,4,4))
-                local player = ac.player(id)
-                -- print(player)
-                shop:set_owner(player)
-                ac.game:event_notify('单位-创建商店', shop)
-            end    
-        end    
-    end 
-
-
 end)    
+
+

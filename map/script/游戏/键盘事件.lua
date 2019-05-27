@@ -21,7 +21,8 @@ function mt:on_add()
 end    
 function mt:on_cast_start()
     local hero = self.owner
-    hero:blink(ac.point(0,0),true,false,true)
+    local point = ac.map.rects['出生点']:get_point()
+    hero:blink(point,true,false,true)
 end
 
 local mt = ac.skill['F3小黑屋']
@@ -49,9 +50,9 @@ function mt:on_cast_start()
     local hero = self.owner
     local it = self.target
     local p = hero:get_owner()
-    local rect = ac.rect.j_rect('lgfsg'..p.id)
-    -- print(rect)
-    hero:blink(rect,true,false,true)
+
+    local point = ac.map.rects['练功房刷怪'..p.id]:get_point()
+    hero:blink(point,true,false,true)
     -- if not p.flag_create_room then 
     --     p.flag_create_room = true
     --     ac.wait(1000,function()
@@ -66,8 +67,8 @@ function mt:on_cast_start()
 end
 --30回合开始
 ac.game:event '玩家-注册英雄' (function(trg, player, hero)
-	-- hero:add_skill('F2回城', '隐藏')
-	-- hero:add_skill('F3小黑屋', '隐藏')
+	hero:add_skill('F2回城', '隐藏')
+	hero:add_skill('F3小黑屋', '隐藏')
 end)
 
 
@@ -78,7 +79,8 @@ ac.game:event '玩家-聊天' (function(self, player, str)
 
     --输入 hg 回城
     if string.lower(str:sub(1, 2)) == 'hg' then
-        hero:blink(rect.j_rect('wq'),true,false,true)
+        local point = ac.map.rects['出生点']:get_point()
+        hero:blink(point,true,false,true)
     end
 
     -- '++' 调整镜头大小

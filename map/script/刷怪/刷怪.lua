@@ -217,7 +217,7 @@ ac.wait(20,function()
                 ac.g_game_degree_attr = 8  --难度三 属性倍数3倍
             end 
             ac.player.self:sendMsg("选择了 |cffffff00"..list[index].name.."|r")
-            ac.game:event_notify '游戏-开始' ;
+            -- ac.game:event_notify '游戏-开始' ; --测试用
         end)
 
     end 
@@ -253,8 +253,8 @@ ac.wait(20,function()
         print('开始刷兵啦')
         for i=1 ,3 do 
             local creep = ac.creep['刷怪'..i] 
-            -- creep:start()
-            -- creep:attack_hero() 
+            creep:start()
+            creep:attack_hero() 
         end    
     end)    
    

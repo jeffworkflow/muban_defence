@@ -29,13 +29,19 @@ mt{
 	new_point =nil,
 	is_skill = true,
 	--是否开启智能施法 0关闭 1开启 2开启并显示施法指示圈
-	smart_type = 1
+	-- smart_type = 1,
 
+	--技能id
+	ability_id = 'AX21',
+    --目标数据
+	cus_target_data = '按键',
+	--图标是否可见 0可见 1隐藏
+    -- hide_count = 1,
 }
 
 
 function mt:on_add()
-	
+	self:hide()
 	local hero = self.owner
 	local skill = self
 	local i = self.slotid

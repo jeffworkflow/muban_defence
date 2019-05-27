@@ -2,13 +2,11 @@
 local player_hero_tm_list = {}
 
 ac.game:event '玩家-注册英雄' (function(_, player, hero)
-	print('注册英雄10')
 	if not player_hero_tm_list[player] then
 		player_hero_tm_list[player] = tm
 	end
 	--多面板
 	ac.game.multiboard.player_init(player,hero)
-	print('注册英雄11')
 
 	hero:event '单位-死亡' (function()
 	
@@ -27,7 +25,6 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 	end)
 
 	
-	print('注册英雄12')
 	hero:event '单位-英雄升级' (function(_,hero)
 		
 		local data = ac.table.UnitData[hero:get_name()]
