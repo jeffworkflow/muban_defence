@@ -97,7 +97,7 @@ function mt:on_cast_shot()
 		source = hero,
 		target = new_point,
 		mover = hero,
-		speed = 1500,
+		speed = 2000,
 		min_speed = 522,
 		skill = skill,
 		block = true,
@@ -117,7 +117,7 @@ function mt:on_cast_shot()
 		end	
 		local total_distance = new_point *source_point
 
-		if  self.moved >= total_distance*0.7 then 
+		if  self.moved >= total_distance*0.8 then 
 			-- print(self.speed)
 			self.speed = self.speed /1.5
 		end	
