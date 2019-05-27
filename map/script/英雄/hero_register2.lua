@@ -19,7 +19,7 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 			player = hero:get_owner(),
 		}
 		ac.timer(time*1000,1,function()
-			local random_point = ac.map.rects['刷怪']:get_point()
+			local random_point = ac.map.rects['出生点']:get_point()
 			hero:revive(random_point)
 		end)
 	end)
