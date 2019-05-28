@@ -44,7 +44,7 @@ for key,value in pairs(ac.pratice_man) do
     function mt:on_cast_start()
         local hero = self.owner
         local p = hero:get_owner()
-        local ret = 'lgfsg'..p.id
+        local ret = 'lgfbh'..p.id
         local name = key..p.id
         local cep = ac.creep[name]
         cep:set_region(ret)

@@ -34,7 +34,7 @@ end,
 |cff00bdec被动效果：攻击10%几率造成范围技能伤害
 伤害公式：（智力*10+10000）*Lv|r
 
-凌波微步：按D向鼠标方向飘逸500码距离|r]],
+|cff00ff00凌波微步：按D向鼠标方向飘逸500码距离|r]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNHeroAlchemist.blp]],
 	--特效

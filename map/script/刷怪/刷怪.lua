@@ -13,9 +13,9 @@ ac.attack_unit = {
 ac.attack_boss = {
     '肉山','梦魇','戈登的激情','焰皇','毁灭者'
 }  
-local force_cool = 5*60  
+local force_cool = 3*60  
 if global_test then 
-    force_cool = 40
+    force_cool = 3*60
 end    
 local skill_list = ac.skill_list
 for i =1,3 do 
@@ -234,9 +234,9 @@ ac.wait(20,function()
 
     ac.game:event '游戏-开始' (function()
         --游戏开始后 刷怪时间
-        local time = 30
+        local time = 180
         if global_test then 
-            time = 1
+            time = 180
         end    
         BJDebugMsg(time .. "秒后开始第一波怪物进攻")
         ac.timer_ex 
