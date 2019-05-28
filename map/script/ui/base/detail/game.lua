@@ -1,6 +1,7 @@
 local hook = require 'jass.hook'
 local japi = require 'jass.japi'
-
+local error_handle = require('jass.runtime').error_handle
+local dbg = require 'jass.debug'
 
 local base
 local left_is_down = false
@@ -54,23 +55,8 @@ end
 
 
 
-local function check_edit_control()
-    for id,input in pairs(input_class.input_map) do 
-        if input:get_is_show() then 
-            local text = input:get_text()
-            if input.text ~= text then 
-                local old_text = input.text
-                input.text = text
-                event_callback('on_input_text_changed',input,text,old_text)
-            end 
-        end 
-    end
-end
-
-
-
 function get_handle_type (handle)
-    if handle == nil then 
+    if handle == nil or handle == 0 then 
         return nil
     end 
 
@@ -81,9 +67,9 @@ function get_handle_type (handle)
     local retval
     RemoveSavedHandle(ht,1,1)
     SaveFogStateHandle(ht,1,1,handle)
-    if LoadItemHandle(ht,1,1) ~= nil then 
+    if LoadItemHandle(ht,1,1) ~= nil and LoadItemHandle(ht,1,1) ~= 0 then 
         retval = 1
-    elseif LoadUnitHandle(ht,1,1) ~= nil then
+    elseif LoadUnitHandle(ht,1,1) ~= nil and LoadUnitHandle(ht,1,1) ~= 0 then
         retval = 2
     end
     RemoveSavedHandle(ht,1,1)
@@ -133,8 +119,6 @@ TimerStart(CreateTimer(),0.03,true,function ()
     else
         is_active = true
     end
-
-    check_edit_control()
 end)
 
 
@@ -156,7 +140,7 @@ base = {
     
     on_mouse_down = function ()
         local id = japi.GetMouseFocus()
-        local button = button_class.button_map[id]
+        local button = class.button.button_map[id]
 
         left_is_down = true
         if button ~= nil then
@@ -177,7 +161,7 @@ base = {
                         local y = (-(japi.GetMouseVectorY() - 768)) / 768 * 1080
                         x = x - button.w / 2
                         y = y - button.h / 2
-                        texture = texture_class.create(button.normal_image,x,y,width,height)
+                        texture = class.texture.create(button.normal_image,x,y,width,height)
                         texture.button = button
                         texture:set_alpha(100)
                         event_callback('on_button_begin_drag',button)
@@ -187,11 +171,12 @@ base = {
             end
         end
 
+        game_event_callback('on_mouse_down') 
     end,
 
     on_mouse_up = function ()
         local id = japi.GetMouseFocus()
-        local button = button_class.button_map[id]
+        local button = class.button.button_map[id]
 
         left_is_down = false
         if texture ~= nil then 
@@ -207,10 +192,15 @@ base = {
             if object ~= button then 
                 event_callback('on_button_mouseup',object)
             else
-                event_callback('on_button_mouseup',object)
                 if object.is_enable then
                     event_callback('on_button_clicked',object)
+                    local time = os.clock()
+                    if object._click_time and time - object._click_time <= 0.3 then 
+                        event_callback('on_button_double_clicked',object)
+                    end 
+                    object._click_time = time
                 end
+                event_callback('on_button_mouseup',object)
             end
             table.remove(left_button_list,index)
         end
@@ -223,11 +213,12 @@ base = {
             game_event_callback('on_unit_clicked',handle)
         end
 
+        game_event_callback('on_mouse_up') 
     end,
 
     on_mouse_right_down = function ()
         local id = japi.GetMouseFocus()
-        local button = button_class.button_map[id]
+        local button = class.button.button_map[id]
 
         right_is_down = true
 
@@ -240,7 +231,7 @@ base = {
 
     on_mouse_right_up = function ()
         local id = japi.GetMouseFocus()
-        local button = button_class.button_map[id]
+        local button = class.button.button_map[id]
 
         right_is_down = false 
 
@@ -276,16 +267,21 @@ base = {
             event_callback('on_button_update_drag',button,texture,x - button.w / 2,y - button.h / 2)
         end 
 
-        for id,button in pairs(button_class.button_map) do
+        for id,button in pairs(class.button.button_map) do
             local ox,oy = button:get_real_position()
         
             if x >= ox and  y >= oy and x <= ox + button.w and y <= oy + button.h then
-                if button.is_enter == nil and button:get_is_show() ~= false then 
+                local is_show = button:get_is_show() ~= false
+                if button.is_enter == nil and is_show then 
                     event_callback('on_button_mouse_enter',button)
                     button.is_enter = true
                 end
+
+                if button.is_enter and is_show and button.is_move_event then 
+                    event_callback('on_button_mouse_move',button,x,y)
+                end 
             elseif button.is_enter == true then 
-                ui_base_class.remove_tooltip()
+                class.ui_base.remove_tooltip()
                 event_callback('on_button_mouse_leave',button)
                 button.is_enter = nil
             end
@@ -301,7 +297,7 @@ base = {
         x = x * 1920
         y = y * 1080
 
-        for id,panel in pairs(panel_class.panel_map) do
+        for id,panel in pairs(class.panel.panel_map) do
             local ox,oy = panel:get_real_position()
         
             if panel.enable_scroll 
@@ -329,12 +325,10 @@ base = {
 
     on_key_down = function ()
         game_event_callback('on_key_down',japi.GetTriggerKey()) 
-        check_edit_control()
     end,
 
     on_key_up = function ()
         game_event_callback('on_key_up',japi.GetTriggerKey())
-        check_edit_control()
     end,
 
     --指向物品事件
@@ -367,9 +361,10 @@ base = {
     end,
 
 
+    
     on_update = function ()
-
-       
+        base.on_mouse_move()
+        game_event_callback('on_update')
     end,
 
 
@@ -396,9 +391,34 @@ register_event(10,base.on_update)
 function WindowEventCallBack(event_id)
 
     if event[event_id] ~= nil then 
-        event[event_id]()
+        xpcall(event[event_id],error_handle)
     end 
 end
+
+
+
+local frame_event = {
+    --文本框更新事件
+    [9] = function (frame,id)
+        local input = input_class.input_map[frame]
+        if input == nil then 
+            return 
+        end 
+
+        local text = input:get_text()
+        if input.text ~= text then 
+            local old_text = input.text
+            input.text = text
+            event_callback('on_input_text_changed',input,text,old_text)
+        end 
+    end,
+}
+
+function FrameEventCallBack(frame,id)
+    if frame_event[id] then 
+        xpcall(frame_event[id],runtime.error_handle,frame,id)
+    end 
+end 
 
 
 return game

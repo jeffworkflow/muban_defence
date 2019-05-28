@@ -26,6 +26,13 @@ function mt:get_point()
 	return ac.point((self.minx + self.maxx) / 2, (self.miny + self.maxy) / 2)
 end
 
+-- 获得不规则区域内的随机一点
+-- true 获取中心点
+function mt:get_random_point(flag)
+	local minx, miny, maxx, maxy = self:get()
+	return ac.point(math.random(minx,maxx),math.random(miny,maxy))
+end
+
 rect.__index = mt
 
 --创建矩形区域

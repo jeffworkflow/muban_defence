@@ -7,7 +7,7 @@ function player.__index:create_pets()
     u:set('移动速度',522)
     
     self.peon = u
-    -- u:set_animation_speed(10)
+    -- u:set_animation_speed(1000)
     --添加切换背包
     u:add_skill('切换背包','英雄',5)
     u:add_restriction '无敌'

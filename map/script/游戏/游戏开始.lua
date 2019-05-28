@@ -58,8 +58,8 @@ ac.game:event '游戏-开始' (function()
 
     
     --开启按钮 F2 F3
-    c_ui.kzt.F2_home:show()
-    c_ui.kzt.F3_xiaoheiwu:show()
+    -- c_ui.kzt.F2_home:show()
+    -- c_ui.kzt.F3_xiaoheiwu:show()
 
     --每个玩家初始化金币
     for i=1 ,12 do 

@@ -157,7 +157,7 @@ local function start()
 		
 		local hero = player[16]:createHero(name, where,270)
 		hero.name = name
-		-- hero:remove_ability 'Amov'
+		hero:remove_ability 'Amov'
 		hero:add_restriction '缴械'
 		hero:add_restriction '无敌'
 		hero:set_data('英雄类型', name)

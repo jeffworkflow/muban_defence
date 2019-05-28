@@ -65,25 +65,6 @@ F3_xiaoheiwu = extends(panel_class,{
     end
 })
 
--- kzt.on_key_down = function(code)
---     -- print(code)
---     if japi.GetChatState() then
---         return
---     end
-
---     if code == KEY.F2 then
---         print('F2')
-
---         -- ranking.ui:show()
---         return
---     end
-
---     if code == KEY.F3 then
---         print('F3')
---         -- ranking.ui:show()
---         return
---     end
--- end
 
 local function initialize()
 

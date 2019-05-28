@@ -1,7 +1,7 @@
-require 'ui.base.class'
-require 'ui.base.panel'
+require 'ui.base.controls.class'
+require 'ui.base.controls.panel'
 
-button_class = extends( panel_class,{
+class.button = extends(class.panel){
 
     --按钮 类型 和 基类
     _type   = 'TestButton',
@@ -9,16 +9,16 @@ button_class = extends( panel_class,{
 
     button_map = {},
 
-    new = function (parent,image_path,x,y,width,height)
-        local ui = ui_base_class.create('button',x,y,width,height)
+    new = function (parent,image_path,x,y,width,height,has_ani)
+        local ui = class.ui_base.create('button',x,y,width,height)
 
         ui.is_enable = true 
         ui.normal_image = image_path
 
-        ui.__index = button_class
+        ui.__index = class.button
 
         if ui.button_map[ui._name] ~= nil then 
-            ui_base_class.destroy(ui._index)
+            class.ui_base.destroy(ui)
             log.error('创建按钮失败 字符串id已存在')
             return 
         end 
@@ -29,7 +29,7 @@ button_class = extends( panel_class,{
         end 
 
         if ui.id == nil or ui.id == 0 then 
-            ui_base_class.destroy(ui._index)
+            class.ui_base.destroy(ui)
             log.error('创建按钮失败')
             return 
         end
@@ -40,7 +40,7 @@ button_class = extends( panel_class,{
             log.error('按钮背景创建失败')
             return
         end
-
+        panel._control = ui
         ui._panel = panel
         ui.button_map[ui._name] = ui
         ui.button_map[ui.id] = ui
@@ -49,15 +49,37 @@ button_class = extends( panel_class,{
         ui:set_position(x,y)
         ui:set_control_size(width,height)
         japi.FrameSetEnable(ui.id,false)
+
+        if has_ani then 
+            function ui:on_button_mouse_enter()
+                self._ = {
+                    x = self.x,
+                    y = self.y,
+                    w = self.w,
+                    h = self.h 
+                }
+                self:set_position(self.x,self.y - self.h * 0.2)
+                self:set_control_size(self.w * 1.2, self.h * 1.2)
+            end 
+    
+            function ui:on_button_mouse_leave()
+                self:set_position(self._.x,self._.y)
+                self:set_control_size(self._.w,self._.h)
+            end 
+    
+            function ui:on_button_mousedown()
+                self:on_button_mouse_leave()
+            end 
+            function ui:on_button_mouseup()
+                local x,y = game.get_mouse_pos()
+                if self:point_in_rect(x,y) and self:get_is_show() then 
+                    self:on_button_mouse_enter()
+                else 
+                    self:on_button_mouse_leave()
+                end 
+            end 
+        end 
         return ui
-    end,
-
-    create = function (...)
-        return button_class.new(nil,...)
-    end,
-
-    add_child = function (...)
-        return button_class.new(...)
     end,
 
     destroy = function (self)
@@ -67,7 +89,7 @@ button_class = extends( panel_class,{
         self.button_map[self.id] = nil 
         self.button_map[self._name] = nil
 
-        ui_base_class.destroy(self)
+        class.ui_base.destroy(self)
 
     end,
 
@@ -179,9 +201,25 @@ button_class = extends( panel_class,{
         self.is_drag = enable
     end,
 
+    set_enable_move_event = function (self,enable)
+        self.is_move_event = enable
+    end,
+
     set_normal_image = function (self,image_path,flag)
         self.normal_image = image_path
         self._panel:set_normal_image(image_path,flag)
+    end,
+
+    set_control_size = function (self,width,height)
+        class.ui_base.set_control_size(self,width,height)
+        if self._panel then 
+            self._panel:set_control_size(width,height)
+        end
+    end,
+
+    set_alpha = function (self,alpha)
+        self.alpha = alpha
+        self._panel:set_alpha(alpha)
     end,
 
 
@@ -257,11 +295,11 @@ button_class = extends( panel_class,{
 
     ]]
 
-})
+}
 
-local mt = getmetatable(button_class)
+local mt = getmetatable(class.button)
 
 mt.__tostring = function (self)
-    local str = string.format('按钮 %d',self.id)
+    local str = string.format('按钮 %d',self.id or 0)
     return str
 end

@@ -1,6 +1,6 @@
-require 'ui.base.class'
+require 'ui.base.controls.class'
 
-panel_class = extends( ui_base_class,{
+class.panel = extends(class.ui_base){
 
     --背景 类型 和基类
     _type  = 'panel',
@@ -9,17 +9,17 @@ panel_class = extends( ui_base_class,{
     panel_map = {},
 
     new = function (parent,image_path,x,y,width,height,scroll)
-        local ui = ui_base_class.create('panel',x,y,width,height)
+        local ui = class.ui_base.create('panel',x,y,width,height)
 
         ui.scroll_y = 0
         ui.enable_scroll = scroll or false 
        
         
-        ui.__index = panel_class
+        ui.__index = class.panel
       
 
         if ui.panel_map[ui._name] ~= nil then 
-            ui_base_class.destroy(ui._index)
+            class.ui_base.destroy(ui)
             log.error('创建背景失败 字符串id已存在')
             return 
         end 
@@ -31,13 +31,11 @@ panel_class = extends( ui_base_class,{
         end 
      
         if ui.id == nil or ui.id == 0 then 
-            ui_base_class.destroy(ui._index)
+            class.ui_base.destroy(ui)
             log.error('创建背景失败')
             return 
         end
    
-
-        ui.panel_map[ui._name] = ui
         ui.panel_map[ui.id] = ui
         ui.parent = parent
         
@@ -45,14 +43,11 @@ panel_class = extends( ui_base_class,{
         ui:set_control_size(width,height)
         ui:set_normal_image(image_path)
         if scroll then 
+            --添加一个滚动条
             ui:add_scroll_button()
         end 
 
         return ui
-    end,
-
-    create = function (...)
-        return panel_class.new(nil,...)
     end,
 
     destroy = function (self)
@@ -63,53 +58,13 @@ panel_class = extends( ui_base_class,{
         self.panel_map[self.id] = nil 
         self.panel_map[self._name] = nil
 
-        ui_base_class.destroy(self)
+        class.ui_base.destroy(self)
     end,
 
 
-    add_child = function (...)
-        return panel_class.new(...)
-    end,
-
-    add_panel = function (self,...)
-        local child = panel_class.add_child(self,...)
+    add = function (self,class,...)
+        local child = class.add_child(self,...)
         table.insert(self.children,child)
-        
-        return child
-    end,
-
-    add_button = function (self,...)
-        local child = button_class.add_child(self,...)
-        table.insert(self.children,child)
-        
-        return child
-    end,
-
-    add_text = function (self,...)
-        local child = text_class.add_child(self,...)
-        table.insert(self.children,child)
-        
-        return child
-    end,
-
-    add_texture = function (self,...)
-        local child = texture_class.add_child(self,...)
-        table.insert(self.children,child)
-        
-        return child
-    end,
-
-    add_sprite = function (self,...)
-        local child = sprite_class.add_child(self,...)
-        table.insert(self.children,child)
-        
-        return child
-    end,
-
-    add_input = function (self,...)
-        local child = input_class.add_child(self,...)
-        table.insert(self.children,child)
-        
         return child
     end,
 
@@ -136,29 +91,29 @@ panel_class = extends( ui_base_class,{
         x = x or self.w - width * 1.5
         y = y or 14
 
-        local button = self:add_button('image\\背包\\diany_02.png',x,y,width,height)
+        local button = self:add_button('image\\背包\\bar_CloseButton_normal.tga',x,y,width,height)
 
         --左键按下 修改图片
         button.on_button_mousedown = function (self)
-            self:set_normal_image('image\\背包\\diany_02_liang1.png')
+            self:set_normal_image('image\\背包\\bar_CloseButton_Press.tga')
             return false
         end
 
         --左键弹起 恢复图片
         button.on_button_mouseup = function (self)
-            self:set_normal_image('image\\背包\\diany_02.png')
+            self:set_normal_image('image\\背包\\bar_CloseButton_normal.tga')
             return false
         end
 
         --按钮点击关闭
         button.on_button_clicked = function (self)
-            ui_base_class.remove_tooltip()
+            class.ui_base.remove_tooltip()
             self.parent:hide()
             return false 
         end 
         --按钮文本提示
         button.on_button_mouse_enter = function (self)
-            ui_base_class.set_tooltip(self,"关闭",0,0,240,64,16) 
+            class.ui_base.set_tooltip(self,"关闭",0,0,240,64,16) 
             return false 
         end 
         return button
@@ -198,8 +153,9 @@ panel_class = extends( ui_base_class,{
 
         --移动
         button.on_button_update_drag = function (self,icon_button,x,y)
+            local px,py = self.parent:get_real_position()
             local oy = self.y
-            y = y - self.parent.y
+            y = y - py
             
             if y + self.h > self.parent.h then 
                 y = self.parent.h - self.h
@@ -219,6 +175,56 @@ panel_class = extends( ui_base_class,{
         self.scroll_button = button 
     end,
 
+    --移动动画 x y 是移动到目标的位置 value 为正数是 变大 负数是缩小 当小于0.01的时候就会隐藏
+    --move_animation = function (self,tx,ty,value)
+    --    local size = self.relative_size or 1  
+    --    local interval = math.abs(value) * 2
+    --    game.loop(33,function (timer)
+    --        
+    --        local sx,sy = self:get_real_position()
+    --        local x,y = self.x,self.y 
+    --    
+    --        local exit = 0 
+    --        if math.abs(sx - tx) > interval then 
+    --            if sx > tx then 
+    --                x = x - interval
+    --            else 
+    --                x = x + interval
+    --            end 
+    --        else 
+    --            exit = exit + 1
+    --        end 
+    --        if math.abs(sy - ty) > interval then 
+    --            if sy > ty then 
+    --                y = y - interval
+    --            else 
+    --                y = y + interval
+    --            end 
+    --        else 
+    --            exit = exit + 1
+    --        end 
+--
+    --        if value > 0 then 
+    --            self:show()
+    --        end 
+    --        if exit == 2 then 
+    --            if value < 0 then 
+    --                self:hide()
+    --            end 
+    --           
+    --            timer:remove()
+    --        else 
+    --            self:set_position(x,y)
+    --        
+    --            size = size + (value / 100)
+    --            if size > 0.1 and size < 10 then 
+    --                self:set_relative_size(size)
+    --            end 
+    --        end 
+    --    end)
+    --end,
+
+
 
     --当鼠标滚动面板事件
     on_panel_scroll_fix = function (self)
@@ -234,8 +240,8 @@ panel_class = extends( ui_base_class,{
     ]]
 
     __tostring = function (self)
-        local str = string.format('面板 %d',self.id)
+        local str = string.format('面板 %d',self.id or 0)
         return str
     end
-})
+}
 

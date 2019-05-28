@@ -9,5 +9,5 @@ require '游戏.游戏开始'
 -- require '游戏.数据统计'
 require '游戏.系统提示'
 require '游戏.键盘事件'
-require '游戏.数据统计2'
+-- require '游戏.数据统计2'
 

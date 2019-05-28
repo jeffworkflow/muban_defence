@@ -11,7 +11,8 @@ local function create_creep()
         local cnt = max_cnt - (#creep_groop[ix] or 0)
         --创建单位
         for i=1,cnt do 
-            local u = ac.player(12):create_unit('鸡',rect)
+            local point = rect:get_random_point()
+            local u = ac.player(12):create_unit('鸡',point)
             table.insert(creep_groop[ix],u)
 
             --移除

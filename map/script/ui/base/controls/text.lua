@@ -1,10 +1,10 @@
-require 'ui.base.class'
-require 'ui.base.panel'
+require 'ui.base.controls.class'
+require 'ui.base.controls.panel'
 
 local font = [[
     Frame "TEXT" "text%d" {
         LayerStyle "IGNORETRACKEVENTS",
-        FrameFont "resource\fonts\FZHTJW.ttf", %f, "", 
+        FrameFont "resource\fonts\FZHTJW.TTF", %f, "", 
     }
 ]]
 
@@ -21,7 +21,8 @@ local function load_font(font,size)
     load_fdf(data)
 end
 
-text_class = extends( panel_class,{
+
+class.text = extends(class.panel){
 
     --文字 类型 和 基类
     _type   = 'text',
@@ -30,44 +31,49 @@ text_class = extends( panel_class,{
     text_map = {},
 
     align_map = {
+        --自动换行
+        auto_newline     = -1,
+
         topleft         = 0,
         top             = 1,
         topright        = 2,
         left            = 3,
         center          = 4,
         right           = 5,
-        buttomleft      = 6,
-        button          = 7,
-        buttomright     = 8
+        bottomleft      = 6,
+        bottom          = 7,
+        bottomright     = 8,
     },
 
+    -- parent 当 create的时候是空值 add_text的时候是父控件
+    -- text 字符串 文本值
+    -- x,y,w,h 坐标位置
+    -- font_size 字体大小
+    -- align 
     new = function (parent,text,x,y,width,height,font_size,align)
         font_size = font_size or 16
-        local ui = ui_base_class.create('text',x,y,width,height)
+        local ui = class.ui_base.create('text',x,y,width,height)
 
         ui.align = align or 0
-        
-        ui.__index = text_class
+        ui.font_size = font_size
+        ui.__index = class.text
 
         if ui.text_map[ui._name] ~= nil then 
-            ui_base_class.destroy(ui._index)
+            class.ui_base.destroy(ui)
             print('文字创建失败 字符串id已经存在')
             return 
         end 
 
-        local panel 
-        if parent then 
-            panel = parent:add_panel('',0,0,width,height)
-        else 
-            panel = panel_class.create('',0,0,width,height)
-        end 
+        local panel = class.panel.new(parent,'',0,0,width,height)
 
         if panel == nil then 
             print('文字背景创建失败')
             return
         end
+        panel._control = ui
         ui._panel = panel 
 
+        
         if type(font_size) == 'boolean' then 
             ui._type = 'old_text'
         else
@@ -76,10 +82,11 @@ text_class = extends( panel_class,{
         end
         --ui._type = string.format('%s%d',ui._type,font_size)
 
+
         ui.id = japi.CreateFrameByTagName( ui._base, ui._name, panel.id, ui._type,align or 0)
         if ui.id == nil or ui.id == 0 then 
             panel:destroy()
-            ui_base_class.destroy(ui._index)
+            class.ui_base.destroy(ui)
             print('创建文字失败')
             return 
         end
@@ -88,18 +95,12 @@ text_class = extends( panel_class,{
         ui.text_map[ui.id] = ui
         ui.parent = parent
 
-        ui:set_position(x,y)
-        --ui:set_control_size(width,height)
+        
         ui:set_text(text)
+        --ui:set_size(1)
+        ui:set_position(x,y)
+        ui:set_control_size(width,height)
         return ui
-    end,
-
-    create = function (...)
-        return text_class.new(nil,...)
-    end,
-
-    add_child = function (...)
-        return text_class.new(...)
     end,
 
     destroy = function (self)
@@ -111,7 +112,7 @@ text_class = extends( panel_class,{
         self.text_map[self.id] = nil 
         self.text_map[self._name] = nil
 
-        ui_base_class.destroy(self)
+        class.ui_base.destroy(self)
     end,
 
     set_text = function (self,text)
@@ -122,6 +123,19 @@ text_class = extends( panel_class,{
         return japi.FrameGetText(self.id)
     end,
 
+    --设置间距 
+    set_spacing = function (self,spacing)
+        japi.FrameSetTextFontSpacing(self.id,spacing)
+    end,
+
+    set_size = function (self,size,path)
+        local real_size = size * self.font_size * (self.relative_size or 1)
+        self.size = size 
+        path = path or 'C:\\Windows\\Fonts\\simhei.ttf'
+        --path = path or 'resource\\Fonts\\FZHTJW.ttf'
+        japi.FrameSetTextFont(self.id,path,real_size / 1000)
+        self:set_spacing(0.05)
+    end,
 
     set_color = function (self,...)
         local arg = {...}
@@ -155,24 +169,29 @@ text_class = extends( panel_class,{
         self:set_color(r,g,b,alpha)
     end,
     set_control_size = function (self,width,height)
-        ui_base_class.set_control_size(self,width,height)
+        
+        self.w = width 
+        self.h = height
+        if self.align == -1 or self.align == 'auto_newline' then 
+            class.panel.set_control_size(self,width,height)
+        end
         self._panel:set_control_size(width,height)
     end,
 
-})
---批量重载方法
-for name,func in pairs(ui_base_class) do
-    if rawget(text_class,name) == nil then 
-        text_class[name] = function (self,...)
-            func(self,...)
-            func(self._panel,...)
-        end
-    end
-end
-local mt = getmetatable(text_class)
+    set_position = function (self,x,y)
+        class.ui_base.set_position(self,x,y)
+        self._panel:set_position(x,y)
+    end,
+
+    set_normal_image = function (self,path,flag)
+        self._panel:set_normal_image(path,flag)
+    end,
+
+}
+local mt = getmetatable(class.text)
 
 mt.__tostring = function (self)
-    local str = string.format('文本 %d',self.id)
+    local str = string.format('文本 %d',self.id or 0)
     return str
 end
 

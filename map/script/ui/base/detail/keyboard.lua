@@ -78,7 +78,6 @@
     TOP     = 0x26,
     RIGHT   = 0x27,
     BOTTOM  = 0x28,
-    WAVES   = 0Xc0, --~键
 }
 KEY_STR = {}
 for name,value in pairs(KEY) do

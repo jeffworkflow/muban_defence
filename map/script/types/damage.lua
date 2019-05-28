@@ -315,8 +315,8 @@ local function on_life_steal(self)
 end
 
 local function on_splash(self)
-	--普攻、近战有效
-	if not self:is_attack() or self:is_aoe() or (not self.source:isMelee()) then
+	--普攻、都有效 or (not self.source:isMelee()) 
+	if not self:is_attack() or self:is_aoe() then
 		return
 	end
 	local source, target = self.source, self.target
@@ -439,10 +439,10 @@ local function on_texttag(self)
 	if self.source:get_owner() ~= ac.player.self and self.target ~= ac.player.self.hero   then
 		return
 	end
-	
-	-- if not self:is_physicals_crit() and not self:is_spells_crit() and not self:is_heart_crit() then
-	-- 	return
-	-- end
+	--非暴击就return
+	if not self:is_physicals_crit() or not self:is_spells_crit() or not self:is_heart_crit() then
+		return
+	end
     --普攻，法术攻击 颜色 白色
 	local color ={}
 	color['r'] = 255

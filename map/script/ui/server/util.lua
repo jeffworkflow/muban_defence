@@ -1,7 +1,7 @@
 local client = require 'ui.client.util'
 
 
-local ui = extends(client,{})
+local ui = extends(client){}
 
 
 ui.hashtable = {}
@@ -38,7 +38,8 @@ ui.to_hash = function (str)
 end
 
 ui.get_hash = function (str)
-    return string.pack("I4",ui.to_hash(str))
+    return ui.to_hash(str)
+    --return string.pack("I4",ui.to_hash(str))
 end
 
 ui.event = {}

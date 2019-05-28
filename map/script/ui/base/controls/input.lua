@@ -1,5 +1,5 @@
-require 'ui.base.class'
-require 'ui.base.panel'
+require 'ui.base.controls.class'
+require 'ui.base.controls.panel'
 local edit_fpf = [[
     Frame "EDITBOX" "edit%d" {
         EditTextFrame "edit_text%d",
@@ -23,7 +23,7 @@ local function load_edit(fpf,size)
 end
 
 
-input_class = extends( panel_class,{
+class.input = extends(class.panel){
 
     --文本框 类型 和 基类
     _type   = 'edit',
@@ -33,38 +33,34 @@ input_class = extends( panel_class,{
 
     new = function (parent,image_path,x,y,width,height,font_size)
         font_size = font_size or 16
-        local ui = ui_base_class.create('input',x,y,width,height)
+        local ui = class.ui_base.create('input',x,y,width,height)
         
-        ui.__index = input_class
+        ui.__index = class.input
 
         if ui.input_map[ui._name] ~= nil then 
-            ui_base_class.destroy(ui._index)
+            class.ui_base.destroy(ui)
             log.error('创建文本框失败 字符串id已存在')
             return 
         end 
 
-        local panel 
-        if parent then 
-            panel = parent:add_panel(image_path,0,0,width,height)
-        else 
-            panel = panel_class.create(image_path,0,0,width,height)
-        end 
+        local panel = class.panel.new(parent,'',0,0,width,height)
 
         if panel == nil then 
             log.error('文本框背景创建失败')
             return
         end
+        panel._control = ui
         ui._panel = panel
         load_edit(edit_fpf,font_size)
         ui._type = string.format('%s%d',ui._type,font_size)
         ui.id = japi.CreateFrameByTagName( ui._base, ui._name, panel.id, ui._type,0)
         if ui.id == nil or ui.id == 0 then 
             panel:destroy()
-            ui_base_class.destroy(ui._index)
+            class.ui_base.destroy(ui)
             log.error('创建文本框失败')
             return 
         end
-        
+        japi.RegisterFrameEvent(ui.id)
 
         ui.input_map[ui._name] = ui
         ui.input_map[ui.id] = ui
@@ -78,14 +74,6 @@ input_class = extends( panel_class,{
         return ui
     end,
 
-    create = function (...)
-        return input_class.new(nil,...)
-    end,
-
-    add_child = function (...)
-        return input_class.new(...)
-    end,
-
     destroy = function (self)
         if self.id == nil or self.id == 0 then 
             return 
@@ -95,7 +83,7 @@ input_class = extends( panel_class,{
         self.input_map[self.id] = nil 
         self.input_map[self._name] = nil
 
-        ui_base_class.destroy(self._index)
+        class.ui_base.destroy(self._index)
     end,
 
     set_text = function (self,text)
@@ -115,7 +103,7 @@ input_class = extends( panel_class,{
             japi.FrameSetFocus(self.id,is_enable)
             for i=1,self:get_text():len() do
                 japi.SendMessage(0x100,KEY.RIGHT,0)
-                japi.SendMessage(0x101,KEY.RIGHT,1,0)
+                japi.SendMessage(0x101,KEY.RIGHT,1)
             end
         else
             japi.FrameSetFocus(self.id,is_enable)
@@ -124,7 +112,7 @@ input_class = extends( panel_class,{
 
 
     set_control_size = function (self,width,height)
-        ui_base_class.set_control_size(self,width,height)
+        class.ui_base.set_control_size(self,width,height)
         self._panel:set_control_size(width,height)
     end,
 
@@ -135,12 +123,12 @@ input_class = extends( panel_class,{
 
     ]]
 
-})
+}
 
-local mt = getmetatable(input_class)
+local mt = getmetatable(class.input)
 
 mt.__tostring = function (self)
-    local str = string.format('文本框 %d',self.id)
+    local str = string.format('文本框 %d',self.id or 0)
     return str
 end
 

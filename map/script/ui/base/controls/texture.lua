@@ -1,20 +1,20 @@
-require 'ui.base.panel'
+require 'ui.base.controls.panel'
 
 
 
-texture_class = extends( panel_class,{
+class.texture = extends(class.panel){
     --图片 类型 和基类
     _type  = 'panel',
     _base  = 'BACKDROP',
 
     texture_map = {},
     new = function (parent,image_path,x,y,width,height)
-        local ui = ui_base_class.create('texture',x,y,width,height)
+        local ui = class.ui_base.create('texture',x,y,width,height)
 
-        ui.__index = texture_class
+        ui.__index = class.texture
 
         if ui.texture_map[ui._name] ~= nil then 
-            ui_base_class.destroy(ui._index)
+            class.ui_base.destroy(ui)
             print('创建图片失败 字符串id已存在')
             return 
         end 
@@ -26,7 +26,7 @@ texture_class = extends( panel_class,{
         end 
 
         if ui.id == nil or ui.id == 0 then 
-            ui_base_class.destroy(ui._index)
+            class.ui_base.destroy(ui)
             print('创建图片失败')
             return 
         end
@@ -44,14 +44,6 @@ texture_class = extends( panel_class,{
         return ui 
     end,
 
-    create = function (...)
-        return texture_class.new(nil,...)
-    end,
-
-    add_child = function (...)
-        return texture_class.new(...)
-    end,
-
     destroy = function (self)
         if self.id == nil or self.id == 0 then 
             return 
@@ -63,7 +55,7 @@ texture_class = extends( panel_class,{
         self.texture_map[self.id] = nil 
         self.texture_map[self._name] = nil
 
-        ui_base_class.destroy(self)
+        class.ui_base.destroy(self)
        
 
     end,
@@ -77,22 +69,22 @@ texture_class = extends( panel_class,{
         end 
         self._timer = game.loop(33,function (timer)
             num = num + 1
-            local str = path .. string.format("\\0_%05d.blp",num)
+            local str = path .. string.format("\\0_%05d.png",num)
             if self.id == nil or self.id == 0 then 
                 timer:remove()
             end 
             self:set_normal_image(str)
-            if num == 14 then 
+            if num >= count then 
                 num = 0
             end 
         end)
     end,
 
-})
+}
 
-local mt = getmetatable(texture_class)
+local mt = getmetatable(class.texture)
 
 mt.__tostring = function (self)
-    local str = string.format('图像 %d',self.id)
+    local str = string.format('图像 %d',self.id or 0)
     return str
 end
