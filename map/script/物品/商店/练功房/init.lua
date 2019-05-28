@@ -12,7 +12,7 @@ require '物品.商店.练功房.魔鬼的交易'
 for i =1 ,6 do 
     local p = ac.player(i)
     if p:is_player() then
-        local ret = ac.rect.j_rect('lgfsg'..p.id)
+        local ret = ac.rect.j_rect('lgfbh'..p.id)
         local minx, miny, maxx, maxy = ret:get()
         ret = ac.rect.create(minx-1500, miny-800, maxx+1500, maxy+800)
         local region = ac.region.create(ret)

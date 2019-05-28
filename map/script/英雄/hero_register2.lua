@@ -97,3 +97,14 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 	end)
 end)
 
+
+
+ac.game:event '玩家-注册英雄后' (function(_, player, hero)
+	--移动英雄天赋位置	
+	local skl = hero:find_skill(hero.name..'天赋','英雄',true)
+	-- print(skl,hero.name..'天赋')
+	if skl then 
+		skl:remove()
+		hero:add_skill(hero.name..'天赋','英雄',5)
+	end	
+end)

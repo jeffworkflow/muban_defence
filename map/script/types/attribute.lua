@@ -114,6 +114,8 @@ local attribute = {
 	['攻击减甲'] = true,  --默认表示为基础值 永久性攻击减甲
 	
 
+	['杀怪加金币'] = true,  --默认表示为基础值
+	['杀怪加木头'] = true,  --默认表示为基础值
 	['杀怪加力量'] = true,  --默认表示为基础值
 	['杀怪加敏捷'] = true,  --默认表示为基础值
 	['杀怪加智力'] = true,  --默认表示为基础值
@@ -811,6 +813,7 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
 	--召唤物杀死也继承
 	local hero = killer:get_owner().hero
 	if not hero then return end
+
 	local str = hero:get('杀怪加力量') + hero:get('杀怪加全属性')
 	local int = hero:get('杀怪加智力') + hero:get('杀怪加全属性')
 	local agi = hero:get('杀怪加敏捷') + hero:get('杀怪加全属性')
@@ -823,6 +826,14 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
 	hero:add('护甲',defence)
 	
 	hero:add('攻击',hero:get('杀怪加攻击'))
+
+	local player = hero:get_owner()
+	--加金币
+	local gold = player.hero:get('杀怪加金币') 
+	player:addGold(gold) --不显示漂浮文字
+	--加木头
+	local wood = player.hero:get('杀怪加木头') 
+	player:add_wood(wood) 
 	
 end) 
 
@@ -878,5 +889,13 @@ ac.game:event '造成伤害效果' (function(_,damage)
 	hero:add('敏捷',agi)
 	-- print('攻击增加护甲：',defence)
 	hero:add('护甲',defence)
+
+	local player = hero:get_owner()
+	--加金币
+	local gold = player.hero:get('攻击加金币') 
+	player:addGold(gold) --不显示漂浮文字
+	--加木头
+	local wood = player.hero:get('攻击加木头') 
+	player:add_wood(wood) 
 
 end) 

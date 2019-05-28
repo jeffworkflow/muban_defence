@@ -60,9 +60,9 @@ ac.wait(100,function ()
     -- light(3)
 
     --开局锁定镜头
-    local point = ac.map.rects['出生点']:get_point()
+    -- local point = ac.map.rects['出生点']:get_point()
     -- local p = ac.player(1)
-    -- local hero = p:createHero('鲁大师',point);
+    -- local hero = p:createHero('希尔瓦娜斯',point);
     -- p.hero = hero
     -- p:event_notify('玩家-注册英雄', p, p.hero)
     -- hero:add_skill('神兵','英雄')

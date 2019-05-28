@@ -1,7 +1,6 @@
 
 --单位创建 属性增强
 ac.game:event '单位-创建' (function(_,unit)
-    if not unit then  return end 
     -- 英雄返回
     if unit:is_hero() then  return end 
     -- 根据难度增强属性。

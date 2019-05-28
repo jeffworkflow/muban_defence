@@ -138,6 +138,7 @@ ac.game:event '单位-死亡' (function(_,unit,killer)
     if not killer or not killer:is_hero()  then  
         return
     end    
+    -- print(unit,)
     --加钱
     if unit.gold  then 
         gold = unit.gold * ( 1 + killer:get('金币加成')/100)

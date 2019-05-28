@@ -381,11 +381,7 @@ function mt:next()
             end    
             --将单位添加进单位组
             table.insert(self.group,u)
-        
-            -- local hero = find_hero(u)
-            -- if hero then
-            --     u:issue_order('attack',hero:get_point())
-            -- end 
+            
             --监听这个单位挂掉
             self.trg = u:event '单位-死亡' (function(_,unit,killer)
                 self.current_count = self.current_count - 1

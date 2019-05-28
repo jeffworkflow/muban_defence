@@ -197,7 +197,21 @@ rect gg_rct_jj99= null
 rect gg_rct_jj9= null
 rect gg_rct_jj1010= null
 rect gg_rct_jj10= null
-
+rect gg_rct_lgfbh1= null
+rect gg_rct_lgfbh2= null
+rect gg_rct_lgfbh3= null
+rect gg_rct_lgfbh4= null
+rect gg_rct_lgfbh5= null
+rect gg_rct_lgfbh6= null
+rect gg_rct_emo11= null
+rect gg_rct_emo22= null
+rect gg_rct_emo33= null
+rect gg_rct_emo44= null
+rect gg_rct_emo1= null
+rect gg_rct_emo2= null
+rect gg_rct_emo3= null
+rect gg_rct_emo4= null
+rect gg_rct_xuanren= null
 endglobals
 
     native DzGetMouseTerrainX takes nothing returns real
@@ -1817,6 +1831,21 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_jj9=Rect(7264.0, - 11968.0, 7584.0, - 11648.0)
     set gg_rct_jj1010=Rect(7264.0, - 8448.0, 7584.0, - 8096.0)
     set gg_rct_jj10=Rect(7264.0, - 9312.0, 7584.0, - 8992.0)
+    set gg_rct_lgfbh1=Rect(19968.0, - 9952.0, 22080.0, - 8128.0)
+    set gg_rct_lgfbh2=Rect(22720.0, - 9952.0, 24832.0, - 8128.0)
+    set gg_rct_lgfbh3=Rect(20000.0, - 12128.0, 22112.0, - 10304.0)
+    set gg_rct_lgfbh4=Rect(22688.0, - 12096.0, 24800.0, - 10272.0)
+    set gg_rct_lgfbh5=Rect(22624.0, - 14240.0, 24736.0, - 12416.0)
+    set gg_rct_lgfbh6=Rect(19968.0, - 14336.0, 22080.0, - 12512.0)
+    set gg_rct_emo11=Rect(16416.0, - 9504.0, 16768.0, - 9184.0)
+    set gg_rct_emo22=Rect(16448.0, - 7584.0, 16800.0, - 7264.0)
+    set gg_rct_emo33=Rect(18624.0, - 7360.0, 18976.0, - 7040.0)
+    set gg_rct_emo44=Rect(18592.0, - 9472.0, 18944.0, - 9152.0)
+    set gg_rct_emo1=Rect(16416.0, - 7136.0, 16768.0, - 6816.0)
+    set gg_rct_emo2=Rect(18176.0, - 7360.0, 18528.0, - 7040.0)
+    set gg_rct_emo3=Rect(18560.0, - 8960.0, 18912.0, - 8640.0)
+    set gg_rct_emo4=Rect(16480.0, - 9056.0, 16832.0, - 8736.0)
+    set gg_rct_xuanren=Rect(8224.0, - 512.0, 9600.0, 448.0)
 endfunction
 
 //===========================================================================

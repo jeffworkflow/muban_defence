@@ -1904,8 +1904,8 @@ function hero.__index:add_all_hero_skills()
 	local t = {}
 	for i = 1, #self.skill_datas do
 		local skl = self.skill_datas[i]
-		--添加技能
-		local u = self:add_skill(skl.name, '英雄', i, {level = 0})
+		--添加技能 
+		local u = self:add_skill(skl.name, '英雄', i , {level = 0})
 		--提升技能等级
 		local level = self.skill_datas[i].level
 		u:set_level(level)

@@ -698,12 +698,6 @@ function mt:item_remove(is)
 		self.owner:remove_item(self)
 	end	
 
-	-- if self  then 
-	-- 	if self.slot_id then 
-	-- 		self.owner.item_list[self.slot_id] =nil
-	-- 	end	
-	-- 	self:on_remove_state()
-	-- end	
 
 	ac.item.item_map[self.handle] = nil
 	self.handle = nil
@@ -853,13 +847,13 @@ function unit.__index:add_item(it,is_fall)
 	it.is_discard_event = false 
 
 	-- print(it.owner,self.handle,it.is_skill_init)
-	if not it.is_skill_init then
-		it:item_init_skill()
-	else
-		it:_call_event 'on_add'
-	end
+	-- if not it.is_skill_init then
+	it:item_init_skill()
+	-- else
+	-- 	it:_call_event 'on_add'
+	-- end
 			
-	it:on_add_state() 
+	-- it:on_add_state() 
 
 	ac.wait(10,function()
 		it:hide()
@@ -911,7 +905,7 @@ function unit.__index:remove_item(it)
 		return false
 	end
 	-- print('即将从单位移除物品：',it.slot_id,it.name,it.handle,ac.clock())
-	it:on_remove_state()
+	-- it:on_remove_state()
 	--移除技能
 	it:_call_event 'on_remove'
 

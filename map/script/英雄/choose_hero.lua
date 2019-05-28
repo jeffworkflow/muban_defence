@@ -128,19 +128,34 @@ end
 local function start()
 	--在选人区创建英雄
 	local cent	= map.rects['选人区域']:get_point()
-	local r		= 360 / hero.hero_count
-	radius		= math.sqrt(hero.hero_count - 1) * 120
-	-- print(hero.hero_list['亚瑟王'].unit_type)
+	local minx, miny, maxx, maxy = map.rects['选人区域']:get()
+	local area = 200
+    local ix,iy = 1,1
+	local rowx = math.floor((maxx-minx ) / area)
+	local rowy = math.floor((maxy-miny ) / area)
+	-- local r		= 360 / hero.hero_count
+	-- radius		= math.sqrt(hero.hero_count - 1) * 120
+
+	-- print(minx, miny, maxx, maxy)
 	for i, name in ipairs(hero.hero_list) do
 		local name, hero_data = name,hero.hero_list[name].data
-		-- print(hero_data.type)
-		-- print_r(hero_data)
+		
 		local shadow01 = jass.CreateImage([[ReplaceableTextures\CommandButtons\BTNPeasant.blp]], 1, 1, 1, 0, 0, 0, 0, 0, 0, 2)
 		local shadow02 = jass.CreateImage([[ReplaceableTextures\CommandButtons\BTNPeasant.blp]], 1, 1, 1, 0, 0, 0, 0, 0, 0, 2)
 		jass.DestroyImage(shadow01)
 		jass.DestroyImage(shadow02)
-	
-		local hero = player[16]:createHero(name, cent - {r * i + 90, radius}, r * i - 90)
+
+		if ix > rowx   then 
+            --print(i,ix,iy)
+            iy = iy + 1 
+            ix = 1
+        end    
+        local x = minx + area * ix 
+		local y = miny + area* iy 
+		local where = ac.point(x,y)
+		ix = ix + 1 
+		
+		local hero = player[16]:createHero(name, where,270)
 		hero.name = name
 		-- hero:remove_ability 'Amov'
 		hero:add_restriction '缴械'
@@ -259,7 +274,7 @@ local function start()
 			--敌我识别特效
 			p.hero:add_enemy_tag()
 			
-			-- ac.wait(1000, function()
+			ac.wait(1000, function()
 				p:setCamera(p.hero)
 				p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 1000)
 				p:setCameraField('CAMERA_FIELD_ANGLE_OF_ATTACK', 304)
@@ -280,7 +295,7 @@ local function start()
 				ac.wait(1000, function()
 					p.camera_high = 1500
 				end)
-			-- end)
+			end)
 		end
 	
 		--检查是否还有人没选英雄

@@ -1,7 +1,8 @@
 
 ac.game:event '技能-升级' (function (_,hero,self)
     -- print(hero,self.name)
-	if not hero or not hero:is_type('英雄') or self.item_type then 
+    -- --item_type 有值表示为物品，以下代码不生效
+	if not hero or not hero:is_type('英雄') or self.item_type =='消耗品' or self.item_type =='神符' then 
 		return
 	end	
 	--保存物品 ix_now =0 1级+10， ix=10,ix_now=10,ix=20
@@ -37,7 +38,8 @@ end)
 
 
 ac.game:event '技能-失去' (function (_,hero,self)
-	if not hero or not hero:is_type('英雄') or self.item_type then 
+    -- print(hero,self.name)
+	if not hero or not hero:is_type('英雄') or self.item_type =='消耗品' or self.item_type =='神符'  then 
 		return
 	end	
 	--单位的属性表
