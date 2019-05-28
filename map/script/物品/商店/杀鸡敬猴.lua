@@ -1,6 +1,8 @@
 
 local rect = require 'types.rect'
 
+-- 杀鸡儆猴
+
 --物品名称
 local mt = ac.skill['杀鸡敬猴']
 mt{
@@ -9,13 +11,18 @@ level = 1,
 --图标
 art = [[sjjh.blp]],
 --说明
-tip = [[杀死右边花园里叽叽喳喳的鸡]],
+tip = [[|cffFFE799【任务要求】|r杀死|cffff0000右边花园里|r叽叽喳喳的鸡，小心里面有一只讨厌的猴子
+
+|cffFFE799【任务奖励】|r|cff00ff00杀怪+5金币，攻击+5金币，每秒+5金币|r]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
+
+store_affix = '',
+
 content_tip = '',
 --物品技能
 is_skill = true,
@@ -47,7 +54,7 @@ function mt:on_cast_start()
             local hero = p.hero
             if hero  then 
                 p.sjjh_flg = p.sjjh_flg + 1
-                p:sendMsg('【系统提示】当前杀鸡进度：'..p.sjjh_flg..'/100')
+                p:sendMsg('|cffFFE799【系统提示】|r当前杀鸡进度：|cffff0000'..p.sjjh_flg..'|r/100')
 
                 if p.sjjh_flg == self.kill_cnt then
                     --给物品
@@ -60,7 +67,7 @@ function mt:on_cast_start()
                     unit:add_buff '无敌'{
                         time = 2
                     }
-                    p:sendMsg('【系统提示】猴 已出现，击杀获取成长型装备 ')
+                    p:sendMsg('|cffffff00【系统提示】|r|cffff0000齐天大圣|r已出现，小心他的金箍棒 ')
                     
                     self.trg:remove()
                     self.trg = nil

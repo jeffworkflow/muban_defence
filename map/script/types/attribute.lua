@@ -337,23 +337,29 @@ end
 -- 每点敏捷增加0点护甲，0.05%攻击速度，0.1%会心伤害，如果是主属性，每点敏捷还增加4点攻击力
 -- 每点智力增加8点魔法上限，0.08点魔法恢复，0.1%技暴加深，如果是主属性，每点智力还增加4点攻击力
 
+--每点力量增加5点生命上限，如果是主属性，每点力量还增加1点攻击力
+--每点敏捷增加0.5点攻击力，如果是主属性，每点敏捷还增加1点攻击力
+--每点智力增加1点技能伤害，如果是主属性，每点智力还增加1点攻击力
+
 --主属性 每点主属性增加4点攻击力
-local main_attribute_value = 3
+
+local main_attribute_value = 1
 --力量 
-local str_hp = 6
-local str_hp_recover = 0.06
-local str_phy_split_damage = 0.01
+local str_hp = 5
+local str_hp_recover = 0
+local str_phy_split_damage = 0
 
 --敏捷
-local agi_speed = 0.01
-local agi_heart = 0.01
+local agi_speed = 0
+local agi_heart = 0
 local agi_defense = 0
+local agi_attack = 0.5
 
 --智力
 local int_mp = 8
 local int_mp_recover = 0.08
-local int_explosion = 0.01
-local int_skill_base_damage = 3
+local int_explosion = 0.00
+local int_skill_base_damage = 1
 
 
 get['力量'] = function(self)
@@ -440,6 +446,10 @@ on_set['敏捷'] = function(self,old_value)
 		self:add('会心伤害',  value * agi_heart)
 		-- 增加攻击
 		self:add('攻击速度', value * agi_speed)
+		-- 增加攻击
+		self:add('攻击', value * agi_attack)
+
+		
 	end	
 end
 

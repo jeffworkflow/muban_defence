@@ -79,11 +79,9 @@ local function showHeroState(p, u)
 	local hero_data = hero.hero_list[hero_name].data
 	local hero = u
 
-	local tip = [[
-|cff00bdec定位   |cffffcc00%production%
-]]
+	local tip = [[]]
 	local value = (ac.player.self.hero_xp and ac.player.self.hero_xp[hero_name] or 0)
-	local tip2 ='|cff00bdec熟练度|r   |cffff0000'..value..'|r  |cffffcc00(熟练度越高，团队和个人增益越大)|r'
+	local tip2 =''
 	
 	local difficulty_level = {
 		'|cffffaaaa★|r|cffeeeeee☆☆☆☆☆|r',
@@ -269,7 +267,7 @@ local function start()
 				p:setCameraField('CAMERA_FIELD_ROTATION', 90)
 				p:showInterface(1)
 				--镜头动画
-				p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 2500, 1)
+				p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 1500, 1)
 				p:setCameraBounds(minx-400, miny-400, maxx+400, maxy+400)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
 	
 				--允许框选
@@ -280,7 +278,7 @@ local function start()
 	
 				--强制镜头高度
 				ac.wait(1000, function()
-					p.camera_high = 2500
+					p.camera_high = 1500
 				end)
 			-- end)
 		end

@@ -1,6 +1,7 @@
 
 local rect = require 'types.rect'
 -- 传送 快速达到
+-- 练功师
 ac.pratice_man ={
     --商品名 = 刷怪单位名，图标,说明
     ['经验怪'] = {'经验怪',[[ReplaceableTextures\CommandButtons\BTNTomeBrown.blp]],'挑着boss'} ,
@@ -59,7 +60,8 @@ for key,value in pairs(ac.pratice_man) do
                 local name = key..i
                 local mt = ac.creep[name]{    
                     creeps_datas = value[1]..'*15',
-                    cool = 2,
+                    cool = 1,
+                    create_unit_cool = 0.01,
                     is_leave_region_replace = true,
                     is_region_replace = true,
                 }

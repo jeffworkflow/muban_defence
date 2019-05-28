@@ -178,19 +178,19 @@ ac.wait(20,function()
     print('开始选择难度')
     local player = get_first_player()
     local list = {
-        { name = "难度1" },
-        { name = "难度2" },
-        { name = "难度3" },
-        { name = "难度4" },
-        { name = "难度5" },
-        { name = "难度6" },
-        { name = "难度7" },
-        { name = "难度8" },
+        { name = "青铜" },
+        { name = "白银" },
+        { name = "黄金" },
+        { name = "铂金" },
+        { name = "钻石" },
+        { name = "星耀" },
+        { name = "王者" },
+        { name = "最强王者" },
     }
     
     ac.player.self:sendMsg("正在选择 |cffffff00难度|r")
     if player then 
-        create_dialog(player,"选择模式",list,function (index)  
+        create_dialog(player,"选择难度",list,function (index)  
             ac.g_game_degree = index
             if ac.g_game_degree == 1 then 
                 ac.g_game_degree_attr = 1  --难度一 属性倍数1倍
