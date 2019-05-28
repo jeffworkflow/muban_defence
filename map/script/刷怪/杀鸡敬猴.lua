@@ -1,13 +1,13 @@
 local time =2
 local max_cnt = 15
 local creep_groop={}
-
+-- 杀鸡儆猴
 local function create_creep()
     for ix =1,3 do 
         local rect = ac.rect.j_rect('sjjh'..ix)
         if not creep_groop[ix] then 
             creep_groop[ix] = {}
-        end    
+        end
         local cnt = max_cnt - (#creep_groop[ix] or 0)
         --创建单位
         for i=1,cnt do 

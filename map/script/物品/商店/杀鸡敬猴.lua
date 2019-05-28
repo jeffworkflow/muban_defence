@@ -63,12 +63,12 @@ local function task_sjjh(skill)
             --处理每20只奖励杀怪+金币
             local cnt = math.floor(p.sjjh_cnt/20)
 
-            p:sendMsg('|cffFFE799【系统提示】|r当前杀鸡进度：|cffff0000'..(p.sjjh_cnt - cnt*20)..'|r/'..self.per_kill_cnt,5)
+            p:sendMsg('|cffFFE799【系统提示】|r当前杀鸡进度：|cffff0000'..(p.sjjh_cnt - cnt*20)..'|r/'..self.per_kill_cnt,2)
             if p.sjjh_cnt % 20 == 0 then 
                 hero:add('杀怪加金币',self.award_gold)
                 hero:add('攻击加金币',self.award_gold)
                 hero:add('每秒加金币',self.award_gold)
-                p:sendMsg('|cffFFE799【系统提示】完成杀鸡任务|cffff0000'..cnt.. '|r/5,获得|cff00ff00杀怪+50金币，攻击+50金币，每秒+50金币|r',5)
+                p:sendMsg('|cffFFE799【系统提示】|r完成杀鸡任务：|cffff0000'..cnt.. '|r/5,获得|cff00ff00杀怪+50金币，攻击+50金币，每秒+50金币|r',2)
             end
 
             if p.sjjh_cnt == self.kill_cnt then
@@ -77,10 +77,10 @@ local function task_sjjh(skill)
                 local point = hero:get_point()-{hero:get_facing(),100}--在英雄附近 100 到 400 码 随机点
                 local unit = ac.player(12):create_unit('猴',point)
                 unit:add_buff '定身'{
-                    time = 2
+                    time = 3
                 }
                 unit:add_buff '无敌'{
-                    time = 2
+                    time = 3
                 }
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     local item = ac.item.create_item(self.award_item)
