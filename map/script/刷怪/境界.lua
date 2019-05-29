@@ -43,23 +43,18 @@ end
 
 
 --魔法书
-local mt = ac.skill['境界']
+local mt = ac.skill['境界突破']
 mt{
     is_spellbook = 1,
     is_order = 2,
     art = [[sc.blp]],
-    title = '境界',
+    title = '境界突破',
     tip = [[
-查看境界
+查看境界突破
     ]],
 }
--- local temp ={}
-
--- for key,val in sortpairs(ac.prod_level) do
---     table.insert(temp,key)
--- end    
-
 mt.skills = {'小斗气','斗者','斗师','斗灵','斗王','斗皇','斗宗','斗尊','斗圣','斗帝'}
+
 ac.game:event '单位-死亡'(function(_,unit,killer)
     local name = unit:get_name()
     if finds(name,'小斗气','斗者','斗师','斗灵','斗王','斗皇','斗宗','斗尊','斗圣','斗帝') then

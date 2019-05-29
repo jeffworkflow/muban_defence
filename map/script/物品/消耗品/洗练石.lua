@@ -112,14 +112,14 @@ for ix =1 ,4 do
 end    
 
 --魔法书
-local mt = ac.skill['洗练石']
+local mt = ac.skill['套装洗练']
 mt{
     is_spellbook = 1,
     is_order = 2,
     art = [[sc.blp]],
-    title = '洗练石',
+    title = '套装洗练',
     tip = [[
-查看洗练的套装属性
+查看 套装洗练
     ]],
 }
 mt.skills = {

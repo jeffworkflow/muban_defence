@@ -1,16 +1,16 @@
 
 -- 神兵
-ac.magic_item = {
+local magic_item = {
     -- ['神兵'] ={'凝脂剑','元烟剑','暗影','青涛魔剑','青虹紫霄剑','熔炉炎刀 ','紫炎光剑','封神冰心剑','冰莲穿山剑','十绝冰火剑'},
-    ['神兵'] ={'短剑','鱼饵','鼻涕刃'},
+    ['神兵'] ={'冰剑','鱼饵','鼻涕刃'},
     ['神甲'] ={'芙蓉甲','鱼鳞甲','碧云甲','青霞甲','飞霜辉铜甲','天魔苍雷甲','金刚断脉甲','丹霞真元甲','血焰赤阳甲','神魔蚀日甲'}
 }
-for key,tab in pairs(ac.magic_item) do 
+for key,tab in pairs(magic_item) do 
     for i,value in ipairs(tab) do 
         local mt = ac.skill[value]
         mt{
             --等久
-            level = 0,
+            level = 1,
             --魔法书相关
             is_order = 1 ,
             --物品类型
@@ -46,7 +46,7 @@ for key,tab in pairs(ac.magic_item) do
                 hero.effect_wuqi:remove()
             end     
             hero.effect_wuqi = hero:add_effect('hand',self.effect)
-
+            print('使用武器')
             local skl = hero:find_skill(self.name,nil,true)
             if skl and skl.level >=1 then 
                 player:sendMsg('神兵或神甲已入体，不允许重复')
@@ -62,29 +62,31 @@ for key,tab in pairs(ac.magic_item) do
 end
 
 --魔法书
-local mt = ac.skill['神兵']
+local mt = ac.skill['神兵利器']
 mt{
     is_spellbook = 1,
     is_order = 2,
     art = [[sc.blp]],
-    title = '神兵',
+    title = '神兵利器',
     tip = [[
-查看入体神兵
+查看入体神兵利器
     ]],
 }
-mt.skills = ac.magic_item['神兵']
+mt.skills = magic_item['神兵']
 
-local mt = ac.skill['神甲']
+local mt = ac.skill['护天神甲']
 mt{
     is_spellbook = 1,
     is_order = 2,
     art = [[sc.blp]],
-    title = '神甲',
+    title = '护天神甲',
     tip = [[
-查看入体神甲
+查看入体护天神甲
     ]],
 }
-mt.skills = ac.magic_item['神甲']
+mt.skills = magic_item['神甲']
+
+
 
 --解决暗图标 
 -- ac.game:event '物品-创建' (function (_,item)

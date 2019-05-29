@@ -1,30 +1,9 @@
 
 local rect = require 'types.rect'
 
---根据重数 给商店添加10技能，并让第一技能为可点击状态
---单位，重数
-local function add_skill_by_lv(shop,lv)
-    if not ac.devil_deal[lv] then 
-        return 
-    end    
-    for num,value in ipairs(ac.devil_deal[lv]) do    
-        if num <= 4 then 
-            -- print(value[1])
-            shop:add_skill(value[1],'英雄',num + 8 )
-        elseif num <= 8 then 
-            shop:add_skill(value[1],'英雄',num)
-        else
-            shop:add_skill(value[1],'英雄',num - 8)
-        end   
-        if num ==1 then 
-            local skl = shop:find_skill(value[1],'英雄',true)
-            skl:set_level(1)
-        end 
-    end   
-end   
 
 -- 传送 快速达到 兑换 交易
-ac.devil_deal ={
+local devil_deal ={
     --商品名（map.table.单位.商店）,是否激活 属性名，数值，耗费币种，数值，图标,说明
     [1] = {
 {'无所不在lv1',false,'分裂伤害',5,'金币',1000,[[xiaoheiwu.blp]],[[
@@ -192,35 +171,61 @@ ac.devil_deal ={
     ]]},
 },
 }
-for _,tab in ipairs(ac.devil_deal) do 
+
+
+--根据重数 给商店添加10技能，并让第一技能为可点击状态
+--单位，重数
+local function add_skill_by_lv(shop,lv)
+    if not devil_deal[lv] then 
+        return 
+    end    
+    for num,value in ipairs(devil_deal[lv]) do    
+        if num <= 4 then 
+            -- print(value[1])
+            shop:add_skill(value[1],'英雄',num + 8 )
+        elseif num <= 8 then 
+            shop:add_skill(value[1],'英雄',num)
+        else
+            shop:add_skill(value[1],'英雄',num - 8)
+        end   
+        if num ==1 then 
+            local skl = shop:find_skill(value[1],'英雄',true)
+            skl:set_level(1)
+        end 
+    end   
+end   
+
+local mt = ac.skill['魔鬼的交易']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[sc.blp]],
+    title = name,
+    tip = '\n查看 魔鬼的交易',
+}
+for _,tab in ipairs(devil_deal) do 
+    if not mt.skills then 
+        mt.skills ={}
+    end    
+    local name = string.sub(tab[_][1],1,12)
     --每重魔法书
-    -- local mt2 = ac.skill['商城管理']
-    -- mt2{
-    --     is_spellbook = 1,
-    --     is_order = 2,
-    --     art = [[sc.blp]],
-    --     title = '商城管理',
-    --     tip = [[
-    -- 查看商城道具
-    --     ]],
-    -- }
-    -- mt.skills = {
-    --     '天空的宝藏会员','永久超级赞助','天使之光','战斗机器','魔龙之心','金币多多','寻宝小达人','双倍积分卡'
-    -- }
+    table.insert(mt.skills,name)
 
-    -- function mt:on_add()
-    --     local hero = self.owner 
-    --     local player = hero:get_owner()
-    --     -- print('打开魔法书')
-    --     for index,skill in ipairs(self.skill_book) do 
-    --         local count = player.mall[skill.name] 
-    --         if count  then 
-    --             skill:set_level(1)
-    --         end
-    --     end 
-    -- end 
-
+    print('魔鬼的交易',name)
+    local mt2 = ac.skill[name]
+    mt2{
+        is_spellbook = 1,
+        is_order = 2,
+        art = [[sc.blp]],
+        title = name,
+        tip = '\n查看 '..name,
+    }
+    if not mt2.skills then 
+        mt2.skills ={}
+    end    
     for num,value in ipairs(tab) do 
+        --插入到魔法书
+        table.insert(mt2.skills,value[1])
         --物品名称
         local mt = ac.skill[value[1]]
         mt{
@@ -320,7 +325,7 @@ for _,tab in ipairs(ac.devil_deal) do
 end     
 
 ac.game:event '单位-创建商店'(function(trg,shop)
-    print('单位-创建商店',shop)
+    -- print('单位-创建商店',shop)
     local hero 
     if not ac.flag_test_1  then 
         hero = ac.player(1).hero

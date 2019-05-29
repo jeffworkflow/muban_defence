@@ -223,7 +223,7 @@ ac.reward = reward
 
 
 local unit_reward = {
-    ['武器boss1'] = {{rand =100,name = '短剑'}},
+    ['武器boss1'] = {{rand =100,name = '冰剑'}},
     ['武器boss2'] = {{rand =100,name = '鱼饵'}},
     ['武器boss3'] = {{rand =100,name = '凝脂剑'}},
     ['武器boss4'] = {{rand =100,name = '凝脂剑'}},
