@@ -1,5 +1,5 @@
 local time =2
-local max_cnt = 15
+local max_cnt = 20
 local creep_groop={}
 -- 杀鸡儆猴
 local function create_creep()

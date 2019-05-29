@@ -77,10 +77,10 @@ local function task_sjjh(skill)
                 local point = hero:get_point()-{hero:get_facing(),100}--在英雄附近 100 到 400 码 随机点
                 local unit = ac.player(12):create_unit('猴',point)
                 unit:add_buff '定身'{
-                    time = 3
+                    time = 2
                 }
                 unit:add_buff '无敌'{
-                    time = 3
+                    time = 2
                 }
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     local item = ac.item.create_item(self.award_item)

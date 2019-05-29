@@ -27,15 +27,85 @@ end
 ac.devil_deal ={
     --商品名（map.table.单位.商店）,是否激活 属性名，数值，耗费币种，数值，图标,说明
     [1] = {
-{'无所不在lv1',false,'全属性',100,'金币',1000,[[ReplaceableTextures\CommandButtons\BTNTomeBrown.blp]],[[
-%show_tip% \n
-兑换100全属性
+{'无所不在lv1',false,'分裂伤害',5,'金币',1000,[[xiaoheiwu.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV1|r
+
+|cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
+
 ]]
 },
 
-{'无所不在lv2',false,'全属性',200,'金币',1000,[[ReplaceableTextures\CommandButtons\BTNTomeBrown.blp]],[[
-%show_tip% \n
-兑换100全属性
+{'无所不在lv2',false,'分裂伤害',5,'金币',5000,[[xiaoheiwu.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV2|r
+
+|cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
+
+]]},
+
+{'无所不在lv3',false,'分裂伤害',5,'金币',10000,[[xiaoheiwu.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV3|r
+
+|cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
+
+]]},
+
+{'无所不在lv4',false,'分裂伤害',5,'金币',25000,[[xiaoheiwu.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV4|r
+
+|cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
+
+]]},
+
+{'无所不在lv5',false,'分裂伤害',5,'金币',50000,[[xiaoheiwu.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV5|r
+
+|cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
+
+]]},
+
+{'无所不在lv6',false,'攻击速度',5,'金币',70000,[[xiaoheiwu.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV6|r
+
+|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+
+]]},
+
+{'无所不在lv7',false,'攻击速度',5,'金币',80000,[[xiaoheiwu.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV7|r
+
+|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+
+]]},
+
+{'无所不在lv8',false,'攻击速度',5,'金币',90000,[[xiaoheiwu.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV8|r
+
+|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+
+]]},
+
+{'无所不在lv9',false,'攻击速度',5,'金币',100000,[[xiaoheiwu.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV9|r
+
+|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+
+]]},
+
+{'无所不在lvmax',false,'攻击速度',5,'金币',200000,[[xiaoheiwu.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LVmax|r
+
+|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+
 ]]},
 
 
@@ -109,7 +179,7 @@ for _,tab in ipairs(ac.devil_deal) do
         show_tip = function(self)
             local str = ''
             if self.gold then 
-                str = '消耗金币' .. self.gold
+                str = '' .. self.gold .. '金币'
             end   
             if self.kill_count then 
                 str = '消耗杀敌数' .. self.kill_count 
@@ -184,7 +254,7 @@ for _,tab in ipairs(ac.devil_deal) do
 end     
 
 ac.game:event '单位-创建商店'(function(trg,shop)
-    -- print('单位-创建商店',shop)
+    print('单位-创建商店',shop)
     local hero 
     if not ac.flag_test_1  then 
         hero = ac.player(1).hero
