@@ -434,10 +434,10 @@ function mt:get_tip()
 		-- store_title = (self.store_affix or '购买 ')..self.store_name..'|r\n'
 		--否则就是在地上或商店里，地上不用管，商店的话修改出售价格
 		if self:buy_price() > 0 then 
-			gold = '|cffebd43d(价格：'..self:buy_price()..')|r|n'..'\n'
+			gold = '|cffebd43d(花费：'..self:buy_price()..'金币)|r|n'..'\n'
 		end	 
 		if self:buy_mutou() > 0 then 
-			gold = '|cffebd43d(木头：'..self:buy_mutou()..')|r|n'..'\n'
+			gold = '|cffebd43d(花费：'..self:buy_mutou()..'木头)|r|n'..'\n'
 		end	 
 		if self:buy_jifen() > 0 then 
 			--可能会掉线

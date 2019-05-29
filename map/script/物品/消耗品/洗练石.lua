@@ -116,10 +116,11 @@ local mt = ac.skill['套装洗练']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[sc.blp]],
+    art = [[xilianshi.blp]],
     title = '套装洗练',
     tip = [[
-查看 套装洗练
+        
+查看 |cff00ff00套装洗练|r
     ]],
 }
 mt.skills = {
