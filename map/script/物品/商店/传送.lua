@@ -3,16 +3,16 @@ local rect = require 'types.rect'
 -- 传送 快速达到
 ac.quick_arrive ={
     --商品名 = 目的区域,图标,说明,消费钱,消费木头
-    ['神兵-凝脂剑'] = {ac.map.rects['传送-武器1'],'wuqi2.blp','挑着boss',500,10,20} ,
-    ['神兵-元烟剑'] = {ac.map.rects['传送-武器2'],'wuqi18.blp','挑着boss',500} ,
-    ['神兵-暗影'] = {ac.map.rects['传送-武器3'],'wuqi20.blp','挑着boss',500} ,
-    ['神兵-青涛魔剑'] = {ac.map.rects['传送-武器4'],'wuqi19.blp','挑着boss',500} ,
-    ['神兵-青虹紫霄剑'] = {ac.map.rects['传送-武器5'],'wuqi7.blp','挑着boss',500} ,
-    ['神兵-熔炉炎刀'] = {ac.map.rects['传送-武器6'],'wuqi4.blp','挑着boss',500} ,
-    ['神兵-紫炎光剑'] = {ac.map.rects['传送-武器7'],'wuqi6.blp','挑着boss',500} ,
-    ['神兵-封神冰心剑'] = {ac.map.rects['传送-武器8'],'wuqi3.blp','挑着boss',500} ,
-    ['神兵-冰莲穿山剑'] = {ac.map.rects['传送-武器9'],'wuqi15.blp','挑着boss',500} ,
-    ['神兵-十绝冰火剑'] = {ac.map.rects['传送-武器10'],'wuqi17.blp','挑着boss',500} ,
+    ['神兵-凝脂剑'] = {ac.map.rects['传送-武器1'],'wuqi2.blp','挑战BOSS并获得|cff00ff00 一阶神兵-凝脂剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',0,20,0} ,
+    ['神兵-元烟剑'] = {ac.map.rects['传送-武器2'],'wuqi18.blp','挑战BOSS并获得|cff00ff00 二阶神兵-元烟剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
+    ['神兵-暗影'] = {ac.map.rects['传送-武器3'],'wuqi20.blp','挑战BOSS并获得|cff00bdec 三阶神兵-暗影|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
+    ['神兵-青涛魔剑'] = {ac.map.rects['传送-武器4'],'wuqi19.blp','挑战BOSS并获得|cff00bdec 四阶神兵-青涛魔剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
+    ['神兵-青虹紫霄剑'] = {ac.map.rects['传送-武器5'],'wuqi7.blp','挑战BOSS并获得|cffffff00 五阶神兵-青虹紫霄剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
+    ['神兵-熔炉炎刀'] = {ac.map.rects['传送-武器6'],'wuqi4.blp','挑战BOSS并获得|cffffff00 六阶神兵-熔炉炎刀|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
+    ['神兵-紫炎光剑'] = {ac.map.rects['传送-武器7'],'wuqi6.blp','挑战BOSS并获得|cffff0000 七阶神兵-紫炎光剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
+    ['神兵-封神冰心剑'] = {ac.map.rects['传送-武器8'],'wuqi3.blp','挑战BOSS并获得|cffff0000八阶神兵-封神冰心剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
+    ['神兵-冰莲穿山剑'] = {ac.map.rects['传送-武器9'],'wuqi15.blp','挑战BOSS并获得|cffdf19d0 九阶神兵-冰莲穿山剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
+    ['神兵-十绝冰火剑'] = {ac.map.rects['传送-武器10'],'wuqi17.blp','挑战BOSS并获得|cffdf19d0 十阶神兵-十绝冰火剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
 
     ['防具boss1'] = {ac.map.rects['传送-甲1'],'','挑着boss'} ,
     ['防具boss2'] = {ac.map.rects['传送-甲1'],'','挑着boss'} ,
@@ -69,11 +69,11 @@ for key,value in pairs(ac.quick_arrive) do
     target_type = ac.skill.TARGET_TYPE_NONE,
     --冷却
     cool = 0,
-    content_tip = '',
+    content_tip = '|cffFFE799【任务说明】：|r',
     --物品技能
     is_skill = true,
     --商店名词缀
-    store_affix = ''
+    store_affix = '挑战 '
     }
     if value[4] then 
         mt.gold = value[4]

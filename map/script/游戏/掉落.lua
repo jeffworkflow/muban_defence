@@ -223,16 +223,16 @@ ac.reward = reward
 
 
 local unit_reward = {
-    ['武器boss1'] = {{rand =100,name = '冰剑'}},
-    ['武器boss2'] = {{rand =100,name = '鱼饵'}},
-    ['武器boss3'] = {{rand =100,name = '凝脂剑'}},
-    ['武器boss4'] = {{rand =100,name = '凝脂剑'}},
-    ['武器boss5'] = {{rand =100,name = '凝脂剑'}},
-    ['武器boss6'] = {{rand =100,name = '凝脂剑'}},
-    ['武器boss7'] = {{rand =100,name = '凝脂剑'}},
-    ['武器boss8'] = {{rand =100,name = '凝脂剑'}},
-    ['武器boss9'] = {{rand =100,name = '凝脂剑'}},
-    ['武器boss10'] = {{rand =100,name = '凝脂剑'}},
+    ['武器boss1'] = {{rand =100,name = '凝脂剑'}},
+    ['武器boss2'] = {{rand =100,name = '元烟剑'}},
+    ['武器boss3'] = {{rand =100,name = '暗影'}},
+    ['武器boss4'] = {{rand =100,name = '青涛魔剑'}},
+    ['武器boss5'] = {{rand =100,name = '青虹紫霄剑'}},
+    ['武器boss6'] = {{rand =100,name = '熔炉炎刀'}},
+    ['武器boss7'] = {{rand =100,name = '紫炎光剑'}},
+    ['武器boss8'] = {{rand =100,name = '封神冰心剑'}},
+    ['武器boss9'] = {{rand =100,name = '冰莲穿山剑'}},
+    ['武器boss10'] = {{rand =100,name = '十绝冰火剑'}},
 
     ['技能BOSS1'] = {{rand =100,name = '技能升级书Lv1'}},
     ['技能BOSS2'] = {{rand =100,name = '技能升级书Lv2'}},

@@ -95,7 +95,6 @@ local devil_deal ={
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv1|r
     
 |cffFFE799【奖励】|r|cff00ff00+50w攻击|r
-    
     ]]},
 
 {'无所不知lv2',false,'每秒加攻击',300,'木头',50,[[minjie.blp]],[[
@@ -103,7 +102,6 @@ local devil_deal ={
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv2|r
     
 |cffFFE799【奖励】|r|cff00ff00+300每秒加攻击|r
-    
     ]]},
 
 {'无所不知lv3',false,'杀怪加攻击',30,'木头',100,[[minjie.blp]],[[
@@ -111,7 +109,6 @@ local devil_deal ={
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv3|r
     
 |cffFFE799【奖励】|r|cff00ff00+30杀怪加攻击|r
-    
     ]]},
 
 {'无所不知lv4',false,'每秒加攻击',300,'木头',200,[[minjie.blp]],[[
@@ -119,7 +116,6 @@ local devil_deal ={
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv4|r
     
 |cffFFE799【奖励】|r|cff00ff00+300每秒加攻击|r
-    
     ]]},
 
 {'无所不知lv5',false,'杀怪加攻击',30,'木头',300,[[minjie.blp]],[[
@@ -127,7 +123,6 @@ local devil_deal ={
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv5|r
     
 |cffFFE799【奖励】|r|cff00ff00+30杀怪加攻击|r
-    
     ]]},
 
 {'无所不知lv6',false,'攻击速度',5,'木头',400,[[minjie.blp]],[[
@@ -135,7 +130,6 @@ local devil_deal ={
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv6|r
     
 |cffFFE799【奖励】|r|cff00ff00+5%攻速|r
-    
     ]]},
 
  {'无所不知lv7',false,'攻击速度',5,'木头',500,[[minjie.blp]],[[
@@ -143,7 +137,6 @@ local devil_deal ={
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv7|r
     
 |cffFFE799【奖励】|r|cff00ff00+5%攻速|r
-    
     ]]},
 
 {'无所不知lv8',false,'攻击速度',5,'木头',600,[[minjie.blp]],[[
@@ -151,7 +144,6 @@ local devil_deal ={
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv8|r
     
 |cffFFE799【奖励】|r|cff00ff00+5%攻速|r
-    
     ]]},
 
 {'无所不知lv9',false,'攻击速度',5,'木头',700,[[minjie.blp]],[[
@@ -159,7 +151,6 @@ local devil_deal ={
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv9|r
     
 |cffFFE799【奖励】|r|cff00ff00+5%攻速|r
-    
     ]]},
 
 {'无所不知lvmax',false,'攻击速度',5,'木头',800,[[minjie.blp]],[[
@@ -167,7 +158,6 @@ local devil_deal ={
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lvmax|r
     
 |cffFFE799【奖励】|r|cff00ff00+5%攻速|r
-    
     ]]},
 },
 }
@@ -199,9 +189,9 @@ local mt = ac.skill['魔鬼的交易']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[sc.blp]],
+    art = [[mgdjy.blp]],
     title = name,
-    tip = '\n查看 魔鬼的交易',
+    tip = '\n查看 |cff00ff00魔鬼的交易\n|r',
 }
 for _,tab in ipairs(devil_deal) do 
     if not mt.skills then 
@@ -216,9 +206,9 @@ for _,tab in ipairs(devil_deal) do
     mt2{
         is_spellbook = 1,
         is_order = 2,
-        art = [[sc.blp]],
+        art = tab[_][7],
         title = name,
-        tip = '\n查看 '..name,
+        tip = '\n查看 |cff00ff00'.. name ..'\n|r',
     }
     if not mt2.skills then 
         mt2.skills ={}

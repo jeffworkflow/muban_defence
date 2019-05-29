@@ -4,13 +4,14 @@ local mt = ac.skill['成长之路']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[sc.blp]],
+    art = [[czzl.blp]],
     title = '成长之路',
     tip = [[
-查看成长之路
+
+点击查看 |cff00ff00成长之路|r
     ]],
 }
-mt.skills = {'吞噬神丹','魔鬼的交易','神兵利器','护天护甲','境界突破','套装洗练','神技入体'}
+mt.skills = {'魔鬼的交易','神兵利器','护天神甲','套装洗练','境界突破'}
 
 ac.game:event '玩家-注册英雄' (function(_, player, hero)
 	--移动英雄天赋位置	

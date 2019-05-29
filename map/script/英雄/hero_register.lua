@@ -59,7 +59,7 @@ local function hero_register_main()
 	ac.game:event '玩家-注册英雄' (function(_, player, hero)
 		-- SelectUnitForPlayerSingle(hero.handle,player.handle)
 		-- 统一设置搜敌范围
-		hero:set_search_range(1000)
+		hero:set_search_range(500)
 		--添加技能
 		hero:add_all_hero_skills()
 
