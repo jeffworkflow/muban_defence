@@ -29,7 +29,7 @@ ac.devil_deal ={
     [1] = {
 {'无所不在lv1',false,'分裂伤害',5,'金币',1000,[[xiaoheiwu.blp]],[[
 
-|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV1|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv1|r
 
 |cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
 
@@ -38,7 +38,7 @@ ac.devil_deal ={
 
 {'无所不在lv2',false,'分裂伤害',5,'金币',5000,[[xiaoheiwu.blp]],[[
 
-|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV2|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv2|r
 
 |cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
 
@@ -46,7 +46,7 @@ ac.devil_deal ={
 
 {'无所不在lv3',false,'分裂伤害',5,'金币',10000,[[xiaoheiwu.blp]],[[
 
-|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV3|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv3|r
 
 |cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
 
@@ -54,7 +54,7 @@ ac.devil_deal ={
 
 {'无所不在lv4',false,'分裂伤害',5,'金币',25000,[[xiaoheiwu.blp]],[[
 
-|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV4|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv4|r
 
 |cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
 
@@ -62,7 +62,7 @@ ac.devil_deal ={
 
 {'无所不在lv5',false,'分裂伤害',5,'金币',50000,[[xiaoheiwu.blp]],[[
 
-|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV5|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv5|r
 
 |cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
 
@@ -70,7 +70,7 @@ ac.devil_deal ={
 
 {'无所不在lv6',false,'攻击速度',5,'金币',70000,[[xiaoheiwu.blp]],[[
 
-|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV6|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv6|r
 
 |cffFFE799【奖励】|r|cff00ff00+5%攻速|r
 
@@ -78,7 +78,7 @@ ac.devil_deal ={
 
 {'无所不在lv7',false,'攻击速度',5,'金币',80000,[[xiaoheiwu.blp]],[[
 
-|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV7|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv7|r
 
 |cffFFE799【奖励】|r|cff00ff00+5%攻速|r
 
@@ -86,7 +86,7 @@ ac.devil_deal ={
 
 {'无所不在lv8',false,'攻击速度',5,'金币',90000,[[xiaoheiwu.blp]],[[
 
-|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV8|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv8|r
 
 |cffFFE799【奖励】|r|cff00ff00+5%攻速|r
 
@@ -94,7 +94,7 @@ ac.devil_deal ={
 
 {'无所不在lv9',false,'攻击速度',5,'金币',100000,[[xiaoheiwu.blp]],[[
 
-|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LV9|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv9|r
 
 |cffFFE799【奖励】|r|cff00ff00+5%攻速|r
 
@@ -102,7 +102,7 @@ ac.devil_deal ={
 
 {'无所不在lvmax',false,'攻击速度',5,'金币',200000,[[xiaoheiwu.blp]],[[
 
-|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在LVmax|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lvmax|r
 
 |cffFFE799【奖励】|r|cff00ff00+5%攻速|r
 
@@ -111,21 +111,87 @@ ac.devil_deal ={
 
 } ,
     [2] = {
-{'无所不能lv1',false,'力量',1000,'金币',1000,[[ReplaceableTextures\CommandButtons\BTNTomeBrown.blp]],[[
-%show_tip% \n
-兑换100全属性
-]]},
+{'无所不知lv1',false,'攻击',500000,'木头',25,[[minjie.blp]],[[
 
-{'无所不能lv2',false,'全属性',1000,'金币',1000,[[ReplaceableTextures\CommandButtons\BTNTomeBrown.blp]],[[
-%show_tip% \n
-兑换100全属性
-]]},
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv1|r
+    
+|cffFFE799【奖励】|r|cff00ff00+50w攻击|r
+    
+    ]]},
 
-} ,
-   
-   
+{'无所不知lv2',false,'每秒加攻击',300,'木头',50,[[minjie.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv2|r
+    
+|cffFFE799【奖励】|r|cff00ff00+300每秒加攻击|r
+    
+    ]]},
+
+{'无所不知lv3',false,'杀怪加攻击',30,'木头',100,[[minjie.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv3|r
+    
+|cffFFE799【奖励】|r|cff00ff00+30杀怪加攻击|r
+    
+    ]]},
+
+{'无所不知lv4',false,'每秒加攻击',300,'木头',200,[[minjie.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv4|r
+    
+|cffFFE799【奖励】|r|cff00ff00+300每秒加攻击|r
+    
+    ]]},
+
+{'无所不知lv5',false,'杀怪加攻击',30,'木头',300,[[minjie.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv5|r
+    
+|cffFFE799【奖励】|r|cff00ff00+30杀怪加攻击|r
+    
+    ]]},
+
+{'无所不知lv6',false,'攻击速度',5,'木头',400,[[minjie.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv6|r
+    
+|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+    
+    ]]},
+
+ {'无所不知lv7',false,'攻击速度',5,'木头',500,[[minjie.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv7|r
+    
+|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+    
+    ]]},
+
+{'无所不知lv8',false,'攻击速度',5,'木头',600,[[minjie.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv8|r
+    
+|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+    
+    ]]},
+
+{'无所不知lv9',false,'攻击速度',5,'木头',700,[[minjie.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv9|r
+    
+|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+    
+    ]]},
+
+{'无所不知lvmax',false,'攻击速度',5,'木头',800,[[minjie.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lvmax|r
+    
+|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+    
+    ]]},
+},
 }
-
 for _,tab in ipairs(ac.devil_deal) do 
     --每重魔法书
     -- local mt2 = ac.skill['商城管理']

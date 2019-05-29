@@ -79,7 +79,7 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 		--护甲公式相关
 		local function get_defence_by_lv (lv)
 			if lv > 1 then 
-				return ( get_defence_by_lv(lv-1) + 1 ) * 1.03 + 0
+				return ( get_defence_by_lv(lv-1)) * 1 + 0
 			else 
 				return 1
 			end	 

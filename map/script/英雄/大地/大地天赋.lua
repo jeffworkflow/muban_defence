@@ -1,4 +1,4 @@
-local mt = ac.skill['山丘王天赋']
+local mt = ac.skill['大地天赋']
 mt{
     --必填
     is_skill = true,
@@ -20,7 +20,7 @@ mt{
 end,
 	--属性加成
  ['杀怪加全属性'] = {10,20,30,40,50},
- ['护甲'] = 25,
+ ['护甲'] = 500,
  ['伤害减少'] = 5000,
 	--介绍
 	tip = [[|cffffff00【杀怪加全属性】+10*Lv
@@ -32,7 +32,7 @@ end,
 
 |cff00ff00凌波微步：按D向鼠标方向飘逸500码距离|r]],
 	--技能图标
-	art = [[ReplaceableTextures\CommandButtons\BTNHeroMountainKing.blp]],
+	art = [[ReplaceableTextures\CommandButtons\BTNEarthBrewmaster.blp]],
 	--特效
 	effect = [[jn_tf1.mdx]],
 }

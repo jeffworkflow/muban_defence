@@ -89,6 +89,7 @@ for key,value in pairs(ac.quick_arrive) do
         local p = hero:get_owner()
         local rect = self.target_rect
         -- print(rect)
+        hero = p.hero
         hero:blink(rect,true,false,true)
     end
 

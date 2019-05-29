@@ -7,7 +7,7 @@ local slk = require 'jass.slk'
 hero.hero_list = {
 	'剑圣',
 	'吉安娜',
-	'山丘王',
+	'大地',
 	'希尔瓦娜斯',
 	'炼金术士',
 	'阿尔塞斯',

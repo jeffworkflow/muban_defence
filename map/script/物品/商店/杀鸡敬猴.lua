@@ -68,7 +68,7 @@ local function task_sjjh(skill)
                 hero:add('杀怪加金币',self.award_gold)
                 hero:add('攻击加金币',self.award_gold)
                 hero:add('每秒加金币',self.award_gold)
-                p:sendMsg('|cffFFE799【系统提示】|r完成杀鸡任务：|cffff0000'..cnt.. '|r/5,获得|cff00ff00杀怪+50金币，攻击+50金币，每秒+50金币|r',2)
+                p:sendMsg('|cffFFE799【系统提示】|r完成杀鸡任务：|cffff0000'..cnt.. '|r/5，获得|cff00ff00杀怪+50金币，攻击+50金币，每秒+50金币|r',2)
             end
 
             if p.sjjh_cnt == self.kill_cnt then
