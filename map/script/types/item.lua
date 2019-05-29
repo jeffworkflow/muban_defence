@@ -255,13 +255,13 @@ end
 
 --获取购买木头
 function mt:buy_mutou()
-	return self.mutou or 0
+	return self.wood or 0
 end
 
 --获取出售木头
 function mt:sell_mutou()
 	local count = self:get_item_count()
-	local mutou = self.mutou
+	local mutou = self.wood
 	if count > 1 then
 		mutou = mutou * count
 	end
@@ -377,7 +377,11 @@ function mt:item_init_skill()
 	local lv = self.level
 	self.level = 0
 	self:upgrade(lv)
+	-- print(self.level,lv)
+	-- print()
 	self:fresh()
+	--修复按图标，物品类的只有亮图标
+	self:set_art(self.art)
 	japi.EXSetAbilityDataReal(self:get_handle(), 1, 0x69, self.cool or 0)
 	self.is_skill_init = true
 end

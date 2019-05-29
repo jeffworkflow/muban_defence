@@ -6,9 +6,11 @@ require '物品.消耗品.新手礼包'
 require '物品.消耗品.召唤boss'
 require '物品.消耗品.召唤练功怪'
 
-require '物品.消耗品.恶魔果实'
+-- require '物品.消耗品.恶魔果实'
 require '物品.消耗品.抽奖券'
 
 require '物品.消耗品.神兵神甲'
 require '物品.消耗品.技能升级书'
 require '物品.消耗品.洗练石'
+
+require '物品.消耗品.神技入体'

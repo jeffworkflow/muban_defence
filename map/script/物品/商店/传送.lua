@@ -3,7 +3,7 @@ local rect = require 'types.rect'
 -- 传送 快速达到
 ac.quick_arrive ={
     --商品名 = 目的区域,图标,说明,消费钱,消费木头
-    ['神兵-凝脂剑'] = {ac.map.rects['传送-武器1'],'wuqi2.blp','挑着boss',500} ,
+    ['神兵-凝脂剑'] = {ac.map.rects['传送-武器1'],'wuqi2.blp','挑着boss',500,10,20} ,
     ['神兵-元烟剑'] = {ac.map.rects['传送-武器2'],'wuqi18.blp','挑着boss',500} ,
     ['神兵-暗影'] = {ac.map.rects['传送-武器3'],'wuqi20.blp','挑着boss',500} ,
     ['神兵-青涛魔剑'] = {ac.map.rects['传送-武器4'],'wuqi19.blp','挑着boss',500} ,

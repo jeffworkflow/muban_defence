@@ -26,11 +26,6 @@ end,
 	tip = [[|cff00bdec被动效果：攻击15%几率造成范围技能伤害,并晕眩1S
 伤害公式：（敏捷*10+10000）*5|r]],
 
-    --技能目标
-    target_type = ac.skill.TARGET_TYPE_POINT,
-    --施法距离
-    range = 800,
-
     --技能图标
     art = [[ReplaceableTextures\CommandButtons\BTNImpale.blp]],
     --特效

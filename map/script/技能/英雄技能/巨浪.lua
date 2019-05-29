@@ -13,6 +13,8 @@ mt{
    damage_area = 500,
 	--技能类型
 	skill_type = "被动,力量",
+	--技能图标
+	art = [[icon\3.blp]],
 	--被动
 	passive = true,
 	--伤害

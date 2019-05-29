@@ -41,7 +41,14 @@ ac.game:event '技能-获得' (function (_,hero,self)
 end)
 
 ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
+    if type(book_skill) == 'string' then 
+        book_skill = hero:find_skill(book_skill,nil,true)
+    end    
+    if not book_skill then 
+        return 
+    end 
     local self = book_skill
+
     -- print(hero,book_skill,skl)
     local player = hero:get_owner()
     local page_type = self:get_type() .. '_' .. string.format("%01x",book_skill.slotid)

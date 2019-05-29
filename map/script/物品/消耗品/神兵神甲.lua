@@ -10,7 +10,7 @@ for key,tab in pairs(magic_item) do
         local mt = ac.skill[value]
         mt{
             --等久
-            level = 1,
+            level = 0,
             --魔法书相关
             is_order = 1 ,
             --物品类型
