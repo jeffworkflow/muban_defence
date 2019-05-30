@@ -87,7 +87,7 @@ local function task_sjjh(skill)
                     item.owner_ship = hero 
                     hero:add_item(item,true)
                 end)    
-                p:sendMsg('|cffffff00【系统提示】|r|cffff0000齐天大圣|r已出现，小心他的金箍棒 ',5)
+                p:sendMsg('|cffFFE799【系统提示】|r|cffff0000齐天大圣|r已出现，小心他的金箍棒 ',5)
 
                 --移除触发
                 trg:remove()

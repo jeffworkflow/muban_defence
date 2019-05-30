@@ -12,7 +12,7 @@ tip = [[1木头换1W金币
 --物品类型
 item_type = '神符',
 --售价 500000
-mutou = 1,
+wood = 1,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却

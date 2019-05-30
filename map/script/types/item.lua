@@ -261,19 +261,19 @@ function mt:sell_price()
 end
 
 --获取购买木头
-function mt:buy_mutou()
+function mt:buy_wood()
 	return self.wood or 0
 end
 
 --获取出售木头
-function mt:sell_mutou()
+function mt:sell_wood()
 	local count = self:get_item_count()
-	local mutou = self.wood
+	local wood = self.wood
 	if count > 1 then
-		mutou = mutou * count
+		wood = wood * count
 	end
-	mutou = math.floor(mutou * self.discount)
-	return mutou
+	wood = math.floor(wood * self.discount)
+	return wood
 end
 
 --获取购买杀敌数

@@ -4,7 +4,7 @@ local magic_item = {
     ['神兵'] ={'凝脂剑','元烟剑','暗影','青涛魔剑','青虹紫霄剑','熔炉炎刀','紫炎光剑','封神冰心剑','冰莲穿山剑','十绝冰火剑'},
     ['神甲'] ={'芙蓉甲','鱼鳞甲','碧云甲','青霞甲','飞霜辉铜甲','天魔苍雷甲','金刚断脉甲','丹霞真元甲','血焰赤阳甲','神魔蚀日甲'}
 }
-ac.magic_item= magic_item
+ac.magic_item = magic_item
 for key,tab in pairs(magic_item) do 
     for i,value in ipairs(tab) do 
         local mt = ac.skill[value]
@@ -50,7 +50,7 @@ for key,tab in pairs(magic_item) do
             print('使用武器')
             local skl = hero:find_skill(self.name,nil,true)
             if skl and skl.level >=1 then 
-                player:sendMsg('神兵或神甲已入体，不允许重复')
+                player:sendMsg('|cffff0000激活失败|r，该神器已被激活，可以在神器系统中查看')
                 --需要先增加一个，否则消耗品点击则无条件先消耗
                 if self.add_item_count then 
                     self:add_item_count(1) 
@@ -60,6 +60,7 @@ for key,tab in pairs(magic_item) do
             skl:set_level(1)
             skl:set('extr_tip','|cff00ff00已激活|r')
         end
+        
     end
 end
 

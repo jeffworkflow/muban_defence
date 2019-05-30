@@ -245,8 +245,8 @@ for _,tab in ipairs(devil_deal) do
             if self.kill_count then 
                 str = '消耗杀敌数' .. self.kill_count 
             end   
-            if self.mutou then 
-                str = '消耗木头' .. self.mutou
+            if self.wood then 
+                str = '' .. self.wood .. '木头'
             end    
             return str
         end,
@@ -261,7 +261,7 @@ for _,tab in ipairs(devil_deal) do
             mt.kill_count = tonumber(value[6])
         end
         if value[5]=='木头' then
-            mt.mutou = tonumber(value[6])
+            mt.wood = tonumber(value[6])
         end   
 
         --模拟商店点击

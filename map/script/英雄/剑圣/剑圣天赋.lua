@@ -9,7 +9,7 @@ mt{
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率')/100) end,
     --伤害范围
-   damage_area = 500,
+   damage_area = 800,
 	--技能类型
 	skill_type = "天赋",
 	--被动
@@ -51,7 +51,7 @@ function mt:on_add()
 			ac.effect(damage.source:get_point(),skill.effect,angle,1,'origin'):remove()
 			--计算伤害
 			for _,unit in ac.selector()
-			: in_sector(hero:get_point(),self.damage_area,angle,120)
+			: in_sector(hero:get_point(),self.damage_area,angle,95 )
 			: is_enemy(hero)
 			: ipairs()
 			do 

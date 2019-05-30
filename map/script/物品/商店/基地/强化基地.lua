@@ -17,7 +17,7 @@ tip = [[提升基地%defence% %护甲 和 %life% %生命上限
 --物品类型
 item_type = '神符',
 --售价
-mutou = 5000,
+wood = 5000,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
