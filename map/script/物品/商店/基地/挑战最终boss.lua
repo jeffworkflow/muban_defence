@@ -15,7 +15,7 @@ item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --售价 500000
-mutou = 50000,
+wood = 50000,
 --冷却
 cool = 0,
 content_tip = '',

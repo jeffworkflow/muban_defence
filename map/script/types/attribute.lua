@@ -348,7 +348,7 @@ end
 local main_attribute_value = 1
 --力量 
 local str_hp = 5
-local str_hp_recover = 0
+local str_hp_recover = 0.01
 local str_phy_split_damage = 0
 
 --敏捷
@@ -361,7 +361,7 @@ local agi_attack = 0.5
 local int_mp = 8
 local int_mp_recover = 0.08
 local int_explosion = 0.00
-local int_skill_base_damage = 1
+local int_skill_base_damage = 0.5
 
 
 get['力量'] = function(self)

@@ -282,7 +282,7 @@ local function start()
 				p:setCameraField('CAMERA_FIELD_ROTATION', 90)
 				p:showInterface(1)
 				--镜头动画
-				p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 1500, 1)
+				p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 1600, 1)
 				p:setCameraBounds(minx-400, miny-400, maxx+400, maxy+400)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
 	
 				--允许框选
@@ -293,7 +293,7 @@ local function start()
 	
 				--强制镜头高度
 				ac.wait(1000, function()
-					p.camera_high = 1500
+					p.camera_high = 1600
 				end)
 			end)
 		end

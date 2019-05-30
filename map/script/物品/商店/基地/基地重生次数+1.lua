@@ -17,7 +17,7 @@ tip = [[基地重生次数+1
 --物品类型
 item_type = '神符',
 --售价 500000
-mutou = 50000,
+wood = 50000,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却

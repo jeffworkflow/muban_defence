@@ -142,7 +142,7 @@
         --先判断钱是否够
         local player = u.owner
         local gold = u.owner.gold
-        local mutou = player:get_wood()
+        local wood = player:get_wood()
         local kill_count = player.kill_count or 0
         local jifen = 0
         it.seller = seller
@@ -151,7 +151,7 @@
         end
 
         local golds = it:buy_price()
-        local mutous = it:buy_mutou()
+        local woods = it:buy_wood()
         local kill_counts = it:buy_kill_count()
         local jifens = it:buy_jifen()
         --如果有玩家自身价格，则售价为玩家自身价
@@ -162,7 +162,7 @@
             u:get_owner():sendMsg('钱不够')
             return
         end 
-        if mutou < mutous then
+        if wood < woods then
             u:get_owner():sendMsg('木头不够')
             return
         end
@@ -205,7 +205,7 @@
         if u.buy_suc then 
             -- print('扣钱')
             player:addGold( - golds,u)
-            player:add_wood( - mutous)
+            player:add_wood( - woods)
             player.kill_count =  player.kill_count - kill_counts
 
             if jifens > 0 then 

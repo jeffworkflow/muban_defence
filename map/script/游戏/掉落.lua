@@ -234,6 +234,17 @@ local unit_reward = {
     ['武器boss9'] = {{rand =100,name = '冰莲穿山剑'}},
     ['武器boss10'] = {{rand =100,name = '十绝冰火剑'}},
 
+    ['防具boss1'] = {{rand =100,name = '芙蓉甲'}},
+    ['防具boss2'] = {{rand =100,name = '鱼鳞甲'}},
+    ['防具boss3'] = {{rand =100,name = '碧云甲'}},
+    ['防具boss4'] = {{rand =100,name = '青霞甲'}},
+    ['防具boss5'] = {{rand =100,name = '飞霜辉铜甲'}},
+    ['防具boss6'] = {{rand =100,name = '天魔苍雷甲'}},
+    ['防具boss7'] = {{rand =100,name = '金刚断脉甲'}},
+    ['防具boss8'] = {{rand =100,name = '丹霞真元甲'}},
+    ['防具boss9'] = {{rand =100,name = '血焰赤阳甲'}},
+    ['防具boss10'] = {{rand =100,name = '神魔蚀日甲'}},
+
     ['技能BOSS1'] = {{rand =100,name = '技能升级书Lv1'}},
     ['技能BOSS2'] = {{rand =100,name = '技能升级书Lv2'}},
     ['技能BOSS3'] = {{rand =100,name = '技能升级书Lv3'}},
