@@ -13,13 +13,18 @@ mt{
 	--技能类型
 	skill_type = "被动,隐身",
 	--被动
-	passive = true,
-	--耗蓝
-	cost = 100,
+    passive = true,
+    
+    title = "|cffdf19d0强化后的疾步风|r",
+
+    art = [[qhjbf.blp]],
+
 	--冷却时间
 	cool = 20,
 	--介绍
-	tip = [[|cff00bdec被动效果：攻击15%几率让自己隐身,持续0.3S|r]],
+    tip = [[|cff00bdec被动效果：攻击15%几率让自己隐身,持续0.3S|r
+    
+]],
 	--隐身时间
 	stand_time = 0.3,
 	--移动速度

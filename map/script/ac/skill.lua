@@ -820,7 +820,7 @@ function mt:get_cd_tip(hero, level, need_level)
 	if cool == 0 then
 		return ''
 	end
-	return '\n|cff3399ff' .. word .. '|r: ' .. format_number(cool)
+	return '|cff3399ff' .. word .. '|r: ' .. format_number(cool)
 end
 
 --获取目标类型说明

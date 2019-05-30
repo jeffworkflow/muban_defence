@@ -23,7 +23,9 @@ mt{
 end,
 	--介绍
 	tip = [[|cff00bdec主动施放：对周围敌人造成范围技能伤害,并晕眩1S
-伤害公式：（敏捷*10+10000）*Lv*5|r]],
+伤害公式：（敏捷*10+10000）*Lv*5|r
+
+]],
 
 	--技能目标
 	target_type = ac.skill.TARGET_TYPE_POINT,

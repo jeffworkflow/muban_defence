@@ -23,7 +23,7 @@ function ac.item.create_skill_item(name,poi,is)
 
     item:set_name(name) 
     item.skill_name = name
-    item.tip =  tip .. '|n|cff808080点击学习或升级技能，学满8个后可替换已学技能|r \n宠物可帮忙学|r' 
+    item.tip =  tip .. '|cff808080当技能学满后，点击可替换已学技能|r' 
     item:set_art(art)
     item.art = art
 	--混合图标处理

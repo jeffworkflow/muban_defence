@@ -14,14 +14,15 @@ mt{
 	skill_type = "被动,肉",
 	--被动
 	passive = true,
-	--耗蓝
-	cost = 100,
+    title = "|cffdf19d0强化后的水疗术|r",
 	--冷却时间
 	cool = 20,
 	--介绍
-	tip = [[|cff00bdec被动效果：攻击15%几率 回复12%的生命值|r]],
+    tip = [[|cff00bdec被动效果：攻击15%几率 回复12%的生命值|r
+    
+]],
 	--技能图标
-	art = [[sls.blp]],
+	art = [[qhsls.blp]],
 	--特效
     effect = [[Abilities\Spells\Human\HolyBolt\HolyBoltSpecialArt.mdl]],
     --补血量

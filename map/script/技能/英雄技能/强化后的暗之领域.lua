@@ -11,11 +11,14 @@ mt{
     --伤害范围
    damage_area = 500,
 	--技能类型
-	skill_type = "被动,降低护甲",
+    skill_type = "被动,降低护甲",
+    title = "|cffdf19d0强化后的暗之领域|r",
 	--被动
 	passive = true,
 	--介绍
-	tip = [[|cffffff00被动效果：攻击15%几率降低周围敌人35%护甲，持续0.5秒|r]],
+    tip = [[|cffffff00被动效果：攻击15%几率降低周围敌人35%护甲，持续0.5秒|r
+    
+]],
 	--技能图标
     art = [[qhazly.blp]],
     time = 0.5,

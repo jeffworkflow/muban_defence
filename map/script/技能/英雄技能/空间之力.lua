@@ -24,7 +24,9 @@ end,
 	tip = [[|cffffff00【每秒加全属性】+250*Lv|r
 
 |cff00bdec被动效果：攻击8%几率造成范围技能伤害
-伤害公式：（全属性*5+10000）*Lv|r]],
+伤害公式：（全属性*5+10000）*Lv|r
+
+]],
     --模型
     model = [[AZ_Goods_TP_Target_effect.MDX]],
     art =[[kongjianzhili.blp]],
@@ -88,7 +90,6 @@ end
 function mt:on_remove()
     local hero = self.owner
     hero.range_attack_start = hero.oldfunc
-    self.trg1:remove()
     self.trg:remove()
 end
 

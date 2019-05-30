@@ -16,6 +16,7 @@ mt{
 	cost = 100,
 	--冷却时间
 	cool = 15,
+	art = [[jineng\jineng006.blp]],
 	--伤害
 	damage = function(self)
   return (self.owner:get('力量')*10+10000)* self.level*5
@@ -30,10 +31,12 @@ end,
 【杀怪加力量】+50*Lv|r
 
 |cff00bdec主动施放：对周围敌人造成范围技能伤害
-伤害公式：（力量*10+10000）*Lv*5|r]],
+伤害公式：（力量*10+10000）*Lv*5|r
+
+]],
 	--特效
     effect = [[GoblinTech_R.mdx]],
-    damage_type = '法术'
+    damage_type = '法术',
 }
 function mt:on_add()
     local skill = self

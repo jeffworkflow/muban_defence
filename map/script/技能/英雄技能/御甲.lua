@@ -24,7 +24,9 @@ end,
    tip = [[|cffffff00【攻击加力量】+200*Lv|r
 
 |cff00bdec被动效果：攻击10%几率造成范围技能伤害
-伤害公式：（力量*10+10000）*Lv|r]],
+伤害公式：（力量*10+10000）*Lv|r
+
+]],
 
 	--cd
 	cool = 1,
@@ -33,7 +35,7 @@ end,
     count = 5,
 
     --图标
-    art = 'yujia.blp',
+    art = [[yujia.blp]],
 	--爆炸半径
     hit_area = function(self,hero)
         if hero then 

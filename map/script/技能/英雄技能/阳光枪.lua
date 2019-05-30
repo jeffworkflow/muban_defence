@@ -23,6 +23,10 @@ end,
 	
 	--技能图标
 	art = [[icon\card1_28.blp]],
+
+	tip = [[|cffffff00【闪避】+3%*Lv|r
+	
+]],
 	
 	--范围
 	hit_area = 150,

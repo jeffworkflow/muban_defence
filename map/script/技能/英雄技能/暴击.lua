@@ -20,7 +20,9 @@ mt{
 	['暴击加深'] = {20,40,60,80,100},
 	--介绍
 	tip = [[|cffffff00【暴击几率】+2%*Lv
-	【暴击加深】+20%*Lv|r]],
+	【暴击加深】+20%*Lv|r
+	
+]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNCriticalStrike.blp]],
 

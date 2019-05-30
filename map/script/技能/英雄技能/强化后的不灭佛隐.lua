@@ -14,14 +14,16 @@ mt{
    damage_area = 500,
 	--技能类型
 	skill_type = "被动,无敌",
-	--耗蓝
-	cost = 100,
+
 	--冷却时间
-	cool = 20,
+    cool = 20,
+    title = "|cffdf19d0强化后的不灭佛隐|r",
 	--介绍
-	tip = [[|cff00bdec被动效果：攻击15%几率触发，接下来受到的2次伤害必定免伤|r]],
+    tip = [[|cff00bdec被动效果：攻击15%几率触发，接下来受到的2次伤害必定免伤|r
+    
+]],
 	--技能图标
-    art = [[bmfy.blp]],
+    art = [[qhbmfy.blp]],
     value = 10,
 	--特效
 	effect = [[1]],

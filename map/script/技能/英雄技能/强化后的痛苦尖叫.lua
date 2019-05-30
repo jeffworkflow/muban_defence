@@ -14,10 +14,11 @@ mt{
 	skill_type = "被动,智力",
 	--被动
 	passive = true,
-	--耗蓝
-	cost = 100,
+	title = "|cffdf19d0强化后的疾步风|r",
+
 	--冷却时间
 	cool = 15,
+	
 	--伤害
 	damage = function(self)
   return (self.owner:get('智力')*10+10000)* self.level
@@ -32,9 +33,11 @@ end,
 【杀怪加智力】+50*Lv|r
 
 |cff00bdec被动效果：攻击15%几率造成范围技能伤害
-伤害公式：（智力*10+10000）*Lv|r]],
+伤害公式：（智力*10+10000）*Lv|r
+
+]],
 	--技能图标
-	art = [[ReplaceableTextures\CommandButtons\BTNPossession.blp]],
+	art = [[qhtkjj.blp]],
 	--特效
 	effect = [[Abilities\Spells\Undead\Possession\PossessionMissile.mdl]],
 	

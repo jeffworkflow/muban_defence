@@ -24,9 +24,12 @@ end,
 	tip = [[|cffffff00【杀怪加全属性】+35*Lv|r
 
 |cff00bdec被动效果：攻击8%几率造成范围技能伤害
-伤害公式：（全属性*5+10000）*Lv|r]],
+伤害公式：（全属性*5+10000）*Lv|r
+
+]],
 	--特效
 	effect = [[AZ_TS_V2.MDX]],
+	art = [[xysz.blp]],
 }
 function mt:on_add()
     local skill = self

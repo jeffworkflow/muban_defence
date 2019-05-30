@@ -17,9 +17,11 @@ mt{
 	--属性加成
  ['闪避'] = {3,6,9,12,15},
 	--介绍
-	tip = [[|cffffff00【闪避】+3%*Lv|r]],
+    tip = [[|cffffff00【闪避】+3%*Lv|r
+    
+]],
 	--技能图标
-	art = [[参考天空的宝藏]],
+	art = [[ReplaceableTextures\PassiveButtons\PASBTNEvasion.blp]],
 }
 function mt:on_add()
     local skill = self

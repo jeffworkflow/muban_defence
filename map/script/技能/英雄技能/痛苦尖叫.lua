@@ -30,7 +30,9 @@ end,
 【杀怪加智力】+50*Lv|r
 
 |cff00bdec主动施放：对周围敌人造成范围技能伤害
-伤害公式：（智力*10+10000）*Lv*5|r]],
+伤害公式：（智力*10+10000）*Lv*5|r
+
+]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNPossession.blp]],
 	--特效

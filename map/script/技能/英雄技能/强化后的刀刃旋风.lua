@@ -14,8 +14,9 @@ mt{
 	skill_type = "被动,敏捷",
 	--被动
 	passive = true,
-	--耗蓝
-	cost = 100,
+
+	title = "|cffdf19d0强化后的刀刃旋风|r",
+
 	--冷却时间
 	cool = 15,
 	--伤害
@@ -32,12 +33,14 @@ end,
 【杀怪加敏捷】+50*Lv|r
 
 |cff00bdec被动效果：攻击15%几率造成范围技能伤害
-伤害公式：（敏捷*10+10000）*Lv|r]],
+伤害公式：（敏捷*10+10000）*Lv|r
+
+]],
 	
 	--施法范围
 	area = 800,
 	--技能图标
-	art = [[ReplaceableTextures\CommandButtons\BTNFanOfKnives.blp]],
+	art = [[qhdrxf.blp]],
 	--特效
 	effect = [[Abilities\Spells\NightElf\FanOfKnives\FanOfKnivesMissile.mdl]],
 	

@@ -2,8 +2,8 @@
 local rect = require 'types.rect'
 -- 传送 快速达到
 ac.quick_arrive ={
-    --商品名 = 目的区域,图标,说明,消费钱,消费木头，火种，杀敌数，积分，
-    ['神兵-凝脂剑'] = {ac.map.rects['传送-武器1'],'wuqi2.blp','\n挑战BOSS并获得|cff00ff00 【一阶神兵】-凝脂剑|r\n',0,20,0,0,0,''} ,
+    --商品名 = 目的区域,图标,说明,消费钱,消费木头，火种，杀敌数，积分，商店名字
+    ['神兵-凝脂剑'] = {ac.map.rects['传送-武器1'],'wuqi2.blp','\n挑战BOSS并获得|cff00ff00 【一阶神兵】-凝脂剑|r\n',0,20,0,0,0,} ,
     ['神兵-元烟剑'] = {ac.map.rects['传送-武器2'],'wuqi18.blp','\n挑战BOSS并获得|cff00ff00 【二阶神兵】-元烟剑|r\n',0,50,0} ,
     ['神兵-暗影'] = {ac.map.rects['传送-武器3'],'wuqi20.blp','\n挑战BOSS并获得|cff00bdec 【三阶神兵】-暗影|r\n',500} ,
     ['神兵-青涛魔剑'] = {ac.map.rects['传送-武器4'],'wuqi19.blp','\n挑战BOSS并获得|cff00bdec 【四阶神兵】-青涛魔剑|r\n',500} ,
@@ -25,10 +25,10 @@ ac.quick_arrive ={
     ['神甲-血焰赤阳甲'] = {ac.map.rects['传送-甲9'],'jia9.blp','\n挑战BOSS并获得|cffdf19d0 【九阶神甲】-血焰赤阳甲|r\n',0,20,0} ,
     ['神甲-神魔蚀日甲'] = {ac.map.rects['传送-甲10'],'jia10.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神甲】-神魔蚀日甲|r\n',0,20,0} ,
 
-    ['技能升级书lv1'] = {ac.map.rects['传送-技能1'],'jinengshengji1.blp','\n挑战BOSS并获得|cffffff00 【技能升级书lv1】r\n',0,20,0} ,
-    ['技能升级书lv2'] = {ac.map.rects['传送-技能2'],'jinengshengji1.blp','挑着boss'} ,
-    ['技能升级书lv3'] = {ac.map.rects['传送-技能3'],'jinengshengji1.blp','挑着boss'} ,
-    ['技能升级书lv4'] = {ac.map.rects['传送-技能4'],'jinengshengji1.blp','挑着boss'} ,
+    ['技能升级书lv1'] = {ac.map.rects['传送-技能1'],'jinengshengji1.blp','\n挑战BOSS并获得|cff00ff00 【技能升级书lv1】|r\n',0,100,0,0,0,nil,0,450} ,
+    ['技能升级书lv2'] = {ac.map.rects['传送-技能2'],'jinengshengji1.blp','\n挑战BOSS并获得|cff00bdec 【技能升级书lv2】|r\n',0,1000,0,0,0,nil,0,450} ,
+    ['技能升级书lv3'] = {ac.map.rects['传送-技能3'],'jinengshengji1.blp','\n挑战BOSS并获得|cffffff00 【技能升级书lv3】|r\n',0,10000,0,0,0,nil,0,450} ,
+    ['技能升级书lv4'] = {ac.map.rects['传送-技能4'],'jinengshengji1.blp','\n挑战BOSS并获得|cffff0000 【技能升级书lv4】|r\n',0,100000,0,0,0,nil,0,450} ,
     
     ['挑战一号洗练石'] = {ac.map.rects['传送-洗练石1'],'','挑着boss'} ,
     ['挑战二号洗练石'] = {ac.map.rects['传送-洗练石1'],'','挑着boss'} ,
@@ -91,6 +91,7 @@ for key,value in pairs(ac.quick_arrive) do
         --商店名
         mt.store_name = value[9]
     end
+   
 
 
     function mt:on_cast_start()
@@ -99,7 +100,11 @@ for key,value in pairs(ac.quick_arrive) do
         local rect = self.target_rect
         -- print(rect)
         hero = p.hero
-        hero:blink(rect,true,false,true)
+        hero:blink(rect,true,false)
+        
+        local x,y=hero:get_point():get()
+
+        p:setCamera(ac.point(x+(value[10] or 0),y+(value[11] or 0)))
     end
 
 end    

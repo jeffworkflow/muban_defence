@@ -13,11 +13,14 @@ mt{
 	--技能类型
 	skill_type = "被动,技暴",
 	--被动
-	passive = true,
+    passive = true,
+    title = "|cffdf19d0强化后的渡业妖爆|r",
 	--介绍
-	tip = [[|cff00bdec被动效果：攻击15%几率 增加【技暴几率】+15%， 【技暴加深】+150%，持续0.75秒|r]],
+    tip = [[|cff00bdec被动效果：攻击15%几率 增加【技暴几率】+15%， 【技暴加深】+150%，持续0.75秒|r
+    
+]],
 	--技能图标
-    art = [[dyyb.blp]],
+    art = [[qhdyyb.blp]],
     time = 0.75,
     skill_rate = 15,
     skill_damage = 150

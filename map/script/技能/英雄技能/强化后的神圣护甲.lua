@@ -14,14 +14,15 @@ mt{
 	skill_type = "被动,无敌",
 	--被动
 	passive = true,
-	--耗蓝
-	cost = 100,
+    title = "|cffdf19d0强化后的神圣护甲|r",
 	--冷却时间
 	cool = 20,
 	--介绍
-	tip = [[|cff00bdec被动效果：攻击15%几率让自己无敌,持续0.2S|r]],
+    tip = [[|cff00bdec被动效果：攻击15%几率让自己无敌,持续0.2S|r
+    
+]],
 	--技能图标
-	art = [[ReplaceableTextures\CommandButtons\BTNDivineIntervention.blp]],
+	art = [[qhsshj.blp]],
 	--特效
 	effect = [[Abilities\Spells\Human\DivineShield\DivineShieldTarget.mdl]],
 	--无敌时间

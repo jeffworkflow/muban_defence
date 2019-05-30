@@ -12,8 +12,7 @@ mt{
 	skill_type = "被动,全属性",
 	--被动
 	passive = true,
-	--耗蓝
-	cost = 100,
+	title = "|cffdf19d0强化后的死亡脉冲|r",
 	--冷却时间
 	cool = 15,
     --伤害范围
@@ -32,9 +31,12 @@ end,
 【杀怪加全属性】+25*Lv|r
 
 |cff00bdec被动效果：攻击15%几率造成范围技能伤害
-伤害公式：（全属性*5+10000）*Lv|r]],
+伤害公式：（全属性*5+10000）*Lv|r
+
+]],
     --特效
-    effect = [[Abilities\Spells\Undead\DeathCoil\DeathCoilMissile.mdl]],
+	effect = [[Abilities\Spells\Undead\DeathCoil\DeathCoilMissile.mdl]],
+	art = [[qhswmc.blp]],
     damage_type = '法术',
     casting_cnt = 1
 }

@@ -19,7 +19,9 @@ mt{
 ['伤害减少'] = {100000,200000,300000,400000,500000},
 	--介绍
 	tip = [[|cffffff00【护甲】+2000*Lv
-【伤害减少】+100000*Lv|r]],
+【伤害减少】+100000*Lv|r
+
+]],
 	--技能图标
 	art = [[ReplaceableTextures\PassiveButtons\PASBTNResistantSkin.blp]],
 }

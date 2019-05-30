@@ -12,8 +12,7 @@ mt{
 	skill_type = "被动,全属性,晕眩",
 	--被动
 	passive = true,
-	--耗蓝
-	cost = 100,
+    title = "|cffdf19d0强化后的缠绕|r",
 	--冷却时间
 	cool = 20,
 	--伤害
@@ -22,11 +21,13 @@ mt{
 end,
 	--介绍
 	tip = [[|cff00bdec被动效果：攻击15%几率造成范围技能伤害,并晕眩1S
-伤害公式：（全属性*5+10000）*5|r]],
+伤害公式：（全属性*5+10000）*5|r
+
+]],
     --施法范围
     area = 500,
     --技能图标
-    art = [[ReplaceableTextures\CommandButtons\BTNEntanglingRoots.blp]],
+    art = [[qhcr.blp]],
     --特效
     effect = [[Abilities\Spells\NightElf\EntanglingRoots\EntanglingRootsTarget.mdl]],
     --持续时间

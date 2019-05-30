@@ -14,14 +14,15 @@ mt{
 	skill_type = "被动,全伤加深",
 	--被动
 	passive = true,
-	--耗蓝
-	cost = 100,
+    title = "|cffdf19d0强化后的蚀魂魔舞|r",
 	--冷却时间
 	cool = 20,
 	--介绍
-	tip = [[|cff00bdec被动效果：攻击15%几率 增加【全伤加深】+25%，持续0.75秒|r]],
+    tip = [[|cff00bdec被动效果：攻击15%几率 增加【全伤加深】+25%，持续0.75秒|r
+    
+]],
 	--技能图标
-	art = [[chmw.blp]],
+	art = [[qhchmw.blp]],
     value = 25,
     time = 0.75,
 }

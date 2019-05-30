@@ -14,14 +14,15 @@ mt{
 	skill_type = "被动,肉",
 	--被动
 	passive = true,
-	--耗蓝
-	cost = 100,
+	title = "|cffdf19d0强化后的招架之力|r",
 	--冷却时间
 	cool = 20,
 	--介绍
-	tip = [[|cff00bdec被动效果：攻击15%几率 增加【免伤几率】+30%，持续0.4秒|r]],
+    tip = [[|cff00bdec被动效果：攻击15%几率 增加【免伤几率】+30%，持续0.4秒|r
+    
+]],
 	--技能图标
-    art = [[zjzl.blp]],
+    art = [[qhzjzl.blp]],
     
     value = 30,
     time = 0.4

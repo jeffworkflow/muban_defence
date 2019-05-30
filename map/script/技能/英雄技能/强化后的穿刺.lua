@@ -14,8 +14,11 @@ mt{
 	skill_type = "被动,敏捷,晕眩",
 	--被动
 	passive = true,
+
+	title = "|cffdf19d0强化后的穿刺|r",
+
 	--耗蓝
-	cost = 100,
+	-- cost = 100,
 	--冷却时间
 	cool = 20,
 	--伤害
@@ -24,10 +27,12 @@ mt{
 end,
 	--介绍
 	tip = [[|cff00bdec被动效果：攻击15%几率造成范围技能伤害,并晕眩1S
-伤害公式：（敏捷*10+10000）*5|r]],
+伤害公式：（敏捷*10+10000）*5|r
+
+]],
 
     --技能图标
-    art = [[ReplaceableTextures\CommandButtons\BTNImpale.blp]],
+    art = [[qhcc.blp]],
     --特效
     effect = [[Abilities\Spells\Undead\Impale\ImpaleHitTarget.mdx]],
     --特效1

@@ -30,7 +30,9 @@ end,
 【杀怪加全属性】+25*Lv|r
 
 |cff00bdec主动施放：对周围敌人造成范围技能伤害
-伤害公式：（全属性*5+10000）*Lv*5|r]],
+伤害公式：（全属性*5+10000）*Lv*5|r
+
+]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNDeathCoil.blp]],
 	--特效

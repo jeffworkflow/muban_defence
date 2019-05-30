@@ -14,14 +14,15 @@ mt{
 	skill_type = "被动,暴击",
 	--被动
 	passive = true,
-	--耗蓝
-	cost = 100,
+    title = "|cffdf19d0强化后的红莲爆|r",
 	--冷却时间
 	cool = 20,
 	--介绍
-	tip = [[|cff00bdec被动效果：攻击10%几率触发，接下来的2次普攻必定暴击|r]],
+    tip = [[|cff00bdec被动效果：攻击10%几率触发，接下来的2次普攻必定暴击|r
+    
+]],
 	--技能图标
-	art = [[hlb.blp]],
+	art = [[qhhlb.blp]],
     value = 10,
 	--特效
 	effect = [[1]],

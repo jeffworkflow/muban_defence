@@ -18,9 +18,9 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
 --购买价格
-gold = 1500,
+wood = 25,
 --每次增加
-cre_gold = 500,
+cre_wood = 500,
 --物品技能
 is_skill = true,
 }
@@ -30,23 +30,24 @@ function mt:on_cast_start()
     local hero = self.owner
     local shop_item = ac.item.shop_item_map[self.name]
     if not hero.buy_skill_cnt then 
-        hero.buy_skill_cnt = 0
+        hero.buy_skill_cnt = 1
     end 
-    if not shop_item.player_gold then 
-        shop_item.player_gold = {}
+    if not shop_item.player_wood then 
+        shop_item.player_wood = {}
     end
 
-    local old_gold = shop_item.gold
+    local old_wood = shop_item.wood
     --可能会异步
     --改变商店物品物价
-    hero.buy_skill_cnt = hero.buy_skill_cnt + 1  
-    shop_item.gold = shop_item.gold + self.cre_gold * hero.buy_skill_cnt
-    -- print( shop_item.gold,self.buy_cnt)
+    hero.buy_skill_cnt = hero.buy_skill_cnt *2
+    shop_item.wood = math.min(shop_item.wood * hero.buy_skill_cnt,500000)
+
+    -- print( shop_item.wood,self.buy_cnt)
     if hero:get_owner() == ac.player.self then 
         shop_item:set_tip(shop_item:get_tip())
     end
-    shop_item.player_gold[hero:get_owner()] = shop_item.gold
-    shop_item.gold = old_gold  
+    shop_item.player_wood[hero:get_owner()] = shop_item.wood
+    shop_item.wood = old_wood  
 
     --给英雄随机添加物品
     local rand_list = ac.unit_reward['商店随机技能']

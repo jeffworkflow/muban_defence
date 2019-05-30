@@ -10,10 +10,14 @@ mt{
    chance = function(self) return 10*(1+self.owner:get('触发概率')/100) end,
     --伤害范围
    damage_area = 500,
+   cost = 100,
+   cool = 20,
 	--技能类型
 	skill_type = "主动,技暴",
 	--介绍
-	tip = [[|cff00bdec主动施放：使用增加【技暴几率】+3%*Lv, 【技暴加深】+30%*Lv,持续8秒|r]],
+    tip = [[|cff00bdec主动施放：使用增加【技暴几率】+3%*Lv, 【技暴加深】+30%*Lv,持续8秒|r
+    
+]],
 	--技能图标
     art = [[dyyb.blp]],
     --技暴几率

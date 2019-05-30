@@ -19,7 +19,9 @@ mt{
 ['攻击间隔'] = {-0.05,-0.1,-0.15,-0.2,-0.25},
 	--介绍
 	tip = [[|cffffff00【攻击速度】+20%*Lv|r
-|cffffff00【攻击间隔】-0.05*Lv|r]],
+|cffffff00【攻击间隔】-0.05*Lv|r
+
+]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNBloodLustOff.blp]],
 }

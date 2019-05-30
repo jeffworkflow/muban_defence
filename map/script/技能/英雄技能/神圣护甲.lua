@@ -18,7 +18,9 @@ mt{
 	cool = 20,
 	--介绍
 	tip = [[|cff00bdec主动施放：让自己无敌
-持续时间：0.5秒*Lv|r]],
+持续时间：0.5秒*Lv|r
+
+]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNDivineIntervention.blp]],
 	--特效

@@ -14,14 +14,15 @@ mt{
 	skill_type = "被动,暴击",
 	--被动
 	passive = true,
-	--耗蓝
-	cost = 100,
+    title = "|cffdf19d0强化后的狂龙爆|r",
 	--冷却时间
 	cool = 20,
 	--介绍
-	tip = [[|cff00bdec被动效果：攻击15%几率 增加【暴击几率】+15%， 【暴击加深】+150%，持续0.75秒|r]],
+    tip = [[|cff00bdec被动效果：攻击15%几率 增加【暴击几率】+15%， 【暴击加深】+150%，持续0.75秒|r
+    
+]],
 	--技能图标
-	art = [[klb.blp]],
+	art = [[qhklb.blp]],
     time = 0.75,
     crit_rate = 15,
     crit_damage = 150
