@@ -8,8 +8,9 @@ level = 1,
 art = [[other\suijijineng.blp]],
 --价格随购买次数增加而增加，|cff00ff00且买且珍惜|r
 --说明
-tip = [[获得一本随机技能书]],
-content_tip = '物品说明:',
+tip = [[|n获得 |cffff0000随机技能|r，价格随购买次数增加而增加，|cff00ff00且买且珍惜|r|n]],
+
+content_tip = '|cffFFE799【说明】：|r',
 --物品类型
 item_type = '神符',
 --目标类型

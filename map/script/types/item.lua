@@ -516,7 +516,8 @@ function mt:get_tip()
 		end	
 		tip = tip..(temp_tip or '')..skill_tip..'\n'
 	end	
-	tip = tip .. '\n'
+	-- 物品最后一行换行
+	tip = tip .. ''
 	return tip
 	
 end
@@ -624,7 +625,7 @@ function mt:on_use_state()
 	end	
 	hero.use_item[self.name] = (hero.use_item[self.name] or 0) + 1
 	if hero.use_item[self.name] > self.max_use_count then 
-		hero:get_owner():sendMsg('【系统消息】 '..self.color_name..' 超过使用次数')
+		hero:get_owner():sendMsg('|cffFFE799【系统消息】|r|cffff0000操作失败|r，'..self.color_name..'已被激活，可以在神器系统中查看')
 		return 
 	end	
 	--播放特效
