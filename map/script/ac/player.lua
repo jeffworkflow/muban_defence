@@ -43,6 +43,8 @@ mt.id = 0
 mt.gold = 0
 --木头
 mt.wood = 0
+--杀敌数
+mt.kill_count = 0
 
 --零钱
 mt.gold_pool = 0

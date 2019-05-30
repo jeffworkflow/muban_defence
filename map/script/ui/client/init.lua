@@ -1,5 +1,7 @@
 require 'ui.client.util'
-require 'ui.client.actor'
+-- require 'ui.client.actor'
+require 'ui.client.sendmsg'
+require 'ui.client.tip'
 -- require 'ui.client.kzt'
 -- require 'ui.client.提示框'
 -- require 'ui.client.控制台'

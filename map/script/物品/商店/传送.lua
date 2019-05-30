@@ -2,11 +2,11 @@
 local rect = require 'types.rect'
 -- 传送 快速达到
 ac.quick_arrive ={
-    --商品名 = 目的区域,图标,说明,消费钱,消费木头
+    --商品名 = 目的区域,图标,说明,消费钱,消费木头,杀敌数，火种
     ['神兵-凝脂剑'] = {ac.map.rects['传送-武器1'],'wuqi2.blp','挑战BOSS并获得|cff00ff00 一阶神兵-凝脂剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',0,20,0} ,
-    ['神兵-元烟剑'] = {ac.map.rects['传送-武器2'],'wuqi18.blp','挑战BOSS并获得|cff00ff00 二阶神兵-元烟剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
-    ['神兵-暗影'] = {ac.map.rects['传送-武器3'],'wuqi20.blp','挑战BOSS并获得|cff00bdec 三阶神兵-暗影|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
-    ['神兵-青涛魔剑'] = {ac.map.rects['传送-武器4'],'wuqi19.blp','挑战BOSS并获得|cff00bdec 四阶神兵-青涛魔剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
+    ['神兵-元烟剑'] = {ac.map.rects['传送-武器2'],'wuqi18.blp','挑战BOSS并获得|cff00ff00 二阶神兵-元烟剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500,0} ,
+    ['神兵-暗影'] = {ac.map.rects['传送-武器3'],'wuqi20.blp','挑战BOSS并获得|cff00bdec 三阶神兵-暗影|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',0,0,30} ,
+    ['神兵-青涛魔剑'] = {ac.map.rects['传送-武器4'],'wuqi19.blp','挑战BOSS并获得|cff00bdec 四阶神兵-青涛魔剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',0,0,0,300} ,
     ['神兵-青虹紫霄剑'] = {ac.map.rects['传送-武器5'],'wuqi7.blp','挑战BOSS并获得|cffffff00 五阶神兵-青虹紫霄剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
     ['神兵-熔炉炎刀'] = {ac.map.rects['传送-武器6'],'wuqi4.blp','挑战BOSS并获得|cffffff00 六阶神兵-熔炉炎刀|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
     ['神兵-紫炎光剑'] = {ac.map.rects['传送-武器7'],'wuqi6.blp','挑战BOSS并获得|cffff0000 七阶神兵-紫炎光剑|r\n\n|cffFFE799【神兵属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',500} ,
@@ -72,8 +72,8 @@ for key,value in pairs(ac.quick_arrive) do
     content_tip = '|cffFFE799【任务说明】：|r',
     --物品技能
     is_skill = true,
-    --商店名词缀
-    store_affix = '挑战 '
+    --商店名
+    store_name = '|cffFFE799挑战 '..key
     }
     if value[4] then 
         mt.gold = value[4]
@@ -82,7 +82,10 @@ for key,value in pairs(ac.quick_arrive) do
         mt.wood = value[5]
     end
     if value[6] then 
-        mt.fire_seed = value[6]
+        mt.kill_count = value[6]
+    end
+    if value[7] then 
+        mt.fire_seed = value[7]
     end
     function mt:on_cast_start()
         local hero = self.owner

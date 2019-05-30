@@ -4,6 +4,7 @@ local magic_item = {
     ['神兵'] ={'凝脂剑','元烟剑','暗影','青涛魔剑','青虹紫霄剑','熔炉炎刀','紫炎光剑','封神冰心剑','冰莲穿山剑','十绝冰火剑'},
     ['神甲'] ={'芙蓉甲','鱼鳞甲','碧云甲','青霞甲','飞霜辉铜甲','天魔苍雷甲','金刚断脉甲','丹霞真元甲','血焰赤阳甲','神魔蚀日甲'}
 }
+ac.magic_item= magic_item
 for key,tab in pairs(magic_item) do 
     for i,value in ipairs(tab) do 
         local mt = ac.skill[value]
@@ -19,12 +20,13 @@ for key,tab in pairs(magic_item) do
             --冷却
             cool = 0,
             content_tip = '',
+            item_type_tip = '',
             --物品技能
             is_skill = true,
             --商店名词缀
             store_affix = '',
             --最大使用次数
-            max_use_count = 1
+            max_use_count = 1,
         }
         --继承物品lni数据
         --如果存在lni则继承lni的属性
@@ -56,6 +58,7 @@ for key,tab in pairs(magic_item) do
                 return 
             end    
             skl:set_level(1)
+            skl:set('extr_tip','|cff00ff00已激活|r')
         end
     end
 end

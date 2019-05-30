@@ -196,11 +196,18 @@ function mt:set_name(name)
 	end	
 
 	local str = '|cff'..color..tostring(name)..show_lv..'|r'
-	self.store_name = str
-	self.color_name = str
+	if not self.store_name then 
+		self.store_name = str
+	end	
+	if not self.color_name then 
+		self.color_name = str
+	end	
 	japi.EXSetItemDataString(base.string2id(id),4,str)
 end
-
+--获取商店物品显示名字
+function mt:get_store_name()
+	return self.store_name or self.name or ''
+end
 --设置物品说明
 --物品掉落地上时，点击物品的说明
 function mt:set_descrition(str)
@@ -271,7 +278,17 @@ end
 
 --获取购买杀敌数
 function mt:buy_kill_count()
-	return self.kill_count or 0
+	local gold = self.kill_count or 0
+	self.kill_count = gold
+	for i=1,10 do
+		if ac.player(i) == ac.player.self then
+			if ac.player.self.kill_count then 
+				gold = gold ..'   |cff00ffff(拥有'..(ac.player.self.kill_count or '0')..')|r'
+			end
+		end	
+	end
+	self.show_kill_count = gold
+	return self.kill_count,self.show_kill_count
 end
 
 --获取出售杀敌数
@@ -287,7 +304,17 @@ end
 
 --获取购买积分
 function mt:buy_jifen()
-	return self.jifen or 0
+	local gold = self.jifen or 0
+	self.jifen = gold
+	for i=1,10 do
+		if ac.player(i) == ac.player.self then
+			if ac.GetServerValue then 
+				gold = gold..'   |cff00ffff(拥有'..(ZZBase64.decode(ac.player.self.jifen) or '0')..')|r'
+			end	
+		end	
+	end
+	self.show_jifen = gold
+	return self.jifen,self.show_jifen
 end
 
 --获取出售积分
@@ -299,6 +326,30 @@ function mt:sell_jifen()
 	end
 	jifen = math.floor(jifen * self.discount)
 	return jifen
+end
+
+--获取购买火种
+function mt:buy_fire_seed()
+	local gold = self.fire_seed or 0
+	self.fire_seed = gold
+	for i=1,10 do
+		if ac.player(i) == ac.player.self then
+			gold = gold ..'   |cff00ffff(拥有'..(ac.player.self.fire_seed or '0')..')|r'
+		end	
+	end
+	self.show_fire_seed = gold
+	return self.fire_seed,self.show_fire_seed
+end
+
+--获取出售火种
+function mt:sell_fire_seed()
+	local count = self:get_item_count()
+	local fire_seed = self.fire_seed
+	if count > 1 then
+		fire_seed = fire_seed * count
+	end
+	fire_seed = math.floor(fire_seed * self.discount)
+	return fire_seed
 end
 
 --增加物品层数
@@ -416,6 +467,9 @@ function mt:get_tip()
 	if self.cus_type then 
 		item_type_tip = '|cff'..ac.color_code['淡黄']..'类型：|R'..'|cff'..ac.color_code['紫']..self.cus_type..'\n'
 	end	
+	if self.item_type_tip then 
+		item_type_tip = self.item_type_tip
+	end	
 	--如果物品tip和技能tip一致，不添加技能tip
 	--去掉颜色代码
 	local t_str = skill_tip:gsub('|[cC]%w%w%w%w%w%w%w%w(.-)|[rR]','%1'):gsub('|n','\n'):gsub('\r','\n')
@@ -425,6 +479,9 @@ function mt:get_tip()
 	if self.color then 
 		color_tip = '|cff'..ac.color_code['淡黄'].. '品质：|R|cff'..ac.color_code[self.color]..self.color..'|r\n'
 	end	
+	if self.color_tip then 
+		color_tip = self.color_tip
+	end	
 	if owner then
 		--有所属单位则说明物品在身上
 		if self:sell_price() > 0 then 
@@ -432,39 +489,6 @@ function mt:get_tip()
 		end	
 		if self.get_sell_tip then 
 			gold = self:get_sell_tip(gold)
-		end	
-	else
-		--否则就是在地上或商店里，地上不用管，商店的话修改出售价格
-		-- store_title = (self.store_affix or '购买 ')..self.store_name..'|r\n'
-		--否则就是在地上或商店里，地上不用管，商店的话修改出售价格
-		if self:buy_price() > 0 then 
-			gold = '|cffebd43d(花费：'..self:buy_price()..'金币)|r|n'..'\n'
-		end	 
-		if self:buy_mutou() > 0 then 
-			gold = '|cffebd43d(花费：'..self:buy_mutou()..'木头)|r|n'..'\n'
-		end	 
-		if self:buy_jifen() > 0 then 
-			--可能会掉线
-			-- 进入异步
-			for i=1,10 do
-				if ac.player(i) == ac.player.self then
-					if ac.GetServerValue then 
-						gold = '|cffebd43d(积分：'..self:buy_jifen()..')|r  |cff00ffff拥有'..(ZZBase64.decode(ac.player.self.jifen) or '0')..'|r|n'..'\n'
-					end	
-				end	
-			end
-		end	 
-		if self:buy_kill_count() > 0 then 
-			for i=1,10 do
-				if ac.player(i) == ac.player.self then
-					if ac.player.self.kill_count then 
-						gold = '|cffebd43d(杀敌数：'..self:buy_kill_count()..')|r  |cff00ffff拥有'..(ac.player.self.kill_count or '0')..'|r|n'..'\n'
-					end
-				end	
-			end
-		end	 
-		if self.get_buy_tip then 
-			gold = self:get_buy_tip(gold)
 		end	
 	end
 	local content_tip =''

@@ -38,8 +38,8 @@ function mt:on_cast_start()
     local old_gold = shop_item.gold
     --可能会异步
     --改变商店物品物价
-    hero.buy_item_cnt = hero.buy_item_cnt + 1  
-    shop_item.gold = shop_item.gold + self.cre_gold * hero.buy_item_cnt
+    hero.buy_skill_cnt = hero.buy_skill_cnt + 1  
+    shop_item.gold = shop_item.gold + self.cre_gold * hero.buy_skill_cnt
     -- print( shop_item.gold,self.buy_cnt)
     if hero:get_owner() == ac.player.self then 
         shop_item:set_tip(shop_item:get_tip())
