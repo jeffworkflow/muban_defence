@@ -323,7 +323,7 @@ end
 --	[漂浮文字显示位置]
 --	[不抛出加木头事件]
 function mt:add_wood(wood, where, flag)
-	if wood == 0 then 
+	if not wood or tonumber(wood) == 0 then 
 		return 
 	end	
 	local data = {player = self, wood = wood}
@@ -369,9 +369,8 @@ function mt:add_wood(wood, where, flag)
 	
 end
 --杀敌数
-function mt.add_kill_count(self,num)
-	local num = tonumber(num)
-	if num == 0 then 
+function mt.add_kill_count(num)
+	if not num or tonumber(num) == 0 then 
 		return 
 	end	
 	--当前杀敌数

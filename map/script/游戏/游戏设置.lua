@@ -32,7 +32,7 @@ end
 --	[漂浮文字显示位置]
 --	[不抛出加木头事件]
 function player.__index:add_fire_seed(fire_seed, where, flag)
-	if fire_seed == 0 then 
+	if not fire_seed or tonumber(fire_seed) == 0  then 
 		return 
 	end	
 	local data = {player = self, fire_seed = fire_seed}

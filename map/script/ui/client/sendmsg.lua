@@ -55,11 +55,15 @@ class.sendmsg = extends(class.panel){
         --鼠标进入
         button.on_button_mouse_enter = function()
             mtp_tip.set_skill_tip(button)
+            button.timer_trg = ac.loop(1000,function()
+                mtp_tip.set_skill_tip(button)
+            end)
         end
 
         --鼠标离开
         button.on_button_mouse_leave = function()
             mtp_tip.hide_skill_tip(button)
+            button.timer_trg:remove()
         end
         return button
     end,

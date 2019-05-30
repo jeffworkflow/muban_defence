@@ -246,7 +246,7 @@ end
 
 --获取购买价格
 function mt:buy_price()
-	return self.gold or 0
+	return self.gold or 0,(self.show_gold or 0),self.player_gold and self.player_gold[ac.player.self] 
 end
 
 --获取出售价格
@@ -262,7 +262,7 @@ end
 
 --获取购买木头
 function mt:buy_wood()
-	return self.wood or 0
+	return self.wood or 0,(self.show_wood or 0),self.player_wood and self.player_wood[ac.player.self] 
 end
 
 --获取出售木头
@@ -278,7 +278,7 @@ end
 
 --获取购买杀敌数
 function mt:buy_kill_count()
-	local gold = self.kill_count or 0
+	local gold = (self.player_kill and self.player_kill[ac.player.self]) and self.player_kill[ac.player.self] or (self.kill_count or 0)
 	self.kill_count = gold
 	for i=1,10 do
 		if ac.player(i) == ac.player.self then
@@ -288,7 +288,7 @@ function mt:buy_kill_count()
 		end	
 	end
 	self.show_kill_count = gold
-	return self.kill_count,self.show_kill_count
+	return self.kill_count,self.show_kill_count,self.player_kill and self.player_kill[ac.player.self] 
 end
 
 --获取出售杀敌数
@@ -304,7 +304,7 @@ end
 
 --获取购买积分
 function mt:buy_jifen()
-	local gold = self.jifen or 0
+	local gold = (self.player_jifen and self.player_jifen[ac.player.self] ) and self.player_jifen[ac.player.self] or (self.jifen or 0)
 	self.jifen = gold
 	for i=1,10 do
 		if ac.player(i) == ac.player.self then
@@ -314,7 +314,7 @@ function mt:buy_jifen()
 		end	
 	end
 	self.show_jifen = gold
-	return self.jifen,self.show_jifen
+	return self.jifen,self.show_jifen,self.player_jifen and self.player_jifen[ac.player.self] 
 end
 
 --获取出售积分
@@ -330,7 +330,7 @@ end
 
 --获取购买火种
 function mt:buy_fire_seed()
-	local gold = self.fire_seed or 0
+	local gold = (self.player_fire and self.player_fire[ac.player.self]) and self.player_fire[ac.player.self] or (self.fire_seed or 0)
 	self.fire_seed = gold
 	for i=1,10 do
 		if ac.player(i) == ac.player.self then
@@ -338,7 +338,7 @@ function mt:buy_fire_seed()
 		end	
 	end
 	self.show_fire_seed = gold
-	return self.fire_seed,self.show_fire_seed
+	return self.fire_seed,self.show_fire_seed,self.player_fire and self.player_fire[ac.player.self] 
 end
 
 --获取出售火种
@@ -895,6 +895,12 @@ function unit.__index:add_item(it,is_fall)
 			end
 			--设置tip
 			it:set_tip(it:get_tip())
+			--刷新货币
+			-- it:buy_price()
+			-- it:buy_wood()
+			-- it:buy_kill_count()
+			-- it:buy_jifen()
+			-- it:buy_fire_seed()
 		end)
 	end
 	self:event_notify('单位-获得物品后',self, it)

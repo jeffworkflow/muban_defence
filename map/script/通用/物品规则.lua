@@ -149,15 +149,19 @@
         if player.jifen then 
             jifen= tonumber(ZZBase64.decode(player.jifen)) or 0
         end
+        local fire_seed = player.kill_count or 0
 
         local golds = it:buy_price()
         local woods = it:buy_wood()
         local kill_counts = it:buy_kill_count()
         local jifens = it:buy_jifen()
+        local fire_seeds = it:buy_fire_seed()
         --如果有玩家自身价格，则售价为玩家自身价
-        if it.player_gold then 
-            golds = it.player_gold[player] or golds
-        end    
+        golds = (it.player_gold and it.player_gold[player]) or golds
+        woods = (it.player_wood and it.player_wood[player]) or woods
+        kill_counts = (it.player_kill and it.player_kill[player]) or kill_counts
+        jifens = (it.player_jifen and it.player_jifen[player]) or jifens
+        fire_seeds = (it.player_fire and it.player_fire[player]) or fire_seeds
         if gold < golds  then
             u:get_owner():sendMsg('钱不够')
             return
@@ -176,7 +180,11 @@
                 u:get_owner():sendMsg('积分不够')
                 return
             end
-        end    
+        end   
+        if fire_seed < fire_seeds then
+            u:get_owner():sendMsg('火种不够')
+            return
+        end 
         if it.max_buy_cnt and it.player_buy_cnt then
             if it.player_buy_cnt[player] and (it.player_buy_cnt[player] > (it.max_buy_cnt or 9999999)) then
                 u:get_owner():sendMsg('超出购买上限')
@@ -206,7 +214,8 @@
             -- print('扣钱')
             player:addGold( - golds,u)
             player:add_wood( - woods)
-            player.kill_count =  player.kill_count - kill_counts
+            player.add_kill_count( - kill_counts)
+            player.add_fire_seed( - fire_seeds)
 
             if jifens > 0 then 
                 --扣除积分

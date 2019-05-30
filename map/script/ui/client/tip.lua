@@ -113,12 +113,18 @@ mtp_tip.set_skill_tip = function(button)
         japi.FrameSetText(title_text,title)
 
         --货币
-        local gold,show_gold = item:buy_price()
-        local wood,show_wood = item:buy_wood()
-        local kill_count,show_kill_count = item:buy_kill_count()
-        local jifen,show_jifen = item:buy_jifen()
-        local fire_seed,show_fire_seed = item:buy_fire_seed()
-        -- print(gold,wood,kill_count,jifen,fire_seed)
+        local gold,show_gold,player_gold = item:buy_price()
+        local wood,show_wood,player_wood = item:buy_wood()
+        local kill_count,show_kill_count,player_kill = item:buy_kill_count()
+        local jifen,show_jifen,player_jifen = item:buy_jifen()
+        local fire_seed,show_fire_seed,player_fire = item:buy_fire_seed()
+        gold = player_gold or gold
+        wood = player_wood or wood
+        kill_count = player_kill or kill_count
+        jifen = player_jifen or jifen
+        fire_seed = player_fire or fire_seed
+
+
         if gold<=0 and wood<=0 and kill_count<=0 and jifen <= 0 and fire_seed<=0 then 
             japi.FrameShow(currency,false)
             japi.FrameSetPoint(backdrop,0,tip_text,0,-0.0054,0.0265)
