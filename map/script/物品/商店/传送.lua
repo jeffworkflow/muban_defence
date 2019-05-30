@@ -25,13 +25,11 @@ ac.quick_arrive ={
     ['神甲-血焰赤阳甲'] = {ac.map.rects['传送-甲9'],'jia9.blp','挑战BOSS并获得|cffdf19d0 九阶神甲-血焰赤阳甲|r\n\n|cffFFE799【神甲属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',0,20,0} ,
     ['神甲-神魔蚀日甲'] = {ac.map.rects['传送-甲10'],'jia10.blp','挑战BOSS并获得|cffdf19d0 十阶神甲-神魔蚀日甲|r\n\n|cffFFE799【神甲属性】：|r|cff00ff00\n+4W 攻击\n+10% 攻速|r',0,20,0} ,
 
-    ['技能升级lv1'] = {ac.map.rects['传送-技能1'],'','挑着boss'} ,
-    ['技能升级lv2'] = {ac.map.rects['传送-技能2'],'','挑着boss'} ,
-    ['技能升级lv3'] = {ac.map.rects['传送-技能3'],'','挑着boss'} ,
-    ['技能升级lv4'] = {ac.map.rects['传送-技能4'],'','挑着boss'} ,
+    ['技能升级lv1'] = {ac.map.rects['传送-技能1'],'jinengshengji1.blp','挑着boss'} ,
+    ['技能升级lv2'] = {ac.map.rects['传送-技能2'],'jinengshengji1.blp','挑着boss'} ,
+    ['技能升级lv3'] = {ac.map.rects['传送-技能3'],'jinengshengji1.blp','挑着boss'} ,
+    ['技能升级lv4'] = {ac.map.rects['传送-技能4'],'jinengshengji1.blp','挑着boss'} ,
     
-
-
     ['挑战一号洗练石'] = {ac.map.rects['传送-洗练石1'],'','挑着boss'} ,
     ['挑战二号洗练石'] = {ac.map.rects['传送-洗练石1'],'','挑着boss'} ,
     ['挑战三号洗练石'] = {ac.map.rects['传送-洗练石1'],'','挑着boss'} ,

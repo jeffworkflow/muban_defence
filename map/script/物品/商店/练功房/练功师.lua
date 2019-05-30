@@ -4,7 +4,7 @@ local rect = require 'types.rect'
 -- 练功师
 ac.pratice_man ={
     --商品名 = 刷怪单位名，图标,说明
-    ['经验怪'] = {'经验怪',[[ReplaceableTextures\CommandButtons\BTNTomeBrown.blp]],'挑着boss'} ,
+    ['经验怪'] = {'经验怪',[[ReplaceableTextures\CommandButtons\BTNTomeBrown.blp]],'\n|cff00ff00召唤15只经验怪，每只提供500经验|r'} ,
     ['小金币怪'] = {'小金币怪',[[ReplaceableTextures\CommandButtons\BTNChestOfGold.blp]],'挑着boss'} ,
     ['中金币怪'] = {'中金币怪',[[ReplaceableTextures\CommandButtons\BTNChestOfGold.blp]],'挑着boss'} ,
     ['大金币怪'] = {'大金币怪',[[ReplaceableTextures\CommandButtons\BTNChestOfGold.blp]],'挑着boss'} ,
@@ -36,7 +36,8 @@ for key,value in pairs(ac.pratice_man) do
     target_type = ac.skill.TARGET_TYPE_NONE,
     --冷却
     cool = 0,
-    content_tip = '',
+    content_tip = '|cffFFE799【说明】：|r',
+    store_affix = '选择 ',
     --物品技能
     is_skill = true,
     }
