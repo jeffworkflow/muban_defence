@@ -2036,39 +2036,19 @@ function unit.init()
 
 	
 	--捕捉攻击伤害
-	local j_damage_trg
+	local j_trg = war3.CreateTrigger(function()
 
-	ac.loop(30 * 1000,function ()
-		if j_damage_trg then
-			war3.DestroyTrigger(j_damage_trg)
+		if jass.GetEventDamage() == 1 then
+			--认为是物理伤害
+			local source = unit.j_unit(jass.GetEventDamageSource())
+			local target = unit.j_unit(jass.GetTriggerUnit())
+			--todo: 传一个普通攻击的技能
+			source:attack_start(target, nil)
 		end
-
-		j_damage_trg = war3.CreateTrigger(function()
-			if jass.GetEventDamage() == 1 then
-				--认为是物理伤害
-				local source = unit.j_unit(jass.GetEventDamageSource())
-				local target = unit.j_unit(jass.GetTriggerUnit())
-				if source then
-					--todo: 传一个普通攻击的技能
-					source:attack_start(target, nil)
-				end
-			end
-		end)
-
-		for _,u in ac.selector()
-			: in_rect()
-			: ipairs()
-		do
-			jass.TriggerRegisterUnitEvent(j_damage_trg, u.handle, jass.EVENT_UNIT_DAMAGED)
-		end
-
-	end):on_timer()
-
+	end)
 	--每个单位创建时加入捕捉
 	ac.game:event '单位-创建' (function(self, u)
-		if j_damage_trg then
-			jass.TriggerRegisterUnitEvent(j_damage_trg, u.handle, jass.EVENT_UNIT_DAMAGED)
-		end
+		jass.TriggerRegisterUnitEvent(j_trg, u.handle, jass.EVENT_UNIT_DAMAGED)
 	end)
 
 	-- 创建一个dummy,用于使用马甲技能

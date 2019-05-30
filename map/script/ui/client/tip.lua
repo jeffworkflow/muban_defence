@@ -101,7 +101,7 @@ mtp_tip.set_skill_tip = function(button)
     end
 
     --如果是商店
-    if u.unit_type and u.unit_type == '商店' then
+    if u.unit_type and u.unit_type == '商店' and u.sell_item_list then
         local item = u.sell_item_list[button.slot_id]
         if not item then
             return
@@ -114,7 +114,7 @@ mtp_tip.set_skill_tip = function(button)
 
         --货币
         local gold,show_gold = item:buy_price()
-        local wood,show_wood = item:buy_mutou()
+        local wood,show_wood = item:buy_wood()
         local kill_count,show_kill_count = item:buy_kill_count()
         local jifen,show_jifen = item:buy_jifen()
         local fire_seed,show_fire_seed = item:buy_fire_seed()
