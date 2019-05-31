@@ -17,11 +17,13 @@ mt{
 	--属性加成
 ['吸血'] = {4,8,12,16,20},
 	--介绍
-    tip = [[|cffffff00【吸血】+4*Lv|r
+    tip = [[
+        
+|cffffff00【吸血】+4*Lv|r
     
 ]],
 	--技能图标
-	art = [[ReplaceableTextures\CommandButtons\BTNVampiricAura.blp]],
+	art = [[xxg.blp]],
 }
 function mt:on_add()
     local skill = self

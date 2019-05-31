@@ -440,9 +440,9 @@ local function on_texttag(self)
 		return
 	end
 	--非暴击就return
-	if not self:is_physicals_crit() or not self:is_spells_crit() or not self:is_heart_crit() then
-		return
-	end
+	-- if not self:is_physicals_crit() or not self:is_spells_crit() or not self:is_heart_crit() then
+	-- 	return
+	-- end
     --普攻，法术攻击 颜色 白色
 	local color ={}
 	color['r'] = 255

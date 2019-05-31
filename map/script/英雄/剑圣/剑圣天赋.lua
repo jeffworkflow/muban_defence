@@ -27,10 +27,10 @@ end,
 【暴击几率】+2.5%
 【暴击伤害】+25%|r
 
-|cff00bdec被动效果：攻击10%几率造成范围技能伤害
-伤害公式：（敏捷*10+10000）*Lv
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(敏捷*10+1w)*Lv
 
-|cff00ff00凌波微步：按D向鼠标方向飘逸500码距离|r]],
+|cff00ff00【凌波微步】按D向鼠标方向飘逸500码距离|r]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNHeroBlademaster.blp]],
 	--特效

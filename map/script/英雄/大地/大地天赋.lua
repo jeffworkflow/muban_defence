@@ -27,10 +27,10 @@ end,
 【护甲】+500
 【伤害减少】+5000|r
 
-|cff00bdec被动效果：攻击10%几率造成范围技能伤害
-伤害公式：（力量*10+10000）*Lv|r
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(力量*10+1W)*Lv|r
 
-|cff00ff00凌波微步：按D向鼠标方向飘逸500码距离|r]],
+|cff00ff00【凌波微步】按D向鼠标方向飘逸500码距离|r]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNEarthBrewmaster.blp]],
 	--特效
