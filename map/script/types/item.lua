@@ -483,15 +483,17 @@ function mt:get_tip()
 	if self.color_tip then 
 		color_tip = self.color_tip
 	end	
-	if owner then
-		--有所属单位则说明物品在身上
-		if self:sell_price() > 0 then 
-			gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_price()..'|r|n'
-		end	
-		if self.get_sell_tip then 
-			gold = self:get_sell_tip(gold)
-		end	
-	end
+
+	-- if owner then
+	-- 	--有所属单位则说明物品在身上
+	-- 	if self:sell_price() > 0 then 
+	-- 		gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_price()..'|r|n'
+	-- 	end	
+	-- 	if self.get_sell_tip then 
+	-- 		gold = self:get_sell_tip(gold)
+	-- 	end	
+	-- end
+
 	local content_tip =''
 	if self.item_type =='装备' then 
 		content_tip = '|cff'..ac.color_code['淡黄']..'基本属性：|R\n'
@@ -501,7 +503,7 @@ function mt:get_tip()
 	end
 	--技能
 	if self.is_skill  then 
-		content_tip = '|cff'..ac.color_code['淡黄'].. '技能介绍：'..'|R\n'
+		content_tip = '|cff'..ac.color_code['淡黄'].. '\n技能介绍：'..'|R\n'
 	end
 	--自定义 内容说明titile
 	if self.content_tip  then 

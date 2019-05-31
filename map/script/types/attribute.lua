@@ -720,8 +720,8 @@ on_get['吸血'] = function(self, value)
 end
 
 on_get['分裂伤害'] = function(self, splash)
-	if splash > 100 then
-		return 100
+	if splash > 500 then
+		return 500
 	end
 	return splash
 end

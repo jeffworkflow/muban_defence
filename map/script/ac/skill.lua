@@ -809,7 +809,7 @@ function mt:get_cd_tip(hero, level, need_level)
 	end
 	local word
 	if self.cooldown_mode == 0 then
-		word = '冷却时间'
+		word = '【冷却时间】'
 	else
 		word = '充能时间'
 	end
@@ -820,7 +820,7 @@ function mt:get_cd_tip(hero, level, need_level)
 	if cool == 0 then
 		return ''
 	end
-	return '|cff3399ff' .. word .. '|r: ' .. format_number(cool)
+	return '|cff3399ff' .. word .. '|r' .. format_number(cool) .. '秒'
 end
 
 --获取目标类型说明
@@ -858,7 +858,7 @@ function mt:get_range_tip(hero, level, need_level)
 	if type(range) == 'table' then
 		range = format_table(self, range, hero, level, need_level)
 	end
-	return '\n|cff3399ff施法距离|r: ' .. format_number(range)
+	return '|cff3399ff【施法距离】|r' .. format_number(range) .. '码        '
 end
 
 --刷新施法距离

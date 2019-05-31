@@ -17,10 +17,12 @@ mt{
 	 --冷却时间
 	 cool = 20,
 	 --介绍
-	 tip = [[|cff00bdec主动施放：让自己隐身，提高150移动速度
- 持续时间：1秒*Lv|r
+	 tip = [[
+		 
+|cff00bdec【主动施放】让自己隐身，并提高150移动速度
+【持续时间】1秒*Lv|r
  
- ]],
+]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNWindWalkOn.blp]],
 	--隐身时间

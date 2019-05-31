@@ -24,7 +24,12 @@ end,
 	--技能图标
 	art = [[icon\card1_28.blp]],
 
-	tip = [[|cffffff00【闪避】+3%*Lv|r
+	tip = [[
+		
+|cffffff00【杀怪加敏捷】+75*Lv|r
+
+|cff00bdec【被动效果】攻击8%几率造成范围技能伤害
+【伤害公式】(敏捷*10+1w)*Lv|r
 	
 ]],
 	

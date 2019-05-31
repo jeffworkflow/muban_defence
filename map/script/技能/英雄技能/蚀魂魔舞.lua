@@ -17,7 +17,9 @@ mt{
 	--冷却时间
 	cool = 20,
 	--介绍
-    tip = [[|cff00bdec主动施放：使用增加【全伤加深】+5%*Lv,持续8秒|r
+    tip = [[
+        
+|cff00bdec【主动施放】增加 |cffffff00全伤加深+5%*Lv|r |cff00bdec持续8秒|r
     
 ]],
 	--技能图标
