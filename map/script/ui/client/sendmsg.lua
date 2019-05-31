@@ -3,6 +3,10 @@
 
 local sendmsg = {}
 
+local game_ui = japi.GetGameUI()
+--魔兽的提示框
+local tsk = japi.FrameGetTooltip()
+
 class.sendmsg = extends(class.panel){
     create = function ()
         local panel = class.panel.create('',1226,834,694,246)
@@ -39,7 +43,8 @@ class.sendmsg = extends(class.panel){
         button.type = '物品栏'
         --鼠标进入
         button.on_button_mouse_enter = function()
-            
+            japi.FrameSetPoint(tsk,8,game_ui,8,0,0.16)  --还原魔兽自带的位置 
+
         end
         --鼠标离开
         button.on_button_mouse_leave = function()

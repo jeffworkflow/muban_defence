@@ -6,7 +6,7 @@ local rect = require 'types.rect'
 local devil_deal ={
     --商品名（map.table.单位.商店）,是否激活 属性名，数值，耗费币种，数值，图标,说明
     [1] = {
-{'无所不在lv1',false,'分裂伤害',5,'金币',1000,[[xiaoheiwu.blp]],[[
+{'无所不在lv1',false,'分裂伤害',5,'全属性',1000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv1|r
 
@@ -15,7 +15,7 @@ local devil_deal ={
 ]]
 },
 
-{'无所不在lv2',false,'分裂伤害',5,'金币',5000,[[xiaoheiwu.blp]],[[
+{'无所不在lv2',false,'分裂伤害',5,'全属性',50000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv2|r
 
@@ -23,7 +23,7 @@ local devil_deal ={
 
 ]]},
 
-{'无所不在lv3',false,'分裂伤害',5,'金币',10000,[[xiaoheiwu.blp]],[[
+{'无所不在lv3',false,'分裂伤害',5,'杀敌数',10000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv3|r
 
@@ -248,6 +248,9 @@ for _,tab in ipairs(devil_deal) do
             if self.wood then 
                 str = '' .. self.wood .. '木头'
             end    
+            if self.cost_allattr then 
+                str = '' .. self.cost_allattr .. '全属性'
+            end    
             return str
         end,
         content_tip = '',
@@ -263,6 +266,9 @@ for _,tab in ipairs(devil_deal) do
         if value[5]=='木头' then
             mt.wood = tonumber(value[6])
         end   
+        if value[5]=='全属性' then
+            mt.cost_allattr = tonumber(value[6])
+        end   
 
         --模拟商店点击
         function mt:on_cast_shot()
@@ -271,10 +277,28 @@ for _,tab in ipairs(devil_deal) do
             local seller = self.owner
             hero = p.hero
             local name = self.name 
+            
+            -- print(owner_value,self.cost_allattr)
+            if self.cost_allattr then 
+                local owner_value = math.min(hero:get('力量'),hero:get('敏捷'),hero:get('智力'))
+                -- print(owner_value,self.cost_allattr)
+                --有足够的全属性
+                if owner_value > self.cost_allattr  then 
+                    self.seller = seller
+                    --扣除全属性
+                    hero:add('全属性',-self.cost_allattr)
+                    --给与奖励
+                    self:on_cast_finish()
+                else
+                    p:sendMsg('全属性不足',10) 
+                    --停止继续执行   
+                    self:stop()
+                    return
+                end    
+            end
+
             local item = setmetatable(self,ac.item)
             item.name = name
-            print(item.name,item.gold)
-
             hero:event_notify('单位-点击商店物品',seller,hero,item)
             self.owner = seller
             --停止继续执行
@@ -286,9 +310,9 @@ for _,tab in ipairs(devil_deal) do
             local p = hero:get_owner()
             local seller = self.seller
             hero = p.hero
-            print('施法结束啦')
+            -- print('施法结束啦')
             --增加属性
-            print(self.attr_name,self.attr_val)
+            -- print(self.attr_name,self.attr_val)
             hero:add(self.attr_name,self.attr_val)
             --处理下一个
             --local next = self.position + 1 

@@ -212,7 +212,7 @@ mtp_tip.hide_skill_tip = function(button)
         japi.FrameSetPoint(tsk,8,game_ui,8,0,0.16)  --还原魔兽自带的位置    
     end
 
-
+    
 
 
 

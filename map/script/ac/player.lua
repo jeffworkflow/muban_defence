@@ -327,7 +327,7 @@ function mt:add_wood(wood, where, flag)
 	if not wood or tonumber(wood) == 0 then 
 		return 
 	end	
-	local wood =math.floor( wood )
+	local wood =wood-wood%0.01
 	local data = {player = self, wood = wood}
 	if wood > 0 and not flag then
 		self:event_notify('玩家-即将获得木头', data)
@@ -375,7 +375,8 @@ function mt:add_kill_count(num)
 	if not num or tonumber(num) == 0 then 
 		return 
 	end	
-	local num =math.floor( num )
+	--保留两位小数
+	local num = num-num%0.01
 	--当前杀敌数
 	self.kill_count = (self.kill_count or 0 ) + num
 	--总杀敌数

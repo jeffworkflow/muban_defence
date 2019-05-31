@@ -166,7 +166,7 @@ local base_attr =[[
 攻击减甲
 减少周围护甲
 ]]
-
+ac.base_attr = base_attr
 
 --如果加成的属性名有%,则部分转化为 直加
 --add_tran(力量%,10) ,实际为 add(力量%,10)
