@@ -369,7 +369,7 @@ function mt:add_wood(wood, where, flag)
 	
 end
 --杀敌数
-function mt.add_kill_count(num)
+function mt:add_kill_count(num)
 	if not num or tonumber(num) == 0 then 
 		return 
 	end	

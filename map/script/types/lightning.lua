@@ -220,10 +220,11 @@ function ac.lightning(name, start, target, oz1, oz2)
 
 	ln.start = start
 	ln.target = target
-	ln.oz1 = oz1
-	ln.oz2 = oz2
+	ln.oz1 = oz1 - ac.point(0,0).offsetZ --还原高度偏移
+	ln.oz2 = oz2 - ac.point(0,0).offsetZ --还原高度偏移
 	local x1, y1, z1 = start:get_point(true):get()
 	local x2, y2, z2 = target:get_point(true):get()
+
 	ln.handle = jass.AddLightningEx(name, false, x1, y1, z1 + ln.oz1, x2, y2, z2 + ln.oz2)
 	dbg.handle_ref(ln.handle)
 	dbg.gchash(ln, ln.handle)
