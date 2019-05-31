@@ -241,6 +241,7 @@ function mt:addGold(gold, where, flag)
 	if gold == 0 then 
 		return 
 	end	
+	local gold =math.floor( gold )
 	local data = {player = self, gold = gold}
 	if gold > 0 and not flag then
 		self:event_notify('玩家-即将获得金钱', data)
@@ -326,6 +327,7 @@ function mt:add_wood(wood, where, flag)
 	if not wood or tonumber(wood) == 0 then 
 		return 
 	end	
+	local wood =math.floor( wood )
 	local data = {player = self, wood = wood}
 	if wood > 0 and not flag then
 		self:event_notify('玩家-即将获得木头', data)
@@ -373,6 +375,7 @@ function mt:add_kill_count(num)
 	if not num or tonumber(num) == 0 then 
 		return 
 	end	
+	local num =math.floor( num )
 	--当前杀敌数
 	self.kill_count = (self.kill_count or 0 ) + num
 	--总杀敌数

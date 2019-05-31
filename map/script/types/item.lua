@@ -279,6 +279,7 @@ end
 --获取购买杀敌数
 function mt:buy_kill_count()
 	local gold = (self.player_kill and self.player_kill[ac.player.self]) and self.player_kill[ac.player.self] or (self.kill_count or 0)
+	-- print(gold,self.kill_count)
 	self.kill_count = gold
 	for i=1,10 do
 		if ac.player(i) == ac.player.self then

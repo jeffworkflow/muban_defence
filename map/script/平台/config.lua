@@ -150,7 +150,7 @@ end
 --执行加积分函数
 function ac.jiami(p,key,value)
     local v = ZZBase64.decode(p[key])
-    v = v  + value
+    v = v  + math.floor(tonumber(value))
     ac.SaveServerValue(p,key,v)
     if p:GetServerValueErrorCode() then
         p:Map_Stat_SetStat('JF',tostring(v))
@@ -159,6 +159,7 @@ end
 
 --存档
 function ac.SaveServerValue(p,key,value)
+    local value = math.floor(tonumber(value))
     value = tostring(value)
     local s = ZZBase64.encode(value)
     p[key] = s

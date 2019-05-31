@@ -1019,6 +1019,10 @@ end
 function mt:add_wood(num)
 	self:get_owner():add_wood(num, where or self, flag)
 end
+--获得杀敌数
+function mt:add_kill_count(num)
+	self:get_owner():add_kill_count(num, where or self, flag)
+end
 
 --添加敌我识别
 mt.enemy_tag = nil

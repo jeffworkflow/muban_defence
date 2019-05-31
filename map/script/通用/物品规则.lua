@@ -149,7 +149,8 @@
         if player.jifen then 
             jifen= tonumber(ZZBase64.decode(player.jifen)) or 0
         end
-        local fire_seed = player.kill_count or 0
+        local fire_seed = player.fire_seed or 0
+        -- print(kill_count,fire_seed)
 
         local golds = it:buy_price()
         local woods = it:buy_wood()
@@ -214,8 +215,10 @@
             -- print('扣钱')
             player:addGold( - golds,u)
             player:add_wood( - woods)
-            player.add_kill_count( - kill_counts)
-            player.add_fire_seed( - fire_seeds)
+            --扣杀敌数 
+            player:add_kill_count( -kill_counts)
+            --扣火种
+            player:add_fire_seed( -fire_seeds)
 
             if jifens > 0 then 
                 --扣除积分

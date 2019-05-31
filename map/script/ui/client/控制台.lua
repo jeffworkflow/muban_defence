@@ -195,9 +195,9 @@ ac.wait(0,function ()
 		
 	---------------------------模型观察器-----------------------------------------
 
-	--local model = console.get('头像模型')
-	--model:set_control_size(150,145)
-	--model:set_position(530,1080 - 145)
+	local model = console.get('头像模型')
+	model:set_control_size(225,112)
+	model:set_position(500,1080 - 170)
 
 	-- --屏幕上的单位模型
 	-- local actor = class.actor.create('卓尔游侠',550,1080-70)
