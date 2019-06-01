@@ -1,6 +1,9 @@
 --物品名称
 local mt = ac.skill['装备合成']
 mt{
+    --类型
+    item_type = "神符",
+    art = [[other\hecheng.blp]],
     --物品技能
     is_skill = true,
     content_tip = '',

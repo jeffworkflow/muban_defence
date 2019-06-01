@@ -80,11 +80,11 @@ for ix =1 ,4 do
                     skl:fresh_tip()
                     skl:set_level(1)
                     --增加属性5个的 
-                    for k,v in val[5][3]:gmatch '(%S+)%+(%d+%s-)' do
+                    for k,v in string.gsub(val[5][3],'-','+-'):gmatch '(%S+)%+([-%d.]+%s-)' do
                         --额外增加人物属性
                         hero:add(k,v)
                     end  
-                    for k,v in val[3][3]:gmatch '(%S+)%+(%d+%s-)' do
+                    for k,v in string.gsub(val[3][3],'-','+-'):gmatch '(%S+)%+([-%d.]+%s-)' do
                         hero:add(k,v)
                     end 
                     player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00激活成功|r 可以在套装系统中查看',2)

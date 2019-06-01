@@ -484,15 +484,15 @@ function mt:get_tip()
 		color_tip = self.color_tip
 	end	
 
-	-- if owner then
-	-- 	--有所属单位则说明物品在身上
-	-- 	if self:sell_price() > 0 then 
-	-- 		gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_price()..'|r|n'
-	-- 	end	
-	-- 	if self.get_sell_tip then 
-	-- 		gold = self:get_sell_tip(gold)
-	-- 	end	
-	-- end
+	if owner then
+		--有所属单位则说明物品在身上
+		if self:sell_price() > 0 then 
+			gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_price()..'|r|n'
+		end	
+		if self.get_sell_tip then 
+			gold = self:get_sell_tip(gold)
+		end	
+	end
 
 	local content_tip =''
 	if self.item_type =='装备' then 
@@ -715,7 +715,7 @@ end
 --删除物品
 function mt:item_remove(is)
 	-- print('即将移除物品：',self.slot_id,self.name,self.handle)
-	self.removed = true
+	-- self.removed = true --skill 那边会认为已经移除，不会进行on_remove 操作
 	--排除神符类的移除
 	if not self.handle then 
 		return
@@ -940,10 +940,12 @@ end
 --	false 真删 ,true 丢在地上。
 function unit.__index:remove_item(it)
 	if not it  then
+		print('物品已被移除')
 		return false
 	end
 	-- print('即将从单位移除物品：',it.slot_id,it.name,it.handle,ac.clock())
 	-- it:on_remove_state()
+	print('触发丢弃物品',it.name,it.type,it.handle)
 	--移除技能
 	it:_call_event 'on_remove'
 

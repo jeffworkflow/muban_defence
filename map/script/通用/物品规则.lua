@@ -129,10 +129,39 @@
         -- print('触发卖出物品',it)
         local player = u.owner
         local golds = it:sell_price()
+        local woods = it:sell_wood()
+        local kill_counts = it:sell_kill_count()
+        local jifens = it:sell_jifen()
+        local fire_seeds = it:sell_fire_seed()
         
         if golds > 0  then
             player:addGold(golds,u)
         end
+        if woods > 0  then
+            player:add_wood(woods)
+        end
+        if kill_counts > 0  then
+            player:add_kill_count(kill_counts)
+        end
+        if fire_seeds > 0  then
+            player:add_fire_seed(fire_seeds)
+        end
+
+        if jifens > 0 then 
+            --扣除积分
+            ac.jiami(player,'jifen',jifens)
+            --保存服务器存档 永久性的物品
+            -- local key = ac.get_mallkey_byname(it.name)
+            -- if key then 
+            --     -- print(it.name,key,1)
+            --     player:Map_SaveServerValue(key,1)
+            --     if not player.mall then 
+            --         player.mall ={}
+            --     end
+            --     player.mall[it.name] = true    
+            -- end    
+        end   
+
         it:item_remove()
 
     end)   

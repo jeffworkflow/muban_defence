@@ -90,10 +90,10 @@ local function unit_add_suit(unit,item)
                     if unit_suit_cnt >= cnt   then 
                         active_flag = true
                         if not unit.suit[name][cnt][1]  then   
-                            for k,v in attr_tip:gmatch '(%S+)%+(%d+%s-)' do
+                            for k,v in string.gsub(attr_tip,'-','+-'):gmatch '(%S+)%+([-%d.]+%s-)' do
                                 --额外增加人物属性
                                 --多个物品会额外增加套装属性
-                                -- print(attr_tip,k,v)
+                                -- print(k,v)
                                 unit:add(k,v)
                             end   
                         end   
@@ -136,7 +136,7 @@ local function unit_remove_suit(unit,item)
                 --如果类型一样且已激活
                 if v[i][1]   and suit_count < i then 
                     --减属性
-                    for k,v in v[i][3]:gmatch '(%S+)%+(%d+%s-)' do
+                    for k,v in string.gsub(v[i][3],'-','+-'):gmatch '(%S+)%+([-%d.]+%s-)' do
                         --额外增加人物属性
                         --多个物品会额外增加套装属性
                         unit:add(k,-v)

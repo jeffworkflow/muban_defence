@@ -72,7 +72,7 @@ mt{
         return str
     end,   
     --升级特效
-    effect =[[Hero_CrystalMaiden_N2_V_boom.mdx]],
+    effect ='Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx',
     --物品详细介绍的title
     content_tip = '基本属性：',
 }

@@ -35,7 +35,7 @@ function player.__index:add_fire_seed(fire_seed, where, flag)
 	if not fire_seed or tonumber(fire_seed) == 0  then 
 		return 
 	end	
-	local fire_seed = math.floor(tonumber(fire_seed))
+	local fire_seed = tonumber(string.format( "%.2f",fire_seed))
 	local data = {player = self, fire_seed = fire_seed}
 	if fire_seed > 0 and not flag then
 		self:event_notify('玩家-即将获得火种', data)
@@ -59,9 +59,9 @@ function player.__index:add_fire_seed(fire_seed, where, flag)
 	--modify by jeff 金币小于0 也显示文字出来
 	local str = nil
 	if fire_seed < 0 then 
-		 str =  math.floor(fire_seed)
+		 str =  fire_seed
 	else
-		 str = '+' .. math.floor(fire_seed)
+		 str = '+' .. fire_seed
 	end	
 	ac.texttag
 	{

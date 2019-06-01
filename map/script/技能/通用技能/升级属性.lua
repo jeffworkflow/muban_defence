@@ -41,7 +41,7 @@ ac.game:event '技能-失去' (function (_,hero,self)
     -- print(hero,self.name)
 	if not hero or not hero:is_type('英雄') or self.item_type =='消耗品' or self.item_type =='神符'  then 
 		return
-	end	
+    end	
 	--单位的属性表
 	local data = ac.unit.attribute
     for key in sortpairs(data) do 

@@ -511,6 +511,12 @@ function helper:add_suit(str)
 		end
 	end	
 end	
+--增加套装 可能掉线
+function helper:remove_item(str)
+	local item = self:has_item(str)
+	-- self:remove_item(item)
+	item:item_remove()
+end	
 
 --测试用的木桩
 function helper:tt_unit(where)

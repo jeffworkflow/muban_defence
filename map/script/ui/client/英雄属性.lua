@@ -14,13 +14,14 @@ class.hero_info_panel = extends(class.panel){
         -- line:set_alpha(0xff*0.6)
         
         panel.hero_img = panel:add_texture('image\\hero.blp',35,25,158,194) 
-        local title_background = panel:add_texture('image\\角色信息\\line.tga',213,25,586,30)
+        local title_background = panel:add_texture('image\\角色信息\\line.tga',213,25,586,22)
         title_background:set_alpha(0xff*0.1)
 
         local skl = hero and hero:find_skill(hero:get_name()..'天赋') 
         local tip = skl and skl:get_tip() or ''
-        panel.hero_tf = panel:add_text(hero and hero:get_name()..'天赋' or '',213,25,586,194,16,'auto_newline')
-        panel.hero_tip = panel:add_text(tip,213,55,586,194,12,'auto_newline')
+        local tf_text = '|cffcccccc'.. (hero and hero:get_name()..'天赋' or '')..'|r'
+        panel.hero_tf = panel:add_text(tf_text,213,25,586,194,12,'auto_newline')
+        panel.hero_tip = panel:add_text(tip,213,55,586,170,10,'auto_newline')
         --属性加背景
         for i=1,7 do 
             local y = 241 + 30*(i*2-1) -30
@@ -98,7 +99,8 @@ class.hero_info_panel = extends(class.panel){
 
         local skl = hero and hero:find_skill(hero:get_name()..'天赋') 
         local tip = skl and skl:get_tip() or ''
-        self.hero_tf:set_text(skl.name)
+        
+        self.hero_tf:set_text('|cffcccccc'..skl.name..'|r')
         self.hero_tip:set_text(tip)
 
         for i,data in ipairs(self.attrs) do
