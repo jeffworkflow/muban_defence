@@ -162,7 +162,7 @@ local devil_deal ={
 },
 
 [3] = {
-{'无所不贪lv1',false,'杀怪加全属性',50,'全属性',200000,[[liliang.blp]],[[
+{'无所不贪lv1',false,'杀怪加全属性',50,'全属性',100000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv1|r
     
@@ -176,56 +176,56 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+250攻击加全属性|r
     ]]},
 
-{'无所不贪lv3',false,'每秒加全属性',500,'全属性',200000,[[liliang.blp]],[[
+{'无所不贪lv3',false,'每秒加全属性',500,'全属性',300000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv3|r
     
 |cffFFE799【奖励】|r|cff00ff00+500每秒加全属性|r
     ]]},
 
-{'无所不贪lv4',false,'杀怪加全属性',100,'全属性',200000,[[liliang.blp]],[[
+{'无所不贪lv4',false,'杀怪加全属性',100,'全属性',400000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv4|r
     
 |cffFFE799【奖励】|r|cff00ff00+100杀怪加全属性|r
     ]]},
 
-{'无所不贪lv5',false,'攻击加全属性',500,'全属性',200000,[[liliang.blp]],[[
+{'无所不贪lv5',false,'攻击加全属性',500,'全属性',500000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv5|r
     
 |cffFFE799【奖励】|r|cff00ff00+500攻击加全属性|r
     ]]},
 
-{'无所不贪lv6',false,'每秒加全属性',1000,'全属性',200000,[[liliang.blp]],[[
+{'无所不贪lv6',false,'每秒加全属性',1000,'全属性',600000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv6|r
     
 |cffFFE799【奖励】|r|cff00ff00+1000每秒加全属性|r
     ]]},
 
- {'无所不贪lv7',false,'杀怪加全属性',150,'全属性',200000,[[liliang.blp]],[[
+ {'无所不贪lv7',false,'杀怪加全属性',150,'全属性',700000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv7|r
     
 |cffFFE799【奖励】|r|cff00ff00+150杀怪加全属性|r
     ]]},
 
-{'无所不贪lv8',false,'攻击加全属性',750,'全属性',200000,[[liliang.blp]],[[
+{'无所不贪lv8',false,'攻击加全属性',750,'全属性',800000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv8|r
     
 |cffFFE799【奖励】|r|cff00ff00+750攻击加全属性|r
     ]]},
 
-{'无所不贪lv9',false,'每秒加全属性',1500,'全属性',200000,[[liliang.blp]],[[
+{'无所不贪lv9',false,'每秒加全属性',1500,'全属性',900000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv9|r
     
 |cffFFE799【奖励】|r|cff00ff00+1500每秒加全属性|r
     ]]},
 
-{'无所不贪lvmax',false,'全伤加深',2.5,'全属性',200000,[[liliang.blp]],[[
+{'无所不贪lvmax',false,'全伤加深',2.5,'全属性',1000000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lvmax|r
     
