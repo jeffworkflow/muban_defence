@@ -63,12 +63,12 @@ local function task_sjjh(skill)
             --处理每20只奖励杀怪+金币
             local cnt = math.floor(p.sjjh_cnt/20)
 
-            p:sendMsg('|cffFFE799【系统提示】|r当前杀鸡进度：|cffff0000'..(p.sjjh_cnt - cnt*20)..'|r/'..self.per_kill_cnt,2)
+            p:sendMsg('|cffFFE799【系统消息】|r当前杀鸡进度：|cffff0000'..(p.sjjh_cnt - cnt*20)..'|r/'..self.per_kill_cnt,2)
             if p.sjjh_cnt % 20 == 0 then 
                 hero:add('杀怪加金币',self.award_gold)
                 hero:add('攻击加金币',self.award_gold)
                 hero:add('每秒加金币',self.award_gold)
-                p:sendMsg('|cffFFE799【系统提示】|r完成杀鸡任务：|cffff0000'..cnt.. '|r/5，获得|cff00ff00杀怪+50金币，攻击+50金币，每秒+50金币|r',2)
+                p:sendMsg('|cffFFE799【系统消息】|r完成杀鸡任务：|cffff0000'..cnt.. '|r/5，获得|cff00ff00杀怪+50金币，攻击+50金币，每秒+50金币|r',2)
             end
 
             if p.sjjh_cnt == self.kill_cnt then
@@ -87,7 +87,7 @@ local function task_sjjh(skill)
                     item.owner_ship = hero 
                     hero:add_item(item,true)
                 end)    
-                p:sendMsg('|cffFFE799【系统提示】|r|cffff0000齐天大圣|r已出现，小心他的金箍棒 ',5)
+                p:sendMsg('|cffFFE799【系统消息】|r|cffff0000齐天大圣|r已出现，小心他的金箍棒 ',2)
 
                 --移除触发
                 trg:remove()

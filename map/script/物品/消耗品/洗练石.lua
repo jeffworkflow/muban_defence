@@ -103,7 +103,7 @@ for ix =1 ,4 do
                 end    
             end  
         else
-            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000洗练失败|r 合成材料出错或者该套装已被激活',5)
+            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000洗练失败|r 合成材料出错或者该套装已被激活',2)
             if self.add_item_count then 
                 self:add_item_count(1) 
             end    

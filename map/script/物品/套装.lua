@@ -106,7 +106,8 @@ local function unit_add_suit(unit,item)
                     end    
                     unit.suit[name][cnt][4] = tip  
                 end
-            end     
+            end   
+            tip = tip ..'\n'  
             --刷新单位身上的所有物品说明
             fresh_suit_tip(unit,type,tip)
         end    
@@ -154,6 +155,8 @@ local function unit_remove_suit(unit,item)
         end 
     end 
     -- print(tip)
+    tip = tip ..'\n'
+    item_self_tip = item_self_tip ..'\n'
     --先刷新丢地上的物品
     item:set_tip(item:get_tip()..item_self_tip)
     --刷新 套装说明 
