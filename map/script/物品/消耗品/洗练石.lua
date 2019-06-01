@@ -19,11 +19,13 @@ for ix =1 ,4 do
         art = [[xilianshi.blp]],
         --说明
         tip = [[%change_tip%]],
-        change_tip = [[点击使用
+        change_tip = [[
 
-洗练后将激活装备的套装属性，合成材料都会消失
+|cff00ffff可洗练出装备的套装属性，但合成材料会消失，激活的属性可在套装系统中查看|r
                 
-合成材料：5个同套装装备+洗练石]],
+|cff00ff00【合成材料】5个同套装装备+洗练石|r
+
+|cffcccccc【同一套装属性只能激活一次】|r]],
         --物品类型
         item_type = '消耗品',
         --目标类型
@@ -39,6 +41,7 @@ for ix =1 ,4 do
         
     function mt:on_add()
         self.first_use =true
+        
     end
     function mt:on_cast_start()
         local hero = self.owner
@@ -46,16 +49,17 @@ for ix =1 ,4 do
         --宠物也帮忙升级
         hero = player.hero
         if not hero.suit then 
-            player:sendMsg('【系统消息】洗练失败，可能是套装不满5个',5)
+            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000洗练失败|r 请检查合成材料',2)
             if self.add_item_count then 
                 self:add_item_count(1) 
+                
             end    
             return true
         end     
         
         local skl = hero:find_skill(self.name,nil,true)
         if skl and skl.level >=1 then 
-            player:sendMsg('已洗练过，不允许再次洗练',5)
+            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000操作失败|r '..self.color_name..'已被激活，可以在套装系统中查看',2)
             if self.add_item_count then 
                 self:add_item_count(1) 
             end    
@@ -83,6 +87,7 @@ for ix =1 ,4 do
                     for k,v in val[3][3]:gmatch '(%S+)%+(%d+%s-)' do
                         hero:add(k,v)
                     end 
+                    player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00激活成功|r 可以在套装系统中查看',2)
                     --标记已经洗练过（不可洗练两套海贼王）
                     hero.flag_suit[key] =true
                     break
@@ -98,7 +103,7 @@ for ix =1 ,4 do
                 end    
             end  
         else
-            player:sendMsg('洗练失败，套装部件不足5件或是已经洗练过',5)
+            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000洗练失败|r 合成材料出错或者该套装已被激活',5)
             if self.add_item_count then 
                 self:add_item_count(1) 
             end    

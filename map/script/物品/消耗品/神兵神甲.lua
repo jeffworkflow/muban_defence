@@ -59,7 +59,7 @@ for key,tab in pairs(magic_item) do
                 end    
                 return 
             end    
-            player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00激活成功|r，可以在神器系统中查看')
+            player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00激活成功|r 可以在神器系统中查看',2)
             skl:set_level(1)
             skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
             

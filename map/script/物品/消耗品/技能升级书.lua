@@ -8,7 +8,7 @@ for ix =1 ,4 do
         --图标
         art = [[jinengshengji1.blp]],
         --说明
-        tip = '点击选择 升级技能Lv'..ix..' → Lv'..ix+1,
+        tip = '\n|cff00ffff点击选择要升级的技能，可将技能 |rLv'..ix..' |cff00ffff升到 |rLv'..(ix+1)..'\n',
         --物品类型
         item_type = '消耗品',
         --目标类型

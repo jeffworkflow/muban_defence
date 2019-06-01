@@ -250,6 +250,12 @@ local unit_reward = {
     ['技能BOSS3'] = {{rand =100,name = '技能升级书Lv3'}},
     ['技能BOSS4'] = {{rand =100,name = '技能升级书Lv4'}},
 
+    ['洗练石boss1'] = {{rand =100,name = '一号洗练石'}},
+    ['洗练石boss2'] = {{rand =100,name = '二号洗练石'}},
+    ['洗练石boss3'] = {{rand =100,name = '三号洗练石'}},
+    ['洗练石boss4'] = {{rand =100,name = '四号洗练石'}},
+
+
     
     ['进攻怪'] =  {
         -- { rand = 97.5,         name = '无'},

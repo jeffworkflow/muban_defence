@@ -16,11 +16,14 @@ mt{
 	passive = true,
     title = "|cffdf19d0强化后的水疗术|r",
 	--冷却时间
-	cool = 20,
+    cool = 20,
+    ['每秒回血'] = 5,
 	--介绍
     tip = [[
+
+|cffffff00【每秒回血】+5%|r
         
-|cff00bdec【被动效果】攻击15%几率触发， 回复12%的生命值|r
+|cff00bdec【被动效果】攻击15%几率触发， 回复10%的生命值|r
     
 ]],
 	--技能图标
@@ -28,7 +31,7 @@ mt{
 	--特效
     effect = [[Abilities\Spells\Human\HolyBolt\HolyBoltSpecialArt.mdl]],
     --补血量
-    heal = 12
+    heal = 10
 }
 function mt:on_add()
     local skill = self

@@ -47,6 +47,6 @@ BONUS_MANAREGEN= - 每点提高|cffffff00 0.5 |r技能基础伤害
 COLON_AGILITY=|cffffff00敏捷|r
 COLON_INTELLECT=|cffffff00智力|r
 COLON_STRENGTH=|cffffff00力量|r
-ITEM_PAWN_TOOLTIP=|cff808080将物品扔在商店以卖出|R
+ITEM_PAWN_TOOLTIP=|cff808080点击左键来使用消耗品|R
 ITEM_USE_TOOLTIP= 
 PRIMARY_ATTRIBUTE=|cffffff00主要属性|r

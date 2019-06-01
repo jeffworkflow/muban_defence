@@ -6,7 +6,7 @@ local rect = require 'types.rect'
 local devil_deal ={
     --商品名（map.table.单位.商店）,是否激活 属性名，数值，耗费币种，数值，图标,说明
     [1] = {
-{'无所不在lv1',false,'分裂伤害',5,'全属性',1000,[[xiaoheiwu.blp]],[[
+{'无所不在lv1',false,'分裂伤害',5,'金币',1000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv1|r
 
@@ -15,7 +15,7 @@ local devil_deal ={
 ]]
 },
 
-{'无所不在lv2',false,'分裂伤害',5,'全属性',50000,[[xiaoheiwu.blp]],[[
+{'无所不在lv2',false,'分裂伤害',5,'金币',5000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv2|r
 
@@ -23,7 +23,7 @@ local devil_deal ={
 
 ]]},
 
-{'无所不在lv3',false,'分裂伤害',5,'杀敌数',10000,[[xiaoheiwu.blp]],[[
+{'无所不在lv3',false,'分裂伤害',5,'金币',10000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv3|r
 
@@ -162,7 +162,7 @@ local devil_deal ={
 },
 
 [3] = {
-{'无所不贪lv1',false,'杀怪加全属性',50,'金币',200000,[[liliang.blp]],[[
+{'无所不贪lv1',false,'杀怪加全属性',50,'全属性',200000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv1|r
     
@@ -363,10 +363,10 @@ for _,tab in ipairs(devil_deal) do
                     self:on_cast_finish()
                 else
                     p:sendMsg('全属性不足',10) 
-                    --停止继续执行   
-                    self:stop()
-                    return
-                end    
+                end  
+                --停止继续执行   
+                self:stop()
+                return  
             end
 
             local item = setmetatable(self,ac.item)

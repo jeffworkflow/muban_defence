@@ -5,7 +5,7 @@ ac.quick_arrive ={
     --商品名 = 目的区域,图标,说明,消费钱,消费木头，火种，杀敌数，积分，商店名字
     ['神兵-凝脂剑'] = {ac.map.rects['传送-武器1'],'wuqi2.blp','\n挑战BOSS并获得|cff00ff00 【一阶神兵】-凝脂剑|r\n',0,20,0,0,0,} ,
     ['神兵-元烟剑'] = {ac.map.rects['传送-武器2'],'wuqi18.blp','\n挑战BOSS并获得|cff00ff00 【二阶神兵】-元烟剑|r\n',0,50,0} ,
-    ['神兵-暗影'] = {ac.map.rects['传送-武器3'],'wuqi20.blp','\n挑战BOSS并获得|cff00bdec 【三阶神兵】-暗影|r\n',500} ,
+    ['神兵-暗影'] = {ac.map.rects['传送-武器3'],'wuqi20.blp','\n挑战BOSS并获得|cff00bdec 【三阶神兵】-暗影|r\n',0,100,0} ,
     ['神兵-青涛魔剑'] = {ac.map.rects['传送-武器4'],'wuqi19.blp','\n挑战BOSS并获得|cff00bdec 【四阶神兵】-青涛魔剑|r\n',500} ,
     ['神兵-青虹紫霄剑'] = {ac.map.rects['传送-武器5'],'wuqi7.blp','\n挑战BOSS并获得|cffffff00 【五阶神兵】-青虹紫霄剑|r\n',500} ,
     ['神兵-熔炉炎刀'] = {ac.map.rects['传送-武器6'],'wuqi4.blp','\n挑战BOSS并获得|cffffff00 【六阶神兵】-熔炉炎刀|r\n',500} ,
@@ -16,7 +16,7 @@ ac.quick_arrive ={
 
     ['神甲-芙蓉甲'] = {ac.map.rects['传送-甲1'],'jia1.blp','\n挑战BOSS并获得|cff00ff00 【一阶神甲】-芙蓉甲|r\n',0,20,0} ,
     ['神甲-鱼鳞甲'] = {ac.map.rects['传送-甲2'],'jia2.blp','\n挑战BOSS并获得|cff00ff00 【二阶神甲】-鱼鳞甲|r\n',0,50,0} ,
-    ['神甲-碧云甲'] = {ac.map.rects['传送-甲3'],'jia3.blp','\n挑战BOSS并获得|cff00bdec 【三阶神甲】-碧云甲|r\n',0,20,0} ,
+    ['神甲-碧云甲'] = {ac.map.rects['传送-甲3'],'jia3.blp','\n挑战BOSS并获得|cff00bdec 【三阶神甲】-碧云甲|r\n',0,100,0} ,
     ['神甲-青霞甲'] = {ac.map.rects['传送-甲4'],'jia4.blp','\n挑战BOSS并获得|cff00bdec 【四阶神甲】-青霞甲|r\n',0,20,0} ,
     ['神甲-飞霜辉铜甲'] = {ac.map.rects['传送-甲5'],'jia5.blp','\n挑战BOSS并获得|cffffff00 【五阶神甲】-飞霜辉铜甲|r\n',0,20,0} ,
     ['神甲-天魔苍雷甲'] = {ac.map.rects['传送-甲6'],'jia6.blp','\n挑战BOSS并获得|cffffff00 【六阶神甲】-天魔苍雷甲|r\n',0,20,0} ,
@@ -30,10 +30,10 @@ ac.quick_arrive ={
     ['技能升级书lv3'] = {ac.map.rects['传送-技能3'],'jinengshengji1.blp','\n挑战BOSS并获得|cffffff00 【技能升级书lv3】|r\n',0,10000,0,0,0,nil,0,450} ,
     ['技能升级书lv4'] = {ac.map.rects['传送-技能4'],'jinengshengji1.blp','\n挑战BOSS并获得|cffff0000 【技能升级书lv4】|r\n',0,100000,0,0,0,nil,0,450} ,
     
-    ['挑战一号洗练石'] = {ac.map.rects['传送-洗练石1'],'','挑着boss'} ,
-    ['挑战二号洗练石'] = {ac.map.rects['传送-洗练石1'],'','挑着boss'} ,
-    ['挑战三号洗练石'] = {ac.map.rects['传送-洗练石1'],'','挑着boss'} ,
-    ['挑战四号洗练石'] = {ac.map.rects['传送-洗练石1'],'','挑着boss'} ,
+    ['洗练石boss1'] = {ac.map.rects['传送-洗练石1'],'xilianshi.blp','\n挑战BOSS并获得|cff00ff00 【一号洗练石】|r\n\n',0,200,0,0,0,nil,0,450} ,
+    ['洗练石boss2'] = {ac.map.rects['传送-洗练石2'],'xilianshi.blp','\n挑战BOSS并获得|cff00ff00 【二号洗练石】|r\n',0,400,0,0,0,nil,0,450} ,
+    ['洗练石boss3'] = {ac.map.rects['传送-洗练石3'],'xilianshi.blp','\n挑战BOSS并获得|cff00ff00 【三号洗练石】|r\n',0,800,0,0,0,nil,0,450} ,
+    ['洗练石boss4'] = {ac.map.rects['传送-洗练石4'],'xilianshi.blp','\n挑战BOSS并获得|cff00ff00 【四号洗练石】|r\n',0,1600,0,0,0,nil,0,450} ,
 
     ['境界-小斗气'] = {ac.map.rects['传送-境界1'],'tupo1.blp','挑着boss',0,0,10} ,
     ['境界-斗者'] = {ac.map.rects['传送-境界2'],'tupo2.blp','挑着boss',0,0,10} ,
@@ -52,6 +52,7 @@ for key,value in pairs(ac.quick_arrive) do
 
     --物品名称
     local mt = ac.skill[key]
+
     mt{
     --等久
     level = 1,
@@ -87,10 +88,10 @@ for key,value in pairs(ac.quick_arrive) do
     if value[8] then 
         mt.jifen = value[8]
     end
-    if value[9] then 
+    -- if value[9] then 
         --商店名
-        mt.store_name = value[9]
-    end
+        mt.store_name = '|cffdf19d0挑战 |r' .. key
+    -- end
    
 
 

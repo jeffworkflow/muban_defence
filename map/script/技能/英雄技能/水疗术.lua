@@ -15,11 +15,15 @@ mt{
 	--耗蓝
 	cost = 100,
 	--冷却时间
-	cool = 20,
+    cool = 20,
+    ['生命恢复'] = {100000,200000,300000,400000,500000},
+
 	--介绍
     tip = [[
+
+|cffffff00【生命恢复】+10w*Lv|r
         
-|cff00bdec【主动施放】回复25%生命值 并每秒回复|r|cffffff00【5%*lv】的生命值|r |cff00bdec持续3秒|r
+|cff00bdec【主动施放】回复35%生命值 并每秒回复|r|cffffff00【5%*lv】的生命值|r |cff00bdec持续3秒|r
     
 ]],
 	--技能图标
@@ -27,7 +31,7 @@ mt{
 	--特效
     effect = [[Abilities\Spells\Human\HolyBolt\HolyBoltSpecialArt.mdl]],
     --治疗量
-    heal = 25,
+    heal = 35,
     stu_heal = {5,10,15,20,25},
     time = 3
 }
