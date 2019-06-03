@@ -70,7 +70,6 @@ trigger gg_trg_lua= null
 string array Player_name
 
 trigger l__library_init
-
 rect gg_rct_cg1= null
 rect gg_rct_cg2= null
 rect gg_rct_cg3= null
@@ -169,12 +168,6 @@ rect gg_rct_jn3= null
 rect gg_rct_jn33= null
 rect gg_rct_jn4= null
 rect gg_rct_jn44= null
-rect gg_rct_xls1= null
-rect gg_rct_xls11= null
-rect gg_rct_xls2= null
-rect gg_rct_xls22= null
-rect gg_rct_xls3= null
-rect gg_rct_xls33= null
 rect gg_rct_xls4= null
 rect gg_rct_xls44= null
 rect gg_rct_jj11= null
@@ -212,6 +205,12 @@ rect gg_rct_emo2= null
 rect gg_rct_emo3= null
 rect gg_rct_emo4= null
 rect gg_rct_xuanren= null
+rect gg_rct_xls3= null
+rect gg_rct_xls33= null
+rect gg_rct_xls2= null
+rect gg_rct_xls22= null
+rect gg_rct_xls1= null
+rect gg_rct_xls11= null
 endglobals
 
     native DzGetMouseTerrainX takes nothing returns real
@@ -1803,14 +1802,8 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_jn33=Rect(28576.0, - 14208.0, 28800.0, - 13984.0)
     set gg_rct_jn4=Rect(26016.0, - 14976.0, 26304.0, - 14752.0)
     set gg_rct_jn44=Rect(26048.0, - 14240.0, 26272.0, - 14016.0)
-    set gg_rct_xls1=Rect(12736.0, - 960.0, 13056.0, - 608.0)
-    set gg_rct_xls11=Rect(12672.0, - 128.0, 12992.0, 224.0)
-    set gg_rct_xls2=Rect(12704.0, 1216.0, 13024.0, 1568.0)
-    set gg_rct_xls22=Rect(12640.0, 2048.0, 12960.0, 2400.0)
-    set gg_rct_xls3=Rect(12736.0, 3168.0, 13056.0, 3520.0)
-    set gg_rct_xls33=Rect(12672.0, 4000.0, 12992.0, 4352.0)
-    set gg_rct_xls4=Rect(12704.0, 4928.0, 13024.0, 5280.0)
-    set gg_rct_xls44=Rect(12640.0, 5760.0, 12960.0, 6112.0)
+    set gg_rct_xls4=Rect(12672.0, 4768.0, 12928.0, 4960.0)
+    set gg_rct_xls44=Rect(12672.0, 5632.0, 12928.0, 5856.0)
     set gg_rct_jj11=Rect(12992.0, - 11168.0, 13312.0, - 10816.0)
     set gg_rct_jj1=Rect(12992.0, - 12032.0, 13312.0, - 11712.0)
     set gg_rct_jj22=Rect(13024.0, - 13728.0, 13344.0, - 13376.0)
@@ -1846,6 +1839,12 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_emo3=Rect(18560.0, - 8960.0, 18912.0, - 8640.0)
     set gg_rct_emo4=Rect(16480.0, - 9056.0, 16832.0, - 8736.0)
     set gg_rct_xuanren=Rect(8224.0, - 512.0, 9600.0, 448.0)
+    set gg_rct_xls3=Rect(12736.0, 2944.0, 12992.0, 3136.0)
+    set gg_rct_xls33=Rect(12736.0, 3808.0, 12992.0, 4032.0)
+    set gg_rct_xls2=Rect(12736.0, 1152.0, 12992.0, 1344.0)
+    set gg_rct_xls22=Rect(12736.0, 2016.0, 12992.0, 2240.0)
+    set gg_rct_xls1=Rect(12736.0, - 896.0, 12992.0, - 704.0)
+    set gg_rct_xls11=Rect(12736.0, - 32.0, 12992.0, 192.0)
 endfunction
 
 //===========================================================================

@@ -223,9 +223,7 @@ function mt:add_content()
     elseif  rand_name == '通关积分100' then
         local value =   100 * ((hero:get '积分加成' or 0) + 1)
         ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 挖了|cff00ffff藏宝图|r, |cffff0000 通关积分+'..value..' |r',10)
-        if ac.jiami then 
-            ac.jiami(player,'jifen',(value or 0))
-        end  
+       
     elseif rand_name == '十连挖' then
         ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 挖了|cff00ffff藏宝图|r, |cffff0000 十连挖 |r',10)
         if not player.flag_shilianwan then 

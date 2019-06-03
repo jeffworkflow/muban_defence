@@ -148,8 +148,8 @@
         end
 
         if jifens > 0 then 
-            --扣除积分
-            ac.jiami(player,'jifen',jifens)
+            --增加积分
+            player:add_jifen(jifens)
             --保存服务器存档 永久性的物品
             -- local key = ac.get_mallkey_byname(it.name)
             -- if key then 
@@ -176,7 +176,7 @@
         local jifen = 0
         it.seller = seller
         if player.jifen then 
-            jifen= tonumber(ZZBase64.decode(player.jifen)) or 0
+            jifen= tonumber(player.jifen) or 0
         end
         local fire_seed = player.fire_seed or 0
         -- print(kill_count,fire_seed)
@@ -251,7 +251,7 @@
 
             if jifens > 0 then 
                 --扣除积分
-                ac.jiami(player,'jifen',-jifens)
+                player:add_jifen(-jifens)
                 -- player:event_notify('积分变化',player,-jifens)
                 --保存服务器存档 永久性的物品
                 -- print(it.name)

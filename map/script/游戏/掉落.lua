@@ -254,20 +254,25 @@ local unit_reward = {
     ['洗练石boss2'] = {{rand =100,name = '二号洗练石'}},
     ['洗练石boss3'] = {{rand =100,name = '三号洗练石'}},
     ['洗练石boss4'] = {{rand =100,name = '四号洗练石'}},
+    
+    ['肉山'] =  {{ rand = 50,      name = '吞噬丹'}},
+    ['梦魇'] =  {{ rand = 50,      name = '吞噬丹'}},
+    ['戈登的激情'] =  {{ rand = 50,      name = '吞噬丹'}},
+    ['焰皇'] =  {{ rand = 50,      name = '吞噬丹'}},
+    ['毁灭者'] =  {{ rand = 50,      name = '吞噬丹'}},
 
 
     
     ['进攻怪'] =  {
         -- { rand = 97.5,         name = '无'},
         { rand = 2.5,      name = {
-                { rand = 0, name = '召唤练功怪'},
                 { rand = 75, name = '随机白装'},
                 { rand = 20, name = '随机蓝装'},
                 { rand = 4, name = '随机金装'},
-                { rand = 0 ,  name = '召唤boss'},
                 { rand = 1, name = '随机红装'},
             }
-        }
+        },
+        { rand = 0.01,      name = '吞噬丹'}
     },
     ['随机物品'] =  {
         { rand = 100,      name = {
@@ -291,9 +296,7 @@ local unit_reward = {
         {    rand = 5, name = '杀怪加敏捷10',},
         {    rand = 5, name = '杀怪加智力10',},
     },
-    ['挑战怪'] =  {
-        { rand = 30,      name = '吞噬丹'}
-    },
+
     ['商店随机技能'] =  {
         { rand = 100,      name = '随机技能'}
     },
@@ -354,15 +357,160 @@ local unit_reward = {
         {    rand = 1, name = '宠物经验书',},
         {    rand = 2, name = '随机恶魔果实',},
     },
-    ['均分随机物品'] =  {
-        { rand = 100,      name = {
-                { rand = 25, name = '白'},
-                { rand = 25, name = '蓝'},
-                { rand = 25, name = '金'},
-                { rand = 25, name = '红'},
-            }
-        }
+    ['初级扭蛋'] = {
+        {    rand = 61, name = '空蛋' },
+        {    rand = 2.43, name = '力量+2500' },
+        {    rand = 2.5, name = '敏捷+2500',},
+        {    rand = 2.5, name = '智力+2500',},
+        {    rand = 2, name = '杀怪加力量+1',},
+        {    rand = 2, name = '杀怪加敏捷+1',},
+        {    rand = 2, name = '杀怪加智力+1',},
+        {    rand = 2, name = '攻击加力量+3',},
+        {    rand = 2, name = '攻击加敏捷+3',},
+        {    rand = 2, name = '攻击加智力+3',},
+        {    rand = 2, name = '每秒加力量+5',},
+        {    rand = 2, name = '每秒加敏捷+5',},
+        {    rand = 2, name = '每秒加智力+5',},
+
+        {    rand = 0.1, name = '力量+25000' },
+        {    rand = 0.1, name = '敏捷+25000',},
+        {    rand = 0.1, name = '智力+25000',},
+        {    rand = 0.1, name = '杀怪加力量+10',},
+        {    rand = 0.1, name = '杀怪加敏捷+10',},
+        {    rand = 0.1, name = '杀怪加智力+10',},
+        {    rand = 0.1, name = '攻击加力量+30',},
+        {    rand = 0.1, name = '攻击加敏捷+30',},
+        {    rand = 0.1, name = '攻击加智力+30',},
+        {    rand = 0.1, name = '每秒加力量+50',},
+        {    rand = 0.1, name = '每秒加敏捷+50',},
+        {    rand = 0.1, name = '每秒加智力+50',},
+
+        {    rand = 0.01, name = '力量+250000' },
+        {    rand = 0.01, name = '敏捷+250000',},
+        {    rand = 0.01, name = '智力+250000',},
+        {    rand = 0.01, name = '杀怪加力量+100',},
+        {    rand = 0.01, name = '杀怪加敏捷+100',},
+        {    rand = 0.01, name = '杀怪加智力+100',},
+        {    rand = 0.01, name = '攻击加力量+300',},
+        {    rand = 0.01, name = '攻击加敏捷+300',},
+        {    rand = 0.01, name = '攻击加智力+300',},
+        {    rand = 0.01, name = '每秒加力量+500',},
+        {    rand = 0.01, name = '每秒加敏捷+500',},
+        {    rand = 0.01, name = '每秒加智力+500',},
+
+        {    rand = 2, name = '攻击+50000',},
+        {    rand = 2, name = '杀怪加攻击+2',},
+        {    rand = 2, name = '每秒加攻击+10',},
+        {    rand = 0.1, name = '攻击+500000',},
+        {    rand = 0.1, name = '杀怪加攻击+20',},
+        {    rand = 0.1, name = '每秒加攻击+100',},
+        {    rand = 0.01, name = '攻击+5000000',},
+        {    rand = 0.01, name = '杀怪加攻击+200',},
+        {    rand = 0.01, name = '每秒加攻击+1000',},
+
+        {    rand = 2, name = '护甲+10',},
+        {    rand = 2, name = '每秒加护甲+0.1',},
+        {    rand = 0.1, name = '护甲+100',},
+        {    rand = 0.1, name = '每秒加护甲+1',},
+        {    rand = 0.01, name = '护甲+1000',},
+        {    rand = 0.01, name = '每秒加护甲+10',},
+
+        {    rand = 1, name = '宠物经验书(小)',},
+        {    rand = 0.01, name = '吞噬丹',},
+        {    rand = 0.01, name = '随机技能',},
+        {    rand = 0.17, name = '随机物品',}, --和商店一样 '凝脂剑','元烟剑','暗影','青涛魔剑','青虹紫霄剑'
+        {    rand = 0.01, name = '神兵',},--lv1-lv5
+        {    rand = 0.01, name = '神甲',},--lv1-lv5
+        {    rand = 0.02, name = '技能升级书Lv1',}, --lv1
+        {    rand = 0.02, name = '技能升级书Lv2',}, --lv2
+        {    rand = 0.02, name = '一号洗练石',},
+        {    rand = 0.02, name = '二号洗练石',},
+
+        {    rand = 0.1, name = '红色小水滴',},--红色小水滴 吸血+10% 攻击回血+500000
+        {    rand = 0.1, name = '发光的蓝色灰烬',},--暴击几率+2.5%，暴击伤害+25%
+        {    rand = 0.1, name = '发光的草药',},--免伤几率+5%，每秒回血+5%
+        {    rand = 0.1, name = '奇美拉的头颅',},--分裂伤害+50%，攻击速度+50%
+
+        {    rand = 0.01, name = '倒霉蛋',},--木头+5555，火种+5555，杀敌数+5555
     },
+    ['高级扭蛋'] = {
+        {    rand = 60.12, name = '空蛋' },
+        {    rand = 2, name = '力量+625000' },
+        {    rand = 2, name = '敏捷+625000',},
+        {    rand = 2, name = '智力+625000',},
+        {    rand = 2, name = '杀怪加力量+25',},
+        {    rand = 2, name = '杀怪加敏捷+25',},
+        {    rand = 2, name = '杀怪加智力+25',},
+        {    rand = 2, name = '攻击加力量+75',},
+        {    rand = 2, name = '攻击加敏捷+75',},
+        {    rand = 2, name = '攻击加智力+75',},
+        {    rand = 2, name = '每秒加力量+125',},
+        {    rand = 2, name = '每秒加敏捷+125',},
+        {    rand = 2, name = '每秒加智力+125',},
+
+        {    rand = 0.1, name = '力量+6250000' },
+        {    rand = 0.1, name = '敏捷+6250000',},
+        {    rand = 0.1, name = '智力+6250000',},
+        {    rand = 0.1, name = '杀怪加力量+250',},
+        {    rand = 0.1, name = '杀怪加敏捷+250',},
+        {    rand = 0.1, name = '杀怪加智力+250',},
+        {    rand = 0.1, name = '攻击加力量+750',},
+        {    rand = 0.1, name = '攻击加敏捷+750',},
+        {    rand = 0.1, name = '攻击加智力+750',},
+        {    rand = 0.1, name = '每秒加力量+1250',},
+        {    rand = 0.1, name = '每秒加敏捷+1250',},
+        {    rand = 0.1, name = '每秒加智力+1250',},
+
+        {    rand = 0.01, name = '力量+62500000' },
+        {    rand = 0.01, name = '敏捷+62500000',},
+        {    rand = 0.01, name = '智力+62500000',},
+        {    rand = 0.01, name = '杀怪加力量+2500',},
+        {    rand = 0.01, name = '杀怪加敏捷+2500',},
+        {    rand = 0.01, name = '杀怪加智力+2500',},
+        {    rand = 0.01, name = '攻击加力量+7500',},
+        {    rand = 0.01, name = '攻击加敏捷+7500',},
+        {    rand = 0.01, name = '攻击加智力+7500',},
+        {    rand = 0.01, name = '每秒加力量+12500',},
+        {    rand = 0.01, name = '每秒加敏捷+12500',},
+        {    rand = 0.01, name = '每秒加智力+12500',},
+
+        {    rand = 2, name = '攻击+1250000',},
+        {    rand = 2, name = '杀怪加攻击+50',},
+        {    rand = 2, name = '每秒加攻击+250',},
+        {    rand = 0.1, name = '攻击+12500000',},
+        {    rand = 0.1, name = '杀怪加攻击+500',},
+        {    rand = 0.1, name = '每秒加攻击+2500',},
+        {    rand = 0.01, name = '攻击+12500000',},
+        {    rand = 0.01, name = '杀怪加攻击+5000',},
+        {    rand = 0.01, name = '每秒加攻击+25000',},
+
+        {    rand = 2, name = '护甲+250',},
+        {    rand = 2, name = '每秒加护甲+2.5',},
+        {    rand = 0.1, name = '护甲+2500',},
+        {    rand = 0.1, name = '每秒加护甲+25',},
+        {    rand = 0.01, name = '护甲+25000',},
+        {    rand = 0.01, name = '每秒加护甲+250',},
+
+        {    rand = 1, name = '宠物经验书(大)',},
+        {    rand = 0.25, name = '吞噬丹',},
+        {    rand = 0.25, name = '随机技能',},
+        {    rand = 2, name = '随机物品',}, --和商店一样 '凝脂剑','元烟剑','暗影','青涛魔剑','青虹紫霄剑'
+        {    rand = 0.01, name = '神兵',},--lv6-lv10
+        {    rand = 0.01, name = '神甲',},--lv6-lv10
+        {    rand = 0.02, name = '技能升级书Lv3',}, --lv1
+        {    rand = 0.02, name = '技能升级书Lv4',}, --lv2
+        {    rand = 0.02, name = '三号洗练石',},
+        {    rand = 0.02, name = '四号洗练石',},
+
+        {    rand = 0.1, name = '玻璃大炮',},--红色小水滴 吸血+10% 攻击回血+500000
+        {    rand = 0.1, name = '黄金罗盘',},--暴击几率+2.5%，暴击伤害+25%
+        {    rand = 0.1, name = '诸界的毁灭者',},--免伤几率+5%，每秒回血+5%
+        {    rand = 0.1, name = '末日的钟摆',},--分裂伤害+50%，攻击速度+50%
+
+        {    rand = 0.01, name = '游戏王',},--木头+5555，火种+5555，杀敌数+5555
+    },
+    
+    
    
 }
 ac.unit_reward = unit_reward
@@ -376,7 +524,7 @@ local function get_reward_name(tbl)
         -- print("打印装备掉落概率",info.rand)
         if rand <= num then 
             if type(info.name) == 'string' then 
-                return info.name 
+                return info.name,info.rand 
             elseif type(info.name) == 'table' then 
                 return  get_reward_name(info.name)
             end 
@@ -443,14 +591,13 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         -- print('装备掉落概率：',fall_rate,unit.fall_rate)
         hero_kill_unit(player,killer,unit,fall_rate)
     end
+
     --boss 额外掉落物品
-    -- print(unit:get_name())
     local tab = unit_reward[unit:get_name()]
     if not tab then 
         return 
     end
     local name = get_reward_name(tab) 
-    -- print(name)
     if name then 
         local item = ac.item.create_item(name,unit:get_point()) 
     end    

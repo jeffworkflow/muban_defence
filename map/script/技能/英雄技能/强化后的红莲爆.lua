@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 5,
     --触发几率
-   chance = function(self) return 15*(1+self.owner:get('触发概率')/100) end,
+   chance = function(self) return 15*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能类型
@@ -75,8 +75,9 @@ function mt:on_add()
     self.trg = hero:event '造成伤害前效果' (function(trg, damage)
         -- print(self.value)
         if self.value>0 then 
-            if hero:get('暴击几率')<100 then 
+            if not hero.hlb_flg then 
                 hero:add('暴击几率',100)
+                hero.hlb_flg = true 
             end    
             self.value = self.value -1
         else
@@ -88,7 +89,9 @@ end
 
 function mt:on_remove()
     local target = self.target
+    -- print('移除红莲爆',target:get('暴击几率'))
     target:add('暴击几率',-100)   
+    target.hlb_flg = false 
     if self.eff then self.eff:remove() self.eff = nil   end
     if self.trg then self.trg:remove() self.trg = nil end
 end

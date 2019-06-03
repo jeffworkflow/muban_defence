@@ -3,6 +3,7 @@
 
 ac.prod_level = {
     ['小斗气'] = {{['全属性']=200},[[tupo1.blp]],[[
+%extr_tip%        
 +100全属性
 ]]},
 
@@ -57,6 +58,7 @@ for key,val in pairs(ac.prod_level) do
         --冷却
         cool = 0,
         content_tip = '',
+        extr_tip = '\n|cffFFE799【状态】：|r|cffff0000未激活|r',
         --物品技能
         is_skill = true,
         --商店名词缀
@@ -69,6 +71,7 @@ for key,val in pairs(ac.prod_level) do
         for key,value in sortpairs(val[1]) do 
             hero:add(key,value)
         end    
+        self:set('extr_tip','\n|cffFFE799【状态】：|r|cffff0000已激活|r')
     end
     --使用物品
     function mt:on_cast_start()

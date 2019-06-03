@@ -164,6 +164,7 @@ end
 game_event.on_key_up = function (code)
 
     if code == KEY.TAB then 
+        if panel == nil then return end 
         panel:hide()
     end 
 end 

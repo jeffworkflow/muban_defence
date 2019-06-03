@@ -506,7 +506,7 @@ local function format_number(v)
 	if type(v) ~= 'number' then
 		return v
 	end
-	return math_tointeger(v) or ('%.1f'):format(v)
+	return math_tointeger(v) or ('%.2f'):format(v)
 end
 
 -- 格式化数组
@@ -627,7 +627,7 @@ function mt:get_simple_tip(hero, level, need_level)
 	if not level then
 		level = self.level
 	end
-	local tip = self.data.tip or self.tip
+	local tip = self.tip or self.data.tip   --modify by jeff 调换了默认值
 	if type(tip) == 'function' then
 		tip = format_function(self, tip, hero, level, need_level)
 	end

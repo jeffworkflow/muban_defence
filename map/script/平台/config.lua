@@ -33,6 +33,7 @@ local other_key = {
     {'boshu','无尽层数'}, 
     {'jifen','积分'},
 }
+ac.other_key = other_key
 --英雄熟练度
 local hero_key = {
     ['Pa'] = 'SLPA', 
@@ -147,39 +148,14 @@ function ac:clear_all_server()
         end   
 	end
 end
---执行加积分函数
-function ac.jiami(p,key,value)
-    local v = ZZBase64.decode(p[key])
-    v = v  + math.floor(tonumber(value))
-    ac.SaveServerValue(p,key,v)
-    if p:GetServerValueErrorCode() then
-        p:Map_Stat_SetStat('JF',tostring(v))
-    end
-end
 
---存档
-function ac.SaveServerValue(p,key,value)
-    local value = math.floor(tonumber(value))
-    value = tostring(value)
-    local s = ZZBase64.encode(value)
-    p[key] = s
-    p:Map_SaveServerValue(key,s)
-end
+--加积分
+function player.__index:add_jifen(value)
+    player.jifen = player.jifen + tonumber(value)
+    player:SetServerValue('jifen',player.jifen)
+end    
 
---读取 读解密
-function ac.GetServerValue(p,KEY)
-    local value = p:Map_GetServerValue(KEY)
-    if not value or value == '' or value == "" then
-        return 0
-    end
 
-    local t = tonumber(value)
-    if t then
-        return 0
-    end
-
-    return ZZBase64.decode(value)
-end
 
 --服务器存档 读取 (整合加密key、商城数据)
 function ac.get_server(p,key)
@@ -188,8 +164,6 @@ function ac.get_server(p,key)
     
     if tonumber(is_mall) == 1 and p:Map_HasMallItem(key) then 
         value = 1
-    elseif key == 'jifen' then 
-		value = ac.GetServerValue(p,'jifen')
 	else	
 		value = p:Map_GetServerValue(key)
     end	

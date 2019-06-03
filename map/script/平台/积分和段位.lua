@@ -11,7 +11,8 @@ local function save_jifen()
             local p_value = value * (p.hero:get '积分加成' + 1)
             local total_value = (ac.total_putong_jifen* (ac.g_game_degree or 1)) / get_player_count() * (p.hero:get '积分加成' + 1)
             --保存积分
-            ac.jiami(p,'jifen',p_value)
+            -- ac.jiami(p,'jifen',p_value)
+            p:add_jifen(p_value)
             --修改排行榜的积分
             if p:is_self() then
                 c_ui.ranking.ui.integral:set_text('本局累计获得积分：'..total_value)

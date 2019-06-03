@@ -248,9 +248,8 @@ function helper:jifen(jf)
 	local value = p.putong_jifen --* (p.hero:get '积分加成' + 1)
 	print('积分',value)
 	--保存积分
-	ac.jiami(p,'jifen',value)
+	p:add_jifen(value)
 
-	local jifen  = tonumber(ac.GetServerValue(p,'jifen'))
 	print('服务器积分：',jifen)
 end	
 --ac.save_jifen
@@ -282,12 +281,8 @@ function helper:clear_server()
 end
 --服务器存档 读取 
 function helper:get_server(key)
-	local p = self:get_owner()
-	if key == 'jifen' then 
-		print('服务器存档:'..key,ac.GetServerValue(p,'jifen'))
-	else	
-		print('服务器存档:'..key,p:Map_GetServerValue(key))
-	end	
+	local p = self:get_owner()	
+	print('服务器存档:'..key,p:Map_GetServerValue(key))
 end	
 --波数
 function helper:boshu(str,index)

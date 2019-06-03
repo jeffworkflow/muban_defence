@@ -17,7 +17,7 @@ function mt:on_cast_shot()
         return 
     end 
 
-    local skill = hero:find_skill(name,'英雄')
+    local skill = hero:find_skill(name,'英雄',true)
 
     if skill then 
         local upgrade_count = skill.upgrade_count or 1

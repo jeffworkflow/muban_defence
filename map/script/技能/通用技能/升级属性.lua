@@ -1,19 +1,26 @@
 
 ac.game:event '技能-升级' (function (_,hero,self)
     -- print(hero,self.name)
-    -- --item_type 有值表示为物品，以下代码不生效
-	if not hero or not hero:is_type('英雄') or self.item_type =='消耗品' or self.item_type =='神符' then 
+    -- --item_type 有值表示为物品，以下代码不生效 or not hero:is_type('英雄') 
+    --如果技能在宠物身上，加强效果在人身上
+    if self.strong_hero then 
+        hero = hero:get_owner().hero
+    end    
+	if not hero or self.item_type =='消耗品' or self.item_type =='神符' then 
 		return
 	end	
 	--保存物品 ix_now =0 1级+10， ix=10,ix_now=10,ix=20
     local name = self.name
-    if self.level == 1 then self.old_status ={} end
+    -- if self.level == 1 then self.old_status ={} end
+    -- print('老值:',self.old_status)
+    self.old_status = self.old_status or {}
 	--单位的属性表
 	local data = ac.unit.attribute
     for key in sortpairs(data) do 
         --处理基础值
         local value = self[key]
         local old_value = self.old_status[key]
+        -- print(key,value,old_value)
         if old_value then 
             hero:add_tran(key,-old_value)
 		end 
@@ -21,7 +28,6 @@ ac.game:event '技能-升级' (function (_,hero,self)
             hero:add_tran(key,value)
         end 
         self.old_status[key] = value
-
         --处理%值
 		key = key..'%'
 		value = self[key]
@@ -33,13 +39,19 @@ ac.game:event '技能-升级' (function (_,hero,self)
             hero:add_tran(key,value)
         end 
         self.old_status[key] = value
+
+        self:set('old_status',self.old_status)
 	end
 end)
 
 
 ac.game:event '技能-失去' (function (_,hero,self)
-    -- print(hero,self.name)
-	if not hero or not hero:is_type('英雄') or self.item_type =='消耗品' or self.item_type =='神符'  then 
+    -- print(hero,self.name) or not hero:is_type('英雄')
+    --如果技能在宠物身上，加强效果在人身上
+    if self.strong_hero then 
+        hero = hero:get_owner().hero
+    end    
+	if not hero  or self.item_type =='消耗品' or self.item_type =='神符'  then 
 		return
     end	
 	--单位的属性表

@@ -4,6 +4,7 @@ require '物品.商店.基地'
 require '物品.商店.传送'
 require '物品.商店.随机技能'
 require '物品.商店.随机物品'
+require '物品.商店.扭蛋'
 
 
 --一开始就创建商店 需要有玩家在视野内 漂浮文字的高度才能显示出来
@@ -40,6 +41,16 @@ ac.wait(100,function()
                 -- print(player)
                 shop:set_owner(player)
                 ac.game:event_notify('单位-创建商店', shop)
+                --注册区域事件
+                local rct =  ac.rect.j_rect(str)
+                local region = ac.region.create(rct)
+                region:event '区域-离开' (function(trg, hero)
+                    if hero:get_name() ~= '魔鬼的交易' then
+                        return
+                    end
+                    hero:blink(rct)
+                    hero:set_facing(face)
+                end)    
             end    
         end    
     end 

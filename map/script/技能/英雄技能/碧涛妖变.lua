@@ -7,19 +7,19 @@ mt{
     --最大等级
    max_level = 5,
     --触发几率
-   chance = function(self) return 10*(1+self.owner:get('触发概率')/100) end,
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能类型
-	skill_type = "被动,触发概率",
+	skill_type = "被动,触发概率加成",
 	--被动
 	passive = true,
 	--属性加成
-['触发概率'] = {10,20,30,40,40},
+['触发概率加成'] = {10,20,30,40,40},
 	--介绍
     tip = [[
         
-|cffffff00【触发概率】+10%*Lv|r
+|cffffff00【触发概率加成】+10%*Lv|r
     
 ]],
 	--技能图标

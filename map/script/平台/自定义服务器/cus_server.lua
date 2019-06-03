@@ -1,5 +1,4 @@
 local ui            = require 'ui.client.util'
-local game          = require 'ui.base.game'
 local json = require 'util.json'
 local player = require 'ac.player'
 
@@ -10,7 +9,7 @@ local config = {
 }
 ac.server_config = config
 
---读取 map_test 
+--读取 map_test 单个并同步
 function player.__index:GetServerValue(KEY,f)
     local player_name = self:get_name()
     local map_name = config.map_name
@@ -27,14 +26,106 @@ function player.__index:GetServerValue(KEY,f)
         if value == nil then
             local tbl = json.decode(retval)
             for k, v in ipairs(tbl) do
-                f(v)
+                -- ac.wait(500*k,function()
+                --     --发起同步请求
+                --     local info = {
+                --         type = 'cus_server',
+                --         func_name = 'on_get',
+                --         params = {
+                --             [1] = KEY,
+                --             [2] = v,
+                --         }
+                --     }
+                --     ui.send_message(info)
+                    f(v)
+                -- end)   
             end
         else 
             f(false)
+            print('数据读取失败')
         end
         -- self:event_notify('玩家-读取数据', tbl) 没用
     end)
 end
+
+--读取 map_test 多个个并同步
+function player.__index:sp_get_map_test(f)
+    
+    local player_name = self:get_name()
+    local map_name = ac.server_config.map_name
+    local url = ac.server_config.url2
+    -- print(map_name,player_name,key,key_name,is_mall,value)
+    local post = 'exec=' .. json.encode({
+        sp_name = 'sp_get_map_test',
+        para1 = map_name,
+        para2 = player_name,
+    })
+    -- print(url,post)
+    local f = f or function (retval)  end
+    post_message(url,post,function (retval) 
+        local tbl = json.decode(retval)
+        if tbl.code == 0 then 
+            local temp_tab = {}
+            -- print_r(tbl)
+            for i,data in ipairs(tbl.data[1]) do 
+                temp_tab[data.key] = data.value
+            end    
+            local tab_str = ui.encode(temp_tab)
+            -- print('数据长度',#tab_str)
+            if #tab_str >1000 then 
+                print('字符串太长，同步失败')
+            else  
+                ac.wait(10,function()
+                    --发起同步请求
+                    print('发起同步请求')
+                    local info = {
+                        type = 'cus_server',
+                        func_name = 'read_key_from_sever',
+                        params = {
+                            [1] = tab_str,
+                        }
+                    }
+                    ui.send_message(info)
+                    f(v)
+                end) 
+            end
+            -- f(tbl.data[1])
+        else
+            print(key,'读取数据失败')
+        end        
+    end)
+end    
+local ui = require 'ui.server.util'
+--处理同步请求
+local event = {
+    on_get = function (key,value)
+        local player = ui.player 
+        if not player.cus_server then 
+            player.cus_server = {}
+        end    
+        player.cus_server[key] = value
+        if key =='jifen' then 
+            player.jifen = value
+        end    
+    end,
+    read_key_from_sever = function (tab_str)
+        local player = ui.player 
+        if not player.cus_server then 
+            player.cus_server = {}
+        end    
+        local data = ui.decode(tab_str) 
+        for key,val in sortpairs(data) do 
+            -- print('同步后的数据：',key,val)
+            player.cus_server[key] = tonumber(val)
+            if key =='jifen' then 
+                player.jifen =  tonumber(val)
+            end    
+        end    
+
+    end,
+}
+ui.register_event('cus_server',event)
+
 --保存到 map_test 
 function player.__index:SetServerValue(key,value,f)
     local player_name = self:get_name()

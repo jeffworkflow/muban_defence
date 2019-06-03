@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 5,
     --触发几率
-   chance = function(self) return 10*(1+self.owner:get('触发概率')/100) end,
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能类型
@@ -25,7 +25,7 @@ end,
 	--介绍
     tip = [[
 
-|cffffff00【每秒加敏捷】+50*Lv
+|cffffff00【每秒加敏捷】+%每秒加敏捷%
 【攻击加敏捷】+50*Lv
 【杀怪加敏捷】+50*Lv|r
 

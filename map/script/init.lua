@@ -21,7 +21,7 @@ require 'ac'
 require 'ui'
 -- print(5)
 require '通用'
--- require '平台'
+require '平台'
 -- print(6)
 require '游戏'
 -- print(7)

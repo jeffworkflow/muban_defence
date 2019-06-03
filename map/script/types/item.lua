@@ -309,9 +309,7 @@ function mt:buy_jifen()
 	self.jifen = gold
 	for i=1,10 do
 		if ac.player(i) == ac.player.self then
-			if ac.GetServerValue then 
-				gold = gold..'   |cff00ffff(拥有'..(ZZBase64.decode(ac.player.self.jifen) or '0')..')|r'
-			end	
+			gold = gold..'   |cff00ffff(拥有'..(ac.player.self.jifen or '0')..')|r'
 		end	
 	end
 	self.show_jifen = gold
@@ -432,8 +430,8 @@ function mt:item_init_skill()
 	-- print(self.level,lv)
 	-- print()
 	self:fresh()
-	--修复按图标，物品类的只有亮图标
-	self:set_art(self.art)
+	--修复暗图标，物品类的只有亮图标
+	self:set_art(self.on_bland or self.art)
 	japi.EXSetAbilityDataReal(self:get_handle(), 1, 0x69, self.cool or 0)
 	self.is_skill_init = true
 end
@@ -505,9 +503,9 @@ function mt:get_tip()
 	if self.is_skill  then 
 		content_tip = '|cff'..ac.color_code['淡黄'].. '\n技能介绍：'..'|R\n'
 	end
-	--自定义 内容说明titile
+	--自定义 内容说明titile '|cff'..ac.color_code['淡黄'].. self.content_tip ..'|R\n'
 	if self.content_tip  then 
-		content_tip = '|cff'..ac.color_code['淡黄'].. self.content_tip ..'|R\n'
+		content_tip = self.content_tip
 	end
 	
 	
