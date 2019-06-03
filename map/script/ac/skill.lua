@@ -849,7 +849,7 @@ function mt:get_range_tip(hero, level, need_level)
 	local function get_range(self)
 		local range = self.range
 		if range >= 5000 then
-			return '全地图'
+			return 'max'
 		else
 			return range
 		end

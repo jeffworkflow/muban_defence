@@ -123,7 +123,7 @@ local color_code = {
 }
 ac.color_code = color_code
 
---颜色模型 目前应用于仙丹
+--颜色模型 目前应用于仙丹模型
 local color_model = {
     ['白'] = [[faguangbai.mdx]],
     ['蓝'] = [[faguanglan.mdx]],

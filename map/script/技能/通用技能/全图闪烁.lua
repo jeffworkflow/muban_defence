@@ -3,7 +3,12 @@ local mt = ac.skill['全图闪烁']
 mt{
     --等级
     level = 1,
-	tip = [[]],
+	tip = [[
+
+|cffFFE799【使用说明】：
+|cff00ff00可以将宠物传送到指定区域，帮你做一些事情|r
+		
+]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNBlink.blp]],
 	cool = 1,

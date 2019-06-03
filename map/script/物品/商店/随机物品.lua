@@ -5,7 +5,7 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[other\suijijineng.blp]],
+art = [[other\suiji101.blp]],
 --价格随购买次数增加而增加，|cff00ff00且买且珍惜|r
 --说明
 tip = [[|n获得 |cffff0000随机物品|r，价格随购买次数增加而增加，|cff00ff00且买且珍惜|r|n]],
@@ -18,9 +18,9 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
 --购买价格
-wood = 25,
+wood = 100,
 --每次增加
-cre_wood = 500,
+cre_wood = 200,
 --物品技能
 is_skill = true,
 }
@@ -39,7 +39,7 @@ function mt:on_cast_start()
     local old_wood = shop_item.wood
     --可能会异步
     --改变商店物品物价
-    hero.buy_item_cnt = hero.buy_item_cnt *2
+    hero.buy_item_cnt = hero.buy_item_cnt *1
     shop_item.wood = math.min(shop_item.wood * hero.buy_item_cnt,500000)
 
     -- print( shop_item.wood,self.buy_cnt)

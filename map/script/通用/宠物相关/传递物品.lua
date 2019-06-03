@@ -13,8 +13,11 @@ mt{
     target_data = '物品',
 
 	tip = [[
-传递物品给英雄
-	]],
+
+|cffFFE799【使用说明】：|r
+|cff00ff00将身上的物品传递给英雄|r
+		
+]],
 	
 	--技能图标
 	art = [[icon\jineng038.blp]],
