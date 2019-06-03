@@ -162,72 +162,144 @@ local devil_deal ={
 },
 
 [3] = {
-{'无所不贪lv1',false,'杀怪加全属性',50,'全属性',100000,[[liliang.blp]],[[
+{'无所不贪lv1',false,'杀怪加全属性',50,'全属性',100000,[[zhili.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv1|r
     
 |cffFFE799【奖励】|r|cff00ff00+50杀怪加全属性|r
     ]]},
 
-{'无所不贪lv2',false,'攻击加全属性',250,'全属性',200000,[[liliang.blp]],[[
+{'无所不贪lv2',false,'攻击加全属性',250,'全属性',200000,[[zhili.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv2|r
     
 |cffFFE799【奖励】|r|cff00ff00+250攻击加全属性|r
     ]]},
 
-{'无所不贪lv3',false,'每秒加全属性',500,'全属性',300000,[[liliang.blp]],[[
+{'无所不贪lv3',false,'每秒加全属性',500,'全属性',300000,[[zhili.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv3|r
     
 |cffFFE799【奖励】|r|cff00ff00+500每秒加全属性|r
     ]]},
 
-{'无所不贪lv4',false,'杀怪加全属性',100,'全属性',400000,[[liliang.blp]],[[
+{'无所不贪lv4',false,'杀怪加全属性',100,'全属性',400000,[[zhili.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv4|r
     
 |cffFFE799【奖励】|r|cff00ff00+100杀怪加全属性|r
     ]]},
 
-{'无所不贪lv5',false,'攻击加全属性',500,'全属性',500000,[[liliang.blp]],[[
+{'无所不贪lv5',false,'攻击加全属性',500,'全属性',500000,[[zhili.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv5|r
     
 |cffFFE799【奖励】|r|cff00ff00+500攻击加全属性|r
     ]]},
 
-{'无所不贪lv6',false,'每秒加全属性',1000,'全属性',600000,[[liliang.blp]],[[
+{'无所不贪lv6',false,'每秒加全属性',1000,'全属性',600000,[[zhili.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv6|r
     
 |cffFFE799【奖励】|r|cff00ff00+1000每秒加全属性|r
     ]]},
 
- {'无所不贪lv7',false,'杀怪加全属性',150,'全属性',700000,[[liliang.blp]],[[
+ {'无所不贪lv7',false,'杀怪加全属性',150,'全属性',700000,[[zhili.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv7|r
     
 |cffFFE799【奖励】|r|cff00ff00+150杀怪加全属性|r
     ]]},
 
-{'无所不贪lv8',false,'攻击加全属性',750,'全属性',800000,[[liliang.blp]],[[
+{'无所不贪lv8',false,'攻击加全属性',750,'全属性',800000,[[zhili.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv8|r
     
 |cffFFE799【奖励】|r|cff00ff00+750攻击加全属性|r
     ]]},
 
-{'无所不贪lv9',false,'每秒加全属性',1500,'全属性',900000,[[liliang.blp]],[[
+{'无所不贪lv9',false,'每秒加全属性',1500,'全属性',900000,[[zhili.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv9|r
     
 |cffFFE799【奖励】|r|cff00ff00+1500每秒加全属性|r
     ]]},
 
-{'无所不贪lvmax',false,'全伤加深',2.5,'全属性',1000000,[[liliang.blp]],[[
+{'无所不贪lvmax',false,'全伤加深',2.5,'全属性',1000000,[[zhili.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lvmax|r
+    
+|cffFFE799【奖励】|r|cff00ff00+2.5%全伤加深|r
+   ]]},
+},
+
+[4] = {
+{'无所不能lv1',false,'吸血',10,'火种',1000,[[liliang.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv1|r
+    
+|cffFFE799【奖励】|r|cff00ff00+10%吸血|r
+    ]]},
+
+{'无所不能lv2',false,'攻击减甲',10,'火种',2000,[[liliang.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv2|r
+    
+|cffFFE799【奖励】|r|cff00ff00+10攻击减甲|r
+    ]]},
+
+{'无所不能lv3',false,'触发概率',10,'火种',3000,[[liliang.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv3|r
+    
+|cffFFE799【奖励】|r|cff00ff00+10%触发概率加成|r
+    ]]},
+
+{'无所不能lv4',false,'技能冷却',5,'火种',4000,[[liliang.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv4|r
+    
+|cffFFE799【奖励】|r|cff00ff00-5%技能冷却|r
+    ]]},
+
+{'无所不能lv5',false,'每秒回血',5,'火种',5000,[[liliang.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv5|r
+    
+|cffFFE799【奖励】|r|cff00ff00+5%每秒回血|r
+    ]]},
+
+{'无所不能lv6',false,'暴击几率',2.5,'火种',6000,[[liliang.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv6|r
+    
+|cffFFE799【奖励】|r|cff00ff00+2.5%暴击几率|r
+    ]]},
+
+ {'无所不能lv7',false,'暴击加深',25,'火种',7000,[[liliang.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv7|r
+    
+|cffFFE799【奖励】|r|cff00ff00+25%暴击加深|r
+    ]]},
+
+{'无所不能lv8',false,'技暴几率',2.5,'火种',8000,[[liliang.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv8|r
+    
+|cffFFE799【奖励】|r|cff00ff00+2.5%技暴几率|r
+    ]]},
+
+{'无所不能lv9',false,'技暴加深',25,'火种',9000,[[liliang.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv9|r
+    
+|cffFFE799【奖励】|r|cff00ff00+25%技暴加深|r
+    ]]},
+
+{'无所不能lvmax',false,'全伤加深',2.5,'火种',10000,[[liliang.blp]],[[
+
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lvmax|r
     
 |cffFFE799【奖励】|r|cff00ff00+2.5%全伤加深|r
    ]]},

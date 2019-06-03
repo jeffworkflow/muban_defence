@@ -39,8 +39,8 @@ function mt:on_cast_start()
     local old_wood = shop_item.wood
     --可能会异步
     --改变商店物品物价
-    hero.buy_item_cnt = hero.buy_item_cnt *1
-    shop_item.wood = math.min(shop_item.wood * hero.buy_item_cnt,500000)
+    hero.buy_item_cnt = hero.buy_item_cnt + 1
+    shop_item.wood = math.min(shop_item.wood + self.cre_wood * hero.buy_item_cnt,500000)
 
     -- print( shop_item.wood,self.buy_cnt)
     if hero:get_owner() == ac.player.self then 

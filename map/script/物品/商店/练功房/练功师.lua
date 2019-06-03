@@ -66,6 +66,11 @@ for key,value in pairs(ac.pratice_man) do
                     is_leave_region_replace = true,
                     is_region_replace = true,
                 }
+                function mt:on_change_creep(unit,lni_data)
+                    --设置搜敌范围
+                    unit:set_search_range(1000)
+
+                end    
             end    
         end    
     end)

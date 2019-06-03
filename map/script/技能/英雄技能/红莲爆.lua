@@ -23,7 +23,8 @@ mt{
     
 ]],
 	--技能图标
-	art = [[hlb.blp]],
+    art = [[hlb.blp]],
+    
     wtf_cnt = {5,8,10,12,15},
 	--特效
 	effect = [[]],
