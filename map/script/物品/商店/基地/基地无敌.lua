@@ -11,7 +11,9 @@ level = 1,
 art = [[ReplaceableTextures\CommandButtons\BTNDivineShieldOff.blp]],
 
 --说明
-tip = [[基地无敌30S
+tip = [[
+
+让基地|cff00ff00无敌30秒|r
 ]],
 
 --物品类型
@@ -21,10 +23,12 @@ wood = 500,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
-cool = 0,
+cool = 300,
+
 --持续时间
 stu_time = 30,
-content_tip = '',
+
+content_tip = '|cffFFE799【使用说明】：|r',
 --物品技能
 is_skill = true,
 

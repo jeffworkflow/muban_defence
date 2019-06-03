@@ -31,7 +31,7 @@ ac.wait(100,function()
             local shop = ac.shop.create(name,x,y,face)
             if name == '基地' then
                 shop:remove_restriction '无敌'
-                shop:set('生命上限',100000)
+                shop:set('生命上限',500000)
                 shop:set('护甲',100)
             end    
             

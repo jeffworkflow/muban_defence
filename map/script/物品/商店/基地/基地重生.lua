@@ -2,7 +2,7 @@
 local rect = require 'types.rect'
 
 --物品名称
-local mt = ac.skill['基地重生次数+1']
+local mt = ac.skill['基地重生']
 mt{
 --等久
 level = 1,
@@ -11,7 +11,9 @@ level = 1,
 art = [[ReplaceableTextures\CommandButtons\BTNImbuedMasonry.blp]],
 
 --说明
-tip = [[基地重生次数+1
+tip = [[
+
+让基地获得|cff00ff00一次重生的机会|r
 ]],
 
 --物品类型
@@ -24,7 +26,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 cool = 0,
 --全属性
 award_all_attr = 1000,
-content_tip = '',
+content_tip = '|cffFFE799【使用说明】：|r',
 --物品技能
 is_skill = true,
 
@@ -44,6 +46,6 @@ function mt:on_cast_start()
     local player = hero:get_owner()
     hero = player.hero
     hero:add('全属性',self.award_all_attr)
-    player:sendMsg('【系统消息】升级了基地，奖励全属性'..self.award_all_attr)
+    player:sendMsg('|cffFFE799【系统消息】|r|cff00ffff'..player:get_name()..'|r 购买了基地重生 奖励|cff00ff0050W全属性|r',2)
     
 end

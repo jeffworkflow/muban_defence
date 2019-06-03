@@ -11,7 +11,9 @@ level = 1,
 art = [[ReplaceableTextures\CommandButtons\BTNStoneArchitecture.blp]],
 
 --说明
-tip = [[提升基地%defence% %护甲 和 %life% %生命上限
+tip = [[
+
+提升基地 |cff00ff00100%护甲|r 和 |cff00ff00100%生命上限|r
 ]],
 
 --物品类型
@@ -23,12 +25,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
 --全属性
-award_all_attr = 100,
+award_all_attr = 50000,
 --护甲%
 defence = 100,
 --生命上限%
 life = 100,
-content_tip = '',
+content_tip = '|cffFFE799【使用说明】：|r',
 --物品技能
 is_skill = true,
 
@@ -42,6 +44,6 @@ function mt:on_cast_start()
     local player = hero:get_owner()
     hero = player.hero
     hero:add('全属性',self.award_all_attr)
-    player:sendMsg('【系统消息】升级了基地，奖励全属性'..self.award_all_attr)
+    player:sendMsg('|cffFFE799【系统消息】|r|cff00ffff'..player:get_name()..'|r 强化了基地 奖励|cff00ff005W全属性|r',2)
     
 end

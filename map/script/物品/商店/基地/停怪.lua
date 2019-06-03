@@ -11,7 +11,9 @@ level = 1,
 art = [[ReplaceableTextures\CommandButtons\BTNMagicLariet.blp]],
 
 --说明
-tip = [[停止刷怪%stu_time%秒
+tip = [[
+
+使得怪物|cff00ff00暂停进攻90秒|r
 ]],
 
 --特殊id 带cd
@@ -24,10 +26,12 @@ wood = 500,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
-cool = 0,
+cool = 600,
 --停怪时长
-stu_time = 10,
-content_tip = '',
+stu_time = 90,
+
+content_tip = '|cffFFE799【使用说明】：|r',
+
 --物品技能
 is_skill = true,
 
