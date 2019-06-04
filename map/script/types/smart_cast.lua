@@ -60,8 +60,8 @@ local function is_book_ui()
 end
 
 --技能是否可以点击
-local function can_cast(name)
-	local hero = ac.player.self.hero
+local function can_cast(hero,name)
+	local hero = hero or ac.player.self.hero
 	if not hero then
 		return false
 	end
@@ -108,7 +108,6 @@ local clean_last_skill
 local function cast_spell(msg, hero, name, force)
 	--找到英雄的技能
 	local skl = hero:find_skill(name)
-	-- print(skl.name)
 	if not skl then
 		return false
 	end
@@ -124,6 +123,7 @@ local function cast_spell(msg, hero, name, force)
 	if skl.break_order == 0 then
 		flag = flag + FLAG_RESUME
 	end
+	--print(order, ('%X'):format(order_id)) 
 	if skl.target_type == ac.skill.TARGET_TYPE_POINT then
 		if (x == 0 and y == 0) or (not force and get_smart_cast_type(name) ~= 1) then
 			save_last_skill(msg, hero, name)
@@ -137,7 +137,6 @@ local function cast_spell(msg, hero, name, force)
 		if skl:is_in_range(target) then
 			flag = flag + FLAG_INSTANT
 		end
-		-- print(order, ('%X'):format(order_id))
 		message.order_point(order_id, x, y, flag)
 		return true
 	elseif skl.target_type == ac.skill.TARGET_TYPE_NONE then
@@ -217,7 +216,7 @@ end
 local function is_select_shop()
 	local shop = unit.j_unit(message.selection())
 	if shop and shop.sell_list then return true end
-	if shop and shop.is_bb then return true end 
+	--if shop and shop.is_bb then return true end 
 	--是不是自己的英雄
 	if shop and shop == ac.player.self.shop then
 		return true
@@ -288,8 +287,8 @@ local num_order_map = {
 	[258] = 5,
 	[259] = 6,
 }
---添加 keyboard
 keyboard['Esc'] = 512
+local last_click = 0
 --本地消息
 function message.hook(msg)	
 	
@@ -305,7 +304,10 @@ function message.hook(msg)
 				if state == 0 and is_select_shop() then
 					return true
 				end
-				local hero = is_select_off_line_hero() or select_hero()
+				local hero = unit.j_unit(message.selection())
+				if hero == nil then
+					hero = is_select_off_line_hero() or select_hero()
+				end 
 				if not hero then
 					return true
 				end
@@ -324,13 +326,22 @@ function message.hook(msg)
 						end 
 					end 
 					if not skill then
+						if msg.code == 512 then return true end 
 						return false
 					end
 					local name = skill.name
-					if not can_cast(name) then
+					if not can_cast(hero,name) then
+						if msg.code == 512 then return true end 
 						return false
 					end
+					
+					--如果在选择建造的时候 屏蔽掉这些技能快捷键
+					if ac.is_build_select then 
+						return false 
+					end 
+
 					if cast_spell(msg, hero, name) then
+						if msg.code == 512 then return true end 
 						return false
 					end
 				end
@@ -504,13 +515,13 @@ function message.hook(msg)
 				return true
 			end
 			local unit = unit.j_unit(message.selection())
-			if unit and unit.is_bb then 
+			if unit then 
 				return true 
 			end 
 
-			if is_select_shop() or not is_select_player_unit() then
-				select_hero()
-			end
+			--if is_select_shop() or not is_select_player_unit() then
+			--	select_hero()
+			--end
 			
 			local x, y = message.mouse()
 			message.order_target(ORDER_SMART, x, y, 0, FLAG_INSTANT)
@@ -562,7 +573,8 @@ function message.hook(msg)
 				return true
 			end
 			local hero = get_select()
-			for skill in hero:each_skill() do
+			local page = hero.skill_page or '英雄'
+			for skill in hero:each_skill(page) do
 				if skill.ability_id == name then
 					name = skill.name
 					break
