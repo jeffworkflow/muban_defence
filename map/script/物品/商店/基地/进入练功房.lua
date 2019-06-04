@@ -9,7 +9,12 @@ level = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNFootman.blp]],
 --说明
-tip = [[点击传送至专属练功房]],
+tip = [[
+
+|cffFFE799【使用说明】：|r
+
+点击或 |cff00ffff按F3|r 传送到 |cff00ff00专属练功房|r
+]],
 --物品类型
 item_type = '神符',
 --目标类型

@@ -36,7 +36,7 @@ ac.quick_arrive ={
     ['洗练石boss4'] = {ac.map.rects['传送-洗练石4'],'xilianshi.blp','\n挑战BOSS并获得|cffff0000 【四号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,200000,0,0,0,nil,0,450} ,
 
     ['境界-小斗气'] = {ac.map.rects['传送-境界1'],'tupo1.blp','\n挑战BOSS并突破境界至|cff00ff00 【小斗气】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+200w 全属性\n-10%   技能冷却\n+10%   每秒回血\n+2.5%  暴击几率\n+25%   暴击加深\n|r',0,0,1000,0,0,nil,0,450} ,
-    ['境界-斗者'] = {ac.map.rects['传送-境界2'],'tupo2.blp','\n挑战BOSS并突破境界至|cff00ff00 【斗者】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+300w 全属性\n+2.5%  免伤\n+2.5%  闪避\n+10%   触发概率\n|r',0,0,5000,0,0,nil,0,450} ,
+    ['境界-斗者'] = {ac.map.rects['传送-境界2'],'tupo2.blp','\n挑战BOSS并突破境界至|cff00ff00 【斗者】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+300w 全属性\n+2.5%  免伤\n+2.5%  闪避\n+10%   触发概率加成\n|r',0,0,5000,0,0,nil,0,450} ,
     ['境界-斗师'] = {ac.map.rects['传送-境界3'],'tupo3.blp','\n挑战BOSS并突破境界至|cff00ffff 【斗师】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,0,10,0,0,nil,0,0} ,
     ['境界-斗灵'] = {ac.map.rects['传送-境界4'],'tupo4.blp','\n挑战BOSS并突破境界至|cff00ffff 【斗灵】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,0,10,0,0,nil,0,500} ,
     ['境界-斗王'] = {ac.map.rects['传送-境界5'],'tupo5.blp','\n挑战BOSS并突破境界至|cffffff00 【斗王】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,0,10,0,0,nil,0,500} ,
@@ -68,7 +68,7 @@ for key,value in pairs(ac.quick_arrive) do
     target_type = ac.skill.TARGET_TYPE_NONE,
     --冷却
     cool = 0,
-    content_tip = '|cffFFE799【任务说明】：|r',
+    content_tip = '|cffFFE799【任务说明】：|r\n',
     --物品技能
     is_skill = true,
     }

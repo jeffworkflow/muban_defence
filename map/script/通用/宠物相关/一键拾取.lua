@@ -11,8 +11,8 @@ mt{
 	
 	tip = [[
 		
-|cffFFE799【使用说明】：
-|cff00ff00一键拾取周围 %area% |cff00ff00码的物品|r
+|cffFFE799【使用说明】：|r
+一键|cff00ff00拾取|r周围 %area% 码的物品
 
 ]],
 	

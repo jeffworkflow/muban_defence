@@ -7,7 +7,10 @@ level = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNBundleOfLumber.blp]],
 --说明
-tip = [[1木头换1W金币
+tip = [[
+|cffFFE799【使用说明】：|r
+
+消耗 |cffff00001木头|r 兑换 |cff00ff001w金币|r
 ]],
 --物品类型
 item_type = '神符',

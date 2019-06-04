@@ -248,7 +248,7 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+10攻击减甲|r
     ]]},
 
-{'无所不能lv3',false,'触发概率',10,'火种',3000,[[liliang.blp]],[[
+{'无所不能lv3',false,'触发概率加成',10,'火种',3000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv3|r
     
@@ -489,7 +489,7 @@ for _,tab in ipairs(devil_deal) do
             local skl = hero:find_skill(self.name,nil,true)
             if skl then 
                 skl:set_level(1)
-                skl:set('extr_tip','\n|cffFFE799【状态】：|r|cffff0000已激活|r')
+                skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
                 -- skl:fresh_tip()
             end    
 

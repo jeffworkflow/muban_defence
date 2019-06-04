@@ -8,7 +8,7 @@ for ix =1 ,4 do
         --图标
         art = [[jinengshengji1.blp]],
         --说明
-        tip = '\n|cff00ffff点击选择要升级的技能，可将技能 |rLv'..ix..' |cff00ffff升到 |rLv'..(ix+1)..'\n',
+        tip = '\n\n|cff00ffff点击选择要升级的技能，可将技能 |rLv'..ix..' |cff00ffff升到 |rLv'..(ix+1)..'\n',
         --物品类型
         item_type = '消耗品',
         --目标类型
@@ -17,7 +17,7 @@ for ix =1 ,4 do
         is_skill = true,
         --物品详细介绍的title
         skill_cnt = 8,
-        content_tip = '使用说明：'
+        content_tip = '|cffffe799使用说明：|r'
     }
         
     function mt:on_add()

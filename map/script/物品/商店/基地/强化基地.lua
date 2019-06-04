@@ -12,6 +12,7 @@ art = [[ReplaceableTextures\CommandButtons\BTNStoneArchitecture.blp]],
 
 --说明
 tip = [[
+ 
 
 提升基地 |cff00ff00100%护甲|r 和 |cff00ff00100%生命上限|r
 ]],

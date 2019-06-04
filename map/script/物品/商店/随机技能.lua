@@ -10,7 +10,7 @@ art = [[other\suijijineng.blp]],
 --说明
 tip = [[|n获得 |cffff0000随机技能|r，价格随购买次数增加而增加，|cff00ff00且买且珍惜|r|n]],
 
-content_tip = '|cffFFE799【说明】：|r',
+content_tip = '|cffFFE799【说明】：|r|n',
 --物品类型
 item_type = '神符',
 --目标类型

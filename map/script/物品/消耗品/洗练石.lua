@@ -34,7 +34,7 @@ for ix =1 ,4 do
         is_skill = true,
         --物品详细介绍的title
         skill_cnt = 8,
-        content_tip = '使用说明：',
+        content_tip = '|cffffe799使用说明：|r',
         --最大使用次数
         max_use_count = 1
     }

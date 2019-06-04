@@ -7,7 +7,10 @@ level = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNChestOfGold.blp]],
 --说明
-tip = [[10万金币换10木头
+tip = [[
+|cffFFE799【使用说明】：|r
+
+消耗 |cffff000010w金币|r 兑换 |cff00ff0010木头|r
 ]],
 --物品类型
 item_type = '神符',

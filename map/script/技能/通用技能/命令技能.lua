@@ -7,7 +7,8 @@ target_type = ac.skill.TARGET_TYPE_UNIT_OR_POINT,
 art = [[ReplaceableTextures\CommandButtons\BTNMove.blp]],
 --技能说明
 title = '移动',
-tip = [[命令你的部队去目标区域，在移动的过程中对于敌人的攻击他们将不予理睬。如果将该命令指向某个部队，则你的部队会跟着这个部队移动。]],
+tip = [[
+命令你的部队去目标区域，在移动的过程中对于敌人的攻击他们将不予理睬。如果将该命令指向某个部队，则你的部队会跟着这个部队移动。]],
 --距离
 range = 99999,
 --快捷键
@@ -32,7 +33,11 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 art = [[ReplaceableTextures\CommandButtons\BTNStop.blp]],
 --技能说明
 title = '停止',
-tip = [[无论你的单位先前得到什么命令，都可以让他们停下来。不过他们随后也会对进入射程的敌人进行攻击或者追捕。]],
+tip = [[
+
+无论你的单位先前得到什么命令，都可以让他们停下来。不过他们随后也会对进入射程的敌人进行攻击或者追捕
+
+]],
 --快捷键
 key = 'S',
 is_order = 1,
@@ -71,7 +76,10 @@ target_type = ac.skill.TARGET_TYPE_UNIT_OR_POINT,
 art = [[ReplaceableTextures\CommandButtons\BTNAttack.blp]],
 --技能说明
 title = '攻击',
-tip = [[命令你的部队去目标区域，在移动的过程中对于敌人的攻击他们将不予理睬。如果将该命令指向某个部队，则你的部队会跟着这个部队移动。
+tip = [[
+
+命令你的部队去目标区域，在移动的过程中对于敌人的攻击他们将不予理睬。如果将该命令指向某个部队，则你的部队会跟着这个部队移动
+
 ]],
 --距离
 range = 99999,
