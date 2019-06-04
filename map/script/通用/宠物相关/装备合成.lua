@@ -10,7 +10,9 @@ mt{
     content_tip = '',
 
     art = [[other\hecheng.blp]],
-    tip = [[|cffFFE799【使用说明】：|r
+    tip = [[
+
+|cffFFE799【使用说明】：|r
 将 |cff00ff00四个低品质装备|r 合成 |cffdf19d0一个高品质装备|r
 将 |cff00ff00两个红色品质装备|r 合成 |cffdf19d0另一个红色品质装备|r
  ]],

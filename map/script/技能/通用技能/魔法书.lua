@@ -123,7 +123,8 @@ mt{
     art = [[ReplaceableTextures\CommandButtons\BTNCancel.blp]],
     title = '关闭',
     tip = [[
-关闭，回到上一级。
+
+关闭，回到上一级
     ]],
     instant = 1,
     is_order = 1,

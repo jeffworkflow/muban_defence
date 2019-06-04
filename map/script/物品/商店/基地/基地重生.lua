@@ -12,6 +12,7 @@ art = [[ReplaceableTextures\CommandButtons\BTNImbuedMasonry.blp]],
 
 --说明
 tip = [[
+ 
 
 让基地获得|cff00ff00一次重生的机会|r
 ]],

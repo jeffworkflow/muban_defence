@@ -10,15 +10,17 @@ mt{
     --标题颜色
     color =  '青',
 	--介绍
-    tip = [[可用天赋点：%remain_point%
+    tip = [[|cff00ffff(可用天赋点：%remain_point%|cff00ffff %need_xp_tip%|cff00ffff)|r
+
+|cffFFE799【使用说明】：|r
+|cff00ff00打开天赋菜单，分配宠物的天赋点|r
 %strong_attr_tip%
-|cff00ffff点击可学习宠物天赋，可存档，食用宠物经验书|r
-%need_xp_tip%
+|cffcccccc食用宠物经验书可升级宠物，宠物等级可存档|r
 ]],
     --初始等级
     level = 1, 
 	--技能图标
-    art = [[chongwugou.blp]],
+    art = [[ReplaceableTextures\CommandButtons\BTNSkillz.blp]],
     model_size = function(self,hero)
         return 1 + self.level * 0.01
     end,    
@@ -61,7 +63,7 @@ mt{
         return tip 
     end,  
     need_xp_tip =  function(self,hero )
-        return '升级还需经验：'..'|cff'..ac.color_code['红']..self.need_xp..'|r'
+        return '|cff00ffff升级还需经验：|r'..'|cff'..ac.color_code['绿']..self.need_xp..'|r'
     end,
     need_xp = 1000,
     effect =  [[Hero_CrystalMaiden_N2_V_boom.mdx]],   
@@ -101,8 +103,8 @@ end
 --宠物天赋里面的技能，
 local peon_skill = {
     --技能，技能显示的名字，属性名，数值，图标，tip
-    ['宠物-杀敌数加成'] = {'杀敌数加成','杀敌数加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[杀敌数加成+%杀敌数加成% %]]},
-    ['宠物-木头加成'] = {'杀敌数加成','杀敌数加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[杀敌数加成+%杀敌数加成% %]]},
+    ['宠物-杀敌数加成'] = {'杀敌数加成','杀敌数加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前杀敌数加成 +%杀敌数加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-木头加成'] = {'木头加成','木头加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[杀敌数加成+%杀敌数加成% %]]},
 }
 for k,v in sortpairs(peon_skill) do 
     local mt = ac.skill[k]
@@ -130,10 +132,10 @@ for k,v in sortpairs(peon_skill) do
             local hero = self.owner
             local skl = hero:find_skill('宠物天赋',nil,true)
             -- print(skl.remain_point)
-            local str = '可用天赋点: |cffff0000'..(skl and skl.remain_point or 0)..'|r\n'
+            local str = '|cff00ffff可用天赋点:|r |cffffff00'..(skl and skl.remain_point or 0)..'|r\n'
             return str..v[5]
         end,
-        [v[2]] = {v[3],v[3]*10},
+        -- [v[2]] = {v[3],v[3]*10},
     }   
     -- if v[2] then 
     --     mt[v[2]] = {v[3],v[3]*10}

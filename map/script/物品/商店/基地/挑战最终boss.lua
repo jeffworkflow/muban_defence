@@ -9,7 +9,11 @@ level = 1,
 --图标
 art = [[tzzzbs.blp]],
 --说明
-tip = [[直接挑战最终boss]],
+tip = [[|cffFFE799【使用说明】：|r
+
+|cffff0000点击挑战最终BOSS，杀死后游戏直接胜利|r
+
+|cffcccccc请确保已经有足够的实力|r]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -31,6 +35,8 @@ function mt:on_cast_start()
     
     if not ac.final_boss then 
         ac.game:event_dispatch('游戏-最终boss')
-        ac.player.self:sendMsg('【系统消息】 最终boss 已出现，请大侠前往击杀')
+        ac.player.self:sendMsg('|cff00bdec【系统消息】|r 有玩家直接|cffff0000挑战最终boss|r，请大家共同前往击杀',3)
+        ac.player.self:sendMsg('|cff00bdec【系统消息】|r 有玩家直接|cffff0000挑战最终boss|r，请大家共同前往击杀',3)
+        ac.player.self:sendMsg('|cff00bdec【系统消息】|r 有玩家直接|cffff0000挑战最终boss|r，请大家共同前往击杀',3)
     end     
 end

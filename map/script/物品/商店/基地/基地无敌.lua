@@ -13,6 +13,7 @@ art = [[ReplaceableTextures\CommandButtons\BTNDivineShieldOff.blp]],
 --说明
 tip = [[
 
+
 让基地|cff00ff00无敌30秒|r
 ]],
 
@@ -24,6 +25,8 @@ wood = 500,
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 300,
+--特殊id 带cd
+type_id = 'EX01',
 
 --持续时间
 stu_time = 30,
