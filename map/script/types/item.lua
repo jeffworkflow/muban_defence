@@ -431,8 +431,11 @@ function mt:item_init_skill()
 	-- print(self.level,lv)
 	-- print()
 	self:fresh()
-	--修复暗图标，物品类的只有亮图标
-	self:set_art(self.on_bland or self.art)
+	-- if not self.is_skill_init then
+	-- 	--修复暗图标，物品类的只有亮图标 
+	-- 	self:set_art(self.on_bland or self.art)
+	-- end
+	-- 用 item.not_dis = true 替换
 	japi.EXSetAbilityDataReal(self:get_handle(), 1, 0x69, self.cool or 0)
 	self.is_skill_init = true
 end
@@ -1122,6 +1125,8 @@ function ac.item.create_item(name,poi,is)
 	if items._count > 0 then 
 		items:set_item_count(items._count)
 	end
+	-- 按图标处理，所有物品默认都是没有按图标的。
+	items.not_dis = true
 	-- print(items.name,items.item_type,items._count)
 	--设置物品名
 	items:set_name(name)

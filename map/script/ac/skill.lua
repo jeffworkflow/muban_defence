@@ -418,11 +418,12 @@ end
 
 --	[使用指定图标]
 --	[是否使用暗图标]
+-- not_dis = true 不用暗图标 modify by jeff 20190604  
 function mt:get_art(art, dis)
 	local art = art or self.art or ''
 	if dis then
 		art = get_dis_art(art)
-	elseif dis == nil and (not self:is_enable() or self:get_level() == 0 or (self:is_silent() and not self.passive)) then
+	elseif dis == nil and (not self:is_enable() or self:get_level() == 0  or (self:is_silent() and not self.passive)) and (not self.not_dis) then
 		art = get_dis_art(art)
 	else
 		if self._blends then
