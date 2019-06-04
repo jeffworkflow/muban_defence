@@ -129,6 +129,7 @@ for k,v in sortpairs(peon_skill) do
         target_type = ac.skill.TARGET_TYPE_NONE,
         --冷却
         cool = 0,
+        not_dis = true, --不用暗图标
         content_tip = '',
         item_type_tip = '',
         --物品技能
@@ -160,7 +161,7 @@ for k,v in sortpairs(peon_skill) do
         if skl.remain_point >0  then 
             skl:set('used_point',skl.used_point + 1) 
             skl:set('remain_point',skl.remain_point - 1)
-             
+
             local t_skl = hero:find_skill(self.name,nil,true)
             if t_skl then t_skl:upgrade(1) end
             
