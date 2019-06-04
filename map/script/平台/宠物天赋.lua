@@ -150,20 +150,22 @@ for k,v in sortpairs(peon_skill) do
         
         local skl = hero:find_skill('宠物天赋',nil,true)
         if skl.remain_point >0  then 
-            self:upgrade(1)
-            self:fresh()
             skl:set('used_point',skl.used_point + 1) 
-            skl:set('remain_point',skl.remain_point - 1) 
+            skl:set('remain_point',skl.remain_point - 1)
+             
+            local t_skl = hero:find_skill(self.name,nil,true)
+            if t_skl then t_skl:upgrade(1) end
+            
         end    
     end    
 end
 
 ac.game:event'单位-获得技能' (function (_,hero,skill)
-    if finds(skill.name,'宠物') then
-        ac.wait(500,function ()
-            skill:set_art(skill.art)
-        end)
-    end
+    -- if finds(skill.name,'宠物') then
+    --     ac.wait(500,function ()
+    --         skill:set_art(skill.art)
+    --     end)
+    -- end
 end)
 
 
