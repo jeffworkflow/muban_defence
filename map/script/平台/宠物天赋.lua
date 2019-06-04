@@ -104,7 +104,16 @@ end
 local peon_skill = {
     --技能，技能显示的名字，属性名，数值，图标，tip
     ['宠物-杀敌数加成'] = {'杀敌数加成','杀敌数加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前杀敌数加成 +%杀敌数加成%|cff00ff00 %|r|n|n]]},
-    ['宠物-木头加成'] = {'木头加成','木头加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[杀敌数加成+%杀敌数加成% %]]},
+    ['宠物-木头加成'] = {'木头加成','木头加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前木头加成 +%木头加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-物品获取率加成'] = {'物品获取率加成','物品获取率加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前物品获取率加成 +%物品获取率加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-火种加成'] = {'火种加成','火种加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前火种加成 +%火种加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-分裂伤害加成'] = {'分裂伤害加成','分裂伤害加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前分裂伤害加成 +%分裂伤害加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-攻击速度加成'] = {'攻击速度加成','攻击速度加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前攻击速度加成 +%攻击速度加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-每秒力量成长'] = {'每秒力量成长','每秒加力量',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20属性，当前木头加成 +%每秒加力量%|cff00ff00|r|n|n]]},
+    ['宠物-每秒敏捷成长'] = {'每秒敏捷成长','每秒加敏捷',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前木头加成 +%木头加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-每秒智力成长'] = {'木头加成','每秒加智力',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前木头加成 +%木头加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-每秒全属性成长'] = {'木头加成','每秒加全属性',10,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前木头加成 +%木头加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-每秒攻击成长'] = {'木头加成','每秒加攻击',35,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前木头加成 +%木头加成%|cff00ff00 %|r|n|n]]},
 }
 for k,v in sortpairs(peon_skill) do 
     local mt = ac.skill[k]
@@ -135,12 +144,11 @@ for k,v in sortpairs(peon_skill) do
             local str = '|cff00ffff可用天赋点:|r |cffffff00'..(skl and skl.remain_point or 0)..'|r\n'
             return str..v[5]
         end,
-        -- [v[2]] = {v[3],v[3]*10},
+        [v[2]] = {v[3],v[3]*10},
     }   
     -- if v[2] then 
     --     mt[v[2]] = {v[3],v[3]*10}
     -- end   
-    -- mt:set_art(v[4])
     function mt:on_cast_start() 
         local hero = self.owner
         local player = hero:get_owner()
@@ -158,13 +166,6 @@ for k,v in sortpairs(peon_skill) do
     end    
 end
 
-ac.game:event'单位-获得技能' (function (_,hero,skill)
-    if finds(skill.name,'宠物') then
-        ac.wait(500,function ()
-            skill:set_art(skill.art)
-        end)
-    end
-end)
 
 
 
