@@ -35,7 +35,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 	-- 	ac.creep['刷怪']:finish()
 	-- end	
 	--聚集地
-	local point = ac.map['刷怪中心点']	
+	local point = ac.map.rects['游戏结束']	
 	--停止运动
 	local group = {}
 	for mvr in pairs(mover.mover_group) do

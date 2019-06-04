@@ -115,6 +115,7 @@ mtp_tip.set_skill_tip = function(button)
         --货币
         local gold,show_gold,player_gold = item:buy_price()
         local wood,show_wood,player_wood = item:buy_wood()
+        -- print(wood,show_wood,player_wood)
         local kill_count,show_kill_count,player_kill = item:buy_kill_count()
         local jifen,show_jifen,player_jifen = item:buy_jifen()
         local fire_seed,show_fire_seed,player_fire = item:buy_fire_seed()

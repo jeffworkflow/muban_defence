@@ -136,7 +136,8 @@ function mt:add_sell_item(name,i)
 	end	
 	--添加到商店
 	-- print(item.name,item.type_id)
-	jass.AddItemToStock(self.handle,base.string2id(item.type_id),1,1)
+	--handle,id,当前数量，最大数量
+	jass.AddItemToStock(self.handle,base.string2id(item.type_id),item.shop_count,item.shop_max_count)
 	item:hide()
 	--删掉物品
 	-- jass.RemoveItem(item.handle)

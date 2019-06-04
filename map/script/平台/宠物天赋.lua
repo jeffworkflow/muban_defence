@@ -138,6 +138,7 @@ for k,v in sortpairs(peon_skill) do
     -- if v[2] then 
     --     mt[v[2]] = {v[3],v[3]*10}
     -- end   
+    -- mt:set_art(v[4])
     function mt:on_cast_start() 
         local hero = self.owner
         local player = hero:get_owner()
@@ -155,6 +156,13 @@ for k,v in sortpairs(peon_skill) do
     end    
 end
 
+ac.game:event'单位-获得技能' (function (_,hero,skill)
+    if finds(skill.name,'宠物') then
+        ac.wait(500,function ()
+            skill:set_art(skill.art)
+        end)
+    end
+end)
 
 
 

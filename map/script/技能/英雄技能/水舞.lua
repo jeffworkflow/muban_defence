@@ -43,7 +43,7 @@ function mt:on_cast_start()
     local skill = self
     local hero = self.owner
     --创建特效
-    ac.effect(damage.source:get_point(),skill.effect,0,1,'origin'):remove()
+    ac.effect(hero:get_point(),skill.effect,0,1,'origin'):remove()
     --计算伤害
     for _,unit in ac.selector()
     : in_range(hero,self.damage_area)

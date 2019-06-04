@@ -40,7 +40,6 @@ mt{
 mt.skills = {}
 
 ac.game:event '玩家-注册英雄' (function(_, player, hero)
-	--移动英雄天赋位置	
 	hero:add_skill('成长之路','英雄',11)
 	-- hero:add_skill('魔法书demo','英雄')
 	--开始处理神兵神甲额外文本提示
@@ -58,6 +57,8 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 			local skl = hero:find_skill(name,nil,true)
             skl:set('extr_tip','\n|cffFFE799【状态】：|r|cffff0000未激活|r')
 			skl:set('tip','%extr_tip% \n'..data[3]..'+'..data[4]..'%')
+			skl:set('tip','%extr_tip% \n\n|cffFFE799【奖励】：|r|cff00ff00+'..(finds(ac.base_attr,data[3]) and data[4] or (data[4]..'%'))..data[3]..'|r\n\n')
+
 			-- print(skl.tip,skl.data.tip)
 			skl:fresh_tip()
 		end	

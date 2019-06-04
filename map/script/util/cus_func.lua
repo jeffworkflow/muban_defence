@@ -130,4 +130,16 @@ function get_mintable(tab,sortkey,key)
 	end) 
 	return tab[1][key]
 end
-
+--数字转换
+function numerical(value)
+	if type(value) == 'string' then 
+		return 
+	end	
+    if value < 10000 then
+        return ('%.0f'):format(value)
+	elseif value < 100000000 then
+        return value % 10000 == 0 and ('%.0f'):format(value/10000)..'万' or ('%.1f'):format(value/10000)..'万'
+    else
+        return value % 100000000 == 0 and ('%.0f'):format(value/100000000)..'亿' or ('%.1f'):format(value/100000000)..'亿'
+    end
+end

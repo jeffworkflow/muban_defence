@@ -492,6 +492,7 @@ function mt:set_art(art)
 	if not self:is_visible() then
 		return
 	end
+	-- print(self.name,art)
 	japi.EXSetAbilityString(base.string2id(self.ability_id), 1, 0xCC, art)
 end
 
@@ -509,12 +510,22 @@ local function format_number(v)
 	return math_tointeger(v) or ('%.2f'):format(v)
 end
 
+-- 0000→W 00000000→亿
+local function format_number_tip(v) 
+	if type(v) ~= 'number' then
+		return v
+	end
+	local v = math_tointeger(v) or ('%.2f'):format(v) 
+	return numerical(v) or 0
+end
+ac.format_number_tip = format_number_tip
+
 -- 格式化数组
  -- 数据
  -- 数组
- -- 高亮等级
+ -- 高亮等级 or level == 0
 local function format_table(self, data, hero, level, need_level)
-	if need_level or level == 0 then
+	if need_level  then
 		local t = {}
 		for i = 1, #data do
 			local v = format_number(data[i])
@@ -531,7 +542,7 @@ local function format_table(self, data, hero, level, need_level)
 		end
 		return table_concat(t, '/') .. '|r'
 	else
-		local v = format_number(data[level])
+		local v = format_number(data[level]) or 0
 		return '|cffffcc00' .. v .. '|r'
 	end
 end
@@ -601,7 +612,8 @@ local function format_string(self, str, hero, level, need_level)
 			return format_table(self, v, hero, level, need_level)
 		end
 		if vt == 'number' then
-			v = format_number(v)
+			-- v = format_number(v)
+			v = format_number_tip(v)
 			color_flag = true
 		elseif vt == 'string' then
 			v = format_string(self, v, hero, level, need_level)
@@ -767,12 +779,27 @@ end
 
 --获取技能的热键
 function mt:get_hotkey()
-	return self:get_slk('Hotkey', '')
+	local hero = self.owner
+   
+	local key = self.key or self:get_slk('Hotkey', '')
+	-- if hero and hero.skill_page and hero.skill_page ~= '英雄' then
+	-- 	local keys = {'Z','X','C','V'}
+	-- 	if self.slotid and keys[self.slotid - 8] then
+	-- 		return keys[self.slotid - 8]
+	-- 	end
+	-- else
+	-- 	local keys = {'T','D','F','G'}
+	-- 	if self.slotid and keys[self.slotid - 4] then
+	-- 		return keys[self.slotid - 4]
+	-- 	end
+	-- end
+	return key
 end
 
 --设置技能的热键
 --	热键
 function mt:set_hotkey(key)
+	-- print(key)
 	japi.EXSetAbilityDataInteger(self:get_handle(), 1, 200, key and key:byte() or 0)
 end
 
@@ -1638,6 +1665,8 @@ function mt:fresh()
 	self:fresh_tip()
 	self:fresh_title()
 	self:set_show_cd()
+	--设置热键
+	self:set_hotkey(self:get_hotkey())
 end
 
 --英雄添加技能

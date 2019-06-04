@@ -302,6 +302,13 @@ function mt.addlumber(self,lumber)
 	end	
 	jass.SetPlayerState(self.handle,jass.PLAYER_STATE_RESOURCE_LUMBER,jass.GetPlayerState(self.handle,jass.PLAYER_STATE_RESOURCE_LUMBER)+lumber)
 end
+--设置木头
+function mt.setlumber(self,lumber)
+	if lumber < 0 then 
+		return 
+	end	
+	jass.SetPlayerState(self.handle,jass.PLAYER_STATE_RESOURCE_LUMBER,lumber)
+end
 function mt.addusedfood(self,food)
 	jass.SetPlayerState(self.handle,jass.PLAYER_STATE_RESOURCE_FOOD_USED,jass.GetPlayerState(self.handle,jass.PLAYER_STATE_RESOURCE_FOOD_USED)+food)
 end
@@ -335,7 +342,8 @@ function mt:add_wood(wood, where, flag)
 		wood = data.wood
 	end
 	self.wood = self.wood + wood
-	self:addlumber(wood) --魔兽端显示
+	self:setlumber(self.wood)
+	-- self:addlumber(wood) --魔兽端显示
 	self:event_notify('玩家-木头变化', data)
 
 	if not where  then

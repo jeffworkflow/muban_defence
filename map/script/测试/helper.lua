@@ -528,7 +528,7 @@ function helper:tt_unit(where)
 end	
 --进入地狱，7个光环
 function helper:tt()
-	-- ac.creep['刷怪'].index = 59
+	ac.creep['刷怪1'].index = 24
 	ac.item.add_skill_item('战鼓光环',self)
 	ac.item.add_skill_item('攻速光环',self)
 	ac.item.add_skill_item('辉煌光环',self)
@@ -538,12 +538,12 @@ function helper:tt()
 	ac.item.add_skill_item('寻宝光环',self)
 
 	self:add('杀怪加全属性',3000)
-	self:add('攻击距离',2000)
+	-- self:add('攻击距离',2000)
 	self:add('暴击几率',90)
 	self:add('会心几率',90)
 	self:add('多重射',10)
 	self:add('分裂伤害',100)
-	self:add('攻击',1000000000)
+	self:add('攻击',10000)
 	
 	if not ac.wtf then
 		helper.wtf(self)

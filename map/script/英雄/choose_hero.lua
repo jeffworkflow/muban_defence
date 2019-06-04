@@ -329,8 +329,6 @@ local function start()
 
 		if obj.type == 'timer' or flag then
 			if not has_started then
-				--游戏-开始
-				ac.game:event_notify('游戏-开始')
 				has_started = true
 				--移除所有英雄
 				for i,unit in ipairs(ac.player(16).hero_lists) do 

@@ -144,14 +144,17 @@ function player.__index:SetServerValue(key,value,f)
         para6 = is_mall,
     })
     local f = f or function (retval)  end
-    -- print(url,post)
     post_message(url,post,function (retval)  
-        local tbl = json.decode(retval)
-        if tbl.code == 0 then 
-            f(tbl)
+        if not finds(retval,'http') then 
+            local tbl = json.decode(retval)
+            if tbl and tbl.code == 0 then 
+                f(tbl)
+            else
+                print(self:get_name(),post,'上传失败')
+            end         
         else
-            print(self:get_name(),post,'上传失败')
-        end         
+            print('服务器返回数据异常:',post)
+        end    
     end)
 
 end
@@ -161,7 +164,6 @@ function player.__index:CopyServerValue(key,f)
     local map_name = config.map_name
     local url = config.url2
     local value,key_name,is_mall = ac.get_server(self,key)
-    -- print(map_name,player_name,key,key_name,is_mall,value)
     local post = 'exec=' .. json.encode({
         sp_name = 'sp_save_map_test',
         para1 = map_name,
@@ -171,25 +173,28 @@ function player.__index:CopyServerValue(key,f)
         para5 = value,
         para6 = is_mall,
     })
-    -- print(url,post)
+    -- print('上传数据：',key,value,key_name,is_mall)
     local f = f or function (retval)  end
-    post_message(url,post,f)
+    post_message(url,post,function (retval)  
+        if not finds(retval,'http') then 
+            local tbl = json.decode(retval)
+            -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
+            if tbl and tbl.code == 0 then 
+                f(tbl)
+            else
+                print(self:get_name(),post,'上传失败')
+            end         
+        else
+            print('服务器返回数据异常:',post)
+        end    
+    end)
 end
 --copy 所有servervalue
 function player.__index:CopyAllServerValue()
-    for i,v in ipairs(ac.server_key) do 
+    for i,v in ipairs(ac.mall) do 
         local key = v[1] 
         ac.wait(1000*i,function()
-            self:CopyServerValue(key,function (retval)  
-                local tbl = json.decode(retval)
-                -- print(tbl.code)
-                if tbl.code == 0 then 
-                    -- print(self:get_name(),'上传成功')
-                else
-                    print(self:get_name(),key,'上传失败')
-                end        
-                -- end    
-            end);
+            self:CopyServerValue(key);
         end)    
     end    
 end   

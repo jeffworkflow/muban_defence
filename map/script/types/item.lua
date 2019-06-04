@@ -79,8 +79,9 @@ mt.discount = 0.5
 mt.art = [[ReplaceableTextures\CommandButtons\BTNSnazzyScrollPurple.blp]]
 --物品最大使用次数
 mt.max_use_count = 99999
---商品最大库存
-
+--商品当前库存和最大库存
+mt.shop_count = 1
+mt.shop_max_count = 1
 
 --商品库存恢复时间
 
@@ -443,6 +444,8 @@ function mt:get_item_lni_tip(str)
 		local tp = type(value)
 		if tp == 'function' then
 			return value(data)
+		elseif tp =='number' then 
+			value = ac.format_number_tip(value)
 		end
 		return '|cff'..color_code['金']..tostring(value)..'|r'
 	end)

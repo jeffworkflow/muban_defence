@@ -67,7 +67,13 @@ for i =1,3 do
                         if hero then 
                             hero_distance = hero:get_point() * unit:get_point()
                         end    
-                        if distance < 100 or hero_distance >=1000 then 
+                        if distance < 100 then
+                            if hero_distance <= 1500 then
+                                unit:issue_order('attack',hero) 
+                            else    
+                                unit:issue_order('attack',point)
+                            end  
+                        elseif hero_distance > 1500 then 
                             unit:issue_order('attack',point)
                         end    
                     end  
@@ -218,6 +224,8 @@ ac.wait(20,function()
                 ac.g_game_degree_attr = 8  --难度三 属性倍数3倍
             end 
             ac.player.self:sendMsg("选择了 |cffffff00"..list[index].name.."|r")
+            --游戏-开始
+            ac.game:event_notify('游戏-开始')
             -- ac.game:event_notify '游戏-开始' ; --测试用
         end)
 
@@ -236,7 +244,7 @@ ac.wait(20,function()
         --游戏开始后 刷怪时间
         local time = 180
         if global_test then 
-            time = 180
+            time = 10
         end    
         BJDebugMsg(time .. "秒后开始第一波怪物进攻")
         ac.timer_ex 

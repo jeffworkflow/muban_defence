@@ -14,6 +14,7 @@ tip = [[直接挑战最终boss]],
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
+shop_count = 0, --初始个数
 --售价 500000
 wood = 50000,
 --冷却

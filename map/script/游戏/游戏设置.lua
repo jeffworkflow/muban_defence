@@ -23,7 +23,7 @@ ac.game:event '玩家-金币变化' (function(_,data)
 end)
 
 --火种相关
-player.fire_seed = 0
+player.__index.fire_seed = 0
 function player.__index:get_fire_seed()
 	return (self.fire_seed or 0) 
 end	
@@ -92,6 +92,7 @@ ac.map.rects={
     ['刷怪3'] = rect.j_rect('cg3') ,
 	['进攻点'] = rect.j_rect('jg1') ,
 	['主城'] = rect.j_rect('jg2_jd') ,
+	['游戏结束'] = rect.j_rect('jg2_jd') ,
 	
     ['刷怪-boss'] = rect.j_rect('cgboss4') ,
 	['选人区域'] =rect.j_rect('xuanren') ,

@@ -15,7 +15,7 @@ tip = [[
 
 使得怪物|cff00ff00暂停进攻90秒|r
 ]],
-
+shop_count = 0, --初始个数
 --特殊id 带cd
 type_id = 'EX00',
 
