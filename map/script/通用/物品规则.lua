@@ -63,8 +63,8 @@
                 it.owner = nil
                 return true
             end    
-            --使用物品，类似消耗品
-            it:on_use_state()
+            --使用物品，类似消耗品 通用技能→ 升级属性处理
+            -- it:on_use_state()
             --额外支持 施法完成
             --应用 魔鬼的交易
             it:_call_event 'on_cast_finish' 

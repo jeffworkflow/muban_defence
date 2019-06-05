@@ -6,7 +6,8 @@ ac.game:event '技能-升级' (function (_,hero,self)
     if self.strong_hero then 
         hero = hero:get_owner().hero
     end    
-	if not hero or self.item_type =='消耗品' or self.item_type =='神符' then 
+    -- print(hero.name,self.item_type,self.item_type)
+	if not hero or self.item_type =='消耗品' then 
 		return
 	end	
 	--保存物品 ix_now =0 1级+10， ix=10,ix_now=10,ix=20
@@ -20,7 +21,6 @@ ac.game:event '技能-升级' (function (_,hero,self)
         --处理基础值
         local value = self[key]
         local old_value = self.old_status[key]
-        -- print(key,value,old_value)
         if old_value then 
             hero:add_tran(key,-old_value)
 		end 
@@ -44,14 +44,14 @@ ac.game:event '技能-升级' (function (_,hero,self)
 	end
 end)
 
-
+--神符类的技能获取时会自动失去，所以要排除在外，属性才能加上
 ac.game:event '技能-失去' (function (_,hero,self)
     -- print(hero,self.name) or not hero:is_type('英雄')
     --如果技能在宠物身上，加强效果在人身上
     if self.strong_hero then 
         hero = hero:get_owner().hero
     end    
-	if not hero  or self.item_type =='消耗品' or self.item_type =='神符'  then 
+	if not hero  or self.item_type =='消耗品' or self.item_type =='神符'    then 
 		return
     end	
 	--单位的属性表
