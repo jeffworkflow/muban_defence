@@ -254,7 +254,7 @@ local unit_reward = {
     ['洗练石boss2'] = {{rand =100,name = '二号洗练石'}},
     ['洗练石boss3'] = {{rand =100,name = '三号洗练石'}},
     ['洗练石boss4'] = {{rand =100,name = '四号洗练石'}},
-    
+
     ['肉山'] =  {{ rand = 50,      name = '吞噬丹'}},
     ['梦魇'] =  {{ rand = 50,      name = '吞噬丹'}},
     ['戈登的激情'] =  {{ rand = 50,      name = '吞噬丹'}},
@@ -561,10 +561,11 @@ ac.get_reward_name_list = get_reward_name_list
 local function hero_kill_unit(player,hero,unit,fall_rate,is_on_hero)
 
     local change_unit_reward = unit_reward['进攻怪']
-    
-    for index,info in ipairs(change_unit_reward) do 
-        change_unit_reward[index].rand = fall_rate
-    end    
+    --吞噬丹几率过高
+    change_unit_reward[1].rand = fall_rate
+    -- for index,info in ipairs(change_unit_reward) do 
+    --     change_unit_reward[1].rand = fall_rate
+    -- end    
     local name = get_reward_name(change_unit_reward)
     if name then 
         -- print('掉落物品类型',name)
@@ -602,23 +603,6 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         local item = ac.item.create_item(name,unit:get_point()) 
     end    
 
-
-end)
-
-
--- 如果死亡的是挑战怪的话
-ac.game:event '单位-死亡' (function (_,unit,killer)
-    if not finds(unit:get_name(),'挑战')then
-		return
-    end
-    local name = get_reward_name(unit_reward['挑战怪'])
-    if name then 
-        local func = reward[name]
-        local player = killer:get_owner()
-        if func then 
-            func(player,killer,unit)
-        end  
-    end    
 
 end)
 
