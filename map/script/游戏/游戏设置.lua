@@ -22,13 +22,13 @@ ac.game:event '玩家-金币变化' (function(_,data)
 	end	
 end)
 
---火种相关
+--火灵相关
 player.__index.fire_seed = 0
 function player.__index:get_fire_seed()
 	return (self.fire_seed or 0) 
 end	
---获得火种
---	火种数量
+--获得火灵
+--	火灵数量
 --	[漂浮文字显示位置]
 --	[不抛出加木头事件]
 function player.__index:add_fire_seed(fire_seed, where, flag)
@@ -38,11 +38,11 @@ function player.__index:add_fire_seed(fire_seed, where, flag)
 	local fire_seed = tonumber(string.format( "%.2f",fire_seed))
 	local data = {player = self, fire_seed = fire_seed}
 	if fire_seed > 0 and not flag then
-		self:event_notify('玩家-即将获得火种', data)
+		self:event_notify('玩家-即将获得火灵', data)
 		fire_seed = data.fire_seed
 	end
 	self.fire_seed = (self.fire_seed or 0) + fire_seed
-	self:event_notify('玩家-火种变化', data)
+	self:event_notify('玩家-火灵变化', data)
 
 	if not where  then
 		return
@@ -76,7 +76,7 @@ function player.__index:add_fire_seed(fire_seed, where, flag)
 		show = ac.texttag.SHOW_SELF
 	}
 end
---单位获得火种
+--单位获得火灵
 function Unit.__index:add_fire_seed(num)
 	self:get_owner():add_fire_seed(num, where or self, flag)
 end

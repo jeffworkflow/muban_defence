@@ -89,7 +89,7 @@ local attribute = {
 	['经验加成']		=	true,--默认表示为%
 	['木头加成']		=	true,--默认表示为%
 	['杀敌数加成']		=	true,--默认表示为%
-	['火种加成']		=	true,--默认表示为%
+	['火灵加成']		=	true,--默认表示为%
 
 	['天赋触发几率']	=	true,--默认表示为%
 	['多重射']	=	true,--默认表示为基础值
@@ -374,7 +374,11 @@ get['力量'] = function(self)
 end
 
 set['力量'] = function(self, val)
-	if self.setStr then 
+	if self.setStr then 	
+		--力量上限 21亿
+		if val >= 2100000000 then 
+			val = 2100000000
+		end	
 		if val >= 1 then
 			self:setStr(val)
 		else
@@ -426,6 +430,10 @@ end
 
 set['敏捷'] = function(self, val)
 	if self.setAgi then 
+		--敏捷上限 21亿
+		if val >= 2100000000 then 
+			val = 2100000000
+		end	
 		if val >= 1 then
 			self:setAgi(val)
 		else
@@ -468,6 +476,10 @@ end
 
 set['智力'] = function(self, val)
 	if self.setInt then 
+		--敏捷上限 21亿
+		if val >= 2100000000 then 
+			val = 2100000000
+		end	
 		if val >= 1 then
 			self:setInt(val)
 		else

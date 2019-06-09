@@ -328,7 +328,7 @@ function mt:sell_jifen()
 	return jifen
 end
 
---获取购买火种
+--获取购买火灵
 function mt:buy_fire_seed()
 	local gold = (self.player_fire and self.player_fire[ac.player.self]) and self.player_fire[ac.player.self] or (self.fire_seed or 0)
 	self.fire_seed = gold
@@ -341,7 +341,7 @@ function mt:buy_fire_seed()
 	return self.fire_seed,self.show_fire_seed,self.player_fire and self.player_fire[ac.player.self] 
 end
 
---获取出售火种
+--获取出售火灵
 function mt:sell_fire_seed()
 	local count = self:get_item_count()
 	local fire_seed = self.fire_seed

@@ -49,7 +49,7 @@ local kill_text = japi.CreateFrame('mtp_kill_text',currency,0)
 japi.FrameSetPoint(kill_text,3,kill_icon,5,0.003,0)
 --japi.FrameSetText(kill_text,'123450')
 
---火种
+--火灵
 local fire_icon = japi.CreateFrame('mtp_fire_icon',currency,0)
 japi.FrameSetSize(fire_icon,0.0103,0.0104)
 japi.FrameSetPoint(fire_icon,3,kill_text,5,0.0054,0)

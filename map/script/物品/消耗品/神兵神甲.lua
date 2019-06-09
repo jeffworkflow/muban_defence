@@ -46,12 +46,14 @@ for key,tab in pairs(magic_item) do
             local hero = self.owner
             local player = self.owner:get_owner()
             hero = player.hero 
-            --改变外观，添加武器
-            if hero.effect_wuqi then 
-                hero.effect_wuqi:remove()
-            end     
-            local orf = hero_weapon[hero.name] or 'hand'
-            hero.effect_wuqi = hero:add_effect(orf,self.effect)
+            if key =='神兵' then
+                --改变外观，添加武器
+                if hero.effect_wuqi then 
+                    hero.effect_wuqi:remove()
+                end     
+                local orf = hero_weapon[hero.name] or 'hand'
+                hero.effect_wuqi = hero:add_effect(orf,self.effect)
+            end    
             -- print('使用武器')
             local skl = hero:find_skill(self.name,nil,true)
             if skl and skl.level >=1 then 

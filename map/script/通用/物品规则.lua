@@ -212,7 +212,7 @@
             end
         end   
         if fire_seed < fire_seeds then
-            u:get_owner():sendMsg('火种不够')
+            u:get_owner():sendMsg('火灵不够')
             return
         end 
         if it.max_buy_cnt and it.player_buy_cnt then
@@ -246,7 +246,7 @@
             player:add_wood( - woods)
             --扣杀敌数 
             player:add_kill_count( -kill_counts)
-            --扣火种
+            --扣火灵
             player:add_fire_seed( -fire_seeds)
 
             if jifens > 0 then 

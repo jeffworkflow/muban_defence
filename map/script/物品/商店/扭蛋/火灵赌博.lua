@@ -2,7 +2,7 @@
 local rect = require 'types.rect'
 
 --物品名称
-local mt = ac.skill['火种赌博']
+local mt = ac.skill['火灵赌博']
 mt{
 --等久
 level = 1,
@@ -11,7 +11,7 @@ art = [[ReplaceableTextures\CommandButtons\BTNGlyph.blp]],
 --说明
 tip = [[|cffFFE799【说明】：|r
 
-|cff00ff0050%火种|cff00ff00翻倍|r  |cffff000050%火种|cffff0000归零|r
+|cff00ff0050%火灵|cff00ff00翻倍|r  |cffff000050%火灵|cffff0000归零|r
 ]],
 --物品类型
 item_type = '神符',

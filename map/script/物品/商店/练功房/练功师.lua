@@ -12,9 +12,9 @@ ac.pratice_man ={
     ['中木头怪'] = {'中木头怪',[[ReplaceableTextures\CommandButtons\BTNBundleOfLumber.blp]],'\n\n|cff00ff00召唤15只中木头怪，每只提供5木头|n|r'} ,
     ['大木头怪'] = {'大木头怪',[[ReplaceableTextures\CommandButtons\BTNBundleOfLumber.blp]],'\n\n|cff00ff00召唤15只大木头怪，每只提供15木头|n|r'} ,
     ['超大木头怪'] = {'超大木头怪',[[ReplaceableTextures\CommandButtons\BTNBundleOfLumber.blp]],'\n\n|cff00ff00召唤15只超大木头怪，每只提供50木头|n|r'} ,
-    ['小火种怪'] = {'小火种',[[ReplaceableTextures\CommandButtons\BTNVoidWalker.blp]],'\n\n|cff00ff00召唤15只小火种怪，每只提供5火种|n|r'} ,
-    ['中火种怪'] = {'中火种',[[ReplaceableTextures\CommandButtons\BTNVoidWalker.blp]],'\n\n|cff00ff00召唤15只中火种怪，每只提供35火种|n|r'} ,
-    ['大火种怪'] = {'大火种',[[ReplaceableTextures\CommandButtons\BTNVoidWalker.blp]],'\n\n|cff00ff00召唤15只大火种怪，每只提供100火种|n|r'} ,
+    ['小火灵怪'] = {'小火灵',[[ReplaceableTextures\CommandButtons\BTNVoidWalker.blp]],'\n\n|cff00ff00召唤15只小火灵怪，每只提供5火灵|n|r'} ,
+    ['中火灵怪'] = {'中火灵',[[ReplaceableTextures\CommandButtons\BTNVoidWalker.blp]],'\n\n|cff00ff00召唤15只中火灵怪，每只提供35火灵|n|r'} ,
+    ['大火灵怪'] = {'大火灵',[[ReplaceableTextures\CommandButtons\BTNVoidWalker.blp]],'\n\n|cff00ff00召唤15只大火灵怪，每只提供100火灵|n|r'} ,
 }
 
 for key,value in pairs(ac.pratice_man) do 

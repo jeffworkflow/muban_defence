@@ -35,7 +35,7 @@ local mt = ac.skill['英雄属性面板']
 会心几率: %heart_rate% %  会心伤害:  %heart_damage% %
 
 金币加成：   %moregold% %  木头加成： %morewood% %
-经验加成：   %moreexp% %  火种加成： %morefireseed% %
+经验加成：   %moreexp% %  火灵加成： %morefireseed% %
 物品获取率： %item_rate% %  杀敌数加成： %morekillcount% %
 
 杀怪加力量： %kill_str%     每秒加金币:   %per_gold%  
@@ -60,7 +60,7 @@ function mt:morewood()
 	return ('|cffF9C801%.f|r'):format(self.owner:get '木头加成')
 end
 function mt:morefireseed()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '火种加成')
+	return ('|cffF9C801%.f|r'):format(self.owner:get '火灵加成')
 end
 function mt:morekillcount()
 	return ('|cffF9C801%.f|r'):format(self.owner:get '杀敌数加成')

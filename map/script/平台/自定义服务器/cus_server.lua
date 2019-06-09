@@ -77,7 +77,7 @@ function player.__index:sp_get_map_test(f)
             else  
                 ac.wait(10,function()
                     --发起同步请求
-                    print('发起同步请求')
+                    -- print('发起同步请求')
                     local info = {
                         type = 'cus_server',
                         func_name = 'read_key_from_sever',
@@ -108,6 +108,7 @@ local event = {
             player.jifen = value
         end    
     end,
+    --从自定义服务器读取数据
     read_key_from_sever = function (tab_str)
         local player = ui.player 
         if not player.cus_server then 

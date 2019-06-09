@@ -51,7 +51,7 @@ local function tornado(skill,mover,max_damage)
     --碰撞范围
     local areaa = skill.hit_area
     --伤害
-    local damage = max_damage * 0.4
+    local damage = max_damage * 0.1
     for i=0,3 do
         angle = angle + i * 90
         mvr = ac.mover.line

@@ -94,7 +94,7 @@ Frame "TEXT" "mtp_kill_text" {
     LayerStyle "IGNORETRACKEVENTS",
     FrameFont "resource\fonts\fonts.ttf", 0.0111, "", 
 }
-//火种
+//火灵
 Frame "BACKDROP" "mtp_fire_icon" {
 	BackdropBackground  "UI\Widgets\ToolTips\Human\ToolTipLumberIcon.blp",
     BackdropBlendAll,

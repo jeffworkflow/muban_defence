@@ -153,12 +153,12 @@ ac.game:event '单位-死亡' (function(_,unit,killer)
     if unit.exp  then
         exp = unit.exp * ( 1 + killer:get('经验加成')/100)
     end  
-    --加木头 加火种
+    --加木头 加火灵
     if unit.wood then 
         wood = unit.wood * ( 1 + killer:get('木头加成')/100)
     end    
     if unit.fire_seed then 
-        fire_seed = unit.fire_seed * ( 1 + killer:get('火种加成')/100)
+        fire_seed = unit.fire_seed * ( 1 + killer:get('火灵加成')/100)
     end   
     --杀敌数加成
     local kill_cnt = 1 + killer:get('杀敌数加成')/100
