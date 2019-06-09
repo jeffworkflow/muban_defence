@@ -23,7 +23,7 @@ type_id = 'EX00',
 --物品类型
 item_type = '神符',
 --售价 500000
-wood = 500,
+wood = 2500,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却

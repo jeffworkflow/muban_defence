@@ -10,8 +10,11 @@ cool = 0,
 
 --描述
 tip = [[
-能吞噬一个装备，永久增加对应的属性（套装效果无法加成）
-已吞噬 %cnt%|cffffff00/8|r 个： %content%]],
+
+
+可以|cff00ff00吞噬装备|r 永久增加对应的属性|cffffff00（套装效果无法加成）|r
+
+|cff00ffff已吞噬|r %cnt%|cffffff00/8|r |cff00ffff个：|r %content%]],
 cnt = function(self) 
     local cnt = 0
     if self and self.owner and self.owner:is_hero() then 
@@ -38,7 +41,7 @@ end,
 --物品技能
 is_skill = true,
 --物品详细介绍的title
-content_tip = '使用说明：',
+content_tip = '|cffffe799使用说明：|r',
 auto_fresh_tip = true
 
 }
@@ -55,7 +58,7 @@ function mt:on_cast_start()
     local cnt = 8
     if (player.tunshi_cnt or 0) >= cnt then 
         self:add_item_count(1)
-        player:sendMsg('吞噬丹吞噬个数已满，不可吞噬')
+        player:sendMsg('|cffffe799【系统消息】|r已经吞噬过多物品(最多8个)，无法继续吞噬')
         return 
     end    
 
@@ -71,7 +74,7 @@ function mt:on_cast_start()
         end
     end 
     if count < 1 then 
-        player:sendMsg('没有可吞噬的装备')
+        player:sendMsg('|cffffe799【系统消息】|r英雄物品栏没有可吞噬的装备')
         if self._count > 1 then 
             -- print('数量')
             self:set_item_count(self._count+1)

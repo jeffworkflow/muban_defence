@@ -4,15 +4,12 @@ mt{
 level = 1,
 --图标
 art = [[hplb.blp]],
+content_tip = '\n|cffFFE799【领取条件】|r',
 is_skill =true ,
 --说明
-tip = [[
-领取条件：在平台评论区发表评论+评分5星
-属性：
-+%award_life% 生命上限
-+%award_physical_damage% 暴击加深
-+%award_magic_damage% 技暴加深
-被攻击10%概率获得5全属性 --没实现
+tip = [[给此图来个|cffff0000五星好评|r
+
+|cffFFE799【礼包奖励】|r|cff00ff00被攻击10%几率获得5点全属性， 暴击加深+15%， 技暴加深+15% |r
 ]],
 --物品类型
 item_type = '神符',
@@ -22,9 +19,9 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 cool = 1,
 --购买价格
 gold = 0,
-award_life = 1000,
-award_physical_damage = 50,
-award_magic_damage = 50,
+award_life = 0,
+award_physical_damage = 15,
+award_magic_damage = 15,
 
 }
 

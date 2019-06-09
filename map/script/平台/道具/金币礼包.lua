@@ -5,12 +5,11 @@ level = 1,
 --图标
 art = [[jblb.blp]],
 is_skill =true ,
+content_tip = '\n|cffFFE799【领取条件】|r',
 --说明
-tip = [[ 
-领取条件：商城购买金币礼包
-属性：
-+%award_gold% 金币
-+%award_kill_cnt% 杀敌数
+tip = [[商城购买|cffff0000金币礼包|r
+
+|cffFFE799【礼包奖励】|r|cff00ff00每秒加250金币，杀怪+250金币，攻击+250金币|r
 ]],
 --物品类型
 item_type = '神符',

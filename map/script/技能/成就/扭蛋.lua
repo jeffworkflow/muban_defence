@@ -185,7 +185,6 @@ mt{
     store_affix = '',
     art = [[zsdhmz.blp]],
     tip = [[
-
 |cffFFE799【扭蛋属性】：|r
 |cff00ff00
 +7500w 攻击

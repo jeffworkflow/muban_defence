@@ -57,11 +57,11 @@ function mt:on_cast_shot()
 		: of_not_building()
 		: ipairs()
 	do
-		u:add_buff '晕眩'
-		{
-			source = hero,
-			time = self.time,
-		}
+		-- u:add_buff '晕眩'
+		-- {
+		-- 	source = hero,
+		-- 	time = self.time,
+		-- }
 		u:damage
 		{
 			source = hero,

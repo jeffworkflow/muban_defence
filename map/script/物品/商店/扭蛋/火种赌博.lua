@@ -9,7 +9,10 @@ level = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNGlyph.blp]],
 --说明
-tip = [[火种 50%翻倍， 50%0]],
+tip = [[|cffFFE799【说明】：|r
+
+|cff00ff0050%火种|cff00ff00翻倍|r  |cffff000050%火种|cffff0000归零|r
+]],
 --物品类型
 item_type = '神符',
 --目标类型

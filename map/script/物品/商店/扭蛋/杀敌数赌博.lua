@@ -9,7 +9,10 @@ level = 1,
 --图标
 art = [[shadidubo.blp]],
 --说明
-tip = [[杀敌数 50%翻倍， 50%0]],
+tip = [[|cffFFE799【说明】：|r
+
+|cff00ff0050%杀敌数翻倍|r  |cffff000050%杀敌数归零|r
+]],
 --物品类型
 item_type = '神符',
 --目标类型

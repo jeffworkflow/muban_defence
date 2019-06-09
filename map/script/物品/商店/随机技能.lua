@@ -18,7 +18,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
 --购买价格
-wood = 25,
+wood = 10,
 --每次增加
 cre_wood = 500,
 --物品技能
@@ -39,7 +39,7 @@ function mt:on_cast_start()
     local old_wood = shop_item.wood
     --可能会异步
     --改变商店物品物价
-    hero.buy_skill_cnt = hero.buy_skill_cnt *2
+    hero.buy_skill_cnt = hero.buy_skill_cnt * 2
     shop_item.wood = math.min(shop_item.wood * hero.buy_skill_cnt,500000)
 
     -- print( shop_item.wood,self.buy_cnt)

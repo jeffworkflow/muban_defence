@@ -9,7 +9,10 @@ level = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNGrabTree.blp]],
 --说明
-tip = [[木头 50%翻倍， 50%0]],
+tip = [[|cffFFE799【说明】：|r
+
+|cff00ff0050%木头|cff00ff00翻倍|r  |cffff000050%木头|cffff0000归零|r
+]],
 --物品类型
 item_type = '神符',
 --目标类型

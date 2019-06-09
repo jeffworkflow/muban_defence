@@ -52,7 +52,7 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 	end	
 	
 	for k,val in ipairs(ac.devil_deal) do
-		for _,data in ipairs(val) do
+		for _,data in ipairs(val) do    
 			local name = data[1]
 			local skl = hero:find_skill(name,nil,true)
             skl:set('extr_tip','\n|cffFFE799【状态】：|r|cffff0000未激活|r')

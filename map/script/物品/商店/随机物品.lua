@@ -30,7 +30,7 @@ function mt:on_cast_start()
     local hero = self.owner
     local shop_item = ac.item.shop_item_map[self.name]
     if not hero.buy_item_cnt then 
-        hero.buy_item_cnt = 1
+        hero.buy_item_cnt = 0
     end 
     if not shop_item.player_wood then 
         shop_item.player_wood = {}

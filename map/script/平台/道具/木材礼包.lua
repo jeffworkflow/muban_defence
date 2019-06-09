@@ -6,13 +6,11 @@ level = 1,
 --图标
 art = [[mtlb.blp]],
 is_skill =true ,
-
+content_tip = '\n|cffFFE799【领取条件】|r',
 --说明
-tip = [[    
-领取条件：商城购买金币礼包
-属性：
-+%award_wood% 木头
-+%award_all_attr% 全属性
+tip = [[商城购买|cffff0000木材礼包|r
+
+|cffFFE799【礼包奖励】|r|cff00ff00初始木头+10，初始杀敌数+1000 |r
 ]],
 --物品类型
 item_type = '神符',
@@ -22,8 +20,8 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 cool = 1,
 --购买价格
 gold = 0,
-award_wood = 100,
-award_all_attr = 100,
+award_wood = 10,
+award_all_attr = 1000,
 
 }
 

@@ -263,7 +263,12 @@ for i,data in ipairs(peon_xp_item) do
     --图标
     art = [[ReplaceableTextures\CommandButtons\BTNScroll.blp]],
     --说明
-    tip = [[+%xp% 宠物天赋经验]],
+    tip = [[
+
+
+|cff00ffff食用后可以提升宠物|r %xp%|cffffff00点经验|r
+
+|cffcccccc宠物升级可以获得可分配的天赋点，宠物等级可存档|r]],
     --品质
     color = '紫',
     --物品类型
@@ -273,7 +278,7 @@ for i,data in ipairs(peon_xp_item) do
     --目标类型
     target_type = ac.skill.TARGET_TYPE_NONE,
     --冷却
-    cool = 0.5,
+    cool = 0.1,
     --经验
     xp = data[2],
     --购买价格
@@ -282,10 +287,10 @@ for i,data in ipairs(peon_xp_item) do
     _count = 1,
     --物品模型
     specail_model = [[ScrollHealing.mdx]],
-    model_size = 2,
+    model_size = 1.3,
     titile = '|cffff0000宠物经验书|r',
     --物品详细介绍的title
-    content_tip = '使用说明：'
+    content_tip = '|cffffe799使用说明：|r'
     }
     function mt:on_cast_start()
         local hero = self.owner

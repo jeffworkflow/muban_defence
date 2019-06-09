@@ -9,16 +9,16 @@ mt{
     --颜色
     color = '紫',
     tip = [[
-%show_tip%
 
-|cffFFE799【进阶】|r 杀死 %kill_cnt% 个敌人，自动进阶]],
+%show_tip%
+|cffFFE799【进阶】|r杀死 %kill_cnt% 个敌人，自动进阶]],
 
     --技能图标
     art = [[qiu305.blp]],
     --全属性
     ['全属性'] = {100,500,2500,5000,25000,50000,250000,500000,1250000,2500000,5000000,},
     --每秒加全属性
-    ['每秒加全属性'] = {0,1,3,10,30,90,270,810,2430,7290,21870,},
+    ['每秒加全属性'] = {0,1,3,10,30,100,300,900,1800,3600,7200,},
     --攻击
     ['攻击'] = {0,0,2500,5000,25000,50000,250000,500000,1250000,2500000,5000000,},
     --护甲
@@ -26,7 +26,7 @@ mt{
     --每秒加金币
     ['每秒加金币'] = {0,50,100,500,1000,5000,5000,5000,5000,5000,5000,},
     --每秒加木头
-    ['每秒加木头']  = {0,0,0,0,0,0,1,5,10,50,100,},
+    ['每秒加木头']  = {0,0,0,0,0,0,1,2,5,25,50,},
     --会心几率
     ['会心几率']  = {0,0,0,1,2,3,4,5,6,8,10,},
     --会心伤害
@@ -43,38 +43,38 @@ mt{
         local str = ''
         local attribute = ac.unit.attribute
         if self['全属性'] >0 then 
-            str = str ..'+|cffFFE799'..self['全属性']..'|r 全属性'..'\n'
+            str = str ..'+|cffffff00'..self['全属性']..'|r 全属性'..'\n'
         end    
         if self['每秒加全属性'] >0 then 
-            str = str ..'+|cffFFE799'..self['每秒加全属性']..'|r 每秒加全属性'..'\n'
+            str = str ..'+|cffffff00'..self['每秒加全属性']..'|r 每秒加全属性'..'\n'
         end    
         if self['攻击'] >0 then 
-            str = str ..'+|cffFFE799'..self['攻击']..'|r 攻击'..'\n'
+            str = str ..'+|cffffff00'..self['攻击']..'|r 攻击'..'\n'
         end    
         if self['护甲'] >0 then 
-            str = str ..'+|cffFFE799'..self['护甲']..'|r 护甲'..'\n'
+            str = str ..'+|cffffff00'..self['护甲']..'|r 护甲'..'\n'
         end    
         if self['每秒加金币'] >0 then 
-            str = str ..'+|cffFFE799'..self['每秒加金币']..'|r 每秒加金币'..'\n'
+            str = str ..'+|cffffff00'..self['每秒加金币']..'|r 每秒加金币'..'\n'
         end   
         if self['每秒加木头'] >0 then 
-            str = str ..'+|cffFFE799'..self['每秒加木头']..'|r 每秒加木头'..'\n'
+            str = str ..'+|cffffff00'..self['每秒加木头']..'|r 每秒加木头'..'\n'
         end    
         if self['会心几率'] >0 then 
-            str = str ..'+|cffFFE799'..self['会心几率']..'%|r 会心几率'..'\n'
+            str = str ..'+|cffffff00'..self['会心几率']..'%|r 会心几率'..'\n'
         end    
         if self['会心伤害'] >0 then 
-            str = str ..'+|cffFFE799'..self['会心伤害']..'%|r 会心伤害'..'\n'
+            str = str ..'+|cffffff00'..self['会心伤害']..'%|r 会心伤害'..'\n'
         end     
         if self['吸血'] >0 then 
-            str = str ..'+|cffFFE799'..self['吸血']..'%|r 吸血'..'\n'
+            str = str ..'+|cffffff00'..self['吸血']..'%|r 吸血'..'\n'
         end     
         return str
     end,   
     --升级特效
     effect ='Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx',
     --物品详细介绍的title
-    content_tip = '基本属性：',
+    content_tip = '|cffFFE799基本属性：|r',
 }
 
 

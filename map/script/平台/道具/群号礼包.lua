@@ -5,12 +5,11 @@ level = 1,
 --图标
 art = [[qhlb.blp]],
 is_skill =true ,
+content_tip = '\n|cffFFE799【领取条件】|r',
 --说明
-tip = [[
-领取条件：输入群号%qq_qum%发送
-属性：
-+%award_all_attr% 全属性
-+%award_kill_cnt% 杀敌数
+tip = [[进入官方交流群|cffff0000(群号797113975)|r 获得隐藏密码
+
+|cffFFE799【礼包奖励】|r|cff00ff00全属性+500，杀敌数+100|r
 ]],
 --物品类型
 item_type = '神符',
@@ -20,9 +19,9 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 cool = 1,
 --购买价格
 gold = 0,
-qq_qum = 123,
-award_all_attr = 1000,
-award_kill_cnt = 50,
+qq_qum = 797113975,
+award_all_attr = 500,
+award_kill_cnt = 100,
 }
 
 function mt:on_award()
@@ -36,7 +35,7 @@ function mt:on_award()
     --添加给英雄
     hero:add('全属性',self.award_all_attr)
     p:add_kill_count(self.award_kill_cnt)
-    local tip = '|cffff0000'..p:get_name()..'|r输入群号：|cffffff00'..self.qq_qum..'|r，获得|cffffff00群号礼包|r'
+    local tip = '|cffFFE799【系统消息】|r恭喜 |cffff0000'..p:get_name()..'|r 获得群号礼包 奖励|cff00ff00全属性+500，杀敌数+100|r'
     ac.player.self:sendMsg(tip)
    
 end
