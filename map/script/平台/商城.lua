@@ -45,6 +45,11 @@ ac.wait(10,function()
                 local key = item[n][2]  
                 p.mall[key] = true  
             end  
+            if item[n][2] =='五星好评礼包' and p:Map_GetMapLevel() >=3 then
+                local key = item[n][2]  
+                p.mall[key] = true  
+            end    
+                 
         end    
         -- print('测试服务器存档是否读取成功',p:GetServerValueErrorCode())
         if p:is_player() then
@@ -56,9 +61,8 @@ ac.wait(10,function()
                     local key = item[n][2]  
                     -- print(key,p.mall[key])
                     if p.mall[key] then
-                    -- if p:Map_HasMallItem(item[n][1]) or (p:Map_GetServerValue(item[n][1]) == '1') then
-                        --物品形式
-                        if item[n][2] == '金币礼包' or item[n][2] == '木材礼包' then
+                        --物品形式 自动领取
+                        if item[n][2] == '金币礼包' or item[n][2] == '木材礼包' or item[n][2] == '五星好评礼包' then
                             hero:add_item(item[n][2],true) 
                         end
                         --直接生效（技能）

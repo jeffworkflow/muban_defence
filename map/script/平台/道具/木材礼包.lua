@@ -35,9 +35,12 @@ function mt:on_cast_start()
     local name = self.name
     if p.mall[name] and not p.mall_flag[name] then 
         --添加给英雄
-        p:add_wood(self.award_wood)
-        hero:add('全属性',self.award_all_attr)
+        hero:add_wood(self.award_wood)
+        hero:add_kill_count(self.award_all_attr)
+        -- hero:add('全属性',self.award_all_attr)
         p.mall_flag[name] = true
+        local tip = '|cffFFE799【系统消息】|r恭喜 |cffff0000'..p:get_name()..'|r 获得|cffFFE799木材礼包 【礼包奖励】|r|cff00ff00初始木头+10，初始杀敌数+1000 |r'
+        p:sendMsg(tip)
     else
         p:sendMsg('条件不足或已领取过')    
     end   

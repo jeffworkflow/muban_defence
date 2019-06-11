@@ -6,7 +6,7 @@ require '平台.初始化'
 require '平台.积分和段位'
 
 require '平台.道具'
--- require '平台.商城'
+require '平台.商城'
 -- require '平台.荣耀称号'
 -- require '平台.翅膀管理'
 require '平台.宠物天赋'

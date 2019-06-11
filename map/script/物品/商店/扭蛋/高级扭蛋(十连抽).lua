@@ -161,14 +161,14 @@ function mt:add_content()
         local rand_list = ac.magic_item[rand_name]
         --添加给英雄
         local name = rand_list[math.random(6,10)]
-        self.owner:add_item(rand_name,true)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
+        self.owner:add_item(name,true)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..name..'|r',2)
     elseif  rand_name == '神甲' then
         local rand_list = ac.magic_item[rand_name]
         --添加给英雄
         local name = rand_list[math.random(6,10)]
-        self.owner:add_item(rand_name,true)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
+        self.owner:add_item(name,true)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..name..'|r',2)
     end
 
 end

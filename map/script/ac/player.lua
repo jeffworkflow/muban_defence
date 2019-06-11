@@ -191,7 +191,9 @@ function mt:showSysWarning(msg)
     if(jass.GetLocalPlayer() == self.handle) then
         if (msg ~= '') and (msg ~= nil) then
             -- jass.ClearTextMessages();
-            jass.DisplayTimedTextToPlayer(self.handle, 0.5, -1, 2, '|cffffcc00' .. msg .. '|r');
+			-- jass.DisplayTimedTextToPlayer(self.handle, 0.5, -1, 2, '|cffffcc00' .. msg .. '|r');
+			-- 不缩进，不清空
+			self:sendMsg('|cffffcc00' .. msg .. '|r')
         end
         jass.StartSound(sys_sound);
     end

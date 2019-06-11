@@ -251,12 +251,19 @@ function mt:start(player)
                 end 
             end    
         end)    
-    end    
-    
+    end  
+
     if self.on_start then 
         self:on_start()
     end 
-    self:next()   
+    --等待1秒后才开始
+    if self.first_wait_time then 
+        ac.wait(self.first_wait_time * 1000,function() 
+            self:next()   
+        end)
+    else
+        self:next()     
+    end  
     
 end
 --暂停计时

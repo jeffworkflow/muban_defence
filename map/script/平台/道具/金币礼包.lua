@@ -19,10 +19,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 cool = 1,
 --购买价格
 gold = 0,
---奖励金币
-award_gold = 1000,
---奖励杀敌数
-award_kill_cnt = 300,
+--每秒金币
+per_gold = 250,
+--杀怪加金币
+kill_gold = 250,
+--攻击加金币
+attack_gold = 250,
 }
 
 function mt:on_cast_start()
@@ -35,9 +37,13 @@ function mt:on_cast_start()
     local name = self.name
     if p.mall[name] and not p.mall_flag[name] then 
         --添加给英雄
-        hero:addGold(self.award_gold)
-        p:add_kill_count(self.award_kill_cnt)
+        hero:add('每秒加金币',self.per_gold)
+        hero:add('杀怪加金币',self.kill_gold)
+        hero:add('攻击加金币',self.attack_gold)
         p.mall_flag[name] = true
+        
+        local tip = '|cffFFE799【系统消息】|r恭喜 |cffff0000'..p:get_name()..'|r 获得|cffFFE799金币礼包 【礼包奖励】|r|cff00ff00每秒加250金币，杀怪+250金币，攻击+250金币|r'
+        p:sendMsg(tip)
     else
         p:sendMsg('条件不足或已领取过')    
     end    
