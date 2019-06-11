@@ -211,6 +211,34 @@ rect gg_rct_xls2= null
 rect gg_rct_xls22= null
 rect gg_rct_xls1= null
 rect gg_rct_xls11= null
+rect gg_rct_xxzh11= null
+rect gg_rct_xxzh12= null
+rect gg_rct_xxzh13= null
+rect gg_rct_xxzh14= null
+rect gg_rct_ylxy11= null
+rect gg_rct_ylxy12= null
+rect gg_rct_ylxy13= null
+rect gg_rct_ylxy14= null
+rect gg_rct_sqyyh11= null
+rect gg_rct_sqyyh12= null
+rect gg_rct_sqyyh13= null
+rect gg_rct_aqyyh14= null
+rect gg_rct_xwty11= null
+rect gg_rct_xwty12= null
+rect gg_rct_xwty13= null
+rect gg_rct_xwty14= null
+rect gg_rct_xwty111= null
+rect gg_rct_sqyyh111= null
+rect gg_rct_ylxy111= null
+rect gg_rct_xxzh111= null
+rect gg_rct_xxzh1= null
+rect gg_rct_ylxy1= null
+rect gg_rct_sqyyh1= null
+rect gg_rct_xwty1= null
+rect gg_rct_fdm1= null
+rect gg_rct_fdm11= null
+rect gg_rct_cbt1= null
+rect gg_rct_cbt11= null
 endglobals
 
     native DzGetMouseTerrainX takes nothing returns real
@@ -1845,6 +1873,34 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_xls22=Rect(12736.0, 2016.0, 12992.0, 2240.0)
     set gg_rct_xls1=Rect(12736.0, - 896.0, 12992.0, - 704.0)
     set gg_rct_xls11=Rect(12736.0, - 32.0, 12992.0, 192.0)
+    set gg_rct_xxzh11=Rect(21888.0, - 6400.0, 22752.0, - 5888.0)
+    set gg_rct_xxzh12=Rect(23808.0, - 6400.0, 24672.0, - 5888.0)
+    set gg_rct_xxzh13=Rect(23808.0, - 4832.0, 24672.0, - 4320.0)
+    set gg_rct_xxzh14=Rect(21888.0, - 4896.0, 22752.0, - 4384.0)
+    set gg_rct_ylxy11=Rect(25856.0, - 6400.0, 26720.0, - 5888.0)
+    set gg_rct_ylxy12=Rect(27776.0, - 6400.0, 28640.0, - 5888.0)
+    set gg_rct_ylxy13=Rect(27776.0, - 4832.0, 28640.0, - 4320.0)
+    set gg_rct_ylxy14=Rect(25856.0, - 4896.0, 26720.0, - 4384.0)
+    set gg_rct_sqyyh11=Rect(25888.0, - 1120.0, 26752.0, - 608.0)
+    set gg_rct_sqyyh12=Rect(27808.0, - 1120.0, 28672.0, - 608.0)
+    set gg_rct_sqyyh13=Rect(27808.0, 448.0, 28672.0, 960.0)
+    set gg_rct_aqyyh14=Rect(25888.0, 384.0, 26752.0, 896.0)
+    set gg_rct_xwty11=Rect(21920.0, - 1120.0, 22784.0, - 608.0)
+    set gg_rct_xwty12=Rect(23840.0, - 1120.0, 24704.0, - 608.0)
+    set gg_rct_xwty13=Rect(23840.0, 448.0, 24704.0, 960.0)
+    set gg_rct_xwty14=Rect(21920.0, 384.0, 22784.0, 896.0)
+    set gg_rct_xwty111=Rect(23040.0, 1376.0, 23552.0, 1728.0)
+    set gg_rct_sqyyh111=Rect(27008.0, 1376.0, 27520.0, 1728.0)
+    set gg_rct_ylxy111=Rect(27008.0, - 3872.0, 27520.0, - 3520.0)
+    set gg_rct_xxzh111=Rect(23040.0, - 3872.0, 23552.0, - 3520.0)
+    set gg_rct_xxzh1=Rect(23104.0, - 7072.0, 23584.0, - 6752.0)
+    set gg_rct_ylxy1=Rect(27072.0, - 7072.0, 27552.0, - 6752.0)
+    set gg_rct_sqyyh1=Rect(27072.0, - 1792.0, 27552.0, - 1472.0)
+    set gg_rct_xwty1=Rect(23072.0, - 1792.0, 23552.0, - 1472.0)
+    set gg_rct_fdm1=Rect(26016.0, - 12768.0, 26304.0, - 12544.0)
+    set gg_rct_fdm11=Rect(26048.0, - 12032.0, 26272.0, - 11808.0)
+    set gg_rct_cbt1=Rect(28512.0, - 12672.0, 28800.0, - 12448.0)
+    set gg_rct_cbt11=Rect(28544.0, - 11936.0, 28768.0, - 11712.0)
 endfunction
 
 //===========================================================================

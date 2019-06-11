@@ -251,6 +251,10 @@ function mt:addGold(gold, where, flag)
 	self.gold_pool = gold % 1
 	gold = math.floor(gold)
 	self.gold = self.gold + gold
+
+	if self.gold < 0 then 
+		self.gold = 0
+	end	
 	jass.SetPlayerState(self.handle, jass.ConvertUnitState(0x01), self.gold)
 	self:event_notify('玩家-金币变化', data)
 
@@ -342,6 +346,9 @@ function mt:add_wood(wood, where, flag)
 		wood = data.wood
 	end
 	self.wood = self.wood + wood
+	if self.wood < 0 then 
+		self.wood = 0
+	end	
 	self:setlumber(self.wood)
 	-- self:addlumber(wood) --魔兽端显示
 	self:event_notify('玩家-木头变化', data)
@@ -384,9 +391,15 @@ function mt:add_kill_count(num)
 	if not num or tonumber(num) == 0 then 
 		return 
 	end	
+
 	local num = tonumber(string.format( "%.2f",num))
 	--当前杀敌数
-	self.kill_count = (self.kill_count or 0 ) + num
+	self.kill_count = (self.kill_count or 0.00 ) + num
+	-- self.kill_count = jass.I2R(self.kill_count)
+
+	if self.kill_count < 0 then 
+		self.kill_count = 0
+	end	
 	--总杀敌数
 	if num > 0 then 
 		self.total_kill_count = (self.total_kill_count or 0 ) + num

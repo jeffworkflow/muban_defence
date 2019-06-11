@@ -1,49 +1,39 @@
 --物品名称
-local mt = ac.skill['五色飞石']
+local mt = ac.skill['紫金碧玺佩']
 mt{
     --物品技能
     is_skill = true,
     
     level = 1 ,
-    max_level = 11,
+    max_level = 4,
     --颜色
     color = '紫',
     tip = [[
 
 %show_tip%
-%ugrade_tip%]],
+%level_tip%
+|cffFFE799【进阶】|r杀死 %kill_cnt% 个敌人，自动进阶]],
 
     --技能图标
-    art = [[qiu305.blp]],
-    ugrade_tip = function(self)
-        local str =''
-        if self.level<self.max_level then 
-            str = '|cffFFE799【进阶】|r杀死 %kill_cnt% 个敌人，自动进阶'
-        else
-            str = '|cffFFE799【已满阶】|r'
-        end
-        return str
-    end,    
+    art = [[xianglian402.blp]],
     --全属性
-    ['全属性'] = {100,500,2500,5000,25000,50000,250000,500000,1250000,2500000,5000000,},
+    ['全属性'] = {6000000,8000000,10000000,12000000},
     --每秒加全属性
-    ['每秒加全属性'] = {0,1,3,10,30,100,300,900,1800,3600,7200,},
+    ['每秒加全属性'] = {10000,15000,20000,25000},
     --攻击
-    ['攻击'] = {0,0,2500,5000,25000,50000,250000,500000,1250000,2500000,5000000,},
+    ['攻击'] = {6000000,8000000,10000000,12000000},
     --护甲
-    ['护甲'] = {1,5,10,15,25,50,100,200,500,1500,5000,},
-    --每秒加金币
-    ['每秒加金币'] = {0,50,100,500,1000,5000,5000,5000,5000,5000,5000,},
+    ['护甲'] = {6000,8000,10000,12000},
     --每秒加木头
-    ['每秒加木头']  = {0,0,0,0,0,0,1,2,5,25,50,},
+    ['每秒加木头']  = {75,100,125,150},
     --会心几率
-    ['会心几率']  = {0,0,0,1,2,3,4,5,6,8,10,},
+    ['会心几率']  = {13,15,18,20},
     --会心伤害
-    ['会心伤害'] = {0,0,0,10,20,30,40,50,60,80,100,},
+    ['会心伤害'] = {125,150,175,200},
     --吸血
     ['吸血'] = 10,
     --杀敌个数
-    kill_cnt = {10,50,100,200,400,800,1600,3200,6400,12800,0},
+    kill_cnt = {5000,10000,15000,20000},
     --唯一
     unique = true,
     --显示等级
@@ -63,9 +53,9 @@ mt{
         if self['护甲'] >0 then 
             str = str ..'+|cffffff00'..self['护甲']..'|r 护甲'..'\n'
         end    
-        if self['每秒加金币'] >0 then 
-            str = str ..'+|cffffff00'..self['每秒加金币']..'|r 每秒加金币'..'\n'
-        end   
+        -- if self['每秒加金币'] >0 then 
+        --     str = str ..'+|cffffff00'..self['每秒加金币']..'|r 每秒加金币'..'\n'
+        -- end   
         if self['每秒加木头'] >0 then 
             str = str ..'+|cffffff00'..self['每秒加木头']..'|r 每秒加木头'..'\n'
         end    
@@ -80,6 +70,15 @@ mt{
         end     
         return str
     end,   
+    level_tip = function(self)
+        local str = ''
+        if self.level <=2 then 
+            str = str .. '灵魂说明:|cffffff00+20%|r 杀怪收集灵魂（受物品获取率影响）\n'
+        else
+            str = str ..'进阶说明：灵魂需要满15000，且成功挑战伏地魔'
+        end    
+        return str
+    end,    
     --升级特效
     effect ='Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx',
     --物品详细介绍的title
@@ -105,17 +104,20 @@ function mt:on_upgrade()
                 if item.level >= item.max_level then 
                     return 
                 end
-                item:add_item_count(1)
-                if item._count >= item.kill_cnt then 
-                    item:add_item_count(-item.kill_cnt+1)
-                    item:upgrade(1)
-                    if item.level >= item.max_level then 
-                        print('满级触发移除物品',ac.g_game_degree)
-                        --难5时，删掉五色飞石，新增 紫金碧玺佩
-                        if ac.g_game_degree >=5 then 
-                            item:item_remove()
-                            hero:add_item('紫金碧玺佩',true)
-                        end    
+                --四舍五入
+                local val = math.floor( 1*(1+hero:get('杀敌数加成')/100) +  0.5)
+                item:add_item_count(val)
+                --倒数第二级不能直接升，要打败伏地魔才能升。
+                if item.level < item.max_level -1  then 
+                    if item._count >= item.kill_cnt then 
+                        item:add_item_count(-item.kill_cnt+1)
+                        item:upgrade(1)
+                    end    
+                else
+                    --4级时添加杀死的单位时伏地魔的判断
+                    if item._count >= item.kill_cnt and target:get_name() == '伏地魔' then  
+                        item:add_item_count(-item.kill_cnt+1)
+                        item:upgrade(1)  
                     end    
                 end    
             end    

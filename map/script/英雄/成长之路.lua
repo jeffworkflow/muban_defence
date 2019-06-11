@@ -11,7 +11,7 @@ mt{
 点击查看 |cff00ff00成长之路|r
     ]],
 }
-mt.skills = {'魔鬼的交易','神兵利器','护天神甲','套装洗练','境界突破','扭蛋','彩蛋'}
+mt.skills = {'魔鬼的交易','神兵利器','护天神甲','套装洗练','境界突破','扭蛋','彩蛋','异火'}
 
 local mt = ac.skill['彩蛋']
 mt{
@@ -35,6 +35,19 @@ mt{
     tip = [[
 
 点击查看 |cff00ff00扭蛋|r
+    ]],
+}
+mt.skills = {}
+
+local mt = ac.skill['异火']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[gjnd.blp]],
+    title = '异火',
+    tip = [[
+
+点击查看 |cff00ff00异火|r
     ]],
 }
 mt.skills = {}

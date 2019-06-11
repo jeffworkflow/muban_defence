@@ -6,6 +6,9 @@ require '物品.商店.随机技能'
 require '物品.商店.随机物品'
 require '物品.商店.扭蛋'
 
+require '物品.商店.异火升级'
+require '物品.商店.异火培养'
+
 
 --一开始就创建商店 需要有玩家在视野内 漂浮文字的高度才能显示出来
 ac.wait(100,function() 

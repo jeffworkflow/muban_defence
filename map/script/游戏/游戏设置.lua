@@ -42,6 +42,9 @@ function player.__index:add_fire_seed(fire_seed, where, flag)
 		fire_seed = data.fire_seed
 	end
 	self.fire_seed = (self.fire_seed or 0) + fire_seed
+	if self.fire_seed < 0 then 
+		self.fire_seed = 0
+	end	
 	self:event_notify('玩家-火灵变化', data)
 
 	if not where  then
@@ -242,6 +245,21 @@ ac.map.rects={
 	['boss-境界8'] =rect.j_rect('jj88') ,
 	['boss-境界9'] =rect.j_rect('jj99') ,
 	['boss-境界10'] =rect.j_rect('jj1010') ,
+
+	['传送-伏地魔'] =rect.j_rect('fdm1') ,
+	['boss-伏地魔'] =rect.j_rect('fdm11') ,
+
+	['传送-星星之火'] =rect.j_rect('xxzh1') ,
+	['传送-陨落心炎'] =rect.j_rect('ylxy1') ,
+	['传送-三千焱炎火'] =rect.j_rect('sqyyh1') ,
+	['传送-虚无吞炎'] =rect.j_rect('xwty1') ,
+	
+	['boss-星星之火'] =rect.j_rect('xxzh111') ,
+	['boss-陨落心炎'] =rect.j_rect('ylxy111') ,
+	['boss-三千焱炎火'] =rect.j_rect('sqyyh111') ,
+	['boss-虚无吞炎'] =rect.j_rect('xwty111') ,
+
+	
 }
 
 -- local minx, miny, maxx, maxy = ac.map.rects['刷怪']:get()

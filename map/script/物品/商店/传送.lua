@@ -45,6 +45,13 @@ ac.quick_arrive ={
     ['境界-斗尊'] = {ac.map.rects['传送-境界8'],'tupo8.blp','\n挑战BOSS并突破境界至|cffff0000 【斗尊】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+800w 全属性\n+2.5%  闪避\n+2.5%  技暴几率\n+25%   技暴加深\n+5      攻击减甲\n|r',0,0,35000,0,0,nil,0,500} ,
     ['境界-斗圣'] = {ac.map.rects['传送-境界9'],'tupo9.blp','\n挑战BOSS并突破境界至|cffdf19d0 【斗圣】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+850w 全属性\n+2.5%  免伤几率\n+2.5%  全伤加深\n-0.05   攻击间隔\n|r',0,0,40000,0,0,nil,0,500} ,
     ['境界-斗帝'] = {ac.map.rects['传送-境界10'],'tupo10.blp','\n挑战BOSS并突破境界至|cffdf19d0 【斗帝】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+1000w 全属性\n+5%  全伤加深\n|r',0,0,50000,0,0,nil,0,500} ,
+
+    ['伏地魔'] = {ac.map.rects['传送-伏地魔'],'wuqi17.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神兵】-十绝冰火剑|r\n',0,48000,0} ,
+
+    ['传送-星星之火'] = {ac.map.rects['传送-星星之火'],'wuqi17.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神兵】-十绝冰火剑|r\n',0,48000,0} ,
+    ['传送-陨落心炎'] = {ac.map.rects['传送-陨落心炎'],'wuqi17.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神兵】-十绝冰火剑|r\n',0,48000,0} ,
+    ['传送-三千焱炎火'] = {ac.map.rects['传送-三千焱炎火'],'wuqi17.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神兵】-十绝冰火剑|r\n',0,48000,0} ,
+    ['传送-虚无吞炎'] = {ac.map.rects['传送-虚无吞炎'],'wuqi17.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神兵】-十绝冰火剑|r\n',0,48000,0} ,
 }
 
 
@@ -93,6 +100,9 @@ for key,value in pairs(ac.quick_arrive) do
         mt.store_name = '|cffdf19d0挑战 |r' .. key
     -- end
    
+    if key == '传送-星星之火' then 
+        mt.type_id ='EX02'
+    end
 
 
     function mt:on_cast_start()

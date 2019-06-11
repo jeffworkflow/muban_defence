@@ -1060,19 +1060,26 @@ function ac.item.create_item(name,poi,is)
 	local items = setmetatable({},item)
 	
 	--在继承skill的属性(如果带技能的话,不存在技能时遍历一下也无所谓)
-	local data = ac.skill[name]
-	for k, v in sortpairs(data) do
+	-- local data = ac.skill[name]
+	-- for k, v in pairs(data) do
+	-- 	items[k] = v
+	-- end	
+	local skl = ac.dummy:add_skill(name,'英雄')
+	for k, v in pairs(skl) do
 		items[k] = v
-	end	
+	end
+	items.owner = nil
+	skl:remove()
 
 	--如果存在lni则继承lni的属性
 	local data = ac.table.ItemData[name]
 	items.lni_data = data
 	if data then
-		for k, v in sortpairs(data) do
+		for k, v in pairs(data) do
 			items[k] = v
 		end
 	end
+	-- print(items['全属性'])
 	
 
 	--读取一个句柄
@@ -1175,14 +1182,14 @@ function item.create(name,pos)
 
 	--在继承skill的属性(如果带技能的话,不存在技能时遍历一下也无所谓)
 	local data = ac.skill[name]
-	for k, v in sortpairs(data) do
+	for k, v in pairs(data) do
 		items[k] = v
 	end	
 
 	--如果存在lni则继承lni的属性
 	local data = ac.table.ItemData[name]
 	if data then
-		for k, v in sortpairs(data) do
+		for k, v in pairs(data) do
 			items[k] = v
 		end
 	end

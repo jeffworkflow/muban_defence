@@ -509,7 +509,36 @@ local unit_reward = {
 
         {    rand = 0.01, name = '游戏王',},--木头+5555，火灵+5555，杀敌数+5555
     },
-    
+
+    ['培养异火'] =  {
+        {    rand = 35, name = '凡' },
+        {    rand = 30, name = '玄' },
+        {    rand = 20, name = '地',},
+        {    rand = 15, name = '天',},
+    },    
+
+    ['星星之火守卫'] = {{rand =5,name = '星星之火碎片'}},
+    ['陨落心炎守卫'] = {{rand =5,name = '陨落心炎碎片'}},
+    ['三千焱炎火守卫'] = {{rand =5,name = '三千焱炎火碎片'}},
+    ['虚无吞炎守卫'] = {{rand =5,name = '虚无吞炎碎片'}},
+
+    ['星星之火boss'] = {
+        {rand =50,name = '星星之火碎片*1'},
+        {rand =50,name = '星星之火碎片*5'},
+    },
+    ['陨落心炎boss'] = {
+        {rand =50,name = '陨落心炎碎片*1'},
+        {rand =50,name = '陨落心炎碎片*5'}
+    },
+    ['三千焱炎火boss'] = {
+        {rand =50,name = '三千焱炎火碎片*1'},
+        {rand =50,name = '三千焱炎火碎片*5'},
+    },
+    ['虚无吞炎boss'] = {
+        {rand =50,name = '虚无吞炎碎片*1'},
+        {rand =50,name = '虚无吞炎碎片*5'},
+    },
+
     
    
 }
@@ -579,7 +608,7 @@ local function hero_kill_unit(player,hero,unit,fall_rate,is_on_hero)
 end 
 ac.hero_kill_unit = hero_kill_unit
 
---如果死亡的是野怪的话
+--死亡掉落
 ac.game:event '单位-死亡' (function (_,unit,killer)  
     if unit:is_hero() then 
         return 
@@ -600,7 +629,15 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     end
     local name = get_reward_name(tab) 
     if name then 
-        local item = ac.item.create_item(name,unit:get_point()) 
+        if finds(name,'*') then 
+            local _, _, it_name, cnt = string.find(name,"(%S+)%*(%d+)")
+            --进行多个处理
+            for i=1,tonumber(cnt) do 
+                ac.item.create_item(it_name,unit:get_point()) 
+            end    
+        else
+            ac.item.create_item(name,unit:get_point())     
+        end    
     end    
 
 

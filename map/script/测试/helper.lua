@@ -3,6 +3,7 @@ local fogmodifier = require 'types.fogmodifier'
 local sync = require 'types.sync'
 local jass = require 'jass.common'
 local hero = require 'types.hero'
+local Unit = require 'types.unit'
 local item = require 'types.item'
 local affix = require 'types.affix'
 local japi = require 'jass.japi'
@@ -368,6 +369,8 @@ function helper:power()
 	self:add_restriction '免死'
 	player:addGold(599999)
 	player:add_wood(599999)
+	player:add_kill_count(599999)
+	player:add_fire_seed(599999)
 end
 
 --强制游戏结束
@@ -530,12 +533,6 @@ end
 function helper:tt()
 	ac.creep['刷怪1'].index = 24
 	ac.item.add_skill_item('战鼓光环',self)
-	ac.item.add_skill_item('攻速光环',self)
-	ac.item.add_skill_item('辉煌光环',self)
-	ac.item.add_skill_item('强击光环',self)
-	ac.item.add_skill_item('冰冷核心',self)
-	ac.item.add_skill_item('吸血光环',self)
-	ac.item.add_skill_item('寻宝光环',self)
 
 	self:add('杀怪加全属性',3000)
 	-- self:add('攻击距离',2000)
@@ -543,14 +540,25 @@ function helper:tt()
 	self:add('会心几率',90)
 	self:add('多重射',10)
 	self:add('分裂伤害',100)
-	self:add('攻击',10000)
+	self:add('全属性',10000000000)
+	self:add('护甲',1000000000)
+	self:add('会心伤害',10000)
 	
 	if not ac.wtf then
 		helper.wtf(self)
 	end
 	self:add_restriction '免死'
-	self:addGold(999999)
 end
+
+--给商店添加商品
+function helper:add_sell_item(shop,item,slotid)
+	for key,unit in pairs(ac.shop.unit_list) do 
+		if unit:get_name() == shop  then 
+			unit:add_sell_item(item,(slotid or 1))
+		end	
+	end	
+
+end	
 --设置物品数量
 function helper:set_item(str,cnt)
 	local item = self:has_item(str)
@@ -582,13 +590,24 @@ function helper:wtf()
 		end
 	end
 end
+--测试打印魔兽端与lua 生命上限问题
+
+function Unit.__index:pt()
+	ac.loop(1*1000,function()
+		print('lua 生命上限:',self:get('生命上限'),'魔兽生命上限：',jass.GetUnitState(self.handle, jass.UNIT_STATE_MAX_LIFE))
+		print('lua 生命:',self:get('生命'),'魔兽生命：',jass.GetWidgetLife(self.handle))
+	end)
+
+end
 
 --打印hero键值对应的key值
 function helper:print(str)
 	local obj = self[str]
+	self:pt()
+	-- print(self,self:get_name())
 	if obj then 
 		if type(obj) == 'function' then 
-			print(obj())
+			print(obj(self))
 		elseif 	type(obj) == 'table' then 
 			print(tostring(obj))
 		else

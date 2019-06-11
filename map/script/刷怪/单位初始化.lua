@@ -43,17 +43,5 @@ ac.game:event '单位-创建' (function(_,unit)
     --设置魔抗 
     unit:add('魔抗%',attr_mul*7)
 
-    -- print('打印是否根据玩家数增加属性2',unit:get('攻击'))
-    -- 最终boss、伏地魔玩家倍数增加
-    if finds(unit:get_name(),'最终boss','伏地魔') then 
-        --属性
-        unit:add('攻击%',(ac.g_game_degree_attr -1)*100)
-        unit:add('护甲%',(ac.g_game_degree_attr-1)*100)
-        unit:add('生命上限%',(ac.g_game_degree_attr-1)*100)
-        unit:add('魔法上限%',(ac.g_game_degree_attr-1)*100)
-        unit:add('生命恢复%',(ac.g_game_degree_attr-1)*100)
-        unit:add('魔法恢复%',(ac.g_game_degree_attr-1)*100)
-        --设置魔抗 
-        unit:add('魔抗%',(ac.g_game_degree_attr-1)*100)
-    end    
+    
 end)

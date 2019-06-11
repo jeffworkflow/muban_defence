@@ -516,6 +516,9 @@ end
 
 set['生命'] = function(self, life)
 	-- print('设置生命2',life)
+	-- if life > 2100000000 then 
+	-- 	life = 2100000000
+	-- end	
 	if life > 1 then
 		jass.SetWidgetLife(self.handle, life)
 

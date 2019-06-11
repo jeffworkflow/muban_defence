@@ -5,8 +5,10 @@ require '刷怪.游戏结束'
 require '刷怪.BOSS-AI'
 require '刷怪.刷怪'
 require '刷怪.boss挑战'
-require '刷怪.杀鸡敬猴'
+-- require '刷怪.杀鸡敬猴'
 require '刷怪.境界'
+
+require '刷怪.野怪'
 
 
 

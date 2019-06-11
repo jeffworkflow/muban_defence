@@ -45,6 +45,13 @@ ac.challenge_boss = {
     ['斗圣'] = {ac.map.rects['boss-境界9'],270},
     ['斗帝'] = {ac.map.rects['boss-境界10'],270},
 
+    ['伏地魔'] = {ac.map.rects['boss-伏地魔'],270},
+    
+    ['星星之火boss'] = {ac.map.rects['boss-星星之火'],270},
+    ['陨落心炎boss'] = {ac.map.rects['boss-陨落心炎'],270},
+    ['三千焱炎火boss'] = {ac.map.rects['boss-三千焱炎火'],270},
+    ['虚无吞炎boss'] = {ac.map.rects['boss-虚无吞炎'],270},
+
 }
 --游戏初始化开启
 ac.game:event '游戏-开始' (function()
