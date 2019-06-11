@@ -35,7 +35,7 @@ end,
 	effect1 = [[Abilities\Spells\Human\ThunderClap\ThunderclapTarget.mdx]],
 
 	--持续时间
-	time = 2 ,
+	time = 1 ,
 	damage_type ='法术'
 }
 
