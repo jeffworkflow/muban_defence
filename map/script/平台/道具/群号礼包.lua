@@ -9,7 +9,7 @@ content_tip = '\n|cffFFE799【领取条件】|r',
 --说明
 tip = [[进入官方交流群|cffff0000(群号797113975)|r 获得隐藏密码
 
-|cffFFE799【礼包奖励】|r|cff00ff00全属性+500，杀敌数+100|r
+|cffFFE799【礼包奖励】|r|cff00ff00全属性+500，杀敌数+250|r
 ]],
 --物品类型
 item_type = '神符',
@@ -21,7 +21,7 @@ cool = 1,
 gold = 0,
 qq_qum = 797113975,
 award_all_attr = 500,
-award_kill_cnt = 100,
+award_kill_cnt = 250,
 }
 
 function mt:on_cast_start()
@@ -41,7 +41,7 @@ function mt:on_award()
     --添加给英雄
     hero:add('全属性',self.award_all_attr)
     hero:add_kill_count(self.award_kill_cnt)
-    local tip = '|cffFFE799【系统消息】|r恭喜 |cffff0000'..p:get_name()..'|r 获得群号礼包 奖励|cff00ff00全属性+500，杀敌数+100|r'
+    local tip = '|cffFFE799【系统消息】|r恭喜 |cff00ffff'..p:get_name()..'|r 获得|cffff0000群号礼包|r |cffFFE799【礼包奖励】|r|cff00ff00全属性+500，杀敌数+250|r'
     ac.player.self:sendMsg(tip)
    
 end

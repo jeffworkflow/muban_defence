@@ -26,7 +26,7 @@ for i =1,3 do
         max_index = 25,
         creep_player = ac.player.com[2],
         create_unit_cool = 0.5,
-        tip ="怪物开始进攻"
+        tip ="|cffff0000第X波怪物开始进攻！！！|r"
 
     }
     --进攻怪刷新时的初始化

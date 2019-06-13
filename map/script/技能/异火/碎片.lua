@@ -1,10 +1,10 @@
 
 local fire = {
     --技能名 = 图标,tip
-    ['星星之火'] = {[[other\suiji101.blp]],[[集满100个，点击激活]]},
-    ['陨落心炎'] = {[[other\suiji101.blp]],[[集满100个，点击激活]]},
-    ['三千焱炎火'] = {[[other\suiji101.blp]],[[集满100个，点击激活]]},
-    ['虚无吞炎'] = {[[other\suiji101.blp]],[[集满100个，点击激活]]}, 
+    ['星星之火'] = {[[huo1.blp]],[[|n|n收集|cffdf19d0100个星星之火碎片|r，将自动合成|cff00ff00初级异火：星星之火|r|n]]},
+    ['陨落心炎'] = {[[huo2.blp]],[[|n|n收集|cffdf19d0100个陨落心炎碎片|r，将自动合成|cff00ffff初级异火：星星之火|r|n]]},
+    ['三千焱炎火'] = {[[huo3.blp]],[[|n|n收集|cffdf19d0100个三千焱炎火碎片|r，将自动合成|cffffff00初级异火：星星之火|r|n]]},
+    ['虚无吞炎'] = {[[huo4.blp]],[[|n|n收集|cffdf19d0100个虚无吞炎碎片|r，将自动合成|cffff0000初级异火：星星之火|r|n]]}, 
 }
 
 for key,val in pairs(fire) do 
@@ -18,7 +18,7 @@ for key,val in pairs(fire) do
     --说明
     tip = val[2],
     --品质
-    color = '青',
+    --color = '青',
     --物品类型
     item_type = '消耗品',
     --目标类型
@@ -30,7 +30,7 @@ for key,val in pairs(fire) do
     --物品数量
     _count = 1,
     --物品详细介绍的title
-    content_tip = '使用说明：'
+    content_tip = '|cffffe799使用说明：|r'
     }
 
     function mt:on_cast_start()

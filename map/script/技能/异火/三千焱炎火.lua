@@ -24,7 +24,7 @@ mt{
 %攻击间隔%  攻击间隔
 ]],
     --技能图标
-    art = [[qiu305.blp]],
+    art = [[guo3.blp]],
     is_order = 1, --没显示等级，注释显示等级
     -- --名字显示
     title = function(self)

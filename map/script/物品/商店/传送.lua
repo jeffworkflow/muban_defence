@@ -48,10 +48,10 @@ ac.quick_arrive ={
 
     ['伏地魔'] = {ac.map.rects['传送-伏地魔'],'wuqi17.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神兵】-十绝冰火剑|r\n',0,48000,0} ,
 
-    ['传送-星星之火'] = {ac.map.rects['传送-星星之火'],'wuqi17.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神兵】-十绝冰火剑|r\n',0,48000,0} ,
-    ['传送-陨落心炎'] = {ac.map.rects['传送-陨落心炎'],'wuqi17.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神兵】-十绝冰火剑|r\n',0,48000,0} ,
-    ['传送-三千焱炎火'] = {ac.map.rects['传送-三千焱炎火'],'wuqi17.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神兵】-十绝冰火剑|r\n',0,48000,0} ,
-    ['传送-虚无吞炎'] = {ac.map.rects['传送-虚无吞炎'],'wuqi17.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神兵】-十绝冰火剑|r\n',0,48000,0} ,
+    ['星星之火 '] = {ac.map.rects['传送-星星之火'],'huo1.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cff00ff00初级异火：星星之火|r\n',0,0,500,} ,
+    ['陨落心炎 '] = {ac.map.rects['传送-陨落心炎'],'huo2.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cff00ffff中级异火：陨落心炎火|r\n',0,0,20000,} ,
+    ['三千焱炎火 '] = {ac.map.rects['传送-三千焱炎火'],'huo3.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffffff00高级异火：三千焱炎火|r\n',0,0,100000,} ,
+    ['虚无吞炎 '] = {ac.map.rects['传送-虚无吞炎'],'huo4.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,500000,} ,
 }
 
 
@@ -100,7 +100,7 @@ for key,value in pairs(ac.quick_arrive) do
         mt.store_name = '|cffdf19d0挑战 |r' .. key
     -- end
    
-    if key == '传送-星星之火' then 
+    if key == '星星之火 ' then 
         mt.type_id ='EX02'
     end
 

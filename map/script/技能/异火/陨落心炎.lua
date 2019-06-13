@@ -24,7 +24,7 @@ mt{
 +%技能冷却% % 技能冷却
 ]],
     --技能图标
-    art = [[qiu305.blp]],
+    art = [[huo2.blp]],
     is_order = 1, --没显示等级，注释显示等级
     -- --名字显示
     title = function(self)

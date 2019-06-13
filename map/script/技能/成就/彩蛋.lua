@@ -18,14 +18,14 @@ mt{
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+5555 木头
-+5555 火灵
-+5555 杀敌数|r
+|cff00ff00+8888 木头
++8888 火灵
++8888 杀敌数|r
 
 ]],
-    add_wood = 5555,
-    add_fire = 5555,
-    add_kill = 5555,
+    add_wood = 8888,
+    add_fire = 8888,
+    add_kill = 8888,
 }
 function mt:on_add()
     local hero  = self.owner
