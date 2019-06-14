@@ -1,10 +1,10 @@
 --异火升级
 local fire = {
     --技能名 = 商店名，火灵基本价格，火灵增加价格，图标,tip
-    ['星星之火'] = {'|cffffff00升级|r 星星之火',2500,2500,[[huo1.blp]],[[|n点击可升级星星之火，|cffff0000耗费2500*LV火灵|r，最大等级为10级|n|n]]},
-    ['陨落心炎'] = {'|cffffff00升级|r 陨落心炎',12500,12500,[[huo2.blp]],[[|n点击可升级陨落心炎，|cffff0000耗费12500*LV火灵|r，最大等级为10级|n|n]]},
-    ['三千焱炎火'] = {'|cffffff00升级|r 三千焱炎火',25000,25000,[[huo3.blp]],[[|n点击可升级三千焱炎火，|cffff0000耗费25000*LV火灵|r，最大等级为10级|n|n]]},
-    ['虚无吞炎'] = {'|cffffff00升级|r 虚无吞炎',50000,50000,[[huo4.blp]],[[|n点击可升级虚无吞炎，|cffff0000耗费50000*LV火灵|r，最大等级为10级|n|n]]}, 
+    ['星星之火'] = {'|cffffff00升级|r 星星之火',2500,2500,[[huo1.blp]],[[|n点击可升级星星之火 |cffff0000耗费2500*LV火灵|r |cff00ff00最大等级为10级|r|n]]},
+    ['陨落心炎'] = {'|cffffff00升级|r 陨落心炎',12500,12500,[[huo2.blp]],[[|n点击可升级陨落心炎 |cffff0000耗费12500*LV火灵|r |cff00ff00最大等级为10级|r|n]]},
+    ['三千焱炎火'] = {'|cffffff00升级|r 三千焱炎火',25000,25000,[[huo3.blp]],[[|n点击可升级三千焱炎火 |cffff0000耗费25000*LV火灵|r |cff00ff00最大等级为10级|r|n]]},
+    ['虚无吞炎'] = {'|cffffff00升级|r 虚无吞炎',50000,50000,[[huo4.blp]],[[|n点击可升级虚无吞炎 |cffff0000耗费50000*LV火灵|r |cff00ff00最大等级为10级|r|n]]}, 
 }
 
 for key,val in pairs(fire) do 
@@ -55,9 +55,9 @@ for key,val in pairs(fire) do
         local skl = hero:find_skill(key,nil,true)
         if skl then 
             skl:upgrade(1)
-            player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00'..key..'升级成功|r 升级后的属性可以在异火系统中查看')
+            player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00升级'..key..'成功|r 升级后的属性可以在异火系统中查看',2)
         else
-            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000条件不符，升级失败|r') 
+            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000条件不符，升级失败|r',2) 
             return true
         end    
 

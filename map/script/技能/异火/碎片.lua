@@ -48,10 +48,10 @@ for key,val in pairs(fire) do
 
         local skl = hero:find_skill(key,nil,true)
         if skl then 
-            player:sendMsg(key..' 已入体，不可重复')
+            player:sendMsg('|cffffe799【系统消息】|r|cffffff00体内已有'..key..' 吞噬失败|r',2)
         else
             ac.game:event_notify('技能-插入魔法书',hero,'异火',key)
-            player:sendMsg('入体成功：'..key)
+            player:sendMsg('|cffffe799【系统消息】|r|cff00ff00吞噬'..key..'成功|r 吞噬后的属性可以在异火系统中查看',2)
             --自己移除掉
             self:add_item_count(-100) 
         end   

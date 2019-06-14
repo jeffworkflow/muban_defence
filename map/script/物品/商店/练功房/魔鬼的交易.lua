@@ -6,11 +6,11 @@ local rect = require 'types.rect'
 local devil_deal ={
     --商品名（map.table.单位.商店）,是否激活 属性名，数值，耗费币种，数值，图标,说明
     [1] = {
-{'无所不在lv1',false,'分裂伤害',5,'金币',1000,[[xiaoheiwu.blp]],[[
+{'无所不在lv1',false,'全属性',2500,'金币',1000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv1|r
 
-|cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
+|cffFFE799【奖励】|r|cff00ff00+2500全属性|r
 
 ]]
 },
@@ -19,71 +19,71 @@ local devil_deal ={
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv2|r
 
-|cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
+|cffFFE799【奖励】|r|cff00ff00+10%分裂伤害|r
 
 ]]},
 
-{'无所不在lv3',false,'分裂伤害',5,'金币',10000,[[xiaoheiwu.blp]],[[
+{'无所不在lv3',false,'全属性',5000,'金币',10000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv3|r
 
-|cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
+|cffFFE799【奖励】|r|cff00ff00+5000全属性|r
 
 ]]},
 
-{'无所不在lv4',false,'分裂伤害',5,'金币',25000,[[xiaoheiwu.blp]],[[
+{'无所不在lv4',false,'分裂伤害',10,'金币',25000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv4|r
 
-|cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
+|cffFFE799【奖励】|r|cff00ff00+10%分裂伤害|r
 
 ]]},
 
-{'无所不在lv5',false,'分裂伤害',5,'金币',50000,[[xiaoheiwu.blp]],[[
+{'无所不在lv5',false,'全属性',10000,'金币',50000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv5|r
 
-|cffFFE799【奖励】|r|cff00ff00+5%分裂伤害|r
+|cffFFE799【奖励】|r|cff00ff00+10000全属性|r
 
 ]]},
 
-{'无所不在lv6',false,'攻击速度',5,'金币',70000,[[xiaoheiwu.blp]],[[
+{'无所不在lv6',false,'分裂伤害',15,'金币',70000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv6|r
 
-|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+|cffFFE799【奖励】|r|cff00ff00+15分裂伤害|r
 
 ]]},
 
-{'无所不在lv7',false,'攻击速度',5,'金币',80000,[[xiaoheiwu.blp]],[[
+{'无所不在lv7',false,'全属性',20000,'金币',80000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv7|r
 
-|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+|cffFFE799【奖励】|r|cff00ff00+20000全属性|r
 
 ]]},
 
-{'无所不在lv8',false,'攻击速度',5,'金币',90000,[[xiaoheiwu.blp]],[[
+{'无所不在lv8',false,'攻击速度',10,'金币',90000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv8|r
 
-|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+|cffFFE799【奖励】|r|cff00ff00+10%攻速|r
 
 ]]},
 
-{'无所不在lv9',false,'攻击速度',5,'金币',100000,[[xiaoheiwu.blp]],[[
+{'无所不在lv9',false,'全属性',40000,'金币',100000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lv9|r
 
-|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+|cffFFE799【奖励】|r|cff00ff00+40000全属性|r
 
 ]]},
 
-{'无所不在lvmax',false,'攻击速度',5,'金币',200000,[[xiaoheiwu.blp]],[[
+{'无所不在lvmax',false,'攻击速度',15,'金币',200000,[[xiaoheiwu.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不在Lvmax|r
 
-|cffFFE799【奖励】|r|cff00ff00+5%攻速|r
+|cffFFE799【奖励】|r|cff00ff00+15%攻速|r
 
 ]]},
 

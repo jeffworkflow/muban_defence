@@ -19,7 +19,7 @@ mt{
     cool = 0,
     content_tip = '',
     --售价
-    wood = 1680,
+    wood = 168000,
     --物品技能
     is_skill = true,
     --全部玩家发送信息概率

@@ -26,7 +26,7 @@ award_kill_cnt = 250,
 
 function mt:on_cast_start()
     local p = self.owner:get_owner()
-    p:sendMsg('已领取或条件不足')
+    p:sendMsg('已领取或条件不足',2)
 end
 
 
@@ -42,7 +42,7 @@ function mt:on_award()
     hero:add('全属性',self.award_all_attr)
     hero:add_kill_count(self.award_kill_cnt)
     local tip = '|cffFFE799【系统消息】|r恭喜 |cff00ffff'..p:get_name()..'|r 获得|cffff0000群号礼包|r |cffFFE799【礼包奖励】|r|cff00ff00全属性+500，杀敌数+250|r'
-    ac.player.self:sendMsg(tip)
+    ac.player.self:sendMsg(tip,3)
    
 end
 

@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 5,
     --触发几率
-   chance = function(self) return 15*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
 	--技能类型
 	skill_type = "被动,全属性,晕眩",
 	--被动
@@ -17,13 +17,13 @@ mt{
 	cool = 20,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('全属性')*10+10000)*5
+  return (self.owner:get('全属性')*12+10000)* self.level
 end,
 	--介绍
 	tip = [[
         
-|cff00bdec【被动效果】攻击15%几率造成范围技能伤害，并晕眩1S
-【伤害公式】(全属性*5+1w)*5|r
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害，并晕眩0.2S
+【伤害公式】(全属性*12+1w)*Lv|r
 
 ]],
     --施法范围
@@ -33,7 +33,7 @@ end,
     --特效
     effect = [[Abilities\Spells\NightElf\EntanglingRoots\EntanglingRootsTarget.mdl]],
     --持续时间
-    time = 1 ,
+    time = 0.2 ,
     damage_type = '法术'
 }
 function mt:on_add()

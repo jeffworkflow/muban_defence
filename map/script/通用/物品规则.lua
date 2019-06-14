@@ -193,31 +193,31 @@
         jifens = (it.player_jifen and it.player_jifen[player]) or jifens
         fire_seeds = (it.player_fire and it.player_fire[player]) or fire_seeds
         if gold < golds  then
-            u:get_owner():sendMsg('钱不够')
+            u:get_owner():sendMsg('钱不够',3)
             return
         end 
         if wood < woods then
-            u:get_owner():sendMsg('木头不够')
+            u:get_owner():sendMsg('木头不够',3)
             return
         end
         if kill_count < kill_counts then
-            u:get_owner():sendMsg('杀敌数不够')
+            u:get_owner():sendMsg('杀敌数不够',3)
             return
         end
         --以免积分负数购买不了其他物品。
         if jifens > 0 then 
             if jifen < jifens then
-                u:get_owner():sendMsg('积分不够')
+                u:get_owner():sendMsg('积分不够',3)
                 return
             end
         end   
         if fire_seed < fire_seeds then
-            u:get_owner():sendMsg('火灵不够')
+            u:get_owner():sendMsg('火灵不够',3)
             return
         end 
         if it.max_buy_cnt and it.player_buy_cnt then
             if it.player_buy_cnt[player] and (it.player_buy_cnt[player] > (it.max_buy_cnt or 9999999)) then
-                u:get_owner():sendMsg('超出购买上限')
+                u:get_owner():sendMsg('超出购买上限',3)
                 return
             end
         end    

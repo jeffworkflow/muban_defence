@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 5,
     --触发几率
-   chance = function(self) return 15*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能类型
@@ -20,12 +20,12 @@ mt{
 	--介绍
     tip = [[
         
-|cff00bdec【被动效果】攻击15%几率触发 |r|cffffff00全伤加深+25%|r |cff00bdec持续0.75秒|r
+|cff00bdec【被动效果】攻击10%几率触发 |r|cffffff00全伤加深+35%|r |cff00bdec持续0.75秒|r
     
 ]],
 	--技能图标
 	art = [[qhchmw.blp]],
-    value = 25,
+    value = 35,
     time = 0.75,
 }
 function mt:on_add()

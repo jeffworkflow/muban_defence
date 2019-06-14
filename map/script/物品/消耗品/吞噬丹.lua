@@ -71,6 +71,7 @@ function mt:on_cast_start()
                 item = item
             }
             table.insert(list,info)
+            
         end
     end 
     if count < 1 then 
@@ -105,7 +106,7 @@ function mt:on_cast_start()
                     player.tunshi_cnt =0
                 end    
                 player.tunshi_cnt = player.tunshi_cnt + 1
-
+                player:sendMsg('|cffffe799【系统消息】|r|cffffff00吞噬成功|r 吞噬后的属性可以在吞噬神丹系统中查看')
                 --吞噬名
                 if not player.tunshi then 
                     player.tunshi = {}
