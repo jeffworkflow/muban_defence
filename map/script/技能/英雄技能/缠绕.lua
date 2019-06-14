@@ -18,7 +18,7 @@ mt{
 	cool = 20,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('全属性')*10+10000)* self.level*5
+  return (self.owner:get('全属性')*5+10000)* self.level*5
 end,
 	--介绍
 	tip = [[

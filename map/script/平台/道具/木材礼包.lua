@@ -40,8 +40,8 @@ function mt:on_cast_start()
         -- hero:add('全属性',self.award_all_attr)
         p.mall_flag[name] = true
         local tip = '|cffFFE799【系统消息】|r恭喜 |cff00ffff'..p:get_name()..'|r 获得|cffff0000木材礼包|r |cffFFE799【礼包奖励】|r|cff00ff00初始木头+5，初始杀敌数+500 |r'
-        p:sendMsg(tip)
+        p:sendMsg(tip,3)
     else
-        p:sendMsg('条件不足或已领取过')    
+        p:sendMsg('条件不足或已领取过',2)    
     end   
 end

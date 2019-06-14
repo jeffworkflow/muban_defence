@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 5,
     --触发几率
-   chance = function(self) return 15*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能类型
@@ -24,11 +24,11 @@ mt{
 	--介绍
     tip = [[
         
-|cff00bdec【被动效果】攻击15%几率让自己隐身，持续0.3S|r
+|cff00bdec【被动效果】攻击10%几率让自己隐身，并提高150移动速度，持续0.5S|r
     
 ]],
 	--隐身时间
-	stand_time = 0.3,
+	stand_time = 0.5,
 	--移动速度
 	move_speed = 150
 }

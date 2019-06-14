@@ -293,13 +293,13 @@ local function streng_item(alltable,unit,it)
                 dest_rate = 100
             end    
             if math.random(1,100) <= (tonumber(dest_rate) or 100) then 
-                p:sendMsg('|cff00ff00合成|r|cff'..color..dest_str..'|r|cff00ff00成功|r')
+                p:sendMsg('|cff00ff00合成|r |cff'..color..dest_str..' |r|cff00ff00成功|r')
                 local new_item  = u:add_item(dest_str,true)  
                 -- 新物品 ， 材料列表 k = 材料名 ，v =数量
                 -- 回调时 需要等 合成物品成功，程序继续进行
                 ac.game:event_dispatch('物品-合成成功',p,new_item,source_names) 
             else
-                p:sendMsg('|cffff0000合成|r|cff'..color..dest_str..'|r|cffff0000失败|r')
+                p:sendMsg('|cffff0000合成|r |cff'..color..dest_str..'|r |cffff0000失败|r')
                 ac.game:event_dispatch('物品-合成失败',p,dest_str,source_names) 
             end    
               

@@ -19,13 +19,13 @@ mt{
 	--介绍
     tip = [[
         
-|cff00bdec【主动施放】使用后降低周围敌人7%*Lv护甲，持续5秒|r
+|cff00bdec【主动施放】使用后降低周围敌人7%*Lv护甲，持续8秒|r
     
 ]],
 	--技能图标
     art = [[azly.blp]],
     value = {7,35}, --等差，最小，最大,
-    time = 5,
+    time = 8,
 	--技能目标
 	-- target_type = ac.skill.TARGET_TYPE_POINT,
 

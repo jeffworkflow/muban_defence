@@ -20,7 +20,7 @@ mt{
 	tip = [[
 		
 |cff00bdec【主动施放】让自己无敌
-【持续时间】0.5秒*Lv|r
+【持续时间】（1+0.5*Lv）秒|r
 
 ]],
 	--技能图标
@@ -28,7 +28,7 @@ mt{
 	--特效
 	effect = [[Abilities\Spells\Human\DivineShield\DivineShieldTarget.mdl]],
 	--无敌时间
-	stand_time = {0.5,1,1.5,2,2.5}
+	stand_time = {1.5,2,2.5,3,3.5}
 }
 	
 function mt:on_add()

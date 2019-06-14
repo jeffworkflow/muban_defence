@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 5,
     --触发几率
-   chance = function(self) return 15*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    area = 500,
 	--技能类型
@@ -19,13 +19,13 @@ mt{
 	cool = 20,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*10+10000)*5
+  return (self.owner:get('力量')*25+10000)*self.level
 end,
 	--介绍
 	tip = [[
         
-|cff00bdec【被动效果】攻击15%几率造成范围技能伤害，并晕眩1S
-【伤害公式】(力量*10+1w)*5|r
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害，并晕眩0.2S
+【伤害公式】(力量*25+1w)*Lv|r
 
 ]],
     --技能图标
@@ -36,7 +36,7 @@ end,
     effect1 = [[Abilities\Spells\Human\ThunderClap\ThunderclapTarget.mdx]],
 
     --持续时间
-    time = 2 ,
+    time = 0.2 ,
     damage_type ='法术'
 }
 function mt:on_add()

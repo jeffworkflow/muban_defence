@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 5,
     --触发几率
-   chance = function(self) return 15*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
    title = "|cffdf19d0强化后的迷之领域|r",
@@ -18,13 +18,13 @@ mt{
 	--介绍
     tip = [[
         
-|cffffff00【被动效果】攻击15%几率触发， 让周围敌人攻击有25%几率丢失，持续0.5秒|r
+|cffffff00【被动效果】攻击10%几率触发， 让周围敌人攻击有35%几率丢失，持续1秒|r
     
 ]],
 	--技能图标
 	art = [[qhmzly.blp]],
-    time = 0.5,
-    value =25
+    time = 1,
+    value =35
 }
 function mt:on_add()
     local skill = self

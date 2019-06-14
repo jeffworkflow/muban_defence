@@ -17,18 +17,18 @@ mt{
 	--介绍
     tip = [[
         
-|cff00bdec【主动施放】增加 |cffffff00技暴几率+3%*Lv 技暴加深+30%*Lv|r |cff00bdec持续8秒|r
+|cff00bdec【主动施放】增加 |cffffff00技暴几率+5%*Lv 技暴加深+50%*Lv|r |cff00bdec持续5秒|r
     
 ]],
 	--技能图标
     art = [[dyyb.blp]],
     --技暴几率
-    skill_rate = {3,6,9,12,15},
+    skill_rate = {5,10,15,20,25},
     --技暴伤害
-    skill_damage = {30,60,90,120,150},
+    skill_damage = {50,100,150,200,250},
     --
     damage_type = '法术',
-    time = 8
+    time = 5
 }
 function mt:on_add()
     local skill = self

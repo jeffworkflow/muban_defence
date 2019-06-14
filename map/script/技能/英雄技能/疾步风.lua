@@ -20,13 +20,13 @@ mt{
 	 tip = [[
 		 
 |cff00bdec【主动施放】让自己隐身，并提高150移动速度
-【持续时间】1秒*Lv|r
+【持续时间】（1+1*Lv）秒|r
  
 ]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNWindWalkOn.blp]],
 	--隐身时间
-	stand_time = {1,2,3,4,5},
+	stand_time = {2,3,4,5,6},
 	--移动速度
 	move_speed = 150
 }

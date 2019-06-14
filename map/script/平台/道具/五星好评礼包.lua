@@ -55,8 +55,8 @@ function mt:on_cast_start()
         p.mall_flag[name] = true
         
         local tip = '|cffFFE799【系统消息】|r恭喜 |cff00ffff'..p:get_name()..'|r 获得|cffff0000五星好评礼包|r |cffFFE799【礼包奖励】|r|cff00ff00被攻击10%几率获得5点全属性， 暴击加深+15%， 技暴加深+15% |r'
-        p:sendMsg(tip)
+        p:sendMsg(tip,3)
     else
-        p:sendMsg('条件不足或已领取过')    
+        p:sendMsg('条件不足或已领取过',2)    
     end   
 end

@@ -23,7 +23,7 @@ mt{
 
 |cffffff00【生命恢复】+10w*Lv|r
         
-|cff00bdec【主动施放】回复35%生命值 并每秒回复|r|cffffff00【5%*lv】的生命值|r |cff00bdec持续3秒|r
+|cff00bdec【主动施放】回复35%生命值 并每秒回复|r|cffffff00【10%*lv】的生命值|r |cff00bdec持续5秒|r
     
 ]],
 	--技能图标
@@ -32,8 +32,8 @@ mt{
     effect = [[Abilities\Spells\Human\HolyBolt\HolyBoltSpecialArt.mdl]],
     --治疗量
     heal = 35,
-    stu_heal = {5,10,15,20,25},
-    time = 3
+    stu_heal = {10,20,30,40,50},
+    time = 5
 }
 function mt:on_add()
     local skill = self
