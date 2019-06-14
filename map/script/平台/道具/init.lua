@@ -20,8 +20,12 @@
 
 
 
-require '平台.道具.金币礼包'
-require '平台.道具.木材礼包'
-require '平台.道具.五星好评礼包'
-require '平台.道具.群号礼包'
+require '平台.道具.礼包'
+require '平台.道具.武器'
+require '平台.道具.称号'
+require '平台.道具.翅膀'
+
+require '平台.道具.宠物皮肤'
+require '平台.道具.英雄'
+
 

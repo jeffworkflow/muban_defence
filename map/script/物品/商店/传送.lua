@@ -52,14 +52,25 @@ ac.quick_arrive ={
     ['陨落心炎 '] = {ac.map.rects['传送-陨落心炎'],'huo2.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cff00ffff中级异火：陨落心炎火|r\n',0,0,20000,} ,
     ['三千焱炎火 '] = {ac.map.rects['传送-三千焱炎火'],'huo3.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffffff00高级异火：三千焱炎火|r\n',0,0,100000,} ,
     ['虚无吞炎 '] = {ac.map.rects['传送-虚无吞炎'],'huo4.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,500000,} ,
+
+    ['传送藏宝图'] = {ac.map.rects['传送-藏宝图'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
+
+    
+    ['红发'] = {ac.map.rects['传送-红发'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
+    ['黑胡子'] = {ac.map.rects['传送-黑胡子'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
+    ['百兽'] = {ac.map.rects['传送-百兽'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
+    ['白胡子'] = {ac.map.rects['传送-白胡子'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
+
+
+
+
+
 }
 
 
 for key,value in pairs(ac.quick_arrive) do 
-
     --物品名称
     local mt = ac.skill[key]
-
     mt{
     --等久
     level = 1,
@@ -95,12 +106,13 @@ for key,value in pairs(ac.quick_arrive) do
     if value[8] then 
         mt.jifen = value[8]
     end
-    -- if value[9] then 
+    mt.store_name = '|cffdf19d0挑战 |r' .. key
+    if value[9] then 
         --商店名
-        mt.store_name = '|cffdf19d0挑战 |r' .. key
-    -- end
+        mt.store_name = value[9]
+    end
    
-    if key == '星星之火 ' then 
+    if key == '传送星星之火 ' then 
         mt.type_id ='EX02'
     end
 

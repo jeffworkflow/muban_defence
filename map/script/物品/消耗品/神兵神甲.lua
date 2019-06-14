@@ -5,7 +5,7 @@ local magic_item = {
     ['神甲'] ={'芙蓉甲','鱼鳞甲','碧云甲','青霞甲','飞霜辉铜甲','天魔苍雷甲','金刚断脉甲','丹霞真元甲','血焰赤阳甲','神魔蚀日甲'}
 }
 ac.magic_item = magic_item
-local hero_weapon ={
+ac.hero_weapon ={
     ['希尔瓦娜斯'] ='hand left',
     ['炼金术士'] ='hand left',
 }

@@ -26,25 +26,24 @@ function player.__index:GetServerValue(KEY,f)
         if value == nil then
             local tbl = json.decode(retval)
             for k, v in ipairs(tbl) do
-                -- ac.wait(500*k,function()
-                --     --发起同步请求
-                --     local info = {
-                --         type = 'cus_server',
-                --         func_name = 'on_get',
-                --         params = {
-                --             [1] = KEY,
-                --             [2] = v,
-                --         }
-                --     }
-                --     ui.send_message(info)
+                --发起同步请求
+                local info = {
+                    type = 'cus_server',
+                    func_name = 'on_get',
+                    params = {
+                        [1] = KEY,
+                        [2] = v,
+                    }
+                }
+                ui.send_message(info)
+                ac.wait(500,function()
                     f(v)
-                -- end)   
+                end)   
             end
         else 
             f(false)
             print('数据读取失败')
         end
-        -- self:event_notify('玩家-读取数据', tbl) 没用
     end)
 end
 
@@ -69,6 +68,11 @@ function player.__index:sp_get_map_test(f)
             -- print_r(tbl)
             for i,data in ipairs(tbl.data[1]) do 
                 temp_tab[data.key] = data.value
+                --预设没有的值，从服务器读取并动态插入预设的key
+                local name = ac.server.key2name(data.key)
+                if not name then 
+                    table.insert(ac.cus_server_key,{data.key,data.key_name})
+                end 
             end    
             local tab_str = ui.encode(temp_tab)
             -- print('数据长度',#tab_str)
@@ -80,7 +84,7 @@ function player.__index:sp_get_map_test(f)
                     -- print('发起同步请求')
                     local info = {
                         type = 'cus_server',
-                        func_name = 'read_key_from_sever',
+                        func_name = 'read_key_from_server',
                         params = {
                             [1] = tab_str,
                         }
@@ -91,48 +95,54 @@ function player.__index:sp_get_map_test(f)
             end
             -- f(tbl.data[1])
         else
-            print(key,'读取数据失败')
+            print('读取数据失败')
+            print_r(tbl)
         end        
     end)
 end    
 local ui = require 'ui.server.util'
 --处理同步请求
 local event = {
-    on_get = function (key,value)
+    on_get = function (key,val)
         local player = ui.player 
         if not player.cus_server then 
             player.cus_server = {}
         end    
-        player.cus_server[key] = value
+        local name = ac.server.key2name(key)
+        player.cus_server[name] = tonumber(val)
         if key =='jifen' then 
-            player.jifen = value
+            player.jifen = tonumber(val)
         end    
     end,
     --从自定义服务器读取数据
-    read_key_from_sever = function (tab_str)
+    read_key_from_server = function (tab_str)
         local player = ui.player 
         if not player.cus_server then 
             player.cus_server = {}
         end    
         local data = ui.decode(tab_str) 
         for key,val in sortpairs(data) do 
-            -- print('同步后的数据：',key,val)
-            player.cus_server[key] = tonumber(val)
+            local name = ac.server.key2name(key)
+            player.cus_server[name] = tonumber(val)
+
+            print('同步后的数据：',name,player.cus_server[name])
             if key =='jifen' then 
                 player.jifen =  tonumber(val)
             end    
         end    
+        player:event_notify('读取存档数据')
 
     end,
 }
 ui.register_event('cus_server',event)
 
 --保存到 map_test 
+-- 保存本局数据 p.cus_server[key] = value
 function player.__index:SetServerValue(key,value,f)
     local player_name = self:get_name()
     local map_name = config.map_name
     local url = config.url2
-    local key_name,is_mall = ac.get_keyname_by_key(key)
+    local key_name,is_mall = ac.server.key2name(key)
     local value = tostring(value) 
 
     local post = 'exec=' .. json.encode({
@@ -158,48 +168,26 @@ function player.__index:SetServerValue(key,value,f)
         end    
     end)
 
-end
---copy servervalue 到 map_test 
-function player.__index:CopyServerValue(key,f)
-    local player_name = self:get_name()
-    local map_name = config.map_name
-    local url = config.url2
-    local value,key_name,is_mall = ac.get_server(self,key)
-    local post = 'exec=' .. json.encode({
-        sp_name = 'sp_save_map_test',
-        para1 = map_name,
-        para2 = player_name,
-        para3 = key,
-        para4 = key_name,
-        para5 = value,
-        para6 = is_mall,
-    })
-    -- print('上传数据：',key,value,key_name,is_mall)
-    local f = f or function (retval)  end
-    post_message(url,post,function (retval)  
-        if not finds(retval,'http') then 
-            local tbl = json.decode(retval)
-            -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
-            if tbl and tbl.code == 0 then 
-                f(tbl)
-            else
-                print(self:get_name(),post,'上传失败')
-            end         
-        else
-            print('服务器返回数据异常:',post)
-        end    
-    end)
-end
---copy 所有servervalue
-function player.__index:CopyAllServerValue()
-    for i,v in ipairs(ac.mall) do 
-        local key = v[1] 
-        ac.wait(1000*i,function()
-            self:CopyServerValue(key);
-        end)    
+    --保存本局数据
+    if not self.cus_server then 
+        self.cus_server ={}
     end    
-end   
---初始化自定义服务器的数据
+    local key_name = ac.server.key2name(key)
+    self.cus_server[key_name] = tonumber(value)
+end
+
+--增加数据到 map_test 
+-- 保存本局数据 p.cus_server[key] = value
+function player.__index:AddServerValue(key,value,f)
+    if not self.cus_server then 
+        self.cus_server ={}
+    end    
+    --保存
+    local key_name = ac.server.key2name(key)
+    self.cus_server[key_name] = (self.cus_server[key_name] or 0 ) + tonumber(value)
+    self:SetServerValue(key,self.cus_server[key_name])
+end
+--初始化自定义服务器的数据 暂时不用字段太多。
 function player.__index:initCusServerValue()
     for i,v in ipairs(ac.cus_server_key) do 
         local key = v[1]
@@ -223,7 +211,7 @@ function player.__index:initCusServerValue()
         --如果当前数据>0 则不进行初始化
         self:GetServerValue(key,function(data)
             --没有返回,才进行初始化
-            print(data)
+            -- print(data)
             if not data then    
                 post_message(url,post,f)
             end   
@@ -233,18 +221,80 @@ function player.__index:initCusServerValue()
     end    
 end  
 local function init()
-    for i=1,6 do 
+    for i=1,10 do 
         local p = ac.player(i)
         if p:is_player() then 
             p:CopyAllServerValue()
-            p:initCusServerValue()
+            -- p:initCusServerValue()
         end    
     end    
     print('上传数据')
 end  
-ac.server_init = init  
+ac.server.init = init  
 
---===========业务函数==============================
+
+--玩家 清空服务器数据 (自定义服务器)
+function player.__index:clear_server()
+    local player = self
+    for i,v in ipairs(ac.cus_server_key) do 
+        local key = v[1]
+        player:SetServerValue(key,0)
+    end    
+end    
+
+--所有玩家 清空服务器档案
+function ac.clear_all_server()
+	for i = 1, 10 do
+        local player = ac.player(i)
+        if player:is_player() then 
+            player:clear_server()
+        end   
+	end
+end
+
+--===============网易数据与自定义服务器数据交互===========================
+--copy 网易数据 到 map_test 
+function player.__index:CopyServerValue(key,f)
+    local player_name = self:get_name()
+    local map_name = config.map_name
+    local url = config.url2
+    local value,key_name,is_mall = ac.get_server(self,key)
+    
+    local post = 'exec=' .. json.encode({
+        sp_name = 'sp_save_map_test',
+        para1 = map_name,
+        para2 = player_name,
+        para3 = key,
+        para4 = key_name,
+        para5 = value,
+        para6 = is_mall,
+    })
+    -- print(url,post)
+    -- print('上传数据：',key,value,key_name,is_mall)
+    local f = f or function (retval)  end
+    post_message(url,post,function (retval)  
+        if not finds(retval,'http') then 
+            local tbl = json.decode(retval)
+            -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
+            if tbl and tbl.code == 0 then 
+                f(tbl)
+            else
+                print(self:get_name(),post,'上传失败')
+            end         
+        else
+            print('服务器返回数据异常:',post)
+        end    
+    end)
+end
+--copy 所有 map_test
+function player.__index:CopyAllServerValue()
+    for i,v in ipairs(ac.mall) do 
+        local key = v[1] 
+        ac.wait(1000*i,function()
+            self:CopyServerValue(key);
+        end)    
+    end    
+end   
 
 --[[
 ===========自定义服务器 基本功能 ===================

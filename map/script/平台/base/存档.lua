@@ -67,10 +67,16 @@ function ac.Map_GetMapConfig(key)
 end
 
 --获取玩家地图等级
-function player.__index:Map_GetMapLevel()
-    local handle = self.handle
-    return japi.DzAPI_Map_GetMapLevel(handle)
-end
+if global_test then 
+    function player.__index:Map_GetMapLevel()
+        return self.map_level or 0
+    end
+else
+    function player.__index:Map_GetMapLevel()
+        local handle = self.handle
+        return japi.DzAPI_Map_GetMapLevel(handle)
+    end
+end    
 
 --获取玩家地图排名
 function player.__index:Map_GetMapLevelRank()
@@ -97,9 +103,9 @@ end
 function player.__index:Map_HasMallItem(key)
     local handle = self.handle
     -- print(handle,key)
-    return japi.DzAPI_Map_HasMallItem(handle,key)
+    -- return japi.DzAPI_Map_HasMallItem(handle,key)
     --测试时，默认都为空
-    -- return false
+    return false
 end
 
 --判断玩家服务器存档是否读取成功

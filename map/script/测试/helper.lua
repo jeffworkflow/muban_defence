@@ -228,18 +228,40 @@ function helper:lv(lv)
 	self:set_level(tonumber(lv))
 end
 
---地图等级
+--地图等级相关
 function helper:dtdj(lv)
-	local p = self:get_owner()
-	local peon = p.peon
-	if peon then
-		local skill = peon:find_skill('荣耀称号', '英雄', true)
-		if skill then 
-			skill.map_level = tonumber(lv)
-			skill:on_add()
-		end	
-	end
+	local p = self and self:get_owner() or ac.player.self 
+	p.map_level = tonumber(lv)
+	--重载商城道具。
+	for n=1,#ac.mall do
+		local need_map_level = ac.mall[n][3] or 999999999999
+		-- print(ac.mall[n][1],need_map_level)
+		if     (p:Map_HasMallItem(ac.mall[n][1]) 
+			or (p:Map_GetServerValue(ac.mall[n][1]) == '1') 
+			or (p:Map_GetMapLevel() >= need_map_level) 
+			or (p.cheating)) 
+		then
+			local key = ac.mall[n][2]  
+			p.mall[key] = 1  
+		end  
+	end    
 end
+
+function helper:reload_mall()
+	local p = self and self:get_owner() or ac.player.self 
+	local peon = p.peon
+	
+	--挖宝积分在读取存档数据后就赋值。
+	p:event_notify '读取存档数据'
+
+	local skl = self:find_skill('巅峰神域')
+	if skl then skl:remove() end
+	self:add_skill('巅峰神域','英雄',12)	
+	
+	local skl = peon:find_skill('宠物皮肤')
+	if skl then skl:remove() end
+	peon:add_skill('宠物皮肤','英雄',12)
+end	
 
 --积分 正常模式下，101波，boss打完就进入无尽，没有保存当前积分。 貌似要在回合结束统计分数。
 function helper:jifen(jf)
@@ -262,8 +284,8 @@ end
 --服务器存档 保存 
 function helper:save(key,value)
 	local p = self:get_owner()
-	p:Map_SaveServerValue(key,value)
-	print('服务器存档:'..key,p:Map_GetServerValue(key))
+	p:SetServerValue(key,tonumber(value) or 1)
+	
 end	
 --服务器清空档案
 function helper:clear_server()
@@ -481,7 +503,7 @@ end
 function helper:upgrade(str,lv)
 	local peon = self:get_owner().peon
 	-- print(peon,peon:find_skill(str))
-	local skill = self:find_skill(str) or self:has_item(str) or peon:find_skill(str)
+	local skill = self:find_skill(str,nil,true) or self:has_item(str) or peon:find_skill(str,nil,true)
 	if skill then 
 		-- print(peon,peon:find_skill(str))
 		skill:upgrade(tonumber(lv) or 1)

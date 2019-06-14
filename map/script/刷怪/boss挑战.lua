@@ -51,7 +51,14 @@ ac.challenge_boss = {
     ['陨落心炎boss'] = {ac.map.rects['boss-陨落心炎'],270},
     ['三千焱炎火boss'] = {ac.map.rects['boss-三千焱炎火'],270},
     ['虚无吞炎boss'] = {ac.map.rects['boss-虚无吞炎'],270},
+    
+    ['强盗领主'] = {ac.map.rects['boss-藏宝图'],270},
 
+    ['红发'] = {ac.map.rects['boss-红发'],270},
+    ['黑胡子'] = {ac.map.rects['boss-黑胡子'],270},
+    ['百兽'] = {ac.map.rects['boss-百兽'],270},
+    ['白胡子'] = {ac.map.rects['boss-白胡子'],270},
+    
 }
 --游戏初始化开启
 ac.game:event '游戏-开始' (function()

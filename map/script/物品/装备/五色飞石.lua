@@ -91,7 +91,7 @@ function mt:on_upgrade()
     local hero = self.owner
     -- print(self.life_rate_now)   
     hero:add_effect('chest',self.effect):remove()
-    self:set_name(self.name)
+    -- self:set_name(self.name)
 
     if not self.trg and self.level < self.max_level then 
         self.trg = ac.game:event '单位-杀死单位' (function(trg, killer, target)

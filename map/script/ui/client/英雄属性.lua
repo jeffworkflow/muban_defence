@@ -145,7 +145,7 @@ local panel
 ac.wait(1000,function ()
     panel = class.hero_info_panel.get_instance()
 end)
-ac.loop(2*1000,function() 
+game.loop(2*1000,function() 
     panel:fresh()
 end)
 

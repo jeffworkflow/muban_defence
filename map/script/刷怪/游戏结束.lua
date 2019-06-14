@@ -13,6 +13,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		ac.player.self:sendMsg("【游戏胜利】")
 		ac.player.self:sendMsg("【游戏胜利】")
 		ac.player.self:sendMsg("【游戏胜利】")
+		return 
 	else
 		name = '【游戏失败】'
 		ac.player.self:sendMsg("【游戏失败】")

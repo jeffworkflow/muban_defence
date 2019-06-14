@@ -215,9 +215,9 @@ function unit.__index:peon_add_xp(xp)
     local player = self:get_owner()
     self.peon_xp = (self.peon_xp or 0) + xp 
     --保存经验到服务器存档
-    player:SetServerValue('CWTF',tonumber(self.peon_xp))
+    player:SetServerValue('cwtf',tonumber(self.peon_xp))
 
-        --升级
+    --升级
     self.peon_lv = self.peon_lv or 1
     local flag = true 
     while flag do

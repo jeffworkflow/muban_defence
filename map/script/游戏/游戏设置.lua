@@ -259,7 +259,22 @@ ac.map.rects={
 	['boss-三千焱炎火'] =rect.j_rect('sqyyh111') ,
 	['boss-虚无吞炎'] =rect.j_rect('xwty111') ,
 
-	
+	--藏宝图
+	['传送-藏宝图'] =rect.j_rect('cbt1') ,
+	['boss-藏宝图'] =rect.j_rect('cbt111'),
+	['藏宝区'] =rect.j_rect('cbt2'),
+
+	--恶魔果实
+	['传送-红发'] =rect.j_rect('emo1') ,
+	['传送-黑胡子'] =rect.j_rect('emo2') ,
+	['传送-百兽'] =rect.j_rect('emo3') ,
+	['传送-白胡子'] =rect.j_rect('emo4') ,
+
+	['boss-红发'] =rect.j_rect('emo11') ,
+	['boss-黑胡子'] =rect.j_rect('emo22') ,
+	['boss-百兽'] =rect.j_rect('emo33') ,
+	['boss-白胡子'] =rect.j_rect('emo44') ,
+
 }
 
 -- local minx, miny, maxx, maxy = ac.map.rects['刷怪']:get()

@@ -158,7 +158,7 @@ local on_set = {}
 local base_attr =[[
 力量 敏捷 智力 全属性 生命 生命上限 生命恢复 生命脱战恢复 魔法 
 魔法上限 魔法脱战恢复 攻击 护甲 魔抗 攻击间隔 攻击距离 移动速度 减耗 破甲 
-破魔 护盾 减伤 技能基础伤害 多重射 额外连锁 额外范围 攻击回血 杀怪回血 基础金币 积分加成 熟练度加成
+破魔 护盾 技能基础伤害 多重射 额外连锁 额外范围 攻击回血 杀怪回血 基础金币 积分加成 熟练度加成
 召唤物 
 杀怪加力量 杀怪加敏捷 杀怪加智力 杀怪加全属性 杀怪加护甲 杀怪加攻击
 每秒加金币 每秒加木头 每秒加力量 每秒加敏捷 每秒加智力 每秒加全属性 每秒加护甲 每秒加攻击
@@ -828,6 +828,9 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
 	--召唤物杀死也继承
 	local hero = killer:get_owner().hero
 	if not hero then return end
+	if not hero:is_hero() or hero:get_owner().id>10 then 
+		return
+	end	
 
 	local str = hero:get('杀怪加力量') + hero:get('杀怪加全属性')
 	local int = hero:get('杀怪加智力') + hero:get('杀怪加全属性')
@@ -891,7 +894,7 @@ ac.game:event '造成伤害效果' (function(_,damage)
 	local hero = damage.source 
 	-- print(hero)
 	if not hero then return end
-	if not hero:is_hero() then 
+	if not hero:is_hero() or hero:get_owner().id>10 then 
 		return
 	end	
 	local str = hero:get('攻击加力量') + hero:get('攻击加全属性')

@@ -36,9 +36,9 @@ function mt:on_cast_start()
     hero = hero:get_owner().hero
     local map_level = p:Map_GetMapLevel() 
     --测试
-    if global_test then 
-        map_level = 3
-    end    
+    -- if global_test then 
+    --     map_level = 3
+    -- end    
     local name = self.name
     if map_level>=3 and not p.mall_flag[name] then 
         --添加给英雄

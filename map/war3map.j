@@ -222,7 +222,7 @@ rect gg_rct_ylxy14= null
 rect gg_rct_sqyyh11= null
 rect gg_rct_sqyyh12= null
 rect gg_rct_sqyyh13= null
-rect gg_rct_aqyyh14= null
+rect gg_rct_sqyyh14= null
 rect gg_rct_xwty11= null
 rect gg_rct_xwty12= null
 rect gg_rct_xwty13= null
@@ -237,8 +237,13 @@ rect gg_rct_sqyyh1= null
 rect gg_rct_xwty1= null
 rect gg_rct_fdm1= null
 rect gg_rct_fdm11= null
+rect gg_rct_ttxd11= null
+rect gg_rct_ttxd1= null
 rect gg_rct_cbt1= null
+rect gg_rct_cbt111= null
 rect gg_rct_cbt11= null
+rect gg_rct_cbt12= null
+rect gg_rct_cbt2= null
 endglobals
 
     native DzGetMouseTerrainX takes nothing returns real
@@ -1884,7 +1889,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_sqyyh11=Rect(25888.0, - 1120.0, 26752.0, - 608.0)
     set gg_rct_sqyyh12=Rect(27808.0, - 1120.0, 28672.0, - 608.0)
     set gg_rct_sqyyh13=Rect(27808.0, 448.0, 28672.0, 960.0)
-    set gg_rct_aqyyh14=Rect(25888.0, 384.0, 26752.0, 896.0)
+    set gg_rct_sqyyh14=Rect(25888.0, 384.0, 26752.0, 896.0)
     set gg_rct_xwty11=Rect(21920.0, - 1120.0, 22784.0, - 608.0)
     set gg_rct_xwty12=Rect(23840.0, - 1120.0, 24704.0, - 608.0)
     set gg_rct_xwty13=Rect(23840.0, 448.0, 24704.0, 960.0)
@@ -1899,8 +1904,13 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_xwty1=Rect(23072.0, - 1792.0, 23552.0, - 1472.0)
     set gg_rct_fdm1=Rect(26016.0, - 12768.0, 26304.0, - 12544.0)
     set gg_rct_fdm11=Rect(26048.0, - 12032.0, 26272.0, - 11808.0)
-    set gg_rct_cbt1=Rect(28512.0, - 12672.0, 28800.0, - 12448.0)
-    set gg_rct_cbt11=Rect(28544.0, - 11936.0, 28768.0, - 11712.0)
+    set gg_rct_ttxd11=Rect(24288.0, 3488.0, 24544.0, 3776.0)
+    set gg_rct_ttxd1=Rect(23488.0, 3520.0, 23744.0, 3808.0)
+    set gg_rct_cbt1=Rect(10464.0, - 8832.0, 10752.0, - 8608.0)
+    set gg_rct_cbt111=Rect(10496.0, - 7648.0, 10720.0, - 7424.0)
+    set gg_rct_cbt11=Rect(9408.0, - 9088.0, 9888.0, - 8544.0)
+    set gg_rct_cbt12=Rect(11360.0, - 9088.0, 11840.0, - 8544.0)
+    set gg_rct_cbt2=Rect(15872.0, - 17888.0, 19360.0, - 15008.0)
 endfunction
 
 //===========================================================================

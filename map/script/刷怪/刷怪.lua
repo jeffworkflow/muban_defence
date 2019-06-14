@@ -182,64 +182,83 @@ end);
 ac.wait(20,function()
     --1选择难度 2选择英雄 3游戏开始
     --全部英雄选完才会进入游戏开始.主机在选难度，所以不会有事。
-    print('开始选择难度')
-    local player = get_first_player()
-    local list = {
-        { name = "青铜" },
-        { name = "白银" },
-        { name = "黄金" },
-        { name = "铂金" },
-        { name = "钻石" },
-        { name = "星耀" },
-        { name = "王者" },
-        { name = "最强王者" },
-    }
-    
-    ac.player.self:sendMsg("正在选择 |cffffff00难度|r")
-    if player then 
-        create_dialog(player,"选择难度",list,function (index)  
-            ac.g_game_degree = index
-            if ac.g_game_degree == 1 then 
-                ac.g_game_degree_attr = 1  --难度一 属性倍数1倍
-            end    
-            if ac.g_game_degree == 2 then 
-                ac.g_game_degree_attr = 2  --难度二 属性倍数2倍
-            end  
-            if ac.g_game_degree == 3 then 
-                ac.g_game_degree_attr = 3  --难度三 属性倍数3倍
-            end  
-            if ac.g_game_degree == 4 then 
-                ac.g_game_degree_attr = 4  --难度三 属性倍数3倍
-            end  
-            if ac.g_game_degree == 5 then 
-                ac.g_game_degree_attr = 5  --难度三 属性倍数3倍
-            end  
-            if ac.g_game_degree == 6 then 
-                ac.g_game_degree_attr = 6  --难度三 属性倍数3倍
-            end  
-            if ac.g_game_degree == 7 then 
-                ac.g_game_degree_attr = 7  --难度三 属性倍数3倍
-            end  
-            if ac.g_game_degree == 8 then 
-                ac.g_game_degree_attr = 8  --难度三 属性倍数3倍
-            end 
-            ac.player.self:sendMsg("选择了 |cffffff00"..list[index].name.."|r")
-            --游戏-开始
-            ac.game:event_notify('游戏-开始')
-            -- ac.game:event_notify '游戏-开始' ; --测试用
+    ac.choose_degree = choose_degree
+    local function choose_degree()
+        local p = ac.player.self
+		local minx, miny, maxx, maxy = ac.map.rects['选人区域']:get()
+		p:setCameraBounds(minx+900, miny+900, maxx-900, maxy-900)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
+		p:setCamera(ac.map.rects['选人区域'])
+		--禁止框选
+        p:disableDragSelect()
+        
+        local player = get_first_player()
+        local list = {
+            { name = "青铜" },
+            { name = "白银" },
+            { name = "黄金" },
+            { name = "铂金" },
+            { name = "钻石" },
+            { name = "星耀" },
+            { name = "王者" },
+            { name = "最强王者" },
+        }
+        
+        ac.player.self:sendMsg("正在选择 |cffffff00难度|r")
+        if player then 
+            create_dialog(player,"选择难度",list,function (index)  
+                ac.g_game_degree = index
+                ac.g_game_degree_name = list[index].name
+                if ac.g_game_degree == 1 then 
+                    ac.g_game_degree_attr = 1  --难度一 属性倍数1倍
+                end    
+                if ac.g_game_degree == 2 then 
+                    ac.g_game_degree_attr = 2  --难度二 属性倍数2倍
+                end  
+                if ac.g_game_degree == 3 then 
+                    ac.g_game_degree_attr = 3  --难度三 属性倍数3倍
+                end  
+                if ac.g_game_degree == 4 then 
+                    ac.g_game_degree_attr = 4  --难度三 属性倍数3倍
+                end  
+                if ac.g_game_degree == 5 then 
+                    ac.g_game_degree_attr = 5  --难度三 属性倍数3倍
+                end  
+                if ac.g_game_degree == 6 then 
+                    ac.g_game_degree_attr = 6  --难度三 属性倍数3倍
+                end  
+                if ac.g_game_degree == 7 then 
+                    ac.g_game_degree_attr = 7  --难度三 属性倍数3倍
+                end  
+                if ac.g_game_degree == 8 then 
+                    ac.g_game_degree_attr = 8  --难度三 属性倍数3倍
+                end 
+                ac.player.self:sendMsg("选择了 |cffffff00"..list[index].name.."|r")
+                --加载过场动画
+                ac.skip_animation(7)
+                ac.wait(1.8 * 1000,function() 
+                    --创建预设商店
+                    local init_shop = require('物品.商店.创建商店')
+                    init_shop()
+                    --创建预设英雄
+                    ac.choose_hero()
+                    --游戏-开始
+                    ac.game:event_notify('游戏-开始')
+                end)
+                -- ac.game:event_notify '游戏-开始' ; --测试用
+            end)
+
+        end 
+
+        --每3秒提醒玩家主机在选择难度
+        ac.loop(3*1000,function(t)
+            if ac.g_game_degree then 
+                t:remove()
+            else
+                ac.player.self:sendMsg("等待主机选择模式、难度")
+            end
         end)
-
-    end 
-
-    --每3秒提醒玩家主机在选择难度
-    ac.loop(3*1000,function(t)
-        if ac.g_game_degree then 
-            t:remove()
-        else
-            ac.player.self:sendMsg("等待主机选择模式、难度")
-        end
-    end)
-
+    end    
+    choose_degree()
     ac.game:event '游戏-开始' (function()
         --游戏开始后 刷怪时间
         local time = 180

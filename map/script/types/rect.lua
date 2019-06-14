@@ -27,10 +27,21 @@ function mt:get_point()
 end
 
 -- 获得不规则区域内的随机一点
--- true 获取中心点
+-- true 只返回可通行点
 function mt:get_random_point(flag)
 	local minx, miny, maxx, maxy = self:get()
-	return ac.point(math.random(minx,maxx),math.random(miny,maxy))
+	local point 
+	if flag then 
+		while true do
+			point = ac.point(math.random(minx,maxx),math.random(miny,maxy))
+			if not point:is_block() then 
+				break
+			end	
+		end	
+	else
+		point = ac.point(math.random(minx,maxx),math.random(miny,maxy))
+	end	
+	return point
 end
 
 rect.__index = mt

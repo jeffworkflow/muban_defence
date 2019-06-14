@@ -76,7 +76,7 @@ local function hero_register_main()
 		-- hero:add_effect('hand',[[wuqi123.mdx]])
 		
 		--添加英雄属性面板
-		hero:add_skill('英雄属性面板', '英雄',12)
+		-- hero:add_skill('英雄属性面板', '英雄',12)
 		-- 测试魔法书
 		-- hero:add_skill('魔法书demo','英雄')
 
