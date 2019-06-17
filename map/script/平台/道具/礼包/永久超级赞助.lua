@@ -3,7 +3,7 @@ mt{
 --等久
 level = 0,
 --图标
-art = [[hplb.blp]],
+art = [[yjcjzz.blp]],
 is_order = 1,
 --说明
 tip = [[

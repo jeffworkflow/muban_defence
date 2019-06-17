@@ -16,25 +16,29 @@ mt{
 	passive = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*10+10000)* self.level
+  return (self.owner:get('全属性')*100+10000)* self.level
 end,
 	--属性加成
- ['杀怪加全属性'] = {10,20,30,40,50},
- ['暴击几率'] = 2.5,
- ['暴击伤害'] = 25,
+ ['杀怪加全属性'] = {888,1776,2664,3552,4440},
+ ['免伤'] = 50,
+ ['全伤加深'] = 50,
+ ['木头加成'] = 200,
+ ['火灵加成'] = 200,
 	--介绍
-	tip = [[|cffffff00【杀怪加全属性】+10*Lv
-【暴击几率】+2.5%
-【暴击伤害】+25%|r
+	tip = [[|cffffff00【杀怪加全属性】+888*Lv
+【免伤】+50%
+【全伤加深】+50%
+【木头加成】+200%
+【火灵加成】+200%|r
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】(敏捷*10+1w)*Lv
+【伤害公式】(全属性*100+1w)*Lv
 
 |cff00ff00【凌波微步】按D向鼠标方向飘逸500码距离|r]],
 	--技能图标
-	art = [[zhaoyun.blp]],
+	art = [[jianxian.blp]],
 	--特效
-	effect = [[jn_tf1.mdx]],
+	effect = [[jn_tf3.mdx]],
 }
 function mt:on_add()
     local skill = self

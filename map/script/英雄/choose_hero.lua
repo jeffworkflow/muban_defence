@@ -91,10 +91,10 @@ local function showHeroState(p, u)
 		'|cffff2222★★★★★|r|cffeeeeee☆|r',
 		'|cffff0000★★★★★★|r|cffeeeeee|r',
 	}
-	local difficulty_tip = '|cffffcc11生存:  ' .. difficulty_level[hero_data.survival_lv or 1]..'\n'
-	difficulty_tip = difficulty_tip ..'|cffffcc11攻击:  ' .. difficulty_level[hero_data.attack_lv or 1]..'\n'
-	difficulty_tip = difficulty_tip ..'|cffffcc11成长:  ' .. difficulty_level[hero_data.grow_lv or 1]..'\n'
-	difficulty_tip = difficulty_tip ..'|cffffcc11操作难度:  ' .. difficulty_level[hero_data.diff_lv or 1]..'\n'
+	local difficulty_tip = '|cffffcc11【生存】 ' .. difficulty_level[hero_data.survival_lv or 1]..'\n'
+	difficulty_tip = difficulty_tip ..'|cffffcc11【攻击】 ' .. difficulty_level[hero_data.attack_lv or 1]..'\n'
+	difficulty_tip = difficulty_tip ..'|cffffcc11【成长】 ' .. difficulty_level[hero_data.grow_lv or 1]..'\n'
+	difficulty_tip = difficulty_tip ..'|cffffcc11【操作】 ' .. difficulty_level[hero_data.diff_lv or 1]..'\n'
 
 
 	p:sendMsg(difficulty_tip .. '\n' .. tip:gsub('%%(.-)%%', function(name)
@@ -129,8 +129,8 @@ local function start()
 	--在选人区创建英雄
 	local cent	= map.rects['选人区域']:get_point()
 	local minx, miny, maxx, maxy = map.rects['选人区域']:get()
-	local area = 200
-    local ix,iy = 1,1
+	local area = 250
+    local ix,iy = 0,0
 	local rowx = math.floor((maxx-minx ) / area)
 	local rowy = math.floor((maxy-miny ) / area)
 	-- local r		= 360 / hero.hero_count
@@ -148,10 +148,10 @@ local function start()
 		if ix > rowx   then 
             --print(i,ix,iy)
             iy = iy + 1 
-            ix = 1
+            ix = 0
         end    
-        local x = minx + area * ix 
-		local y = miny + area* iy 
+        local x = minx + area * ix +75
+		local y = miny + area* iy +200
 		local where = ac.point(x,y)
 		ix = ix + 1 
 		

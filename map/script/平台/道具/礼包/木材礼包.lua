@@ -6,12 +6,14 @@ level = 0,
 art = [[mtlb.blp]],
 is_order = 1,
 is_skill =true ,
-content_tip = '\n|cffFFE799【领取条件】|r',
+content_tip = '',
 --说明
-tip = [[商城购买|cffff0000木材礼包|r
+tip = [[
+
+|cffFFE799【领取条件】|r商城购买|cffff0000木材礼包|r
 
 |cffFFE799【礼包奖励】|r|cff00ff00初始木头+10，初始杀敌数+1000 |r
-]],
+ ]],
 --物品类型
 item_type = '神符',
 --目标类型

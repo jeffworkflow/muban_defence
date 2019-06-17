@@ -23,7 +23,7 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[chibang2.blp]],
+art = [[sbkd.blp]],
 --说明
 tip = [[挖宝积分兑换/神龙碎片兑换
 ]],
@@ -34,7 +34,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['护甲'] = 1000,
 ['每秒回血'] = 2.5,
 --特效
-effect = [[wuqi10.mdx]]
+effect = [[wzgl.mdx]]
 }
 
 local mt = ac.skill['毁天灭地']
@@ -42,7 +42,7 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[chibang2.blp]],
+art = [[htmd.blp]],
 --说明
 tip = [[挖宝积分兑换/神龙碎片兑换
 ]],
@@ -53,15 +53,15 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['护甲'] = 1000,
 ['每秒回血'] = 2.5,
 --特效
-effect = [[wuqi10.mdx]]
+effect = [[htmd.mdx]]
 }
 
-local mt = ac.skill['巅峰领域']
+local mt = ac.skill['巅峰天域']
 mt{
 --等级
 level = 0,
 --图标
-art = [[chibang2.blp]],
+art = [[dfty.blp]],
 --说明
 tip = [[挖宝积分兑换/神龙碎片兑换
 ]],
@@ -72,7 +72,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['护甲'] = 1000,
 ['每秒回血'] = 2.5,
 --特效
-effect = [[wuqi10.mdx]]
+effect = [[dfty.mdx]]
 }
 
 
@@ -81,7 +81,7 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[chibang4.blp]],
+art = [[jltx.blp]],
 --说明
 tip = [[地图等级40
 ]],
@@ -92,7 +92,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['护甲'] = 1000,
 
 --特效
-effect = [[wuqi10.mdx]]
+effect = [[jltx.mdx]]
 }
 
 local mt = ac.skill['九世天尊']
@@ -100,7 +100,7 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[chibang3.blp]],
+art = [[jstz.blp]],
 --说明
 tip = [[最强王者50星
 ]],
@@ -111,7 +111,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['攻击间隔'] = -0.05,
 
 --特效
-effect = [[wuqi10.mdx]]
+effect = [[jstz.mdx]]
 }
 
 
@@ -120,7 +120,7 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[chibang8.blp]],
+art = [[shendi.blp]],
 --说明
 tip = [[商城188
 ]],
@@ -131,7 +131,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['技暴几率'] = 5,
 ['全伤加深'] = 5,
 --特效
-effect = [[wuqi10.mdx]]
+effect = [[shendi.mdx]]
 }
 
 local mt = ac.skill['王者归来']
@@ -139,7 +139,7 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[chibang7.blp]],
+art = [[wzgl.blp]],
 --说明
 tip = [[替天行道
 ]],
@@ -150,11 +150,11 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['技暴几率'] = 5,
 ['全伤加深'] = 5,
 --特效
-effect = [[wuqi10.mdx]]
+effect = [[wzgl.mdx]]
 }
 
 
-for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','巅峰领域','君临天下','九世天尊','神帝','王者归来'}) do
+for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','巅峰天域','君临天下','九世天尊','神帝','王者归来'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

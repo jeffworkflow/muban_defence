@@ -32,12 +32,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[chibang7.mdx]]
 }
 
-local mt = ac.skill['小龙女']
+local mt = ac.skill['手无寸铁的小龙女']
 mt{
 is_skill = 1,
 item_type ='神符',
 --商店品
-store_name = '挑战 小龙女',
+store_name = '挑战 手无寸铁的小龙女',
 --等级
 level = 0,
 --图标

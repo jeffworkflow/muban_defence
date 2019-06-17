@@ -12,7 +12,7 @@ mt{
 	
 	tip = [[
 		|cff00ccff被动|r:
-		攻击时有 %physical_rate% % 几率 造成物理暴击，额外%physical_damage% % 暴击伤害
+		攻击时有 %physical_rate% % 几率 造成物理暴击，额外%physical_damage% % 暴击加深
 	]],
 	
 	--技能图标
