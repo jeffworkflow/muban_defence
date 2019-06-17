@@ -6,12 +6,14 @@ level = 0,
 art = [[qhlb.blp]],
 is_order = 1,
 is_skill =true ,
-content_tip = '\n|cffFFE799【领取条件】|r',
+content_tip = '',
 --说明
-tip = [[进入官方交流群|cffff0000(群号797113975)|r 获得隐藏密码
+tip = [[
+
+|cffFFE799【领取条件】|r进入官方交流群|cffff0000(群号797113975)|r 获得隐藏密码
 
 |cffFFE799【礼包奖励】|r|cff00ff00全属性+500，杀敌数+100|r
-]],
+ ]],
 --物品类型
 item_type = '神符',
 --目标类型

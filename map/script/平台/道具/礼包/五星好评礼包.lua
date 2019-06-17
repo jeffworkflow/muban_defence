@@ -5,13 +5,15 @@ level = 0,
 --图标
 art = [[hplb.blp]],
 is_order = 1,
-content_tip = '\n|cffFFE799【领取条件】|r',
+content_tip = '',
 is_skill =true ,
 --说明
-tip = [[给此图来个|cffff0000五星好评|r
+tip = [[
+
+|cffFFE799【领取条件】|r给此图来个|cffff0000五星好评|r
 
 |cffFFE799【礼包奖励】|r|cff00ff00被攻击10%几率获得5点全属性， 暴击加深+15%， 技暴加深+15% |r
-]],
+ ]],
 --物品类型
 item_type = '神符',
 --目标类型

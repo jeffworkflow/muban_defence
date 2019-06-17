@@ -8,6 +8,9 @@ ac.magic_item = magic_item
 ac.hero_weapon ={
     ['希尔瓦娜斯'] ='hand left',
     ['炼金术士'] ='hand left',
+    ['阿尔塞斯'] ='hand right',
+    ['伊利丹'] ='hand left',
+    
 }
 for key,tab in pairs(magic_item) do 
     for i,value in ipairs(tab) do 

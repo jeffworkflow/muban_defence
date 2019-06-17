@@ -6,6 +6,7 @@ mt{
     art = [[dfsy.blp]],
     title = '巅峰神域',
     tip = [[
+
 查看巅峰神域
     ]],
     
@@ -19,9 +20,10 @@ local mt = ac.skill['礼包']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[hplb.blp]],
+    art = [[sffl.blp]],
     title = '礼包',
     tip = [[
+
 查看礼包
     ]],
     
@@ -37,6 +39,7 @@ mt{
     art = [[wuqi11.blp]],
     title = '武器',
     tip = [[
+
 查看武器
     ]],
     
@@ -52,6 +55,7 @@ mt{
     art = [[chibang7.blp]],
     title = '翅膀',
     tip = [[
+
 查看翅膀
     ]],
     
@@ -64,15 +68,16 @@ local mt = ac.skill['称号']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[wzgl.blp]],
+    art = [[wzgl1.blp]],
     title = '称号',
     tip = [[
+
 查看称号
     ]],
     
 }
 mt.skills = {
-    '炉火纯青','势不可挡','毁天灭地','巅峰领域','君临天下','九世天尊','神帝','王者归来'
+    '炉火纯青','势不可挡','毁天灭地','巅峰天域','君临天下','九世天尊','神帝','王者归来'
 }
 
 local mt = ac.skill['英雄']
@@ -82,11 +87,12 @@ mt{
     art = [[cwpf.blp]],
     title = '查看英雄',
     tip = [[
+
 查看英雄
     ]],
 }
 mt.skills = {
-    'Pa','小龙女','关羽'
+    'Pa','手无寸铁的小龙女','关羽'
 }
 
 for i,name in ipairs({'礼包','武器','翅膀','称号','英雄'}) do

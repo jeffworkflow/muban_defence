@@ -6,9 +6,11 @@ level = 1,
 --图标
 art = [[mtlb.blp]],
 is_skill =true ,
-content_tip = '\n|cffFFE799【领取条件】|r',
+content_tip = '',
 --说明
-tip = [[商城购买|cffff0000木材礼包|r
+tip = [[
+
+|cffFFE799【领取条件】|r商城购买|cffff0000木材礼包|r
 
 |cffFFE799【礼包奖励】|r|cff00ff00初始木头+5，初始杀敌数+500 |r
 ]],

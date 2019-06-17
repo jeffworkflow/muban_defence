@@ -30,7 +30,7 @@ mt{
 
 |cff00ff00【凌波微步】按D向鼠标方向飘逸500码距离|r]],
 	--技能图标
-	art = [[aess.blp]],
+	art = [[ReplaceableTextures\CommandButtons\BTNArthas.blp]],
 	--特效
 	effect = [[jn_tf1.mdx]],
 }
