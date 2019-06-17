@@ -38,6 +38,16 @@ for key,val in pairs(fire) do
         local player = hero:get_owner()
         hero = player.hero
 
+        --升级星星之火
+        local skl = hero:find_skill(key,nil,true)
+        if skl then 
+            skl:upgrade(1)
+            player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00升级'..key..'成功|r 升级后的属性可以在异火系统中查看',2)
+        else
+            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000条件不符，升级失败|r',2) 
+            return true
+        end    
+
         local shop_item = ac.item.shop_item_map[self.name]
         if not shop_item.player_fire then 
             shop_item.player_fire ={}
@@ -51,16 +61,6 @@ for key,val in pairs(fire) do
         --改变价格
         shop_item.player_fire[player] = (shop_item.player_fire[player] or self.fire_seed ) + self.cre
         
-        --升级星星之火
-        local skl = hero:find_skill(key,nil,true)
-        if skl then 
-            skl:upgrade(1)
-            player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00升级'..key..'成功|r 升级后的属性可以在异火系统中查看',2)
-        else
-            player:sendMsg('|cffFFE799【系统消息】|r|cffff0000条件不符，升级失败|r',2) 
-            return true
-        end    
-
     end
 
 end    

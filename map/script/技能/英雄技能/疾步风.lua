@@ -39,10 +39,8 @@ function mt:on_cast_shot()
     local skill = self
 	local hero = self.owner
 	local player = hero:get_owner()
-	self.buff = hero:add_buff '隐身' {
+	self.buff = hero:add_buff '疾步风' {
 		time = self.stand_time,
-		-- remove_when_attack = true,
-		-- remove_when_spell = true,
 		move_speed = self.move_speed
 	}
 
@@ -58,4 +56,33 @@ function mt:on_remove()
         self.buff = nil
 	end  
 	
+end
+
+local mt = ac.buff['疾步风']
+mt.cover_type = 1
+mt.cover_max = 1
+-- mt.keep = true
+
+function mt:on_add()
+    local target = self.target
+	local hero = self.target
+	--变透明
+	self.target:setAlpha(30)
+	--变无敌
+	self.target:add_restriction '无敌'
+	--加移动速度
+	self.target:add('移动速度',self.move_speed)
+end
+
+function mt:on_remove()
+    local target = self.target 
+	--变透明
+	self.target:setAlpha(100) 
+	self.target:remove_restriction '无敌'
+	self.target:add('移动速度',-self.move_speed)
+    if self.eff then self.eff:remove() self.eff = nil   end
+    if self.trg then self.trg:remove() self.trg = nil end
+end
+function mt:on_cover(new)
+	return new.value > self.value
 end

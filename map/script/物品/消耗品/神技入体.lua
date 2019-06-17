@@ -159,15 +159,3 @@ end
 function mt:on_remove()
 end
 
-
-local mt = ac.skill['神技入体']
-mt{
-    is_spellbook = 1,
-    is_order = 2,
-    art = [[sc.blp]],
-    title = '神技入体',
-    tip = [[
-查看 神技入体
-    ]],
-}
-mt.skills ={}

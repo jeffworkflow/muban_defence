@@ -613,7 +613,7 @@ end
 --单位 使用物品 添加属性
 function mt:on_use_state()
 	local hero = self.owner
-	if not hero then 
+	if not hero or self.not_use_state then 
 		return
 	end	
 	--物品，是否宠物可代替英雄，默认不行。

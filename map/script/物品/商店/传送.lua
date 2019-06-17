@@ -112,7 +112,7 @@ for key,value in pairs(ac.quick_arrive) do
         mt.store_name = value[9]
     end
    
-    if key == '传送星星之火 ' then 
+    if key == '星星之火 ' then 
         mt.type_id ='EX02'
     end
 

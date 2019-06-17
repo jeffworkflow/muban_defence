@@ -4,8 +4,8 @@
 -- @回调函数
 local function skip_animation(time,f)
     local p = ac.player.self
-    p:hideInterface(1.5)
-    ac.wait(1.1*1000,function()
+    p:hideInterface(0.3)
+    ac.wait(0.3*1000,function()
         --设置镜头属性 --升到高空
         p:setCameraField('CAMERA_FIELD_ANGLE_OF_ATTACK', 0)
         p:setCameraField('CAMERA_FIELD_ZOFFSET', 3200)
@@ -15,7 +15,7 @@ local function skip_animation(time,f)
     jass.SetCinematicScene(jass.GetUnitTypeId(unit.handle), PLAYER_COLOR_RED, '', '地图资源加载中...', tonumber(time), tonumber(time))
     -- print(tonumber(time),f)
     ac.wait(tonumber(time)*1000, function()
-        p:showInterface(1.5)
+        p:showInterface(0.5)
         --设置镜头属性 --恢复
         p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 1500)
         p:setCameraField('CAMERA_FIELD_ANGLE_OF_ATTACK', 304)

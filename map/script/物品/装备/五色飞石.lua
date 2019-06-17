@@ -89,10 +89,13 @@ mt{
 
 function mt:on_upgrade()
     local hero = self.owner
+    if hero:get_owner().id >10 then 
+        return 
+    end    
     -- print(self.life_rate_now)   
     hero:add_effect('chest',self.effect):remove()
-    -- self:set_name(self.name)
-
+    self:set_name(self.name)
+    -- print(self.trg,self.level,self.max_level)
     if not self.trg and self.level < self.max_level then 
         self.trg = ac.game:event '单位-杀死单位' (function(trg, killer, target)
             --召唤物杀死也继承

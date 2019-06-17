@@ -88,6 +88,9 @@ mt{
 
 function mt:on_upgrade()
     local hero = self.owner
+    if hero:get_owner().id >10 then 
+        return 
+    end    
     -- print(self.life_rate_now)   
     hero:add_effect('chest',self.effect):remove()
     self:set_name(self.name)

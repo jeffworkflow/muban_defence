@@ -9,7 +9,7 @@ function create_dialog(player,title,list,callback)
     end 
     DialogDisplay(player.handle, dialog, true)
     TriggerRegisterDialogEvent(trg,dialog)
-    TriggerAddAction(trg,function ()
+    local function action()
         local button = GetClickedButton()
         if map[button] then 
             callback(map[button])
@@ -18,6 +18,7 @@ function create_dialog(player,title,list,callback)
         DestroyTrigger(trg)
         trg = nil 
         dialog = nil 
-    end)
+    end
+    TriggerAddAction(trg,action)
     return dialog
 end 

@@ -33,27 +33,27 @@ for key,val in pairs(fire) do
     content_tip = '|cffffe799使用说明：|r'
     }
 
-    function mt:on_cast_start()
-        local unit = self.owner
-        local hero = self.owner
-        local player = hero:get_owner()
-        local name = self:get_name()
-        hero = player.hero
+    -- function mt:on_cast_start()
+    --     local unit = self.owner
+    --     local hero = self.owner
+    --     local player = hero:get_owner()
+    --     local name = self:get_name()
+    --     hero = player.hero
 
-        --需要增加一个，否则消耗品点击则无条件消耗
-        self:add_item_count(1) 
-        if self._count < 100 then 
-            return 
-        end    
+    --     --需要增加一个，否则消耗品点击则无条件消耗
+    --     self:add_item_count(1) 
+    --     if self._count < 100 then 
+    --         return 
+    --     end    
 
-        local skl = hero:find_skill(key,nil,true)
-        if skl then 
-            player:sendMsg('|cffffe799【系统消息】|r|cffffff00体内已有'..key..' 吞噬失败|r',2)
-        else
-            ac.game:event_notify('技能-插入魔法书',hero,'异火',key)
-            player:sendMsg('|cffffe799【系统消息】|r|cff00ff00吞噬'..key..'成功|r 吞噬后的属性可以在异火系统中查看',2)
-            --自己移除掉
-            self:add_item_count(-100) 
-        end   
-    end
+    --     local skl = hero:find_skill(key,nil,true)
+    --     if skl then 
+    --         player:sendMsg('|cffffe799【系统消息】|r|cffffff00体内已有'..key..' 吞噬失败|r',2)
+    --     else
+    --         ac.game:event_notify('技能-插入魔法书',hero,'异火',key)
+    --         player:sendMsg('|cffffe799【系统消息】|r|cff00ff00吞噬'..key..'成功|r 吞噬后的属性可以在异火系统中查看',2)
+    --         --自己移除掉
+    --         self:add_item_count(-100) 
+    --     end   
+    -- end
 end

@@ -234,8 +234,8 @@ ac.wait(20,function()
                 end 
                 ac.player.self:sendMsg("选择了 |cffffff00"..list[index].name.."|r")
                 --加载过场动画
-                ac.skip_animation(7)
-                ac.wait(1.8 * 1000,function() 
+                ac.skip_animation(4)
+                ac.wait(0.6 * 1000,function() 
                     --创建预设商店
                     local init_shop = require('物品.商店.创建商店')
                     init_shop()

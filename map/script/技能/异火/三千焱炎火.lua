@@ -26,6 +26,8 @@ mt{
     --技能图标
     art = [[guo3.blp]],
     is_order = 1, --没显示等级，注释显示等级
+    item_type ='消耗品', --
+    not_use_state = true, -- 不可使用消耗品
     -- --名字显示
     title = function(self)
         return '|cff'..ac.color_code[self.color or '白']..'三千焱炎火Lv'..(self.level <self.max_level and self.level or 'max')..'|r'
@@ -75,3 +77,28 @@ function mt:on_upgrade()
     -- self:set_name(self.name)
 end
 
+   
+function mt:on_cast_start()
+    local unit = self.owner
+    local hero = self.owner
+    local player = hero:get_owner()
+    local name = self:get_name()
+    hero = player.hero
+
+    local skl = hero:find_skill(self.name,nil,true)
+    if skl then 
+        if self.add_item_count then  
+            player:sendMsg('|cffffe799【系统消息】|r|cffffff00体内已有'..self.name..' 吞噬失败|r',2)
+             self:add_item_count(1) 
+        end        
+    else
+        ac.game:event_notify('技能-插入魔法书',hero,'异火',self.name)
+        player:sendMsg('|cffffe799【系统消息】|r|cff00ff00吞噬'..self.name..'成功|r 吞噬后的属性可以在异火系统中查看',2)
+        --改变技能里面的 item_type 
+        local new_skl =  hero:find_skill(self.name,nil,true)
+        if new_skl then 
+            new_skl.item_type = '装备'
+            ac.game:event_notify('技能-升级',hero,new_skl)
+        end    
+    end   
+end

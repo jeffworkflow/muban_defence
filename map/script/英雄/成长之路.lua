@@ -11,7 +11,7 @@ mt{
 点击查看 |cff00ff00成长之路|r
     ]],
 }
-mt.skills = {'魔鬼的交易','神兵利器','护天神甲','套装洗练','境界突破','异火','扭蛋','彩蛋'}
+mt.skills = {'魔鬼的交易','神兵利器','护天神甲','套装洗练','境界突破','异火','扭蛋','彩蛋','吞噬神丹','神技入体'}
 
 local mt = ac.skill['彩蛋']
 mt{
@@ -48,6 +48,32 @@ mt{
     tip = [[
 
 点击查看 |cff00ff00异火|r
+    ]],
+}
+mt.skills = {}
+
+local mt = ac.skill['吞噬神丹']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[huo4.blp]],
+    title = '吞噬神丹',
+    tip = [[
+
+点击查看 |cff00ff00吞噬神丹|r
+    ]],
+}
+mt.skills = {}
+
+local mt = ac.skill['神技入体']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[huo4.blp]],
+    title = '神技入体',
+    tip = [[
+
+点击查看 |cff00ff00神技入体|r
     ]],
 }
 mt.skills = {}

@@ -50,7 +50,9 @@ for key,value in pairs(ac.pratice_man) do
         local cep = ac.creep[name]
         cep:set_region(ret)
         cep.owner = p
+        -- ac.wait(1000,function() 
         cep:start()
+        -- end)
         
     end
 
@@ -63,6 +65,7 @@ for key,value in pairs(ac.pratice_man) do
                     creeps_datas = value[1]..'*15',
                     cool = 1,
                     create_unit_cool = 0.01,
+                    first_wait_time = 0.6, --调整切换练功怪首次出现时间
                     is_leave_region_replace = true,
                     is_region_replace = true,
                 }

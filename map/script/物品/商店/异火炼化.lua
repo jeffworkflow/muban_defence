@@ -43,6 +43,7 @@ for key,val in pairs(fire) do
         if skl then 
             skl:set('quality',rand_name)
             skl:fresh()
+            ac.game:event_notify('技能-升级',hero,skl) --真正添加属性（刷新）
             player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00炼化成功|r 获得|cffff0000'..key..' （'..rand_name..'）|r 炼化后的属性可以在异火系统中查看',2)    
         else
             player:sendMsg('|cffFFE799【系统消息】|r|cffff0000条件不符，炼化失败|r',2)    

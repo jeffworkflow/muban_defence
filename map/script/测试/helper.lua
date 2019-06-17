@@ -187,6 +187,13 @@ end
 function helper:icu()
 	fogmodifier.create(self:get_owner(), require('maps.map').rects['全地图'])
 end
+--刷新技能
+function helper:fresh(str)
+	local skl = self:find_skill(str,nil,true)
+	if skl then 
+		skl:fresh()
+	end	
+end
 
 --移动英雄
 function helper:move()
@@ -283,7 +290,7 @@ end
 
 --服务器存档 保存 
 function helper:save(key,value)
-	local p = self:get_owner()
+	local p = self and self:get_owner() or ac.player.self 
 	p:SetServerValue(key,tonumber(value) or 1)
 	
 end	

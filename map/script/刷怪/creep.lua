@@ -258,7 +258,7 @@ function mt:start(player)
     end 
     --等待1秒后才开始
     if self.first_wait_time then 
-        ac.wait(self.first_wait_time * 1000,function() 
+        self.wait_timer = ac.wait(self.first_wait_time * 1000,function() 
             self:next()   
         end)
     else
@@ -350,7 +350,7 @@ function mt:next()
         local data = ac.table.UnitData[name]
         
         if not data then 
-            print('lni 数据 没有被加载')
+            print('lni数据没有被加载')
             return 
         end
         local timer = ac.timer((self.create_unit_cool or 0.1) * 1000,tonumber(v),function(t)
@@ -509,7 +509,10 @@ function mt:finish(is_unit_kill)
         self.wait_trg:remove()
         self.wait_trg = nil
     end
-
+    if self.wait_timer then 
+        self.wait_timer:remove()
+        self.wait_timer = nil
+    end
 
     for k,v in sortpairs(self.creep_timer) do
          --print('移除计时器',k,v)
