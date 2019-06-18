@@ -7,7 +7,7 @@ mt{
     level = 1 ,
     max_level = 7,
     --颜色
-    color = '青',
+    color = '紫',
     tip = [[
 +%attack% 攻击
 +%life% 生命

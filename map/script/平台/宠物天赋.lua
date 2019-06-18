@@ -8,7 +8,7 @@ mt{
     is_order = 2,
     max_level = 100,
     --标题颜色
-    color =  '青',
+    color =  '紫',
 	--介绍
     tip = [[|cff00ffff(可用天赋点：%remain_point%|cff00ffff %need_xp_tip%|cff00ffff)|r
 

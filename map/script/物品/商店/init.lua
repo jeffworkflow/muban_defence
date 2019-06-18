@@ -1,3 +1,4 @@
+require '物品.商店.创建商店'
 require '物品.商店.练功房'
 require '物品.商店.杀鸡敬猴'
 require '物品.商店.基地'
@@ -8,6 +9,9 @@ require '物品.商店.扭蛋'
 
 require '物品.商店.异火升级'
 require '物品.商店.异火炼化'
+
+require '物品.商店.技能融合'
+
 
 
 

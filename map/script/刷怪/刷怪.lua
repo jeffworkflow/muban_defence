@@ -26,20 +26,24 @@ for i =1,3 do
         max_index = 25,
         creep_player = ac.player.com[2],
         create_unit_cool = 0.5,
-        tip ="|cffff0000第X波怪物开始进攻！！！|r"
+        -- tip ="|cffff0000怪物开始进攻！！！|r"
 
     }
     --进攻怪刷新时的初始化
     function mt:on_start()
         local rect = require 'types.rect'
         if i == 1 then 
-           self.timer_ex_title ='距离怪物进攻'
-        end   
+            self.timer_ex_title ='距离 第'..(self.index+2)..'波 怪物进攻'
+         end   
     end
 
     function mt:on_next()
+        if i == 1 then 
+           self.timer_ex_title ='距离 第'..(self.index+2)..'波 怪物进攻'
+        end   
         --进攻提示
-        if ac.ui then ac.ui.kzt.up_jingong_title(' 第 '..self.index..' 层 ') end
+        -- if ac.ui then ac.ui.kzt.up_jingong_title(' 第 '..self.index..' 层 ') end
+        ac.player.self:sendMsg("|cffff0000 第"..self.index.."波 怪物开始进攻！！！|r",5)
         local index = self.index
         self.creeps_datas = ac.attack_unit[index]..'*20'
         self:set_creeps_datas()
@@ -234,16 +238,18 @@ ac.wait(20,function()
                 end 
                 ac.player.self:sendMsg("选择了 |cffffff00"..list[index].name.."|r")
                 --加载过场动画
-                ac.skip_animation(4)
-                ac.wait(0.6 * 1000,function() 
+                -- ac.skip_animation(4)
+                -- ac.wait(0.6 * 1000,function() 
                     --创建预设商店
-                    local init_shop = require('物品.商店.创建商店')
-                    init_shop()
+                    -- local init_shop = require('物品.商店.创建商店')
+                    -- init_shop()
                     --创建预设英雄
                     ac.choose_hero()
                     --游戏-开始
-                    ac.game:event_notify('游戏-开始')
-                end)
+                    ac.wait(30*1000,function()
+                        ac.game:event_notify('游戏-开始')
+                    end)
+                -- end)
                 -- ac.game:event_notify '游戏-开始' ; --测试用
             end)
 
@@ -269,7 +275,7 @@ ac.wait(20,function()
         ac.timer_ex 
         {
             time = time,
-            title = "距离怪物进攻",
+            title = "距离第一波怪物进攻",
             func = function ()
                 ac.game:event_notify('游戏-开始刷兵')
             end,
