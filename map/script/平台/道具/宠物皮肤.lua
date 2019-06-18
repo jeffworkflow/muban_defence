@@ -253,21 +253,24 @@ for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','骨龙','奇美拉','小
     function mt:on_add()
         local hero = self.owner
         local player = self.owner:get_owner()
-        --改模型
-        if self.level > 0 then 
-            japi.SetUnitModel(hero.handle,self.effect)
-        end    
-    end    
 
-    function mt:on_cast_start()
-        local hero = self.owner
-        local player = self.owner:get_owner()
         --改模型
         if self.level > 0 then 
             japi.SetUnitModel(hero.handle,self.effect)
-        end    
-        
-    end   
+        end     
+        ac.wait(10,function() 
+            --改变大小
+            if name == '骨龙' then 
+                hero:set_size(2.2)
+            else
+                hero:set_size(1)
+            end   
+        end)
+
+
+    end    
+    mt.on_cast_start = mt.on_add
+   
 end    
 
 local mt = ac.skill['宠物皮肤']
