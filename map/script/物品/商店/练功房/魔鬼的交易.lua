@@ -478,7 +478,7 @@ mt{
     is_order = 2,
     art = [[mgdjy.blp]],
     title = name,
-    tip = '\n查看 |cff00ff00魔鬼的交易\n|r',
+    tip = '\n点击查看 |cff00ff00魔鬼的交易\n|r',
 }
 for _,tab in ipairs(devil_deal) do 
     if not mt.skills then 

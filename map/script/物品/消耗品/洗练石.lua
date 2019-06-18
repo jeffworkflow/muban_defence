@@ -125,7 +125,7 @@ mt{
     title = '套装洗练',
     tip = [[
         
-查看 |cff00ff00套装洗练|r
+点击查看 |cff00ff00套装洗练|r
     ]],
 }
 mt.skills = {

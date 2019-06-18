@@ -54,12 +54,12 @@ ac.challenge_boss = {
     
     ['强盗领主'] = {ac.map.rects['boss-藏宝图'],270},
     --boss名 = 区域，面向角度，特效区域，特效
-    ['红发'] = {ac.map.rects['boss-红发'],270,'hand','wuqi13.mdx'},
-    ['黑胡子'] = {ac.map.rects['boss-黑胡子'],270,'hand','wuqi13.mdx'},
-    ['百兽'] = {ac.map.rects['boss-百兽'],270,'hand','wuqi13.mdx'},
-    ['白胡子'] = {ac.map.rects['boss-白胡子'],270,'hand','wuqi13.mdx'},
+    ['红发'] = {ac.map.rects['boss-红发'],180,'hand','wuqi13.mdx'},
+    ['黑胡子'] = {ac.map.rects['boss-黑胡子'],180,'hand','wuqi10.mdx'},
+    ['百兽'] = {ac.map.rects['boss-百兽'],180,'hand',''},
+    ['白胡子'] = {ac.map.rects['boss-白胡子'],180,'hand','wuqi11.mdx'},
 
-    ['食人魔'] = {ac.map.rects['boss-食人魔'],270},
+    ['食人魔'] = {ac.map.rects['boss-食人魔'],0},
     
 }
 --游戏初始化开启

@@ -261,10 +261,13 @@ for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','骨龙','奇美拉','小
         ac.wait(10,function() 
             --改变大小
             if name == '骨龙' then 
-                hero:set_size(2.2)
+                hero:set_size(2.5)
+            elseif name == '精灵龙' then 
+                hero:set_size(1.5)
             else
                 hero:set_size(1)
-            end   
+            end  
+            
         end)
 
 

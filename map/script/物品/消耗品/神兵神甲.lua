@@ -87,7 +87,7 @@ mt{
     title = '神兵利器',
     tip = [[
 
-查看 |cff00ff00神兵利器|r
+点击查看 |cff00ff00神兵利器|r
     ]],
 }
 mt.skills = magic_item['神兵']
@@ -100,7 +100,7 @@ mt{
     title = '护天神甲',
     tip = [[
 
-查看 |cff00ff00护天神甲|r
+点击查看 |cff00ff00护天神甲|r
     ]],
 }
 mt.skills = magic_item['神甲']

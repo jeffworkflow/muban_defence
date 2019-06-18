@@ -150,7 +150,7 @@ local mt = ac.skill['吞噬神丹']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[sc.blp]],
+    art = [[icon\tunshi.blp]],
     title = '吞噬神丹',
     tip = [[
 查看 吞噬神丹

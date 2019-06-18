@@ -6,10 +6,15 @@ mt{
 level = 1,
 --冷却
 cool = 0,
+content_tip = '|cffffe799使用说明：|r',
 --描述
 tip = [[
-能强化一个技能，主动→被动，被动→入体
+
+
+|cff00ffff点击可食用 让|cffff0000满级技能|cff00ffff获得强化！无法强化相同技能！|r
+
 已强化 %cnt%|cffffff00/8|r 个： %content%]],
+
 cnt = function(self) 
     local cnt = 0
     if self and self.owner and self.owner:is_hero() then 
@@ -50,8 +55,7 @@ specail_model = [[acorn.mdx]],
 model_size = 2,
 --物品数量
 _count = 1,
---物品详细介绍的title
-content_tip = '使用说明：',
+
 auto_fresh_tip = true
 
 }
@@ -66,9 +70,11 @@ function mt:on_strong(skill)
         --先删除
         skill:remove() 
         ac.game:event_notify('技能-插入魔法书',hero,'神技入体',skill.name)
+        player:sendMsg('|cffffe799【系统消息】|r|cffffff00技能强化成功|r 强化后的技能可以在 神技入体系统 查看')
     else
         -- hero:add_skill('强化后的'..skill.name,'英雄',slot_id)
         hero:replace_skill(skill.name,'强化后的'..skill.name)
+        player:sendMsg('|cffffe799【系统消息】|r|cffffff00技能强化成功|r 强化后的技能可以在 英雄技能栏 查看')
     end   
     
 end
@@ -84,7 +90,7 @@ function mt:on_cast_start()
     local cnt = 8
     if (player.ruti_cnt or 0) >= cnt then 
         self:add_item_count(1)
-        player:sendMsg('恶魔果实使用已满，不可用')
+        player:sendMsg('无法食用更多的恶魔果实')
         return 
     end    
 
@@ -118,7 +124,7 @@ function mt:on_cast_start()
     table.insert(list,info)
 
     if not self.dialog  then 
-        self.dialog = create_dialog(player,'强化技能',list,function (index)
+        self.dialog = create_dialog(player,'请选择要强化的技能',list,function (index)
             local skill = list[index].skill
             if skill then 
                 --进行强化处理

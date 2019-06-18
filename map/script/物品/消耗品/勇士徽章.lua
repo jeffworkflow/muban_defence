@@ -4,9 +4,16 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[icon\zhaohuan.blp]],
+art = [[yshz.blp]],
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r',
 --说明
-tip = [[可兑换物品,可存档]],
+tip = [[
+
+
+|cff00ffff可在替天行道处兑换|cffdf19d0可存档称号或属性
+
+|cffcccccc每局最多可获得5个徽章|r]],
 --品质
 color = '紫',
 --物品类型
@@ -17,8 +24,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 wood = 100,
 --物品数量
 _count = 1,
---物品详细介绍的title
-content_tip = '使用说明：'
+
 }
 
 ac.game:event '物品-消耗品叠加' (function(_,item,old_value) --old_value

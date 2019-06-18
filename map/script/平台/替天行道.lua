@@ -11,12 +11,20 @@ store_name = '兑换-势不可挡',
 --图标
 art = 'sbkd.blp',
 --说明
-tip = [[消耗20个徽章]],
+tip = [[
+消耗 |cffff0000二十枚徽章|r 兑换 |cff00ff00势不可挡|r
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+50   杀怪加攻击|r
+|cff00ff00+250  护甲|r
+|cff00ff00+2500 伤害减少|r
+
+|cffff0000【所有称号外观可更换，所有称号属性可叠加】|r]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-content_tip = '|cffFFE799【任务说明】：|r\n',
+content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
 need_yshz = 20,
@@ -29,18 +37,25 @@ mt{
 level = 1,
 store_name = '兑换-君临天下',
 --图标
-art = 'sbkd.blp',
+art = 'jltx.blp',
 --说明
-tip = [[消耗20个徽章]],
+tip = [[
+消耗 |cffff0000二百枚徽章|r 兑换 |cff00ff00君临天下|r
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+250  杀怪加攻击|r
+|cff00ff00+5%   全伤加深|r
+
+|cffff0000【所有称号外观可更换，所有称号属性可叠加】|r]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-content_tip = '|cffFFE799【任务说明】：|r\n',
+content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need_yshz = 20,
-need_map_level = 3,
+need_yshz = 200,
+need_map_level = 7,
 }   
  
 
@@ -50,18 +65,26 @@ mt{
 level = 1,
 store_name = '兑换-神帝',
 --图标
-art = 'sbkd.blp',
+art = 'shendi.blp',
 --说明
-tip = [[消耗20个徽章]],
+tip = [[
+消耗 |cffff0000五百枚徽章|r 兑换 |cff00ff00神帝|r
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+500  杀怪加攻击|r
+|cff00ff00+5%   暴击几率|r
+|cff00ff00-0.05 攻击间隔|r
+
+|cffff0000【所有称号外观可更换，所有称号属性可叠加】|r]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-content_tip = '|cffFFE799【任务说明】：|r\n',
+content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need_yshz = 20,
-need_map_level = 3,
+need_yshz = 500,
+need_map_level = 9,
 }   
 
 local mt = ac.skill['兑换-王者归来']
@@ -70,18 +93,26 @@ mt{
 level = 1,
 store_name = '兑换-王者归来',
 --图标
-art = 'sbkd.blp',
+art = 'wzgl.blp',
 --说明
-tip = [[消耗20个徽章]],
+tip = [[
+消耗 |cffff0000一千枚徽章|r 兑换 |cff00ff00神帝|r
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+268  杀怪加全属性|r
+|cff00ff00+5%   免伤几率|r
+|cff00ff00+5%   技暴几率|r
+
+|cffff0000【所有称号外观可更换，所有称号属性可叠加】|r]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-content_tip = '|cffFFE799【任务说明】：|r\n',
+content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need_yshz = 20,
-need_map_level = 3,
+need_yshz = 1000,
+need_map_level = 10,
 }   
 
 local mt = ac.skill['兑换-力量']
@@ -90,19 +121,24 @@ mt{
 level = 1,
 store_name = '兑换-力量',
 --图标
-art = 'sbkd.blp',
+art = 'yshz.blp',
+content_tip = '|cffFFE799【兑换说明】：|r\n',
 --说明
-tip = [[消耗1徽章兑换25万力量，限量20个]],
+tip = [[
+
+消耗 |cffff0000一枚徽章|r 兑换 |cff00ff0010万点永久力量|r
+
+|cffcccccc兑换属性可存档，兑换上限次数=地图等级|r]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-content_tip = '|cffFFE799【任务说明】：|r\n',
+
 --物品技能
 is_skill = true,
 need_yshz = 1,
 need_map_level = 0,
-['力量'] = 250000,
+['力量'] = 100000,
 max_buy_cnt = 20,--最大兑换次数
 }   
 
@@ -112,19 +148,23 @@ mt{
 level = 1,
 store_name = '兑换-敏捷',
 --图标
-art = 'sbkd.blp',
+art = 'yshz.blp',
 --说明
-tip = [[消耗1徽章兑换25万敏捷，限量20个]],
+tip = [[
+
+消耗 |cffff0000一枚徽章|r 兑换 |cff00ff0010万点永久敏捷|r
+
+|cffcccccc兑换属性可存档，兑换上限次数=地图等级|r]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-content_tip = '|cffFFE799【任务说明】：|r\n',
+content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
 need_yshz = 1,
 need_map_level = 0,
-['敏捷'] = 250000,
+['敏捷'] = 100000,
 max_buy_cnt = 20,--最大兑换次数
 }   
 
@@ -134,19 +174,23 @@ mt{
 level = 1,
 store_name = '兑换-智力',
 --图标
-art = 'sbkd.blp',
+art = 'yshz.blp',
 --说明
-tip = [[消耗1徽章兑换25万智力，限量20个]],
+tip = [[
+
+消耗 |cffff0000一枚徽章|r 兑换 |cff00ff0010万点永久智力|r
+
+|cffcccccc兑换属性可存档，兑换上限次数=地图等级|r]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-content_tip = '|cffFFE799【任务说明】：|r\n',
+content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
 need_yshz = 1,
 need_map_level = 0,
-['智力'] = 250000,
+['智力'] = 100000,
 max_buy_cnt = 20,--最大兑换次数
 }   
 
@@ -156,19 +200,23 @@ mt{
 level = 1,
 store_name = '兑换-全属性',
 --图标
-art = 'sbkd.blp',
+art = 'yshz.blp',
 --说明
-tip = [[消耗1徽章兑换25万全属性，限量20个]],
+tip = [[
+
+消耗 |cffff0000一枚徽章|r 兑换 |cff00ff004万点永久全属性|r
+
+|cffcccccc兑换属性可存档，兑换上限次数=地图等级|r]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-content_tip = '|cffFFE799【任务说明】：|r\n',
+content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
 need_yshz = 1,
 need_map_level = 0,
-['全属性'] = 100000,
+['全属性'] = 40000,
 max_buy_cnt = 20, --最大兑换次数
 }   
 

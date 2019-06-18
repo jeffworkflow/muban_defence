@@ -232,7 +232,7 @@ level = 0,
 art = [[guanyu.blp]],
 --说明
 tip = [[
-|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 200 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 500 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【英雄天赋】：|r
 |cffffff00【杀怪加全属性】+188*Lv
