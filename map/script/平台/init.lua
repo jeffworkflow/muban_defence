@@ -17,3 +17,4 @@ require '平台.宠物天赋'
 
 require '平台.巅峰神域'
 require '平台.神龙'
+require '平台.替天行道'

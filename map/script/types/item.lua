@@ -253,7 +253,7 @@ end
 --获取出售价格
 function mt:sell_price()
 	local count = self:get_item_count()
-	local gold = self.gold
+	local gold = self.gold  or 0
 	if count > 1 and self.item_type =='消耗品' then
 		gold = gold * count
 	end
@@ -269,7 +269,7 @@ end
 --获取出售木头
 function mt:sell_wood()
 	local count = self:get_item_count()
-	local wood = self.wood
+	local wood = self.wood  or 0
 	if count > 1 then
 		wood = wood * count
 	end
@@ -296,7 +296,7 @@ end
 --获取出售杀敌数
 function mt:sell_kill_count()
 	local count = self:get_item_count()
-	local kill_count = self.kill_count
+	local kill_count = self.kill_count or 0
 	if count > 1 then
 		kill_count = kill_count * count
 	end
@@ -320,7 +320,7 @@ end
 --获取出售积分
 function mt:sell_jifen()
 	local count = self:get_item_count()
-	local jifen = self.jifen
+	local jifen = self.jifen or 0
 	if count > 1 then
 		jifen = jifen * count
 	end
@@ -344,7 +344,7 @@ end
 --获取出售火灵
 function mt:sell_fire_seed()
 	local count = self:get_item_count()
-	local fire_seed = self.fire_seed
+	local fire_seed = self.fire_seed  or 0
 	if count > 1 then
 		fire_seed = fire_seed * count
 	end
@@ -354,9 +354,8 @@ end
 
 --增加物品层数
 function mt:add_item_count(count)
-	local i = self._count + count
-	self:set_item_count(i)
-	self._count = i
+	local count = self._count + count
+	self:set_item_count(count)
 end
 
 --设置物品使用层数
@@ -364,7 +363,7 @@ function mt:set_item_count(count)
 	self._count = count
 	if count > 0 then 
 		jass.SetItemCharges(self.handle,count)
-		
+		self:set_tip(self:get_tip())
 	else 
 		self:item_remove()	
 	end	
@@ -492,6 +491,9 @@ function mt:get_tip()
 		--有所属单位则说明物品在身上
 		if self:sell_price() > 0 then 
 			gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_price()..'|r|n'
+		end	
+		if self:sell_wood() > 0 then 
+			gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_wood()..'(木头)|r|n'
 		end	
 		if self.get_sell_tip then 
 			gold = self:get_sell_tip(gold)
@@ -748,7 +750,7 @@ end
 
 --单位是否有物品,查到立即返回
 --可根据物品名称，或是物品品质返回物品。
-function unit.__index:has_item(it)
+function unit.__index:has_item(it,all)
 	if type(it) == 'string' then 
 		it_name = it
 	else 
@@ -760,13 +762,23 @@ function unit.__index:has_item(it)
 		end
 	end	
 	local item 
-	for i=1,6 do
-		local items = self:get_slot_item(i)
-		if items and (items.name == it_name or items.color == it_name)then
-			item = items
-			break
+	if all then 
+		for i = 1,100 do
+			local items = self.item_list[i]
+			if items and (items.name == it_name or items.color == it_name)then
+				item = items
+				break
+			end
 		end
-	end
+	else	
+		for i=1,6 do
+			local items = self:get_slot_item(i)
+			if items and (items.name == it_name or items.color == it_name)then
+				item = items
+				break
+			end
+		end
+	end	
 	return item
 end
 

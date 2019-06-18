@@ -106,6 +106,8 @@
             --有同类物品 物品数量加1 返回不继续加物品
             --地上的物品需要删除
             if item then
+                --额外执行方法 on_add --modify by jeff 20190617
+                ac.game:event_notify('物品-消耗品叠加',item,it._count) --item,old_value
                 --加数量
                 item:add_item_count(it._count)
                 --刷新tip
@@ -133,7 +135,7 @@
         local kill_counts = it:sell_kill_count()
         local jifens = it:sell_jifen()
         local fire_seeds = it:sell_fire_seed()
-        
+        print(it.name,woods)
         if golds > 0  then
             player:addGold(golds,u)
         end
@@ -443,6 +445,12 @@
                 -- print('使用消耗品',item.name,item.type_id)
                 -- 数量-1
                 item._count = item._count - 1
+                if item.no_use then 
+                    -- print(item.name)
+                    ac.wait(0,function()
+                        item:add_item_count(1)
+                    end)  
+                end  
                 --消耗品使用 增加对应的属性值
                 item:on_use_state()
 

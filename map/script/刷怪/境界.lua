@@ -219,7 +219,7 @@ mt{
     ]],
 }
 mt.skills = {'小斗气','斗者','斗师','斗灵','斗王','斗皇','斗宗','斗尊','斗圣','斗帝'}
-
+--注册死亡事件升级技能
 ac.game:event '单位-死亡'(function(_,unit,killer)
     local name = unit:get_name()
     if finds(name,'小斗气','斗者','斗师','斗灵','斗王','斗皇','斗宗','斗尊','斗圣','斗帝') then

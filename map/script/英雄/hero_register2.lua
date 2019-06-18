@@ -6,7 +6,8 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 		player_hero_tm_list[player] = tm
 	end
 	--多面板
-	ac.game.multiboard.player_init(player,hero)
+	-- print(ac.game.multiboard,ac.game.multiboard.player_init)
+	-- ac.game.multiboard:player_init(player,hero)
 
 	hero:event '单位-死亡' (function()
 	

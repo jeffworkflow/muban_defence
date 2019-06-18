@@ -548,6 +548,12 @@ local unit_reward = {
     ['强盗领主'] = {{rand =100,name = '藏宝图'}},
     ['强盗'] = {{rand =2,name = '藏宝图'}},
     
+    ['红发'] = {{rand =100,name = '格里芬'}},
+    ['黑胡子'] = {{rand =100,name = '黑暗项链'}},
+    ['百兽'] = {{rand =100,name = '最强生物心脏'}},
+    ['白胡子'] = {{rand =100,name = '白胡子的大刀'}},
+
+    -- ['食人魔'] = {{rand =20 +10*(ac.g_game_degree or 1),name = '勇士徽章'}},
    
 }
 ac.unit_reward = unit_reward

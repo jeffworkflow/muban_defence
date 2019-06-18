@@ -103,9 +103,9 @@ end
 function player.__index:Map_HasMallItem(key)
     local handle = self.handle
     -- print(handle,key)
-    return japi.DzAPI_Map_HasMallItem(handle,key)
+    -- return japi.DzAPI_Map_HasMallItem(handle,key)
     --测试时，默认都为空
-    -- return false
+    return false
 end
 
 --判断玩家服务器存档是否读取成功

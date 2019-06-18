@@ -15,7 +15,7 @@ tip = [[商城218
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 50,
@@ -46,7 +46,7 @@ tip = [[地图等级40
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 50,
@@ -76,7 +76,7 @@ tip = [[最强王者50星
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 50,
@@ -107,7 +107,7 @@ tip = [[商城188
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 50,
@@ -140,7 +140,7 @@ tip = [[商城218
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 50,
@@ -173,7 +173,7 @@ tip = [[商城218
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 50,
@@ -205,7 +205,7 @@ tip = [[商城218
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 50,
@@ -237,7 +237,7 @@ tip = [[商城218
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 50,
@@ -270,7 +270,7 @@ tip = [[商城218
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 50,
@@ -302,7 +302,7 @@ tip = [[商城218
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
+    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 50,
@@ -319,7 +319,7 @@ effect = [[chibang7.mdx]]
 
 
 --统一加方法
-for i,name in ipairs({'挑战耐瑟龙','挑战冰龙','挑战精灵龙','挑战骨龙','挑战奇美拉','挑战Pa','挑战小龙女','挑战关羽','挑战霸王莲龙锤','挑战梦蝶仙翼'}) do
+for i,name in ipairs({'挑战耐瑟龙','挑战冰龙','挑战精灵龙','挑战骨龙','挑战奇美拉','挑战Pa','挑战手无寸铁的小龙女','挑战关羽','挑战霸王莲龙锤','挑战梦蝶仙翼'}) do
     local mt = ac.skill[name]
    
     function mt:on_cast_start()
@@ -341,7 +341,7 @@ for i,name in ipairs({'挑战耐瑟龙','挑战冰龙','挑战精灵龙','挑战
             local unit = ac.player(12):create_unit(unit_name,point,270)
             unit:event '单位-死亡'(function(trg,unit,killer)
                 --加碎片，存档。
-                local name = unit:get_name()..'碎片'
+                local name = unit_name..'碎片'
                 local key = ac.server.name2key(name)
                 player:AddServerValue(key,ac.g_game_degree)
 

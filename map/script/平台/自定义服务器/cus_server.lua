@@ -157,14 +157,21 @@ function player.__index:SetServerValue(key,value,f)
     local f = f or function (retval)  end
     post_message(url,post,function (retval)  
         if not finds(retval,'http') then 
-            local tbl = json.decode(retval)
-            if tbl and tbl.code == 0 then 
-                f(tbl)
+            local is_json = json.is_json(retval)
+            if is_json then 
+                local tbl = json.decode(retval)
+                if tbl and tbl.code == 0 then 
+                    f(tbl)
+                else
+                    print(self:get_name(),post,'上传失败')
+                end         
             else
-                print(self:get_name(),post,'上传失败')
-            end         
+                print('返回值非json格式:',post)
+                print_r(retval)
+            end    
         else
             print('服务器返回数据异常:',post)
+            print_r(retval)
         end    
     end)
 
@@ -184,6 +191,7 @@ function player.__index:AddServerValue(key,value,f)
     end    
     --保存
     local key_name = ac.server.key2name(key)
+    print(key_name,self.cus_server[key_name])
     self.cus_server[key_name] = (self.cus_server[key_name] or 0 ) + tonumber(value)
     self:SetServerValue(key,self.cus_server[key_name])
 end

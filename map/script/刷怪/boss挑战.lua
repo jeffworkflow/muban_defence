@@ -53,11 +53,13 @@ ac.challenge_boss = {
     ['虚无吞炎boss'] = {ac.map.rects['boss-虚无吞炎'],270},
     
     ['强盗领主'] = {ac.map.rects['boss-藏宝图'],270},
+    --boss名 = 区域，面向角度，特效区域，特效
+    ['红发'] = {ac.map.rects['boss-红发'],270,'hand','wuqi13.mdx'},
+    ['黑胡子'] = {ac.map.rects['boss-黑胡子'],270,'hand','wuqi13.mdx'},
+    ['百兽'] = {ac.map.rects['boss-百兽'],270,'hand','wuqi13.mdx'},
+    ['白胡子'] = {ac.map.rects['boss-白胡子'],270,'hand','wuqi13.mdx'},
 
-    ['红发'] = {ac.map.rects['boss-红发'],270},
-    ['黑胡子'] = {ac.map.rects['boss-黑胡子'],270},
-    ['百兽'] = {ac.map.rects['boss-百兽'],270},
-    ['白胡子'] = {ac.map.rects['boss-白胡子'],270},
+    ['食人魔'] = {ac.map.rects['boss-食人魔'],270},
     
 }
 --游戏初始化开启
@@ -77,6 +79,25 @@ ac.game:event '游戏-开始' (function()
         --改变怪物面向角度
         function mt:on_change_creep(unit,lni_data)
             unit:set_facing(val[2] or 0)
+            if val[3] and val[4] then 
+                unit:add_effect(val[3],val[4])
+            end    
+            --特殊boss处理
+            if unit:get_name() == '食人魔' then
+                unit:event '单位-死亡'(function(_,unit,killer)
+                    local rate = 20 + (10*ac.g_game_degree)
+                    local max_cnt = 5 --每人一局最大掉落次数
+                    local p= killer:get_owner()
+                    if unit:is_ally(killer) then
+                        return
+                    end
+                    p.kill_srm = (p.kill_srm or 0) 
+                    if p.kill_srm < max_cnt and math.random(100) <= rate then 
+                        ac.item.create_item('勇士徽章',unit:get_point())
+                        p.kill_srm = (p.kill_srm or 0) + 1  
+                    end    
+                end)
+            end    
         end
         --开启
         mt:start()

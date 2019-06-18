@@ -390,6 +390,8 @@ function json.decode(str)
   end
   return ( parse(str, next_char(str, 1, space_chars, true)) )
 end
-
-
+function json.is_json(str)
+    local ok,error_res = xpcall(json.decode,decode_error,str)
+    return ok
+end
 return json

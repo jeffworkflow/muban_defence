@@ -27,5 +27,10 @@ function player.__index:create_pets()
     -- 测试魔法书
     -- u:add_skill('魔法书demo','英雄')
     
-    
+    --
+    if self.cus_server and self.cus_server['勇士徽章'] > 0 then
+        local item = u:add_item('勇士徽章')
+        item:set_item_count(self.cus_server['勇士徽章'] - 1)
+        self:AddServerValue('yshz',-1) --添加勇士徽章时会往服务器存，所以需要减掉。 
+    end    
 end

@@ -2,124 +2,135 @@ local multiboard = require 'types.multiboard'
 
 local base_icon = [[ReplaceableTextures\CommandButtons\BTNSelectHeroOn.blp]]
 local mtb
-ac.game.multiboard = mtb
-
-local list1 = {'玩家ID','所选英雄','杀敌','伤害'}
-local function multiboard_init()
-	local online_player_cnt = get_player_count()
-	local all_lines = online_player_cnt +3
-	all_lines = 3
-	mtb = multiboard.create(4,all_lines)
-	ac.game.multiboard = mtb
-
-	--初始化格式
-	mtb:setAllStyle(true,false)
-	for y = 1,all_lines do
-		for x = 1,4 do 
-			-- if y == 1 then
-			-- 	mtb:setText(x,y,list1[x])
-			-- elseif y == (all_lines - 1) then
-			-- 	mtb:setStyle(x,y,false,false)
-			-- end
-
-			if x == 1 then
-				-- if y >= 2 and y <= (all_lines - 2) then
-				-- 	mtb:setText(x,y,'玩家' .. y - 1)
-				-- end
-				mtb:setWidth(x,y,0.07)
-			elseif x == 2 then
-				-- if y >= 2 and y <= (all_lines - 2) then
-				-- 	mtb:setStyle(x,y,true,true)
-				-- end
-				mtb:setWidth(x,y,0.1)
-				-- mtb:setIcon(x,y,base_icon)
-			elseif x == 3 then
-				-- if y >= 2 and y <= (all_lines - 2) then
-				-- 	mtb:setText(x,y,0)
-				-- end
-				mtb:setWidth(x,y,0.01)
-			elseif x == 4 then
-				-- if y >= 2 and y <= (all_lines - 2) then
-				-- 	mtb:setText(x,y,0)
-				-- end
-				mtb:setWidth(x,y,0.01)
+local color = {
+	['魔鬼的交易'] = {
+		['无所不在'] = '|cffff0000',
+		['无所不能'] = '|cffff0000',
+	},
+	['境界突破'] = {
+		['小斗气'] = '|cffff0000',
+		['斗者'] = '|cffff0000',
+	},
+	['异火'] = {
+		['星星之火'] = '|cffff0000',
+		['陨落心炎'] = '|cffff0000',
+	},
+	['其它'] = {
+		['倒霉蛋'] = '|cffff0000',
+		['游戏王'] = '|cffff0000',
+	},
+}
+--深度优先算法
+local function get_text(hero,book_skill)
+	local str = ''
+	local skl = hero:find_skill(book_skill,nil,true)
+	if not skl or  #skl.skill_book ==0 then return str end 
+	for i=#skl.skill_book,1,-1 do
+		local skill = skl.skill_book[i]
+		if skill.level>=1 then 
+			if skill.is_spellbook then
+				--深度优先，没有判断 则每次递归都有值返回，而我们是要找到符合条件的才返回，所以加判断。
+				if get_text(hero,skill.name) then 
+					return get_text(hero,skill.name) 
+				end	
+			else
+				-- print(skill.name)
+				str = skill.name
+				return str
+			end	
+		end	
+	end
+end	
+local function add_color(str,book_skill)
+	local str = str or ''
+	--处理颜色代码
+	if color[book_skill] then  
+		for key,val in pairs(color[book_skill]) do
+			-- print(str,key,val)
+			if finds(str,key) then
+				str = val..str..'|r'
+				break
 			end
-			
-		end
-	end
-	mtb:setText(2,3,'按住|cffff0000tab|r查看|cffff0000kda|r')
-	mtb:setText(1,3,'按住|cffff0000~|r查看|cffff0000排行榜|r')
-	-- mtb:setWidth(1,all_lines,20)
-	
-	-- --玩家信息初始化，设置英雄头像，玩家信息
-	ac.game.multiboard.player_init = function(player,hero)
-		-- mtb:setText( 1, player.id + 1, player:get_name()..(player.unlucky and '(衰人)' or '' ))
-		-- mtb:setText( 2, player.id + 1, hero:get_name())
-		-- mtb:setIcon( 2, player.id + 1, hero:get_slk('Art',base_icon))
-	end
-	
-
-	-- --杀害野怪刷新
-	ac.game.multiboard.player_kill_count = function( player, num)
-		-- mtb:setText( 3, player.id + 1, num)
-	end
-
-	-- --玩家伤害数据刷新
-	local damage_list = {}
-	ac.game.multiboard.damage_init = function(player, num)
-		-- mtb:setText( 4, player.id + 1, num )
-	end
-
-	ac.game.multiboard.set_time = function(time)
-		local tip =''  
-		local degree 
-		if ac.g_game_degree == 1 then 
-			degree = '普通'
-		elseif ac.g_game_degree == 2 then 
-			degree = '噩梦'
-		elseif ac.g_game_degree == 3 then  
-			degree = '地狱'
-		else 
-			degree = '圣人'
-		end  
-		local name 
-		if ac.g_game_mode == 1 then 
-			name = '标准模式'..tip
-		else 
-			name = '嘉年华模式'..tip
-		end  
-		name = name ..'（'.. degree..'）'
-		mtb:setTitle(name .. '           游戏剩余时间   ' .. time)
-	end
-
-	-- mtb:setText(2,2,'怪物总数')
-	--怪物总数
-	
-	-- ac.loop(1*1000,function()
-	-- 	local current_count = 0
-	-- 	if ac.creep['刷怪'].index>=1 then
-	-- 		current_count = ac.creep['刷怪'].current_count 
-	-- 	end	
-	-- 	if ac.creep['刷怪-无尽'].index>=1 then
-	-- 		current_count = ac.creep['刷怪-无尽'].current_count 
-	-- 	end	
-	-- 	mtb:setText(1,2,'怪物总数：'..current_count)
-
-	-- 	--设置倒计时
-	-- 	if ac.creep['刷怪'] and ac.creep['刷怪'].boss then  
-	-- 		local buff = ac.creep['刷怪'].boss:find_buff '时停'
-	-- 		if buff then 
-	-- 			--最终boss死亡之指倒计时 
-	-- 			mtb:setText(2,2,'|cffff0000死亡之指|r倒计时：|cffff0000'..(buff.time-1)..'|r')
-	-- 		end	
-	-- 	end	 
-	-- end)
-
-	
+		end	
+	end	
+	return str
 end
 
 
-ac.wait(10,function()
-	multiboard_init()
+local title =  {'玩家','杀敌数','火灵','魔鬼的交易','境界','异火','其它'}
+
+local function init()
+
+	local online_player_cnt = get_player_count()
+	local all_lines = online_player_cnt +3
+	mtb = multiboard.create(#title,all_lines)
+	ac.game.multiboard = mtb
+
+	mtb:setTitle('【'..(ac.server_config and ac.server_config['map_name'] or '')..'】难度：'..(ac.g_game_degree_name or ''))
+	-- mtb:setTitle("信息面板")
+	--设置表头
+    for i = 1,#title do 
+        mtb:setText(i,1,title[i])
+	end 
+	--统一设置宽度
+    mtb:setAllWidth(0.05)
+	--初始化所有数据
+    for i = 2,all_lines do 
+		local player = ac.player(i-1)
+		if player:is_player() then 
+			mtb:setText(1,i,player:get_name())
+			mtb:setText(2,i,'0')
+			mtb:setText(3,i,'0')
+			mtb:setText(4,i,' ')
+			mtb:setText(5,i,' ')
+			mtb:setText(6,i,' ')
+			mtb:setText(7,i,' ')
+		end	
+    end 
+	--初始化格式
+	mtb:setAllStyle(true,false)
 	mtb:show()
+	
+end
+
+--具体函数
+local function player_init(player,hero)
+	mtb:setText( 1, player.id + 1, player:get_name())
+	mtb:setIcon( 1, player.id + 1, hero:get_slk('Art',base_icon))
+end
+
+local function fresh(player,hero)
+	-- print(1111111111)
+	--刷新杀敌数
+	mtb:setText( 2, player.id + 1, player.kill_count)
+	mtb:setText( 3, player.id + 1, player.fire_seed)
+	--刷新字段
+	-- print(get_text(hero,'魔鬼的交易'))
+	for i,book_skill in ipairs(title) do 
+		local new_str = get_text(hero,book_skill)
+		new_str = add_color(new_str,book_skill)
+		print(book_skill,new_str)
+		if new_str and new_str ~='' then 
+			mtb:setText( i, player.id + 1, new_str)
+		end	
+	end	
+end	
+
+ac.loop(1000,function()
+	for i=1,10 do 
+		local player = ac.player(i)
+		local hero = player.hero
+		if player:is_player() and hero then 
+			fresh(player,hero)
+		end	
+	end	
+end)
+
+ac.game:event '游戏-开始' (function()
+	--游戏开始时，重新更改标题
+	mtb:setTitle('【'..(ac.server_config and ac.server_config['map_name'] or '')..'】难度：'..(ac.g_game_degree_name or ''))
+end)
+
+ac.wait(0,function()
+	init()
 end)

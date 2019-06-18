@@ -35,7 +35,7 @@ function mt:on_cast_start()
     -- local map_level = p:Map_GetMapLevel() 
       
     local name = self.name
-    if not p.mall_flag[name] then 
+    if p.mall[name] and not p.mall_flag[name] then 
         --添加给英雄
         hero:add('暴击加深',self.award_physical_damage)
         hero:add('技暴加深',self.award_magic_damage)
@@ -49,10 +49,10 @@ function mt:on_cast_start()
         end)
         p.mall_flag[name] = true
         
-        local tip = '|cffFFE799【系统消息】|r恭喜 |cffff0000'..p:get_name()..'|r 获得|cffFFE799五星好评礼包 【礼包奖励】|r|cff00ff00被攻击10%几率获得5点全属性， 暴击加深+15%， 技暴加深+15% |r'
-        p:sendMsg(tip)
+        local tip = '|cffFFE799【系统消息】|r恭喜 |cff00ffff'..p:get_name()..'|r 获得|cffff0000五星好评礼包|r |cffFFE799【礼包奖励】|r|cff00ff00被攻击10%几率获得5点全属性， 暴击加深+15%， 技暴加深+15% |r'
+        p:sendMsg(tip,3)
     else
-        p:sendMsg('条件不足或已领取过')    
+        p:sendMsg('条件不足或已领取过',2)    
     end   
 end
 mt.on_add = mt.on_cast_start

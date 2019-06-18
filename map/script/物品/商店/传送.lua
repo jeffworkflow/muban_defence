@@ -61,9 +61,7 @@ ac.quick_arrive ={
     ['百兽'] = {ac.map.rects['传送-百兽'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
     ['白胡子'] = {ac.map.rects['传送-白胡子'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
 
-
-
-
+    ['替天行道'] = {ac.map.rects['传送-替天行道'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
 
 }
 

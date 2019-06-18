@@ -275,6 +275,9 @@ ac.map.rects={
 	['boss-百兽'] =rect.j_rect('emo33') ,
 	['boss-白胡子'] =rect.j_rect('emo44') ,
 
+	['传送-替天行道'] =rect.j_rect('ttxd1') ,
+	['boss-食人魔'] =rect.j_rect('ttxd11') ,
+
 }
 
 -- local minx, miny, maxx, maxy = ac.map.rects['刷怪']:get()

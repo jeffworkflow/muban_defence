@@ -4,6 +4,8 @@ local rect = require 'types.rect'
 --物品名称
 local mt = ac.skill['挑战最终boss']
 mt{
+--特殊id
+type_id = 'EX03',    
 --等久
 level = 1,
 --图标

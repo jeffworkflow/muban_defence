@@ -45,6 +45,8 @@ local streng_item_list = {
     {'陨落心炎','陨落心炎碎片*100'},
     {'三千焱炎火','三千焱炎火碎片*100'},
     {'虚无吞炎','虚无吞炎碎片*100'},
+
+    {'恶魔果实','格里芬*1 黑暗项链*1 最强生物心脏*1 白胡子的大刀*1'},
     
 }
 local function streng_item(alltable,unit,it)
@@ -343,27 +345,27 @@ end)
 
 
 
-ac.game:event '物品-合成失败' (function(trg,player,new_item, source_names) 
-    -- print('合成失败')
-    --概率
-    local rate = 5
-    -- 概率小于等于5 且 没有倒霉人，设置为倒霉人
-    if math.random(1,100)<=rate and not ac.unlucky  then 
-        ac.unlucky = player
-        player.unlucky = true
-        player.is_show_nickname = '(衰人)'
-        local hero = player.hero
-        hero:add('力量',10000)
-        hero:add('敏捷',10000)
-        hero:add('智力',10000)
-        --设置数据统计面板显示 (在数据统计2 里面已设置好)
-        --多面板
-        ac.game.multiboard.player_init(player,player.hero)
-        --给全部玩家发送消息
-        ac.player.self:sendMsg("【系统提示】玩家 |cffff0000"..player:get_name()..'|r 经常|cff00ffff合成装备失败|r,获得唯一称号|cffff0000"衰人" |r，称号效果：|cffff0000合成装备100%成功，全属性+10000.|r',10)
-        ac.player.self:sendMsg("【系统提示】玩家 |cffff0000"..player:get_name()..'|r 经常|cff00ffff合成装备失败|r,获得唯一称号|cffff0000"衰人" |r，称号效果：|cffff0000合成装备100%成功，全属性+10000.|r',10)
+-- ac.game:event '物品-合成失败' (function(trg,player,new_item, source_names) 
+--     -- print('合成失败')
+--     --概率
+--     local rate = 5
+--     -- 概率小于等于5 且 没有倒霉人，设置为倒霉人
+--     if math.random(1,100)<=rate and not ac.unlucky  then 
+--         ac.unlucky = player
+--         player.unlucky = true
+--         player.is_show_nickname = '(衰人)'
+--         local hero = player.hero
+--         hero:add('力量',10000)
+--         hero:add('敏捷',10000)
+--         hero:add('智力',10000)
+--         --设置数据统计面板显示 (在数据统计2 里面已设置好)
+--         --多面板
+--         ac.game.multiboard.player_init(player,player.hero)
+--         --给全部玩家发送消息
+--         ac.player.self:sendMsg("【系统提示】玩家 |cffff0000"..player:get_name()..'|r 经常|cff00ffff合成装备失败|r,获得唯一称号|cffff0000"衰人" |r，称号效果：|cffff0000合成装备100%成功，全属性+10000.|r',10)
+--         ac.player.self:sendMsg("【系统提示】玩家 |cffff0000"..player:get_name()..'|r 经常|cff00ffff合成装备失败|r,获得唯一称号|cffff0000"衰人" |r，称号效果：|cffff0000合成装备100%成功，全属性+10000.|r',10)
 
 
-    end    
-end)
+--     end    
+-- end)
 

@@ -93,7 +93,7 @@ local cus_key = {
 
     {'wbjf','挖宝积分'},
     {'cwtf','宠物天赋'},
-    {'hz','徽章'},
+    {'yshz','勇士徽章'},
 
 }
 ac.cus_server_key = cus_key
