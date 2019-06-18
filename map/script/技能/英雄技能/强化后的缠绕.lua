@@ -14,7 +14,7 @@ mt{
 	passive = true,
     title = "|cffdf19d0强化后的缠绕|r",
 	--冷却时间
-	cool = 20,
+	cool = 1,
 	--伤害
 	damage = function(self)
   return (self.owner:get('全属性')*12+10000)* self.level
@@ -69,9 +69,15 @@ function mt:on_add()
 		if not damage:is_common_attack()  then 
 			return 
 		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
         --触发时修改攻击方式
         if math.random(100) <= self.chance then
             start_damage()
+            --激活cd
+            skill:active_cd()
         end
     end)
 end

@@ -13,7 +13,10 @@ mt{
     --伤害范围
    damage_area = 500,
 	--技能类型
-	skill_type = "被动,无敌",
+    skill_type = "被动,无敌",
+    
+   --cd
+   cool = 1,
 
 	--冷却时间
     cool = 20,

@@ -16,7 +16,7 @@ mt{
 	passive = true,
 	title = "|cffdf19d0强化后的招架之力|r",
 	--冷却时间
-	cool = 20,
+	cool = 1,
 	--介绍
     tip = [[
         

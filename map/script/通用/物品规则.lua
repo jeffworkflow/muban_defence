@@ -152,16 +152,6 @@
         if jifens > 0 then 
             --增加积分
             player:add_jifen(jifens)
-            --保存服务器存档 永久性的物品
-            -- local key = ac.get_mallkey_byname(it.name)
-            -- if key then 
-            --     -- print(it.name,key,1)
-            --     player:Map_SaveServerValue(key,1)
-            --     if not player.mall then 
-            --         player.mall ={}
-            --     end
-            --     player.mall[it.name] = true    
-            -- end    
         end   
 
         it:item_remove()
@@ -257,14 +247,10 @@
                 -- player:event_notify('积分变化',player,-jifens)
                 --保存服务器存档 永久性的物品
                 -- print(it.name)
-                local key = ac.get_mallkey_byname(it.name)
+                local key = ac.server.name2key(it.name)
                 if key then 
                     -- print(it.name,key,1)
-                    player:Map_SaveServerValue(key,1)
-                    if not player.mall then 
-                        player.mall ={}
-                    end
-                    player.mall[it.name] = true    
+                    player:SetServerValue(key,1) 
                 end    
             end   
 
@@ -454,7 +440,7 @@
                 --消耗品使用 增加对应的属性值
                 item:on_use_state()
 
-                if item._count < 1 then 
+                if not item.no_use and item._count < 1 then 
                     item:item_remove()
                 end
             else 

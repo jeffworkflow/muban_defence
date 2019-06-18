@@ -191,7 +191,7 @@ function player.__index:AddServerValue(key,value,f)
     end    
     --保存
     local key_name = ac.server.key2name(key)
-    print(key_name,self.cus_server[key_name])
+    -- print(key_name,self.cus_server[key_name])
     self.cus_server[key_name] = (self.cus_server[key_name] or 0 ) + tonumber(value)
     self:SetServerValue(key,self.cus_server[key_name])
 end

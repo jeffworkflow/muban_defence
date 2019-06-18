@@ -16,7 +16,7 @@ mt{
 	passive = true,
     title = "|cffdf19d0强化后的水疗术|r",
 	--冷却时间
-    cool = 20,
+    cool = 1,
     ['每秒回血'] = 20,
 	--介绍
     tip = [[
@@ -37,10 +37,14 @@ function mt:on_add()
     local skill = self
     local hero = self.owner
 
-    self.trg = hero:event '造成伤害效果' (function(_,damage)
+    self.trg = hero:event '造成伤害效果' (function(_,damage)--注册触发
 		if not damage:is_common_attack()  then 
 			return 
 		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
         --触发时修改攻击方式
 		if math.random(100) <= self.chance then
             --补血
@@ -52,6 +56,8 @@ function mt:on_add()
                 size = 10,
                 heal = hero:get('生命上限') * skill.heal/100,
             }	
+            --激活cd
+            skill:active_cd()
         end
     end)
 end

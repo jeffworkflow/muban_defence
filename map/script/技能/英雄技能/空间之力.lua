@@ -11,7 +11,9 @@ mt{
     --伤害范围
    damage_area = 500,
 	--技能类型
-	skill_type = "被动,全属性",
+    skill_type = "被动,全属性",
+    --cd
+    cool = 1,
 	--被动
 	passive = true,
 	--伤害
@@ -73,6 +75,13 @@ function mt:on_add()
     end
 
     self.trg = hero:event '造成伤害效果' (function(_, damage)
+		if not damage:is_common_attack()  then 
+			return 
+		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
         --触发时修改攻击方式
         if math.random(100) <= self.chance then  
             self = self:create_cast()
@@ -81,6 +90,8 @@ function mt:on_add()
             hero:event_notify('触发天赋技能', self)
 
             range_attack_start(hero,damage)
+            --激活cd
+            skill:active_cd()
         end 
 
         return false

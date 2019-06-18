@@ -42,6 +42,7 @@ function player.__index:add_fire_seed(fire_seed, where, flag)
 		fire_seed = data.fire_seed
 	end
 	self.fire_seed = (self.fire_seed or 0) + fire_seed
+	self.fire_seed = jass.I2R(self.fire_seed)
 	if self.fire_seed < 0 then 
 		self.fire_seed = 0
 	end	

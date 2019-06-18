@@ -54,11 +54,34 @@ function player.__index:Map_GetServerValue(key)
     return value
 end
 
+-- --存档通用型 只能存入字符串型
+-- function player.__index:Map_SaveServerValue(key,value)
+--     local handle = self.handle
+--     japi.DzAPI_Map_SaveServerValue(handle,tostring(key),tostring(value))
+-- end
+
 --存档通用型 只能存入字符串型
 function player.__index:Map_SaveServerValue(key,value)
     local handle = self.handle
     japi.DzAPI_Map_SaveServerValue(handle,tostring(key),tostring(value))
-    
+    --保存本局数据
+    if not self.cus_server then 
+        self.cus_server ={}
+    end    
+    local key_name = ac.server.key2name(key)
+    self.cus_server[key_name] = tonumber(value)
+end
+
+
+function player.__index:Map_AddServerValue(key,value,f)
+    if not self.cus_server then 
+        self.cus_server ={}
+    end    
+    --保存
+    local key_name = ac.server.key2name(key)
+    -- print(key_name,self.cus_server[key_name])
+    self.cus_server[key_name] = (self.cus_server[key_name] or 0 ) + tonumber(value)
+    self:Map_SaveServerValue(key,self.cus_server[key_name])
 end
 
 --获取全局存档 返回字符串型

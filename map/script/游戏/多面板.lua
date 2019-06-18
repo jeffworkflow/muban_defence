@@ -57,7 +57,7 @@ local function add_color(str,book_skill)
 end
 
 
-local title =  {'玩家','杀敌数','火灵','魔鬼的交易','境界','异火','其它'}
+local title =  {'玩家','|cff00ffff杀敌数|r','火灵','魔鬼的交易','境界','异火','其它'}
 
 local function init()
 
@@ -78,7 +78,7 @@ local function init()
     for i = 2,all_lines do 
 		local player = ac.player(i-1)
 		if player:is_player() then 
-			mtb:setText(1,i,player:get_name())
+			mtb:setText(1,i,player:getColorWord()..player:get_name()..'|r')
 			mtb:setText(2,i,'0')
 			mtb:setText(3,i,'0')
 			mtb:setText(4,i,' ')
@@ -107,9 +107,11 @@ local function fresh(player,hero)
 	--刷新字段
 	-- print(get_text(hero,'魔鬼的交易'))
 	for i,book_skill in ipairs(title) do 
+		--去颜色
+		local book_skill = clean_color(book_skill)
 		local new_str = get_text(hero,book_skill)
 		new_str = add_color(new_str,book_skill)
-		print(book_skill,new_str)
+		-- print(book_skill,new_str)
 		if new_str and new_str ~='' then 
 			mtb:setText( i, player.id + 1, new_str)
 		end	

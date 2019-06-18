@@ -15,6 +15,8 @@ mt{
 	skill_type = "被动,力量",
 	--被动
 	passive = true,
+	--cd
+	cool = 1,
 	--伤害
 	damage = function(self)
 	return (self.owner:get('力量')*10+10000)* self.level

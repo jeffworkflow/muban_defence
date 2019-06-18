@@ -14,7 +14,7 @@ mt{
 	passive = true,
 	title = "|cffdf19d0强化后的死亡脉冲|r",
 	--冷却时间
-	cool = 15,
+	cool = 1,
     --伤害范围
    area = 800,
 	--伤害
@@ -77,14 +77,20 @@ function mt:on_add()
 		end
 	end
 
-	self.trg = hero:event '造成伤害效果' (function(_,damage)
+	--注册触发
+    self.trg = hero:event '造成伤害效果' (function(_,damage)
 		if not damage:is_common_attack()  then 
 			return 
 		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
         --触发时修改攻击方式
 		if math.random(100) <= self.chance then
-			--计算伤害
-			start_damage()
+            start_damage()
+            --激活cd
+            skill:active_cd()
         end
     end)
 

@@ -41,10 +41,8 @@ function mt:on_add()
 		end 
         --触发时修改攻击方式
 		if math.random(100) <= self.chance then
-            self.buff = hero:add_buff '隐身' {
+            self.buff = hero:add_buff '疾步风' {
                 time = self.stand_time,
-                -- remove_when_attack = true,
-                -- remove_when_spell = true,
                 move_speed = self.move_speed
             }
         end

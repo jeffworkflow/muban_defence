@@ -11,6 +11,8 @@ mt{
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
 	--技能类型
 	skill_type = "被动,智力",
+	--cd
+	cool = 1,
 	--被动
 	passive = true,
 	--伤害
