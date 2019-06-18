@@ -64,8 +64,8 @@ ac.challenge_boss = {
 }
 --游戏初始化开启
 ac.game:event '游戏-开始' (function()
+    local i = 0
     for key,val in pairs(ac.challenge_boss) do 
-            -- print(key,val)
         local mt = ac.creep[key]{    
             region = val[1],
             creeps_datas = key..'*1',
@@ -99,8 +99,12 @@ ac.game:event '游戏-开始' (function()
                 end)
             end    
         end
-        --开启
-        mt:start()
+        --优化挑战怪
+        i = i + 1
+        ac.wait(i*1100,function()
+            --开启
+            mt:start()
+        end)
     end   
 end)
 

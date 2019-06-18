@@ -25,6 +25,7 @@ function ac.item.create_skill_item(name,poi,is)
     item.tip =  tip .. '|cff808080当技能学满后，点击可替换已学技能|r' 
     item:set_art(art)
     item.art = art
+    item.color = '青'
 	--混合图标处理
 	local blend = item.blend or ac.blend_file[item.color or 'nil'] 
 	if blend then 

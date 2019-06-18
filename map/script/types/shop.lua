@@ -40,8 +40,9 @@ local function on_texttag(string,hero,zoffset,xoffset,yoffset)
 end
 ac.nick_name = on_texttag
 --创建一个商店
-function shop.create(name,x,y,face,is_selling)
-	local unit = ac.player[11]:create_unit(name,ac.point(x,y),face)
+function shop.create(name,x,y,face,is_selling,player)
+	local player = player or ac.player[11]
+	local unit = player:create_unit(name,ac.point(x,y),face)
 	--继承商店
 	setmetatable(unit, shop)
 

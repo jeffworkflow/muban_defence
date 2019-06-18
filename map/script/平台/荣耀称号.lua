@@ -7,7 +7,7 @@ mt{
     level = 1,
     max_level = 100,
     --标题颜色
-    color =  '青',
+    color =  '紫',
 	--介绍
     tip = [[|cffFFE799称号说明：|r|cffff0000多个称号属性可叠加，点击可切换称号效果|r
 

@@ -9,12 +9,19 @@ for name,data in pairs(ac.table.ItemData) do
         table.insert(list,name)
     end 
 end 
+--处理技能
+ac.wait(10,function()
+    quality_item['青'] ={}
+    for i,name in ipairs(ac.skill_list2) do
+        table.insert(quality_item['青'],name)
+    end    
 
-for color,list in pairs(quality_item) do 
-    table.sort(list,function (a,b)
-        return a < b
-    end)
-end 
+    for color,list in pairs(quality_item) do 
+        table.sort(list,function (a,b)
+            return a < b
+        end)
+    end 
+end)
 
 
 
@@ -47,6 +54,7 @@ local streng_item_list = {
     {'虚无吞炎','虚无吞炎碎片*100'},
 
     {'恶魔果实','格里芬*1 黑暗项链*1 最强生物心脏*1 白胡子的大刀*1'},
+    {'青','青*1 青*1 青*1 技能融合*1'},
     
 }
 local function streng_item(alltable,unit,it)
@@ -233,10 +241,15 @@ local function streng_item(alltable,unit,it)
                         --等待0.10秒，等全部物品都删了后，再添加
                         ac.wait(10,function()
                             local stack = find_item(unit_item_list,k,true)
-                            if stack -  tonumber(v) > 0 then 
-                                local new_it = ac.item.create_item(k)
+                            if stack -  tonumber(v) > 0 then
+                                local new_it 
+                                if ac.table.ItemData[k] then 
+                                    new_it = ac.item.create_item(k)
+                                else
+                                    new_it = ac.item.create_skill_item(k)
+                                end  
                                 new_it:set_item_count( stack -  tonumber(v))
-                                u:add_item(new_it,true)
+                                u:add_item(new_it,true)  
                             end  
                         end)
 
@@ -256,9 +269,14 @@ local function streng_item(alltable,unit,it)
                             local stack = find_item(unit_item_list,name,true)
                             -- print_item(unit_item_list)
                             if stack -  tonumber(v) > 0 then 
-                                local new_it = ac.item.create_item(name)
+                                local new_it 
+                                if ac.table.ItemData[k] then 
+                                    new_it = ac.item.create_item(name)
+                                else
+                                    new_it = ac.item.create_skill_item(name)
+                                end  
                                 new_it:set_item_count( stack -  tonumber(v))
-                                u:add_item(new_it,true)
+                                u:add_item(new_it,true)  
                             end  
                         end)
                     end    
@@ -291,7 +309,7 @@ local function streng_item(alltable,unit,it)
             -- ac.game:event_dispatch('物品-合成成功前', dest_str,source_names,del_item) 
             -- print('最终概率',dest_rate)
             local data = ac.table.ItemData[dest_str]
-            local color
+            local color =ac.color_code['青']
             if data then  
                 color= ac.color_code[data.color or '白'] 
             end
@@ -301,7 +319,12 @@ local function streng_item(alltable,unit,it)
             end    
             if math.random(1,100) <= (tonumber(dest_rate) or 100) then 
                 p:sendMsg('|cff00ff00合成|r |cff'..color..dest_str..' |r|cff00ff00成功|r')
-                local new_item  = u:add_item(dest_str,true)  
+                local new_item  
+                if ac.table.ItemData[dest_str] then 
+                    new_item = u:add_item(dest_str,true)  
+                else
+                    new_item = ac.item.add_skill_item(dest_str,u)
+                end  
                 -- 新物品 ， 材料列表 k = 材料名 ，v =数量
                 -- 回调时 需要等 合成物品成功，程序继续进行
                 ac.game:event_dispatch('物品-合成成功',p,new_item,source_names) 

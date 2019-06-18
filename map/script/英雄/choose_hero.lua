@@ -81,7 +81,7 @@ local function showHeroState(p, u)
 
 	local tip = [[]]
 	local value = (ac.player.self.hero_xp and ac.player.self.hero_xp[hero_name] or 0)
-	local tip2 =''
+	local tip2 =hero_data.got_tip or ''
 	
 	local difficulty_level = {
 		'|cffffaaaa★|r|cffeeeeee☆☆☆☆☆|r',
@@ -138,37 +138,50 @@ local function start()
 
 	-- print(minx, miny, maxx, maxy)
 	for i, name in ipairs(hero.hero_list) do
-		local name, hero_data = name,hero.hero_list[name].data
-		
-		local shadow01 = jass.CreateImage([[ReplaceableTextures\CommandButtons\BTNPeasant.blp]], 1, 1, 1, 0, 0, 0, 0, 0, 0, 2)
-		local shadow02 = jass.CreateImage([[ReplaceableTextures\CommandButtons\BTNPeasant.blp]], 1, 1, 1, 0, 0, 0, 0, 0, 0, 2)
-		jass.DestroyImage(shadow01)
-		jass.DestroyImage(shadow02)
+		ac.wait(i*200,function() 
+			local name, hero_data = name,hero.hero_list[name].data
+			
+			local shadow01 = jass.CreateImage([[ReplaceableTextures\CommandButtons\BTNPeasant.blp]], 1, 1, 1, 0, 0, 0, 0, 0, 0, 2)
+			local shadow02 = jass.CreateImage([[ReplaceableTextures\CommandButtons\BTNPeasant.blp]], 1, 1, 1, 0, 0, 0, 0, 0, 0, 2)
+			jass.DestroyImage(shadow01)
+			jass.DestroyImage(shadow02)
 
-		if ix > rowx   then 
-            --print(i,ix,iy)
-            iy = iy + 1 
-            ix = 0
-        end    
-        local x = minx + area * ix +75
-		local y = miny + area* iy +200
-		local where = ac.point(x,y)
-		ix = ix + 1 
-		
-		local hero = player[16]:createHero(name, where,270)
-		hero.name = name
-		hero:remove_ability 'Amov'
-		hero:add_restriction '缴械'
-		hero:add_restriction '无敌'
-		hero:set_data('英雄类型', name)
-		setHeroState(hero)
-		jass.DestroyImage(shadow01)
-		table.insert(flygroup, hero)
+			if ix > rowx   then 
+				--print(i,ix,iy)
+				iy = iy + 1 
+				ix = 0
+			end    
+			local x = minx + area * ix +75
+			local y = miny + area* iy +200
+			local where = ac.point(x,y)
+			ix = ix + 1 
+			--创建特效
+			ac.effect(where,[[xrdh.mdx]],270,1,'origin'):remove()
+			local hero = player[16]:createHero(name, where,270)
+			--添加淡化buff
+			hero:add_buff '淡化*改'
+			{
+				source_alpha = 0,
+				target_alpha = 100,
+				time = 0.4,
+				remove_when_hit = false,
+			}
+			hero.name = name
+			hero:remove_ability 'Amov'
+			hero:add_restriction '缴械'
+			hero:add_restriction '无敌'
+			hero:set_data('英雄类型', name)
+			setHeroState(hero)
+			jass.DestroyImage(shadow01)
+			table.insert(flygroup, hero)
 
-		hero:add_effect('origin',[[modeldekan\ui\DEKAN_Tag_Ally.mdl]])
-		hero_types[name] = hero
+			hero:add_effect('origin',[[modeldekan\ui\DEKAN_Tag_Ally.mdl]])
+			hero_types[name] = hero
+		end)
 	end
 	player[16].hero_lists = flygroup
+	-- ac.wait(#hero.hero_list*200,function()
+	-- end)
 
 	
 	for i = 1, 10 do
