@@ -10,10 +10,17 @@ strong_hero = 1, --作用在人身上
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNNetherDragon.blp]],
 --说明
-tip = [[超过XX碎片自动激活，已拥有XX
-激活地图等级：%need_map_level%
-已拥有碎片：%skin_cnt%
-]],
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff神龙碎片超过 50 自动获得，已拥有碎片：|r%skin_cnt%
+
+|cffFFE799【宠物属性】：|r
+|cff00ff00+8    杀怪加全属性|r
+|cff00ff00+15% 杀敌数加成|r
+|cff00ff00+15% 分裂伤害|r
+
+|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
@@ -23,12 +30,11 @@ end,
 need_sp_cnt = 50,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['每秒加木头'] = 500,
-['生命上限'] = 1000,
-['护甲'] = 1000,
-['每秒回血'] = 2.5,
+['杀怪加全属性'] = 8,
+['杀敌数加成'] = 15,
+['分裂伤害'] = 15,
 --特效
-effect = [[chibang2.mdx]]
+effect = [[units\creeps\NetherDragon\NetherDragon.mdx]]
 }
 
 local mt = ac.skill['冰龙']
@@ -39,26 +45,35 @@ mt{
 level = 0,
 strong_hero = 1, --作用在人身上
 --图标
-art = [[chibang4.blp]],
+art = [[ReplaceableTextures\CommandButtons\BTNAzureDragon.blp]],
 --说明
-tip = [[地图等级40
-激活地图等级：%need_map_level%
-已拥有碎片：%skin_cnt%
-]],
-need_map_level = 3,
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff神龙碎片超过 200 自动获得，已拥有碎片：|r%skin_cnt%
+
+|cffFFE799【宠物属性】：|r
+|cff00ff00+18   杀怪加全属性|r
+|cff00ff00+15% 金币加成|r
+|cff00ff00+15% 木头加成|r
+|cff00ff00+10% 吸血|r
+
+|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
+need_map_level = 5,
 skin_cnt = function(self)
     local p = ac.player.self
     return p.cus_server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 50,
+need_sp_cnt = 200,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 100,
-['生命上限'] = 2000,
-['护甲'] = 1000,
+['杀怪加全属性'] = 18,
+['金币加成'] = 15,
+['木头加成'] = 15,
+['吸血'] = 10,
 --特效
-effect = [[Hero_DoomBringer_N3.mdx]]
+effect = [[units\creeps\AzureDragon\AzureDragon.mdx]]
 }
 
 local mt = ac.skill['精灵龙']
@@ -69,26 +84,38 @@ mt{
 level = 0,
 strong_hero = 1, --作用在人身上
 --图标
-art = [[chibang3.blp]],
+art = [[ReplaceableTextures\CommandButtons\BTNFaerieDragon.blp]],
 --说明
-tip = [[最强王者50星
-激活地图等级：%need_map_level%
-已拥有碎片：%skin_cnt%
-]],
-need_map_level = 3,
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff神龙碎片超过 350  自动获得，已拥有碎片：|r%skin_cnt% 或者
+|cff00ffff挖宝积分超过 2.5W 自动获得，已拥有积分：|r%skin_cnt%
+
+|cffFFE799【宠物属性】：|r
+|cff00ff00+28  杀怪加全属性|r
+|cff00ff00+15% 金币加成|r
+|cff00ff00+15% 木头加成|r
+|cff00ff00+15% 杀敌数加成|r
+|cff00ff00+10% 每秒回血|r
+
+|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
+need_map_level = 5,
 skin_cnt = function(self)
     local p = ac.player.self
     return p.cus_server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 50,
+need_sp_cnt = 350,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 450,
-['吸血'] = 10,
-['攻击间隔'] = -0.05,
+['杀怪加全属性'] = 28,
+['金币加成'] = 15,
+['木头加成'] = 15,
+['杀敌数加成'] = 15,
+['每秒回血'] = 10,
 --特效
-effect = [[chibang3.mdx]]
+effect = [[units\nightelf\FaerieDragon\FaerieDragon.mdx]]
 }
 
 
@@ -100,27 +127,39 @@ mt{
 level = 0,
 strong_hero = 1, --作用在人身上
 --图标
-art = [[chibang8.blp]],
+art = [[gulong.blp]],
 --说明
-tip = [[商城188
-激活地图等级：%need_map_level%
-已拥有碎片：%skin_cnt%
-]],
-need_map_level = 3,
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cff00ffff商城购买后自动激活
+
+|cffFFE799【宠物属性】：|r
+|cff00ff00+68   杀怪加全属性|r
+|cff00ff00+25% 物品获取率|r
+|cff00ff00+25% 火灵加成|r
+|cff00ff00+15   攻击减甲|r
+|cff00ff00+10% 触发概率加成|r
+|cff00ff00-5%  技能冷却|r
+
+|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
+need_map_level = 0,
 skin_cnt = function(self)
     local p = ac.player.self
     return p.cus_server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 50,
+need_sp_cnt = 0,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 600,
-['暴击几率'] = 5,
-['技暴几率'] = 5,
-['全伤加深'] = 5,
+['杀怪加全属性'] = 68,
+['物品获取率'] = 25,
+['火灵加成'] = 25,
+['攻击减甲'] = 15,
+['触发概率加成'] = 10,
+['技能冷却'] = 5,
 --特效
-effect = [[chibang8.mdx]]
+effect = [[gulong.mdx]]
 }
 
 local mt = ac.skill['奇美拉']
@@ -131,27 +170,35 @@ mt{
 level = 0,
 strong_hero = 1, --作用在人身上
 --图标
-art = [[chibang7.blp]],
+art = [[ReplaceableTextures\CommandButtons\BTNChimaera.blp]],
 --说明
-tip = [[商城218
-激活地图等级：%need_map_level%
-已拥有碎片：%skin_cnt%
-]],
-need_map_level = 3,
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff神龙碎片超过 1000 自动获得，已拥有碎片：|r%skin_cnt%
+
+|cffFFE799【宠物属性】：|r
+|cff00ff00+88    杀怪加全属性|r
+|cff00ff00+25%  火灵加成|r
+|cff00ff00+25%  物品获取率|r
+|cff00ff00-0.05  攻击间隔|r
+
+|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
+need_map_level = 10,
 skin_cnt = function(self)
     local p = ac.player.self
     return p.cus_server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 50,
+need_sp_cnt = 1000,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 750,
-['暴击几率'] = 5,
-['技暴几率'] = 5,
-['全伤加深'] = 5,
+['杀怪加全属性'] = 88,
+['火灵加成'] = 25,
+['物品获取率'] = 25,
+['攻击间隔'] = -0.05,
 --特效
-effect = [[chibang7.mdx]]
+effect = [[units\nightelf\Chimaera\Chimaera.mdx]]
 }
 
 local mt = ac.skill['小悟空']
@@ -162,12 +209,23 @@ item_type ='神符',
 level = 0,
 strong_hero = 1, --作用在人身上
 --图标
-art = [[chibang7.blp]],
+art = [[xwk.blp]],
 --说明
-tip = [[商城218
-激活地图等级：%need_map_level%
-已拥有碎片：%skin_cnt%
-]],
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cff00ffff商城购买后自动激活
+
+|cffFFE799【宠物属性】：|r
+|cff00ff00+168  杀怪加全属性|r
+|cff00ff00+20% 金币加成|r
+|cff00ff00+20% 木头加成|r
+|cff00ff00+20% 杀敌数加成|r
+|cff00ff00+15   攻击减甲|r
+|cff00ff00+10% 触发概率加成|r
+|cff00ff00-5%  技能冷却|r
+
+|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
 need_map_level = 3,
 skin_cnt = function(self)
     local p = ac.player.self
@@ -177,12 +235,15 @@ end,
 need_sp_cnt = 50,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 750,
-['暴击几率'] = 5,
-['技暴几率'] = 5,
-['全伤加深'] = 5,
+['杀怪加全属性'] = 168,
+['木头加成'] = 20,
+['金币加成'] = 20,
+['杀敌数加成'] = 20,
+['攻击减甲'] = 15,
+['触发概率加成'] = 10,
+['技能冷却'] = 5,
 --特效
-effect = [[chibang7.mdx]],
+effect = [[xwk.mdx]],
 }
 
 --统一加方法
@@ -214,9 +275,11 @@ mt{
     is_spellbook = 1,
     is_order = 2,
     art = [[cwpf.blp]],
-    title = '查看宠物皮肤',
+    title = '宠物皮肤',
     tip = [[
-查看宠物皮肤
+
+|cffffe799【使用说明】：|r
+点击查看|cff00ffff宠物皮肤|r
     ]],
 }
 mt.skills = {

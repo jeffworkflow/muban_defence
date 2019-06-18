@@ -20,7 +20,7 @@ mt{
         if self.level<self.max_level then 
             str = '|cffFFE799【进阶】|r杀死 %kill_cnt% 个敌人，自动进阶'
         else
-            str = '|cffFFE799【已满阶】|r'
+            str = '|cffcccccc【更多玩法在高难度开放】|r'
         end
         return str
     end,    
@@ -43,7 +43,7 @@ mt{
     --吸血
     ['吸血'] = 10,
     --杀敌个数
-    kill_cnt = {10,50,100,200,400,800,1600,3200,6400,12800,0},
+    kill_cnt = {10,50,100,200,400,800,1600,3200,6400,12800,1},
     --唯一
     unique = true,
     --显示等级

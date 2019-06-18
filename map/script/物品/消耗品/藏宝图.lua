@@ -3,11 +3,13 @@ mt{
     --等久
     level = 1,
     --图标
-    art = [[other\cangbaotu.blp]],
+    art = [[cangbaotu.blp]],
     --说明
-    tip = [[到指定地点，挖开即可得 |cffdf19d0 各种物品哦 |r
+    tip = [[
 
-    PS：获得的金币、经验，受英雄的|cffdf19d0金币获取率、经验获取率|r影响！]],
+
+根据提示，到指定地点，挖开即可获得 |cffdf19d0 各种宝藏 |r
+]],
     --物品类型
     item_type = '消耗品',
     --目标类型
@@ -21,7 +23,7 @@ mt{
     --cd
     cool = 0.5,
     --物品详细介绍的title
-    content_tip = '使用说明：',
+    content_tip = '|cffffe799使用说明：|r',
     --自动挖宝
     wabao_auto_use = false,
     --全部玩家发送信息概率
@@ -76,8 +78,8 @@ function mt:on_cast_start()
             self.trg = region:event '区域-进入' (function(trg, unit)
                 if  unit == hero then
                     if hero.unit_type == '宠物' or hero.unit_type == '召唤物' then 
-                        player:sendMsg('|cff00ffff宠物不能挖图|r',10)
-                        player:sendMsg('|cff00ffff宠物不能挖图|r',10)
+                        player:sendMsg('|cff00ffff宠物不能挖图|r',3)
+                        player:sendMsg('|cff00ffff宠物不能挖图|r',3)
                         return true
                     end 
                     -- print('单位进入')
@@ -104,8 +106,8 @@ function mt:on_cast_start()
         --点在区域内
         if region < point  then
             if hero.unit_type == '宠物' or hero.unit_type == '召唤物' then 
-                player:sendMsg('|cff00ffff宠物不能挖图|r',10)
-                player:sendMsg('|cff00ffff宠物不能挖图|r',10)
+                player:sendMsg('|cff00ffff宠物不能挖图|r',3)
+                player:sendMsg('|cff00ffff宠物不能挖图|r',3)
                 return true
             end    
 
@@ -151,7 +153,7 @@ function mt:add_content()
     local tran_player = rand_rate < self.rate and ac.player.self or player
     --发送消息
     if flag then 
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2)
     end    
     --加挖宝积分
     player:AddServerValue('wbjf',1) 
@@ -159,16 +161,16 @@ function mt:add_content()
     --什么事情都没有发生，挖宝经验（可存档）+1，当前挖宝经验XX
     --再处理特殊的 
     if rand_name == '无' then
-        player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 什么事情都没有发生，|cffff0000挖宝积分（可存档）+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' |r',2)
+        player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
     elseif rand_name == '挖宝达人' then
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then 
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000500万全属性，物品获取率+50%|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000500万全属性，物品获取率+50%|r',6)
         else
-            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 什么事情都没有发生，|cffff0000挖宝积分（可存档）+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' |r',2)
+            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
         end
     elseif  rand_name == '随机物品' then
         --给英雄随机添加物品
@@ -179,7 +181,7 @@ function mt:add_content()
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color
         end    
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cff'..ac.color_code[lni_color]..name..'|r',2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cff'..ac.color_code[lni_color]..name..'|r',2)
     elseif  rand_name == '随机技能' then
         local rand_list = ac.unit_reward['商店随机技能']
         local rand_name = ac.get_reward_name(rand_list)
@@ -190,13 +192,13 @@ function mt:add_content()
         --添加给购买者
         local name = list[math.random(#list)]
         ac.item.add_skill_item(name,self.owner)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000 技能书：'..name..'|r',2)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000技能书：'..name..'|r',2)
     elseif  rand_name == '宠物经验书(小)' then
         self.owner:add_item(rand_name,true)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2) 
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2) 
     elseif  rand_name == '宠物经验书(大)' then
         self.owner:add_item(rand_name,true)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2) 
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2) 
     end
 
 end

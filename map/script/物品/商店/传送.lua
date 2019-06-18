@@ -26,9 +26,9 @@ ac.quick_arrive ={
     ['神甲-神魔蚀日甲'] = {ac.map.rects['传送-甲10'],'jia10.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神甲】-神魔蚀日甲|r\n',0,48000,0} ,
 
     ['技能升级书lv1'] = {ac.map.rects['传送-技能1'],'jinengshengji1.blp','\n挑战BOSS并获得|cff00ff00 【技能升级书lv1】|r\n',0,100,0,0,0,nil,0,450} ,
-    ['技能升级书lv2'] = {ac.map.rects['传送-技能2'],'jinengshengji1.blp','\n挑战BOSS并获得|cff00ffff 【技能升级书lv2】|r\n',0,1000,0,0,0,nil,0,450} ,
-    ['技能升级书lv3'] = {ac.map.rects['传送-技能3'],'jinengshengji1.blp','\n挑战BOSS并获得|cffffff00 【技能升级书lv3】|r\n',0,10000,0,0,0,nil,0,450} ,
-    ['技能升级书lv4'] = {ac.map.rects['传送-技能4'],'jinengshengji1.blp','\n挑战BOSS并获得|cffff0000 【技能升级书lv4】|r\n',0,100000,0,0,0,nil,0,450} ,
+    ['技能升级书lv2'] = {ac.map.rects['传送-技能2'],'jinengshengji2.blp','\n挑战BOSS并获得|cff00ffff 【技能升级书lv2】|r\n',0,1000,0,0,0,nil,0,450} ,
+    ['技能升级书lv3'] = {ac.map.rects['传送-技能3'],'jinengshengji3.blp','\n挑战BOSS并获得|cffffff00 【技能升级书lv3】|r\n',0,10000,0,0,0,nil,0,450} ,
+    ['技能升级书lv4'] = {ac.map.rects['传送-技能4'],'jinengshengji4.blp','\n挑战BOSS并获得|cffff0000 【技能升级书lv4】|r\n',0,100000,0,0,0,nil,0,450} ,
     
     ['洗练石boss1'] = {ac.map.rects['传送-洗练石1'],'xilianshi.blp','\n挑战BOSS并获得|cff00ff00 【一号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,200,0,0,0,nil,0,450} ,
     ['洗练石boss2'] = {ac.map.rects['传送-洗练石2'],'xilianshi.blp','\n挑战BOSS并获得|cff00ffff 【二号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,2000,0,0,0,nil,0,450} ,
@@ -46,21 +46,20 @@ ac.quick_arrive ={
     ['境界-斗圣'] = {ac.map.rects['传送-境界9'],'tupo9.blp','\n挑战BOSS并突破境界至|cffdf19d0 【斗圣】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+850w 全属性\n+2.5%  免伤几率\n+2.5%  全伤加深\n-0.05   攻击间隔\n|r',0,0,80000,0,0,nil,0,500} ,
     ['境界-斗帝'] = {ac.map.rects['传送-境界10'],'tupo10.blp','\n挑战BOSS并突破境界至|cffdf19d0 【斗帝】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+1000w 全属性\n+5%    全伤加深\n|r',0,0,100000,0,0,nil,0,500} ,
 
-    ['伏地魔'] = {ac.map.rects['传送-伏地魔'],'wuqi17.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神兵】-十绝冰火剑|r\n',0,48000,0} ,
+    ['伏地魔'] = {ac.map.rects['传送-伏地魔'],'xianglian402.blp','\n满足一定条件后，战胜伏地魔，可获得|cffff0000顶级的紫金碧玺佩|r\n',0,100000,0} ,
 
     ['星星之火 '] = {ac.map.rects['传送-星星之火'],'huo1.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cff00ff00初级异火：星星之火|r\n',0,0,500,} ,
     ['陨落心炎 '] = {ac.map.rects['传送-陨落心炎'],'huo2.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cff00ffff中级异火：陨落心炎火|r\n',0,0,20000,} ,
     ['三千焱炎火 '] = {ac.map.rects['传送-三千焱炎火'],'huo3.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffffff00高级异火：三千焱炎火|r\n',0,0,100000,} ,
     ['虚无吞炎 '] = {ac.map.rects['传送-虚无吞炎'],'huo4.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,500000,} ,
 
-    ['传送藏宝图'] = {ac.map.rects['传送-藏宝图'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
+    ['藏宝图 '] = {ac.map.rects['藏宝图 '],'cangbaotu.blp','\n前往藏宝区，杀死强盗和boss，获得|cff00ff00藏宝图|r\n',0,0,0,1000} ,
 
+    ['红发'] = {ac.map.rects['传送-红发'],'hongfa.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：格里芬|r\n',0,150000,0} ,
+    ['黑胡子'] = {ac.map.rects['传送-黑胡子'],'heihuzi.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：黑暗项链|r\n',0,150000,0} ,
+    ['百兽'] = {ac.map.rects['传送-百兽'],'baishou.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：最强生物心脏|r\n',0,150000,0} ,
+    ['白胡子'] = {ac.map.rects['传送-白胡子'],'baihuzi.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：白胡子的大刀|r\n',0,150000,0} ,
     
-    ['红发'] = {ac.map.rects['传送-红发'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
-    ['黑胡子'] = {ac.map.rects['传送-黑胡子'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
-    ['百兽'] = {ac.map.rects['传送-百兽'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
-    ['白胡子'] = {ac.map.rects['传送-白胡子'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
-
     ['替天行道'] = {ac.map.rects['传送-替天行道'],'cangbaotu.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,0,1000} ,
 
 }

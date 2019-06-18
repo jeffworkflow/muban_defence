@@ -6,21 +6,32 @@ level = 0,
 --图标
 art = [[chibang2.blp]],
 --说明
-tip = [[挖宝积分兑换/神龙碎片兑换
-激活地图等级：%need_map_level%
-已拥有碎片：%skin_cnt%
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff挖宝积分超过 10W 自动获得，已拥有积分：|r%skin_cnt% 或者
+|cff00ffff神龙碎片超过 800 自动获得，已拥有碎片：|r%skin_cnt%
+
+|cffFFE799【翅膀属性】：|r
+|cff00ff00+50     杀怪加全属性|r
+|cff00ff00+1000W 生命|r
+|cff00ff00+1000   护甲
+|cff00ff00+2.5%   每秒回血|r
+
+|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
-need_map_level = 3,
+need_map_level = 10,
 skin_cnt = function(self)
     local p = ac.player.self
     return p.cus_server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 50,
+need_sp_cnt = 800,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 50,
-['生命上限'] = 1000,
+['生命上限'] = 10000000,
 ['护甲'] = 1000,
 ['每秒回血'] = 2.5,
 --特效
@@ -34,13 +45,26 @@ level = 0,
 --图标
 art = [[chibang4.blp]],
 --说明
-tip = [[地图等级40
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cff00ffff|cff00ffff地图等级=%need_map_level%
+
+|cffFFE799【翅膀属性】：|r
+|cff00ff00+100    杀怪加全属性|r
+|cff00ff00+2000W 生命|r
+|cff00ff00+2000   护甲
+|cff00ff00+2.5%   闪避|r
+
+|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 100,
-['生命上限'] = 2000,
-['护甲'] = 1000,
+['生命上限'] = 20000000,
+['护甲'] = 2000,
+['闪避'] = 2.5,
+need_map_level = 40,
 --特效
 effect = [[chibang4.mdx]]
 }
@@ -52,13 +76,28 @@ level = 0,
 --图标
 art = [[chibang3.blp]],
 --说明
-tip = [[最强王者50星
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff最强王者50星
+
+|cffFFE799【翅膀属性】：|r
+|cff00ff00+150    杀怪加全属性|r
+|cff00ff00+3000W 生命|r
+|cff00ff00+3000   护甲
+|cff00ff00+2.5%   每秒回血|r
+|cff00ff00+2.5%   免伤|r
+
+|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 450,
-['吸血'] = 10,
-['攻击间隔'] = -0.05,
+['杀怪加全属性'] = 150,
+['生命上限'] = 30000000,
+['护甲'] = 3000,
+['免伤'] = 2.5,
+['每秒回血'] = 2.5,
+need_map_level = 10,
 --特效
 effect = [[chibang3.mdx]]
 }
@@ -71,14 +110,27 @@ level = 0,
 --图标
 art = [[chibang8.blp]],
 --说明
-tip = [[商城188
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cff00ffff商城购买后自动激活
+
+|cffFFE799【翅膀属性】：|r
+|cff00ff00+200    杀怪加全属性|r
+|cff00ff00+4000W 生命|r
+|cff00ff00+4000   护甲
+|cff00ff00+2.5%   闪避|r
+|cff00ff00+2.5%   免伤几率|r
+
+|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 600,
-['暴击几率'] = 5,
-['技暴几率'] = 5,
-['全伤加深'] = 5,
+['杀怪加全属性'] = 200,
+['生命上限'] = 40000000,
+['护甲'] = 4000,
+['免伤几率'] = 2.5,
+['闪避'] = 2.5,
 --特效
 effect = [[chibang8.mdx]]
 }
@@ -90,14 +142,27 @@ level = 0,
 --图标
 art = [[chibang7.blp]],
 --说明
-tip = [[商城218
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cff00ffff商城购买后自动激活
+
+|cffFFE799【翅膀属性】：|r
+|cff00ff00+250    杀怪加全属性|r
+|cff00ff00+5000W 生命|r
+|cff00ff00+5000   护甲
+|cff00ff00+2.5%   免伤|r
+|cff00ff00+2.5%   免伤几率|r
+
+|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 750,
-['暴击几率'] = 5,
-['技暴几率'] = 5,
-['全伤加深'] = 5,
+['杀怪加全属性'] = 250,
+['生命上限'] = 50000000,
+['护甲'] = 5000,
+['免伤几率'] = 2.5,
+['免伤'] = 2.5,
 --特效
 effect = [[chibang7.mdx]]
 }

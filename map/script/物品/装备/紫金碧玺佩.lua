@@ -11,8 +11,7 @@ mt{
     tip = [[
 
 %show_tip%
-%level_tip%
-|cffFFE799【进阶】|r杀死 %kill_cnt% 个敌人，自动进阶]],
+%level_tip%]],
 
     --技能图标
     art = [[xianglian402.blp]],
@@ -70,13 +69,18 @@ mt{
         end     
         return str
     end,   
+
     level_tip = function(self)
         local str = ''
-        if self.level <=2 then 
-            str = str .. '灵魂说明:|cffffff00+20%|r 杀怪收集灵魂（受物品获取率影响）\n'
-        else
-            str = str ..'进阶说明：灵魂需要满15000，且成功挑战伏地魔'
-        end    
+        if self.level <=3 then 
+            if self.level <=2 then 
+            str = str .. '|cffFFE799【进阶】|r收集 %kill_cnt% 灵魂，自动进阶\n|cffffe799【说明】|r杀怪20%获得灵魂|cff00ff00（受杀敌数加成影响）|r'
+            else
+            str = str ..'|cffFFE799【进阶】|r收集%kill_cnt%灵魂，并|cffff0000挑战伏地魔|r（新手任务处）后，自动进阶'
+            end 
+        else 
+        str = str ..'|cffcccccc【更多玩法敬请期待】|r'
+        end 
         return str
     end,    
     --升级特效
