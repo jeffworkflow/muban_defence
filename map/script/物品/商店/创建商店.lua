@@ -22,10 +22,15 @@ local function init_shop()
             if where then  
                 for ix,str in ipairs(where) do 
                     ac.wait(i*300 + ix*200,function()
-                        local id = tonumber(string.sub(str,4,4))
-                        local player = id and ac.player(id) 
+                        local id
+                        local player
+                        if name == '魔鬼的交易' then
+                           id = tonumber(string.sub(str,4,4))
+                           player = id and ac.player(id)
+                        end
+                        
                         local x,y = ac.rect.j_rect(str):get_point():get()
-                        local shop = ac.shop.create(name,x,y,face,player)
+                        local shop = ac.shop.create(name,x,y,face,nil,player)
                         -- print(shop:get_name(),name,x,y)
                         if name == '基地' then
                             shop:remove_restriction '无敌'
