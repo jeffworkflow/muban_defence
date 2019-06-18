@@ -9,7 +9,7 @@ store_name = '挑战 pa',
 --等级
 level = 0,
 --图标
-art = [[chibang7.blp]],
+art = [[chibang8.blp]],
 --说明
 tip = [[商城218
 激活地图等级：%need_map_level%
@@ -41,7 +41,7 @@ store_name = '挑战 手无寸铁的小龙女',
 --等级
 level = 0,
 --图标
-art = [[chibang7.blp]],
+art = [[chibang8.blp]],
 --说明
 tip = [[商城218
 激活地图等级：%need_map_level%
@@ -73,7 +73,7 @@ store_name = '挑战 关羽',
 --等级
 level = 0,
 --图标
-art = [[chibang7.blp]],
+art = [[chibang8.blp]],
 --说明
 tip = [[商城218
 激活地图等级：%need_map_level%

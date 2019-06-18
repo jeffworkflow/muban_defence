@@ -7,7 +7,7 @@ mt{
     title = '巅峰神域',
     tip = [[
 
-查看巅峰神域
+点击查看 |cff00ffff巅峰神域|r
     ]],
     
 }
@@ -52,7 +52,7 @@ local mt = ac.skill['翅膀']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[chibang7.blp]],
+    art = [[chibang8.blp]],
     title = '翅膀',
     tip = [[
 

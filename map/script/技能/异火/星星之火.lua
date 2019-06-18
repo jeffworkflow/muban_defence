@@ -19,7 +19,7 @@ mt{
 
 %content_tip%
 |cffffff00+%全属性% |cff00ff00全属性
-|cffffff00+%减甲%     |cff00ff00减甲
+|cffffff00+%攻击减甲%     |cff00ff00攻击减甲
 |cffffff00+%每秒回血% |cffffff00%|r   |cff00ff00每秒回血|r
 
 ]],
@@ -43,7 +43,7 @@ mt{
     quality = '凡',
     --等级因素，等差数列，给出最小和最大即可
     lv_attr = {0,10,20,30,40,50,60,70,80,90,100},
-    ['减甲'] = function (self)
+    ['攻击减甲'] = function (self)
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][2] 
     end,

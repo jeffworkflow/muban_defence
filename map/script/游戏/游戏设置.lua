@@ -260,7 +260,7 @@ ac.map.rects={
 	['boss-虚无吞炎'] =rect.j_rect('xwty111') ,
 
 	--藏宝图
-	['传送-藏宝图'] =rect.j_rect('cbt1') ,
+	['藏宝图 '] =rect.j_rect('cbt1') ,
 	['boss-藏宝图'] =rect.j_rect('cbt111'),
 	['藏宝区'] =rect.j_rect('cbt2'),
 

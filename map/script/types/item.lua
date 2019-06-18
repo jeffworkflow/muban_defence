@@ -507,7 +507,7 @@ function mt:get_tip()
 	end
 	--技能
 	if self.is_skill  then 
-		content_tip = '|cff'..ac.color_code['淡黄'].. '\n技能介绍：'..'|R\n'
+		content_tip = '|cff'..ac.color_code['淡黄'].. '技能介绍：'..'|R\n'
 	end
 	--自定义 内容说明titile '|cff'..ac.color_code['淡黄'].. self.content_tip ..'|R\n'
 	if self.content_tip  then 
