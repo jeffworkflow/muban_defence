@@ -12,6 +12,7 @@ store_name = '兑换-势不可挡',
 art = 'sbkd.blp',
 --说明
 tip = [[
+
 消耗 |cffff0000二十枚徽章|r 兑换 |cff00ff00势不可挡|r
 
 |cffFFE799【称号属性】：|r
@@ -40,6 +41,7 @@ store_name = '兑换-君临天下',
 art = 'jltx.blp',
 --说明
 tip = [[
+
 消耗 |cffff0000二百枚徽章|r 兑换 |cff00ff00君临天下|r
 
 |cffFFE799【称号属性】：|r
@@ -68,6 +70,7 @@ store_name = '兑换-神帝',
 art = 'shendi.blp',
 --说明
 tip = [[
+
 消耗 |cffff0000五百枚徽章|r 兑换 |cff00ff00神帝|r
 
 |cffFFE799【称号属性】：|r
@@ -96,6 +99,7 @@ store_name = '兑换-王者归来',
 art = 'wzgl.blp',
 --说明
 tip = [[
+
 消耗 |cffff0000一千枚徽章|r 兑换 |cff00ff00神帝|r
 
 |cffFFE799【称号属性】：|r

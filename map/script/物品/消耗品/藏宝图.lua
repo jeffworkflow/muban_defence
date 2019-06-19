@@ -32,7 +32,7 @@ mt{
     effect = function(self)
         local str = ''
         if self.owner:get_owner():is_self() then 
-            str='Objects\\InventoryItems\\PotofGold\\PotofGold.mdl'
+            str='wbdd.mdx'
         end
         return str    
     end   
@@ -42,7 +42,7 @@ function mt:on_add()
     --全图随机刷 正式用
     self.random_point =  ac.map.rects['藏宝区']:get_random_point()
     --测试用
-    self.random_point = self.owner:get_point()
+    -- self.random_point = self.owner:get_point()
 end
 
 function mt:on_cast_start()
