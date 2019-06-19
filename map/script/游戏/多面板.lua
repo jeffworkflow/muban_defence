@@ -4,19 +4,33 @@ local base_icon = [[ReplaceableTextures\CommandButtons\BTNSelectHeroOn.blp]]
 local mtb
 local color = {
 	['魔鬼的交易'] = {
-		['无所不在'] = '|cffff0000',
-		['无所不能'] = '|cffff0000',
+		['无所不在'] = '|cffffffff',
+		['无所不知'] = '|cffffffff',
+		['无所不贪'] = '|cff00ffff',
+		['无所不能'] = '|cff00ffff',
+		['脚踩祥云'] = '|cffffff00',
+		['头顶乾坤'] = '|cffff0000',
 	},
 	['境界突破'] = {
-		['小斗气'] = '|cffff0000',
-		['斗者'] = '|cffff0000',
+		['小斗气'] = '|cff00ff00',
+		['斗者'] = '|cff00ff00',
+		['斗师'] = '|cff00ffff',
+		['斗灵'] = '|cff00ffff',
+		['斗王'] = '|cffffff00',
+		['斗皇'] = '|cffffff00',
+		['斗宗'] = '|cffff0000',
+		['斗尊'] = '|cffff0000',
+		['斗圣'] = '|cffdf19d0',
+		['斗帝'] = '|cffdf19d0',
 	},
 	['异火'] = {
 		['星星之火'] = '|cffff0000',
-		['陨落心炎'] = '|cffff0000',
+		['陨落心炎'] = '|cffffe799',
+		['三千焱炎火'] = '|cffff0000',
+		['虚无吞炎'] = '|cffdf19d0',
 	},
 	['其它'] = {
-		['倒霉蛋'] = '|cffff0000',
+		['倒霉蛋'] = '|cff00ffff',
 		['游戏王'] = '|cffff0000',
 	},
 }
@@ -57,7 +71,7 @@ local function add_color(str,book_skill)
 end
 
 
-local title =  {'玩家','|cff00ffff杀敌数|r','火灵','魔鬼的交易','境界','异火','其它'}
+local title =  {'玩家','|cff00ff00杀敌数|r','|cff00ffff火灵|r','|cff00ff00魔鬼的交易|r','|cff00ffff境界|r','|cffffff00异火|r','|cffff0000其它|r'}
 
 local function init()
 
