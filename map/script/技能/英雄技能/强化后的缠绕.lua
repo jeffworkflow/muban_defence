@@ -17,7 +17,7 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('全属性')*12+10000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*12+10000)* self.level
 end,
 	--介绍
 	tip = [[
@@ -41,9 +41,9 @@ function mt:on_add()
     local hero = self.owner
 	local target = self.target
 
-    local function start_damage()
+    local function start_damage(damage)
         for i, u in ac.selector()
-            : in_range(target,self.area)
+            : in_range(damage.target,self.area)
             : is_enemy(hero)
             : of_not_building()
             : ipairs()

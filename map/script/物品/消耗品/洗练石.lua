@@ -74,7 +74,7 @@ for ix =1 ,4 do
             --如果5个集满
             if val[5] and val[5][1] and not hero.flag_suit[key] then 
                 if not val[5][5] then 
-                    flag =true
+                    flag = val[5][2] 
                     local tip = val[5][4]
                     skl:set('change_tip',tip)
                     skl:fresh_tip()
@@ -98,7 +98,7 @@ for ix =1 ,4 do
         if flag then
             for i=1,6 do
                 local items = hero:get_slot_item(i) 
-                if items.name ~= self.name then  
+                if items and items.suit_type == flag then  
                     items:item_remove()
                 end    
             end  

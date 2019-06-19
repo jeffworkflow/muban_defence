@@ -87,7 +87,13 @@ local function init()
         mtb:setText(i,1,title[i])
 	end 
 	--统一设置宽度
-    mtb:setAllWidth(0.05)
+	mtb:setAllWidth(0.05)
+    -- mtb:setWidth(2,1,0.03)
+	--调整局部宽度 第x列
+    mtb:setXwidth(2,0.03)
+    mtb:setXwidth(3,0.03)
+    mtb:setXwidth(5,0.03)
+    mtb:setXwidth(7,0.03)
 	--初始化所有数据
     for i = 2,all_lines do 
 		local player = ac.player(i-1)
@@ -116,14 +122,22 @@ end
 local function fresh(player,hero)
 	-- print(1111111111)
 	--刷新杀敌数
-	mtb:setText( 2, player.id + 1, player.kill_count)
-	mtb:setText( 3, player.id + 1, player.fire_seed)
+	mtb:setText( 2, player.id + 1, bignum2string(player.kill_count))
+	mtb:setText( 3, player.id + 1, bignum2string(player.fire_seed))
 	--刷新字段
 	-- print(get_text(hero,'魔鬼的交易'))
 	for i,book_skill in ipairs(title) do 
 		--去颜色
 		local book_skill = clean_color(book_skill)
-		local new_str = get_text(hero,book_skill)
+		local new_str 
+		if book_skill == '其它' then 
+			new_str = player.is_show_nickname
+		elseif book_skill == '境界' then
+			book_skill = '境界突破'
+			new_str = get_text(hero,book_skill)
+		else	
+			new_str = get_text(hero,book_skill)
+		end	 
 		new_str = add_color(new_str,book_skill)
 		-- print(book_skill,new_str)
 		if new_str and new_str ~='' then 

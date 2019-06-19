@@ -28,7 +28,7 @@ local function init_shop()
                            id = tonumber(string.sub(str,4,4))
                            player = id and ac.player(id)
                         end
-                        
+
                         local x,y = ac.rect.j_rect(str):get_point():get()
                         local shop = ac.shop.create(name,x,y,face,nil,player)
                         -- print(shop:get_name(),name,x,y)
@@ -39,8 +39,6 @@ local function init_shop()
                         end    
                         
                         if name == '魔鬼的交易' then
-                            -- print(player)
-                            -- shop:set_owner(player)
                             ac.game:event_notify('单位-创建商店', shop)
                             --注册区域事件
                             local rct =  ac.rect.j_rect(str)
@@ -60,4 +58,5 @@ local function init_shop()
     end 
 end
 init_shop()
+
 return init_shop

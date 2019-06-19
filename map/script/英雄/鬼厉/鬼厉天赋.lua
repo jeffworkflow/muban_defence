@@ -16,7 +16,7 @@ mt{
 	passive = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('全属性')*50+10000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*50+10000)* self.level
 end,
 	--属性加成
  ['杀怪加全属性'] = {588,1176,1764,2352,2940},

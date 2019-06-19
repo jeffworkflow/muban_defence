@@ -54,9 +54,9 @@ function mt:on_add()
     local skill = self
     local hero = self.owner
 
-	local function start_damage()
+	local function start_damage(damage)
 		local source = hero:get_point()
-		local target = self.target:get_point()
+		local target = damage.target:get_point()
 		local angle = source / target
 		local mvr = ac.mover.line
 		{
@@ -123,7 +123,7 @@ function mt:on_add()
 		end
         --触发时修改攻击方式
         if math.random(100) <= self.chance then
-            start_damage()
+            start_damage(damage)
             --激活cd
             skill:active_cd()
         end

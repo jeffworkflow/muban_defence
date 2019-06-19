@@ -452,23 +452,27 @@ local devil_deal ={
 ac.devil_deal = devil_deal
 --根据重数 给商店添加10技能，并让第一技能为可点击状态
 --单位，重数
-local function add_skill_by_lv(shop,lv)
+local function add_skill_by_lv(shop,lv,flag)
     if not devil_deal[lv] then 
         return 
     end    
     for num,value in ipairs(devil_deal[lv]) do    
-        if num <= 4 then 
-            -- print(value[1])
-            shop:add_skill(value[1],'英雄',num + 8 )
-        elseif num <= 8 then 
-            shop:add_skill(value[1],'英雄',num)
-        else
-            shop:add_skill(value[1],'英雄',num - 8)
-        end   
-        if num ==1 then 
-            local skl = shop:find_skill(value[1],'英雄',true)
-            skl:set_level(1)
-        end 
+        flag = flag and 300*num  
+        ac.wait(flag or 0,function()
+            if num <= 4 then 
+                -- print(value[1])
+                shop:add_skill(value[1],'英雄',num + 8 )
+            elseif num <= 8 then 
+                shop:add_skill(value[1],'英雄',num)
+            else
+                shop:add_skill(value[1],'英雄',num - 8)
+            end   
+            -- shop:add_skill(value[1],'英雄')
+            if num ==1 then 
+                local skl = shop:find_skill(value[1],'英雄',true)
+                skl:set_level(1)
+            end 
+        end)
     end   
 end   
 
@@ -648,11 +652,6 @@ end
 
 ac.game:event '单位-创建商店'(function(trg,shop)
     -- print('单位-创建商店',shop)
-    local hero 
-    if not ac.flag_test_1  then 
-        hero = ac.player(1).hero
-        ac.flag_test_1  =true 
-    end   
     --测试
     -- local shop = ac.player(1):create_unit('魔鬼的交易',ac.point(1000,0)) 
     -- shop:add_restriction('无敌')
@@ -660,7 +659,7 @@ ac.game:event '单位-创建商店'(function(trg,shop)
     -- 9 10 11 12
     -- 5 6  7  8
     -- 1 2  3  4
-    add_skill_by_lv(shop,1)
+    add_skill_by_lv(shop,1,true)
 
 end)
 

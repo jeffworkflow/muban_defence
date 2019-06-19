@@ -517,7 +517,7 @@ local function format_number_tip(v)
 		return v
 	end
 	local v = math_tointeger(v) or ('%.2f'):format(v) 
-	return numerical(v) or 0
+	return bignum2string(v) or 0
 end
 ac.format_number_tip = format_number_tip
 

@@ -650,15 +650,15 @@ get['攻击间隔'] = function(self)
 end
 
 on_get['攻击间隔'] = function(self, attack_gap)
-	if attack_gap < 0.8 then
-		attack_gap = 0.8
+	if attack_gap < 0.7 then
+		attack_gap = 0.7
 	end
 	return attack_gap
 end
 
 set['攻击间隔'] = function(self, attack_gap)
-	if attack_gap < 0.8 then
-		attack_gap = 0.8
+	if attack_gap < 0.7 then
+		attack_gap = 0.7
 	end
 	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x25), attack_gap)
 end
@@ -793,6 +793,13 @@ on_get['会心几率'] = function(self, heart_rate)
 		return 90
 	end
 	return heart_rate
+end
+
+on_get['免伤几率'] = function(self, reduce_rate)
+	if reduce_rate > 90 then
+		return 90
+	end
+	return reduce_rate
 end
 
 
