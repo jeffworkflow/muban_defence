@@ -68,6 +68,19 @@ ac.game:event '游戏-开始' (function()
 
         end    
     end    
+
+    --难五 添加伏地魔
+    if ac.g_game_degree >= 5 then 
+        local shop = '新手任务'
+        local item = '伏地魔'
+        local slotid = 3
+        for key,unit in pairs(ac.shop.unit_list) do 
+            if unit:get_name() == shop  then 
+                unit:add_sell_item(item,(slotid or 1))
+            end	
+        end	
+    end    
+
 end)    
 
 

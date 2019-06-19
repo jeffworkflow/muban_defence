@@ -41,31 +41,31 @@ mt{
         local str = ''
         local attribute = ac.unit.attribute
         if self['全属性'] >0 then 
-            str = str ..'+|cffffff00'..self['全属性']..'|r 全属性'..'\n'
+            str = str ..'+|cffffff00'..bignum2string(self['全属性'])..'|r 全属性'..'\n'
         end    
         if self['每秒加全属性'] >0 then 
-            str = str ..'+|cffffff00'..self['每秒加全属性']..'|r 每秒加全属性'..'\n'
+            str = str ..'+|cffffff00'..bignum2string(self['每秒加全属性'])..'|r 每秒加全属性'..'\n'
         end    
         if self['攻击'] >0 then 
-            str = str ..'+|cffffff00'..self['攻击']..'|r 攻击'..'\n'
+            str = str ..'+|cffffff00'..bignum2string(self['攻击'])..'|r 攻击'..'\n'
         end    
         if self['护甲'] >0 then 
-            str = str ..'+|cffffff00'..self['护甲']..'|r 护甲'..'\n'
+            str = str ..'+|cffffff00'..bignum2string(self['护甲'])..'|r 护甲'..'\n'
         end    
         -- if self['每秒加金币'] >0 then 
         --     str = str ..'+|cffffff00'..self['每秒加金币']..'|r 每秒加金币'..'\n'
         -- end   
         if self['每秒加木头'] >0 then 
-            str = str ..'+|cffffff00'..self['每秒加木头']..'|r 每秒加木头'..'\n'
+            str = str ..'+|cffffff00'..bignum2string(self['每秒加木头'])..'|r 每秒加木头'..'\n'
         end    
         if self['会心几率'] >0 then 
-            str = str ..'+|cffffff00'..self['会心几率']..'%|r 会心几率'..'\n'
+            str = str ..'+|cffffff00'..bignum2string(self['会心几率'])..'%|r 会心几率'..'\n'
         end    
         if self['会心伤害'] >0 then 
-            str = str ..'+|cffffff00'..self['会心伤害']..'%|r 会心伤害'..'\n'
+            str = str ..'+|cffffff00'..bignum2string(self['会心伤害'])..'%|r 会心伤害'..'\n'
         end     
         if self['吸血'] >0 then 
-            str = str ..'+|cffffff00'..self['吸血']..'%|r 吸血'..'\n'
+            str = str ..'+|cffffff00'..bignum2string(self['吸血'])..'%|r 吸血'..'\n'
         end     
         return str
     end,   
@@ -87,6 +87,8 @@ mt{
     effect ='Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx',
     --物品详细介绍的title
     content_tip = '|cffFFE799基本属性：|r',
+    --概率
+    chance = 20
 }
 
 
@@ -104,6 +106,10 @@ function mt:on_upgrade()
             --召唤物杀死也继承
             local hero = killer:get_owner().hero
             if hero ~= self.owner then 
+                return 
+            end    
+            --判断概率
+            if math.random(100) > self.chance then 
                 return 
             end    
             if hero and hero:has_item(self.name) and (hero == self.owner) then 

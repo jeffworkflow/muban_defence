@@ -62,7 +62,7 @@ auto_fresh_tip = true
 
 --处理强化
 function mt:on_strong(skill)
-    local hero = self.owner
+    local hero = skill.owner
     local player = hero:get_owner()
     hero = player.hero
     local slot_id = skill.slot_id
@@ -93,16 +93,26 @@ function mt:on_cast_start()
         player:sendMsg('无法食用更多的恶魔果实')
         return 
     end    
-
     for i=1,8 do 
         local skill = hero:find_skill(i,'英雄')
-        if skill and skill.level>=5  then 
-            count = count + 1
-            local info = {
-                name = "|cff"..ac.color_code['紫']..'强化'.. skill:get_name() .. '  (' .. skill:get_hotkey() ..')' ,
-                skill = skill
-            }
-            table.insert(list,info)
+        if skill then 
+            local flag
+            if player.ruti then 
+                for i,item in ipairs(player.ruti) do
+                    if item.name == skill.name then 
+                        flag =true 
+                        break
+                    end    
+                end
+            end  
+            if skill.level>=5  and not flag then 
+                count = count + 1
+                local info = {
+                    name = "|cff"..ac.color_code['紫']..'强化'.. skill:get_name() .. '  (' .. skill:get_hotkey() ..')' ,
+                    skill = skill
+                }
+                table.insert(list,info)
+            end    
         end
     end 
 

@@ -49,7 +49,7 @@ end
 
 
 --数值转换
-local function numerical(value)
+local function bignum2string(value)
     if value < 10000 then
         return ('%.0f'):format(value)
     elseif value < 100000000 then
@@ -58,7 +58,7 @@ local function numerical(value)
         return ('%.1f'):format(value/100000000)..'亿'
     end
 end
-ac.numerical = numerical
+ac.bignum2string = bignum2string
 
 --段位贴图
 local rank_art = {
@@ -152,15 +152,15 @@ local function get_kda()
         --死亡数
         ranking.ui.death_count[i]:set_text(p.death)
         --获得金币
-        ranking.ui.gold_count[i]:set_text(numerical(p.gold_count))
+        ranking.ui.gold_count[i]:set_text(bignum2string(p.gold_count))
         --累计伤害
-        ranking.ui.damage_count[i]:set_text(numerical(p.damage_count))
+        ranking.ui.damage_count[i]:set_text(bignum2string(p.damage_count))
         --魔兽自带多面板统计
-        ac.game.multiboard.damage_init(p,numerical(p.damage_count))
+        ac.game.multiboard.damage_init(p,bignum2string(p.damage_count))
         --受到伤害
-        ranking.ui.take_damage[i]:set_text(numerical(p.take_damage_count))
+        ranking.ui.take_damage[i]:set_text(bignum2string(p.take_damage_count))
         --kda
-        ranking.ui.kda[i]:set_text(numerical(p.kda))
+        ranking.ui.kda[i]:set_text(bignum2string(p.kda))
         if p:is_self() then
             local y = (i-1) * 40 + 37
             ranking.ui.lk:set_position(20,y)

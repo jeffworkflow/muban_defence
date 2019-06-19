@@ -1,6 +1,6 @@
 local japi = require("jass.japi")
 
-local mt = ac.skill['Pa ']
+local mt = ac.skill['Pa']
 mt{
 is_skill = 1,
 item_type ='神符',
@@ -32,7 +32,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[chibang7.mdx]]
 }
 
-local mt = ac.skill['手无寸铁的小龙女 ']
+local mt = ac.skill['手无寸铁的小龙女']
 mt{
 is_skill = 1,
 item_type ='神符',
@@ -64,7 +64,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[chibang7.mdx]]
 }
 
-local mt = ac.skill['关羽 ']
+local mt = ac.skill['关羽']
 mt{
 is_skill = 1,
 item_type ='神符',

@@ -80,6 +80,14 @@ function mt:setWidth(x, y, w)
 	jass.MultiboardSetItemWidth(self:getItem(x, y), w)
 end
 
+--设置某列的宽度 
+--@列 @宽度 @最大多少行
+function mt:setXwidth(x,w,maxy)
+	for y = 1,(maxy or self.y or 1) do 
+		jass.MultiboardSetItemWidth(self:getItem(x,y), w)
+	end	
+end
+
 --设置所有item的style
 function mt:setAllStyle(show_txt, show_icon)
 	jass.MultiboardSetItemsStyle(self.handle ,show_txt, show_icon)

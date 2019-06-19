@@ -144,7 +144,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[units\nightelf\Chimaera\Chimaera.mdx]]
 }
 
-local mt = ac.skill['挑战Pa ']
+local mt = ac.skill['挑战Pa']
 mt{
 is_skill = 1,
 item_type ='神符',
@@ -181,7 +181,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[Fudo.mdx]]
 }
 
-local mt = ac.skill['挑战手无寸铁的小龙女 ']
+local mt = ac.skill['挑战手无寸铁的小龙女']
 mt{
 is_skill = 1,
 item_type ='神符',
@@ -219,7 +219,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[xiaobailong.mdx]]
 }
 
-local mt = ac.skill['挑战关羽 ']
+local mt = ac.skill['挑战关羽']
 mt{
 is_skill = 1,
 item_type ='神符',
@@ -290,7 +290,11 @@ need_sp_cnt = 650,
 target_type = ac.skill.TARGET_TYPE_NONE,
 
 --特效
-effect = [[wuqi10.mdx]]
+effect = [[wuqi10.mdx]],
+
+--boss武器
+weapon_orf = 'hand',
+weapon_effect = 'wuqi10.mdx',
 }
 
 local mt = ac.skill['挑战梦蝶仙翼']
@@ -326,20 +330,28 @@ need_sp_cnt = 800,
 target_type = ac.skill.TARGET_TYPE_NONE,
 
 --特效
-effect = [[chibang2.mdx]]
+effect = [[chibang2.mdx]],
+--boss武器
+weapon_orf = 'hand',
+weapon_effect = 'wuqi10.mdx',
+
 }
 
 
 
 --统一加方法
-for i,name in ipairs({'挑战耐瑟龙','挑战冰龙','挑战精灵龙','挑战奇美拉','挑战Pa ','挑战手无寸铁的小龙女 ','挑战关羽 ','挑战霸王莲龙锤','挑战梦蝶仙翼'}) do
+for i,name in ipairs({'挑战耐瑟龙','挑战冰龙','挑战精灵龙','挑战奇美拉','挑战Pa','挑战手无寸铁的小龙女','挑战关羽','挑战霸王莲龙锤','挑战梦蝶仙翼'}) do
     
     local mt = ac.skill[name]
     
     function mt:on_cast_start()
         local hero = self.owner
         local player = self.owner:get_owner()
-    
+        if  player.sl_click_flag then 
+            player:sendMsg('不可重复挑战')
+            return 
+        end    
+        player.sl_click_flag = true
         --传送 玩家英雄
         hero = player.hero
         local point = ac.map.rects['练功房刷怪'..player.id]:get_point()
@@ -348,19 +360,30 @@ for i,name in ipairs({'挑战耐瑟龙','挑战冰龙','挑战精灵龙','挑战
         -- player:setCamera(ac.point(x+(value[10] or 0),y+(value[11] or 0))) --设置镜头
         local minx, miny, maxx, maxy = ac.map.rects['练功房刷怪'..player.id]:get()
         player:setCameraBounds(minx, miny, maxx, maxy)  --镜头锁定
-
+        
+        hero:event '单位-死亡'(function()
+            player:sendMsg('很遗憾没得到碎片',3)
+            ac.game:event_notify('游戏-大胜利',true)
+        end)
         --3秒后刷怪
         ac.wait(3*1000,function()
-            local unit_name = string.gsub(self.name,'挑战','')
+            local unit_name = self.name
+            local real_name = string.gsub(self.name,'挑战','')
             local unit = ac.player(12):create_unit(unit_name,point,270)
+
+            if self.weapon_orf and self.weapon_effect then 
+                unit:add_effect(self.weapon_orf,self.weapon_effect)
+            end   
+
             unit:event '单位-死亡'(function(trg,unit,killer)
                 --加碎片，存档。
-                local name = unit_name..'碎片'
+                local name = real_name..'碎片'
                 local key = ac.server.name2key(name)
                 player:AddServerValue(key,ac.g_game_degree)
 
-                player:sendMsg('获得'..ac.g_game_degree..'个'..name..' 还差X个即可激活',3)
-                player:sendMsg('游戏胜利!30秒之后退出游戏！',3)
+                player:sendMsg('获得'..ac.g_game_degree..'个'..name..' 还差'..self.need_sp_cnt - player.cus_server[name]..'个即可激活',3)
+                -- player:sendMsg('游戏胜利!30秒之后退出游戏！',3)
+                ac.game:event_notify('游戏-大胜利',true)
                
             end)
         end)

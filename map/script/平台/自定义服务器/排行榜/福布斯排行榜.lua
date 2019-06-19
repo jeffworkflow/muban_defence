@@ -130,7 +130,7 @@ p:sp_get_rank('gold','rank',10,function(data)
     ac.wait(10,function()
         for i = 1, #data do
             local value = tonumber(data[i].value)
-            value = ac.numerical(value)
+            value = ac.bignum2string(value)
             gold_ranking.ui.player[i]:set_text(data[i].player_name)
             gold_ranking.ui.gold[i]:set_text(value)
             gold_ranking.ui.rank[i]:set_text(data[i].rank)

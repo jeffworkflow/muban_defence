@@ -130,8 +130,8 @@ function get_mintable(tab,sortkey,key)
 	end) 
 	return tab[1][key]
 end
---数字转换
-function numerical(value)
+--数字转换 bignum2string bignum2string
+function bignum2string(value)
 	local value = tonumber(value)
 	if type(value) == 'string' then 
 		return 
