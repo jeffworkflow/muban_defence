@@ -143,13 +143,6 @@ tip = [[
 |cff00ff00-5%  技能冷却|r
 
 |cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
-need_map_level = 0,
-skin_cnt = function(self)
-    local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
-end,
---所需激活碎片
-need_sp_cnt = 0,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 68,
@@ -226,13 +219,6 @@ tip = [[
 |cff00ff00-5%  技能冷却|r
 
 |cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
-need_map_level = 3,
-skin_cnt = function(self)
-    local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
-end,
---所需激活碎片
-need_sp_cnt = 50,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 168,
@@ -296,19 +282,6 @@ function mt:on_add()
     local player = hero:get_owner()
     -- print('打开魔法书')
     for index,skill in ipairs(self.skill_book) do 
-        --商城 或是 自定义服务器有对应数据则
-        --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
-        local has_item = player.cus_server and (player.cus_server[skill.name] or 0 )
-        local sp_cnt = player.cus_server and (player.cus_server[skill.name..'碎片'] or 0 )
-        -- print(has_item,sp_cnt,skill.need_sp_cnt)
-        if has_item and has_item == 0 
-           and sp_cnt >= skill.need_sp_cnt  
-           and player:Map_GetMapLevel() >= skill.need_map_level  
-        then 
-            local key = ac.server.name2key(skill.name)
-            player:SetServerValue(key,1)
-            -- player:sendMsg('激活成功：'..skill.name)
-        end    
 
         local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
         if has_mall and has_mall > 0 then 

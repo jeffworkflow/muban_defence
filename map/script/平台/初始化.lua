@@ -139,4 +139,42 @@ end
 wabao2award()
 
 
+--处理神龙碎片 及对应的奖励
+local function shenlong2award()
+    local content_data = {
+        --奖励 = 碎片，地图等级
+        ['耐瑟龙'] = {50,3},
+        ['冰龙'] = {200,5},
+        ['精灵龙'] = {350,5},
+        ['奇美拉'] = {1000,10},
+        ['Pa'] = {40,3},
+        ['手无寸铁的小龙女'] = {200,5},
+        ['关羽'] = {500,10},
+        ['霸王莲龙锤'] = {650,10},
+        ['梦蝶仙翼'] = {800,10},
+    }  
+    for i=1,10 do
+        local player = ac.player[i]
+        if player:is_player() then
+            player:event '读取存档数据' (function()
+                for name,data in pairs(content_data) do 
+                    --商城 或是 自定义服务器有对应数据则
+                    --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
+                    local has_item = player.cus_server and (player.cus_server[name] or 0 )
+                    local suipin = player.cus_server and (player.cus_server[name..'碎片'] or 0 )
+                    -- print(has_item,sp_cnt,skill.need_sp_cnt)
+                    if has_item and has_item == 0 
+                    and suipin >= (data[1] or 9999999)
+                    and player:Map_GetMapLevel() >= (data[2]  or 9999999)
+                    then 
+                        local key = ac.server.name2key(name)
+                        player:SetServerValue(key,1)
+                        -- player:sendMsg('激活成功：'..key)
+                    end    
+                end   
+            end) 
+        end
+    end    
+end
+shenlong2award()
 
