@@ -296,18 +296,8 @@ function helper:save(key,value)
 end	
 --服务器清空档案
 function helper:clear_server()
-	for i = 1, 10 do
-		local p = ac.player(i)
-		for n = 1,#ac.mall do 
-			-- p:Map_SaveServerValue(ac.mall[n][1],0)
-			p:Map_FlushStoredMission(ac.mall[n][1],'S')
-		end	
-		--jifen \ boshu  都要清空
-
-		p:Map_FlushStoredMission('boshu','S')
-
-		-- ac.set_jiami(p,'jifen',0)
-	end
+	local p = self and self:get_owner() or ac.player.self 
+	p:clear_server()
 end
 --服务器存档 读取 
 function helper:get_server(key)
