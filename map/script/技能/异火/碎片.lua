@@ -17,6 +17,8 @@ for key,val in pairs(fire) do
     art = val[1],
     --说明
     tip = val[2],
+    --不可使用
+    no_use = true,
     --品质
     --color = '青',
     --物品类型
