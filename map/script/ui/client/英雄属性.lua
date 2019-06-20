@@ -98,15 +98,15 @@ class.hero_info_panel = extends(class.panel){
         if not hero then return end
 
         local skl = hero and hero:find_skill(hero:get_name()..'天赋') 
-        local tip = skl and skl:get_tip() or ''
-        
-        self.hero_tf:set_text('|cffcccccc'..skl.name..'|r')
-        self.hero_tip:set_text(tip)
+        if skl then
+            local tip = skl and skl:get_tip() or ''
+            self.hero_tf:set_text('|cffcccccc'..skl.name..'|r')
+            self.hero_tip:set_text(tip)
+        end    
 
         for i,data in ipairs(self.attrs) do
             local name_text,value_text = table.unpack(data)
             local name = clean_color(name_text:get_text()) --去除颜色代码
-            print('测试英雄属性',name)
             local new_value = string.format("%.f",hero:get(name))
             if not finds(ac.base_attr,name) then 
                 new_value = new_value..'%'

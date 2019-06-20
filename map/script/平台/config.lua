@@ -96,6 +96,11 @@ local cus_key = {
     {'cwtf','宠物天赋'},
     {'yshz','勇士徽章'},
 
+    {'dhll','力量'},
+    {'dhmj','敏捷'},
+    {'dhzl','智力'},
+    {'dhqsx','全属性'},
+
 }
 ac.cus_server_key = cus_key
 

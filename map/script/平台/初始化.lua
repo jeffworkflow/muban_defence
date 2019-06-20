@@ -178,3 +178,28 @@ local function shenlong2award()
 end
 shenlong2award()
 
+
+--处理替天行道 永久属性
+local function ttxd2award()
+    local content_data = {
+        --奖励 = 每存档力量奖励的值 
+        ['力量'] = {100000},
+        ['敏捷'] = {100000},
+        ['智力'] = {100000},
+        ['全属性'] = {50000},
+    }  
+    for i=1,10 do
+        local player = ac.player[i]
+        if player:is_player() then
+            player:event '玩家-注册英雄后' (function()
+                for name,data in pairs(content_data) do 
+                    local cnt = player.cus_server and (player.cus_server[name] or 0 )
+                    local value = cnt * data[1]
+                    --增加属性
+                    player.hero:add(name,value)
+                end   
+            end) 
+        end
+    end    
+end
+ttxd2award()

@@ -143,7 +143,6 @@ is_skill = true,
 need_yshz = 1,
 need_map_level = 0,
 ['力量'] = 100000,
-max_buy_cnt = 20,--最大兑换次数
 }   
 
 local mt = ac.skill['兑换-敏捷']
@@ -169,7 +168,6 @@ is_skill = true,
 need_yshz = 1,
 need_map_level = 0,
 ['敏捷'] = 100000,
-max_buy_cnt = 20,--最大兑换次数
 }   
 
 local mt = ac.skill['兑换-智力']
@@ -195,7 +193,6 @@ is_skill = true,
 need_yshz = 1,
 need_map_level = 0,
 ['智力'] = 100000,
-max_buy_cnt = 20,--最大兑换次数
 }   
 
 local mt = ac.skill['兑换-全属性']
@@ -221,7 +218,6 @@ is_skill = true,
 need_yshz = 1,
 need_map_level = 0,
 ['全属性'] = 40000,
-max_buy_cnt = 20, --最大兑换次数
 }   
 
 --存档称号相关
@@ -238,7 +234,7 @@ for i,name in ipairs({'兑换-势不可挡','兑换-君临天下','兑换-神帝
         local has_mall = p.mall[real_name] or (p.cus_server and p.cus_server[real_name])
     
         --已有物品的处理
-        if has_mall then 
+        if has_mall > 0 then 
             p:sendMsg('【系统消息】已有'..real_name)    
             return 
         end
@@ -279,19 +275,25 @@ for i,name in ipairs({'兑换-力量','兑换-敏捷','兑换-智力','兑换-�
         local p = hero:get_owner()
         hero = p.hero
 
+        local real_name = string.gsub(self.name,'兑换%-','')
         local has_yshz = p.cus_server and (p.cus_server['勇士徽章'] or 0 )
         local map_level = p:Map_GetMapLevel()
+        local has_mall = p.cus_server and (p.cus_server[real_name] or 0 )
 
-        --处理最大购买次数
-        local shop_item = ac.item.shop_item_map[self.name]
-        if not shop_item.player_buy_cnt then 
-            shop_item.player_buy_cnt = {}
+        --处理上限问题
+        if has_mall >= map_level then 
+            --已经加了属性，需要重新扣除
+            print(real_name,-self[real_name])
+            hero:add(real_name,-self[real_name])
+            p:sendMsg('【系统消息】已达兑换上限次数：'..real_name)    
+            return true
         end
-        shop_item.player_buy_cnt[p] = (shop_item.player_buy_cnt[p] or 1) + 1
-
-         --处理兑换
-         if has_yshz >= self.need_yshz  then 
+        --处理兑换
+        if has_yshz >= self.need_yshz  then 
             p:AddServerValue('yshz',-self.need_yshz)
+            local key = ac.server.name2key(real_name)
+            p:AddServerValue(key,1)
+            p:sendMsg('兑换成功：'..real_name)   
             -- p:sendMsg('【系统消息】 获得25W'..)   
 
             --先扣当前消费者的勋章数，不足的话扣除单位下的另一个人的勋章

@@ -47,4 +47,18 @@ function mt:on_cast_start()
     hero:add('全属性',self.award_all_attr)
     player:sendMsg('|cffFFE799【系统消息】|r|cff00ffff'..player:get_name()..'|r 强化了基地 奖励|cff00ff005W全属性|r',2)
     
+
+    --概率得 五道杠少年
+    local rate = 1
+    -- local rate = 80 --测试用
+    if math.random(1,10000)/100 < rate then 
+        local skl = hero:find_skill('五道杠少年',nil,true)
+        if not skl  then 
+            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','五道杠少年')
+            player.is_show_nickname = '五道杠少年'
+            --给全部玩家发送消息
+            ac.player.self:sendMsg('恭喜获得 唯一称号 五道杠少年')
+            -- ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000吸血+10%，攻击回血+50W|r',6)
+        end
+    end    
 end

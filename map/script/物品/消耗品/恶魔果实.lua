@@ -71,6 +71,11 @@ function mt:on_strong(skill)
         skill:remove() 
         ac.game:event_notify('技能-插入魔法书',hero,'神技入体',skill.name)
         player:sendMsg('|cffffe799【系统消息】|r|cffffff00技能强化成功|r 强化后的技能可以在 神技入体系统 查看')
+        --设置入体技能为5级
+        ac.wait(300,function() 
+            local skl = hero:find_skill(skill.name,nil,true)
+            if skl then skl:set_level(skl.max_level) end
+        end)
     else
         -- hero:add_skill('强化后的'..skill.name,'英雄',slot_id)
         hero:replace_skill(skill.name,'强化后的'..skill.name)
