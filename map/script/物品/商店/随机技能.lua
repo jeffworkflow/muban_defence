@@ -18,7 +18,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
 --购买价格
-wood = 5,
+wood = 1,
 --每次增加
 cre_wood = 500,
 --物品技能

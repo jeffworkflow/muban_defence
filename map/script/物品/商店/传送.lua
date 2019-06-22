@@ -28,12 +28,12 @@ ac.quick_arrive ={
     ['技能升级书lv1'] = {ac.map.rects['传送-技能1'],'jinengshengji1.blp','\n挑战BOSS并获得|cff00ff00 【技能升级书lv1】|r\n',0,100,0,0,0,nil,0,450} ,
     ['技能升级书lv2'] = {ac.map.rects['传送-技能2'],'jinengshengji2.blp','\n挑战BOSS并获得|cff00ffff 【技能升级书lv2】|r\n',0,1000,0,0,0,nil,0,450} ,
     ['技能升级书lv3'] = {ac.map.rects['传送-技能3'],'jinengshengji3.blp','\n挑战BOSS并获得|cffffff00 【技能升级书lv3】|r\n',0,10000,0,0,0,nil,0,450} ,
-    ['技能升级书lv4'] = {ac.map.rects['传送-技能4'],'jinengshengji4.blp','\n挑战BOSS并获得|cffff0000 【技能升级书lv4】|r\n',0,100000,0,0,0,nil,0,450} ,
+    ['技能升级书lv4'] = {ac.map.rects['传送-技能4'],'jinengshengji4.blp','\n挑战BOSS并获得|cffff0000 【技能升级书lv4】|r\n',0,50000,0,0,0,nil,0,450} ,
     
     ['洗练石boss1'] = {ac.map.rects['传送-洗练石1'],'xilianshi.blp','\n挑战BOSS并获得|cff00ff00 【一号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,200,0,0,0,nil,0,450} ,
     ['洗练石boss2'] = {ac.map.rects['传送-洗练石2'],'xilianshi.blp','\n挑战BOSS并获得|cff00ffff 【二号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,2000,0,0,0,nil,0,450} ,
     ['洗练石boss3'] = {ac.map.rects['传送-洗练石3'],'xilianshi.blp','\n挑战BOSS并获得|cffffff00 【三号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,20000,0,0,0,nil,0,450} ,
-    ['洗练石boss4'] = {ac.map.rects['传送-洗练石4'],'xilianshi.blp','\n挑战BOSS并获得|cffff0000 【四号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,200000,0,0,0,nil,0,450} ,
+    ['洗练石boss4'] = {ac.map.rects['传送-洗练石4'],'xilianshi.blp','\n挑战BOSS并获得|cffff0000 【四号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,100000,0,0,0,nil,0,450} ,
 
     ['境界-小斗气'] = {ac.map.rects['传送-境界1'],'tupo1.blp','\n挑战BOSS并突破境界至|cff00ff00 【小斗气】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+200w 全属性\n+2.5%  免伤\n+2.5%  暴击几率\n+25%   暴击加深\n+10%    每秒回血\n|r',0,0,5000,0,0,nil,0,500} ,
     ['境界-斗者'] = {ac.map.rects['传送-境界2'],'tupo2.blp','\n挑战BOSS并突破境界至|cff00ff00 【斗者】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+300w 全属性\n+2.5%  闪避\n+2.5%  技暴几率\n+25%   技暴加深\n+5      攻击减甲\n|r',0,0,10000,0,0,nil,0,500} ,
@@ -48,19 +48,19 @@ ac.quick_arrive ={
 
     ['伏地魔'] = {ac.map.rects['传送-伏地魔'],'xianglian402.blp','\n满足一定条件后，战胜伏地魔，可获得|cffff0000顶级的紫金碧玺佩|r\n',0,100000,0} ,
 
-    ['星星之火 '] = {ac.map.rects['传送-星星之火'],'huo1.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cff00ff00初级异火：星星之火|r\n',0,0,500,} ,
-    ['陨落心炎 '] = {ac.map.rects['传送-陨落心炎'],'huo2.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cff00ffff中级异火：陨落心炎火|r\n',0,0,20000,} ,
-    ['三千焱炎火 '] = {ac.map.rects['传送-三千焱炎火'],'huo3.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffffff00高级异火：三千焱炎火|r\n',0,0,100000,} ,
-    ['虚无吞炎 '] = {ac.map.rects['传送-虚无吞炎'],'huo4.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,500000,} ,
+    ['星星之火 '] = {ac.map.rects['传送-星星之火'],'huo1.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cff00ff00初级异火：星星之火|r\n',0,0,20000,} ,
+    ['陨落心炎 '] = {ac.map.rects['传送-陨落心炎'],'huo2.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cff00ffff中级异火：陨落心炎火|r\n',0,0,40000,} ,
+    ['三千焱炎火 '] = {ac.map.rects['传送-三千焱炎火'],'huo3.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffffff00高级异火：三千焱炎火|r\n',0,0,70000,} ,
+    ['虚无吞炎 '] = {ac.map.rects['传送-虚无吞炎'],'huo4.blp','\n前往火焰熔炉，杀死守卫和boss，获得|cffff0000顶级异火：虚无吞炎|r\n',0,0,100000,} ,
 
     ['藏宝图 '] = {ac.map.rects['藏宝图 '],'cangbaotu.blp','\n前往藏宝区，杀死强盗和boss，获得|cff00ff00藏宝图|r\n',0,0,0,1000} ,
 
-    ['红发'] = {ac.map.rects['传送-红发'],'hongfa.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：格里芬|r\n',0,150000,0} ,
-    ['黑胡子'] = {ac.map.rects['传送-黑胡子'],'heihuzi.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：黑暗项链|r\n',0,150000,0} ,
-    ['百兽'] = {ac.map.rects['传送-百兽'],'baishou.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：最强生物心脏|r\n',0,150000,0} ,
-    ['白胡子'] = {ac.map.rects['传送-白胡子'],'baihuzi.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：白胡子的大刀|r\n',0,150000,0} ,
+    ['红发'] = {ac.map.rects['传送-红发'],'hongfa.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：格里芬|r\n',0,120000,0} ,
+    ['黑胡子'] = {ac.map.rects['传送-黑胡子'],'heihuzi.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：黑暗项链|r\n',0,120000,0} ,
+    ['百兽'] = {ac.map.rects['传送-百兽'],'baishou.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：最强生物心脏|r\n',0,120000,0} ,
+    ['白胡子'] = {ac.map.rects['传送-白胡子'],'baihuzi.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：白胡子的大刀|r\n',0,120000,0} ,
     
-    ['替天行道'] = {ac.map.rects['传送-替天行道'],'ttxd.blp','\n请大侠|cff00ffff闲暇的时候|r前往袭击食人魔，获得|cff00ffff勇士徽章（可存档）|r\n',0,0,0,1000} ,
+    ['替天行道'] = {ac.map.rects['传送-替天行道'],'ttxd.blp','\n请大侠|cff00ffff闲暇的时候|r前往袭击食人魔，获得|cff00ffff勇士徽章（可存档）|r\n\n|cffcccccc建议最后挑战|r',0,0,0,1000} ,
 
 }
 

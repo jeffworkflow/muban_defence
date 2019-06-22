@@ -27,7 +27,7 @@ skin_cnt = function(self)
     return p.cus_server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 50,
+need_sp_cnt = 15,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 8,
@@ -50,10 +50,11 @@ art = [[ReplaceableTextures\CommandButtons\BTNAzureDragon.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff神龙碎片超过 200 自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff神龙碎片超过 75 自动获得，已拥有碎片：|r%skin_cnt% 或者
+|cff00ffff挖宝积分超过 2W 自动获得，已拥有积分：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
-|cff00ff00+18   杀怪加全属性|r
+|cff00ff00+28   杀怪加全属性|r
 |cff00ff00+15% 金币加成|r
 |cff00ff00+15% 木头加成|r
 |cff00ff00+10% 吸血|r
@@ -65,10 +66,10 @@ skin_cnt = function(self)
     return p.cus_server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 200,
+need_sp_cnt = 75,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 18,
+['杀怪加全属性'] = 28,
 ['金币加成'] = 15,
 ['木头加成'] = 15,
 ['吸血'] = 10,
@@ -89,27 +90,26 @@ art = [[ReplaceableTextures\CommandButtons\BTNFaerieDragon.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff神龙碎片超过 350  自动获得，已拥有碎片：|r%skin_cnt% 或者
-|cff00ffff挖宝积分超过 2.5W 自动获得，已拥有积分：|r%skin_cnt%
+|cff00ffff神龙碎片超过 500  自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
-|cff00ff00+28  杀怪加全属性|r
+|cff00ff00+68  杀怪加全属性|r
 |cff00ff00+15% 金币加成|r
 |cff00ff00+15% 木头加成|r
 |cff00ff00+15% 杀敌数加成|r
 |cff00ff00+10% 每秒回血|r
 
 |cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
-need_map_level = 5,
+need_map_level = 8,
 skin_cnt = function(self)
     local p = ac.player.self
     return p.cus_server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 350,
+need_sp_cnt = 500,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 28,
+['杀怪加全属性'] = 68,
 ['金币加成'] = 15,
 ['木头加成'] = 15,
 ['杀敌数加成'] = 15,
@@ -168,10 +168,10 @@ art = [[ReplaceableTextures\CommandButtons\BTNChimaera.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff神龙碎片超过 1000 自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff神龙碎片超过 800 自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
-|cff00ff00+88    杀怪加全属性|r
+|cff00ff00+128    杀怪加全属性|r
 |cff00ff00+25%  火灵加成|r
 |cff00ff00+25%  物品获取率|r
 |cff00ff00-0.05  攻击间隔|r
@@ -183,10 +183,10 @@ skin_cnt = function(self)
     return p.cus_server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 1000,
+need_sp_cnt = 800,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 88,
+['杀怪加全属性'] = 128,
 ['火灵加成'] = 25,
 ['物品获取率'] = 25,
 ['攻击间隔'] = -0.05,

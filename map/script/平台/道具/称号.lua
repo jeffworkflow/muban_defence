@@ -94,7 +94,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff砖石15星 
+|cff00ffff砖石10星 
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+68    杀怪加全属性|r
@@ -149,7 +149,7 @@ art = [[jstz.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff王者30星 
+|cff00ffff王者25星 
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+100 杀怪加全属性|r

@@ -1,9 +1,9 @@
 local config = {
     --品阶 =  颜色,技暴加深 技暴几率 全属性 闪避 攻击间隔
-    ['凡'] = {'绿',50,1,100,1,-0.01},
-    ['玄'] = {'蓝',100,2,200,2,-0.02},
-    ['地'] = {'金',200,3,350,3,-0.03},
-    ['天'] = {'红',400,5,750,5,-0.05},
+    ['凡'] = {'绿',50,1,1000000,1,-0.01},
+    ['玄'] = {'蓝',100,2,2000000,2,-0.02},
+    ['地'] = {'金',200,3,3500000,3,-0.03},
+    ['天'] = {'红',400,5,7500000,5,-0.05},
 }
 
 --物品名称
@@ -14,17 +14,32 @@ mt{
     level = 1 ,
     max_level = 11,
     tip = [[
-%color_tip%     
 
-%content_tip%   
-+%技暴加深% 技暴加深
-+%技暴几率% 技暴几率
-+%全属性% 全属性
-+%闪避% % 闪避
-%攻击间隔%  攻击间隔
+%xxzhtip%
+|cffFFE799【基本属性】
+|cffffff00+%全属性%  |cff00ff00全属性
+|cffffff00+%技暴几率% |cffffff00%  |cff00ff00技暴几率
+|cffffff00+%技暴加深% |cffffff00% |cff00ff00技暴加深
+|cffffff00+%闪避% |cffffff00%  |cff00ff00闪避
+|cffffff00%攻击间隔%  |cff00ff00攻击间隔|r
 ]],
+
+    xxzhtip = function(self)
+        return  '|cffffe799【品阶】|r'..'|cff'..ac.color_code[self.color or '白']..self.quality..'|r \n'
+    end,
+
+    item_type_tip = function(self)
+        return  ''
+    end,  
+
+    color_tip = function(self)
+        return  ''
+    end,
+    
+    content_tip = '|cffFF0000【点击可吞噬入体，相同异火只能吞噬一次】|r\n',
+
     --技能图标
-    art = [[guo3.blp]],
+    art = [[huo3.blp]],
     is_order = 1, --没显示等级，注释显示等级
     item_type ='消耗品', --
     not_use_state = true, -- 不可使用消耗品
@@ -37,9 +52,7 @@ mt{
         -- print(config[self.quality][1])
         return config[self.quality][1]
     end , 
-    color_tip = function(self)
-       return  '品阶：'..'|cff'..ac.color_code[self.color or '白']..self.quality..'|r'
-    end,
+   
     quality = '凡',
     --等级因素，等差数列，给出最小和最大即可
     lv_attr = {0,10,20,30,40,50,60,70,80,90,100},
@@ -67,7 +80,7 @@ mt{
     --升级特效
     effect ='Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx',
     --物品详细介绍的title
-    content_tip = '|cffFFE799基本属性：|r',
+
 }
 
 function mt:on_upgrade()
