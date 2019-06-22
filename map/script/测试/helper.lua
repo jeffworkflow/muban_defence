@@ -268,6 +268,10 @@ function helper:reload_mall()
 	local skl = peon:find_skill('宠物皮肤')
 	if skl then skl:remove() end
 	peon:add_skill('宠物皮肤','英雄',12)
+
+	local skl = peon:find_skill('宠物天赋')
+	if skl then skl:remove() end
+	peon:add_skill('宠物天赋','英雄',8)
 end	
 
 --积分 正常模式下，101波，boss打完就进入无尽，没有保存当前积分。 貌似要在回合结束统计分数。
@@ -301,8 +305,10 @@ function helper:clear_server()
 end
 --服务器存档 读取 
 function helper:get_server(key)
-	local p = self:get_owner()	
-	print('服务器存档:'..key,p:Map_GetServerValue(key))
+	local p = self:get_owner()
+	local name = ac.server.key2name(key)	
+	-- print('服务器存档:'..key,p:Map_GetServerValue(key))
+	print('服务器存档:'..key,p.cus_server[name])
 end	
 --波数
 function helper:boshu(str,index)

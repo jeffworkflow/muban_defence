@@ -159,13 +159,13 @@ local function start()
 			ac.effect(where,[[xrdh.mdx]],270,1,'origin'):remove()
 			local hero = player[16]:createHero(name, where,270)
 			--添加淡化buff
-			hero:add_buff '淡化*改'
-			{
-				source_alpha = 0,
-				target_alpha = 100,
-				time = 0.4,
-				remove_when_hit = false,
-			}
+			-- hero:add_buff '淡化*改'
+			-- {
+			-- 	source_alpha = 0,
+			-- 	target_alpha = 100,
+			-- 	time = 0.4,
+			-- 	remove_when_hit = false,
+			-- }
 			hero.name = name
 			hero:remove_ability 'Amov'
 			hero:add_restriction '缴械'

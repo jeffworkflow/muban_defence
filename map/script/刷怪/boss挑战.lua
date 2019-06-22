@@ -52,7 +52,7 @@ ac.challenge_boss = {
     ['三千焱炎火boss'] = {ac.map.rects['boss-三千焱炎火'],270},
     ['虚无吞炎boss'] = {ac.map.rects['boss-虚无吞炎'],270},
     
-    ['强盗领主'] = {ac.map.rects['boss-藏宝图'],270},
+    -- ['强盗领主'] = {ac.map.rects['boss-藏宝图'],270},
     --boss名 = 区域，面向角度，特效区域，特效
     ['红发'] = {ac.map.rects['boss-红发'],180,'hand','wuqi13.mdx'},
     ['黑胡子'] = {ac.map.rects['boss-黑胡子'],180,'hand','wuqi10.mdx'},

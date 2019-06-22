@@ -5,7 +5,8 @@ local unit = require 'types.unit'
 local mt = ac.skill['宠物天赋']
 mt{
     is_spellbook = 1,
-    is_order = 2,
+    -- is_order = 2,
+    --可能会掉线 math.min(100,ac.player.self:Map_GetMapLevel()),
     max_level = 100,
     --标题颜色
     color =  '紫',
@@ -88,7 +89,8 @@ function mt:on_add()
     hero:set_size(self.model_size) 
 
     --处理 皮肤碎片相关
-    local value = tonumber(p.cus_server['CWTF'])
+    local value = tonumber(p.cus_server['宠物天赋'])
+    -- print(value)
     -- print('宠物天赋',value)
     if not value or value == '' or value == "" then
         value = 0 
@@ -216,7 +218,6 @@ function unit.__index:peon_add_xp(xp)
     self.peon_xp = (self.peon_xp or 0) + xp 
     --保存经验到服务器存档
     player:SetServerValue('cwtf',tonumber(self.peon_xp))
-
     --升级
     self.peon_lv = self.peon_lv or 1
     local flag = true 
@@ -234,11 +235,15 @@ function unit.__index:peon_add_xp(xp)
             skill:fresh_tip()
         end 
 
+        --地图等级限制
+        local map_level = (player:Map_GetMapLevel()+1) * 3
         if self.peon_xp >= self:peon_get_upgrade_xp(self.peon_lv) then
-            flag = true
-            self.peon_lv = self.peon_lv + 1
-            skill:upgrade(1)
-            ac.game:event_notify('宠物升级',self)
+            if self.peon_lv <= map_level then 
+                self.peon_lv = self.peon_lv + 1
+                skill:upgrade(1)
+                ac.game:event_notify('宠物升级',self)
+                flag = true
+            end    
         end 
     end
     --改变宠物的名字 不是英雄单位无法修改

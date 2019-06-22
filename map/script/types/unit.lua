@@ -1749,6 +1749,7 @@ local function restriction_hard(self, flag)
 end
 
 local function restriction_god(self, flag)
+	jass.SetUnitInvulnerable(self.handle, flag)
 	if flag then
 		self:add_restriction '物免'
 		self:add_restriction '魔免'

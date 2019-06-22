@@ -1907,7 +1907,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_ttxd11=Rect(24288.0, 3488.0, 24544.0, 3776.0)
     set gg_rct_ttxd1=Rect(23488.0, 3520.0, 23744.0, 3808.0)
     set gg_rct_cbt1=Rect(10464.0, - 8832.0, 10752.0, - 8608.0)
-    set gg_rct_cbt111=Rect(10496.0, - 7648.0, 10720.0, - 7424.0)
+    set gg_rct_cbt111=Rect(10368.0, - 7776.0, 10848.0, - 7136.0)
     set gg_rct_cbt11=Rect(9408.0, - 9088.0, 9888.0, - 8544.0)
     set gg_rct_cbt12=Rect(11360.0, - 9088.0, 11840.0, - 8544.0)
     set gg_rct_cbt2=Rect(15872.0, - 17888.0, 19360.0, - 15008.0)

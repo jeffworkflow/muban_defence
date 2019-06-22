@@ -751,6 +751,9 @@ end
 --单位是否有物品,查到立即返回
 --可根据物品名称，或是物品品质返回物品。
 function unit.__index:has_item(it,all)
+	if not it then 
+		return 
+	end	
 	if type(it) == 'string' then 
 		it_name = it
 	else 

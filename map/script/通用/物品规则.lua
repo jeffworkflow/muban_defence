@@ -171,8 +171,6 @@
             jifen= tonumber(player.jifen) or 0
         end
         local fire_seed = player.fire_seed or 0
-        -- print(kill_count,fire_seed)
-
         local golds = it:buy_price()
         local woods = it:buy_wood()
         local kill_counts = it:buy_kill_count()
@@ -184,29 +182,48 @@
         kill_counts = (it.player_kill and it.player_kill[player]) or kill_counts
         jifens = (it.player_jifen and it.player_jifen[player]) or jifens
         fire_seeds = (it.player_fire and it.player_fire[player]) or fire_seeds
-        if gold < golds  then
+
+        --处理 兑奖券
+        local has_raffle
+        local _, _, raffle,need_cnt
+        local u_raffle
+        if it.raffle then
+            _, _, raffle,need_cnt = string.find(it.raffle,"(%S+)%*(%d+)") 
+            need_cnt = tonumber(need_cnt)
+            u_raffle = u:has_item(raffle)
+            if u_raffle and u_raffle._count >= (need_cnt or 1) then 
+                has_raffle = true 
+            end    
+        end    
+        if gold < golds and not has_raffle then
             u:get_owner():sendMsg('钱不够',3)
+            ac.game:event_notify('单位-货币不足',seller,u,it)
             return
         end 
-        if wood < woods then
+        if wood < woods and not has_raffle  then
             u:get_owner():sendMsg('木头不够',3)
+            ac.game:event_notify('单位-货币不足',seller,u,it)
             return
         end
-        if kill_count < kill_counts then
+        if kill_count < kill_counts and not has_raffle then
             u:get_owner():sendMsg('杀敌数不够',3)
+            ac.game:event_notify('单位-货币不足',seller,u,it)
             return
         end
-        --以免积分负数购买不了其他物品。
-        if jifens > 0 then 
+        if jifens > 0 and not has_raffle then 
             if jifen < jifens then
                 u:get_owner():sendMsg('积分不够',3)
+                ac.game:event_notify('单位-货币不足',seller,u,it)
                 return
             end
         end   
-        if fire_seed < fire_seeds then
+        if fire_seed < fire_seeds and not has_raffle then
             u:get_owner():sendMsg('火灵不够',3)
+            ac.game:event_notify('单位-货币不足',seller,u,it)
             return
         end 
+
+        --购买上限
         if it.max_buy_cnt and it.player_buy_cnt then
             if it.player_buy_cnt[player] and (it.player_buy_cnt[player] > (it.max_buy_cnt or 9999999)) then
                 u:get_owner():sendMsg('超出购买上限',3)
@@ -229,30 +246,35 @@
         else    
             local item = ac.item.create_item(it.name,nil,true)
             item.seller = seller
+            --在商店的物品，加属性时，统一加在英雄身上
+            item.strong_hero = true 
             u:add_item(item)   
         end    
         --给单位添加物品时，会进行一系列逻辑处理，处理完后会改变 buy_suc 状态
         if u.buy_suc then 
-            -- print('扣钱')
-            player:addGold( - golds,u)
-            player:add_wood( - woods)
-            --扣杀敌数 
-            player:add_kill_count( -kill_counts)
-            --扣火灵
-            player:add_fire_seed( -fire_seeds)
+            if has_raffle then 
+                u_raffle:add_item_count(-need_cnt)
+            else
+                player:addGold( - golds,u)
+                player:add_wood( - woods)
+                --扣杀敌数 
+                player:add_kill_count( -kill_counts)
+                --扣火灵
+                player:add_fire_seed( -fire_seeds)
 
-            if jifens > 0 then 
-                --扣除积分
-                player:add_jifen(-jifens)
-                -- player:event_notify('积分变化',player,-jifens)
-                --保存服务器存档 永久性的物品
-                -- print(it.name)
-                local key = ac.server.name2key(it.name)
-                if key then 
-                    -- print(it.name,key,1)
-                    player:SetServerValue(key,1) 
-                end    
-            end   
+                if jifens > 0 then 
+                    --扣除积分
+                    player:add_jifen(-jifens)
+                    -- player:event_notify('积分变化',player,-jifens)
+                    --保存服务器存档 永久性的物品
+                    -- print(it.name)
+                    local key = ac.server.name2key(it.name)
+                    if key then 
+                        -- print(it.name,key,1)
+                        player:SetServerValue(key,1) 
+                    end    
+                end   
+            end    
 
             -- 购买成功，删掉商店在售物品
             if it.on_selled_remove then 

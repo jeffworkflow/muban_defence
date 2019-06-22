@@ -6,10 +6,7 @@ mt{
     art = [[other\hecheng.blp]],
     --物品技能
     is_skill = true,
-    
     content_tip = '',
-
-    art = [[ReplaceableTextures\CommandButtons\BTNOrbOfFrost.blp]],
     tip = [[
 
 |cffFFE799【使用说明】：|r

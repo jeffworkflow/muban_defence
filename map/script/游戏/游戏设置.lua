@@ -86,6 +86,15 @@ function Unit.__index:add_fire_seed(num)
 end
 
 
+--禁止A队友
+ac.game:event '单位-攻击开始' (function(self, data)
+	if data.target:is_ally(data.source) then
+		if data.target:get_name() ~= '小心肝' then 
+			data.source:issue_order 'stop'
+			return true		--终结事件流程
+		end	
+	end
+end)
 
 
 ac.map = {}

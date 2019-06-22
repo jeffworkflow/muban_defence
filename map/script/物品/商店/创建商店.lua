@@ -37,6 +37,12 @@ local function init_shop()
                             shop:set('生命上限',500000)
                             shop:set('护甲',100)
                         end    
+                        if name == '小心肝' then
+                            shop:remove_restriction '无敌'
+                            shop:set('生命上限',500000000000)
+                            shop:set('生命恢复',500000000000)
+                            shop:set('护甲',500000000000)
+                        end   
                         
                         if name == '魔鬼的交易' then
                             ac.game:event_notify('单位-创建商店', shop)

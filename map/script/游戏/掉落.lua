@@ -553,7 +553,14 @@ local unit_reward = {
     ['百兽'] = {{rand =100,name = '最强生物心脏'}},
     ['白胡子'] = {{rand =100,name = '白胡子的大刀'}},
 
-    -- ['食人魔'] = {{rand =20 +10*(ac.g_game_degree or 1),name = '勇士徽章'}},
+    ['鸡'] = {
+        {rand =0.2,name = '完美的鸡汤'},
+        {rand =0.2,name = '完美的鸡头'},
+        {rand =0.2,name = '完美的鸡翅'},
+        {rand =0.2,name = '完美的鸡腿'},
+        {rand =0.2,name = '完美的鸡蛋'},
+},
+
    
 }
 ac.unit_reward = unit_reward

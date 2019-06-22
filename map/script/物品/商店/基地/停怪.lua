@@ -15,6 +15,7 @@ tip = [[
 
 
 使得怪物|cff00ff00暂停进攻90秒|r
+注意：木头不够，会进入CD，切勿瞎购买。
 ]],
 shop_count = 0, --初始个数
 --特殊id 带cd
@@ -45,5 +46,23 @@ function mt:on_cast_start()
         local creep = ac.creep['刷怪'..i]
         creep:PauseTimer(self.stu_time)
     end
+    --启用另一个计时器 显示停怪恢复倒计时	
+    ac.timer_ex
+    {
+        time = self.stu_time,
+        title = '停怪还剩：',
+    }
     
 end
+
+-- ac.game:event '单位-货币不足' (function(_,seller,u,it)
+--     -- print(_,seller,u,it)
+--     if it.name == '停怪' then
+--         -- print('进入回调')
+--         seller:remove_sell_item(it.name)
+--         ac.wait(3000,function()
+--            seller:add_sell_item(it.name,4)
+--         end)
+--     end
+
+-- end)
