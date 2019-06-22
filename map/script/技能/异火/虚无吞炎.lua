@@ -1,10 +1,10 @@
 local config = {
     --品阶 =  颜色,全伤加深 全属性 免伤 触发概率
                 
-    ['凡'] = {'绿',25,100,1,1},
-    ['玄'] = {'蓝',50,200,2,2},
-    ['地'] = {'金',100,350,3,3},
-    ['天'] = {'红',200,750,5,5},
+    ['凡'] = {'绿',25,1000000,1,1},
+    ['玄'] = {'蓝',50,2000000,2,2},
+    ['地'] = {'金',100,3500000,3,3},
+    ['天'] = {'红',200,7500000,5,5},
 }
 
 --物品名称
@@ -15,14 +15,28 @@ mt{
     level = 1 ,
     max_level = 11,
     tip = [[
-%color_tip%     
 
-%content_tip%   
-+%全伤加深% 全伤加深
-+%全属性% 全属性
-+%免伤% % 免伤
-+%触发概率% % 触发概率
+%xxzhtip%
+|cffFFE799【基本属性】
+|cffffff00+%全属性%  |cff00ff00全属性
+|cffffff00+%全伤加深% |cffffff00%  |cff00ff00全伤加深
+|cffffff00+%免伤% |cffffff00%  |cff00ff00免伤
+|cffffff00+%触发概率% |cffffff00%  |cff00ff00触发概率|r
 ]],
+    xxzhtip = function(self)
+        return  '|cffffe799【品阶】|r'..'|cff'..ac.color_code[self.color or '白']..self.quality..'|r \n'
+    end,
+
+    color_tip = function(self)
+        return  ''
+     end,
+
+    item_type_tip = function(self)
+        return  ''
+    end,  
+
+    content_tip = '|cffFF0000【点击可吞噬入体，相同异火只能吞噬一次】|r\n',
+
     --技能图标
     art = [[huo4.blp]],
     is_order = 1, --没显示等级，注释显示等级
@@ -37,9 +51,7 @@ mt{
         -- print(config[self.quality][1])
         return config[self.quality][1]
     end , 
-    color_tip = function(self)
-       return  '品阶：'..'|cff'..ac.color_code[self.color or '白']..self.quality..'|r'
-    end,
+   
     quality = '凡',
     --等级因素，等差数列，给出最小和最大即可
     lv_attr = {0,10,20,30,40,50,60,70,80,90,100},
@@ -63,7 +75,7 @@ mt{
     --升级特效
     effect ='Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx',
     --物品详细介绍的title
-    content_tip = '|cffFFE799基本属性：|r',
+    
 }
 
 function mt:on_upgrade()

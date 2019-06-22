@@ -15,14 +15,21 @@ mt{
     max_level = 11,
     tip = [[
 
-%color_tip%
-
-%content_tip%
+%xxzhtip%
+|cffFFE799【基本属性】
 |cffffff00+%全属性% |cff00ff00全属性
 |cffffff00+%攻击减甲%     |cff00ff00攻击减甲
 |cffffff00+%每秒回血% |cffffff00%|r   |cff00ff00每秒回血|r
-
 ]],
+    xxzhtip = function(self)
+        return  '|cffffe799【品阶】|r'..'|cff'..ac.color_code[self.color or '白']..self.quality..'|r \n'
+    end,
+
+    item_type_tip = function(self)
+        return  ''
+    end,  
+    content_tip = '|cffFF0000【点击可吞噬入体，相同异火只能吞噬一次】|r\n',
+
     --技能图标
     art = [[huo1.blp]],
     is_order = 1, --没显示等级，注释显示等级
@@ -38,7 +45,7 @@ mt{
         return config[self.quality][1]
     end , 
     color_tip = function(self)
-       return  '|cffffe799【品阶】：|r'..'|cff'..ac.color_code[self.color or '白']..self.quality..'|r'
+       return  ''
     end,
     quality = '凡',
     --等级因素，等差数列，给出最小和最大即可
@@ -58,7 +65,8 @@ mt{
     --升级特效
     effect ='Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx',
     --物品详细介绍的title
-    content_tip = '|cffFFE799【基本属性】：|r',
+    
+
 }
 
 function mt:on_upgrade()

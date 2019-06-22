@@ -1,9 +1,9 @@
 local config = {
     --品阶 =  颜色,物暴加深，几率，全属性，免伤几率，技能冷却                 
-    ['凡'] = {'绿',50,1,100,1,1},
-    ['玄'] = {'蓝',100,2,200,2,2},
-    ['地'] = {'金',200,3,350,3,3},
-    ['天'] = {'红',400,5,750,5,5},
+    ['凡'] = {'绿',50,1,1000000,1,1},
+    ['玄'] = {'蓝',100,2,2000000,2,2},
+    ['地'] = {'金',200,3,3500000,3,3},
+    ['天'] = {'红',400,5,7500000,5,5},
 }
 
 --物品名称
@@ -14,15 +14,29 @@ mt{
     level = 1 ,
     max_level = 11,
     tip = [[
-%color_tip%     
 
-%content_tip%   
-+%物暴加深% 物暴加深
-+%物暴几率% 物暴几率
-+%全属性% % 全属性
-+%免伤几率% % 免伤几率
-+%技能冷却% % 技能冷却
+%xxzhtip%
+|cffFFE799【基本属性】
+|cffffff00+%全属性%  |cff00ff00全属性
+|cffffff00+%暴击几率% |cffffff00%  |cff00ff00暴击几率
+|cffffff00+%暴击加深% |cffffff00% |cff00ff00暴击加深
+|cffffff00+%免伤几率% |cffffff00%  |cff00ff00免伤几率
+|cffffff00+%技能冷却% |cffffff00%  |cff00ff00技能冷却|r
 ]],
+    xxzhtip = function(self)
+        return  '|cffffe799【品阶】|r'..'|cff'..ac.color_code[self.color or '白']..self.quality..'|r \n'
+    end,
+
+    item_type_tip = function(self)
+        return  ''
+    end,  
+
+    color_tip = function(self)
+        return  ''
+    end,
+
+    content_tip = '|cffFF0000【点击可吞噬入体，相同异火只能吞噬一次】|r\n',
+
     --技能图标
     art = [[huo2.blp]],
     is_order = 1, --没显示等级，注释显示等级
@@ -37,17 +51,15 @@ mt{
         -- print(config[self.quality][1])
         return config[self.quality][1]
     end , 
-    color_tip = function(self)
-       return  '品阶：'..'|cff'..ac.color_code[self.color or '白']..self.quality..'|r'
-    end,
+    
     quality = '凡',
     --等级因素，等差数列，给出最小和最大即可
     lv_attr = {0,10,20,30,40,50,60,70,80,90,100},
-    ['物暴加深'] = function (self)
+    ['暴击加深'] = function (self)
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][2] 
     end,
-    ['物暴几率'] = function (self)
+    ['暴击几率'] = function (self)
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][3] 
     end,
@@ -65,8 +77,6 @@ mt{
     end,
     --升级特效
     effect ='Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx',
-    --物品详细介绍的title
-    content_tip = '|cffFFE799基本属性：|r',
 }
 
 function mt:on_upgrade()
