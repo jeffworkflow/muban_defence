@@ -103,11 +103,17 @@ class.hero_info_panel = extends(class.panel){
             self.hero_tf:set_text('|cffcccccc'..skl.name..'|r')
             self.hero_tip:set_text(tip)
         end    
+        if hero.tab_art then 
+            self.hero_img:set_normal_image(hero.tab_art)
+        end    
 
         for i,data in ipairs(self.attrs) do
             local name_text,value_text = table.unpack(data)
             local name = clean_color(name_text:get_text()) --去除颜色代码
             local new_value = string.format("%.f",hero:get(name))
+            if name == '攻击间隔' then 
+                new_value = string.format("%.2f",hero:get(name))
+            end    
             if not finds(ac.base_attr,name) then 
                 new_value = new_value..'%'
             end    

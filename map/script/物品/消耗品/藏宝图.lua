@@ -87,8 +87,10 @@ function mt:on_cast_start()
                     --添加东西给英雄
                     self:add_content()  
                     self:add_item_count(-1) 
-                    self.trg:remove()
-                    self.trg = nil
+                    if self.trg then 
+                        self.trg:remove()
+                        self.trg = nil
+                    end    
                     
                     if self:get_item_count()>= 1 then 
                         --模拟消耗品使用

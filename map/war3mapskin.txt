@@ -51,3 +51,5 @@ COLON_STRENGTH=|cffffff00力量|r
 ITEM_PAWN_TOOLTIP=|cff808080点击左键来使用消耗品|R
 ITEM_USE_TOOLTIP= 
 PRIMARY_ATTRIBUTE=|cffffff00主要属性|r
+[Errors]
+Controlrevoked= 

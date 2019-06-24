@@ -72,7 +72,12 @@ for i =1,3 do
                             hero_distance = hero:get_point() * unit:get_point()
                         end    
                         if hero_distance <= 1500 then
-                            unit:issue_order('attack',hero) 
+                            --1500码内，优先攻击英雄，英雄死亡则攻向基地点
+                            if hero:is_alive() then 
+                                unit:issue_order('attack',hero) 
+                            else
+                                unit:issue_order('attack',point)
+                            end    
                         else    
                             unit:issue_order('attack',point)
                         end   
