@@ -199,8 +199,14 @@ function mt:add_content()
     elseif  rand_name == '宠物经验书(大)' then
         self.owner:add_item(rand_name,true)
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2) 
-    end
 
+    elseif  rand_name == '火灵' then
+        self.owner:add_fire_seed(10000)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+10000|r',2) 
+    elseif  rand_name == '木头' then
+        self.owner:add_wood(2500)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+5000|r',2) 
+    end  
 end
 
 function mt:on_remove()

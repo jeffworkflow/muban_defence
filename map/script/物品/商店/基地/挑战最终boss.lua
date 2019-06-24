@@ -15,7 +15,8 @@ tip = [[|cffFFE799【使用说明】：|r
 
 |cffff0000点击挑战最终BOSS，杀死后游戏直接胜利|r
 
-|cffcccccc请确保已经有足够的实力|r]],
+|cffcccccc请确保已经有足够的实力|r
+|cffcccccc请确保木头足够再购买，否则技能会进入CD，切勿瞎点|r]],
 --物品类型
 item_type = '神符',
 --目标类型

@@ -15,8 +15,8 @@ tip = [[
 
 
 使得怪物|cff00ff00暂停进攻90秒|r
-注意：木头不够，会进入CD，切勿瞎购买。
-]],
+
+|cffcccccc请确保木头足够再购买，否则技能会进入CD，切勿瞎点|r]],
 shop_count = 0, --初始个数
 --特殊id 带cd
 type_id = 'EX00',
@@ -24,7 +24,7 @@ type_id = 'EX00',
 --物品类型
 item_type = '神符',
 --售价 500000
-wood = 2500,
+wood = 2000,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却

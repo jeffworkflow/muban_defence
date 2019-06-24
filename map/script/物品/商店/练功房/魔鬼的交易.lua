@@ -327,53 +327,53 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+3000护甲|r
         ]]},
     
-    {'身披圣衣lv4',false,'杀怪加全属性',100,'木头',8000,[[liliang.blp]],[[
+    {'身披圣衣lv4',false,'杀怪加全属性',120,'木头',8000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv4|r
         
-|cffFFE799【奖励】|r|cff00ff00+100杀怪加全属性|r
+|cffFFE799【奖励】|r|cff00ff00+120杀怪加全属性|r
         ]]},
     
-    {'身披圣衣lv5',false,'攻击加全属性',500,'木头',10000,[[liliang.blp]],[[
+    {'身披圣衣lv5',false,'攻击加全属性',600,'木头',10000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv5|r
         
-|cffFFE799【奖励】|r|cff00ff00+500攻击加全属性|r
+|cffFFE799【奖励】|r|cff00ff00+600攻击加全属性|r
         ]]},
     
-    {'身披圣衣lv6',false,'每秒加全属性',1000,'木头',12000,[[liliang.blp]],[[
+    {'身披圣衣lv6',false,'每秒加全属性',1200,'木头',12000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv6|r
         
-|cffFFE799【奖励】|r|cff00ff00+1000每秒加全属性|r
+|cffFFE799【奖励】|r|cff00ff00+1200每秒加全属性|r
         ]]},
     
-     {'身披圣衣lv7',false,'杀怪加攻击',300,'木头',14000,[[liliang.blp]],[[
+     {'身披圣衣lv7',false,'杀怪加攻击',480,'木头',14000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv7|r
         
-|cffFFE799【奖励】|r|cff00ff00+300杀怪加攻击|r
+|cffFFE799【奖励】|r|cff00ff00+480杀怪加攻击|r
         ]]},
     
-    {'身披圣衣lv8',false,'每秒加攻击',3000,'木头',16000,[[liliang.blp]],[[
+    {'身披圣衣lv8',false,'每秒加攻击',4800,'木头',16000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv8|r
         
-|cffFFE799【奖励】|r|cff00ff00+3000每秒加攻击|r
+|cffFFE799【奖励】|r|cff00ff00+4800每秒加攻击|r
         ]]},
     
-    {'身披圣衣lv9',false,'物品获取率',15,'木头',18000,[[liliang.blp]],[[
+    {'身披圣衣lv9',false,'物品获取率',25,'木头',18000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv9|r
         
-|cffFFE799【奖励】|r|cff00ff00+15%物品获取率|r
+|cffFFE799【奖励】|r|cff00ff00+25%物品获取率|r
         ]]},
     
-    {'身披圣衣lvmax',false,'火灵加成',15,'木头',20000,[[liliang.blp]],[[
+    {'身披圣衣lvmax',false,'火灵加成',25,'木头',20000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lvmax|r
         
-|cffFFE799【奖励】|r|cff00ff00+15%火灵加成|r
+|cffFFE799【奖励】|r|cff00ff00+25%火灵加成|r
        ]]},
     },
 
@@ -455,70 +455,70 @@ local devil_deal ={
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv1|r
     
-|cffFFE799【奖励】|r|cff00ff00+100w全属性|r
+|cffFFE799【奖励】|r|cff00ff00+80w全属性|r
     ]]},
 
 {'头顶乾坤lv2',false,'全属性',2000000,'杀敌数',2000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv2|r
     
-|cffFFE799【奖励】|r|cff00ff00+200w全属性|r
+|cffFFE799【奖励】|r|cff00ff00+160w全属性|r
     ]]},
 
 {'头顶乾坤lv3',false,'全属性',3000000,'杀敌数',3000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv3|r
     
-|cffFFE799【奖励】|r|cff00ff00+300w全属性|r
+|cffFFE799【奖励】|r|cff00ff00+240w全属性|r
     ]]},
 
 {'头顶乾坤lv4',false,'全属性',4000000,'杀敌数',4000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv4|r
     
-|cffFFE799【奖励】|r|cff00ff00+400w全属性|r
+|cffFFE799【奖励】|r|cff00ff00+320w全属性|r
     ]]},
 
 {'头顶乾坤lv5',false,'全属性',5000000,'杀敌数',5000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv5|r
     
-|cffFFE799【奖励】|r|cff00ff00+500w全属性|r
+|cffFFE799【奖励】|r|cff00ff00+400w全属性|r
     ]]},
 
 {'头顶乾坤lv6',false,'全属性',6000000,'杀敌数',6000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv6|r
     
-|cffFFE799【奖励】|r|cff00ff00+600w全属性|r
+|cffFFE799【奖励】|r|cff00ff00+480w全属性|r
     ]]},
 
  {'头顶乾坤lv7',false,'全属性',7000000,'杀敌数',7000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv7|r
     
-|cffFFE799【奖励】|r|cff00ff00+700w全属性|r
+|cffFFE799【奖励】|r|cff00ff00+560w全属性|r
     ]]},
 
 {'头顶乾坤lv8',false,'全属性',8000000,'杀敌数',8000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv8|r
     
-|cffFFE799【奖励】|r|cff00ff00+800w全属性|r
+|cffFFE799【奖励】|r|cff00ff00+640w全属性|r
     ]]},
 
 {'头顶乾坤lv9',false,'全属性',9000000,'杀敌数',9000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv9|r
     
-|cffFFE799【奖励】|r|cff00ff00+900w全属性|r
+|cffFFE799【奖励】|r|cff00ff00+720w全属性|r
     ]]},
 
 {'头顶乾坤lvmax',false,'全属性',10000000,'杀敌数',10000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lvmax|r
     
-|cffFFE799【奖励】|r|cff00ff00+1000w全属性|r
+|cffFFE799【奖励】|r|cff00ff00+800w全属性|r
    ]]},
 
 

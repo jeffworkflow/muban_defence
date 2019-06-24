@@ -16,7 +16,7 @@ mt{
 |cffFFE799【使用说明】：|r
 |cff00ff00打开天赋菜单，分配宠物的天赋点|r
 %strong_attr_tip%
-|cffcccccc食用宠物经验书可升级宠物，宠物等级可存档|r
+|cffcccccc食用宠物经验书可升级宠物，宠物等级可存档，最大等级受限于地图等级|r
 ]],
     --初始等级
     level = 1, 

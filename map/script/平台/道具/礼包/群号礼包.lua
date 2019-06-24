@@ -12,15 +12,15 @@ tip = [[
 
 |cffFFE799【领取条件】|r进入官方交流群|cffff0000(群号797113975)|r 获得隐藏密码
 
-|cffFFE799【礼包奖励】|r|cff00ff00全属性+500，杀敌数+100|r
+|cffFFE799【礼包奖励】|r|cff00ff00全属性+5000，杀敌数+250|r
  ]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 qq_qum = 797113975,
-award_all_attr = 500,
-award_kill_cnt = 100,
+award_all_attr = 5000,
+award_kill_cnt = 250,
 }
 
 function mt:on_cast_start()
