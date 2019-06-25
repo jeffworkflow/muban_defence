@@ -104,7 +104,9 @@ function player.__index:sp_get_map_test(f)
             end 
         else
             print('服务器返回数据异常:',post)
-            -- print(retval)
+            if retval and #retval<1000 then 
+                print(retval)
+            end    
         end            
     end)
 end    

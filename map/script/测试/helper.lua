@@ -554,9 +554,13 @@ function helper:tt_unit(where)
 		-- unit:set('移动速度',0)
 	end	
 end	
+function helper:final()
+	ac.creep['刷怪1'].index = 24
+	ac.creep['刷怪2'].index = 24
+	ac.creep['刷怪3'].index = 24
+end	
 --进入地狱，7个光环
 function helper:tt()
-	ac.creep['刷怪1'].index = 24
 	ac.item.add_skill_item('战鼓光环',self)
 
 	self:add('杀怪加全属性',3000)

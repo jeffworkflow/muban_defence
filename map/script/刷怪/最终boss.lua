@@ -14,6 +14,9 @@ ac.game:event '游戏-最终boss' (function(trg)
     --注册事件
     boss:event '单位-死亡'(function(_,unit,killer) 
         ac.game:event_notify('游戏-结束',true)
+        --创建神龙
+        local x,y = boss:get_point():get()
+        local shop4 = ac.shop.create('神龙',x,y,270)
     end) ; 
     
 end);    

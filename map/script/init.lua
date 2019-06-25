@@ -126,14 +126,14 @@ ac.wait(100,function ()
     ac.player(16):setColor(7)
 
 
-    ac.game:event '游戏-开始' (function()
-        -- local item = ac.item.create_item('生锈剑')
-        -- local item = ac.item.create_skill_item('万箭齐发')
-        --创建商店 - 神龙
-        local x,y = ac.map.rects['选人出生点']:get_point():get()
-        local shop4 = ac.shop.create('神龙',x,y+300,270)
+    -- ac.game:event '游戏-开始' (function()
+    --     -- local item = ac.item.create_item('生锈剑')
+    --     -- local item = ac.item.create_skill_item('万箭齐发')
+    --     --创建商店 - 神龙
+    --     local x,y = ac.map.rects['选人出生点']:get_point():get()
+    --     local shop4 = ac.shop.create('神龙',x,y+300,270)
 
-    end)
+    -- end)
 
     
 end);

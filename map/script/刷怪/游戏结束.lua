@@ -2,7 +2,22 @@ local player = require 'ac.player'
 local mover = require 'types.mover'
 local jass = require 'jass.common'
 
-ac.game.challenge_cnt = 1
+ac.game.challenge_cnt = 0
+
+ac.game:event '单位-死亡' (function(_,unit,killer)
+	if unit:get_name() ~= '基地' then 
+		return 
+	end	
+	ac.game.challenge_cnt = ac.game.challenge_cnt - 1	
+	if ac.game.challenge_cnt < 0 then 
+		ac.game:event_notify('游戏-结束') --失败
+	else
+		ac.player.self:sendMsg('|cff00ffff【系统消息】基地死亡，剩余额外 |r|cffff0000'..ac.game.challenge_cnt..'|r'..' |cff00ffff挑战次数,务必小心中央boss倒计时结束造成80%伤害|r',10)
+		ac.player.self:sendMsg('|cff00ffff【系统消息】基地死亡，剩余额外 |r|cffff0000'..ac.game.challenge_cnt..'|r'..' |cff00ffff挑战次数,务必小心中央boss倒计时结束造成80%伤害|r',10)
+		ac.player.self:sendMsg('|cff00ffff【系统消息】基地死亡，剩余额外 |r|cffff0000'..ac.game.challenge_cnt..'|r'..' |cff00ffff挑战次数,务必小心中央boss倒计时结束造成80%伤害|r',10)
+	end	
+end)	
+
 
 --基地爆炸的时候结算胜负
 ac.game:event '游戏-结束' (function(trg,flag)
@@ -16,6 +31,8 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		return 
 	else
 		name = '【游戏失败】'
+		panel = class.hero_info_panel.get_instance()
+		panel:show()
 		ac.player.self:sendMsg("【游戏失败】")
 		ac.player.self:sendMsg("【游戏失败】")
 		ac.player.self:sendMsg("【游戏失败】")
