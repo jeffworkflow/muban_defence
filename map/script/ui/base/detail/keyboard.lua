@@ -70,6 +70,7 @@
     ALT   = 0x12,
     ESC   = 0x1b,
     SPACE = 0x20, --空格键
+    WAVES = 0xc0, --~键
 
     SLASH = 0xbf, -- 正斜杠 \\ 
     BACKSLASH         = 0xdc, --反斜杠 //

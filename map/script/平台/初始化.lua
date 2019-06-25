@@ -112,26 +112,36 @@ local function wabao2award()
         ['冰龙'] = {20000,5},
         ['霸王莲龙锤'] = {40000,10},
         ['梦蝶仙翼'] = {70000,10},
+        --全属性 = 每点积分加的值,地图等级*上限值
+        ['全属性'] = {500,150000},
     }  
     for i=1,10 do
         local player = ac.player[i]
         if player:is_player() then
             player:event '读取存档数据' (function()
                 for name,data in pairs(content_data) do 
-                    --商城 或是 自定义服务器有对应数据则
-                    --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
-                    local has_item = player.cus_server and (player.cus_server[name] or 0 )
-                    local wabaojifen = player.cus_server and (player.cus_server['挖宝积分'] or 0 )
-                    -- print(has_item,sp_cnt,skill.need_sp_cnt)
-                    if has_item and has_item == 0 
-                    and wabaojifen >= (data[1] or 9999999)
-                    and player:Map_GetMapLevel() >= (data[2]  or 9999999)
-                    then 
-                        local key = ac.server.name2key(name)
-                        player:SetServerValue(key,1)
-                        -- player:sendMsg('激活成功：'..key)
+                    if name == '全属性' then 
+                    else
+                        --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
+                        local has_item = player.cus_server and (player.cus_server[name] or 0 )
+                        local wabaojifen = player.cus_server and (player.cus_server['挖宝积分'] or 0 )
+                        -- print(has_item,sp_cnt,skill.need_sp_cnt)
+                        if has_item and has_item == 0 
+                        and wabaojifen >= (data[1] or 9999999)
+                        and player:Map_GetMapLevel() >= (data[2]  or 9999999)
+                        then 
+                            local key = ac.server.name2key(name)
+                            player:SetServerValue(key,1)
+                            -- player:sendMsg('激活成功：'..key)
+                        end    
                     end    
                 end   
+            end)  
+            player:event '玩家-注册英雄后' (function()
+                local map_level = player:Map_GetMapLevel() 
+                local wabaojifen = player.cus_server and (player.cus_server['挖宝积分'] or 0 )
+                local value = math.min(content_data['全属性'][1]*wabaojifen,content_data['全属性'][2] * map_level) --取挖宝积分*500 和地图等级*15000的最小值。
+                player.hero:add('全属性',value) 
             end) 
         end
     end    

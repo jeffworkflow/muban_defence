@@ -92,7 +92,7 @@ end
 --获取玩家地图等级
 if global_test then 
     function player.__index:Map_GetMapLevel()
-        return self.map_level or 0
+        return self.map_level or 1
     end
 else
     function player.__index:Map_GetMapLevel()

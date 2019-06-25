@@ -22,6 +22,8 @@ ac.test_unit ={}
 ac.game:event '玩家-聊天' (function(self, player, str)
     local hero = player.hero
 	local p = player
+	local peon = player.peon
+	if not peon or not hero then return end 
 	
     if str == 'qlwp' then
 		--开始清理物品
@@ -41,6 +43,24 @@ ac.game:event '玩家-聊天' (function(self, player, str)
 		for index,item in ipairs(tbl) do 
 			item:item_remove()
 		end 
+	end  
+
+    if str == 'qx' then
+		--取消特效
+		if hero.effect_chibang then 
+			hero.effect_chibang:remove()
+		end	
+		if hero.effect_wuqi then 
+			hero.effect_wuqi:remove()
+		end
+		if hero.effect_chenghao then 
+			hero.effect_chenghao:remove()
+		end
+		local old_model = peon:get_slk 'file'
+		if not getextension(old_model) then 
+			old_model = old_model..'.mdl'
+		end	
+		japi.SetUnitModel(peon.handle,old_model)
 	end  
 
 	-- if str =='1' then 

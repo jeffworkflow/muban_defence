@@ -21,27 +21,30 @@ ac.game:event '单位-创建' (function(_,unit)
 
     --根据难度增强属性 
     if data.attribute then  
-        unit:set('攻击',data.attribute['攻击'] *  (ac.g_game_degree_attr or 1))
+        unit:set('攻击',data.attribute['攻击'] )
+        unit:set('生命上限',data.attribute['生命上限'])
+        unit:set('魔法上限',data.attribute['魔法上限'])
+        unit:set('生命恢复',data.attribute['生命恢复'])
+        unit:set('魔法恢复',data.attribute['魔法恢复'])
+        -- print(ac.g_game_degree_attr)
         unit:set('护甲',data.attribute['护甲'] *  (ac.g_game_degree_attr or 1))
-        unit:set('生命上限',data.attribute['生命上限'] * (ac.g_game_degree_attr or 1))
-        unit:set('魔法上限',data.attribute['魔法上限'] * (ac.g_game_degree_attr or 1))
-        unit:set('生命恢复',data.attribute['生命恢复'] * (ac.g_game_degree_attr or 1))
-        unit:set('魔法恢复',data.attribute['魔法恢复'] * (ac.g_game_degree_attr or 1))
         unit:set('魔抗',data.attribute['护甲'] * (ac.g_game_degree_attr or 1))
+
+        unit:set('暴击加深',data.attribute['暴击加深'] * (ac.g_game_degree_attr or 1))
     end    
 
     --根据玩家数量，怪物属性倍数 5  20 . 5 40， 20*1.1 = 22
-    local attr_mul = ( get_player_count() -1 ) * 5
-    --属性
-    -- print('打印是否根据玩家数增加属性1',unit:get('攻击'))
-    unit:add('攻击%',attr_mul*7)
-    unit:add('护甲%',attr_mul*7)
-    unit:add('生命上限%',attr_mul*7)
-    unit:add('魔法上限%',attr_mul)
-    unit:add('生命恢复%',attr_mul)
-    unit:add('魔法恢复%',attr_mul)
-    --设置魔抗 
-    unit:add('魔抗%',attr_mul*7)
+    -- local attr_mul = ( get_player_count() -1 ) * 5
+    -- --属性
+    -- -- print('打印是否根据玩家数增加属性1',unit:get('攻击'))
+    -- unit:add('攻击%',attr_mul*7)
+    -- unit:add('护甲%',attr_mul*7)
+    -- unit:add('生命上限%',attr_mul*7)
+    -- unit:add('魔法上限%',attr_mul)
+    -- unit:add('生命恢复%',attr_mul)
+    -- unit:add('魔法恢复%',attr_mul)
+    -- --设置魔抗 
+    -- unit:add('魔抗%',attr_mul*7)
 
     
 end)
