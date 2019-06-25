@@ -67,7 +67,7 @@ function shop.create(name,x,y,face,is_selling,player)
 		end	
 	end	
 	--创建文字
-	unit.texttag = on_texttag(name,unit)
+	-- unit.texttag = on_texttag(name,unit)
 
 	shop.unit_list[unit.handle] = unit
 

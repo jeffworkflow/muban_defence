@@ -31,6 +31,10 @@ local function init_shop()
 
                         local x,y = ac.rect.j_rect(str):get_point():get()
                         local shop = ac.shop.create(name,x,y,face,nil,player)
+                        --加头上模型
+                        if data.head_effect then 
+                            shop:add_effect('overhead',data.head_effect)
+                        end    
                         -- print(shop:get_name(),name,x,y)
                         if name == '基地' then
                             shop:remove_restriction '无敌'

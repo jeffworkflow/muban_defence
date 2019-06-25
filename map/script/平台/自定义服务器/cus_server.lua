@@ -62,42 +62,50 @@ function player.__index:sp_get_map_test(f)
     -- print(url,post)
     local f = f or function (retval)  end
     post_message(url,post,function (retval) 
-        local tbl = json.decode(retval)
-        if tbl.code == 0 then 
-            local temp_tab = {}
-            -- print_r(tbl)
-            for i,data in ipairs(tbl.data[1]) do 
-                temp_tab[data.key] = data.value
-                --预设没有的值，从服务器读取并动态插入预设的key
-                local name = ac.server.key2name(data.key)
-                if not name then 
-                    table.insert(ac.cus_server_key,{data.key,data.key_name})
-                end 
-            end    
-            local tab_str = ui.encode(temp_tab)
-            -- print('数据长度',#tab_str)
-            if #tab_str >1000 then 
-                print('字符串太长，同步失败')
-            else  
-                ac.wait(10,function()
-                    --发起同步请求
-                    -- print('发起同步请求')
-                    local info = {
-                        type = 'cus_server',
-                        func_name = 'read_key_from_server',
-                        params = {
-                            [1] = tab_str,
-                        }
-                    }
-                    ui.send_message(info)
-                    f(v)
-                end) 
-            end
-            -- f(tbl.data[1])
+        if not finds(retval,'http','https','') or finds(retval,'成功')then 
+            local is_json = json.is_json(retval)
+            if is_json then 
+                local tbl = json.decode(retval)
+                if tbl.code == 0 then 
+                    local temp_tab = {}
+                    -- print_r(tbl)
+                    for i,data in ipairs(tbl.data[1]) do 
+                        temp_tab[data.key] = data.value
+                        --预设没有的值，从服务器读取并动态插入预设的key
+                        local name = ac.server.key2name(data.key)
+                        if not name then 
+                            table.insert(ac.cus_server_key,{data.key,data.key_name})
+                        end 
+                    end    
+                    local tab_str = ui.encode(temp_tab)
+                    -- print('数据长度',#tab_str)
+                    if #tab_str >1000 then 
+                        print('字符串太长，同步失败')
+                    else  
+                        ac.wait(10,function()
+                            --发起同步请求
+                            -- print('发起同步请求')
+                            local info = {
+                                type = 'cus_server',
+                                func_name = 'read_key_from_server',
+                                params = {
+                                    [1] = tab_str,
+                                }
+                            }
+                            ui.send_message(info)
+                            f(v)
+                        end) 
+                    end
+                    -- f(tbl.data[1])
+                else
+                    print('读取数据失败')
+                    print_r(tbl)
+                end  
+            end 
         else
-            print('读取数据失败')
-            print_r(tbl)
-        end        
+            print('服务器返回数据异常:',post)
+            -- print(retval)
+        end            
     end)
 end    
 local ui = require 'ui.server.util'
@@ -156,7 +164,7 @@ function player.__index:SetServerValue(key,value,f)
     })
     local f = f or function (retval)  end
     post_message(url,post,function (retval)  
-        if not finds(retval,'http') then 
+        if not finds(retval,'http','https','') or finds(retval,'成功')then 
             local is_json = json.is_json(retval)
             if is_json then 
                 local tbl = json.decode(retval)
@@ -281,7 +289,7 @@ function player.__index:CopyServerValue(key,f)
     -- print('上传数据：',key,value,key_name,is_mall)
     local f = f or function (retval)  end
     post_message(url,post,function (retval)  
-        if not finds(retval,'http') then 
+        if not finds(retval,'http','https','') or finds(retval,'成功')then 
             local tbl = json.decode(retval)
             -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
             if tbl and tbl.code == 0 then 
@@ -290,7 +298,7 @@ function player.__index:CopyServerValue(key,f)
                 print(self:get_name(),post,'上传失败')
             end         
         else
-            print('服务器返回数据异常:',post)
+            print('服务器返回数据异常:',retval,post)
         end    
     end)
 end
