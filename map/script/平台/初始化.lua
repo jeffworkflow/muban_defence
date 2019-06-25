@@ -67,9 +67,9 @@ ac.wait(3000,function()
 end)
 
 local star2award = {
-    --奖励 = 段位 星数
+    --奖励 = 段位 星数 需求地图等级
     
-    ['幻海雪饮剑'] = {'最强王者',40},
+    ['幻海雪饮剑'] = {'最强王者',40,10},
     ['天罡苍羽翼'] = {'最强王者',50},
     ['炉火纯青'] = {'青铜',1},
     ['毁天灭地'] = {'黄金',5},
@@ -92,18 +92,32 @@ ac.game:event '游戏-结束' (function(trg,flag)
             local name = ac.g_game_degree_name
             local key = ac.server.name2key(name)
             player:AddServerValue(key,1) 
-
-            --处理星数给与对应存档奖励
-            for key,data in pairs(star2award) do 
-                if not player.cus_server[key] and player.cus_server[data[1]] >= data[2] then 
-                    local key = ac.server.name2key(key)
-                    player:setServerValue(key,1) 
-                end    
-            end    
         end
     end
 end)    
+for i=1,10 do
+    local player = ac.player[i]
+    if player:is_player() then
+        player:event '读取存档数据' (function()
+            for name,data in pairs(star2award) do 
+                --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
+                local has_item = player.cus_server and (player.cus_server[name] or 0 )
+                local dw_value = player.cus_server and (player.cus_server[data[1]] or 0 )
+                -- print(has_item,sp_cnt,skill.need_sp_cnt)
+                if has_item and has_item == 0 
+                and dw_value >= (data[2] or 9999999)
+                and player:Map_GetMapLevel() >= (data[3]  or 0)
+                then 
+                    local key = ac.server.name2key(name)
+                    player:SetServerValue(key,1)
+                    -- player:sendMsg('激活成功：'..key)
+                end   
+            end   
+        end)  
+    end
+end    
 
+              
 --处理挖宝积分 及对应的奖励
 local function wabao2award()
     local content_data = {
