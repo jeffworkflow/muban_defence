@@ -6,9 +6,9 @@ level = 1,
 --图标
 art = [[cjnd.blp]],
 --说明
-tip = [[可以在扭蛋处兑换一次扭蛋机会
+tip = [[ 
 
-|cffdf19d0 PS：可以给宠物，让宠物帮忙吃药|r
+|cff00ff00可以在扭蛋处兑换一次扭蛋机会|r
 ]],
 --物品类型
 item_type = '消耗品',
@@ -21,6 +21,6 @@ cool = 1,
 --物品数量
 _count = 1,
 --物品详细介绍的title
-content_tip = '使用说明：'
+content_tip = '|cffffe799使用说明：|r'
 }
 

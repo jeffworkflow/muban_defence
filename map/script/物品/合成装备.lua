@@ -46,7 +46,7 @@ local streng_item_list = {
     {'蓝^100','白*1 白*1 白*1 白*1 装备合成*1'},
     {'金^100','蓝*1 蓝*1 蓝*1 蓝*1 装备合成*1'},
     {'红^100','金*1 金*1 金*1 金*1 装备合成*1'},
-    {'红^100','红*1 红*1  红*1 装备合成*1'},
+    {'红^100','红*1 红*1  装备合成*1'},
     
     {'星星之火','星星之火碎片*100'},
     {'陨落心炎','陨落心炎碎片*100'},
@@ -318,7 +318,7 @@ local function streng_item(alltable,unit,it)
                 dest_rate = 100
             end    
             if math.random(1,100) <= (tonumber(dest_rate) or 100) then 
-                p:sendMsg('|cff00ff00合成|r |cff'..color..dest_str..' |r|cff00ff00成功|r')
+                p:sendMsg('|cff00ff00合成|r |cff'..color..dest_str..' |r|cff00ff00成功|r',5)
                 local new_item  
                 if ac.table.ItemData[dest_str] then 
                     new_item = u:add_item(dest_str,true)  
@@ -329,7 +329,7 @@ local function streng_item(alltable,unit,it)
                 -- 回调时 需要等 合成物品成功，程序继续进行
                 ac.game:event_dispatch('物品-合成成功',p,new_item,source_names) 
             else
-                p:sendMsg('|cffff0000合成|r |cff'..color..dest_str..'|r |cffff0000失败|r')
+                p:sendMsg('|cffff0000合成|r |cff'..color..dest_str..'|r |cffff0000失败|r',5)
                 ac.game:event_dispatch('物品-合成失败',p,dest_str,source_names) 
             end    
               

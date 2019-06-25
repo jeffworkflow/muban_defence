@@ -111,16 +111,16 @@ mt{
     is_skill = true,
     --商店名词缀
     store_affix = '',
-    art = [[wbdr.blp]], 
+    art = [[sjjh.blp]], 
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+500W 全属性
-+50%  物品获取率|r
+|cff00ff00+50w 全属性
++25% 杀敌数加成|r
 
 ]],
-    ['物品获取率'] = 50,
-    ['全属性'] = 5000000,
+    ['杀敌数加成'] = 25,
+    ['全属性'] = 500000,
 }
 
 local mt = ac.skill['五道杠少年']
@@ -139,15 +139,15 @@ mt{
     is_skill = true,
     --商店名词缀
     store_affix = '',
-    art = [[wbdr.blp]], 
+    art = [[wdgsn.blp]], 
     tip = [[
     
 |cffFFE799【成就属性】：|r
 |cff00ff00+500W 全属性
-+50%  物品获取率|r
++25% 木头加成|r
 
 ]],
-    ['物品获取率'] = 50,
+    ['木头加成'] = 25,
     ['全属性'] = 5000000,
 }
 
@@ -167,16 +167,16 @@ mt{
     is_skill = true,
     --商店名词缀
     store_affix = '',
-    art = [[wbdr.blp]], 
+    art = [[scjq.blp]], 
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+500W 全属性
-+50%  物品获取率|r
+|cff00ff00+100W 全属性
++50%  攻击速度|r
 
 ]],
-    ['物品获取率'] = 50,
-    ['全属性'] = 5000000,
+    ['攻击速度'] = 50,
+    ['全属性'] = 1000000,
 }
 
 
@@ -189,7 +189,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local hero = player.hero
     if  not hero then return end
     --概率获得成就
-    local rate = 0.012
+    local rate = 0.08
     -- local rate = 80 --测试用
     if math.random(1,10000)/100 < rate then 
         local skl = hero:find_skill('杀鸡狂魔',nil,true)
@@ -197,7 +197,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','杀鸡狂魔')
             player.is_show_nickname = '杀鸡狂魔'
             --给全部玩家发送消息
-            ac.player.self:sendMsg('恭喜获得 唯一称号 杀鸡狂魔')
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 杀鸡一时爽，一直杀鸡一直爽|r 获得成就|cffff0000 "杀鸡狂魔" |r，奖励 |cffff0000+50w全属性 +25%杀敌数加成|r',6)
             -- ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000吸血+10%，攻击回血+50W|r',6)
       
         end
@@ -207,13 +207,14 @@ end)
 
 --注册攻击事件
 ac.game:event '单位-攻击开始' (function(self, data)
-    if data.target:get_name() ~= '小心肝' then 
+    if data.target:get_name() ~= '游戏说明' then 
         return 
     end	  
     local player = data.source:get_owner()
+    if player.id >10 then return end 
     local hero = player.hero
     --概率获得成就
-    local rate = 0.025
+    local rate = 0.08
     -- local rate = 80 --测试用
     if math.random(1,10000)/100 < rate then 
         local skl = hero:find_skill('输出机器',nil,true)
@@ -221,7 +222,7 @@ ac.game:event '单位-攻击开始' (function(self, data)
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','输出机器')
             player.is_show_nickname = '输出机器'
             --给全部玩家发送消息
-            ac.player.self:sendMsg('恭喜获得 唯一称号 输出机器')
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+100W全属性 +50%攻击速度|r',6)
             -- ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000吸血+10%，攻击回血+50W|r',6)
     
         end

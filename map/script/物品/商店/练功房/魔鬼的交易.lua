@@ -362,18 +362,18 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+4800每秒加攻击|r
         ]]},
     
-    {'身披圣衣lv9',false,'物品获取率',25,'木头',18000,[[liliang.blp]],[[
+    {'身披圣衣lv9',false,'火灵加成',25,'木头',18000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv9|r
         
-|cffFFE799【奖励】|r|cff00ff00+25%物品获取率|r
+|cffFFE799【奖励】|r|cff00ff00+25%火灵加成|r
         ]]},
     
-    {'身披圣衣lvmax',false,'火灵加成',25,'木头',20000,[[liliang.blp]],[[
+    {'身披圣衣lvmax',false,'攻击速度',50,'木头',20000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lvmax|r
         
-|cffFFE799【奖励】|r|cff00ff00+25%火灵加成|r
+|cffFFE799【奖励】|r|cff00ff00+50%攻击速度|r
        ]]},
     },
 

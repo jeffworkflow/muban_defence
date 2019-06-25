@@ -10,7 +10,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 7W 自动获得，已拥有积分：|r%skin_cnt% 或者
+|cff00ffff挖宝积分超过 7W 自动获得，已拥有积分：|r%wabao_cnt% 或者
 |cff00ffff神龙碎片超过 400 自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【翅膀属性】：|r
@@ -25,6 +25,10 @@ need_map_level = 10,
 skin_cnt = function(self)
     local p = ac.player.self
     return p.cus_server[self.name..'碎片'] or 0
+end,
+wabao_cnt = function(self)
+    local p = ac.player.self
+    return p.cus_server['挖宝积分'] or 0
 end,
 --所需激活碎片
 need_sp_cnt = 400,

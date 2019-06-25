@@ -37,8 +37,8 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 2.5W 自动获得，已拥有积分：|r%skin_cnt% 或者
-|cff00ffff消耗勇士徽章  20  兑换获得，已拥有徽章：|r%skin_cnt%
+|cff00ffff挖宝积分超过 2.5W 自动获得，已拥有积分：|r%wabao_cnt% 或者
+|cff00ffff消耗勇士徽章  20  兑换获得
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+50   杀怪加攻击|r
@@ -48,6 +48,12 @@ tip = [[
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
+
+wabao_cnt = function(self)
+    local p = ac.player.self
+    return p.cus_server['挖宝积分'] or 0
+end,
+
 ['杀怪加攻击'] = 50,
 ['护甲'] = 250,
 ['伤害减少'] = 2500,

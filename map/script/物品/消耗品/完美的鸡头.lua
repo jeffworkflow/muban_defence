@@ -6,9 +6,9 @@ level = 1,
 --图标
 art = [[jitou.blp]],
 --说明
-tip = [[使用后加1万智力
-
-|cffdf19d0 PS：可以给宠物，让宠物帮忙吃药|r
+tip = [[ 
+ 
+|cff00ff00食用可+1万智力|r
 ]],
 --物品类型
 item_type = '消耗品',
@@ -19,7 +19,7 @@ cool = 1,
 --物品数量
 _count = 1,
 --物品详细介绍的title
-content_tip = '使用说明：',
+content_tip = '|cffffe799使用说明：|r',
 ['智力'] = 10000
 }
 

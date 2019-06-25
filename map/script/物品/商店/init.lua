@@ -11,7 +11,7 @@ require '物品.商店.异火升级'
 require '物品.商店.异火炼化'
 
 require '物品.商店.技能融合'
-require '物品.商店.小心肝'
+require '物品.商店.游戏说明'
 
 
 

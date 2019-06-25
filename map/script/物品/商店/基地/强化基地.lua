@@ -26,7 +26,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
 --全属性
-award_all_attr = 50000,
+award_all_attr = 222222,
 --护甲%
 defence = 100,
 --生命上限%
@@ -45,7 +45,7 @@ function mt:on_cast_start()
     local player = hero:get_owner()
     hero = player.hero
     hero:add('全属性',self.award_all_attr)
-    player:sendMsg('|cffFFE799【系统消息】|r|cff00ffff'..player:get_name()..'|r 强化了基地 奖励|cff00ff005W全属性|r',2)
+    player:sendMsg('|cffFFE799【系统消息】|r|cff00ffff'..player:get_name()..'|r 强化了基地 奖励|cff00ff00222222全属性|r',2)
     
 
     --概率得 五道杠少年
@@ -57,7 +57,7 @@ function mt:on_cast_start()
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','五道杠少年')
             player.is_show_nickname = '五道杠少年'
             --给全部玩家发送消息
-            ac.player.self:sendMsg('恭喜获得 唯一称号 五道杠少年')
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 保家爱国 精神可嘉 |r 获得成就|cffff0000 "五道杠青年" |r，奖励 |cffff0000+500w全属性 +25%木头加成|r',6)
             -- ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000吸血+10%，攻击回血+50W|r',6)
         end
     end    

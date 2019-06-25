@@ -24,10 +24,12 @@ skin_cnt = function(self)
     local p = ac.player.self
     return p.cus_server[self.name..'碎片'] or 0
 end,
+
 wabao_cnt = function(self)
     local p = ac.player.self
     return p.cus_server['挖宝积分'] or 0
 end,
+
 --所需激活碎片
 need_sp_cnt = 300,
 --目标类型
