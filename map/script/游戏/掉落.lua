@@ -656,6 +656,10 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     if not tab then 
         return 
     end
+    --藏宝图概率提升
+    if unit:get_name() == '强盗' then 
+        tab[1].rand  = 2 * (1 + (player.up_fall_wabao or 0)/100)
+    end    
     local name = get_reward_name(tab) 
     if name then 
         if finds(name,'*') then 

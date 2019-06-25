@@ -121,8 +121,18 @@ tip = [[
 |cff00ff00+5%   暴击几率|r
 |cff00ff00+5%   技暴几率|r
 |cff00ff00+5%   全伤加深|r
-
+攻击10%几率造成范围技能伤害（伤害公式：全属性*40）
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
+--触发几率
+chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+--伤害
+damage = function(self)
+    return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*40)
+end,
+--特效2
+damage_effect = [[jn_tf2.mdx]],
+--伤害范围
+damage_area = 800,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 600,
@@ -151,9 +161,19 @@ tip = [[
 |cff00ff00+5%   暴击几率|r
 |cff00ff00+5%   技暴几率|r
 |cff00ff00+5%   全伤加深|r
-
+攻击10%几率造成范围技能伤害（伤害公式：全属性*60）
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
 ]],
+--触发几率
+chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+--伤害
+damage = function(self)
+    return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*60)
+end,
+--特效2
+damage_effect = [[jn_tf2.mdx]],
+--伤害范围
+damage_area = 800,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 750,
@@ -168,6 +188,7 @@ effect = [[wuqi11.mdx]]
 for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','皇帝剑','皇帝刀'}) do
     local mt = ac.skill[name]
     function mt:on_add()
+        local skill = self
         local hero = self.owner
         local player = self.owner:get_owner()
         hero = player.hero 
@@ -177,6 +198,42 @@ for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','皇
         end     
         local orf = ac.hero_weapon[hero.name] or 'hand'
         hero.effect_wuqi = hero:add_effect(orf,self.effect)
+
+        --添加被动技能
+        if finds(name,'皇帝刀','皇帝剑') then
+            self.trg = hero:event '造成伤害效果' (function(_,damage)
+                if not damage:is_common_attack()  then 
+                    return 
+                end 
+                --触发时修改攻击方式
+                if math.random(100) <= self.chance then
+                    --创建特效
+                    local angle = damage.source:get_point() / damage.target:get_point()
+                    ac.effect(damage.source:get_point(),skill.damage_effect,angle,1,'origin'):remove()
+                    --计算伤害
+                    for _,unit in ac.selector()
+                    : in_sector(hero:get_point(),self.damage_area,angle,95 )
+                    : is_enemy(hero)
+                    : ipairs()
+                    do 
+                        unit:damage
+                        {
+                            source = hero,
+                            damage = skill.damage,
+                            skill = skill,
+                            damage_type = '法术'
+                        }
+                    end 
+                end
+            end)
+        end
     end    
     mt.on_cast_start=mt.on_add
+    function mt:on_remove()
+        local hero = self.owner
+        if self.trg then
+            self.trg:remove()
+            self.trg = nil
+        end
+    end    
 end    

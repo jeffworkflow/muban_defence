@@ -1,4 +1,4 @@
-local mt = ac.skill['限量首发']
+local mt = ac.skill['限量首充']
 mt{
 --等久
 level = 0,
@@ -15,7 +15,7 @@ tip = [[
 |cff00ffff杀敌数加成+25% 木头加成+25% 
 物品获取率+25% 火灵加成+25% |r
 
-|cffcccccc（限量首发，限量1000个）|r]],
+|cffcccccc（限量首充，限量1000个）|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 68,
@@ -26,4 +26,3 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['物品获取率'] = 25,
 ['火灵加成'] = 25,
 }
-mt.on_add = mt.on_cast_start
