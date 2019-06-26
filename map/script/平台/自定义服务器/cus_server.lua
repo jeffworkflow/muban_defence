@@ -63,6 +63,7 @@ function player.__index:sp_get_map_test(f)
     local f = f or function (retval)  end
     post_message(url,post,function (retval) 
         if not finds(retval,'http','https','') or finds(retval,'成功')then 
+            self.flag_get_map_test = true 
             local is_json = json.is_json(retval)
             if is_json then 
                 local tbl = json.decode(retval)
@@ -106,6 +107,21 @@ function player.__index:sp_get_map_test(f)
             print('服务器返回数据异常:',post)
             if retval and #retval<1000 then 
                 print(retval)
+            end    
+            self.try_server_cnt = (self.try_server_cnt or 0 ) + 1
+            if self.try_server_cnt <= 3 then 
+                ac.wait(10,function()
+                    self:sendMsg('|cffff0000读取存档失败|r,5秒后尝试|cffff0000第'..self.try_server_cnt..'次|r重新读取。|r')
+                end)
+                ac.wait(5*1000,function(t)
+                    self:sp_get_map_test()
+                end)
+            else
+                ac.wait(10,function()
+                    self:sendMsg('|cffff0000读取存档失败,建议重开,以免覆盖存档数据。输入jixu可继续玩|r')
+                    self:sendMsg('|cffff0000读取存档失败,建议重开,以免覆盖存档数据。输入jixu可继续玩|r')
+                    self:sendMsg('|cffff0000读取存档失败,建议重开,以免覆盖存档数据。输入jixu可继续玩|r')
+                end)
             end    
         end            
     end)

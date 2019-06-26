@@ -23,7 +23,7 @@ ac.game:event '玩家-聊天' (function(self, player, str)
     local hero = player.hero
 	local p = player
 	local peon = player.peon
-	if not peon or not hero then return end 
+	-- if not peon or not hero then return end 
 	
     if str == 'qlwp' then
 		--开始清理物品
@@ -45,7 +45,8 @@ ac.game:event '玩家-聊天' (function(self, player, str)
 		end 
 	end  
 
-    if str == 'qx' then
+	if str == 'qx' then
+		if not peon or not hero then return end 
 		--取消特效
 		if hero.effect_chibang then 
 			hero.effect_chibang:remove()
@@ -62,7 +63,9 @@ ac.game:event '玩家-聊天' (function(self, player, str)
 		end	
 		japi.SetUnitModel(peon.handle,old_model)
 	end  
-
+	if str == 'jixu' then
+		player.flag_get_map_test = true 
+	end  
 	-- if str =='1' then 
 	-- 	for i=1,500 do
 	-- 		local u = ac.player(16):create_unit('金币怪',ac.point(100,200))

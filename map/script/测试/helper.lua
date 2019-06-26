@@ -647,7 +647,7 @@ end
 
 --打印hero键值对应的key值
 function helper:print_p(str,index)
-	local player = self:get_owner()
+	local player = ac.player.self
 	local obj = player[str]
 	if obj then 
 		if type(obj) == 'function' then 
@@ -657,6 +657,8 @@ function helper:print_p(str,index)
 		else
 			print(tostring(obj))
 		end	
+	else
+		print(nil)	
 	end	
 end
 
