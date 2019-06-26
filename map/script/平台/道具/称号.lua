@@ -37,8 +37,8 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 2.5W 自动获得，已拥有积分：|r%wabao_cnt% 或者
-|cff00ffff消耗勇士徽章  20  兑换获得
+|cff00ffff挖宝积分超过 5K 自动获得，已拥有积分：|r%wabao_cnt% 或者
+|cff00ffff消耗勇士徽章 20 兑换获得
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+50   杀怪加攻击|r
@@ -128,7 +128,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗勇士徽章  200  兑换获得，已拥有徽章：|r%skin_cnt%
+|cff00ffff消耗勇士徽章  200  兑换获得
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+250  杀怪加攻击|r
@@ -186,7 +186,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗勇士徽章  500  兑换获得，已拥有徽章：|r%skin_cnt%
+|cff00ffff消耗勇士徽章  500  兑换获得
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+500  杀怪加攻击|r
@@ -215,7 +215,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗勇士徽章  1000  兑换获得，已拥有徽章：|r%skin_cnt%
+|cff00ffff消耗勇士徽章  1000  兑换获得
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+268  杀怪加全属性|r

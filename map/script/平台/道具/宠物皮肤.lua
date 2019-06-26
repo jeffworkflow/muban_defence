@@ -13,7 +13,7 @@ art = [[ReplaceableTextures\CommandButtons\BTNNetherDragon.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff神龙碎片超过 50 自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff神龙碎片超过 15 自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+8    杀怪加全属性|r
