@@ -3,7 +3,7 @@ mt{
 --等久
 level = 0,
 --图标
-art = [[sxs.blp]],
+art = [[xbxfx.blp]],
 is_order = 1,
 --说明
 tip = [[
@@ -11,11 +11,11 @@ tip = [[
 |cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
 
 |cffFFE799【礼包奖励】|r
-|cff00ff00开局赠送5张藏宝图，
-藏宝图掉落概率提高一倍，
-可自动寻宝（点击藏宝图试试），
-移速+200，
-每秒加全属性88|r
+|cff00ff00移速+200 每秒加全属性88|r
+|cff00ffff开局赠送5张藏宝图
+藏宝图掉落概率提高一倍
+可自动寻宝（点击藏宝图试试）|r
+
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,

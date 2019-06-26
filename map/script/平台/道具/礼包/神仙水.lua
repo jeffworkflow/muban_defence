@@ -3,7 +3,7 @@ mt{
 --等久
 level = 0,
 --图标
-art = [[sxs.blp]],
+art = [[sxs2.blp]],
 is_order = 1,
 --说明
 tip = [[
@@ -11,10 +11,9 @@ tip = [[
 |cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
 
 |cffFFE799【礼包奖励】|r
-|cff00ff00全属性+20万，
-攻击+50万，
-初始金币+80万，
-杀敌数+2000|r
+|cff00ff00全属性+20万 攻击+50万
+初始金币+80万 杀敌数+2000|r
+
 ]],
 init_gold = 800000,
 init_kill_count = 2000,

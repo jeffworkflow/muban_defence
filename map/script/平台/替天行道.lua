@@ -243,7 +243,7 @@ for i,name in ipairs({'兑换-势不可挡','兑换-君临天下','兑换-神帝
             p:AddServerValue('yshz',-self.need_yshz)
             local key = ac.server.name2key(real_name)
             p:SetServerValue(key,1)
-            p:sendMsg('兑换成功：'..real_name)   
+            p:sendMsg('|cffff0000兑换'..real_name..'成功 部分效果在下一局生效|r')   
 
             --先扣当前消费者的勋章数，不足的话扣除单位下的另一个人的勋章
             local first_item = self.owner:has_item('勇士徽章',all)
@@ -293,7 +293,7 @@ for i,name in ipairs({'兑换-力量','兑换-敏捷','兑换-智力','兑换-�
             p:AddServerValue('yshz',-self.need_yshz)
             local key = ac.server.name2key(real_name)
             p:AddServerValue(key,1)
-            p:sendMsg('兑换成功：'..real_name)   
+            p:sendMsg('|cffff0000兑换'..real_name..'成功 部分效果在下一局生效|r')   
             -- p:sendMsg('【系统消息】 获得25W'..)   
 
             --先扣当前消费者的勋章数，不足的话扣除单位下的另一个人的勋章

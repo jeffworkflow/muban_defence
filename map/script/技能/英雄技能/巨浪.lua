@@ -36,7 +36,6 @@ end,
 	distance = 1500,
 	hit_area = 125,
 	--概率%
-	chance = 15,
 	cool = 1,
 	--弹道数量
 	num = 1,

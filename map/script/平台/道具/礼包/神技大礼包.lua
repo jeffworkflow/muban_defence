@@ -3,7 +3,7 @@ mt{
 --等久
 level = 0,
 --图标
-art = [[szdlb.blp]],
+art = [[sjdlb.blp]],
 is_order = 1,
 --说明
 tip = [[
@@ -11,10 +11,10 @@ tip = [[
 |cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
 
 |cffFFE799【礼包奖励】|r
-|cff00ff00随机技能1个，
-恶魔果实1个，
-技能升级书lv1-lv4各一本
-|r
+|cff00ff00随机技能1个
+技能升级书lv1-lv4各一本 |cffff0000可直接将技能升到顶级|r
+|cff00ff00恶魔果实1个 |cffff0000可直接强化顶级技能|r
+
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
@@ -45,10 +45,10 @@ tip = [[
 |cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
 
 |cffFFE799【礼包奖励】|r
-|cff00ff00随机技能1个，
-恶魔果实1个，
-技能升级书lv1-lv4各一本
-|r
+|cff00ff00随机技能1个
+技能升级书lv1-lv4各一本 |cffff0000可直接将技能升到顶级|r
+|cff00ff00恶魔果实1个 |cffff0000可直接强化顶级技能|r
+
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
