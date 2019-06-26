@@ -10,9 +10,13 @@ level = 1,
 art = [[ReplaceableTextures\CommandButtons\BTNGlyph.blp]],
 --说明
 tip = [[|cffFFE799【说明】：|r
-
+拥有火灵：%has_vale%
 |cff00ff0050%火灵|cff00ff00翻倍|r  |cffff000050%火灵|cffff0000归零|r
 ]],
+has_vale = function() 
+    return ac.player.self.fire_seed
+end ,
+auto_fresh_tip = true,
 --物品类型
 item_type = '神符',
 --目标类型
@@ -35,13 +39,25 @@ rate = 60
 
 }
 
-if not mt.player_fire then 
-    mt.player_fire ={}
-end
-ac.loop(1000,function() 
-    mt.player_fire[ac.player.self] = ac.player.self.fire_seed    
-    -- print('木头赌博',ac.player.self.kill_count)
-end)  
+-- if not mt.player_fire then 
+--     mt.player_fire ={}
+-- end
+-- ac.loop(1000,function() 
+--     mt.player_fire[ac.player.self] = ac.player.self.fire_seed    
+--     -- print('木头赌博',ac.player.self.kill_count)
+-- end)  
+
+-- function mt:on_add()
+--     local shop_item = ac.item.shop_item_map[self.name]
+--     if not shop_item.player_fire then 
+--         shop_item.player_fire ={}
+--     end
+--     ac.loop(1000,function() 
+--         shop_item.player_fire[ac.player.self] = ac.player.self.fire_seed    
+--         -- print('木头赌博',ac.player.self.kill_count)
+--     end)  
+-- end    
+
 function mt:on_cast_start()
     local hero = self.owner
     local p = hero:get_owner()
@@ -52,10 +68,10 @@ function mt:on_cast_start()
         return 
     end    
     if rand <= self.rate then 
-        hero:add_fire_seed(fire_seed*2)
+        hero:add_fire_seed(fire_seed)
         p:sendMsg('|cff00ff00翻倍|r')
     else
-        -- hero:add_fire_seed(-fire_seed)
+        hero:add_fire_seed(-fire_seed)
         p:sendMsg('|cffff0000凉凉|r')
     end    
 end

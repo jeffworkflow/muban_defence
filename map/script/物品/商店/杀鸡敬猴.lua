@@ -60,6 +60,8 @@ local function task_sjjh(skill)
         end    
         --召唤物杀死也继承
         local p = killer:get_owner()
+        if p.flag_sjjh then return end
+        
         local hero = p.hero
         if hero  then 
             p.sjjh_cnt = (p.sjjh_cnt or 0) + 1
@@ -93,7 +95,8 @@ local function task_sjjh(skill)
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000齐天大圣|r已出现，小心他的金箍棒 ',2)
 
                 --移除触发
-                trg:remove()
+                -- trg:remove()
+                p.flag_sjjh = true
 
             end    
         end

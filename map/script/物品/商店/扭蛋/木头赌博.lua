@@ -10,9 +10,13 @@ level = 1,
 art = [[ReplaceableTextures\CommandButtons\BTNGrabTree.blp]],
 --说明
 tip = [[|cffFFE799【说明】：|r
-
+拥有木头：%has_vale%
 |cff00ff0050%木头|cff00ff00翻倍|r  |cffff000050%木头|cffff0000归零|r
 ]],
+has_vale = function() 
+    return ac.player.self.wood
+end ,
+auto_fresh_tip = true,
 --物品类型
 item_type = '神符',
 --目标类型
@@ -33,27 +37,39 @@ store_affix = '',
 rate = 60 
 }
 
-if not mt.player_wood then 
-    mt.player_wood ={}
-end
-ac.loop(1000,function() 
-    mt.player_wood[ac.player.self] = ac.player.self.wood    
-    -- print('木头赌博',ac.player.self.wood)
-end)  
+-- if not mt.player_wood then 
+--     mt.player_wood ={}
+-- end
+-- ac.loop(1000,function() 
+--     mt.player_wood[ac.player.self] = ac.player.self.wood    
+--     -- print('木头赌博',ac.player.self.wood)
+-- end)  
+
+-- function mt:on_add()
+--     local shop_item = ac.item.shop_item_map[self.name]
+--     if not shop_item.player_wood then 
+--         shop_item.player_wood ={}
+--     end
+--     ac.loop(1000,function() 
+--         shop_item.player_wood[ac.player.self] = ac.player.self.wood    
+--         -- print('木头赌博',ac.player.self.kill_count)
+--     end)  
+-- end   
+
 function mt:on_cast_start()
     local hero = self.owner
     local p = hero:get_owner()
     local wood = p.wood
     local rand = math.random(100)
-    if wood <=0 then 
+    if wood <=10 then 
         p:sendMsg('|cffFFCC00不够赌|r')
         return 
     end  
     if rand <= self.rate then 
-        hero:add_wood(wood*2)
+        hero:add_wood(wood)
         p:sendMsg('|cff00ff00翻倍|r')
     else
-        -- hero:add_wood(-wood)
+        hero:add_wood(-wood)
         p:sendMsg('|cffff0000凉凉|r')
     end    
 end
