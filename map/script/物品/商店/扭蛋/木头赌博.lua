@@ -35,7 +35,7 @@ store_affix = '',
 --     return p.wood 
 -- end,
 --实际概率
-rate = 60 
+rate = 55 
 }
 
 -- if not mt.player_wood then 

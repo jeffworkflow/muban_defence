@@ -35,7 +35,7 @@ store_affix = '',
 --     return p.fire_seed 
 -- end,    
 --实际概率
-rate = 60 
+rate = 55 
 
 }
 

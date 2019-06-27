@@ -113,17 +113,17 @@ end
 --宠物天赋里面的技能，
 local peon_skill = {
     --技能，技能显示的名字，属性名，数值，图标，tip
-    ['宠物-杀敌数加成'] = {'杀敌数加成','杀敌数加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前杀敌数加成 +%杀敌数加成%|cff00ff00 %|r|n|n]]},
-    ['宠物-木头加成'] = {'木头加成','木头加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前木头加成 +%木头加成%|cff00ff00 %|r|n|n]]},
-    ['宠物-物品获取率加成'] = {'物品获取率加成','物品获取率加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前物品获取率加成 +%物品获取率加成%|cff00ff00 %|r|n|n]]},
-    ['宠物-火灵加成'] = {'火灵加成','火灵加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前火灵加成 +%火灵加成%|cff00ff00 %|r|n|n]]},
-    ['宠物-分裂伤害加成'] = {'分裂伤害加成','分裂伤害加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前分裂伤害加成 +%分裂伤害加成%|cff00ff00 %|r|n|n]]},
-    ['宠物-攻击速度加成'] = {'攻击速度加成','攻击速度加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%属性，当前攻击速度加成 +%攻击速度加成%|cff00ff00 %|r|n|n]]},
-    ['宠物-每秒力量成长'] = {'每秒力量成长','每秒加力量',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20属性，当前每秒加力量 +%每秒加力量%|cff00ff00|r|n|n]]},
-    ['宠物-每秒敏捷成长'] = {'每秒敏捷成长','每秒加敏捷',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20属性，当前每秒加敏捷 +%每秒加敏捷%|cff00ff00|r|n|n]]},
-    ['宠物-每秒智力成长'] = {'每秒智力成长','每秒加智力',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20属性，当前每秒加智力 +%每秒加智力%|cff00ff00|r|n|n]]},
-    ['宠物-每秒全属性成长'] = {'每秒全属性成长','每秒加全属性',10,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升10属性，当前每秒加全属性 +%每秒加全属性%|cff00ff00|r|n|n]]},
-    ['宠物-每秒攻击成长'] = {'每秒攻击成长','每秒加攻击',35,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升35属性，当前每秒加攻击 +%每秒加攻击%|cff00ff00|r|n|n]]},
+    ['宠物-杀敌数加成'] = {'杀敌数加成','杀敌数加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前杀敌数加成 +%杀敌数加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-木头加成'] = {'木头加成','木头加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前木头加成 +%木头加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-物品获取率加成'] = {'物品获取率加成','物品获取率加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前物品获取率加成 +%物品获取率加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-火灵加成'] = {'火灵加成','火灵加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前火灵加成 +%火灵加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-分裂伤害加成'] = {'分裂伤害加成','分裂伤害加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前分裂伤害加成 +%分裂伤害加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-攻击速度加成'] = {'攻击速度加成','攻击速度加成',5,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升5%，当前攻击速度加成 +%攻击速度加成%|cff00ff00 %|r|n|n]]},
+    ['宠物-每秒力量成长'] = {'每秒力量成长','每秒加力量',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20，当前每秒加力量 +%每秒加力量%|cff00ff00|r|n|n]]},
+    ['宠物-每秒敏捷成长'] = {'每秒敏捷成长','每秒加敏捷',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20，当前每秒加敏捷 +%每秒加敏捷%|cff00ff00|r|n|n]]},
+    ['宠物-每秒智力成长'] = {'每秒智力成长','每秒加智力',20,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升20，当前每秒加智力 +%每秒加智力%|cff00ff00|r|n|n]]},
+    ['宠物-每秒全属性成长'] = {'每秒全属性成长','每秒加全属性',10,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升10，当前每秒加全属性 +%每秒加全属性%|cff00ff00|r|n|n]]},
+    ['宠物-每秒攻击成长'] = {'每秒攻击成长','每秒加攻击',35,[[ReplaceableTextures\CommandButtons\BTNStormEarth&Fire.blp]],[[|n|cffFFE799【使用说明】：|r|n|cff00ff00点击可升级，每级提升35，当前每秒加攻击 +%每秒加攻击%|cff00ff00|r|n|n]]},
 }
 for k,v in sortpairs(peon_skill) do 
     local mt = ac.skill[k]

@@ -29,7 +29,7 @@ is_skill = true,
 --商店名词缀
 store_affix = '',
 --实际概率
-rate = 60 
+rate = 55 
 
 }
 --会掉线
