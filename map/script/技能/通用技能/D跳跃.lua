@@ -4,11 +4,11 @@ mt{
     --等级
     level = 1,
 	tip = [[
-按D向鼠标方向飘逸500码距离，消耗100蓝，内置CD0.5S，不可穿越障碍物
+按D向鼠标方向飘逸500码距离，消耗100蓝，内置CD1S，不可穿越障碍物
 	]],
 	--技能图标
 	art = [[ReplaceableTextures\CommandButtons\BTNBlink.blp]],
-	cool = 0.5,
+	cool = 1,
 	cost = 1,
 
 	target_type = ac.skill.TARGET_TYPE_POINT,
