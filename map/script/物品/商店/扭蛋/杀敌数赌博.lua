@@ -9,8 +9,8 @@ level = 1,
 --图标
 art = [[shadidubo.blp]],
 --说明
-tip = [[|cffFFE799【说明】：|r
-拥有杀敌数：%has_vale%
+tip = [[|cffFFE799【说明】|r（|cff00ffff当前杀敌数:|r%has_vale%）
+
 |cff00ff0050%杀敌数翻倍|r  |cffff000050%杀敌数归零|r
 ]],
 has_vale = function() 

@@ -9,8 +9,9 @@ level = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNGrabTree.blp]],
 --说明
-tip = [[|cffFFE799【说明】：|r
-拥有木头：%has_vale%
+tip = [[
+|cffFFE799【说明】|r（|cff00ffff当前木头:|r%has_vale%）
+
 |cff00ff0050%木头|cff00ff00翻倍|r  |cffff000050%木头|cffff0000归零|r
 ]],
 has_vale = function() 

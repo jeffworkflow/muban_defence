@@ -9,8 +9,8 @@ level = 1,
 --图标
 art = [[ReplaceableTextures\CommandButtons\BTNGlyph.blp]],
 --说明
-tip = [[|cffFFE799【说明】：|r
-拥有火灵：%has_vale%
+tip = [[|cffFFE799【说明】|r（|cff00ffff当前火灵:|r%has_vale%）
+
 |cff00ff0050%火灵|cff00ff00翻倍|r  |cffff000050%火灵|cffff0000归零|r
 ]],
 has_vale = function() 
