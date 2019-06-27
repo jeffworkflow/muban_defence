@@ -29,10 +29,12 @@ function player.__index:create_pets()
     
     --
     if (self.cus_server and self.cus_server['勇士徽章']) or 0  > 0 then
+        self.flag_init_yshz = true 
         local item = u:add_item('勇士徽章')
-        item:set_item_count(self.cus_server['勇士徽章'] - 1)
-        ac.wait(100,function ()
-            self:AddServerValue('yshz',-1) --添加勇士徽章时会往服务器存，所以需要减掉。 
-        end)
+        self.flag_init_yshz = false
+        item:set_item_count(self.cus_server['勇士徽章'])
+        -- ac.wait(100,function ()
+        --     self:AddServerValue('yshz',-1) --添加勇士徽章时会往服务器存，所以需要减掉。 
+        -- end)
     end    
 end

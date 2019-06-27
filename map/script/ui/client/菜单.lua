@@ -2,8 +2,8 @@
 
 class.screen_button = extends(class.button){
     new = function (parant,x,y,info)
-        local button = class.button.new(parant,info.path,x,y,36,36)
-        local text = button:add_text(info.name,0,36,36,36,12,'center')
+        local button = class.button.new(parant,info.path,x,y,84,84)
+        local text = button:add_text(info.name,0,84,84,84,12,'center')
 
         button.__index = class.screen_button
 
@@ -21,7 +21,7 @@ class.screen_button = extends(class.button){
 
     on_button_mouse_enter = function (self)
         if self.info then 
-            self:tooltip(self.info.name,self.info.tip,-1,200,64)
+            self:tooltip(self.info.name,self.info.tip,0,200,84)
         end
     end,
 }
@@ -29,20 +29,20 @@ class.screen_button = extends(class.button){
 
 local ui_info = {
     {
-        name = '图鉴',  
-        path = 'image\\控制台\\图鉴.blp',
-        key = 'F3', 
-        tip = "点击或按F3快捷键可以打开图鉴"
+        name = nil,  
+        path = 'image\\控制台\\F2_home.blp',
+        key = 'F2', 
+        tip = "F2回城"
     },
     {
-        name = '菜单',  
-        path = 'image\\控制台\\菜单.blp',
-        key = 'F10', 
-        tip = "点击或按F10快捷键可以打开菜单"
+        name = nil,  
+        path = 'f3_liangongfang.blp',
+        key = 'F3', 
+        tip = "F3进入练功房"
     },
 
 }
 
 for index,info in ipairs(ui_info) do 
-    class.screen_button.create(1700 + index * 56,20,info)
+    class.screen_button.create(10,50 + index*84*1.2,info)
 end 

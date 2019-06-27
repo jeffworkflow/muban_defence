@@ -11,7 +11,7 @@ mt{
     --标题颜色
     color =  '紫',
 	--介绍
-    tip = [[|cff00ffff(可用天赋点：%remain_point%|cff00ffff %need_xp_tip%|cff00ffff)|r
+    tip = [[|cff00ffff(可用天赋点：%spell_stack%|cff00ffff %need_xp_tip%|cff00ffff)|r
 
 |cffFFE799【使用说明】：|r
 |cff00ff00打开天赋菜单，分配宠物的天赋点|r
@@ -24,11 +24,19 @@ mt{
     art = [[ReplaceableTextures\CommandButtons\BTNSkillz.blp]],
     model_size = function(self,hero)
         return 1 + self.level * 0.01
-    end,    
+    end,  
+    --充能模式
+    -- cooldown_mode = 1,  
+    -- cool = 999999,
+    --显示层数
+    show_stack = 1,
     --已学习点数
     used_point = 0,
     --剩余学习点数
     remain_point = function(self,hero)
+        return (self.level - self.used_point)
+    end,
+    spell_stack = function(self,hero)
         return (self.level - self.used_point)
     end,
     strong_attr_tip = function(self,hero)

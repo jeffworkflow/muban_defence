@@ -48,5 +48,16 @@
                 "isDefault": true
             }
         },
+        {
+            "label": "copy",
+            "command": "D:\\fengchao\\w3x2lni_v2.4.1\\copy.bat",
+            "args": [
+                "${workspaceRoot}"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
     ]
 }

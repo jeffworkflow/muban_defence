@@ -41,7 +41,9 @@ function mt:on_add()
     local hero = self.owner
     local player = hero:get_owner()
     if player.id>10 then return end
-    player:AddServerValue('yshz',self._count) --保存存档
+    if not player.flag_init_yshz then 
+       player:AddServerValue('yshz',self._count) --保存存档
+    end   
 end    
 function mt:on_cast_start()
     local hero = self.owner
