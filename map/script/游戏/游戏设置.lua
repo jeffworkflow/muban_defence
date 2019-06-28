@@ -1,5 +1,3 @@
-
-
 --游戏全局设置
 --ac.rect.map 全图 rect.create(-4000,-4000,4000,4000) or
 local rect = require("types.rect")
@@ -10,6 +8,24 @@ local jass = require 'jass.common'
 local player = require 'ac.player'
 local Unit = require 'types.unit'
 local fogmodifier = require 'types.fogmodifier'
+
+--游戏时长 
+ac.g_game_time = 0 
+
+local ti = ac.loop(1000,function(t)
+    --modify by jeff 
+    ac.g_game_time = ac.g_game_time + 1
+    local str = os.date("!%H:%M:%S",  ac.g_game_time)
+    -- ranking.ui.date:set_text('游戏时长:'..str)
+    ac.game.multiboard:set_time(str) --多面板显示
+	-- ac.game.multiboard:set_title()
+    -- if total_time == 0  then
+    --     ac.game:event_notify('游戏-结束','游戏胜利')
+    --     t:remove()
+    -- end
+
+end)
+
 
 ac.game:event '玩家-金币变化' (function(_,data) 
 	local gold = data.gold

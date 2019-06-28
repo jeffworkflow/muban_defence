@@ -15,7 +15,7 @@ ac.attack_boss = {
 }  
 local force_cool = 3*60
 if global_test then 
-    force_cool = 180
+    force_cool = 10
 end    
 local skill_list = ac.skill_list
 for i =1,3 do 

@@ -79,8 +79,12 @@ local function init()
 	local all_lines = online_player_cnt +3
 	mtb = multiboard.create(#title,all_lines)
 	ac.game.multiboard = mtb
-
 	mtb:setTitle('【'..(ac.server_config and ac.server_config['map_name'] or '')..'】难度：'..(ac.g_game_degree_name or ''))
+	
+	function mtb:set_time(time)
+		local str = '【'..(ac.server_config and ac.server_config['map_name'] or '')..'】难度：'..(ac.g_game_degree_name or '')
+		mtb:setTitle('【游戏时长】'..time..'   '..str)
+	end	
 	-- mtb:setTitle("信息面板")
 	--设置表头
     for i = 1,#title do 

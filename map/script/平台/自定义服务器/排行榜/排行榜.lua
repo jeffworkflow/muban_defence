@@ -237,7 +237,8 @@ class.phb_panel = extends(class.panel){
             --设置数据
             self.tgsc_rank[i]:set_text(data.rank)
             self.tgsc_player[i]:set_text(data.player_name)
-            self.tgsc_time[i]:set_text(data.value)
+            local str = os.date("!%H:%M:%S",tonumber(data.value)) 
+            self.tgsc_time[i]:set_text(str)
         end 
     end,
 
