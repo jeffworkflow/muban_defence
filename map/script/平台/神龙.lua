@@ -131,7 +131,7 @@ tip = [[
 
 |cffff0000【所有宠物外观可更换，所有宠物属性可叠加】|r]],
 
-need_map_level = 10,
+need_map_level = 15,
 skin_cnt = function(self)
     local p = ac.player.self
     return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
