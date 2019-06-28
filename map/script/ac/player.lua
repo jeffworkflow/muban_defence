@@ -484,7 +484,7 @@ end
 --获取镜头属性
 --	镜头属性
 function mt:getCameraField(key)
-	return math.deg(jass.GetCameraField(jass[key] or camera_state[key]))
+	return jass.GetCameraField(jass[key] or camera_state[key]) --math.deg()
 end
 
 --设置镜头目标

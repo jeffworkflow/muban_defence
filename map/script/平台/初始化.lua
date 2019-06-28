@@ -89,13 +89,14 @@ ac.game:event '游戏-结束' (function(trg,flag)
     for i=1,10 do
         local player = ac.player[i]
         if player:is_player() then
-            --保存波数
+            --保存星数
             local name = ac.g_game_degree_name
             local key = ac.server.name2key(name)
             player:AddServerValue(key,1) 
         end
     end
 end)    
+
 for i=1,10 do
     local player = ac.player[i]
     if player:is_player() then

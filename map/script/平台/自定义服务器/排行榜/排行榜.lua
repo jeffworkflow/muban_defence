@@ -17,13 +17,13 @@ class.phb_panel = extends(class.panel){
         for i=1,#panel.menu_titles do 
             local name = panel.menu_titles[i]
             local button 
-            button = panel:add_button('',10,39 + 43*(i-1),106,40,true)
+            button = panel:add_button('',10,39 + 48*(i-1),106,40,true)
             --预设优先展示与难度相挂钩的数据
             if i == 1 then 
                 button:set_normal_image(menu_press_status)
                 panel.last_button = button
             end    
-            local text = button:add_text(name,10,0,106,40,8,'left')
+            local text = button:add_text(name,10,0,106,40,10,'left')
             button.text = text
             if i == 1 then 
                 text:set_color(0xff744726)
@@ -58,18 +58,18 @@ class.phb_panel = extends(class.panel){
         panel:add_texture(img_phb_tgsc,689,20,183,47) 
 
         local texture = panel:add_texture(img_title,160,65,366,48) 
-        local text = texture:add_text('名次',30,0,30,34,8,'left')
+        local text = texture:add_text('名次',30,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
-        local text = texture:add_text('玩家昵称',139,0,30,34,8,'left')
+        local text = texture:add_text('玩家昵称',139,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
-        local text = texture:add_text('段位星数',276,0,30,34,8,'left')
+        local text = texture:add_text('段位星数',276,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
         local texture = panel:add_texture(img_title,587,65,366,48) 
-        local text =  texture:add_text('名次',30,0,30,34,8,'left')
+        local text =  texture:add_text('名次',30,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
-        local text = texture:add_text('玩家昵称',139,0,30,34,8,'left')
+        local text = texture:add_text('玩家昵称',139,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
-        local text = texture:add_text('通关时长',276,0,30,34,8,'left')
+        local text = texture:add_text('通关时长',276,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
 
         --巅峰数据
@@ -78,8 +78,8 @@ class.phb_panel = extends(class.panel){
         panel.df_star = {}
         panel.df_line_bg = {}
         for i=1,10 do 
-            local y = 120 + 30*(i-1)
-            local text = panel:add_text('',200,y,20,30,8,'left')
+            local y = 102 + 35*(i-1)
+            local text = panel:add_text('',200,y,20,35,10,'left')
             table.insert(panel.df_rank,text)
             if i == 1 then
                 text:set_color(0xffff0000)
@@ -91,7 +91,7 @@ class.phb_panel = extends(class.panel){
                 text:set_color(0xffF4F4D3)    
             end    
 
-            local text = panel:add_text('',280,y,80,30,8,'left')
+            local text = panel:add_text('',280,y,80,35,10,'left')
             table.insert(panel.df_player,text)
             if i == 1 then
                 text:set_color(0xffff0000)
@@ -103,7 +103,7 @@ class.phb_panel = extends(class.panel){
                 text:set_color(0xffF4F4D3)    
             end    
 
-            local text = panel:add_text('',455,y,20,30,8,'center')
+            local text = panel:add_text('',455,y,20,35,10,'center')
             table.insert(panel.df_star,text)
             if i == 1 then
                 text:set_color(0xffff0000)
@@ -122,8 +122,8 @@ class.phb_panel = extends(class.panel){
         panel.tgsc_time = {}
         panel.tgsc_line_bg = {}
         for i=1,10 do 
-            local y = 120 + 30*(i-1)
-            local text = panel:add_text('',627,y,20,30,8,'left')
+            local y = 102 + 35*(i-1)
+            local text = panel:add_text('',627,y,20,35,10,'left')
             table.insert(panel.tgsc_rank,text)
             if i == 1 then
                 text:set_color(0xffff0000)
@@ -136,7 +136,7 @@ class.phb_panel = extends(class.panel){
             end    
 
 
-            local text = panel:add_text('',707,y,80,30,8,'left')
+            local text = panel:add_text('',707,y,80,35,10,'left')
             text:set_color(0xffF4F4D3)
             table.insert(panel.tgsc_player,text)
             if i == 1 then
@@ -149,7 +149,7 @@ class.phb_panel = extends(class.panel){
                 text:set_color(0xffF4F4D3)    
             end    
 
-            local text = panel:add_text('',885,y,20,30,8,'center')
+            local text = panel:add_text('',885,y,20,35,10,'center')
             text:set_color(0xffF4F4D3)
             table.insert(panel.tgsc_time,text)
             if i == 1 then
@@ -203,8 +203,8 @@ class.phb_panel = extends(class.panel){
             -- print_r(data)
             --隔行加背景
             if i % 2 == 0 then 
-                local y = 120 + 30*(i-1)
-                local title_background = self:add_texture('image\\角色信息\\line.tga',160,y,366,30)
+                local y = 102 + 35*(i-1)
+                local title_background = self:add_texture('image\\角色信息\\line.tga',160,y,366,35)
                 title_background:set_alpha(0xff*0.1)
                 table.insert(self.df_line_bg,title_background)
             end    
@@ -229,8 +229,8 @@ class.phb_panel = extends(class.panel){
         for i,data in ipairs(list) do 
             --隔行加背景
             if i % 2 == 0 then 
-                local y = 120 + 30*(i-1)
-                local title_background = self:add_texture('image\\角色信息\\line.tga',587,y,366,30)
+                local y = 102 + 35*(i-1)
+                local title_background = self:add_texture('image\\角色信息\\line.tga',587,y,366,35)
                 title_background:set_alpha(0xff*0.1)
                 table.insert(self.tgsc_line_bg,title_background)
             end    
@@ -270,7 +270,7 @@ end)
 local game_event = {}
 game_event.on_key_down = function (code)
 
-    if code == KEY.SPACE then 
+    if code == KEY.CTRL then 
         if panel == nil then return end 
         if panel.is_show then 
             panel:hide()
