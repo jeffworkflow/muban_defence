@@ -397,7 +397,9 @@ function mt:add_kill_count(num)
 	local num = tonumber(string.format( "%.2f",num))
 	--当前杀敌数
 	self.kill_count = (self.kill_count or 0.00 ) + num
-	self.kill_count = jass.I2R(self.kill_count)
+	-- print('1',self.kill_count)
+	-- self.kill_count = jass.I2R(self.kill_count)
+	-- print('2',self.kill_count)
 
 	if self.kill_count < 0 then 
 		self.kill_count = 0

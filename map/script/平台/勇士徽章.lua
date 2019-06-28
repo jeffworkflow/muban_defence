@@ -29,6 +29,9 @@ _count = 1,
 
 ac.game:event '物品-消耗品叠加' (function(_,item,old_value) --old_value
     -- print(item.name,old_value)
+    if item.name ~= '勇士徽章' then  
+        return 
+    end
     local hero = item.owner
     local player = hero:get_owner()
     if player.id>10 then return end

@@ -10,6 +10,7 @@ mt{
    chance = function(self) return (self.level+5)*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
+   cool = 1,
 	--技能类型
 	skill_type = "被动,力量",
 	--被动

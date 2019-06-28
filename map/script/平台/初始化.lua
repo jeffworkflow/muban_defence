@@ -28,7 +28,9 @@ ac.server.init()
 for i=1,10 do
     local player = ac.player[i]
     if player:is_player() then
-        player:sp_get_map_test()
+        if player:is_self() then 
+            player:sp_get_map_test()
+        end    
     end
 end
 

@@ -87,7 +87,7 @@ ui.on_custom_ui_event = function (player,message)
         if event_table ~= nil then
             local func = event_table[func_name]
             if func ~= nil then
-                ui.player = ac.player(GetPlayerId(player) + 1)
+                ui.player = player
                 if params == nil then
                     func()
                 else

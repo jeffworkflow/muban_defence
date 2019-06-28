@@ -48,6 +48,7 @@ for i =1,3 do
         end    
         --小地图ping
         ac.player.self:pingMinimap(self.region,3,255,0,0)
+        ac.player.self:pingMinimap(self.region,3,255,0,0)
         -- if ac.ui then ac.ui.kzt.up_jingong_title(' 第 '..self.index..' 波 ') end
 
         ac.player.self:sendMsg("|cffff0000 第"..self.index.."波 怪物开始进攻！！！|r",5)

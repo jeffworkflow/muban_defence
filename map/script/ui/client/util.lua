@@ -63,7 +63,8 @@ ui.send_message = function (info)
         print("字符串太长了",msg,debug.traceback())
         return
     end 
-    japi.SendCustomMessage(msg)
+    japi.DzSyncData("ui",msg)
+    -- japi.SendCustomMessage(msg)
 end
 
 ui.on_custom_ui_event = function (message)
@@ -79,7 +80,7 @@ ui.on_custom_ui_event = function (message)
         if event_table ~= nil then
             local func = event_table[func_name]
             if func ~= nil then
-                ui.player = ac.player(GetPlayerId(player) + 1)
+                ui.player = player
                 if params == nil then
                     func()
                 else

@@ -79,24 +79,19 @@ function player.__index:sp_get_map_test(f)
                         end 
                     end    
                     local tab_str = ui.encode(temp_tab)
-                    -- print('数据长度',#tab_str)
-                    if #tab_str >1000 then 
-                        print('字符串太长，同步失败')
-                    else  
-                        ac.wait(10,function()
-                            --发起同步请求
-                            -- print('发起同步请求')
-                            local info = {
-                                type = 'cus_server',
-                                func_name = 'read_key_from_server',
-                                params = {
-                                    [1] = tab_str,
-                                }
+                    -- print('数据长度',#tab_str) 
+                    ac.wait(10,function()
+                        --发起同步请求
+                        local info = {
+                            type = 'cus_server',
+                            func_name = 'read_key_from_server',
+                            params = {
+                                [1] = tab_str,
                             }
-                            ui.send_message(info)
-                            f(v)
-                        end) 
-                    end
+                        }
+                        ui.send_message(info)
+                        f(v)
+                    end) 
                     -- f(tbl.data[1])
                 else
                     print('读取数据失败')
@@ -155,7 +150,7 @@ local event = {
             local name = ac.server.key2name(key)
             player.cus_server[name] = tonumber(val)
 
-            print('同步后的数据：',name,player.cus_server[name])
+            print('同步后的数据：',player:get_name(),name,player.cus_server[name])
             if key =='jifen' then 
                 player.jifen =  tonumber(val)
             end    

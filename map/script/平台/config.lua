@@ -58,6 +58,16 @@ local cus_key = {
     {'cnt_wz','王者'},
     {'cnt_zqwz','最强王者'},
 
+    
+    {'time_qt','青铜时长'},
+    {'time_by','白银时长'},
+    {'time_hj','黄金时长'},
+    {'time_bj','铂金时长'},
+    {'time_zs','钻石时长'},
+    {'time_xy','星耀时长'},
+    {'time_wz','王者时长'},
+    {'time_zqwz','最强王者时长'},
+
     {'bwllc','霸王莲龙锤'},
     {'hhxyj','幻海雪饮剑'},
 

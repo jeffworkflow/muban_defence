@@ -24,6 +24,10 @@ register_japi[[
 	native DzAPI_Map_GetMapConfig           takes string key returns string
     native DzAPI_Map_HasMallItem            takes player whichPlayer, string key returns boolean
     native RequestExtraBooleanData          takes integer dataType, player whichPlayer, string param1, string param2, boolean param3, integer param4, integer param5, integer param6 returns boolean
+    native DzTriggerRegisterSyncData        takes trigger trig, string prefix, boolean server returns nothing
+    native DzSyncData                       takes string prefix, string data returns nothing
+    native DzGetTriggerSyncData             takes nothing returns string
+    native DzGetTriggerSyncPlayer           takes nothing returns player
 ]]
 
 

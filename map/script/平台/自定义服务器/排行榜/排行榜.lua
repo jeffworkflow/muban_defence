@@ -1,0 +1,334 @@
+local slk = require 'jass.slk'
+
+class.phb_panel = extends(class.panel){
+    create = function ()
+        local hero = ac.player.self.hero
+        local panel = class.panel.create('image\\排行榜\\phb_bg.tga',468,204,985,472)
+        panel.__index = class.phb_panel 
+
+        panel:add_button('',0,0,panel.w,panel.h)
+
+        --左边菜单 
+        panel.menu_titles = {
+            '最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
+        }
+        local menu_press_status = 'image\\排行榜\\menu.tga'
+        local menu_line = 'image\\排行榜\\menu_line.tga'
+        for i=1,#panel.menu_titles do 
+            local name = panel.menu_titles[i]
+            local button 
+            button = panel:add_button('',10,39 + 43*(i-1),106,40,true)
+            --预设优先展示与难度相挂钩的数据
+            if i == 1 then 
+                button:set_normal_image(menu_press_status)
+                panel.last_button = button
+            end    
+            local text = button:add_text(name,10,0,106,40,8,'left')
+            button.text = text
+            if i == 1 then 
+                text:set_color(0xff744726)
+            else
+                text:set_color(0xffA9A6F7)
+            end        
+            --增加下划线
+            button:add_texture(menu_line,0,40,106,5)
+            button.name = name
+
+            function button:on_button_clicked()
+                --更换按钮状态
+                panel.last_button:set_normal_image('')
+                panel.last_button.text:set_color(0xffA9A6F7)
+                
+                self:set_normal_image(menu_press_status) 
+                self.text:set_color(0xff744726)
+                panel.last_button = self
+
+                --刷新排行榜数据 title_background:set_alpha(0xff*0.1)
+                panel:fresh(button.name)
+            end    
+
+        end 
+
+        --右边排行榜数据
+        --巅峰排行榜
+        local img_phb_df = 'image\\排行榜\\phb_df.tga'
+        local img_phb_tgsc = 'image\\排行榜\\phb_tgsc.tga'
+        local img_title = 'image\\排行榜\\titile_bg.tga'
+        panel:add_texture(img_phb_df,256,20,183,47) 
+        panel:add_texture(img_phb_tgsc,689,20,183,47) 
+
+        local texture = panel:add_texture(img_title,160,65,366,48) 
+        local text = texture:add_text('名次',30,0,30,34,8,'left')
+        text:set_color(0xffA9A6F7)
+        local text = texture:add_text('玩家昵称',139,0,30,34,8,'left')
+        text:set_color(0xffA9A6F7)
+        local text = texture:add_text('段位星数',276,0,30,34,8,'left')
+        text:set_color(0xffA9A6F7)
+        local texture = panel:add_texture(img_title,587,65,366,48) 
+        local text =  texture:add_text('名次',30,0,30,34,8,'left')
+        text:set_color(0xffA9A6F7)
+        local text = texture:add_text('玩家昵称',139,0,30,34,8,'left')
+        text:set_color(0xffA9A6F7)
+        local text = texture:add_text('通关时长',276,0,30,34,8,'left')
+        text:set_color(0xffA9A6F7)
+
+        --巅峰数据
+        panel.df_rank = {}
+        panel.df_player = {}
+        panel.df_star = {}
+        panel.df_line_bg = {}
+        for i=1,10 do 
+            local y = 120 + 30*(i-1)
+            local text = panel:add_text('',200,y,20,30,8,'left')
+            table.insert(panel.df_rank,text)
+            if i == 1 then
+                text:set_color(0xffff0000)
+            elseif i == 2 then    
+                text:set_color(0xffffff00)
+            elseif i == 3 then
+                text:set_color(0xff00bdec)
+            else
+                text:set_color(0xffF4F4D3)    
+            end    
+
+            local text = panel:add_text('',280,y,80,30,8,'left')
+            table.insert(panel.df_player,text)
+            if i == 1 then
+                text:set_color(0xffff0000)
+            elseif i == 2 then    
+                text:set_color(0xffffff00)
+            elseif i == 3 then
+                text:set_color(0xff00bdec)
+            else
+                text:set_color(0xffF4F4D3)    
+            end    
+
+            local text = panel:add_text('',455,y,20,30,8,'center')
+            table.insert(panel.df_star,text)
+            if i == 1 then
+                text:set_color(0xffff0000)
+            elseif i == 2 then    
+                text:set_color(0xffffff00)
+            elseif i == 3 then
+                text:set_color(0xff00bdec)
+            else
+                text:set_color(0xffF4F4D3)    
+            end    
+        end    
+
+        --通关时长数据
+        panel.tgsc_rank = {}
+        panel.tgsc_player = {}
+        panel.tgsc_time = {}
+        panel.tgsc_line_bg = {}
+        for i=1,10 do 
+            local y = 120 + 30*(i-1)
+            local text = panel:add_text('',627,y,20,30,8,'left')
+            table.insert(panel.tgsc_rank,text)
+            if i == 1 then
+                text:set_color(0xffff0000)
+            elseif i == 2 then    
+                text:set_color(0xffffff00)
+            elseif i == 3 then
+                text:set_color(0xff00bdec)
+            else
+                text:set_color(0xffF4F4D3)    
+            end    
+
+
+            local text = panel:add_text('',707,y,80,30,8,'left')
+            text:set_color(0xffF4F4D3)
+            table.insert(panel.tgsc_player,text)
+            if i == 1 then
+                text:set_color(0xffff0000)
+            elseif i == 2 then    
+                text:set_color(0xffffff00)
+            elseif i == 3 then
+                text:set_color(0xff00bdec)
+            else
+                text:set_color(0xffF4F4D3)    
+            end    
+
+            local text = panel:add_text('',885,y,20,30,8,'center')
+            text:set_color(0xffF4F4D3)
+            table.insert(panel.tgsc_time,text)
+            if i == 1 then
+                text:set_color(0xffff0000)
+            elseif i == 2 then    
+                text:set_color(0xffffff00)
+            elseif i == 3 then
+                text:set_color(0xff00bdec)
+            else
+                text:set_color(0xffF4F4D3)    
+            end    
+        end   
+
+        -- panel.hero_img = panel:add_texture('image\\hero.blp',35,25,158,194) 
+        -- local title_background = panel:add_texture('image\\角色信息\\line.tga',213,25,586,22)
+        -- title_background:set_alpha(0xff*0.1)
+
+        -- local skl = hero and hero:find_skill(hero:get_name()..'天赋') 
+        -- local tip = skl and skl:get_tip() or ''
+        -- local tf_text = '|cffcccccc'.. (hero and hero:get_name()..'天赋' or '')..'|r'
+        -- panel.hero_tf = panel:add_text(tf_text,213,25,586,194,12,'auto_newline')
+        -- panel.hero_tip = panel:add_text(tip,213,55,586,170,10,'auto_newline')
+        -- --属性加背景
+        -- for i=1,7 do 
+        --     local y = 241 + 30*(i*2-1) -30
+        --     local title_background = panel:add_texture('image\\角色信息\\line.tga',35,y,767,30)
+        --     title_background:set_alpha(0xff*0.1)
+        -- end    
+        panel.close_button = panel:add_button('image\\操作栏\\cross.blp',panel.w - 32-5,5,32,32,true)
+        
+
+        panel:hide()
+
+        return panel
+    end,
+    
+    set_df_data = function (self,list)
+        --先清空
+        for i=1,10 do 
+            self.df_rank[i]:set_text('')
+            self.df_player[i]:set_text('')
+            self.df_star[i]:set_text('')
+            -- print(self.df_line_bg[i])
+            if self.df_line_bg[i] then 
+                self.df_line_bg[i]:destroy() 
+                self.df_line_bg[i] = nil 
+            end
+        end
+        if not list then return end
+        for i,data in ipairs(list) do 
+            -- print_r(data)
+            --隔行加背景
+            if i % 2 == 0 then 
+                local y = 120 + 30*(i-1)
+                local title_background = self:add_texture('image\\角色信息\\line.tga',160,y,366,30)
+                title_background:set_alpha(0xff*0.1)
+                table.insert(self.df_line_bg,title_background)
+            end    
+
+            --设置数据
+            self.df_rank[i]:set_text(data.rank)
+            self.df_player[i]:set_text(data.player_name)
+            self.df_star[i]:set_text(data.value)
+        end 
+    end,
+    set_tgsc_data = function (self,list)
+        for i=1,10 do 
+            self.tgsc_rank[i]:set_text('')
+            self.tgsc_player[i]:set_text('')
+            self.tgsc_time[i]:set_text('')
+            if self.tgsc_line_bg[i] then 
+                self.tgsc_line_bg[i]:destroy() 
+                self.tgsc_line_bg[i] = nil 
+            end
+        end        
+        if not list then return end
+        for i,data in ipairs(list) do 
+            --隔行加背景
+            if i % 2 == 0 then 
+                local y = 120 + 30*(i-1)
+                local title_background = self:add_texture('image\\角色信息\\line.tga',587,y,366,30)
+                title_background:set_alpha(0xff*0.1)
+                table.insert(self.tgsc_line_bg,title_background)
+            end    
+            --设置数据
+            self.tgsc_rank[i]:set_text(data.rank)
+            self.tgsc_player[i]:set_text(data.player_name)
+            self.tgsc_time[i]:set_text(data.value)
+        end 
+    end,
+
+    fresh = function(self,name)
+        if not self.rank then 
+            self.rank = {}
+        end    
+        -- self.rank[name],self.rank[name..'时长']
+
+        self:set_df_data(self.rank[name])
+        self:set_tgsc_data(self.rank[name..'时长'])
+    end,
+
+
+    on_button_clicked = function (self,button)
+        if button == self.close_button then 
+            self:hide()
+        end 
+    end,
+
+    
+}
+
+local panel
+
+ac.wait(10,function ()
+    panel = class.phb_panel.get_instance()
+end)
+
+local game_event = {}
+game_event.on_key_down = function (code)
+
+    if code == KEY.SPACE then 
+        if panel == nil then return end 
+        if panel.is_show then 
+            panel:hide()
+        else 
+            panel:show()
+        end 
+    elseif code == KEY.ESC then 
+        panel:hide()
+    end 
+end 
+
+game.register_event(game_event)
+
+
+
+local rank = {
+    {'cnt_qt','青铜'},
+    {'cnt_by','白银'},
+    {'cnt_hj','黄金'},
+    {'cnt_bj','铂金'},
+    {'cnt_zs','钻石'},
+    {'cnt_xy','星耀'},
+    {'cnt_wz','王者'},
+    {'cnt_zqwz','最强王者'},
+
+    
+    {'time_qt','青铜时长'},
+    {'time_by','白银时长'},
+    {'time_hj','黄金时长'},
+    {'time_bj','铂金时长'},
+    {'time_zs','钻石时长'},
+    {'time_xy','星耀时长'},
+    {'time_wz','王者时长'},
+    {'time_zqwz','最强王者时长'},
+}
+--处理,显示排行榜数据
+--取前10名数据
+for i,content in ipairs(rank) do
+    local p = ac.player(1);
+    p:sp_get_rank(content[1],'rank',10,function(data)
+        -- print_r(data)
+        ac.wait(10,function()
+            if not panel.rank then 
+                panel.rank = {}
+            end    
+            if not panel.rank[content[2]] then 
+                panel.rank[content[2]]  = {}
+            end
+            for i = 1, #data do
+                table.insert(panel.rank[content[2]],data[i])
+            end    
+            --首次刷新最强王者
+            if finds(content[2] ,'最强王者') then 
+                panel:fresh('最强王者')
+            end    
+        end)
+    end);
+end    
+
+
+
