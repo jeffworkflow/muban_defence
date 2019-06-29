@@ -399,8 +399,8 @@ function helper:power()
 end
 
 --强制游戏结束
-function helper:over()
-	ac.game:event_notify('游戏-结束')
+function helper:over(flag)
+	ac.game:event_notify('游戏-结束',flag)
 end
 
 --强制下一波

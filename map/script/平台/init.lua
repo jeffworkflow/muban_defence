@@ -2,8 +2,8 @@
 require '平台.base'
 require '平台.config'
 require '平台.自定义服务器'
+require '平台.房间显示'
 require '平台.初始化'
-require '平台.积分和段位'
 
 require '平台.道具'
 -- require '平台.荣耀称号'
