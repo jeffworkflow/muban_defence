@@ -67,7 +67,7 @@ for key,value in pairs(ac.exchange_kill) do
         hero:add(self.attr_name,self.attr_val)
 
         --文字提醒
-        p:sendMsg('|cff00ff00兑换成功：'..self.name..'|r')
+        p:sendMsg('|cff00ff00兑换 '..self.name..' 成功|r',5)
         
     end
 

@@ -94,7 +94,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
             local key = ac.server.name2key(name)
             player:AddServerValue(key,1) 
 
-            player:sendMsg('恭喜通关，|cffff0000'..name..'星数+1|r')
+            player:sendMsg('【游戏胜利】|cffff0000'..name..'星数+1|r')
 
             --保存游戏时长
             local name = name..'时长'
@@ -106,7 +106,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
             end    
             --文字提醒
             local str = os.date("!%H:%M:%S",tonumber(ac.g_game_time)) 
-            player:sendMsg('恭喜通关，|cffff0000通关时长：'..str..'|r')
+            player:sendMsg('【游戏胜利】|cffff0000本次通关时长：'..str..'|r')
             
         end
     end

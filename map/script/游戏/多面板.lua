@@ -83,7 +83,7 @@ local function init()
 	
 	function mtb:set_time(time)
 		local str = '【'..(ac.server_config and ac.server_config['map_name'] or '')..'】难度：'..(ac.g_game_degree_name or '')
-		mtb:setTitle('【游戏时长】'..time..'   '..str)
+		mtb:setTitle(' '..str..'     【游戏时长】'..time)
 	end	
 	-- mtb:setTitle("信息面板")
 	--设置表头
