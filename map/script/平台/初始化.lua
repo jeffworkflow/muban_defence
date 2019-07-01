@@ -228,8 +228,8 @@ local function ttxd2award()
         ['敏捷'] = {30000},
         ['智力'] = {30000},
         ['全属性'] = {15000},
-        --奖励 = 杀鸡敬猴奖励每秒全属性, 每地图等级上限值
-        ['每秒加全属性'] = {1,50},
+        --奖励 = 杀鸡儆猴奖励每秒全属性, 每地图等级上限值
+        ['每秒加全属性'] = {1,25},
     }  
     for i=1,10 do
         local player = ac.player[i]
@@ -239,7 +239,7 @@ local function ttxd2award()
                     local cnt = 0
                     local value = 0
                     if name == '每秒加全属性' then 
-                        cnt= player.cus_server and (player.cus_server['杀鸡敬猴'] or 0 )
+                        cnt= player.cus_server and (player.cus_server['杀鸡儆猴'] or 0 )
                     else
                         cnt= player.cus_server and (player.cus_server[name] or 0 )
                     end     

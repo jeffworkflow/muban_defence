@@ -1,6 +1,6 @@
 require '物品.商店.创建商店'
 require '物品.商店.练功房'
-require '物品.商店.杀鸡敬猴'
+require '物品.商店.杀鸡儆猴'
 require '物品.商店.基地'
 require '物品.商店.传送'
 require '物品.商店.随机技能'

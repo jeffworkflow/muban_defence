@@ -114,7 +114,7 @@ local cus_key = {
     {'dhzl','智力'},
     {'dhqsx','全属性'},
 
-    {'sjjh','杀鸡敬猴'}
+    {'sjjh','杀鸡儆猴'}
 
 }
 ac.cus_server_key = cus_key

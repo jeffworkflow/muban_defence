@@ -138,9 +138,9 @@ ac.map.rects={
 	['出生点'] =rect.j_rect('F2cs') ,
 
 	--野怪
-	['杀鸡敬猴1'] =rect.j_rect('sjjh1') ,
-	['杀鸡敬猴2'] =rect.j_rect('sjjh2') ,
-	['杀鸡敬猴3'] =rect.j_rect('sjjh3') ,
+	['杀鸡儆猴1'] =rect.j_rect('sjjh1') ,
+	['杀鸡儆猴2'] =rect.j_rect('sjjh2') ,
+	['杀鸡儆猴3'] =rect.j_rect('sjjh3') ,
 	
 
 	--练功房 
