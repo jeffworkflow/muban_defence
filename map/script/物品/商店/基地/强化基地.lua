@@ -26,7 +26,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
 --全属性
-award_all_attr = 222222,
+award_all_attr = 128888,
 --护甲%
 defence = 100,
 --生命上限%
@@ -45,7 +45,7 @@ function mt:on_cast_start()
     local player = hero:get_owner()
     hero = player.hero
     hero:add('全属性',self.award_all_attr)
-    player:sendMsg('|cffFFE799【系统消息】|r|cff00ffff'..player:get_name()..'|r 强化了基地 奖励|cff00ff00222222全属性|r',2)
+    player:sendMsg('|cffFFE799【系统消息】|r|cff00ffff'..player:get_name()..'|r 强化了基地 奖励|cff00ff00128888全属性|r',2)
     
 
     --概率得 五道杠少年

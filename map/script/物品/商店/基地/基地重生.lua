@@ -26,7 +26,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
 --全属性
-award_all_attr = 2222222,
+award_all_attr = 1288888,
 content_tip = '|cffFFE799【使用说明】：|r',
 --物品技能
 is_skill = true,
@@ -47,7 +47,7 @@ function mt:on_cast_start()
     local player = hero:get_owner()
     hero = player.hero
     hero:add('全属性',self.award_all_attr)
-    player:sendMsg('|cffFFE799【系统消息】|r|cff00ffff'..player:get_name()..'|r 购买了基地重生 奖励|cff00ff002222222全属性|r',2)
+    player:sendMsg('|cffFFE799【系统消息】|r|cff00ffff'..player:get_name()..'|r 购买了基地重生 奖励|cff00ff001288888全属性|r',2)
     
     --概率得 五道杠少年
     local rate = 10

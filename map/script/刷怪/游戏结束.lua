@@ -26,8 +26,6 @@ ac.game:event '游戏-结束' (function(trg,flag)
 	if flag then 
 		name = '【游戏胜利】'
 		ac.player.self:sendMsg("【游戏胜利】")
-		ac.player.self:sendMsg("【游戏胜利】")
-		ac.player.self:sendMsg("【游戏胜利】")
 		return 
 	else
 		name = '【游戏失败】'
@@ -182,9 +180,8 @@ end)
 --基地爆炸的时候结算胜负
 ac.game:event '游戏-大胜利' (function(trg)
 
-	ac.player.self:sendMsg("【游戏大胜利】30秒后退出",10)
-	ac.player.self:sendMsg("【游戏大胜利】30秒后退出",10)
-	ac.player.self:sendMsg("【游戏大胜利】30秒后退出",10)
+	ac.player.self:sendMsg("|cffffe799【系统消息】|r30秒后自动退出游戏",10)
+
 	ac.wait(30*1000,function()
 		EndGame(true)
 	end)
