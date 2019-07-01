@@ -74,7 +74,7 @@ mt{
     need_xp_tip =  function(self,hero )
         return '|cff00ffff升级还需经验：|r'..'|cff'..ac.color_code['绿']..self.need_xp..'|r'
     end,
-    need_xp = 1000,
+    need_xp = 500,
     effect =  [[Hero_CrystalMaiden_N2_V_boom.mdx]],   
 	
 }
@@ -197,7 +197,7 @@ end)
 function unit.__index:peon_get_upgrade_xp(lv)
     local lv = lv or 0
     if lv >0 then 
-        return self:peon_get_upgrade_xp(lv-1) + lv *1000	 
+        return self:peon_get_upgrade_xp(lv-1) + lv *500	 
     else 
         return 0
     end        
@@ -244,7 +244,7 @@ function unit.__index:peon_add_xp(xp)
         end 
 
         --地图等级限制
-        local map_level = (player:Map_GetMapLevel()+1) * 3
+        local map_level = (player:Map_GetMapLevel()+1) * 5
         if self.peon_xp >= self:peon_get_upgrade_xp(self.peon_lv) then
             if self.peon_lv <= map_level then 
                 self.peon_lv = self.peon_lv + 1
