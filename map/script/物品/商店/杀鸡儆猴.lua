@@ -4,7 +4,7 @@ local rect = require 'types.rect'
 -- 杀鸡儆猴
 
 --物品名称
-local mt = ac.skill['杀鸡敬猴']
+local mt = ac.skill['杀鸡儆猴']
 mt{
 --等久
 level = 1,
@@ -14,6 +14,7 @@ art = [[sjjh.blp]],
 tip = [[
 
 |cffFFE799【任务要求】|r杀死|cffff0000右边花园里|r叽叽喳喳的鸡，小心里面有一只讨厌的猴子
+|cff00ffff（击杀可获|cffff0000 每秒全属性+1永久存档奖励 |cff00ffff上限受地图等级影响）
 
 |cffFFE799【任务奖励】|r|cff00ff00杀怪+50金币，攻击+50金币，每秒+50金币|r
  ]],
@@ -45,7 +46,7 @@ function mt:on_cast_start()
     hero = p.hero
     --发小地图的ping提示
     for i=1,3 do  
-        local point = ac.map.rects['杀鸡敬猴'..i]:get_point()
+        local point = ac.map.rects['杀鸡儆猴'..i]:get_point()
         p:pingMinimap(point, 3)
     end    
 
@@ -95,7 +96,7 @@ local function task_sjjh(skill)
                     --保存到服务器存档
                     hero:add('每秒加全属性',1)
                     player:AddServerValue('sjjh',1)
-                    player:sendMsg('【系统消息】每秒加全属性+1 （可存档），当前已有|cffff0000'..((player.cus_server and player.cus_server['杀鸡敬猴']) or 0)..'|r')
+                    player:sendMsg('|cffFFE799【系统消息】|r恭喜获得 |cff00ff00每秒全属性+1|r 的|cffff0000永久存档奖励|r |cffffe799当前每秒全属性+|cffffe799'..((player.cus_server and player.cus_server['杀鸡儆猴']) or 0)..'|r')
                 end)    
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000齐天大圣|r已出现，小心他的金箍棒 ',2)
                 p.flag_sjjh = true
@@ -106,5 +107,5 @@ local function task_sjjh(skill)
 
 end
 
-local skill = ac.skill['杀鸡敬猴']
+local skill = ac.skill['杀鸡儆猴']
 task_sjjh(skill)

@@ -271,7 +271,7 @@ end)
 local game_event = {}
 game_event.on_key_down = function (code)
 
-    if code == KEY.CTRL then 
+    if code == KEY.F5 then 
         if panel == nil then return end 
         if panel.is_show then 
             panel:hide()
