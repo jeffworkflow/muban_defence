@@ -116,7 +116,7 @@ for i=1,10 do
     local player = ac.player[i]
     if player:is_player() then
         player:event '读取存档数据' (function()
-            for name,data in pairs(star2award) do 
+            for name,data in sortpairs(star2award) do 
                 --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
                 local has_item = player.cus_server and (player.cus_server[name] or 0 )
                 local dw_value = player.cus_server and (player.cus_server[data[1]] or 0 )
@@ -150,7 +150,7 @@ local function wabao2award()
         local player = ac.player[i]
         if player:is_player() then
             player:event '读取存档数据' (function()
-                for name,data in pairs(content_data) do 
+                for name,data in sortpairs(content_data) do 
                     if name == '全属性' then 
                     else
                         --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
@@ -169,7 +169,7 @@ local function wabao2award()
                 end   
             end)  
             player:event '玩家-注册英雄后' (function()
-                local map_level = player:Map_GetMapLevel() 
+                local map_level = player:Map_GetMapLevel() > 0 and  player:Map_GetMapLevel() or 1
                 local wabaojifen = player.cus_server and (player.cus_server['挖宝积分'] or 0 )
                 local value = math.min(content_data['全属性'][1]*wabaojifen,content_data['全属性'][2] * map_level) --取挖宝积分*500 和地图等级*15000的最小值。
                 player.hero:add('全属性',value) 
@@ -198,7 +198,7 @@ local function shenlong2award()
         local player = ac.player[i]
         if player:is_player() then
             player:event '读取存档数据' (function()
-                for name,data in pairs(content_data) do 
+                for name,data in sortpairs(content_data) do 
                     --商城 或是 自定义服务器有对应数据则
                     --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
                     local has_item = player.cus_server and (player.cus_server[name] or 0 )
@@ -228,14 +228,28 @@ local function ttxd2award()
         ['敏捷'] = {30000},
         ['智力'] = {30000},
         ['全属性'] = {15000},
+        --奖励 = 杀鸡敬猴奖励每秒全属性, 每地图等级上限值
+        ['每秒加全属性'] = {1,50},
     }  
     for i=1,10 do
         local player = ac.player[i]
         if player:is_player() then
             player:event '玩家-注册英雄后' (function()
-                for name,data in pairs(content_data) do 
-                    local cnt = player.cus_server and (player.cus_server[name] or 0 )
-                    local value = cnt * data[1]
+                for name,data in sortpairs(content_data) do 
+                    local cnt = 0
+                    local value = 0
+                    if name == '每秒加全属性' then 
+                        cnt= player.cus_server and (player.cus_server['杀鸡敬猴'] or 0 )
+                    else
+                        cnt= player.cus_server and (player.cus_server[name] or 0 )
+                    end     
+                    local map_level = player:Map_GetMapLevel() > 0 and  player:Map_GetMapLevel() or 1
+                    if name == '每秒加全属性' then 
+                        value = math.min(cnt * data[1],map_level * data[2])
+                    else
+                        value = cnt * data[1]
+                    end        
+                    -- print(player:Map_GetMapLevel())
                     --增加属性
                     player.hero:add(name,value)
                 end   

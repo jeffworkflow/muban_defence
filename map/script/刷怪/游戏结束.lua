@@ -25,7 +25,15 @@ ac.game:event '游戏-结束' (function(trg,flag)
 	local name 
 	if flag then 
 		name = '【游戏胜利】'
-		ac.player.self:sendMsg("【游戏胜利】")
+		ac.player.self:sendMsg("【游戏胜利】2分钟后，结束游戏，请尽快挑战神龙碎片")
+		ac.timer_ex
+        {
+            time = 120,
+            title = "游戏结束倒计时",
+            func = function ()
+                EndGame(true)
+            end,
+        }
 		return 
 	else
 		name = '【游戏失败】'

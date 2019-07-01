@@ -61,7 +61,7 @@ local function task_sjjh(skill)
         --召唤物杀死也继承
         local p = killer:get_owner()
         if p.flag_sjjh then return end
-        
+
         local hero = p.hero
         if hero  then 
             p.sjjh_cnt = (p.sjjh_cnt or 0) + 1
@@ -89,13 +89,15 @@ local function task_sjjh(skill)
                 }
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     local item = ac.item.create_item(self.award_item)
+                    local player = hero:get_owner()
                     item.owner_ship = hero 
                     hero:add_item(item,true)
+                    --保存到服务器存档
+                    hero:add('每秒加全属性',1)
+                    player:AddServerValue('sjjh',1)
+                    player:sendMsg('【系统消息】每秒加全属性+1 （可存档），当前已有|cffff0000'..((player.cus_server and player.cus_server['杀鸡敬猴']) or 0)..'|r')
                 end)    
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000齐天大圣|r已出现，小心他的金箍棒 ',2)
-
-                --移除触发
-                -- trg:remove()
                 p.flag_sjjh = true
 
             end    
