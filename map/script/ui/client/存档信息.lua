@@ -38,6 +38,7 @@ class.player_info_panel = extends(class.panel){
             '奈瑟龙碎片','Pa碎片','冰龙碎片','小龙女碎片','霸王莲龙锤碎片','梦蝶仙翼碎片','关羽碎片','精灵龙碎片', '奇美拉碎片',
 
             '勇士徽章',
+            '杀猴次数',
         }
         --属性列数
         local col ={
@@ -122,6 +123,9 @@ class.player_info_panel = extends(class.panel){
             elseif finds(name,'最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜') then
                 new_value = string.format("%.f",player.cus_server[name] or 0)
                 new_value = new_value..' 星'
+            elseif name =='杀猴次数' then
+                name = '杀鸡儆猴' 
+                new_value = string.format("%.f",player.cus_server[name] or 0)  
             else
                 new_value = string.format("%.f",player.cus_server[name] or 0)
             end    
