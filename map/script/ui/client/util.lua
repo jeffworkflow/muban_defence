@@ -166,7 +166,7 @@ ui.encode = function (tbl)
     dump(tbl)
     return table.concat(buf)
 end
-
+ac.encode = ui.encode
 --将字符串 加载为lua表
 ui.decode = function (buf)
     local f, err = load('return '..buf)
@@ -181,6 +181,7 @@ ui.decode = function (buf)
     end
     return res
 end
+ac.decode = ui.decode
 
 ui.copy_table = function (old)
     local new = {}

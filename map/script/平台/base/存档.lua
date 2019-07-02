@@ -144,6 +144,26 @@ function player.__index:GetServerValueErrorCode()
     end
 end
 
+--同步数据
+function player.__index:SyncData(msg,f)
+    if self:is_self() then 
+        local msg = ac.encode(msg)
+        japi.DzSyncData("ac",msg)
+        local trg = CreateTrigger()
+        japi.DzTriggerRegisterSyncData(trg,"ac",false)
+        
+        function action()
+            local message = japi.DzGetTriggerSyncData()
+            local player = japi.DzGetTriggerSyncPlayer()
+            player = ac.player(GetPlayerId(player) + 1)
+            message = ac.decode(message)
+            -- print(message,player)
+            if f then f(player,message)end
+        end   
+        TriggerAddAction(trg,action)  
+    end    
+    
+end
 
 --===================================================
 --                  下面的一般用不到

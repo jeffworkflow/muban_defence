@@ -240,7 +240,7 @@ local function start()
 				show_animation(hero)
 			end
 			-- print(hero_name,p.mall[hero_name])
-			local has_mall = p.mall[hero_name] or (p.cus_server and p.cus_server[hero_name])
+			local has_mall = ( p.mall and  p.mall[hero_name] )or (p.cus_server and p.cus_server[hero_name])
 			if ((has_mall and has_mall > 0) 
 			   or finds(hero_name,'剑圣','吉安娜','大地','希尔瓦娜斯','炼金术士','阿尔塞斯'))
 			   and p.flag_get_map_test

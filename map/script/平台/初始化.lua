@@ -23,7 +23,7 @@ end
 --初始化1  copy 网易数据到自己的服务器去； 
 ac.server.init()  
 
---初始化2 读取自定义服务器的数据 并同步 p.cus_server[jifen] = 0
+-- --初始化2 读取自定义服务器的数据 并同步 p.cus_server[jifen] = 0
 --读取有延迟
 for i=1,10 do
     local player = ac.player[i]

@@ -24,10 +24,10 @@ ac.challenge_boss = {
     ['防具boss9'] = {ac.map.rects['boss-甲9']},
     ['防具boss10'] = {ac.map.rects['boss-甲10']},
 
-    ['技能BOSS1'] = {ac.map.rects['boss-技能1'],270},
-    ['技能BOSS2'] = {ac.map.rects['boss-技能2'],270},
-    ['技能BOSS3'] = {ac.map.rects['boss-技能3'],270},
-    ['技能BOSS4'] = {ac.map.rects['boss-技能4'],270},
+    ['技能BOSS1'] = {ac.map.rects['boss-技能1'],270,nil,nil,8},
+    ['技能BOSS2'] = {ac.map.rects['boss-技能2'],270,nil,nil,8},
+    ['技能BOSS3'] = {ac.map.rects['boss-技能3'],270,nil,nil,8},
+    ['技能BOSS4'] = {ac.map.rects['boss-技能4'],270,nil,nil,8},
     
     ['洗练石boss1'] = {ac.map.rects['boss-洗练石1'],270},
     ['洗练石boss2'] = {ac.map.rects['boss-洗练石2'],270},
@@ -70,7 +70,7 @@ ac.game:event '游戏-开始' (function()
             region = val[1],
             creeps_datas = key..'*1',
             -- boss重生时间
-            cool = 15,
+            cool = val[5] or 15,
             creep_player = ac.player.com[2],
         }  
         --进攻怪刷新时的初始化

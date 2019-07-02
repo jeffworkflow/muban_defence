@@ -63,7 +63,13 @@ function player.__index:sp_get_map_test(f)
     local f = f or function (retval)  end
     post_message(url,post,function (retval) 
         if not finds(retval,'http','https','') or finds(retval,'成功')then 
-            self.flag_get_map_test = true 
+            ac.wait(10,function()
+                local msg = {flag_get_map_test = true}
+                self:SyncData(msg,function(p,message)
+                    -- print_r(message)
+                    p.flag_get_map_test = message.flag_get_map_test
+                end)
+            end)
             local is_json = json.is_json(retval)
             if is_json then 
                 local tbl = json.decode(retval)
@@ -104,7 +110,10 @@ function player.__index:sp_get_map_test(f)
                 print(retval)
             end   
             if  finds(retval,'执行失败') then
-                self.flag_get_map_test = true 
+                local msg = {flag_get_map_test = true}
+                self:SyncData(msg,function(p,message)
+                    p.flag_get_map_test = message.flag_get_map_test
+                end)
             else    
                 self.try_server_cnt = (self.try_server_cnt or 0 ) + 1
                 if self.try_server_cnt <= 3 then 
