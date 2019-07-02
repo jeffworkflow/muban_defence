@@ -75,7 +75,7 @@ function mt:add_content()
             ac.game:event_notify('技能-插入魔法书',hero,'扭蛋',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000吸血+10%，攻击回血+50W|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+100w，吸血+10%，攻击回血+50W|r',6)
         else
         
         end
@@ -103,7 +103,7 @@ function mt:add_content()
             ac.game:event_notify('技能-插入魔法书',hero,'扭蛋',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000免伤几率+5%，每秒回血+5%|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+100w，免伤几率+5%，每秒回血+5%|r',6)
             
         else
         
@@ -114,7 +114,7 @@ function mt:add_content()
             ac.game:event_notify('技能-插入魔法书',hero,'扭蛋',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000分裂伤害+50%，攻击速度+50%|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000全属性+100w，分裂伤害+50%，攻击速度+50%|r',6)
             
         else
         
@@ -125,7 +125,7 @@ function mt:add_content()
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
             player.is_show_nickname = rand_name
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000时来运转!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得成就 |cffff0000"'..rand_name..'" |r，奖励 |cffff0000木头+5555，火种+5555，杀敌数+5555|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000时来运转!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得成就 |cffff0000"'..rand_name..'" |r，奖励 |cffff0000木头+16888，火种+16888，杀敌数+16888|r',6)
             
         else
         
