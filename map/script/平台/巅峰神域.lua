@@ -12,9 +12,23 @@ mt{
     
 }
 mt.skills = {
-    '礼包','武器','翅膀','称号'
+    '游戏说明','礼包','武器','翅膀','称号'
 }
 
+local mt = ac.skill['游戏说明']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[yxsm.blp]],
+    title = '游戏说明',
+    tip = [[
+
+查看游戏说明
+    ]],
+}
+mt.skills = {
+    '游戏难度说明','地图等级说明','挖宝积分说明','勇士徽章说明','神龙碎片说明','宠物天赋说明',
+}
 
 local mt = ac.skill['礼包']
 mt{

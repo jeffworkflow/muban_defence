@@ -40,7 +40,9 @@ mt{
     
 function mt:on_add()
     --全图随机刷 正式用
-    self.random_point =  ac.map.rects['藏宝区']:get_random_point()
+    self.random_point =  ac.map.rects['藏宝区']:get_random_point(true)
+    -- print(ac.map.rects['藏宝区']:get_random_point(true))
+
     --测试用
     -- self.random_point = self.owner:get_point()
 end
