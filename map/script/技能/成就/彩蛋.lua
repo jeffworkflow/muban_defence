@@ -171,12 +171,12 @@ mt{
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+120W 全属性
+|cff00ff00+150W 全属性
 +50%  攻击速度|r
 
 ]],
     ['攻击速度'] = 50,
-    ['全属性'] = 1200000,
+    ['全属性'] = 1500000,
 }
 
 
@@ -224,9 +224,9 @@ ac.game:event '单位-攻击开始' (function(self, data)
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','输出机器')
             player.is_show_nickname = '输出机器'
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+120W全属性 +50%攻击速度|r',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+120W全属性 +50%攻击速度|r',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+120W全属性 +50%攻击速度|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+150W全属性 +50%攻击速度|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+150W全属性 +50%攻击速度|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 打桩一时爽 一直打桩一直爽|r 获得成就|cffff0000 "输出机器" |r，奖励 |cffff0000+150W全属性 +50%攻击速度|r',6)
             -- ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 惊喜获得 |cffff0000'..rand_name..' |r，奖励 |cffff0000吸血+10%，攻击回血+50W|r',6)
     
         end
