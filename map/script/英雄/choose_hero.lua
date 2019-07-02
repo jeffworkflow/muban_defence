@@ -315,7 +315,7 @@ local function start()
 	
 				--强制镜头高度
 				ac.wait(1000, function()
-					p.camera_high = 1600
+					p.camera_high = 2000
 				end)
 			end)
 		end
