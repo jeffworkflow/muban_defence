@@ -204,7 +204,7 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+500每秒加全属性|r
     ]]},
 
- {'无所不贪lv7',false,'杀怪加全属性',750,'全属性',700000,[[zhili.blp]],[[
+ {'无所不贪lv7',false,'杀怪加全属性',75,'全属性',700000,[[zhili.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv7|r
     

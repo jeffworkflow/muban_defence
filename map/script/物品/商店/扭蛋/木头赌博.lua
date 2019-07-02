@@ -63,14 +63,14 @@ function mt:on_cast_start()
     local wood = p.wood
     local rand = math.random(100)
     if wood <=10 then 
-        p:sendMsg('|cffFFCC00不够赌|r')
+        p:sendMsg('|cffFFCC00不够赌|r',5)
         return 
     end  
     if rand <= self.rate then 
         hero:add_wood(wood)
-        p:sendMsg('|cff00ff00翻倍|r')
+        p:sendMsg('|cff00ff00翻倍|r',5)
     else
         hero:add_wood(-wood)
-        p:sendMsg('|cffff0000凉凉|r')
+        p:sendMsg('|cffff0000凉凉|r',5)
     end    
 end
