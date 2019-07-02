@@ -295,7 +295,7 @@ ac.wait(20,function()
             time = 180
         end    
         time = force_cool
-        BJDebugMsg(time .. "秒后开始第一波怪物进攻")
+        BJDebugMsg(time .. "秒后开始第一波怪物进攻",10)
         ac.timer_ex 
         {
             time = time,
