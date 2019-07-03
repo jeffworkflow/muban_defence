@@ -11,7 +11,9 @@ mt{
     --伤害范围
    damage_area = 500,
 	--技能类型
-	skill_type = "被动,智力",
+    skill_type = "被动,智力",
+    --cd
+    cool =1,
 	--被动
 	passive = true,
 	--伤害

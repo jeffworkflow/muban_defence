@@ -964,7 +964,7 @@ function unit.__index:remove_item(it)
 	end
 	-- print('即将从单位移除物品：',it.slot_id,it.name,it.handle,ac.clock())
 	-- it:on_remove_state()
-	print('触发丢弃物品',it.name,it.type,it.handle)
+	-- print('触发丢弃物品',it.name,it.type,it.handle)
 	--移除技能
 	it:_call_event 'on_remove'
 

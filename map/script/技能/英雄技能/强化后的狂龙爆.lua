@@ -38,7 +38,7 @@ function mt:on_add()
 		end 
         --触发时修改攻击方式
 		if math.random(100) <= self.chance then
-			hero:add_buff('渡业妖爆')
+			hero:add_buff('狂龙爆')
             {
                 value = self.crit_rate,
                 crit_rate = self.crit_rate,

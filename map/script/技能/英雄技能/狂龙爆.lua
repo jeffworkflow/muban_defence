@@ -25,9 +25,9 @@ mt{
 	--技能图标
 	art = [[klb.blp]],
     --技暴几率
-    skill_rate = {5,10,15,20,25},
+    crit_rate = {5,10,15,20,25},
     --技暴伤害
-    skill_damage = {50,100,150,200,250},
+    crit_damage = {50,100,150,200,250},
     --
     damage_type = '法术',
     time = 5
