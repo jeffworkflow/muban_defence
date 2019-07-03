@@ -76,7 +76,7 @@ function mt:on_cast_shot()
                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','技多不压身')
                 player.is_show_nickname = '技多不压身'
                 --给全部玩家发送消息
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r获得成就|cffff0000 "技多不压身" |r，奖励 |cffff0000100w全属性，25%攻速|r，|cff00ff00 Ps:技能可替换，继续点击要学习的技能就行|r',20)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r获得成就|cffff0000 "技多不压身" |r 奖励 |cffff000050w全属性 25%攻速|r |cff00ff00 Ps:技能可替换，继续点击要学习的技能就行|r',20)
        
             end
             
