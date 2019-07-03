@@ -69,7 +69,7 @@ local function hero_register_main()
 		-- hero:add_skill('保持原位','英雄',11)
 		
 		
-		-- hero:add_item('新手礼包') 
+		hero:add_item('新手攻略') 
 		
 		--武器
 		-- hero:add_effect('hand',[[Abilities\Weapons\PhoenixMissile\Phoenix_Missile.mdl]])

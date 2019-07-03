@@ -110,9 +110,11 @@ function player.__index:sp_get_map_test(f)
                 print(retval)
             end   
             if  finds(retval,'执行失败') then
-                local msg = {flag_get_map_test = true}
-                self:SyncData(msg,function(p,message)
-                    p.flag_get_map_test = message.flag_get_map_test
+                ac.wait(10,function()
+                    local msg = {flag_get_map_test = true}
+                    self:SyncData(msg,function(p,message)
+                        p.flag_get_map_test = message.flag_get_map_test
+                    end)
                 end)
             else    
                 self.try_server_cnt = (self.try_server_cnt or 0 ) + 1

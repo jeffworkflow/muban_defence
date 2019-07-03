@@ -180,6 +180,35 @@ mt{
 }
 
 
+local mt = ac.skill['技多不压身']
+mt{
+    --等久
+    level = 1,
+    --魔法书相关
+    is_order = 1 ,
+    --目标类型
+    target_type = ac.skill.TARGET_TYPE_NONE,
+    --冷却
+    cool = 0,
+    content_tip = '',
+    item_type_tip = '',
+    --物品技能
+    is_skill = true,
+    --商店名词缀
+    store_affix = '',
+    art = [[scjq.blp]], 
+    tip = [[
+    
+|cffFFE799【成就属性】：|r
+|cff00ff00+100W 全属性
++25%  攻击速度|r
+
+]],
+    ['攻击速度'] = 25,
+    ['全属性'] = 1000000,
+}
+
+
 --注册怪物死亡事件 杀鸡狂魔
 ac.game:event '单位-死亡' (function (_,unit,killer)
     if unit:get_name() ~= '鸡' then 

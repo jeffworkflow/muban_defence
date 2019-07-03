@@ -14,7 +14,7 @@ for i=1,10 do
         p.mall_flag = {}
     end  
     -- 作弊
-    if finds(p:get_name(),'后山一把火','后山一把刀','卡卡发动机') then 
+    if finds(p:get_name(),'后山一把刀','卡卡发动机') then 
         p.cheating = true 
         require '测试.helper'
     end  

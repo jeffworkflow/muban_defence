@@ -28,7 +28,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		ac.player.self:sendMsg("【游戏胜利】|cff00ff00请尽快挑战神龙 |cffff00005分钟后游戏结束|r")
 		ac.timer_ex
         {
-            time = 120,
+            time = 300,
             title = "游戏结束倒计时",
             func = function ()
                 EndGame(true)
@@ -42,6 +42,9 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		ac.player.self:sendMsg("【游戏失败】")
 		ac.player.self:sendMsg("【游戏失败】")
 		ac.player.self:sendMsg("【游戏失败】")
+		-- ac.wait(30*1000,function()
+		-- 	EndGame(true)
+		-- end)
 	end	
 	ac.wait(4000,function()
         for i=1,8 do
@@ -55,9 +58,12 @@ ac.game:event '游戏-结束' (function(trg,flag)
         end
     end)
 	--停止刷兵
-	-- if ac.creep['刷怪'] and ac.creep['刷怪'].finish then 
-	-- 	ac.creep['刷怪']:finish()
-	-- end	
+	for i=1,3 do 
+		if ac.creep['刷怪'..i] and ac.creep['刷怪'..i].finish then 
+			ac.creep['刷怪'..i]:finish()
+		end	
+	end	
+	
 	--聚集地
 	local point = ac.map.rects['游戏结束']	
 	--停止运动
