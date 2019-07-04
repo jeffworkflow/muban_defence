@@ -28,6 +28,9 @@ register_japi[[
     native DzSyncData                       takes string prefix, string data returns nothing
     native DzGetTriggerSyncData             takes nothing returns string
     native DzGetTriggerSyncPlayer           takes nothing returns player
+    native DzGetMouseTerrainX               takes nothing returns real
+    native DzGetMouseTerrainY               takes nothing returns real
+    native DzGetMouseTerrainZ               takes nothing returns real
 ]]
 
 

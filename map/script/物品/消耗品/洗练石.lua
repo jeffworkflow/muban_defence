@@ -70,7 +70,7 @@ for ix =1 ,4 do
         end    
         local item = self 
         local flag
-        for key,val in pairs(hero.suit) do   
+        for key,val in sortpairs(hero.suit) do   
             --如果5个集满
             if val[5] and val[5][1] and not hero.flag_suit[key] then 
                 if not val[5][5] then 

@@ -402,6 +402,10 @@ end
 function helper:over(flag)
 	ac.game:event_notify('游戏-结束',flag)
 end
+--强制游戏结束
+function helper:add_restriction(str)
+	self:add_restriction(str)
+end
 
 --强制下一波
 function helper:next()
@@ -540,7 +544,21 @@ function helper:remove_item(str)
 	-- self:remove_item(item)
 	item:item_remove()
 end	
+--测试region  DzGetMouseTerrainX
+function helper:aa(str)
+	
+	local x = japi.DzGetMouseTerrainX()
+	local y = japi.DzGetMouseTerrainY()
+	local player = ac.player(2)
+	
+	jass.SetUnitX(self.handle, x)
+	jass.SetUnitY(self.handle, y)
+	print('鼠标游戏内坐标',x,y,jass.IsPointInRegion(player.tt_region.handle,x,y))
+end	
+--测试region  DzGetMouseTerrainX
+function helper:add_ability(str)
 
+end	
 --测试用的木桩
 function helper:tt_unit(where)
 	local cnt = 5 

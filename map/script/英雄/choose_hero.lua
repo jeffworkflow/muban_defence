@@ -273,9 +273,9 @@ local function start()
 			p:clearMsg()
 			local hero = hero_types[hero_name]
 			--移除选人区马甲
-			hero_types[hero_name] = nil
-			hero:setAlpha(50)
-			hero:set_class '马甲'
+			-- hero_types[hero_name] = nil
+			-- hero:setAlpha(50)
+			-- hero:set_class '马甲'
 	
 			--等待初始化
 			p:hideInterface(1)

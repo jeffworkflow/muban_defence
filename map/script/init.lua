@@ -134,6 +134,18 @@ ac.wait(100,function ()
     --     local shop4 = ac.shop.create('神龙',x,y+300,270)
 
     -- end)
-
     
+
+    --测试掉线
+    -- ac.loop(3000,function()
+    --     for i=1,10 do
+    --         local p = ac.player(i)
+    --         if p:is_player() then 
+    --             local u = p:create_unit('民兵',ac.point(0,0))
+    --             ac.wait(1000,function()
+    --                 u:kill()
+    --             end)
+    --         end    
+    --     end    
+    -- end)
 end);
