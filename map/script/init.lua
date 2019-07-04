@@ -5,11 +5,6 @@ storm = require 'jass.storm'
 dzapi = require 'jass.dzapi'
 japi.SetOwner("mtp")
 --官方存档和商城
-mtp_dzapi = {}
-for key, value in pairs(dzapi) do
-    -- print(key, value)
-    mtp_dzapi[key] = value
-end
 require 'util'
 -- print(1)
 require 'war3'
@@ -137,15 +132,15 @@ ac.wait(100,function ()
     
 
     --测试掉线
-    -- ac.loop(3000,function()
-    --     for i=1,10 do
-    --         local p = ac.player(i)
-    --         if p:is_player() then 
-    --             local u = p:create_unit('民兵',ac.point(0,0))
-    --             ac.wait(1000,function()
-    --                 u:kill()
-    --             end)
-    --         end    
-    --     end    
-    -- end)
+    ac.loop(3000,function()
+        for i=1,10 do
+            local p = ac.player(i)
+            if p:is_player() then 
+                local u = p:create_unit('民兵',ac.point(0,0))
+                ac.wait(1000,function()
+                    u:kill()
+                end)
+            end    
+        end    
+    end)
 end);
