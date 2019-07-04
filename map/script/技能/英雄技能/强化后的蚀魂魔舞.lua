@@ -20,12 +20,12 @@ mt{
 	--介绍
     tip = [[
         
-|cff00bdec【被动效果】攻击10%几率触发 |r|cffffff00全伤加深+35%|r |cff00bdec持续0.75秒|r
+|cff00bdec【被动效果】攻击10%几率触发 |r|cffffff00全伤加深+50%|r |cff00bdec持续0.75秒|r
     
 ]],
 	--技能图标
 	art = [[qhchmw.blp]],
-    value = 35,
+    value = 50,
     time = 0.75,
 }
 function mt:on_add()

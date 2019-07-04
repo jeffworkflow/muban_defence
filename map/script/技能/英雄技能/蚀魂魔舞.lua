@@ -19,12 +19,12 @@ mt{
 	--介绍
     tip = [[
         
-|cff00bdec【主动施放】增加 |cffffff00全伤加深+7%*Lv|r |cff00bdec持续8秒|r
+|cff00bdec【主动施放】增加 |cffffff00全伤加深+10%*Lv|r |cff00bdec持续8秒|r
     
 ]],
 	--技能图标
     art = [[chmw.blp]],
-    value = {7,14,21,28,35},
+    value = {10,20,30,40,50},
     time = 8,
 }
 function mt:on_add()

@@ -19,15 +19,15 @@ mt{
 	--介绍
     tip = [[
         
-|cff00bdec【主动施放】增加|r |cffffff00暴击几率+5%*Lv 暴击加深+50%*Lv|r|cff00bdec 持续5秒|r
+|cff00bdec【主动施放】增加|r |cffffff00暴击几率+10%*Lv 暴击加深+100%*Lv|r|cff00bdec 持续5秒|r
     
 ]],
 	--技能图标
 	art = [[klb.blp]],
     --技暴几率
-    crit_rate = {5,10,15,20,25},
+    crit_rate = {10,20,30,40,50},
     --技暴伤害
-    crit_damage = {50,100,150,200,250},
+    crit_damage = {100,200,300,400,500},
     --
     damage_type = '法术',
     time = 5

@@ -20,14 +20,14 @@ mt{
 	--介绍
     tip = [[
         
-|cff00bdec【被动效果】攻击10%几率触发 |cffffff00暴击几率+30% 暴击加深+300%|r |cff00bdec持续0.75秒|r
+|cff00bdec【被动效果】攻击10%几率触发 |cffffff00暴击几率+50% 暴击加深+500%|r |cff00bdec持续0.75秒|r
     
 ]],
 	--技能图标
 	art = [[qhklb.blp]],
     time = 0.75,
-    crit_rate = 30,
-    crit_damage = 300
+    crit_rate = 50,
+    crit_damage = 500
 }
 function mt:on_add()
     local skill = self
