@@ -99,18 +99,21 @@ local function init()
     mtb:setXwidth(2,0.03)
     mtb:setXwidth(3,0.03)
     mtb:setXwidth(5,0.03)
-    mtb:setXwidth(7,0.03)
+	mtb:setXwidth(7,0.03)
+	local ix = 2
 	--初始化所有数据
-    for i = 2,all_lines do 
-		local player = ac.player(i-1)
+    for i = 1,10 do 
+		local player = ac.player(i)
 		if player:is_player() then 
-			mtb:setText(1,i,player:getColorWord()..player:get_name()..'|r')
-			mtb:setText(2,i,'0')
-			mtb:setText(3,i,'0')
-			mtb:setText(4,i,' ')
-			mtb:setText(5,i,' ')
-			mtb:setText(6,i,' ')
-			mtb:setText(7,i,' ')
+			mtb:setText(1,ix,player:getColorWord()..player:get_name()..'|r')
+			mtb:setText(2,ix,'0')
+			mtb:setText(3,ix,'0')
+			mtb:setText(4,ix,' ')
+			mtb:setText(5,ix,' ')
+			mtb:setText(6,ix,' ')
+			mtb:setText(7,ix,' ')
+			player.ix = ix
+			ix = ix + 1 --位置第几行
 		end	
     end 
 	--初始化格式
@@ -128,8 +131,8 @@ end
 local function fresh(player,hero)
 	-- print(1111111111)
 	--刷新杀敌数
-	mtb:setText( 2, player.id + 1, bignum2string(player.kill_count))
-	mtb:setText( 3, player.id + 1, bignum2string(player.fire_seed))
+	mtb:setText( 2, player.ix, bignum2string(player.kill_count))
+	mtb:setText( 3, player.ix, bignum2string(player.fire_seed))
 	--刷新字段
 	-- print(get_text(hero,'魔鬼的交易'))
 	for i,book_skill in ipairs(title) do 
@@ -147,7 +150,7 @@ local function fresh(player,hero)
 		new_str = add_color(new_str,book_skill)
 		-- print(book_skill,new_str)
 		if new_str and new_str ~='' then 
-			mtb:setText( i, player.id + 1, new_str)
+			mtb:setText( i, player.ix, new_str)
 		end	
 	end	
 end	

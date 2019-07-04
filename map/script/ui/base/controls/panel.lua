@@ -175,15 +175,15 @@ class.panel = extends(class.ui_base){
         self.scroll_button = button 
     end,
 
-    --移动动画 x y 是移动到目标的位置 value 为正数是 变大 负数是缩小 当小于0.01的时候就会隐藏
-    --move_animation = function (self,tx,ty,value)
+    --移动动画 x y 是移动到目标的位置 value 为正数是 变大 负数是缩小 当小于0.01的时候就会隐藏value指变大或缩小百分比，target_size 为到某个程度后停止变大或缩小
+    -- move_animation = function (self,tx,ty,value,target_value)
     --    local size = self.relative_size or 1  
     --    local interval = math.abs(value) * 2
     --    game.loop(33,function (timer)
-    --        
+           
     --        local sx,sy = self:get_real_position()
     --        local x,y = self.x,self.y 
-    --    
+       
     --        local exit = 0 
     --        if math.abs(sx - tx) > interval then 
     --            if sx > tx then 
@@ -203,26 +203,32 @@ class.panel = extends(class.ui_base){
     --        else 
     --            exit = exit + 1
     --        end 
---
+
     --        if value > 0 then 
     --            self:show()
     --        end 
     --        if exit == 2 then 
-    --            if value < 0 then 
+    --            if size < 0.1 then 
     --                self:hide()
     --            end 
-    --           
+              
     --            timer:remove()
     --        else 
     --            self:set_position(x,y)
-    --        
+           
     --            size = size + (value / 100)
-    --            if size > 0.1 and size < 10 then 
-    --                self:set_relative_size(size)
+    --            if size > 0.1 and size < 10  then 
+    --                 if target_size then
+    --                     if ((value > 0 and size< target_size) or (value<0 and size > target_size)) then
+    --                         self:set_relative_size(size)
+    --                     end    
+    --                 else    
+    --                     self:set_relative_size(size)
+    --                 end    
     --            end 
     --        end 
     --    end)
-    --end,
+    -- end,
 
 
 

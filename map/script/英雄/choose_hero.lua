@@ -194,7 +194,7 @@ local function start()
 		--设置镜头属性
 		-- p:setCameraField('CAMERA_FIELD_ANGLE_OF_ATTACK', 0)
 		-- p:setCameraField('CAMERA_FIELD_ZOFFSET', 3200)
-		-- p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 500)
+		p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 2000)
 		-- map.rects['选人区域']
 
 		local minx, miny, maxx, maxy = ac.map.rects['选人区域']:get()
@@ -304,7 +304,7 @@ local function start()
 				p:setCameraField('CAMERA_FIELD_ROTATION', 90)
 				p:showInterface(1)
 				--镜头动画
-				p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 1600, 1)
+				p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 2000, 1)
 				p:setCameraBounds(minx-400, miny-400, maxx+400, maxy+400)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
 	
 				--允许框选

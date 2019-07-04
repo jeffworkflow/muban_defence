@@ -18,16 +18,26 @@ class.screen_animation = extends(class.panel){
         if not self.old_x then 
             self.old_x,self.old_y = self:get_position()
         end
+        -- local start_size = 2
+        -- local start_x = (1920-1400)/2
+        -- local start_y = 150
+        
         self:set_position(self.old_x,self.old_y)
+        -- self:set_position(start_x,start_y)
+        -- self:set_relative_size(start_size)
+
+        -- self:move_animation(self.old_x+500,self.old_y+540,4)
         self:show()
         
         ac.wait(3*1000,function()
             self:set_position(self.x,50)
         end)
     end,
-    move = function(self)
-
-    end,
+    -- move = function(self)
+        
+    --    game.loop(33,function (timer)
+    --     set_relative_size
+    -- end,
    
     
 }

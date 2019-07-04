@@ -407,13 +407,13 @@ end
 function helper:next()
 	--强制下一波
 	local self 
-	if ac.creep['刷怪'].index >= 1 then
-		self = ac.creep['刷怪']
-	end		
-	if ac.creep['刷怪-无尽'].index >= 1 then
-		self = ac.creep['刷怪-无尽']
-	end		
-	self:next()
+	for i=1,3 do
+		if ac.creep['刷怪'..i].has_started then 
+			ac.creep['刷怪'..i]:next()
+		else
+			ac.creep['刷怪'..i]:start()
+		end		
+	end	
 end
 --创建一个敌方英雄在地图中间，如果playerid有参数，则是为playerid玩家创建
 function helper:create(str,cnt, playerid)
