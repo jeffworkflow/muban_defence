@@ -79,6 +79,8 @@ function mt:add_content()
         else
         
         end
+
+        
     elseif rand_name == '黄金罗盘' then
         local skl = hero:find_skill(rand_name,nil,true)
         if not skl  then 
@@ -197,75 +199,17 @@ function mt:add_content()
         if tran_player then 
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..name..'|r',2)
         end
-        
-    -- elseif  rand_name == '力量+3500000' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '敏捷+3500000' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '智力+3500000' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '杀怪加力量+200' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '杀怪加敏捷+200' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '杀怪加智力+200' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '攻击加力量+600' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '攻击加敏捷+600' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '攻击加智力+600' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '每秒加力量+1000' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '每秒加敏捷+1000' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '每秒加智力+1000' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '攻击+20000000' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '杀怪加攻击+400' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '每秒加攻击+2000' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '护甲+2000' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
-    -- elseif  rand_name == '每秒加护甲+2' then
-    --     if tran_player then 
-    --     tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
-    --     end
+
+    elseif  rand_name == '火灵' then
+        self.owner:add_fire_seed(500)
+        if tran_player then 
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r 获得了 |cffff0000'..rand_name..'+500|r',2) 
+        end 
+    elseif  rand_name == '木头' then
+        self.owner:add_wood(68)
+        if tran_player then 
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r 获得了 |cffff0000'..rand_name..'+68|r',2) 
+        end
 
     end
 

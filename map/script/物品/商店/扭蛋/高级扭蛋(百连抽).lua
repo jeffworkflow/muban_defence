@@ -19,7 +19,7 @@ mt{
     cool = 0,
     content_tip = '',
     --售价
-    wood = 168000,
+    wood = 98000,
     --物品技能
     is_skill = true,
     --全部玩家发送信息概率
@@ -185,6 +185,16 @@ function mt:add_content()
         self.owner:add_item(name,true)
         if tran_player then 
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..name..'|r',2)
+        end
+    elseif  rand_name == '火灵' then
+        self.owner:add_fire_seed(12500)
+        if tran_player then 
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r 获得了 |cffff0000'..rand_name..'+12500|r',2) 
+        end 
+    elseif  rand_name == '木头' then
+        self.owner:add_wood(1680)
+        if tran_player then 
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r 获得了 |cffff0000'..rand_name..'+1680|r',2) 
         end
     end
 
