@@ -169,7 +169,13 @@ function mt:add_content()
         local name = rand_list[math.random(6,10)]
         self.owner:add_item(name,true)
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..name..'|r',2)
-    end
+    elseif  rand_name == '火灵' then
+        self.owner:add_fire_seed(12500)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r 获得了 |cffff0000'..rand_name..'+12500|r',2) 
+    elseif  rand_name == '木头' then
+        self.owner:add_wood(1680)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r 获得了 |cffff0000'..rand_name..'+1680|r',2) 
+    end  
 
 end
 

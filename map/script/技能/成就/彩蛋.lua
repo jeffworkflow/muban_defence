@@ -53,7 +53,7 @@ mt{
     is_skill = true,
     --商店名词缀
     store_affix = '',
-    art = [[shuaishen.blp]], 
+    art = [[yxw.blp]], 
     tip = [[
     
 |cffFFE799【成就属性】：|r
