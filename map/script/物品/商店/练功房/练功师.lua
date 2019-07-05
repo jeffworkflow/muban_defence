@@ -17,7 +17,7 @@ ac.pratice_man ={
     ['大火灵怪'] = {'大火灵',[[ReplaceableTextures\CommandButtons\BTNVoidWalker.blp]],'\n\n|cff00ff00召唤15只大火灵怪，每只提供100火灵|n|r'} ,
 }
 
-for key,value in pairs(ac.pratice_man) do 
+for key,value in sortpairs(ac.pratice_man) do 
     --物品名称
     local mt = ac.skill[key]
     mt{

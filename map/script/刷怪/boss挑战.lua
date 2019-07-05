@@ -65,7 +65,7 @@ ac.challenge_boss = {
 --游戏初始化开启
 ac.game:event '游戏-开始' (function()
     local i = 0
-    for key,val in pairs(ac.challenge_boss) do 
+    for key,val in sortpairs(ac.challenge_boss) do 
         local mt = ac.creep[key]{    
             region = val[1],
             creeps_datas = key..'*1',

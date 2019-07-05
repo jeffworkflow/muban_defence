@@ -61,7 +61,7 @@ local function add_color(str,book_skill)
 	local str = str or ''
 	--处理颜色代码
 	if color[book_skill] then  
-		for key,val in pairs(color[book_skill]) do
+		for key,val in sortpairs(color[book_skill]) do
 			-- print(str,key,val)
 			if finds(str,key) then
 				str = val..str..'|r'

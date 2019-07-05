@@ -55,7 +55,7 @@ function creeps.start()
         end
 		--创建该野怪点的野怪
 		local function create()
-            for k,v in pairs(creeps_datas) do 
+            for k,v in sortpairs(creeps_datas) do 
                 local name  = k
                 local max_cnt = tonumber(v)
                 local count = max_cnt - (#creep_groop or 0)

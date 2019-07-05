@@ -171,6 +171,7 @@
             jifen= tonumber(player.jifen) or 0
         end
         local fire_seed = player.fire_seed or 0
+        
         local golds = it:buy_price()
         local woods = it:buy_wood()
         local kill_counts = it:buy_kill_count()

@@ -31,6 +31,8 @@ for key,val in pairs(fire) do
     gold = 0,
     --物品数量
     _count = 1,
+    --多少秒后地上物品消失
+    time_removed = 180,
     --物品详细介绍的title
     content_tip = '|cffffe799使用说明：|r'
     }
@@ -59,3 +61,6 @@ for key,val in pairs(fire) do
     --     end   
     -- end
 end
+
+
+
