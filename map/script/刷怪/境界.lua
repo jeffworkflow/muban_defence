@@ -170,7 +170,7 @@ ac.prod_level = {
 ]]
 },
 }
-for key,val in pairs(ac.prod_level) do 
+for key,val in sortpairs(ac.prod_level) do 
     local mt = ac.skill[key]
     mt{
         --等久

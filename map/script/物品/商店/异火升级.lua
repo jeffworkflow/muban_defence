@@ -60,7 +60,7 @@ for key,val in pairs(fire) do
 
         --改变价格
         shop_item.player_fire[player] = (shop_item.player_fire[player] or self.fire_seed ) + self.cre
-        
+        -- print(player,'价格：',shop_item.player_fire[player],'拥有货币',player.fire_seed)
     end
 
 end    

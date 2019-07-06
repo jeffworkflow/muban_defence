@@ -121,13 +121,7 @@ function mt:add_content()
         end
     elseif  rand_name == '随机物品' then
         --给英雄随机添加物品
-        local rand_list = ac.unit_reward['商店随机物品']
-        local rand_name = ac.get_reward_name(rand_list)
-        if not rand_name then 
-            return
-        end    
-        local list = ac.quality_item[rand_name] 
-        local name = list[math.random(#list)]
+        local name = ac.all_item[math.random( 1,#ac.all_item)]
         --满时，掉在地上
         self.owner:add_item(name,true)
         local lni_color ='白'

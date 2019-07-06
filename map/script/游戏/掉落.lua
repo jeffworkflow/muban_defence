@@ -33,10 +33,11 @@ end)
 --英雄技能，钥匙怪掉落表
 ac.skill_list2 = ac.skill_list2
 
-local function item_self_skill(item,unit)
-    local timer = ac.wait(100 * 1000,function (timer)
+local function item_self_skill(item,unit,time)
+    local timer = ac.wait((time or 100) * 1000,function (timer)
+        -- print(123333,item.owner)
         if item.owner == nil then 
-            item:remove()
+            item:item_remove()
         end 
     end)
     item._self_skill_timer = timer 
@@ -109,7 +110,7 @@ local reward = {
         --英雄死亡时 掉落在地上
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_item(name,unit:get_point())
-            item_self_skill(item,hero)
+            -- item_self_skill(item,hero)
         else
             --宠物打死的也掉人身上
             hero = hero:get_owner().hero
@@ -126,7 +127,7 @@ local reward = {
         --英雄死亡时 掉落在地上
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_item(name,unit:get_point())
-            item_self_skill(item,hero)
+            -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
             hero:add_item(name,true)    
@@ -144,7 +145,7 @@ local reward = {
         --英雄死亡时 掉落在地上
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_item(name,unit:get_point())
-            item_self_skill(item,hero)
+            -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
             hero:add_item(name,true)    
@@ -161,7 +162,7 @@ local reward = {
         --英雄死亡时 掉落在地上
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_item(name,unit:get_point())
-            item_self_skill(item,hero)
+            -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
             hero:add_item(name,true)    
@@ -177,7 +178,7 @@ local reward = {
         --英雄死亡时 掉落在地上
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_skill_item(name,unit:get_point())
-            item_self_skill(item,hero)
+            -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
             ac.item.add_skill_item(name,hero)
@@ -188,7 +189,7 @@ local reward = {
         --英雄死亡时 掉落在地上
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_item(name,unit:get_point())
-            item_self_skill(item,hero)
+            -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
             hero:add_item(name,true)    
@@ -199,7 +200,7 @@ local reward = {
         --英雄死亡时 掉落在地上
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_item(name,unit:get_point())
-            item_self_skill(item,hero)
+            -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
             hero:add_item(name,true)    
@@ -210,7 +211,7 @@ local reward = {
         --英雄死亡时 掉落在地上
         if not is_on_hero or (not hero:is_alive()) then 
             local item = ac.item.create_item(name,unit:get_point())
-            item_self_skill(item,hero)
+            -- item_self_skill(item,hero)
         else
             hero = hero:get_owner().hero
             hero:add_item(name,true)    
@@ -737,6 +738,12 @@ ac.game:event '单位-即将获得物品' (function (_,unit,item)
     on_texttag('获得 '..item.name,item.color,unit)
 end )   
 
+ac.game:event '物品-创建'  (function (_,item)
+    if not item then return end 
+    if item.time_removed then 
+        item_self_skill(item,nil,item.time_removed)
+    end    
+end)
 ac.game:event '单位-获得物品后' (function (_,unit,item)
     local timer = item._self_skill_timer 
     if timer then 

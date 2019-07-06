@@ -281,7 +281,7 @@ end
 function mt:buy_kill_count()
 	local gold = (self.player_kill and self.player_kill[ac.player.self]) and self.player_kill[ac.player.self] or (self.kill_count or 0)
 	-- print(gold,self.kill_count)
-	self.kill_count = gold
+	self.kill_count = self.kill_count or 0 
 	for i=1,10 do
 		if ac.player(i) == ac.player.self then
 			if ac.player.self.kill_count then 
@@ -307,7 +307,8 @@ end
 --获取购买积分
 function mt:buy_jifen()
 	local gold = (self.player_jifen and self.player_jifen[ac.player.self] ) and self.player_jifen[ac.player.self] or (self.jifen or 0)
-	self.jifen = gold
+	self.jifen = self.jifen or 0 
+	-- self.jifen = gold
 	for i=1,10 do
 		if ac.player(i) == ac.player.self then
 			gold = gold..'   |cff00ffff(拥有'..(ac.player.self.jifen or '0')..')|r'
@@ -331,7 +332,8 @@ end
 --获取购买火灵
 function mt:buy_fire_seed()
 	local gold = (self.player_fire and self.player_fire[ac.player.self]) and self.player_fire[ac.player.self] or (self.fire_seed or 0)
-	self.fire_seed = gold
+	-- self.fire_seed = gold
+	self.fire_seed = self.fire_seed or 0 
 	for i=1,10 do
 		if ac.player(i) == ac.player.self then
 			gold = gold ..'   |cff00ffff(拥有'..(ac.player.self.fire_seed or '0')..')|r'

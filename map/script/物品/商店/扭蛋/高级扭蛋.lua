@@ -118,19 +118,13 @@ function mt:add_content()
         end
     elseif  rand_name == '随机物品' then
         --给英雄随机添加物品
-        local rand_list = ac.unit_reward['商店随机物品']
-        local rand_name = ac.get_reward_name(rand_list)
-        if not rand_name then 
-            return
-        end    
-        local list = ac.quality_item[rand_name] 
-        local name = list[math.random(#list)]
+        local name = ac.all_item[math.random( 1,#ac.all_item)]
         --满时，掉在地上
         self.owner:add_item(name,true)
         local lni_color ='白'
         if  ac.table.ItemData[name] and ac.table.ItemData[name].color then 
             lni_color = ac.table.ItemData[name].color
-        end    
+        end 
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cff'..ac.color_code[lni_color]..name..'|r',2)
     elseif  rand_name == '随机技能' then
         local rand_list = ac.unit_reward['商店随机技能']
