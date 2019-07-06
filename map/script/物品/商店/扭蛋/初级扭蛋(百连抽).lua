@@ -23,7 +23,7 @@ mt{
     --物品技能
     is_skill = true,
     --全部玩家发送信息概率
-    rate = 1,
+    rate = 1.5,
     --商店名词缀
     store_affix = '',
 }

@@ -367,7 +367,7 @@ local unit_reward = {
         {    rand = 2, name = '随机恶魔果实',},
     },
     ['初级扭蛋'] = {
-        {    rand = 29.641, name = '空蛋' },
+        {    rand = 31.641, name = '空蛋' },
 
         {    rand = 4, name = '火灵',},
         {    rand = 4, name = '木头',},
@@ -411,9 +411,9 @@ local unit_reward = {
         {    rand = 0.007, name = '每秒加敏捷+1000',},
         {    rand = 0.007, name = '每秒加智力+1000',},
 
-        {    rand = 2, name = '攻击+200000',},
-        {    rand = 2, name = '杀怪加攻击+4',},
-        {    rand = 2, name = '每秒加攻击+20',},
+        {    rand = 1.4, name = '攻击+400000',},
+        {    rand = 1.4, name = '杀怪加攻击+10',},
+        {    rand = 1.4, name = '每秒加攻击+40',},
         {    rand = 0.07, name = '攻击+2000000',},
         {    rand = 0.07, name = '杀怪加攻击+40',},
         {    rand = 0.07, name = '每秒加攻击+200',},
@@ -421,8 +421,8 @@ local unit_reward = {
         {    rand = 0.007, name = '杀怪加攻击+400',},
         {    rand = 0.007, name = '每秒加攻击+2000',},
 
-        {    rand = 2, name = '护甲+20',},
-        {    rand = 2, name = '每秒加护甲+0.02',},
+        {    rand = 1.4, name = '护甲+50',},
+        {    rand = 1.4, name = '每秒加护甲+0.1',},
         {    rand = 0.07, name = '护甲+200',},
         {    rand = 0.07, name = '每秒加护甲+0.2',},
         {    rand = 0.007, name = '护甲+2000',},
