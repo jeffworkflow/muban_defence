@@ -32,8 +32,9 @@ function mt:on_add()
 end
 function mt:on_cast_start()
     local hero = self.owner
+    local owner = self.owner
     local player = hero:get_owner()
-    hero = player.hero
+    -- hero = player.hero
     local item = self 
     local list = {}
 
@@ -62,7 +63,7 @@ function mt:on_cast_start()
             self:set_item_count(self._count+1)
         else
             --重新添加给英雄
-            hero:add_item(self.name)
+            owner:add_item(self.name)
         end   
 
         return
@@ -100,7 +101,7 @@ function mt:on_cast_start()
                    self:add_item_count(1) 
                 else
                     --重新添加给英雄
-                    hero:add_item(self.name)
+                    owner:add_item(self.name)
                 end             
             end 
         end)

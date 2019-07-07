@@ -498,7 +498,7 @@ function mt:get_tip()
 			gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_wood()..'(木头)|r|n'
 		end	
 		if self.get_sell_tip then 
-			gold = self:get_sell_tip(gold)
+			gold = self.get_sell_tip
 		end	
 	end
 

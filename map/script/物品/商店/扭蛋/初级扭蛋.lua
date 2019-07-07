@@ -164,19 +164,19 @@ function mt:add_content()
     elseif  rand_name == '宠物经验书(小)' then
         self.owner:add_item(rand_name,true)
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2) 
-    elseif  rand_name == '神兵' then
+    elseif finds(rand_name,'神兵','神甲') then
         local rand_list = ac.magic_item[rand_name]
         --添加给英雄
         local name = rand_list[math.random(1,5)]
-        self.owner:add_item(name,true)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..name..'|r',2) 
-    elseif  rand_name == '神甲' then
-        local rand_list = ac.magic_item[rand_name]
-        --添加给英雄
-        local name = rand_list[math.random(1,5)]
-        self.owner:add_item(name,true)
-        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..name..'|r',2) 
-
+        local skl = hero:find_skill(name,nil,true)
+        --已激活，再扭一次
+        if skl and skl.level >= 1 then 
+            
+            self:add_content()
+        else 
+            self.owner:add_item(name,true)
+            tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..name..'|r',2) 
+        end  
     elseif  rand_name == '火灵' then
         self.owner:add_fire_seed(500)
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r 获得了 |cffff0000'..rand_name..'+500|r',2) 

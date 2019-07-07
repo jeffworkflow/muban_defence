@@ -25,6 +25,7 @@ for ix =1 ,4 do
     end
     function mt:on_cast_start()
         local hero = self.owner
+        local owner = self.owner 
         local player = hero:get_owner()
         --宠物也帮忙升级
         hero = player.hero
@@ -51,7 +52,7 @@ for ix =1 ,4 do
                 self:set_item_count(self._count+1)
             else
                 --重新添加给所有者
-                self.owner:add_item(name,true)
+                owner:add_item(name,true)
             end   
 
             return
@@ -80,7 +81,7 @@ for ix =1 ,4 do
                     else
                         if hero:is_alive() then 
                             --重新添加给英雄
-                            hero:add_item(name,true)
+                            owner:add_item(name,true)
                         else    
                             if hero.shengjishu_trg then hero.shengjishu_trg:remove() end
                             hero.shengjishu_trg = hero:event '单位-复活' (function ()

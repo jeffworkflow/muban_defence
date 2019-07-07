@@ -6,9 +6,12 @@ mt.model_size = 1.5
 mt.is_skill = true
 mt.cus_type = '技能' --类型
 mt.skill_cnt =8 --一共技能数量
+mt.color = '青'
+mt.color_tip = ''
 
 function mt:on_cast_shot()
     local hero = self.owner 
+    local owner = self.owner 
     local player = hero:get_owner()
     --宠物也帮忙学技能
     hero = player.hero
@@ -30,7 +33,7 @@ function mt:on_cast_shot()
                 self:set_item_count(self._count+1)
             else
                 --重新添加给所有者
-                ac.item.add_skill_item(name,self.owner)
+                ac.item.add_skill_item(name,owner)
             end     
 
             return 
@@ -102,7 +105,7 @@ function mt:on_cast_shot()
                         self:set_item_count(self._count+1)
                     else
                         if hero:is_alive() then 
-                            ac.item.add_skill_item(name,hero)
+                            ac.item.add_skill_item(name,owner)
                         else    
                             if hero.xuexijineng_trg then hero.suijijineng_trg:remove() end
                             hero.xuexijineng_trg = hero:event '单位-复活' (function ()

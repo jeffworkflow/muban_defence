@@ -101,9 +101,9 @@ local function unit_add_suit(unit,item)
                     end    
                     local extr_tip = cnt == 5 and '|cffFFE799【额外】|r' or ''
                     if active_flag then 
-                        tip = tip..extr_tip..'|cff00FF00'..attr_tip..' ('..unit_suit_cnt..'/'..cnt..')|r\n'
+                        tip = tip..'|cff00FF00'..attr_tip..' ('..unit_suit_cnt..'/'..cnt..')|r'..extr_tip..'\n'
                     else
-                        tip = tip..extr_tip..'|cffcccccc'..attr_tip..' ('..unit_suit_cnt..'/'..cnt..')|r\n'
+                        tip = tip..'|cffcccccc'..attr_tip..' ('..unit_suit_cnt..'/'..cnt..')|r'..extr_tip..'\n'
                     end    
                     unit.suit[name][cnt][4] = tip  
                 end
@@ -148,11 +148,11 @@ local function unit_remove_suit(unit,item)
                 -- print(v[i][1],v[i][3])
                 local extr_tip = i == 5 and '|cffFFE799【额外】|r' or ''
                 if v[i][1] then 
-                    tip = tip..extr_tip..'|cff00FF00'..v[i][3]..'('..suit_count..'/'..i..')|r\n'
+                    tip = tip..'|cff00FF00'..v[i][3]..'('..suit_count..'/'..i..')|r'..extr_tip..'\n'
                 else
-                    tip = tip..extr_tip..'|cffcccccc'..v[i][3]..'('..suit_count..'/'..i..')|r\n'
+                    tip = tip..'|cffcccccc'..v[i][3]..'('..suit_count..'/'..i..')|r'..extr_tip..'\n'
                 end    
-                item_self_tip = item_self_tip ..extr_tip..'|cffcccccc'..v[i][3]..'('..suit_count..'/'..i..')|r\n'
+                item_self_tip = item_self_tip ..'|cffcccccc'..v[i][3]..'('..suit_count..'/'..i..')|r'..extr_tip..'\n'
             end 
         end 
     end 
@@ -210,7 +210,7 @@ ac.game:event '物品-创建' (function (_,item)
                         end    
                     end  
                     local extr_tip = cnt == 5 and '|cffFFE799【额外】|r' or ''
-                    tip = tip..extr_tip..'|cffcccccc'..attr_tip..'('..cnt..')|r\n'
+                    tip = tip..'|cffcccccc'..attr_tip..'('..cnt..')|r'..extr_tip..'\n'
                 end
             end    
             -- print(item:get_tip()..tip)
