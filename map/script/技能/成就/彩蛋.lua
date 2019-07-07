@@ -218,7 +218,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local hero = player.hero
     if  not hero then return end
     --概率获得成就
-    local rate = 0.08
+    local rate = 0.1
     -- local rate = 80 --测试用
     if math.random(1,10000)/100 < rate then 
         local skl = hero:find_skill('杀鸡狂魔',nil,true)
@@ -245,7 +245,7 @@ ac.game:event '单位-攻击开始' (function(self, data)
     if player.id >10 then return end 
     local hero = player.hero
     --概率获得成就
-    local rate = 0.08
+    local rate = 0.1
     -- local rate = 80 --测试用
     if math.random(1,10000)/100 < rate then 
         local skl = hero:find_skill('输出机器',nil,true)

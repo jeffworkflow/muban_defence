@@ -4,18 +4,17 @@ local rect = require 'types.rect'
 -- 传送 快速达到 兑换
 ac.exchange_kill ={
     --商品名（map.table.单位.商店） = 属性名，数值，上限次数，耗费杀敌数，图标,说明
-    -- 
     ['杀敌数加成'] = {'杀敌数加成',4,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+4%杀敌数加成|r|n|n'} ,
     ['木头加成'] = {'木头加成',4,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+4%木头加成|r|n|n'} ,
     ['物品获取率加成'] = {'物品获取率',4,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+4%物品获取率|r|n|n'} ,
     ['火灵加成'] = {'火灵加成',4,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+4%火灵加成|r|n|n'} ,
     ['分裂伤害加成'] = {'分裂伤害',4,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+4%分裂伤害|r|n|n'} ,
     ['攻速加成'] = {'攻击速度',4,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+4%攻击速度|r|n|n'} ,
-    ['杀怪力量成长'] = {'杀怪加力量',5,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+5杀怪加力量|r|n'} ,
-    ['杀怪敏捷成长'] = {'杀怪加敏捷',5,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+5杀怪加敏捷|r|n'} ,
-    ['杀怪智力成长'] = {'杀怪加智力',5,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+5杀怪加智力|r|n'} ,
-    ['杀怪全属性成长'] = {'杀怪加全属性',2,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+2杀怪加全属性|r|n'} ,
-    ['杀怪攻击成长'] = {'杀怪加攻击',10,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+10杀怪加攻击|r|n'} ,
+    ['杀怪力量成长'] = {'杀怪加力量',30,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+30杀怪加力量|r|n'} ,
+    ['杀怪敏捷成长'] = {'杀怪加敏捷',30,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+30杀怪加敏捷|r|n'} ,
+    ['杀怪智力成长'] = {'杀怪加智力',30,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+30杀怪加智力|r|n'} ,
+    ['杀怪全属性成长'] = {'杀怪加全属性',12,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+12杀怪加全属性|r|n'} ,
+    ['杀怪攻击成长'] = {'杀怪加攻击',50,999999,400,[[sdsdh.blp]],'|n|n消耗 |cffff0000%real_kill_cnt% 杀敌数|r 兑换一次 |cff00ff00+50杀怪加攻击|r|n'} ,
     -- ['杀怪护甲成长'] = {'杀怪加护甲',0.1,999999,400,[[sdsdh.blp]],'挑着boss'} ,
 }
 
