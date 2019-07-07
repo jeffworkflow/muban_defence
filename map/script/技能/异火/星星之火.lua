@@ -49,7 +49,7 @@ mt{
     end,
     quality = '凡',
     --等级因素，等差数列，给出最小和最大即可
-    lv_attr = {0,12,24,36,48,60,72,84,96,108,120},
+    lv_attr = {0,10,20,30,40,50,60,70,80,90,100},
     ['攻击减甲'] = function (self)
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][2] 
