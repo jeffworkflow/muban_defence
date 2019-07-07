@@ -62,10 +62,13 @@ ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
     self.skill_map[name] = skill
     table.insert(self.skill_list,skill)
     table.insert(self.skill_book,skill)
-
-    if not skill:is_hide() then 
-        skill:hide()
-        skill:remove_ability(skill.ability_id)
+    
+    local skl = hero:find_skill('关闭',hero.skill_page or '英雄')
+    if not skl then
+        if not skill:is_hide() then 
+            skill:hide()
+            skill:remove_ability(skill.ability_id)
+        end
     end
 end)
 

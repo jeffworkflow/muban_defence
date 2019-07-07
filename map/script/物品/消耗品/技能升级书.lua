@@ -50,8 +50,8 @@ for ix =1 ,4 do
             if self._count > 1 then 
                 self:set_item_count(self._count+1)
             else
-                --重新添加给英雄
-                hero:add_item(name,true)
+                --重新添加给所有者
+                self.owner:add_item(name,true)
             end   
 
             return

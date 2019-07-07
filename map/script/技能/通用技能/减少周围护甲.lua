@@ -32,9 +32,18 @@ function mt:on_upgrade()
     --升级时，需要先删除下之前的计时器、特效，再添加buff.
     -- self:on_remove()
     if not self.timer then 
-        self.eff = hero:add_effect('origin',self.source_effect)
+        -- self.eff = hero:add_effect('origin',self.source_effect)
         self.timer = ac.loop(1000,function ()
+            self:update_data()
+            if  self.value > 0 and not self.eff then 
+                self.eff = hero:add_effect('origin',self.source_effect)
+            end    
+            -- print('减少周围护甲：',self.value)
             if self.value <= 0 then 
+                if self.eff then 
+                    self.eff:remove()
+                    self.eff = nil
+                end     
                 return
             end    
             for _,unit in ac.selector()

@@ -47,7 +47,24 @@ for ix =1 ,4 do
         local hero = self.owner
         local player = hero:get_owner()
         --宠物也帮忙升级
-        hero = player.hero
+        -- hero = player.hero
+        --优化:优先选择所有者身上的套装进行洗练，再没有再选择人身上的。
+        local item_owner_has_suit 
+        if not hero.suit then 
+            item_owner_has_suit = false
+        else    
+            for key,val in sortpairs(hero.suit) do   
+                --如果5个集满
+                if val[5] and val[5][1] then 
+                    item_owner_has_suit = true 
+                    break
+                end
+            end    
+        end    
+        if not item_owner_has_suit then 
+            hero = player.hero
+        end    
+
         if not hero.suit then 
             player:sendMsg('|cffFFE799【系统消息】|r|cffff0000洗练失败|r 请检查合成材料',2)
             if self.add_item_count then 
@@ -57,7 +74,7 @@ for ix =1 ,4 do
             return true
         end     
         
-        local skl = hero:find_skill(self.name,nil,true)
+        local skl = player.hero:find_skill(self.name,nil,true)
         if skl and skl.level >=1 then 
             player:sendMsg('|cffFFE799【系统消息】|r|cffff0000操作失败|r '..self.color_name..'已被激活，可以在套装系统中查看',2)
             if self.add_item_count then 
@@ -65,14 +82,14 @@ for ix =1 ,4 do
             end    
             return true
         end  
-        if not hero.flag_suit then 
-            hero.flag_suit = {}
+        if not player.hero.flag_suit then 
+            player.hero.flag_suit = {}
         end    
         local item = self 
         local flag
         for key,val in sortpairs(hero.suit) do   
             --如果5个集满
-            if val[5] and val[5][1] and not hero.flag_suit[key] then 
+            if val[5] and val[5][1] and not player.hero.flag_suit[key] then 
                 if not val[5][5] then 
                     flag = val[5][2] 
                     local tip = val[5][4]
@@ -82,14 +99,14 @@ for ix =1 ,4 do
                     --增加属性5个的 
                     for k,v in string.gsub(val[5][3],'-','+-'):gmatch '(%S+)%+([-%d.]+%s-)' do
                         --额外增加人物属性
-                        hero:add(k,v)
+                        player.hero:add(k,v)
                     end  
                     for k,v in string.gsub(val[3][3],'-','+-'):gmatch '(%S+)%+([-%d.]+%s-)' do
-                        hero:add(k,v)
+                        player.hero:add(k,v)
                     end 
                     player:sendMsg('|cffFFE799【系统消息】|r|cff00ff00激活成功|r 可以在套装系统中查看',2)
                     --标记已经洗练过（不可洗练两套海贼王）
-                    hero.flag_suit[key] =true
+                    player.hero.flag_suit[key] =true
                     break
                 end     
             end    

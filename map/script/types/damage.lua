@@ -888,7 +888,7 @@ function mt:on_reduce_defence()
     
 	if val > 0 then
 		target:add('护甲',-val)
-		target:add('魔抗',-val)
+		-- target:add('魔抗',-val)
 	end
 end
 

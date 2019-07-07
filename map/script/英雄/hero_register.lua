@@ -82,6 +82,8 @@ local function hero_register_main()
 
 		--添加通用技能
 		hero:add_skill('凌波微步','隐藏')
+		hero:add_skill('减少周围护甲','隐藏')
+		
 		-- hero:add_skill('宠物天赋','英雄',8)
 		
 		--创建一个宠物

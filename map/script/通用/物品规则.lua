@@ -171,7 +171,7 @@
             jifen= tonumber(player.jifen) or 0
         end
         local fire_seed = player.fire_seed or 0
-        
+
         local golds = it:buy_price()
         local woods = it:buy_wood()
         local kill_counts = it:buy_kill_count()
@@ -183,7 +183,7 @@
         kill_counts = (it.player_kill and it.player_kill[player]) or kill_counts
         jifens = (it.player_jifen and it.player_jifen[player]) or jifens
         fire_seeds = (it.player_fire and it.player_fire[player]) or fire_seeds
-
+         
         --处理 兑奖券
         local has_raffle
         local _, _, raffle,need_cnt

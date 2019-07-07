@@ -99,10 +99,11 @@ local function unit_add_suit(unit,item)
                         end   
                         unit.suit[name][cnt][1] = true
                     end    
+                    local extr_tip = cnt == 5 and '|cffFFE799【额外】|r' or ''
                     if active_flag then 
-                        tip = tip..'|cff00FF00'..attr_tip..' ('..unit_suit_cnt..'/'..cnt..')|r\n'
+                        tip = tip..extr_tip..'|cff00FF00'..attr_tip..' ('..unit_suit_cnt..'/'..cnt..')|r\n'
                     else
-                        tip = tip..attr_tip..' ('..unit_suit_cnt..'/'..cnt..')|r\n'
+                        tip = tip..extr_tip..'|cffcccccc'..attr_tip..' ('..unit_suit_cnt..'/'..cnt..')|r\n'
                     end    
                     unit.suit[name][cnt][4] = tip  
                 end
@@ -145,12 +146,13 @@ local function unit_remove_suit(unit,item)
                     v[i][1] = false
                 end   
                 -- print(v[i][1],v[i][3])
+                local extr_tip = i == 5 and '|cffFFE799【额外】|r' or ''
                 if v[i][1] then 
-                    tip = tip..'|cff00FF00'..v[i][3]..'('..suit_count..'/'..i..')|r\n'
+                    tip = tip..extr_tip..'|cff00FF00'..v[i][3]..'('..suit_count..'/'..i..')|r\n'
                 else
-                    tip = tip..v[i][3]..'('..suit_count..'/'..i..')\n'
+                    tip = tip..extr_tip..'|cffcccccc'..v[i][3]..'('..suit_count..'/'..i..')|r\n'
                 end    
-                item_self_tip = item_self_tip ..'|cffffffff'..v[i][3]..'('..suit_count..'/'..i..')\n'
+                item_self_tip = item_self_tip ..extr_tip..'|cffcccccc'..v[i][3]..'('..suit_count..'/'..i..')|r\n'
             end 
         end 
     end 
@@ -207,7 +209,8 @@ ac.game:event '物品-创建' (function (_,item)
                             attr_tip = attr_tip.. value ..' '
                         end    
                     end  
-                    tip = tip..attr_tip..'('..cnt..')\n'
+                    local extr_tip = cnt == 5 and '|cffFFE799【额外】|r' or ''
+                    tip = tip..extr_tip..'|cffcccccc'..attr_tip..'('..cnt..')|r\n'
                 end
             end    
             -- print(item:get_tip()..tip)

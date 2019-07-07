@@ -29,8 +29,8 @@ function mt:on_cast_shot()
                 -- print('数量')
                 self:set_item_count(self._count+1)
             else
-                --重新添加给英雄
-                ac.item.add_skill_item(name,hero)
+                --重新添加给所有者
+                ac.item.add_skill_item(name,self.owner)
             end     
 
             return 

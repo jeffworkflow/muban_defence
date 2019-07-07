@@ -106,7 +106,8 @@ mtp_tip.set_skill_tip = function(button)
         if not item then
             return
         end
-
+        --再根据名字取shop_item_map的物品
+        item = ac.item.shop_item_map[item.name]
         mtp_tip.shop_show_tip()
         --标题
         local title = item.store_name 
@@ -115,8 +116,13 @@ mtp_tip.set_skill_tip = function(button)
         --货币
         local gold,show_gold,player_gold = item:buy_price()
         local wood,show_wood,player_wood = item:buy_wood()
-        -- print(wood,show_wood,player_wood)
         local kill_count,show_kill_count,player_kill = item:buy_kill_count()
+        -- print(item.name,kill_count,show_kill_count,player_kill)
+        -- print('本地玩家',ac.player.self)
+        -- if item.player_kill then 
+        --     print(kill_count,show_kill_count,player_kill,item.player_kill[ac.player.self])
+        -- end    
+
         local jifen,show_jifen,player_jifen = item:buy_jifen()
         local fire_seed,show_fire_seed,player_fire = item:buy_fire_seed()
         gold = player_gold or gold
