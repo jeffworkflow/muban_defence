@@ -1,13 +1,14 @@
 local player = require 'ac.player'
 local mover = require 'types.mover'
 local jass = require 'jass.common'
-
+--额外次数
 ac.game.challenge_cnt = 0
 
 ac.game:event '单位-死亡' (function(_,unit,killer)
 	if unit:get_name() ~= '基地' then 
 		return 
 	end	
+	print('基地死亡：',unit:get_name(),killer:get_name())
 	ac.game.challenge_cnt = ac.game.challenge_cnt - 1	
 	if ac.game.challenge_cnt < 0 then 
 		ac.game:event_notify('游戏-结束') --失败
@@ -63,7 +64,10 @@ ac.game:event '游戏-结束' (function(trg,flag)
 			ac.creep['刷怪'..i]:finish()
 		end	
 	end	
-	
+	--停止吸怪
+	if global_test then 
+		return 
+	end	 
 	--聚集地
 	local point = ac.map.rects['游戏结束']	
 	--停止运动

@@ -244,7 +244,7 @@ function unit.__index:peon_add_xp(xp)
         end 
 
         --地图等级限制
-        local map_level = (player:Map_GetMapLevel()+1) * 5
+        local map_level = player:Map_GetMapLevel() * 3
         if self.peon_xp >= self:peon_get_upgrade_xp(self.peon_lv) then
             if self.peon_lv <= map_level then 
                 self.peon_lv = self.peon_lv + 1

@@ -104,7 +104,11 @@ if global_test then
 else
     function player.__index:Map_GetMapLevel()
         local handle = self.handle
-        return japi.DzAPI_Map_GetMapLevel(handle)
+        local level = japi.DzAPI_Map_GetMapLevel(handle)
+        if level == 0 then 
+            level = 1
+        end    
+        return level
     end
 end    
 

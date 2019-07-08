@@ -41,7 +41,7 @@ is_skill = true,
 
 function mt:on_cast_start()
     local unit = self.seller
-    
+    local p = self.owner:get_owner()
     for i=1,3 do 
         local creep = ac.creep['刷怪'..i]
         creep:PauseTimer(self.stu_time)
@@ -51,8 +51,13 @@ function mt:on_cast_start()
     {
         time = self.stu_time,
         title = '停怪还剩：',
+        func = function()
+            ac.player.self:sendMsg('|cffff0000停怪结束！！！ 请注意进攻怪来袭。|r')
+            ac.player.self:sendMsg('|cffff0000停怪结束！！！ 请注意进攻怪来袭。|r')
+            ac.player.self:sendMsg('|cffff0000停怪结束！！！ 请注意进攻怪来袭。|r')
+        end,
     }
-    
+    ac.player.self:sendMsg('玩家 '..p:get_name()..' 购买了|cffff0000停怪！|r停怪90秒。')
 end
 
 -- ac.game:event '单位-货币不足' (function(_,seller,u,it)

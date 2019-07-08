@@ -833,17 +833,21 @@ function mt:on_more_magic_damage()
 	self.current_damage = (self.current_damage ) * (1 + dmg/100)
 	
 end
-
-
-
-
+--计算物理伤害加深
+function mt:on_more_physical_damage()
+	local source = self.source
+	local dmg = source:get '物理伤害加深'
+	if dmg <=0 then 
+		dmg = 0
+	end 	
+	self.current_damage = (self.current_damage ) * (1 + dmg/100)
+end
 
 --攻击回血
 function mt:count_damage_hp()
 	local source = self.source
 	local a = source:get '攻击回血'
 	if a > 0 then
-
 		self.source:heal
 		{
 			source = self.source,
@@ -985,6 +989,8 @@ function damage:__call()
 		if self.common_attack then
 			source:event_notify('单位-造成普攻伤害', self)
 			target:event_notify('单位-受到普攻伤害', self)
+			--计算物理伤害加深
+			self:on_more_physical_damage()
 		else
 			source:event_notify('单位-造成技能伤害', self)
 			target:event_notify('单位-受到技能伤害', self)

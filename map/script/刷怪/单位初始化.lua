@@ -1,4 +1,16 @@
 
+local function get_difficult(degree)
+    local base =1
+    local base_rate =1.4
+    local degree = degree or 1 
+    if degree == 1 then 
+        return base 
+    else
+        return get_difficult(degree -1) *base_rate  
+    end 
+end    
+
+
 --单位创建 属性增强
 ac.game:event '单位-创建' (function(_,unit)
     -- 英雄返回
@@ -27,10 +39,11 @@ ac.game:event '单位-创建' (function(_,unit)
         unit:set('生命恢复',data.attribute['生命恢复'])
         unit:set('魔法恢复',data.attribute['魔法恢复'])
         -- print(ac.g_game_degree_attr)
-        unit:set('护甲',data.attribute['护甲'] *  (ac.g_game_degree_attr or 1))
-        unit:set('魔抗',data.attribute['护甲'] * (ac.g_game_degree_attr or 1))
+        local attr_mul = get_difficult(ac.g_game_degree_attr)
+        unit:set('护甲',data.attribute['护甲'] *  (attr_mul or 1))
+        unit:set('魔抗',data.attribute['护甲'] * (attr_mul or 1))
 
-        unit:set('暴击加深',data.attribute['暴击加深'] * (ac.g_game_degree_attr or 1))
+        unit:set('暴击加深',data.attribute['暴击加深'] * (attr_mul or 1))
     end    
 
     --根据玩家数量，怪物属性倍数 5  20 . 5 40， 20*1.1 = 22
