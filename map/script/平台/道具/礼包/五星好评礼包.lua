@@ -12,7 +12,7 @@ tip = [[
 
 |cffFFE799【领取条件】|r给此图来个|cffff0000五星好评|r
 
-|cffFFE799【礼包奖励】|r|cff00ff00被攻击10%几率获得50点全属性， 暴击加深+15%， 技暴加深+15% |r
+|cffFFE799【礼包奖励】|r|cff00ff00被攻击10%几率获得100点全属性， 暴击加深+30%， 技暴加深+15% |r
  ]],
 --物品类型
 item_type = '神符',
@@ -20,7 +20,7 @@ item_type = '神符',
 target_type = ac.skill.TARGET_TYPE_NONE,
 --购买价格
 gold = 0,
-award_physical_damage = 15,
+award_physical_damage = 30,
 award_magic_damage = 15,
 chance = 10
 }
@@ -44,7 +44,7 @@ function mt:on_cast_start()
         hero:event '受到伤害效果' (function(trg, damage)
             --概率加全属性
             if math.random(100) <= self.chance then 
-                hero:add('全属性',50)
+                hero:add('全属性',100)
             end    
         end)
         p.mall_flag[name] = true
