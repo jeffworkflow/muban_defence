@@ -14,13 +14,13 @@ tip = [[
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+15  杀怪加全属性|r
-|cff00ff00+5%  吸血|r
+|cff00ff00+5%  杀敌数加成|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 15,
-['吸血'] = 5,
+['杀敌数加成'] = 5,
 need_map_level = 2,
 --特效
 effect = [[lhcq.mdx]]
