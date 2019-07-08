@@ -22,7 +22,7 @@ mt{
     _model = ac.zb_color_model['书'],
     model_size = 1.5,
     --物品详细介绍的title
-    content_tip = '使用说明：',
+    content_tip = '|cffffe799使用说明：|r',
     cus_type = '技能' --类型
 
 }

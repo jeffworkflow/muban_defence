@@ -37,7 +37,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 5K 自动获得，已拥有积分：|r%wabao_cnt% 或者
+|cff00ffff挖宝积分超过 2K 自动获得，已拥有积分：|r%wabao_cnt% 或者
 |cff00ffff消耗勇士徽章 20 兑换获得
 
 |cffFFE799【称号属性】：|r
