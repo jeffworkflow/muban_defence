@@ -19,13 +19,13 @@ mt{
 	--介绍
     tip = [[
         
-|cffffff00【被动效果】攻击10%几率触发，降低周围敌人35%护甲，持续1秒|r
+|cffffff00【被动效果】攻击10%几率触发，降低周围敌人50%护甲，持续1秒|r
     
 ]],
 	--技能图标
     art = [[qhazly.blp]],
     time = 10,
-    value =35
+    value =50
 }
 function mt:on_add()
     local skill = self
