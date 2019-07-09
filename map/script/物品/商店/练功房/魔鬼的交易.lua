@@ -327,25 +327,25 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+70w全属性|r
     ]]},
 
-{'无所不能lv4',false,'技能冷却',5,'木头',1400,[[liliang.blp]],[[
+{'无所不能lv4',false,'触发概率加成',5,'木头',1400,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv4|r
     
-|cffFFE799【奖励】|r|cff00ff00-5%技能冷却|r
+|cffFFE799【奖励】|r|cff00ff00+5%触发概率加成|r
     ]]},
 
-{'无所不能lv5',false,'每秒回血',5,'木头',1750,[[liliang.blp]],[[
+{'无所不能lv5',false,'每秒回血',10,'木头',1750,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv5|r
     
-|cffFFE799【奖励】|r|cff00ff00+5%每秒回血|r
+|cffFFE799【奖励】|r|cff00ff00+10%每秒回血|r
     ]]},
 
-{'无所不能lv6',false,'暴击几率',2.5,'木头',2100,[[liliang.blp]],[[
+{'无所不能lv6',false,'减少周围护甲',500,'木头',2100,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv6|r
     
-|cffFFE799【奖励】|r|cff00ff00+2.5%暴击几率|r
+|cffFFE799【奖励】|r|cff00ff00+500减少周围护甲|r
     ]]},
 
  {'无所不能lv7',false,'全属性',1600000,'木头',2450,[[liliang.blp]],[[
@@ -399,39 +399,39 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+1500护甲|r
         ]]},
     
-    {'身披圣衣lv4',false,'杀怪加全属性',150,'火灵',8000,[[liliang.blp]],[[
+    {'身披圣衣lv4',false,'杀怪加全属性',200,'火灵',8000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv4|r
         
-|cffFFE799【奖励】|r|cff00ff00+150杀怪加全属性|r
+|cffFFE799【奖励】|r|cff00ff00+200杀怪加全属性|r
         ]]},
     
-    {'身披圣衣lv5',false,'攻击加全属性',750,'火灵',10000,[[liliang.blp]],[[
+    {'身披圣衣lv5',false,'攻击加全属性',1000,'火灵',10000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv5|r
         
-|cffFFE799【奖励】|r|cff00ff00+750攻击加全属性|r
+|cffFFE799【奖励】|r|cff00ff00+1000攻击加全属性|r
         ]]},
     
-    {'身披圣衣lv6',false,'每秒加全属性',1500,'火灵',12000,[[liliang.blp]],[[
+    {'身披圣衣lv6',false,'全属性',2000000,'火灵',12000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv6|r
         
-|cffFFE799【奖励】|r|cff00ff00+1500每秒加全属性|r
+|cffFFE799【奖励】|r|cff00ff00+200w全属性|r
         ]]},
     
-     {'身披圣衣lv7',false,'杀怪加攻击',600,'火灵',14000,[[liliang.blp]],[[
+     {'身披圣衣lv7',false,'杀怪加攻击',800,'火灵',14000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv7|r
         
-|cffFFE799【奖励】|r|cff00ff00+600杀怪加攻击|r
+|cffFFE799【奖励】|r|cff00ff00+800杀怪加攻击|r
         ]]},
     
-    {'身披圣衣lv8',false,'每秒加攻击',6000,'火灵',16000,[[liliang.blp]],[[
+    {'身披圣衣lv8',false,'每秒加攻击',8000,'火灵',16000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv8|r
         
-|cffFFE799【奖励】|r|cff00ff00+6000每秒加攻击|r
+|cffFFE799【奖励】|r|cff00ff00+8000每秒加攻击|r
         ]]},
     
     {'身披圣衣lv9',false,'全属性',3000000,'火灵',18000,[[liliang.blp]],[[
@@ -458,11 +458,11 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+2.5%免伤|r
     ]]},
 
-{'脚踩祥云lv2',false,'每秒回血',5,'木头',3000,[[liliang.blp]],[[
+{'脚踩祥云lv2',false,'每秒回血',10,'木头',3000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv2|r
     
-|cffFFE799【奖励】|r|cff00ff00+5%每秒回血|r
+|cffFFE799【奖励】|r|cff00ff00+10%每秒回血|r
     ]]},
 
 {'脚踩祥云lv3',false,'全属性',4000000,'木头',4500,[[liliang.blp]],[[
@@ -486,11 +486,11 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+2.5%免伤几率|r
     ]]},
 
-{'脚踩祥云lv6',false,'暴击几率',2.5,'木头',9000,[[liliang.blp]],[[
+{'脚踩祥云lv6',false,'攻击减甲',15,'木头',9000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv6|r
     
-|cffFFE799【奖励】|r|cff00ff00+2.5%暴击几率|r
+|cffFFE799【奖励】|r|cff00ff00+15攻击减甲|r
     ]]},
 
  {'脚踩祥云lv7',false,'全属性',6000000,'木头',10500,[[liliang.blp]],[[
@@ -507,11 +507,11 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+2.5%技暴几率|r
     ]]},
 
-{'脚踩祥云lv9',false,'技暴加深',25,'木头',13500,[[liliang.blp]],[[
+{'脚踩祥云lv9',false,'技暴加深',50,'木头',13500,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv9|r
     
-|cffFFE799【奖励】|r|cff00ff00+25%技暴加深|r
+|cffFFE799【奖励】|r|cff00ff00+50%技暴加深|r
     ]]},
 
 {'脚踩祥云lvmax',false,'全伤加深',5,'木头',15000,[[liliang.blp]],[[
@@ -530,11 +530,11 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+5%触发概率加成|r
     ]]},
 
-{'头顶乾坤lv2',false,'暴击加深',50,'火灵',10000,[[liliang.blp]],[[
+{'头顶乾坤lv2',false,'物理伤害加成',25,'火灵',10000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv2|r
     
-|cffFFE799【奖励】|r|cff00ff00+50%暴击加深|r
+|cffFFE799【奖励】|r|cff00ff00+25%物理伤害加成|r
     ]]},
 
 {'头顶乾坤lv3',false,'全属性',4000000,'火灵',20000,[[liliang.blp]],[[
@@ -565,18 +565,18 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+800w全属性|r
     ]]},
 
- {'头顶乾坤lv7',false,'暴击加深',100,'火灵',60000,[[liliang.blp]],[[
+ {'头顶乾坤lv7',false,'暴击加深',150,'火灵',60000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv7|r
     
-|cffFFE799【奖励】|r|cff00ff00+100%暴击加深|r
+|cffFFE799【奖励】|r|cff00ff00+150%暴击加深|r
     ]]},
 
-{'头顶乾坤lv8',false,'技暴加深',100,'火灵',70000,[[liliang.blp]],[[
+{'头顶乾坤lv8',false,'技暴加深',150,'火灵',70000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv8|r
     
-|cffFFE799【奖励】|r|cff00ff00+100%技暴加深|r
+|cffFFE799【奖励】|r|cff00ff00+150%技暴加深|r
     ]]},
 
 {'头顶乾坤lv9',false,'全属性',10000000,'火灵',80000,[[liliang.blp]],[[

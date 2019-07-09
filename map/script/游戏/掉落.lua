@@ -447,7 +447,7 @@ local unit_reward = {
         {    rand = 0.02, name = '倒霉蛋',},--木头+5555，火灵+5555，杀敌数+5555
     },
     ['高级扭蛋'] = {
-        {    rand = 26.281, name = '空蛋' },
+        {    rand = 27.081, name = '空蛋' },
 
         {    rand = 4, name = '火灵',},
         {    rand = 4, name = '木头',},
@@ -511,7 +511,7 @@ local unit_reward = {
         {    rand = 0.6, name = '宠物经验书(大)',},
         {    rand = 0.03, name = '吞噬丹',},
         {    rand = 0.2, name = '随机技能',},
-        {    rand = 4, name = '随机物品',}, --和商店一样 '凝脂剑','元烟剑','暗影','青涛魔剑','青虹紫霄剑'
+        {    rand = 3, name = '随机物品',}, --和商店一样 '凝脂剑','元烟剑','暗影','青涛魔剑','青虹紫霄剑'
         {    rand = 0.1, name = '神兵',},--lv6-lv10
         {    rand = 0.1, name = '神甲',},--lv6-lv10
         {    rand = 0.15, name = '技能升级书Lv3',}, --lv1
@@ -519,10 +519,10 @@ local unit_reward = {
         {    rand = 0.02, name = '三号洗练石',},
         {    rand = 0.02, name = '四号洗练石',},
 
-        {    rand = 0.1, name = '格里芬',}, --lv1
-        {    rand = 0.1, name = '黑暗项链',}, --lv2
-        {    rand = 0.1, name = '最强生物心脏',}, --lv1
-        {    rand = 0.1, name = '白胡子的大刀',}, --lv2
+        {    rand = 0.15, name = '格里芬',}, --lv1
+        {    rand = 0.15, name = '黑暗项链',}, --lv2
+        {    rand = 0.15, name = '最强生物心脏',}, --lv1
+        {    rand = 0.15, name = '白胡子的大刀',}, --lv2
 
 
         {    rand = 0.12, name = '玻璃大炮',},--红色小水滴 吸血+10% 攻击回血+500000
@@ -534,8 +534,8 @@ local unit_reward = {
     },
 
     ['炼化异火'] =  {
-        {    rand = 35, name = '凡' },
-        {    rand = 30, name = '玄' },
+        {    rand = 20, name = '凡' },
+        {    rand = 45, name = '玄' },
         {    rand = 20, name = '地',},
         {    rand = 15, name = '天',},
     },    
