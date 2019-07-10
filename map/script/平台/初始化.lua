@@ -248,12 +248,12 @@ shenlong2award()
 local function ttxd2award()
     local content_data = {
         --奖励 = 每存档力量奖励的值 
-        ['力量'] = {30000},
-        ['敏捷'] = {30000},
-        ['智力'] = {30000},
-        ['全属性'] = {15000},
+        ['力量'] = {60000},
+        ['敏捷'] = {60000},
+        ['智力'] = {60000},
+        ['全属性'] = {30000},
         --奖励 = 杀鸡儆猴奖励每秒全属性, 每地图等级上限值
-        ['每秒加全属性'] = {1,25},
+        ['攻击加全属性'] = {1,25},
     }  
     for i=1,10 do
         local player = ac.player[i]
@@ -262,13 +262,13 @@ local function ttxd2award()
                 for name,data in sortpairs(content_data) do 
                     local cnt = 0
                     local value = 0
-                    if name == '每秒加全属性' then 
+                    if name == '攻击加全属性' then 
                         cnt= player.cus_server and (player.cus_server['杀鸡儆猴'] or 0 )
                     else
                         cnt= player.cus_server and (player.cus_server[name] or 0 )
                     end     
                     local map_level = player:Map_GetMapLevel() > 0 and  player:Map_GetMapLevel() or 1
-                    if name == '每秒加全属性' then 
+                    if name == '攻击加全属性' then 
                         value = math.min(cnt * data[1],map_level * data[2])
                     else
                         value = cnt * data[1]

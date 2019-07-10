@@ -44,7 +44,9 @@ local function init_shop()
                                 local source = damage.source
                                 local target = damage.target
                                 -- print(string.format('%.f%%',target:get('生命')/target:get('生命上限')*100))
-                                ac.player.self:sendMsg('基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
+                                ac.player.self:sendMsg('|cffff0000基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
+                                ac.player.self:sendMsg('|cffff0000基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
+                                ac.player.self:sendMsg('|cffff0000基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
                             end)
                         end    
                         if name == '游戏说明' then
