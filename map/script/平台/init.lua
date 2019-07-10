@@ -1,7 +1,7 @@
 
 require '平台.base'
 require '平台.config'
-require '平台.自定义服务器'
+-- require '平台.自定义服务器'
 require '平台.房间显示'
 require '平台.初始化'
 

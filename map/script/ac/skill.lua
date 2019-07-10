@@ -1330,7 +1330,7 @@ function mt:show()
 			(self.hide_count == 0 and 0x01 or 0x00)
 		)
 	end
-	if self.owner and not self.auto_fresh_timer then 
+	if self.auto_fresh_tip and self.owner and not self.auto_fresh_timer then 
 		self.auto_fresh_timer = auto_fresh_loop(self.owner,self)
 	end	
 end

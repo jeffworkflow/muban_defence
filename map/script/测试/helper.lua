@@ -237,7 +237,7 @@ end
 
 --地图等级相关
 function helper:dtdj(lv)
-	local p = self and self:get_owner() or ac.player.self 
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
 	p.map_level = tonumber(lv)
 	--重载商城道具。
 	for n=1,#ac.mall do
@@ -255,7 +255,7 @@ function helper:dtdj(lv)
 end
 
 function helper:reload_mall()
-	local p = self and self:get_owner() or ac.player.self 
+	local p = self and self:get_owner() or ac.player(ac.player.self.id) 
 	local peon = p.peon
 	
 	--挖宝积分在读取存档数据后就赋值。
@@ -294,21 +294,53 @@ end
 
 --服务器存档 保存 
 function helper:save(key,value)
-	local p = self and self:get_owner() or ac.player.self 
-	p:SetServerValue(key,tonumber(value) or 1)
-	
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	-- p:SetServerValue(key,tonumber(value) or 1) 自定义服务器
+    p:Map_SaveServerValue(key,tonumber(value) or 1) --网易服务器
 end	
 --服务器清空档案
-function helper:clear_server()
-	local p = self and self:get_owner() or ac.player.self 
-	p:clear_server()
+function helper:clear_server(flag)
+	if flag then 
+		ac.clear_all_server()
+	else	
+		local p = self and self:get_owner() or ac.player(ac.player.self.id) 
+		p:clear_server()
+	end	
 end
+--难3测试
+function helper:test_n3()
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+
+    p:Map_SaveServerValue('JBLB',1) --网易服务器
+    p:Map_SaveServerValue('MCLB',1) --网易服务器
+    p:Map_SaveServerValue('WXHP',1) --网易服务器
+    p:Map_SaveServerValue('zzl',1) --网易服务器
+    p:Map_SaveServerValue('XHB',1) --网易服务器
+    p:Map_SaveServerValue('lhcq',1) --网易服务器
+    p:Map_SaveServerValue('sbkd',1) --网易服务器
+    p:Map_SaveServerValue('nsl',1) --网易服务器
+    p:Map_SaveServerValue('sjjh',50) --网易服务器
+    p:Map_SaveServerValue('yshz',20) --网易服务器
+    p:Map_SaveServerValue('wbjf',2000) --网易服务器
+    p:Map_SaveServerValue('cwtf',60000) --网易服务器
+
+	
+
+end	
+
 --服务器存档 读取 
 function helper:get_server(key)
-	local p = self:get_owner()
-	local name = ac.server.key2name(key)	
-	-- print('服务器存档:'..key,p:Map_GetServerValue(key))
-	print('服务器存档:'..key,p.cus_server[name])
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	if key == 'all' then 
+		for name,val in pairs(p.cus_server) do
+			local key = ac.server.name2key(name)
+			print('服务器存档:',key,val)
+		end
+	else		
+		local name = ac.server.key2name(key)	
+		-- print('服务器存档:'..key,p:Map_GetServerValue(key))
+		print('服务器存档:'..key,p.cus_server[name])
+	end	
 end	
 --波数
 function helper:boshu(str,index)
@@ -320,6 +352,45 @@ end
 function helper:ani(name)
 	self:set_animation(name)
 end
+
+--测试掉线
+function helper:test_offline()
+	ac.loop(3000,function()
+		for i=1,10 do
+			local p = ac.player(i)
+			if p:is_player() then 
+				local u = p:create_unit('民兵',ac.point(0,0))
+				ac.wait(1000,function()
+					u:kill()
+				end)
+			end    
+		end    
+	end)
+end	
+
+
+--测试杀怪内存
+function helper:test_kill_unit()
+	ac.test_unit = ac.loop(1000,function()
+		for i=1,40 do
+			local u = ac.player(12):create_unit('民兵',ac.point(0,0))
+			u:remove()
+		end    
+	end)
+	ac.test_unit:on_timer()
+	ac.loop(10000,function()
+        --开始清理物品
+		ac.game:clear_item()
+	end)	
+end	
+
+--测试杀怪内存
+function helper:test_stop()
+	if ac.test_unit then 
+		ac.test_unit:remove()
+		ac.test_unit = nil
+	end	
+end	
 
 --伤害自己
 function helper:damage(damage)

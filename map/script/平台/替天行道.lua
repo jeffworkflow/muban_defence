@@ -240,9 +240,12 @@ for i,name in ipairs({'兑换-势不可挡','兑换-君临天下','兑换-神帝
         end
         --处理兑换
         if has_yshz >= self.need_yshz and map_level >= self.need_map_level then 
-            p:AddServerValue('yshz',-self.need_yshz)
+            -- p:AddServerValue('yshz',-self.need_yshz) --自定义服务器
+            p:Map_AddServerValue('yshz',-self.need_yshz) --网易服务器
+            
             local key = ac.server.name2key(real_name)
-            p:SetServerValue(key,1)
+            -- p:SetServerValue(key,1) 自定义服务器
+            p:Map_SaveServerValue(key,1) --网易服务器
             p:sendMsg('|cffff0000兑换'..real_name..'成功 部分效果在下一局生效|r')   
 
             --先扣当前消费者的勋章数，不足的话扣除单位下的另一个人的勋章
@@ -290,9 +293,11 @@ for i,name in ipairs({'兑换-力量','兑换-敏捷','兑换-智力','兑换-�
         end
         --处理兑换
         if has_yshz >= self.need_yshz  then 
-            p:AddServerValue('yshz',-self.need_yshz)
+            -- p:AddServerValue('yshz',-self.need_yshz) 自定义服务器
+            p:Map_AddServerValue('yshz',-self.need_yshz)  --网易义服务器
             local key = ac.server.name2key(real_name)
-            p:AddServerValue(key,1)
+            -- p:AddServerValue(key,1)  自定义服务器
+            p:Map_AddServerValue(key,1)  --网易义服务器
             p:sendMsg('|cffff0000兑换'..real_name..'成功 部分效果在下一局生效|r')   
             -- p:sendMsg('【系统消息】 获得25W'..)   
 

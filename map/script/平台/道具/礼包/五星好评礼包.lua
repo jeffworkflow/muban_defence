@@ -16,6 +16,7 @@ tip = [[
  ]],
 --物品类型
 item_type = '神符',
+need_map_level = 3,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --购买价格

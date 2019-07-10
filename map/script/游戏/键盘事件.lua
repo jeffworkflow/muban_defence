@@ -71,6 +71,23 @@ ac.game:event '玩家-注册英雄' (function(trg, player, hero)
 	hero:add_skill('F3小黑屋', '隐藏')
 end)
 
+ac.game.clear_item = function()
+    local tbl = {}
+    for _,v in pairs(ac.item.item_map) do
+        if not v.owner  then 
+            table.insert(tbl,v)
+        end	
+    end
+    table.sort(tbl,function (a,b)
+        local p = ac.point(0,0)
+        return a:get_point() * p <  b:get_point() * p
+    end)
+
+    for index,item in ipairs(tbl) do 
+        item:item_remove()
+    end 
+end
+
 
 
 ac.game:event '玩家-聊天' (function(self, player, str)
@@ -105,23 +122,8 @@ ac.game:event '玩家-聊天' (function(self, player, str)
     end   
 
     if str == 'qlwp' then
-		--开始清理物品
-		local tbl = {}
-		for _,v in pairs(ac.item.item_map) do
-
-			if not v.owner  then 
-				table.insert(tbl,v)
-			end	
-		end
-
-		table.sort(tbl,function (a,b)
-			local p = ac.point(0,0)
-			return a:get_point() * p <  b:get_point() * p
-		end)
-
-		for index,item in ipairs(tbl) do 
-			item:item_remove()
-		end 
+        --开始清理物品
+        ac.game:clear_item()
 	end  
 
 	if str == 'qx' then

@@ -21,16 +21,35 @@ for i=1,10 do
 end
 
 --初始化1  copy 网易数据到自己的服务器去； 
-ac.server.init()  
+if ac.server.init then 
+    ac.server.init()  
+end    
 
--- --初始化2 读取自定义服务器的数据 并同步 p.cus_server[jifen] = 0
---读取有延迟
+--初始化2 读取自定义服务器的数据 并同步 p.cus_server[jifen] = 0 | 读取有延迟
+-- for i=1,10 do
+--     local player = ac.player[i]
+--     if player:is_player() then
+--         if player:is_self() then 
+--             player:sp_get_map_test()
+--         end    
+--     end
+-- end
+
+--初始化2 读取网易服务器的数据 p.cus_server[jifen] = 0 | 读取有延迟
 for i=1,10 do
     local player = ac.player[i]
     if player:is_player() then
-        if player:is_self() then 
-            player:sp_get_map_test()
-        end    
+       for index,data in ipairs(ac.cus_server_key) do
+            local key = data[1]
+            local key_name = data[2]
+            local val = player:Map_GetServerValue(key)
+            if not player.cus_server then 
+                player.cus_server = {}
+            end
+            player.cus_server[key_name] = val
+            print('存档数据:',key,val)
+        end
+        player:event_notify '读取存档数据'
     end
 end
 
@@ -92,7 +111,8 @@ ac.game:event '游戏-结束' (function(trg,flag)
             --保存星数
             local name = ac.g_game_degree_name
             local key = ac.server.name2key(name)
-            player:AddServerValue(key,1) 
+            -- player:AddServerValue(key,1)  -- 自定义服务器
+            player:Map_AddServerValue(key,1) --网易服务器
 
             player:sendMsg('【游戏胜利】|cffff0000'..name..'星数+1|r')
 
@@ -102,7 +122,8 @@ ac.game:event '游戏-结束' (function(trg,flag)
             local cus_value = tonumber((player.cus_server and player.cus_server[name]) or 99999999)
             --游戏时长 < 存档时间 
             if os.difftime(cus_value,ac.g_game_time) > 0 then 
-                player:SetServerValue(key,ac.g_game_time) 
+                -- player:SetServerValue(key,ac.g_game_time) 自定义服务器
+                player:Map_SaveServerValue(key,ac.g_game_time) --网易服务器
             end    
             --文字提醒
             local str = os.date("!%H:%M:%S",tonumber(ac.g_game_time)) 
@@ -126,7 +147,8 @@ for i=1,10 do
                 and player:Map_GetMapLevel() >= (data[3]  or 0)
                 then 
                     local key = ac.server.name2key(name)
-                    player:SetServerValue(key,1)
+                    -- player:SetServerValue(key,1) 自定义服务器
+                    player:Map_SaveServerValue(key,1) --网易服务器
                     -- player:sendMsg('激活成功：'..key)
                 end   
             end   
@@ -134,23 +156,23 @@ for i=1,10 do
     end
 end    
 
-              
+    
 --处理挖宝积分 及对应的奖励
+local wabao2award_data = {
+    --奖励 = 积分，地图等级
+    ['势不可挡'] = {2000,3},
+    ['冰龙'] = {20000,5},
+    ['霸王莲龙锤'] = {40000,10},
+    ['梦蝶仙翼'] = {70000,10},
+    --全属性 = 每点积分加的值,地图等级*上限值
+    ['全属性'] = {200,50000},
+}            
 local function wabao2award()
-    local content_data = {
-        --奖励 = 积分，地图等级
-        ['势不可挡'] = {2000,3},
-        ['冰龙'] = {20000,5},
-        ['霸王莲龙锤'] = {40000,10},
-        ['梦蝶仙翼'] = {70000,10},
-        --全属性 = 每点积分加的值,地图等级*上限值
-        ['全属性'] = {200,50000},
-    }  
     for i=1,10 do
         local player = ac.player[i]
         if player:is_player() then
             player:event '读取存档数据' (function()
-                for name,data in sortpairs(content_data) do 
+                for name,data in sortpairs(wabao2award_data) do 
                     if name == '全属性' then 
                     else
                         --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
@@ -162,7 +184,8 @@ local function wabao2award()
                         and player:Map_GetMapLevel() >= (data[2]  or 9999999)
                         then 
                             local key = ac.server.name2key(name)
-                            player:SetServerValue(key,1)
+                            -- player:SetServerValue(key,1) 自定义服务器
+                            player:Map_SaveServerValue(key,1) --网易服务器
                             -- player:sendMsg('激活成功：'..key)
                         end    
                     end    
@@ -171,7 +194,7 @@ local function wabao2award()
             player:event '玩家-注册英雄后' (function()
                 local map_level = player:Map_GetMapLevel() > 0 and  player:Map_GetMapLevel() or 1
                 local wabaojifen = player.cus_server and (player.cus_server['挖宝积分'] or 0 )
-                local value = math.min(content_data['全属性'][1]*wabaojifen,content_data['全属性'][2] * map_level) --取挖宝积分*500 和地图等级*15000的最小值。
+                local value = math.min(wabao2award_data['全属性'][1]*wabaojifen,wabao2award_data['全属性'][2] * map_level) --取挖宝积分*500 和地图等级*15000的最小值。
                 player.hero:add('全属性',value) 
             end) 
         end
@@ -180,25 +203,25 @@ end
 wabao2award()
 
 
+local shenlong2award_data = {
+    --奖励 = 碎片，地图等级
+    ['耐瑟龙'] = {15,3},
+    ['冰龙'] = {75,5},
+    ['精灵龙'] = {500,8},
+    ['奇美拉'] = {800,15},
+    ['Pa'] = {50,3},
+    ['手无寸铁的小龙女'] = {150,6},
+    ['关羽'] = {500,10},
+    ['霸王莲龙锤'] = {300,10},
+    ['梦蝶仙翼'] = {400,10},
+} 
 --处理神龙碎片 及对应的奖励
-local function shenlong2award()
-    local content_data = {
-        --奖励 = 碎片，地图等级
-        ['耐瑟龙'] = {15,3},
-        ['冰龙'] = {75,5},
-        ['精灵龙'] = {500,8},
-        ['奇美拉'] = {800,15},
-        ['Pa'] = {50,3},
-        ['手无寸铁的小龙女'] = {150,6},
-        ['关羽'] = {500,10},
-        ['霸王莲龙锤'] = {300,10},
-        ['梦蝶仙翼'] = {400,10},
-    }  
+local function shenlong2award() 
     for i=1,10 do
         local player = ac.player[i]
         if player:is_player() then
             player:event '读取存档数据' (function()
-                for name,data in sortpairs(content_data) do 
+                for name,data in sortpairs(shenlong2award_data) do 
                     --商城 或是 自定义服务器有对应数据则
                     --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
                     local has_item = player.cus_server and (player.cus_server[name] or 0 )
@@ -209,7 +232,8 @@ local function shenlong2award()
                     and player:Map_GetMapLevel() >= (data[2]  or 9999999)
                     then 
                         local key = ac.server.name2key(name)
-                        player:SetServerValue(key,1)
+                        -- player:SetServerValue(key,1) 自定义服务器
+                        player:Map_SaveServerValue(key,1) --网易服务器
                         -- player:sendMsg('激活成功：'..key)
                     end    
                 end   
@@ -258,3 +282,31 @@ local function ttxd2award()
     end    
 end
 ttxd2award()
+
+--开始进行地图等级集中过滤
+ac.server.need_map_level = {}
+local function init_need_map_level()
+    for name,data in pairs(star2award) do
+        ac.server.need_map_level[name] = data[3]
+    end
+    for name,data in pairs(wabao2award_data) do
+        ac.server.need_map_level[name] = data[2]
+    end
+    for name,data in pairs(shenlong2award_data) do
+        ac.server.need_map_level[name] = data[2]
+    end
+
+    for i=1,10 do 
+        local p = ac.player(i)
+        if p:is_player() then 
+            for name,val in pairs(p.cus_server) do 
+                local real_val = p:Map_GetMapLevel() >= (ac.server.need_map_level[name] or 0) and val or 0 
+                p.cus_server[name] = real_val
+            end    
+        end   
+    end
+end;
+init_need_map_level()
+
+
+

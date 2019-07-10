@@ -35,8 +35,9 @@ ac.game:event '物品-消耗品叠加' (function(_,item,old_value) --old_value
     local hero = item.owner
     local player = hero:get_owner()
     if player.id>10 then return end
-    player:AddServerValue('yshz',old_value) --保存存档
-
+    -- player:AddServerValue('yshz',old_value) --保存存档 自定义服务器
+    player:Map_AddServerValue('yshz',old_value) --网易服务器
+    
 end);
 --添加时存档数据到服务器
 function mt:on_add()
@@ -45,7 +46,8 @@ function mt:on_add()
     local player = hero:get_owner()
     if player.id>10 then return end
     if not player.flag_init_yshz then 
-       player:AddServerValue('yshz',self._count) --保存存档
+    --    player:AddServerValue('yshz',self._count) --保存存档
+       player:Map_AddServerValue('yshz',self._count) --网易服务器
     end   
 end    
 function mt:on_cast_start()
@@ -63,7 +65,8 @@ function mt:on_remove()
     local hero = self.owner
     local player = hero:get_owner()
     if player.id>10 then return end
-    player:AddServerValue('yshz',-self._count) --保存存档
+    -- player:AddServerValue('yshz',-self._count) --保存存档
+    player:Map_AddServerValue('yshz',-self._count) --网易服务器
 end
 
 --

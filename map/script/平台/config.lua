@@ -177,7 +177,8 @@ end
 --加积分
 function player.__index:add_jifen(value)
     player.jifen = player.jifen + tonumber(value)
-    player:SetServerValue('jifen',player.jifen)
+    -- player:SetServerValue('jifen',player.jifen) 自定义服务器
+    player:Map_SaveServerValue('jifen',player.jifen)  --网易服务器
 end    
 
 --网易服务器存档读取

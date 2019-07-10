@@ -48,7 +48,7 @@ function player.__index:Map_IsMapReset()
     return japi.RequestExtraBooleanData(44,handle,nil,nil,false,0,0,0)
 end
 
---返回通用型 返回的是字符串型
+--返回通用型 返回的是数字类型
 function player.__index:Map_GetServerValue(key)
     local handle = self.handle
     local value = japi.DzAPI_Map_GetServerValue(handle,key)
@@ -58,7 +58,7 @@ function player.__index:Map_GetServerValue(key)
     else
         value = value
     end
-    return value
+    return tonumber(value)
 end
 
 -- --存档通用型 只能存入字符串型

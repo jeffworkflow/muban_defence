@@ -13,14 +13,25 @@ local function set_fj_data(player)
         end    
     end    
     --根据星数排序
-	table.sort(temp,function (a,b)
-		return a.value > b.value
-	end) 
-    --根据段位优先级
-	table.sort(temp,function (a,b)
-		return a.key_yxj < b.key_yxj
+    table.sort(temp,function (a,b)
+        local flag 
+        if a.value > b.value then 
+            flag = true 
+        --根据段位优先级
+        elseif a.value == b.value then 
+            if a.key_yxj < b.key_yxj then 
+                flag = true 
+            end
+        else
+            flag = false
+        end            
+
+		return flag
 	end) 
     -- print(temp[1].key..temp[1].value..'星')
+    -- for index,data in ipairs(temp) do 
+    --     print(index,data.key,data.value,key_yxj)
+    -- end    
 
     player:Map_Stat_SetStat('DW',temp[1].key..temp[1].value..'星')
 

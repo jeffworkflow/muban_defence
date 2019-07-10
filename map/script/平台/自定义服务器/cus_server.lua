@@ -282,7 +282,8 @@ function player.__index:clear_server()
     local player = self
     for i,v in ipairs(ac.cus_server_key) do 
         local key = v[1]
-        player:SetServerValue(key,0)
+        -- player:SetServerValue(key,0) 自定义服务器
+        player:Map_SaveServerValue(key,0) --网易服务器
     end    
 end    
 

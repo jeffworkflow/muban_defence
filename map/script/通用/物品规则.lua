@@ -272,7 +272,8 @@
                     local key = ac.server.name2key(it.name)
                     if key then 
                         -- print(it.name,key,1)
-                        player:SetServerValue(key,1) 
+                        -- player:SetServerValue(key,1) 自定义服务器
+                        player:Map_SaveServerValue(key,1) --网易服务器
                     end    
                 end   
             end    

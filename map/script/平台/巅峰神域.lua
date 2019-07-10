@@ -117,6 +117,7 @@ for i,name in ipairs({'礼包','武器','翅膀','称号'}) do
         -- print('打开魔法书')
         for index,skill in ipairs(self.skill_book) do 
             local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
+            -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
             if has_mall and has_mall > 0 then 
                 skill:set_level(1)
             end

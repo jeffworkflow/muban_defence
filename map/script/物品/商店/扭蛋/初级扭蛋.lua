@@ -85,7 +85,9 @@ function mt:add_content()
             for i=1,10 do
                 self.owner:add_item('藏宝图',true)
             end    
-            player:AddServerValue('wbjf',100)
+            -- player:AddServerValue('wbjf',100) 自定义服务器
+            player:Map_AddServerValue('wbjf',100) --网易服务器
+            
             --自动寻宝
             hero.wabao_auto = true 
             ac.game:event_notify('技能-插入魔法书',hero,'扭蛋',rand_name)

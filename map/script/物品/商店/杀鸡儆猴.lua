@@ -95,7 +95,8 @@ local function task_sjjh(skill)
                     hero:add_item(item,true)
                     --保存到服务器存档
                     hero:add('每秒加全属性',1)
-                    player:AddServerValue('sjjh',1)
+                    -- player:AddServerValue('sjjh',1) 自定义服务器
+                    player:Map_AddServerValue('sjjh',1) --网易服务器
                     player:sendMsg('|cffFFE799【系统消息】|r恭喜获得 |cff00ff00每秒全属性+1|r 的|cffff0000永久存档奖励|r |cffffe799当前每秒全属性+|cffffe799'..((player.cus_server and player.cus_server['杀鸡儆猴']) or 0)..'|r',6)
                 end)    
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000齐天大圣|r已出现，小心他的金箍棒 ',2)

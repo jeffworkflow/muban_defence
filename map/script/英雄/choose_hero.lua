@@ -17,16 +17,7 @@ local target_angle
 local skip
 local radius
 local last_target
---rect.j_rect('choose_hero') or
-
--- local map = {}
--- map.rects={
--- 	['选人区域'] =  rect.create(-2000,2000,-2000,2000),
--- 	['出生点'] = rect.create(0,0,0,0)
--- }
 local map = ac.map
-
-
 
 --多面板
 local mb = nil
@@ -173,13 +164,12 @@ local function start()
 			hero:set_data('英雄类型', name)
 			setHeroState(hero)
 			jass.DestroyImage(shadow01)
-			table.insert(flygroup, hero)
 
 			hero:add_effect('origin',[[modeldekan\ui\DEKAN_Tag_Ally.mdl]])
 			hero_types[name] = hero
 		end)
 	end
-	player[16].hero_lists = flygroup
+	-- ac.game.hero_lists = flygroup
 	-- ac.wait(#hero.hero_list*200,function()
 	-- end)
 
@@ -188,26 +178,14 @@ local function start()
 		local p = player[i]
 		--在选人区域创建可见度修整器(对每个玩家,永久)
 		fogmodifier.create(p, map.rects['选人区域'])
-	
-		-- p:create_unit('hfoo',map.rects['选人区域']);
-        --print_r(map.rects['选人区域'])
 		--设置镜头属性
-		-- p:setCameraField('CAMERA_FIELD_ANGLE_OF_ATTACK', 0)
-		-- p:setCameraField('CAMERA_FIELD_ZOFFSET', 3200)
 		p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', 2000)
-		-- map.rects['选人区域']
-
 		local minx, miny, maxx, maxy = ac.map.rects['选人区域']:get()
 		p:setCameraBounds(minx+900, miny+900, maxx-900, maxy-900)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
 		-- p:setCameraBounds('xr')  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
 		p:setCamera(map.rects['选人区域'])
 		--禁止框选
 		p:disableDragSelect()
-
-		--看着一个英雄
-		
-		-- local name = hero.hero_list[math.random(1, #hero.hero_list)][1]
-		-- lookAtHero(p, hero_types[name], true)
 	end
 
 	
@@ -241,9 +219,11 @@ local function start()
 			end
 			-- print(hero_name,p.mall[hero_name])
 			local has_mall = ( p.mall and  p.mall[hero_name] )or (p.cus_server and p.cus_server[hero_name])
-			if ((has_mall and has_mall > 0) 
-			   or finds(hero_name,'剑圣','吉安娜','大地','希尔瓦娜斯','炼金术士','阿尔塞斯'))
-			   and p.flag_get_map_test
+			-- print(hero_name,ac.server.need_map_level[hero_name])
+			if (has_mall and has_mall > 0)
+			--    and p:Map_GetMapLevel() >= (ac.server.need_map_level[hero_name] or 0)) 
+			   or finds(hero_name,'剑圣','吉安娜','大地','希尔瓦娜斯','炼金术士','阿尔塞斯')
+			--    and p.flag_get_map_test
 			then 
 				p:event_notify('玩家-选择英雄', p, hero_name)
 			else	
@@ -259,20 +239,20 @@ local function start()
 		if player.hero then
 			return
 		end
-		local list = {}
-		for name, _ in sortpairs(hero_types) do
-			if name ~= '金木研' and name ~= '更木剑八' then
-				table.insert(list, name)
-			end
-		end
-		player:event_notify('玩家-选择英雄', player, list[math.random(1, #list)])
+		-- local list = {}
+		-- for name, _ in sortpairs(hero_types) do
+		-- 	if name ~= '金木研' and name ~= '更木剑八' then
+		-- 		table.insert(list, name)
+		-- 	end
+		-- end
+		player:event_notify('玩家-选择英雄', player, hero_types[math.random(1, #hero_types)])
 	end)
 
 	ac.game:event '玩家-选择英雄' (function(self, p, hero_name)
 		if not p.hero and hero_types[hero_name] then
 			p:clearMsg()
-			local hero = hero_types[hero_name]
-			--移除选人区马甲
+			-- local hero = hero_types[hero_name]
+			---- 移除选人区马甲
 			-- hero_types[hero_name] = nil
 			-- hero:setAlpha(50)
 			-- hero:set_class '马甲'
@@ -353,9 +333,13 @@ local function start()
 			if not has_started then
 				has_started = true
 				--移除所有英雄
-				for i,unit in ipairs(ac.player(16).hero_lists) do 
-					unit:remove()
-				end	
+				ac.wait(2*1000,function()
+					for name,unit in sortpairs(hero_types) do 
+						unit:remove()
+						unit = nil 
+						hero_types[name] = nil 
+					end	
+				end)
 			end
 		end
 
