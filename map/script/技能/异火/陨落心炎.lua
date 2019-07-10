@@ -1,9 +1,9 @@
 local config = {
-    --品阶 =  颜色,物暴加深，几率，全属性，免伤几率，技能冷却                 
-    ['凡'] = {'绿',100,1,3000000,50,1},
-    ['玄'] = {'蓝',200,2,5000000,100,2},
-    ['地'] = {'金',300,3,7000000,150,3},
-    ['天'] = {'红',400,5,8500000,200,5},
+    --品阶 =  颜色,物暴加深，几率，全属性，免伤几率，免伤几率                 
+    ['凡'] = {'绿',200,2,3000000,50,2},
+    ['玄'] = {'蓝',400,4,5000000,100,4},
+    ['地'] = {'金',600,6,7000000,150,6},
+    ['天'] = {'红',1000,10,8500000,200,10},
 }
 
 --物品名称
@@ -21,7 +21,7 @@ mt{
 |cffffff00+%暴击几率% |cffffff00%  |cff00ff00暴击几率
 |cffffff00+%暴击加深% |cffffff00% |cff00ff00暴击加深
 |cffffff00+%物理伤害加成% |cffffff00%  |cff00ff00物理伤害加成
-|cffffff00+%技能冷却% |cffffff00%  |cff00ff00技能冷却|r
+|cffffff00+%免伤几率% |cffffff00%  |cff00ff00免伤几率|r
 ]],
     xxzhtip = function(self)
         return  '|cffffe799【品阶】|r'..'|cff'..ac.color_code[self.color or '白']..self.quality..'|r \n'
@@ -71,7 +71,7 @@ mt{
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][5] 
     end,
-    ['技能冷却'] = function (self)
+    ['免伤几率'] = function (self)
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][6] 
     end,

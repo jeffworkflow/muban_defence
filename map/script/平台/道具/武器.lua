@@ -14,9 +14,10 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ffff神龙碎片超过 300 自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【神兵属性】：|r
-|cff00ff00+150 杀怪加攻击|r
-|cff00ff00+10% 吸血|r
-|cff00ff00+10   攻击减甲|r
+|cff00ff00+300 杀怪加攻击|r
+|cff00ff00+20% 吸血|r
+|cff00ff00+35   攻击减甲|r
+|cff00ff00+25%  物理伤害加成|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 need_map_level = 10,
@@ -34,9 +35,10 @@ end,
 need_sp_cnt = 300,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 150,
-['吸血'] = 10,
-['攻击减甲'] = 10,
+['杀怪加攻击'] = 300,
+['吸血'] = 20,
+['攻击减甲'] = 35,
+['物理伤害加成'] = 25,
 --特效
 effect = [[wuqi10.mdx]]
 }
@@ -56,16 +58,18 @@ tip = [[
 |cff00ffff地图等级=%need_map_level%
 
 |cffFFE799【神兵属性】：|r
-|cff00ff00+300  杀怪加攻击|r
+|cff00ff00+400  杀怪加攻击|r
 |cff00ff00-0.05 攻击间隔|r
-|cff00ff00+10   攻击减甲|r
+|cff00ff00+35   攻击减甲|r
+|cff00ff00+5%   对BOSS额外伤害|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 300,
+['杀怪加攻击'] = 400,
 ['攻击间隔'] = -0.05,
-['攻击减甲'] = 10,
+['攻击减甲'] = 35,
+['对BOSS额外伤害'] = 5,
 need_map_level = 30,
 --特效
 effect = [[wuqi13.mdx]]
@@ -85,17 +89,20 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ffff最强王者40星
 
 |cffFFE799【神兵属性】：|r
-|cff00ff00+450  杀怪加攻击|r
+|cff00ff00+500  杀怪加攻击|r
 |cff00ff00-0.05 攻击间隔|r
-|cff00ff00+10%  吸血|r
+|cff00ff00+50%  吸血|r
+|cff00ff00+5%  对BOSS额外伤害|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 450,
-['吸血'] = 10,
+['杀怪加攻击'] = 500,
+['吸血'] = 50,
 ['攻击间隔'] = -0.05,
+['对BOSS额外伤害'] = 5,
+
 need_map_level = 10,
 
 --特效
@@ -120,7 +127,7 @@ tip = [[
 |cff00ff00+600  杀怪加攻击|r
 |cff00ff00+5%   暴击几率|r
 |cff00ff00+5%   技暴几率|r
-|cff00ff00+5%   全伤加深|r
+|cff00ff00+15%   全伤加深|r
 |cff00ff00攻击10%几率造成范围技能伤害|cff00ffff（伤害公式：全属性*40）
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
@@ -139,7 +146,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 600,
 ['暴击几率'] = 5,
 ['技暴几率'] = 5,
-['全伤加深'] = 5,
+['全伤加深'] = 15,
 --特效
 effect = [[wuqi8.mdx]]
 }
@@ -161,7 +168,7 @@ tip = [[
 |cff00ff00+750  杀怪加攻击|r
 |cff00ff00+5%   暴击几率|r
 |cff00ff00+5%   技暴几率|r
-|cff00ff00+5%   全伤加深|r
+|cff00ff00+15%   全伤加深|r
 |cff00ff00攻击10%几率造成范围技能伤害|cff00ffff（伤害公式：全属性*60）
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r

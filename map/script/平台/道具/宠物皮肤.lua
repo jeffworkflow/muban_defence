@@ -17,7 +17,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+8    杀怪加全属性|r
-|cff00ff00+15% 杀敌数加成|r
+|cff00ff00+10% 杀敌数加成|r
 |cff00ff00+15% 分裂伤害|r
 
 |cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
@@ -31,7 +31,7 @@ need_sp_cnt = 15,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 8,
-['杀敌数加成'] = 15,
+['杀敌数加成'] = 10,
 ['分裂伤害'] = 15,
 --特效
 effect = [[units\creeps\NetherDragon\NetherDragon.mdx]]
@@ -55,9 +55,9 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+28   杀怪加全属性|r
-|cff00ff00+15% 金币加成|r
-|cff00ff00+15% 木头加成|r
-|cff00ff00+10% 吸血|r
+|cff00ff00+25% 金币加成|r
+|cff00ff00+25% 木头加成|r
+|cff00ff00+20% 吸血|r
 
 |cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
 need_map_level = 5,
@@ -76,9 +76,9 @@ need_sp_cnt = 75,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 28,
-['金币加成'] = 15,
-['木头加成'] = 15,
-['吸血'] = 10,
+['金币加成'] = 25,
+['木头加成'] = 25,
+['吸血'] = 20,
 --特效
 effect = [[units\creeps\AzureDragon\AzureDragon.mdx]]
 }
@@ -144,7 +144,7 @@ tip = [[
 |cff00ff00+88   杀怪加全属性|r
 |cff00ff00+25% 物品获取率|r
 |cff00ff00+25% 火灵加成|r
-|cff00ff00+25   攻击减甲|r
+|cff00ff00+35   攻击减甲|r
 |cff00ff00+10% 触发概率加成|r
 |cff00ff00-10% 技能冷却|r
 
@@ -154,7 +154,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 88,
 ['物品获取率'] = 25,
 ['火灵加成'] = 25,
-['攻击减甲'] = 25,
+['攻击减甲'] = 35,
 ['触发概率加成'] = 10,
 ['技能冷却'] = 10,
 --特效
@@ -220,7 +220,7 @@ tip = [[
 |cff00ff00+20% 金币加成|r
 |cff00ff00+20% 木头加成|r
 |cff00ff00+20% 杀敌数加成|r
-|cff00ff00+25   攻击减甲|r
+|cff00ff00+35   攻击减甲|r
 |cff00ff00+10% 触发概率加成|r
 |cff00ff00-10% 技能冷却|r
 
@@ -231,7 +231,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['木头加成'] = 20,
 ['金币加成'] = 20,
 ['杀敌数加成'] = 20,
-['攻击减甲'] = 25,
+['攻击减甲'] = 35,
 ['触发概率加成'] = 10,
 ['技能冷却'] = 10,
 --特效

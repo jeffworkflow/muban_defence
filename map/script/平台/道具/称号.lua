@@ -77,13 +77,13 @@ tip = [[
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+30    杀怪加全属性|r
-|cff00ff00+2.5%  暴击几率|r
+|cff00ff00+10%   物理伤害加成|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 30,
-['暴击几率'] = 2.5,
+['物理伤害加成'] = 10,
 need_map_level = 4,
 --特效
 effect = [[htmd.mdx]]
@@ -103,14 +103,16 @@ tip = [[
 |cff00ffff砖石10星 
 
 |cffFFE799【称号属性】：|r
-|cff00ff00+68    杀怪加全属性|r
-|cff00ff00+2.5%  技暴几率|r
+|cff00ff00+68   杀怪加全属性|r
+|cff00ff00+20   攻击减甲|r
+|cff00ff00+15%  物品获取率|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 68,
-['技暴几率'] = 2.5,
+['攻击减甲'] = 20,
+['物品获取率'] = 15,
 need_map_level = 6,
 --特效
 effect = [[dfty.mdx]]
@@ -132,13 +134,13 @@ tip = [[
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+250  杀怪加攻击|r
-|cff00ff00+5%   全伤加深|r
+|cff00ff00+15%   全伤加深|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 250,
-['全伤加深'] = 5,
+['全伤加深'] = 15,
 need_map_level = 7,
 
 --特效
@@ -160,14 +162,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cffFFE799【称号属性】：|r
 |cff00ff00+100 杀怪加全属性|r
 |cff00ff00+5%  免伤|r
-|cff00ff00+5%  全伤加深|r
+|cff00ff00+10%  全伤加深|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 100,
 ['免伤'] = 5,
-['全伤加深'] = 5,
+['全伤加深'] = 10,
 need_map_level = 8,
 
 --特效
@@ -190,14 +192,14 @@ tip = [[
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+500  杀怪加攻击|r
-|cff00ff00+5%   暴击几率|r
+|cff00ff00+500  减少周围护甲|r
 |cff00ff00-0.05 攻击间隔|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 500,
-['暴击几率'] = 5,
+['减少周围护甲'] = 500,
 ['攻击间隔'] = -0.05,
 need_map_level = 9,
 --特效
@@ -220,13 +222,13 @@ tip = [[
 |cffFFE799【称号属性】：|r
 |cff00ff00+268  杀怪加全属性|r
 |cff00ff00+5%   免伤几率|r
-|cff00ff00+5%   技暴几率|r
+|cff00ff00+5%   对BOSS额外伤害|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 750,
-['技暴几率'] = 5,
+['对BOSS额外伤害'] = 5,
 ['免伤几率'] = 5,
 need_map_level = 10,
 --特效
