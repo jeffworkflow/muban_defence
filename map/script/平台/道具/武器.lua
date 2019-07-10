@@ -17,7 +17,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+300 杀怪加攻击|r
 |cff00ff00+20% 吸血|r
 |cff00ff00+35   攻击减甲|r
-|cff00ff00+25%  物理伤害加成|r
+|cff00ff00+25%  物理伤害加深|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 need_map_level = 10,
@@ -38,7 +38,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 300,
 ['吸血'] = 20,
 ['攻击减甲'] = 35,
-['物理伤害加成'] = 25,
+['物理伤害加深'] = 25,
 --特效
 effect = [[wuqi10.mdx]]
 }

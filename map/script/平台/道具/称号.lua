@@ -77,13 +77,13 @@ tip = [[
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+30    杀怪加全属性|r
-|cff00ff00+10%   物理伤害加成|r
+|cff00ff00+10%   物理伤害加深|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 30,
-['物理伤害加成'] = 10,
+['物理伤害加深'] = 10,
 need_map_level = 4,
 --特效
 effect = [[htmd.mdx]]

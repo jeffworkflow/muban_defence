@@ -530,11 +530,11 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+5%触发概率加成|r
     ]]},
 
-{'头顶乾坤lv2',false,'物理伤害加成',25,'火灵',10000,[[liliang.blp]],[[
+{'头顶乾坤lv2',false,'物理伤害加深',25,'火灵',10000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv2|r
     
-|cffFFE799【奖励】|r|cff00ff00+25%物理伤害加成|r
+|cffFFE799【奖励】|r|cff00ff00+25%物理伤害加深|r
     ]]},
 
 {'头顶乾坤lv3',false,'全属性',4000000,'火灵',20000,[[liliang.blp]],[[
