@@ -130,7 +130,7 @@ content_tip = '|cffFFE799【兑换说明】：|r\n',
 --说明
 tip = [[
 
-消耗 |cffff0000一枚徽章|r 兑换 |cff00ff003万点永久力量|r
+消耗 |cffff0000一枚徽章|r 兑换 |cff00ff006万点永久力量|r
 
 |cffcccccc兑换属性永久存档，兑换上限次数=地图等级|r]],
 --物品类型
@@ -142,7 +142,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 is_skill = true,
 need_yshz = 1,
 need_map_level = 0,
-['力量'] = 30000,
+['力量'] = 60000,
 }   
 
 local mt = ac.skill['兑换-敏捷']
@@ -155,7 +155,7 @@ art = 'yshz.blp',
 --说明
 tip = [[
 
-消耗 |cffff0000一枚徽章|r 兑换 |cff00ff003万点永久敏捷|r
+消耗 |cffff0000一枚徽章|r 兑换 |cff00ff006万点永久敏捷|r
 
 |cffcccccc兑换属性永久存档，兑换上限次数=地图等级|r]],
 --物品类型
@@ -167,7 +167,7 @@ content_tip = '|cffFFE799【兑换说明】：|r\n',
 is_skill = true,
 need_yshz = 1,
 need_map_level = 0,
-['敏捷'] = 30000,
+['敏捷'] = 60000,
 }   
 
 local mt = ac.skill['兑换-智力']
@@ -180,7 +180,7 @@ art = 'yshz.blp',
 --说明
 tip = [[
 
-消耗 |cffff0000一枚徽章|r 兑换 |cff00ff003万点永久智力|r
+消耗 |cffff0000一枚徽章|r 兑换 |cff00ff006万点永久智力|r
 
 |cffcccccc兑换属性永久存档，兑换上限次数=地图等级|r]],
 --物品类型
@@ -192,7 +192,7 @@ content_tip = '|cffFFE799【兑换说明】：|r\n',
 is_skill = true,
 need_yshz = 1,
 need_map_level = 0,
-['智力'] = 30000,
+['智力'] = 60000,
 }   
 
 local mt = ac.skill['兑换-全属性']
@@ -205,7 +205,7 @@ art = 'yshz.blp',
 --说明
 tip = [[
 
-消耗 |cffff0000一枚徽章|r 兑换 |cff00ff001.5万点永久全属性|r
+消耗 |cffff0000一枚徽章|r 兑换 |cff00ff003万点永久全属性|r
 
 |cffcccccc兑换属性永久存档，兑换上限次数=地图等级|r]],
 --物品类型
@@ -217,7 +217,7 @@ content_tip = '|cffFFE799【兑换说明】：|r\n',
 is_skill = true,
 need_yshz = 1,
 need_map_level = 0,
-['全属性'] = 15000,
+['全属性'] = 30000,
 }   
 
 --存档称号相关
