@@ -181,7 +181,7 @@ ac.game:event '单位-死亡' (function(_,unit,killer)
         fire_seed = unit.fire_seed * ( 1 + killer:get('火灵加成')/100)
     end   
     --杀敌数加成
-    local kill_cnt = 1 + killer:get('杀敌数加成')/100
+    local kill_cnt = 1 + killer:get('杀敌数加成')/100 + killer:get('额外杀敌数')
 
     local source = killer
     local target = unit

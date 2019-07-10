@@ -333,13 +333,13 @@ local function start()
 			if not has_started then
 				has_started = true
 				--移除所有英雄
-				ac.wait(2*1000,function()
-					for name,unit in sortpairs(hero_types) do 
-						unit:remove()
-						unit = nil 
-						hero_types[name] = nil 
-					end	
-				end)
+				-- ac.wait(2*1000,function()
+				for name,unit in sortpairs(hero_types) do 
+					unit:remove()
+					unit = nil 
+					hero_types[name] = nil 
+				end	
+				-- end)
 			end
 		end
 
@@ -350,7 +350,7 @@ local function start()
 	
 	ac.game:event '玩家-注册英雄后' (f)
 	ac.game:event '玩家-离开' (f)
-	-- ac.wait(60000, f)
+	ac.wait(120*1000, f)
 end
 
 ac.choose_hero = start

@@ -374,7 +374,7 @@ function helper:test_kill_unit()
 	ac.test_unit = ac.loop(1000,function()
 		for i=1,40 do
 			local u = ac.player(12):create_unit('民兵',ac.point(0,0))
-			u:remove()
+			u:kill()
 		end    
 	end)
 	ac.test_unit:on_timer()
