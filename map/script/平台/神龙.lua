@@ -317,10 +317,10 @@ tip = [[
 |cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 400 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【翅膀属性】：|r
-|cff00ff00+50     杀怪加全属性|r
-|cff00ff00+1000W 生命|r
-|cff00ff00+1000   护甲
-|cff00ff00+2.5%   每秒回血|r
+|cff00ff00+80     杀怪加全属性|r
+|cff00ff00+2000W 生命|r
+|cff00ff00+2000   护甲
+|cff00ff00+5%   免伤几率|r
 
 |cffff0000【所有翅膀外观可更换，所有翅膀属性可叠加】|r]],
 need_map_level = 10,
