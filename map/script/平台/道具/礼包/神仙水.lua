@@ -12,11 +12,11 @@ tip = [[
 
 |cffFFE799【礼包奖励】|r
 |cff00ff00全属性+50万 攻击+100万
-初始金币+80万 杀敌数+2000|r
+初始金币+80万 杀敌数+1500|r
 
 ]],
 init_gold = 800000,
-init_kill_count = 2000,
+init_kill_count = 1500,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['全属性'] = 500000,
