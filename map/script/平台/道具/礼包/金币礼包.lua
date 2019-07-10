@@ -12,7 +12,8 @@ tip = [[
 
 |cffFFE799【领取条件】|r商城购买|cffff0000金币礼包|r
 
-|cffFFE799【礼包奖励】|r|cff00ff00每秒加500金币，杀怪+500金币，攻击+500金币|r
+|cffFFE799【礼包奖励】|r|cff00ff00每秒加500金币，杀怪+500金币，攻击+500金币
+随机技能书一本|r
  ]],
 --物品类型
 item_type = '神符',
@@ -39,6 +40,7 @@ function mt:on_cast_start()
         hero:add('每秒加金币',self.per_gold)
         hero:add('杀怪加金币',self.kill_gold)
         hero:add('攻击加金币',self.attack_gold)
+        hero:add_item('随机技能书',true)
         p.mall_flag[name] = true
         
         local tip = '|cffFFE799【系统消息】|r恭喜 |cff00ffff'..p:get_name()..'|r 获得|cffff0000金币礼包|r |cffFFE799【礼包奖励】|r|cff00ff00每秒加500金币，杀怪+500金币，攻击+500金币|r'

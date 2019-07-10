@@ -18,6 +18,7 @@ local error_handle = runtime.error_handle
 local table_insert = table.insert
 local table_remove = table.remove
 local math_tointeger = math.tointeger
+local auto_fresh_loop
 
 -- 充能动画帧数
 local CHARGE_FRAME = 8
@@ -1329,6 +1330,9 @@ function mt:show()
 			(self.hide_count == 0 and 0x01 or 0x00)
 		)
 	end
+	if self.owner and not self.auto_fresh_timer then 
+		self.auto_fresh_timer = auto_fresh_loop(self.owner,self)
+	end	
 end
 
 --是否隐藏
@@ -1670,6 +1674,20 @@ function mt:fresh()
 	self:set_hotkey(self:get_hotkey())
 end
 
+auto_fresh_loop = function (unit,skill)
+	local self = unit
+	ac.loop(1000, function(t)
+		if skill.removed or skill:is_hide() then
+			t:remove()
+			skill.auto_fresh_timer = nil
+			return
+		end
+		if self:get_owner().selected and skill.owner == self:get_owner().selected then 
+			skill:fresh_tip()
+		end	
+	end)
+	return true 
+end	
 --英雄添加技能
 --	技能名
 --	技能类型
@@ -1737,17 +1755,10 @@ function unit.__index:add_skill(name, type, slotid, data)
 	
 	--每秒刷新技能
 	--选择英雄时，如果是重复用同一套 ability，技能描述会再被刷新为最后一次添加的描述
-	--改为 刷新 当前选择的单位的tip
-	if skill.auto_fresh_tip then
-		ac.loop(1000, function(t)
-			if skill.removed then
-				t:remove()
-				return
-			end
-			if self:get_owner().selected and skill.owner == self:get_owner().selected then 
-				skill:fresh_tip()
-			end	
-		end)
+	--改为 刷新 当前选择的单位的tip 
+	--改为 隐藏不刷新，显示才刷新，避免魔法书过多造成卡顿
+	if skill.auto_fresh_tip and not skill.is_spellbook then
+		skill.auto_fresh_timer = auto_fresh_loop(self,skill)
 	end
 
 	if type == '物品' then

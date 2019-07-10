@@ -8,6 +8,7 @@ mt{
 	level = 1,
 
 	max_level = 5,
+	auto_fresh_tip = false,
 	
 	tip = [[
 		
@@ -55,17 +56,19 @@ function mt:on_cast_shot()
         -- 没有所有者 ，视为在地图上
         -- 在地图上 被隐藏的，一般为默认切换背包时的装备 或者 为添加物品给英雄，没有添加成功
         if not v.owner  then 
-            -- print(v.name,v._eff)
-            local item_unit = v._eff.unit
-            if item_unit then 
-                if item_unit:is_in_range(hero,self.area) then 
-                    if v.name =='学习技能' then 
-                        ac.item.add_skill_item(v,hero)
-                    else 
-                        hero:add_item(v,true)
-                    end
-                end    
-            end    
+			-- print(v.name,v._eff)
+			if v._eff then 
+				local item_unit = v._eff.unit
+				if item_unit then 
+					if item_unit:is_in_range(hero,self.area) then 
+						if v.name =='学习技能' then 
+							ac.item.add_skill_item(v,hero)
+						else 
+							hero:add_item(v,true)
+						end
+					end    
+				end    
+			end	
         end	
     end
 	

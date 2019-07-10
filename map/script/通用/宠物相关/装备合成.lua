@@ -8,6 +8,7 @@ mt{
     is_skill = true,
     
     content_tip = '',
+	auto_fresh_tip = false,
 
     art = [[other\hecheng.blp]],
     tip = [[

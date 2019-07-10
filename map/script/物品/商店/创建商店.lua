@@ -40,6 +40,12 @@ local function init_shop()
                             shop:remove_restriction '无敌'
                             shop:set('生命上限',500000)
                             shop:set('护甲',100)
+                            shop:event '受到伤害开始'(function(trg,damage)
+                                local source = damage.source
+                                local target = damage.target
+                                -- print(string.format('%.f%%',target:get('生命')/target:get('生命上限')*100))
+                                ac.player.self:sendMsg('基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
+                            end)
                         end    
                         if name == '游戏说明' then
                             shop:remove_restriction '无敌'

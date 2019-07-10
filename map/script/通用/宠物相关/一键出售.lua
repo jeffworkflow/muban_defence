@@ -8,7 +8,7 @@ mt{
 	level = 1,
 
 	max_level = 5,
-	
+	auto_fresh_tip = false,
 	tip = [[
 
 |cffFFE799【使用说明】：|r

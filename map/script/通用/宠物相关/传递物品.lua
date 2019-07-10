@@ -8,6 +8,7 @@ mt{
     level = 1,
     --目标类型
     target_type = ac.skill.TARGET_TYPE_UNIT,
+	auto_fresh_tip = false,
 
     --目标允许
     target_data = '物品',

@@ -23,7 +23,7 @@ function ac.item.create_skill_item(name,poi,is)
 
     item:set_name(name) 
     item.skill_name = name
-    item.tip =  tip .. '|cff808080当技能学满后，点击可替换已学技能|r' 
+    item.tip =  (tip or '') .. '|cff808080当技能学满后，点击可替换已学技能|r' 
     item:set_art(art)
     item.art = art
 	--混合图标处理
