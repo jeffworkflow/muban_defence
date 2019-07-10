@@ -20,7 +20,7 @@ mt{
 |cffffff00+%全属性%  |cff00ff00全属性
 |cffffff00+%暴击几率% |cffffff00%  |cff00ff00暴击几率
 |cffffff00+%暴击加深% |cffffff00% |cff00ff00暴击加深
-|cffffff00+%物理伤害加成% |cffffff00%  |cff00ff00物理伤害加成
+|cffffff00+%物理伤害加深% |cffffff00%  |cff00ff00物理伤害加深
 |cffffff00+%免伤几率% |cffffff00%  |cff00ff00免伤几率|r
 ]],
     xxzhtip = function(self)
@@ -67,7 +67,7 @@ mt{
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][4] 
     end,
-    ['物理伤害加成'] = function (self)
+    ['物理伤害加深'] = function (self)
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][5] 
     end,
