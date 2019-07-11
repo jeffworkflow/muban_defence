@@ -341,11 +341,11 @@ local devil_deal ={
 |cffFFE799【奖励】|r|cff00ff00+10%每秒回血|r
     ]]},
 
-{'无所不能lv6',false,'减少周围护甲',500,'木头',2100,[[liliang.blp]],[[
+{'无所不能lv6',false,'减少周围护甲',200,'木头',2100,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv6|r
     
-|cffFFE799【奖励】|r|cff00ff00+500减少周围护甲|r
+|cffFFE799【奖励】|r|cff00ff00+200减少周围护甲|r
     ]]},
 
  {'无所不能lv7',false,'全属性',1600000,'木头',2450,[[liliang.blp]],[[
