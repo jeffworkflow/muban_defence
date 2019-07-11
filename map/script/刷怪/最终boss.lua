@@ -7,6 +7,8 @@ ac.game:event '游戏-最终boss' (function(trg)
     end    
     local point = ac.map.rects['刷怪-boss']:get_point()
     local boss = ac.player.com[2]:create_unit(ac.attack_boss[#ac.attack_boss],point)
+    boss:add_skill('无敌','英雄')
+    boss:add_skill('撕裂大地','英雄')
     if ac.creep['刷怪1'] then 
         table.insert(ac.creep['刷怪1'].group,boss)
     end    

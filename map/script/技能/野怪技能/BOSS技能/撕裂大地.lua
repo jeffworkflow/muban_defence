@@ -3,7 +3,7 @@ mt{--目标类型 = 单位
 target_type = ac.skill.TARGET_TYPE_POINT,
 --施法信息
 cast_start_time = 0,
-cast_channel_time = 1.5,
+cast_channel_time = 0.5,
 cast_shot_time = 0,
 cast_finish_time = 1,
 --初始等级
@@ -19,11 +19,14 @@ tip = [[
 cost_data = {	type = '魔法',	num_type = '三维',	rate = 0.2,},
 --范围
 range = 1000,
-area = 500,
---致盲
-stun = 2,
+area = 750,
+damage = function(self)
+    return self.owner:get('暴击加深')*self.owner:get('攻击')
+end,    
+--晕眩
+stun = 1,
 --冷却
-cool = 3}
+cool = 7}
 mt.effect = [[Abilities\Spells\Other\Volcano\VolcanoDeath.mdl]]
 mt.effect2 = [[Abilities\Spells\Orc\EarthQuake\EarthQuakeTarget.mdl]]
 
@@ -61,12 +64,15 @@ function mt:boss_skill_shot()
         {
             source = hero,
             skill = self,
-            damage = hero:get('攻击')*10
+            damage = self.damage
         }
     end
 end
 
 function mt:on_cast_start()
+    -- if self:is_cooling() then 
+    --     return 
+    -- end    
     self.eft = ac.warning_effect_ring
     {
         point = self.target,
@@ -83,6 +89,7 @@ function mt:on_cast_stop()
     if self.eft then
         self.eft:remove()
     end
+    -- self:active_cd()
 end
 
 function mt:on_remove()

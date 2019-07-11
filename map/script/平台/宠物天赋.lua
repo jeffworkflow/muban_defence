@@ -74,7 +74,7 @@ mt{
     need_xp_tip =  function(self,hero )
         return '|cff00ffff升级还需经验：|r'..'|cff'..ac.color_code['绿']..self.need_xp..'|r'
     end,
-    need_xp = 500,
+    need_xp = 1000,
     effect =  [[Hero_CrystalMaiden_N2_V_boom.mdx]],   
 	
 }
@@ -197,7 +197,7 @@ end)
 function unit.__index:peon_get_upgrade_xp(lv)
     local lv = lv or 0
     if lv >0 then 
-        return self:peon_get_upgrade_xp(lv-1) + lv *500	 
+        return self:peon_get_upgrade_xp(lv-1) + lv *1000	 
     else 
         return 0
     end        
@@ -265,8 +265,8 @@ end
 
 --宠物经验书处理
 local peon_xp_item ={
-    {'宠物经验书(小)',100},
-    {'宠物经验书(大)',2500}
+    {'宠物经验书(小)',50},
+    {'宠物经验书(大)',1000}
 }
 for i,data in ipairs(peon_xp_item) do
     --物品名称

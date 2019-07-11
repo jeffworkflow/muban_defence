@@ -21,3 +21,5 @@ require '技能.野怪技能.BOSS技能.血之祭祀'
 -- require '技能.野怪技能.BOSS技能.法力流失'
 require '技能.野怪技能.BOSS技能.超新星'
 -- require '技能.野怪技能.BOSS技能.分裂箭'
+
+require '技能.野怪技能.BOSS技能.无敌'

@@ -375,6 +375,8 @@ function helper:test_kill_unit()
 		for i=1,40 do
 			local u = ac.player(12):create_unit('民兵',ac.point(0,0))
 			u:kill()
+			-- local handle = jass.CreateUnit(ac.player(12).handle, base.string2id('u002') , 0, 0, 0)
+			-- jass.RemoveUnit(handle)	
 		end    
 	end)
 	ac.test_unit:on_timer()
@@ -896,7 +898,7 @@ function helper:fb(str)
 	for i=1,3 do 
 		local creep = ac.creep['刷怪'..i]
 		creep.index = tonumber(str) - 1
-		ac.creep['刷怪']:next()
+		creep:next()
 	end	
 end
 --测试商店

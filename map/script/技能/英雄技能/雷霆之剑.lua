@@ -37,9 +37,9 @@ end,
 ]],
 
     --爆炸范围
-    boom_area = 150,
+    boom_area = 200,
     --投射物数量
-    count = 2,
+    count = 5,
     model = [[leitingzhijian.mdx]],
     art = [[leitingzhijian.blp]],
     damage_type = '法术'

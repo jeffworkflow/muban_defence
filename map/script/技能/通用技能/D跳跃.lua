@@ -117,10 +117,10 @@ function mt:on_cast_shot()
 		end	
 		local total_distance = new_point *source_point
 
-		if  self.moved >= total_distance*0.8 then 
-			-- print(self.speed)
-			self.speed = self.speed /1.5
-		end	
+		-- if  self.moved >= total_distance*0.8 then 
+		-- 	-- print(self.speed)
+		-- 	self.speed = self.speed /1.5
+		-- end	
 		-- self.accel 0.03 * 1500  45 500/45 运动11次。 
 	end	
 	function mvr:on_block()

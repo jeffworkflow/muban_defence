@@ -15,7 +15,7 @@ ac.attack_boss = {
 }  
 local force_cool = 3*60
 if global_test then 
-    force_cool = 180
+    force_cool = 10
 end    
 local skill_list = ac.skill_list
 for i =1,3 do 
@@ -64,6 +64,7 @@ for i =1,3 do
         unit:set_search_range(500)
         local point = ac.map.rects['主城']:get_point()
         unit:issue_order('attack',point)
+
     end
     --每3秒刷新一次攻击目标 原地不动才发起攻击
     function mt:attack_hero() 
@@ -134,6 +135,9 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
         else
             local boss = ac.player.com[2]:create_unit(ac.attack_boss[ix],point)
             table.insert(ac.creep['刷怪1'].group,boss)
+            boss:add_skill('无敌','英雄')
+            boss:add_skill('撕裂大地','英雄')
+            
         end    
 
     end    

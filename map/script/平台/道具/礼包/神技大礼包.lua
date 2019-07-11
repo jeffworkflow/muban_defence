@@ -36,7 +36,7 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[szdlb.blp]],
+art = [[sjdlb.blp]],
 is_order = 1,
 item_type ='消耗品',
 --说明
