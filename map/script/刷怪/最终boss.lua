@@ -5,7 +5,7 @@ ac.game:event '游戏-最终boss' (function(trg)
         ac.player.self:sendMsg('|cff00bdec【系统消息】|r 最终boss已出现|r，请大家共同前往击杀',3)
         return 
     end    
-    local point = ac.map.rects['刷怪-boss']:get_point()
+    local point = ac.map.rects['进攻点']:get_point()
     local boss = ac.player.com[2]:create_unit(ac.attack_boss[#ac.attack_boss],point)
     boss:add_skill('无敌','英雄')
     boss:add_skill('撕裂大地','英雄')

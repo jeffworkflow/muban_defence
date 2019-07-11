@@ -128,7 +128,7 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
     local value = ac.creep['刷怪1'].index % 5
     local ix = math.ceil(ac.creep['刷怪1'].index / 5)
     if value == 0 then 
-        local point = ac.map.rects['刷怪-boss']:get_point()
+        local point = ac.map.rects['进攻点']:get_point()
         --最后一波时，发布最终波数
         if ix == #ac.attack_boss then
             ac.game:event_dispatch('游戏-最终boss')
