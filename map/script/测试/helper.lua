@@ -370,11 +370,14 @@ end
 
 
 --测试杀怪内存
-function helper:test_kill_unit()
+function helper:test_k_u()
+	local point = ac.map.rects['出生点']
+	local u = ac.player(1):create_unit('甲虫',point)
+
 	ac.test_unit = ac.loop(1000,function()
 		for i=1,40 do
-			local u = ac.player(12):create_unit('民兵',ac.point(0,0))
-			u:kill()
+			local dummy = u:create_illusion(u:get_point())
+			dummy:kill()
 			-- local handle = jass.CreateUnit(ac.player(12).handle, base.string2id('u002') , 0, 0, 0)
 			-- jass.RemoveUnit(handle)	
 		end    

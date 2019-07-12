@@ -1070,11 +1070,12 @@ function mt:create_illusion(p, no_item)
 		return
 	end
 	local handle = last_summoned_unit
-	if not handle then
+	if not handle or handle ==0 then
 		return
 	end
 	dbg.handle_ref(handle)
 	last_summoned_unit = nil
+	unit.remove_handle_map[handle] = nil  --需要重新赋值，已移除的可以重新引用
 	jass.SetUnitOwner(handle, self:get_owner().handle, false)
 	local dummy = unit.init_illusion(handle, self:get_owner())
 	jass.SetUnitBlendTime(handle, dummy:get_slk('blend', 0))
@@ -1316,6 +1317,7 @@ function unit.init_unit(handle, p)
 	end
 	local data = ac.table.UnitData[u:get_name()]
 	if data then
+		u.data = data
 		u.unit_type = data.unit_type
 		if data.attribute then
 			for k, v in sortpairs(data.attribute) do
@@ -1380,7 +1382,10 @@ function player.__index:create_unit(id, where, face)
 	else
 		x, y = where:get_point():get()
 	end
-
+	-- local u = ac.game:event_dispatch('单位-创建前',data,self,j_id, x, y,face)
+	-- if u then 
+	-- 	return u 
+	-- end	
 	ignore_flag = true
 	local handle = jass.CreateUnit(self.handle, j_id, x, y, face or 0)
 	unit.remove_handle_map[handle] = nil 
@@ -2099,6 +2104,7 @@ function unit.init()
 	ac.dummy:add_ability 'A01W'
 	local j_trg = war3.CreateTrigger(function()
 		last_summoned_unit = jass.GetSummonedUnit()
+		-- print('上次幻象handle:',last_summoned_unit,jass.GetSummonedUnit())
 	end)
 
 	for i = 0, 15 do
