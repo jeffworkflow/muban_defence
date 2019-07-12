@@ -30,27 +30,27 @@ local function cast_skill(hero,target)
     end    
 end    
 
--- ac.game:event '造成伤害开始' (function (_,damage)
---     if damage:is_common_attack() == false then 
---         return 
---     end
---     local hero = damage.source 
---     local target = damage.target
---     -- print(rand)
---     local rand = math.random(100)
---     if rand <= 15 then 
---         cast_skill(hero,target)
---     end 
--- end)
-
-
-ac.loop(1000,function()
-    for _,u in ac.selector()
-        : in_rect()
-        : is_type('boss')
-        : ipairs()
-    do
-        cast_skill(u,u)
+ac.game:event '造成伤害开始' (function (_,damage)
+    if damage:is_common_attack() == false then 
+        return 
     end
-
+    local hero = damage.source 
+    local target = damage.target
+    -- print(rand)
+    local rand = math.random(100)
+    if rand <= 100 then 
+        cast_skill(hero,target)
+    end 
 end)
+
+
+-- ac.loop(1000,function()
+--     for _,u in ac.selector()
+--         : in_rect()
+--         : is_type('boss')
+--         : ipairs()
+--     do
+--         cast_skill(u,u)
+--     end
+
+-- end)

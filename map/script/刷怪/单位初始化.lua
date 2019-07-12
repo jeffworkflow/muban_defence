@@ -31,6 +31,8 @@ ac.game:event '单位-创建' (function(_,unit)
     unit.exp= data.exp
     unit.fall_rate= data.fall_rate
 
+    --设置搜敌范围
+    unit:set_search_range(500)
     --根据难度增强属性 
     if data.attribute then  
         unit:set('攻击',data.attribute['攻击'] )

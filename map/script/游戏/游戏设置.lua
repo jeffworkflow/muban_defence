@@ -101,6 +101,17 @@ end
 function Unit.__index:add_fire_seed(num)
 	self:get_owner():add_fire_seed(num, where or self, flag)
 end
+local function findunit_byname(name)
+	local unit
+	for key,val in pairs(ac.unit.all_units) do 
+		if val:get_name() == name then 
+			unit = val
+			break
+		end
+	end	
+	return unit
+end	
+ac.game.findunit_byname = findunit_byname
 
 
 --禁止A队友
@@ -112,7 +123,17 @@ ac.game:event '单位-攻击开始' (function(self, data)
 		end	
 	end
 end)
-
+--游戏说明 被玩家12攻击则无敌5秒
+ac.game:event '游戏-开始' (function()
+	local unit = ac.game.findunit_byname('游戏说明')
+	unit:event '受到伤害效果'(function(_,damage)
+		if damage.source:get_owner().id >=11 then 
+			damage.target:add_buff '无敌'{
+				time = 5
+			}
+		end	
+	end)
+end)
 
 ac.map = {}
 ac.map_area =  ac.rect.map
