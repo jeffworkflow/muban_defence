@@ -33,6 +33,7 @@ ac.game:event '单位-创建' (function(_,unit)
 
     --设置搜敌范围
     unit:set_search_range(500)
+    local attr_mul = get_difficult(ac.g_game_degree_attr)
     --根据难度增强属性 
     if data.attribute then  
         unit:set('攻击',data.attribute['攻击'] )
@@ -41,12 +42,17 @@ ac.game:event '单位-创建' (function(_,unit)
         unit:set('生命恢复',data.attribute['生命恢复'])
         unit:set('魔法恢复',data.attribute['魔法恢复'])
         -- print(ac.g_game_degree_attr)
-        local attr_mul = get_difficult(ac.g_game_degree_attr)
         unit:set('护甲',data.attribute['护甲'] *  (attr_mul or 1))
         unit:set('魔抗',data.attribute['护甲'] * (attr_mul or 1))
 
         unit:set('暴击加深',data.attribute['暴击加深'] * (attr_mul or 1))
     end    
+
+    --单独增强最终boss
+    if unit:get_name() == '最终boss' then
+        unit:set('攻击减甲',data.attribute['攻击减甲'] * (ac.g_game_degree_attr or 1) )
+    end    
+
 
     --根据玩家数量，怪物属性倍数 5  20 . 5 40， 20*1.1 = 22
     -- local attr_mul = ( get_player_count() -1 ) * 5
