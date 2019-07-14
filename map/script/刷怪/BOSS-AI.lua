@@ -38,7 +38,7 @@ ac.game:event '造成伤害开始' (function (_,damage)
     local target = damage.target
     -- print(rand)
     local rand = math.random(100)
-    if rand <= 100 then 
+    if rand <= 30 then 
         cast_skill(hero,target)
     end 
 end)

@@ -3,7 +3,7 @@ mt{--目标类型 = 单位
 target_type = ac.skill.TARGET_TYPE_POINT,
 --施法信息
 cast_start_time = 0,
-cast_channel_time = 0.5,
+cast_channel_time = 1,
 cast_shot_time = 0,
 cast_finish_time = 0.1,
 --初始等级
@@ -17,7 +17,7 @@ tip = [[
 ]],
 --范围
 range = 1000,
-area = 500,
+area = 750,
 --致盲
 stun = 2,
 --冷却
