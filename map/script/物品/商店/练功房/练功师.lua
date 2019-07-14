@@ -8,12 +8,12 @@ ac.pratice_man ={
     ['小金币怪'] = {'小金币怪',[[ReplaceableTextures\CommandButtons\BTNChestOfGold.blp]],'\n\n|cff00ff00召唤15只小金币怪，每只提供1000金币|n|r'} ,
     ['中金币怪'] = {'中金币怪',[[ReplaceableTextures\CommandButtons\BTNChestOfGold.blp]],'\n\n|cff00ff00召唤15只中金币怪，每只提供3500金币|n|r'} ,
     ['大金币怪'] = {'大金币怪',[[ReplaceableTextures\CommandButtons\BTNChestOfGold.blp]],'\n\n|cff00ff00召唤15只大金币怪，每只提供10000金币|n|r'} ,
-    ['小木头怪'] = {'小木头怪',[[ReplaceableTextures\CommandButtons\BTNBundleOfLumber.blp]],'\n\n|cff00ff00召唤15只小木头怪，每只提供2木头|n|r'} ,
-    ['中木头怪'] = {'中木头怪',[[ReplaceableTextures\CommandButtons\BTNBundleOfLumber.blp]],'\n\n|cff00ff00召唤15只中木头怪，每只提供5木头|n|r'} ,
+    ['小木头怪'] = {'小木头怪',[[ReplaceableTextures\CommandButtons\BTNBundleOfLumber.blp]],'\n\n|cff00ff00召唤15只小木头怪，每只提供2.5木头|n|r'} ,
+    ['中木头怪'] = {'中木头怪',[[ReplaceableTextures\CommandButtons\BTNBundleOfLumber.blp]],'\n\n|cff00ff00召唤15只中木头怪，每只提供6木头|n|r'} ,
     ['大木头怪'] = {'大木头怪',[[ReplaceableTextures\CommandButtons\BTNBundleOfLumber.blp]],'\n\n|cff00ff00召唤15只大木头怪，每只提供15木头|n|r'} ,
-    ['超大木头怪'] = {'超大木头怪',[[ReplaceableTextures\CommandButtons\BTNBundleOfLumber.blp]],'\n\n|cff00ff00召唤15只超大木头怪，每只提供50木头|n|r'} ,
-    ['小火灵怪'] = {'小火灵',[[ReplaceableTextures\CommandButtons\BTNVoidWalker.blp]],'\n\n|cff00ff00召唤15只小火灵怪，每只提供10火灵|n|r'} ,
-    ['中火灵怪'] = {'中火灵',[[ReplaceableTextures\CommandButtons\BTNVoidWalker.blp]],'\n\n|cff00ff00召唤15只中火灵怪，每只提供35火灵|n|r'} ,
+    ['超大木头怪'] = {'超大木头怪',[[ReplaceableTextures\CommandButtons\BTNBundleOfLumber.blp]],'\n\n|cff00ff00召唤15只超大木头怪，每只提供30木头|n|r'} ,
+    ['小火灵怪'] = {'小火灵',[[ReplaceableTextures\CommandButtons\BTNVoidWalker.blp]],'\n\n|cff00ff00召唤15只小火灵怪，每只提供12火灵|n|r'} ,
+    ['中火灵怪'] = {'中火灵',[[ReplaceableTextures\CommandButtons\BTNVoidWalker.blp]],'\n\n|cff00ff00召唤15只中火灵怪，每只提供40火灵|n|r'} ,
     ['大火灵怪'] = {'大火灵',[[ReplaceableTextures\CommandButtons\BTNVoidWalker.blp]],'\n\n|cff00ff00召唤15只大火灵怪，每只提供100火灵|n|r'} ,
 }
 
