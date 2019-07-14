@@ -40,14 +40,30 @@ local function init_shop()
                             shop:remove_restriction '无敌'
                             shop:set('生命上限',500000)
                             shop:set('护甲',100)
-                            shop:event '受到伤害开始'(function(trg,damage)
+                            local function send_msg()
+                                --红屏提醒
+                                if shop:get '生命' / shop:get '生命上限' < 0.30  then
+                                    local f1 = ac.player.self:cinematic_filter
+                                    {   
+                                        file = 'xueliangguodi.blp',
+                                        start = {100, 100, 100, 100},
+                                        finish = {100, 100, 100, 0},
+                                        time = 5,
+                                    }
+                                end
+                            end  
+                            ac.send_msg = send_msg  
+                            shop:event '受到伤害结束'(function(trg,damage)
                                 local source = damage.source
                                 local target = damage.target
-                                -- print(string.format('%.f%%',target:get('生命')/target:get('生命上限')*100))
                                 ac.player.self:sendMsg('|cffff0000基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
                                 ac.player.self:sendMsg('|cffff0000基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
                                 ac.player.self:sendMsg('|cffff0000基地受到伤害，剩余血量：'.. string.format('%.f%%',target:get('生命')/target:get('生命上限')*100),1)
+                                send_msg()
                             end)
+                            -- shop:event '单位-即将死亡'(function(trg,unit,killer)
+                            --     print('单位即将死亡')
+                            -- end)
                         end    
                         if name == '游戏说明' then
                             shop:remove_restriction '无敌'
@@ -58,6 +74,7 @@ local function init_shop()
                         
                         if name == '魔鬼的交易' then
                             ac.game:event_notify('单位-创建商店', shop)
+                            shop:add_restriction '禁锢'
                             --注册区域事件
                             local rct =  ac.rect.j_rect(str)
                             local region = ac.region.create(rct)

@@ -1072,7 +1072,7 @@ end
 --物品名称
 --位置
 --是否创建特效，默认创建,true 不创建， false 创建
-function ac.item.create_item(name,poi,is)
+function item.create_item(name,poi,is)
 	--创建一个物品
 	local items = setmetatable({},item)
 	
@@ -1191,7 +1191,7 @@ end
 
 --创建物品 - 商店使用
 --@商品位置 必填
-function item.create(name,pos)
+function item.create(name,pos,seller)
 	
 	--创建一个物品
 	local items = setmetatable({},item)
@@ -1230,7 +1230,6 @@ function item.create(name,pos)
 	items:set_name(name)
 	--设置贴图
 	items:set_art(items.art)
-
 	--技能处理
 	-- local flag 
 	-- for i,v in ipairs(ac.skill_list2) do

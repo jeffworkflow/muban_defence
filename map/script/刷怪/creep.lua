@@ -513,14 +513,15 @@ function mt:finish(is_unit_kill)
         self.wait_timer:remove()
         self.wait_timer = nil
     end
-
-    for k,v in sortpairs(self.creep_timer) do
-         --print('移除计时器',k,v)
-        if v then 
-            v:remove()
-            self.creep_timer[k] = nil
-        end    
-    end	
+    if self.creep_timer then 
+        for k,v in sortpairs(self.creep_timer) do
+            --print('移除计时器',k,v)
+            if v then 
+                v:remove()
+                self.creep_timer[k] = nil
+            end    
+        end	
+    end    
     
     if self.on_finish then
         self:on_finish()

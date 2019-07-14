@@ -14,10 +14,10 @@ for i=1,10 do
         p.mall_flag = {}
     end  
     -- 作弊
-    if finds(p:get_name(),'后山一把刀','卡卡发动机','后山一把火','蜗牛互娱','Ta丶aaaa') then 
-        p.cheating = true 
-        require '测试.helper'
-    end  
+    -- if finds(p:get_name(),'后山一把刀','卡卡发动机','后山一把火','蜗牛互娱','Ta丶aaaa') then 
+    --     p.cheating = true 
+    --     require '测试.helper'
+    -- end  
 end
 
 --初始化1  copy 网易数据到自己的服务器去； 

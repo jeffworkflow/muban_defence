@@ -26,7 +26,18 @@ wood = 50000,
 target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 0,
-cnt = 1,
+cnt = function(self)
+    local unit 
+    for key,val in pairs(ac.shop.unit_list) do 
+        if val:get_name() == '基地' then 
+            -- print(val:get(str))
+            unit = val
+            break
+        end	
+    end	
+    local skl = unit and unit:find_skill('重生')
+    return  skl and skl.cnt  or 1
+end    ,
 --全属性
 award_all_attr = 1288888,
 content_tip = '|cffFFE799【使用说明】：|r',
@@ -37,6 +48,20 @@ is_skill = true,
 
 --刚开始给与一次重生机会
 
+-- function mt:on_shop_add()
+--     local unit = self.owner
+--     print(unit:get_name())
+--     local skl = unit:find_skill('重生')
+--     if not skl then 
+--         skl = unit:add_skill('重生','隐藏')
+--     else
+--         skl.cnt = skl.cnt + 1
+--     end   
+--     local shop_item = ac.item.shop_item_map[self.name]
+--     shop_item:set('cnt',skl.cnt)
+--     shop_item:set_tip(shop_item:get_tip())
+
+-- end    
 ac.game:event '游戏-回合开始'(function(_,index,creep)
     if not finds(creep.name,'刷怪1') then
         return 
@@ -52,10 +77,11 @@ ac.game:event '游戏-回合开始'(function(_,index,creep)
         end	
         local skl = unit:find_skill('重生')
         if not skl then 
-            unit:add_skill('重生','隐藏')
+            skl = unit:add_skill('重生','隐藏')
         else
             skl.cnt = skl.cnt + 1
         end  
+       
         --添加基地保护buff 基地保护
         -- print(unit:get_name())
         unit:add_buff('基地保护'){
@@ -69,11 +95,10 @@ function mt:on_cast_start()
     local unit = self.seller
     local skl = unit:find_skill('重生')
     if not skl then 
-        unit:add_skill('重生','隐藏')
+        skl = unit:add_skill('重生','隐藏')
     else
         skl.cnt = skl.cnt + 1
     end   
-    self:set('cnt',skl.cnt)
 
     local hero = self.owner
     local player = hero:get_owner()

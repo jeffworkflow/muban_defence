@@ -43,12 +43,15 @@ ac.game:event '单位-创建前'(function(_,data,self,j_id, x, y,face)
         unit.remove_handle_map[handle] = nil 
         u.removed = nil
         u._is_alive = true
-        -- u:remove_restriction '隐藏'
+        u:remove_restriction '隐藏'
         u:remove_restriction '定身'
         u:remove_restriction '无敌'
         -- u:remove_restriction '禁锢'
         u:remove_restriction '缴械'
         u:set('生命', u:get '生命上限')
+        if u:getAbilityLevel 'Aloc' == 0 then
+            u:event_notify('单位-创建', u)
+        end
         return u
     end    
 end)
@@ -58,7 +61,7 @@ ac.game:event '单位-移除'(function(_,self)
         return 
     end    
     --处理移除时，单位操作
-    -- self:add_restriction '隐藏'
+    self:add_restriction '隐藏'
     self:add_restriction '定身'
     self:add_restriction '无敌'
     -- self:add_restriction '禁锢'

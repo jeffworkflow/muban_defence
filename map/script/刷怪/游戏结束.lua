@@ -38,23 +38,23 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		return 
 	else
 		name = '【游戏失败】'
+		ac.player.self:sendMsg("【游戏失败】")
+		ac.player.self:sendMsg("【游戏失败】")
+		ac.player.self:sendMsg("【游戏失败】")
+		ac.wait(30*1000,function()
+			EndGame(true)
+		end)
+	end	
+	ac.wait(3000,function()
 		panel = class.hero_info_panel.get_instance()
 		panel:show()
-		ac.player.self:sendMsg("【游戏失败】")
-		ac.player.self:sendMsg("【游戏失败】")
-		ac.player.self:sendMsg("【游戏失败】")
-		-- ac.wait(30*1000,function()
-		-- 	EndGame(true)
-		-- end)
-	end	
-	ac.wait(4000,function()
         for i=1,8 do
             local player = ac.player[i]
             if player:is_player() then
                 CustomDefeatBJ(player.handle,name)
-                -- player.hero:add_restriction('无敌')
-                -- player.hero:add_restriction('缴械')
-                -- player.hero:add_restriction('定身')
+                player.hero:add_restriction('无敌')
+                player.hero:add_restriction('缴械')
+                player.hero:add_restriction('定身')
             end
         end
     end)
@@ -65,9 +65,9 @@ ac.game:event '游戏-结束' (function(trg,flag)
 		end	
 	end	
 	--停止吸怪
-	if global_test then 
-		return 
-	end	 
+	-- if global_test then 
+	-- 	return 
+	-- end	 
 	--聚集地
 	local point = ac.map.rects['游戏结束']	
 	--停止运动
@@ -133,7 +133,8 @@ ac.game:event '游戏-结束' (function(trg,flag)
 	
 	--镜头动画
 	local p = player.self
-	p:setCamera(u:get_point() + {0, 300}, 1.5)
+	local time = 2.5 --动画时间
+	p:setCamera(u:get_point() + {0, 300}, time)
 	p:hideInterface(1.5)
 
 	local t = ac.wait(10 * 1000, function()

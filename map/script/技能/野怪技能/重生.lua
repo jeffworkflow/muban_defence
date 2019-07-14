@@ -30,10 +30,21 @@ function mt:on_add()
         local point = hero:get_point()
         local effect = ac.effect(point,self.effect,0,1,'origin')
         -- local effect = hero:add_effect('origin',self.effect)
-        
+        --发送红色信号
+        if unit:get_name() == '基地' then
+            local f1 = ac.player.self:cinematic_filter
+            {   
+                file = 'xueliangguodi.blp',
+                start = {100, 100, 100, 100},
+                finish = {100, 100, 100, 0},
+                time = 5,
+            }
+        end    
+
         hero:add_restriction '隐藏'
         hero:add_restriction '定身'
         hero:add_restriction '无敌'
+        hero:add_restriction '缴械'
 
         ac.wait(self.time*1000,function ()
 
@@ -41,6 +52,7 @@ function mt:on_add()
             hero:remove_restriction '隐藏'
             hero:remove_restriction '无敌'
             hero:remove_restriction '定身'
+            hero:remove_restriction '缴械'
 
             --用 set,生命加成可能会有问题
             hero:add('生命', hero:get '生命上限')

@@ -108,11 +108,12 @@ function mt:add_sell_item(name,i)
 		end
 	end
 
-	local item = ac.item.create(name,i)
+	local item = ac.item.create(name,i,seller)
 	if not item then 
 		return 
 	end
 	item.shop_slot_id = i
+	-- print('设置seller',self:get_name())
 	-- item:set_store_title('                   '..self:get_name())
 	item:set_store_title(item.store_name)
 	--每秒刷新商店介绍
