@@ -3,9 +3,9 @@ mt{--目标类型 = 单位
 target_type = ac.skill.TARGET_TYPE_POINT,
 --施法信息
 cast_start_time = 0,
-cast_channel_time = 0.5,
+cast_channel_time = 1,
 cast_shot_time = 0,
-cast_finish_time = 1,
+cast_finish_time = 0.1,
 --初始等级
 level = 1,
 --技能图标
@@ -21,10 +21,12 @@ cost_data = {	type = '魔法',	num_type = '三维',	rate = 0.2,},
 range = 1000,
 area = 750,
 damage = function(self)
-    return self.owner:get('暴击加深')*self.owner:get('攻击')
-end,    
+    return self.owner:get('攻击')
+end,  
+-- self.owner:get('暴击加深')* 
 --晕眩
 stun = 1,
+damage_type = '物理',
 --冷却
 cool = 7}
 mt.effect = [[Abilities\Spells\Other\Volcano\VolcanoDeath.mdl]]
