@@ -368,18 +368,35 @@ function helper:test_offline()
 	end)
 end	
 
+--测试杀怪内存
+function helper:c1()
+	local point = ac.map.rects['出生点']
+	local u = ac.player(1):create_unit('甲虫',point)
+	u:kill()
+end	
+function helper:c2()
+	local point = ac.map.rects['选人出生点']
+	for i=1,15 do 
+		local u = ac.player(12):create_unit('甲虫',point)
+		u:set('生命上限',32000000)
+		-- ac.wait(5*1000,function()
+		-- 	u:kill()
+		-- end)
+
+	end	
+end	
 
 --测试杀怪内存
 function helper:test_k_u()
 	local point = ac.map.rects['出生点']
-	local u = ac.player(1):create_unit('甲虫',point)
+	-- local u = ac.player(1):create_unit('甲虫',point)
 
 	ac.test_unit = ac.loop(1000,function()
-		for i=1,40 do
-			local dummy = u:create_illusion(u:get_point())
-			dummy:kill()
-			-- local handle = jass.CreateUnit(ac.player(12).handle, base.string2id('u002') , 0, 0, 0)
-			-- jass.RemoveUnit(handle)	
+		for i=1,1 do
+			-- local dummy = u:create_illusion(u:get_point())
+			-- dummy:kill()	
+			local u = ac.player(1):create_unit('甲虫',point)
+			u:kill()
 		end    
 	end)
 	ac.test_unit:on_timer()

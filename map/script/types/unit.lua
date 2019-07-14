@@ -202,10 +202,13 @@ end
 		end
 
 		self._is_alive = false
+		self:set('生命', 300000)
 		self:set('生命', 0)
 		
 		if not self:is_dummy() then
-			jass.KillUnit(self.handle)
+			if self:get_class() ~= '模拟死亡' then
+				jass.KillUnit(self.handle)
+			end	
 			killer:event_notify('单位-杀死单位', killer, self)
 			self:event_notify('单位-死亡', self, killer)
 		end
@@ -224,7 +227,7 @@ end
 				buffs[i]:remove()
 			end
 		end
-		if self:is_illusion() then
+		if self:is_illusion() or self:get_class() == '模拟死亡' then
 			self:remove()
 		elseif not self:is_hero() then
 			self:wait_to_remove()
@@ -240,7 +243,9 @@ end
 		self.removed = true
 		
 		self._last_point = ac.point(jass.GetUnitX(self.handle), jass.GetUnitY(self.handle))
-		self:event_notify('单位-移除', self)
+		if self:event_dispatch('单位-移除', self) then 
+			return 
+		end	
 
 		self:removeAllEffects()
 
@@ -260,13 +265,6 @@ end
 			skill:remove()
 		end
 
-		--移除单位身上的物品
-		-- for i = 1, 6 do
-		-- 	local it = self:find_skill(i, '物品')
-		-- 	if it then
-		-- 		it:remove()
-		-- 	end
-		-- end
 		--只有英雄才删除物品
 		if self:is_hero() then 
 			for i = 1, 6 do
@@ -287,10 +285,8 @@ end
 		jass.RemoveUnit(self.handle)
 		unit.remove_handle_map[self.handle] = true
 		ignore_flag = false
-		
 		--从表中删除单位
 		unit.all_units[self.handle] = nil
-
 		unit.removed_units[self] = self
 		dbg.handle_unref(self.handle)
 		--商店移除时使用
@@ -1382,10 +1378,11 @@ function player.__index:create_unit(id, where, face)
 	else
 		x, y = where:get_point():get()
 	end
-	-- local u = ac.game:event_dispatch('单位-创建前',data,self,j_id, x, y,face)
-	-- if u then 
-	-- 	return u 
-	-- end	
+	local u = ac.game:event_dispatch('单位-创建前',data,self,j_id, x, y,face)
+	if u then 
+		-- print('不往下继续创建:',u)
+		return u 
+	end	
 	ignore_flag = true
 	local handle = jass.CreateUnit(self.handle, j_id, x, y, face or 0)
 	unit.remove_handle_map[handle] = nil 
@@ -1612,6 +1609,8 @@ function mt:set_class(class)
 			self:add_restriction '无敌'
 		end
 		self._class = '马甲'
+	else	
+		self._class = class
 	end
 end
 
@@ -2045,58 +2044,55 @@ function unit.init()
 	end)
 
 	
-	-- --捕捉攻击伤害
-	-- local j_trg = war3.CreateTrigger(function()
-
-	-- 	if jass.GetEventDamage() == 1 then
-	-- 		--认为是物理伤害
-	-- 		local source = unit.j_unit(jass.GetEventDamageSource())
-	-- 		local target = unit.j_unit(jass.GetTriggerUnit())
-	-- 		--todo: 传一个普通攻击的技能
-	-- 		source:attack_start(target, nil)
-	-- 	end
-	-- end)
-	-- --每个单位创建时加入捕捉
-	-- ac.game:event '单位-创建' (function(self, u)
-	-- 	jass.TriggerRegisterUnitEvent(j_trg, u.handle, jass.EVENT_UNIT_DAMAGED)
-	-- end)
-
 	--捕捉攻击伤害
-	local j_damage_trg
-	local function create_damage_trg()
-		if j_damage_trg then
-			war3.DestroyTrigger(j_damage_trg)
-		end
-		j_damage_trg = war3.CreateTrigger(function()
-			if jass.GetEventDamage() == 1 then
-				--认为是物理伤害
-				local source = unit.j_unit(jass.GetEventDamageSource())
-				local target = unit.j_unit(jass.GetTriggerUnit())
-				if source then
-					--todo: 传一个普通攻击的技能
-					source:attack_start(target, nil)
-				end
-			end
-		end)
-	end	
-	ac.loop(30 * 1000,function ()
-		create_damage_trg()
-		for _,u in ac.selector()
-			: in_rect()
-			: ipairs()
-		do
-			jass.TriggerRegisterUnitEvent(j_damage_trg, u.handle, jass.EVENT_UNIT_DAMAGED)
-		end
-	end):on_timer()
-	--每个单位创建时加入捕捉
-	ac.game:event '单位-创建' (function(self, u)
-		if j_damage_trg then
-			jass.TriggerRegisterUnitEvent(j_damage_trg, u.handle, jass.EVENT_UNIT_DAMAGED)
-		else
-			create_damage_trg()	
-			jass.TriggerRegisterUnitEvent(j_damage_trg, u.handle, jass.EVENT_UNIT_DAMAGED)
+	local j_trg = war3.CreateTrigger(function()
+
+		if jass.GetEventDamage() == 1 then
+			--认为是物理伤害
+			local source = unit.j_unit(jass.GetEventDamageSource())
+			local target = unit.j_unit(jass.GetTriggerUnit())
+			--todo: 传一个普通攻击的技能
+			source:attack_start(target, nil)
 		end
 	end)
+	--每个单位创建时加入捕捉
+	ac.game:event '单位-创建' (function(self, u)
+		jass.TriggerRegisterUnitEvent(j_trg, u.handle, jass.EVENT_UNIT_DAMAGED)
+	end)
+
+	--捕捉攻击伤害
+	-- local j_damage_trg
+	-- local function create_damage_trg()
+	-- 	if j_damage_trg then
+	-- 		war3.DestroyTrigger(j_damage_trg)
+	-- 	end
+	-- 	j_damage_trg = war3.CreateTrigger(function()
+	-- 		if jass.GetEventDamage() == 1 then
+	-- 			--认为是物理伤害
+	-- 			local source = unit.j_unit(jass.GetEventDamageSource())
+	-- 			local target = unit.j_unit(jass.GetTriggerUnit())
+	-- 			if source then
+	-- 				--todo: 传一个普通攻击的技能
+	-- 				source:attack_start(target, nil)
+	-- 			end
+	-- 		end
+	-- 	end)
+	-- end	
+	-- ac.loop(30 * 1000,function ()
+	-- 	create_damage_trg()
+	-- 	for _,u in ac.selector()
+	-- 		: in_rect()
+	-- 		: ipairs()
+	-- 	do
+	-- 		jass.TriggerRegisterUnitEvent(j_damage_trg, u.handle, jass.EVENT_UNIT_DAMAGED)
+	-- 	end
+	-- end):on_timer()
+	-- --每个单位创建时加入捕捉
+	-- ac.game:event '单位-创建' (function(self, u)
+	-- 	if j_damage_trg then
+	-- 		jass.TriggerRegisterUnitEvent(j_damage_trg, u.handle, jass.EVENT_UNIT_DAMAGED)
+	-- 	end
+	-- end)
 
 	-- 创建一个dummy,用于使用马甲技能
 	ac.dummy = player[16]:create_unit('e003', ac.point(0, 0), 0)
