@@ -451,70 +451,70 @@ local devil_deal ={
 
 
 [7] = {
-{'脚踩祥云lv1',false,'免伤',2.5,'木头',1500,[[liliang.blp]],[[
+{'脚踩祥云lv1',false,'免伤',2.5,'木头',2000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv1|r
     
 |cffFFE799【奖励】|r|cff00ff00+2.5%免伤|r
     ]]},
 
-{'脚踩祥云lv2',false,'每秒回血',10,'木头',3000,[[liliang.blp]],[[
+{'脚踩祥云lv2',false,'每秒回血',10,'木头',4000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv2|r
     
 |cffFFE799【奖励】|r|cff00ff00+10%每秒回血|r
     ]]},
 
-{'脚踩祥云lv3',false,'全属性',4000000,'木头',4500,[[liliang.blp]],[[
+{'脚踩祥云lv3',false,'全属性',4000000,'木头',6000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv3|r
     
 |cffFFE799【奖励】|r|cff00ff00+400w全属性|r
     ]]},
 
-{'脚踩祥云lv4',false,'触发概率加成',5,'木头',6000,[[liliang.blp]],[[
+{'脚踩祥云lv4',false,'触发概率加成',5,'木头',8000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv4|r
     
 |cffFFE799【奖励】|r|cff00ff00+5%触发概率加成|r
     ]]},
 
-{'脚踩祥云lv5',false,'免伤几率',2.5,'木头',7500,[[liliang.blp]],[[
+{'脚踩祥云lv5',false,'免伤几率',2.5,'木头',10000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv5|r
     
 |cffFFE799【奖励】|r|cff00ff00+2.5%免伤几率|r
     ]]},
 
-{'脚踩祥云lv6',false,'攻击减甲',15,'木头',9000,[[liliang.blp]],[[
+{'脚踩祥云lv6',false,'攻击减甲',15,'木头',12000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv6|r
     
 |cffFFE799【奖励】|r|cff00ff00+15攻击减甲|r
     ]]},
 
- {'脚踩祥云lv7',false,'全属性',6000000,'木头',10500,[[liliang.blp]],[[
+ {'脚踩祥云lv7',false,'全属性',6000000,'木头',14000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv7|r
     
 |cffFFE799【奖励】|r|cff00ff00+600w全属性|r
     ]]},
 
-{'脚踩祥云lv8',false,'技暴几率',2.5,'木头',12000,[[liliang.blp]],[[
+{'脚踩祥云lv8',false,'技暴几率',2.5,'木头',16000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv8|r
     
 |cffFFE799【奖励】|r|cff00ff00+2.5%技暴几率|r
     ]]},
 
-{'脚踩祥云lv9',false,'技暴加深',50,'木头',13500,[[liliang.blp]],[[
+{'脚踩祥云lv9',false,'技暴加深',50,'木头',18000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv9|r
     
 |cffFFE799【奖励】|r|cff00ff00+50%技暴加深|r
     ]]},
 
-{'脚踩祥云lvmax',false,'全伤加深',5,'木头',15000,[[liliang.blp]],[[
+{'脚踩祥云lvmax',false,'全伤加深',5,'木头',20000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lvmax|r
     
@@ -523,70 +523,70 @@ local devil_deal ={
 },
 
 [8] = {
-{'头顶乾坤lv1',false,'触发概率加成',5,'火灵',5000,[[liliang.blp]],[[
+{'头顶乾坤lv1',false,'触发概率加成',5,'火灵',10000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv1|r
     
 |cffFFE799【奖励】|r|cff00ff00+5%触发概率加成|r
     ]]},
 
-{'头顶乾坤lv2',false,'物理伤害加深',25,'火灵',10000,[[liliang.blp]],[[
+{'头顶乾坤lv2',false,'物理伤害加深',25,'火灵',25000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv2|r
     
 |cffFFE799【奖励】|r|cff00ff00+25%物理伤害加深|r
     ]]},
 
-{'头顶乾坤lv3',false,'全属性',4000000,'火灵',20000,[[liliang.blp]],[[
+{'头顶乾坤lv3',false,'全属性',4000000,'火灵',40000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv3|r
     
 |cffFFE799【奖励】|r|cff00ff00+400w全属性|r
     ]]},
 
-{'头顶乾坤lv4',false,'攻击减甲',20,'火灵',30000,[[liliang.blp]],[[
+{'头顶乾坤lv4',false,'攻击减甲',20,'火灵',55000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv4|r
     
 |cffFFE799【奖励】|r|cff00ff00+20攻击减甲|r
     ]]},
 
-{'头顶乾坤lv5',false,'技暴加深',50,'火灵',40000,[[liliang.blp]],[[
+{'头顶乾坤lv5',false,'技暴加深',50,'火灵',70000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv5|r
     
 |cffFFE799【奖励】|r|cff00ff00+50%技暴加深|r
     ]]},
 
-{'头顶乾坤lv6',false,'全属性',8000000,'火灵',50000,[[liliang.blp]],[[
+{'头顶乾坤lv6',false,'全属性',8000000,'火灵',85000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv6|r
     
 |cffFFE799【奖励】|r|cff00ff00+800w全属性|r
     ]]},
 
- {'头顶乾坤lv7',false,'暴击加深',150,'火灵',60000,[[liliang.blp]],[[
+ {'头顶乾坤lv7',false,'暴击加深',150,'火灵',100000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv7|r
     
 |cffFFE799【奖励】|r|cff00ff00+150%暴击加深|r
     ]]},
 
-{'头顶乾坤lv8',false,'技暴加深',150,'火灵',70000,[[liliang.blp]],[[
+{'头顶乾坤lv8',false,'技暴加深',150,'火灵',125000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv8|r
     
 |cffFFE799【奖励】|r|cff00ff00+150%技暴加深|r
     ]]},
 
-{'头顶乾坤lv9',false,'全属性',10000000,'火灵',80000,[[liliang.blp]],[[
+{'头顶乾坤lv9',false,'全属性',10000000,'火灵',150000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv9|r
     
 |cffFFE799【奖励】|r|cff00ff00+1000w全属性|r
     ]]},
 
-{'头顶乾坤lvmax',false,'对BOSS额外伤害',5,'火灵',100000,[[liliang.blp]],[[
+{'头顶乾坤lvmax',false,'对BOSS额外伤害',5,'火灵',200000,[[liliang.blp]],[[
 
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lvmax|r
     
