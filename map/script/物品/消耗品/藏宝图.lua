@@ -28,6 +28,8 @@ mt{
     wabao_auto_use = false,
     --全部玩家发送信息概率
     rate = 0.3,
+    --多少秒后地上物品消失
+    time_removed = 100,
     --可能会掉线
     effect = function(self)
         local str = ''

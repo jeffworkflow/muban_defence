@@ -49,9 +49,8 @@ ac.game:event '单位-创建前'(function(_,data,self,j_id, x, y,face)
         -- u:remove_restriction '禁锢'
         u:remove_restriction '缴械'
         u:set('生命', u:get '生命上限')
-        if u:getAbilityLevel 'Aloc' == 0 then
-            u:event_notify('单位-创建', u)
-        end
+        ac.unit.init_attribute(u)
+
         return u
     end    
 end)
@@ -150,7 +149,7 @@ function unit.all_real_remove()
     end	 
 end
 --5分钟清除一次 地图上的模拟死亡单位
-local time = 5*60
+local time = 10*60
 ac.loop(time*1000,function()
     ac.unit.all_real_remove()
 end)

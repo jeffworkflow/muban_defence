@@ -64,7 +64,7 @@ for key,value in sortpairs(ac.pratice_man) do
                 local mt = ac.creep[name]{    
                     creeps_datas = value[1]..'*15',
                     cool = 1,
-                    create_unit_cool = 0.01,
+                    create_unit_cool = 0,
                     first_wait_time = 0.6, --调整切换练功怪首次出现时间
                     is_leave_region_replace = true,
                     is_region_replace = true,

@@ -10,9 +10,8 @@ local function get_difficult(degree)
     end 
 end    
 
-
---单位创建 属性增强
-ac.game:event '单位-创建' (function(_,unit)
+local function init_attribute(unit)
+    
     -- 英雄返回
     if unit:is_hero() then  return end 
     -- 根据难度增强属性。
@@ -51,8 +50,12 @@ ac.game:event '单位-创建' (function(_,unit)
     --单独增强最终boss
     if unit:get_name() == '最终boss' then
         unit:set('攻击减甲',data.attribute['攻击减甲'] * (ac.g_game_degree_attr or 1) )
-    end    
-
+    end  
+end
+ac.unit.init_attribute = init_attribute    
+--单位创建 属性增强
+ac.game:event '单位-创建' (function(_,unit)  
+    ac.unit.init_attribute(unit)
 
     --根据玩家数量，怪物属性倍数 5  20 . 5 40， 20*1.1 = 22
     -- local attr_mul = ( get_player_count() -1 ) * 5

@@ -74,9 +74,11 @@ local function init_shop()
                         
                         if name == '魔鬼的交易' then
                             ac.game:event_notify('单位-创建商店', shop)
-                            shop:add_restriction '禁锢'
                             --注册区域事件
-                            local rct =  ac.rect.j_rect(str)
+                            local x,y = shop:get_point():get()
+                            local minx,miny,maxx,maxy = x-32,y-32,x+32,y+32
+                            -- local rct =  ac.rect.j_rect(str)
+                            local rct = ac.rect.create(minx,miny,maxx,maxy)
                             local region = ac.region.create(rct)
                             region:event '区域-离开' (function(trg, hero)
                                 if hero:get_name() ~= '魔鬼的交易' then
