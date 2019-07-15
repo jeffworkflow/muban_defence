@@ -378,70 +378,70 @@ local devil_deal ={
 },
 
 [6] = {
- {'身披圣衣lv1',false,'护甲',300,'火灵',2000,[[liliang.blp]],[[
+ {'身披圣衣lv1',false,'护甲',300,'火灵',2500,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv1|r
         
 |cffFFE799【奖励】|r|cff00ff00+300护甲|r
         ]]},
     
-    {'身披圣衣lv2',false,'全属性',1500000,'火灵',4000,[[liliang.blp]],[[
+    {'身披圣衣lv2',false,'全属性',1500000,'火灵',5000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv2|r
         
 |cffFFE799【奖励】|r|cff00ff00+150w全属性|r
         ]]},
     
-    {'身披圣衣lv3',false,'护甲',500,'火灵',6000,[[liliang.blp]],[[
+    {'身披圣衣lv3',false,'护甲',500,'火灵',7500,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv3|r
         
 |cffFFE799【奖励】|r|cff00ff00+500护甲|r
         ]]},
     
-    {'身披圣衣lv4',false,'杀怪加全属性',200,'火灵',8000,[[liliang.blp]],[[
+    {'身披圣衣lv4',false,'杀怪加全属性',200,'火灵',10000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv4|r
         
 |cffFFE799【奖励】|r|cff00ff00+200杀怪加全属性|r
         ]]},
     
-    {'身披圣衣lv5',false,'攻击加全属性',1000,'火灵',10000,[[liliang.blp]],[[
+    {'身披圣衣lv5',false,'攻击加全属性',1000,'火灵',12500,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv5|r
         
 |cffFFE799【奖励】|r|cff00ff00+1000攻击加全属性|r
         ]]},
     
-    {'身披圣衣lv6',false,'全属性',2000000,'火灵',12000,[[liliang.blp]],[[
+    {'身披圣衣lv6',false,'全属性',2000000,'火灵',15000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv6|r
         
 |cffFFE799【奖励】|r|cff00ff00+200w全属性|r
         ]]},
     
-     {'身披圣衣lv7',false,'杀怪加攻击',800,'火灵',14000,[[liliang.blp]],[[
+     {'身披圣衣lv7',false,'杀怪加攻击',800,'火灵',17500,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv7|r
         
 |cffFFE799【奖励】|r|cff00ff00+800杀怪加攻击|r
         ]]},
     
-    {'身披圣衣lv8',false,'每秒加攻击',8000,'火灵',16000,[[liliang.blp]],[[
+    {'身披圣衣lv8',false,'每秒加攻击',8000,'火灵',20000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv8|r
         
 |cffFFE799【奖励】|r|cff00ff00+8000每秒加攻击|r
         ]]},
     
-    {'身披圣衣lv9',false,'全属性',3000000,'火灵',18000,[[liliang.blp]],[[
+    {'身披圣衣lv9',false,'全属性',3000000,'火灵',22500,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv9|r
         
 |cffFFE799【奖励】|r|cff00ff00+300w全属性|r
         ]]},
     
-    {'身披圣衣lvmax',false,'攻击速度',50,'火灵',20000,[[liliang.blp]],[[
+    {'身披圣衣lvmax',false,'攻击速度',50,'火灵',25000,[[liliang.blp]],[[
     
 |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lvmax|r
         
