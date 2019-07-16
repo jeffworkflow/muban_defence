@@ -94,7 +94,7 @@ function mt:on_cast_start()
             skl:set('attr_tip',attr_tip)
         end    
         --发送消息
-        p:sendMsg('恭喜您，随机到了 '..little_name..' 套装属性: '..attr_tip)
+        p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00神装大礼包激活成功|r 激活的套装属性可以在礼包系统中查看',3)
 
         p.mall_flag[self.name] = true
     end    
