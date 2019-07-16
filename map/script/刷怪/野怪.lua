@@ -65,6 +65,7 @@ function creeps.start()
                     local u = ac.player(12):create_unit(name, point, 270)
                     -- print(u)
                     -- u:add_ability 'A00V'
+                    u:set_class('模拟死亡') --设置为模拟死亡
                     --将单位添加进单位组
                     table.insert(creep_groop, u)
                     --监听这个单位挂掉

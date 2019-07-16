@@ -1,6 +1,6 @@
 local function cast_skill(hero,target)
     -- print(hero,hero.data.type)
-    if hero.data and hero.data.type ~= 'boss' then 
+    if hero.data and hero.data.unit_type ~= 'boss' then 
         return 
     end   
 
@@ -44,13 +44,13 @@ ac.game:event '造成伤害开始' (function (_,damage)
 end)
 
 
--- ac.loop(1000,function()
---     for _,u in ac.selector()
---         : in_rect()
---         : is_type('boss')
---         : ipairs()
---     do
---         cast_skill(u,u)
---     end
+ac.loop(1000,function()
+    for _,u in ac.selector()
+        : in_rect()
+        : is_type('boss')
+        : ipairs()
+    do
+        cast_skill(u,u)
+    end
 
--- end)
+end)

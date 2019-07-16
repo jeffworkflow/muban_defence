@@ -183,5 +183,5 @@ for i,name in ipairs({'梦蝶仙翼','玄羽绣云翼','天罡苍羽翼','绝世
         end     
         hero.effect_chibang = hero:add_effect('chest',self.effect)
     end   
-    mt.on_add = mt.on_cast_start 
+    -- mt.on_add = mt.on_cast_start --自动显示特效
 end    

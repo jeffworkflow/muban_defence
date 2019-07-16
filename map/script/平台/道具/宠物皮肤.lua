@@ -242,7 +242,7 @@ effect = [[xwk.mdx]],
 for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','骨龙','奇美拉','小悟空'}) do
     local mt = ac.skill[name]
 
-    function mt:on_add()
+    function mt:on_cast_start()
         local hero = self.owner
         local player = self.owner:get_owner()
 
@@ -264,7 +264,7 @@ for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','骨龙','奇美拉','小
 
 
     end    
-    mt.on_cast_start = mt.on_add
+    -- mt.on_add = mt.on_cast_start --自动显示特效
    
 end    
 
