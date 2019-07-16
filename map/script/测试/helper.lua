@@ -918,7 +918,11 @@ function helper:fb(str)
 	for i=1,3 do 
 		local creep = ac.creep['刷怪'..i]
 		creep.index = tonumber(str) - 1
-		creep:next()
+		if creep.has_started  then 
+			creep:next()
+		else
+			creep:start()
+		end		
 	end	
 end
 --测试商店

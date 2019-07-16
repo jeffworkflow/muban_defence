@@ -36,7 +36,7 @@ cnt = function(self)
         end	
     end	
     local skl = unit and unit:find_skill('重生')
-    return  skl and skl.cnt  or 1
+    return  skl and skl.cnt  or 0
 end    ,
 --全属性
 award_all_attr = 1288888,
@@ -62,32 +62,22 @@ is_skill = true,
 --     shop_item:set_tip(shop_item:get_tip())
 
 -- end    
-ac.game:event '游戏-回合开始'(function(_,index,creep)
-    if not finds(creep.name,'刷怪1') then
+ac.game:event '单位-创建'(function(_,unit)
+    if unit:get_name() ~= '基地' then 
         return 
-    end
-    if creep.index == 1 then 
-        local unit 
-        for key,val in pairs(ac.unit.all_units) do 
-            if val:get_name() == '基地' then 
-                -- print(val:get(str))
-                unit = val
-                break
-            end	
-        end	
-        local skl = unit:find_skill('重生')
-        if not skl then 
-            skl = unit:add_skill('重生','隐藏')
-        else
-            skl.cnt = skl.cnt + 1
-        end  
-       
-        --添加基地保护buff 基地保护
-        -- print(unit:get_name())
-        unit:add_buff('基地保护'){
-            -- time = 99999999
-        }
     end    
+    local skl = unit:find_skill('重生')
+    if not skl then 
+        skl = unit:add_skill('重生','隐藏')
+    else
+        skl.cnt = skl.cnt + 1
+    end  
+    ac.main_unit = unit
+    --添加基地保护buff 基地保护
+    -- print(unit:get_name())
+    unit:add_buff('基地保护'){
+        -- time = 99999999
+    } 
 end)  
 
 

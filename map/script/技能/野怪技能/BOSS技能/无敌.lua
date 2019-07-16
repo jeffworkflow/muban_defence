@@ -3,9 +3,9 @@ mt{--目标类型 = 单位
 target_type = ac.skill.TARGET_TYPE_POINT,
 --施法信息
 cast_start_time = 0,
-cast_channel_time = 1,
+cast_channel_time = 0,
 cast_shot_time = 0,
-cast_finish_time = 0.1,
+cast_finish_time = 0.0,
 --初始等级
 level = 1,
 --技能图标

@@ -196,7 +196,7 @@ effect = [[wuqi11.mdx]]
 
 for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','皇帝剑','皇帝刀'}) do
     local mt = ac.skill[name]
-    function mt:on_add()
+    function mt:on_cast_start()
         local skill = self
         local hero = self.owner
         local player = self.owner:get_owner()
@@ -237,7 +237,7 @@ for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','皇
             end)
         end
     end    
-    mt.on_cast_start=mt.on_add
+    -- mt.on_cast_start=mt.on_add --自动显示特效
     function mt:on_remove()
         local hero = self.owner
         if self.trg then

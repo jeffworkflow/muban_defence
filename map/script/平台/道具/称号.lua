@@ -248,5 +248,5 @@ for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','巅峰天域
         end     
         hero.effect_chenghao = hero:add_effect('overhead',self.effect)
     end    
-    mt.on_add = mt.on_cast_start
+    -- mt.on_add = mt.on_cast_start --自动显示特效
 end    

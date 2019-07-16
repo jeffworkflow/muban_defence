@@ -3,9 +3,9 @@ mt{--目标类型 = 单位
 target_type = ac.skill.TARGET_TYPE_POINT,
 --施法信息
 cast_start_time = 0,
-cast_channel_time = 1,
+cast_channel_time = 0,
 cast_shot_time = 0,
-cast_finish_time = 0.1,
+cast_finish_time = 0.0,
 --初始等级
 level = 1,
 --技能图标
@@ -53,7 +53,7 @@ function mt:boss_skill_shot()
     for _,u in ac.selector()
         : in_range(target,skill.area)
         : is_enemy(hero)
-        : is_not(ac.key_unit)
+        : is_not(ac.main_unit)
         : ipairs()
     do
         u:add_buff '晕眩'

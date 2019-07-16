@@ -25,13 +25,13 @@ end
 ac.game:event '单位-创建'(function(_,u)
     local name = u:get_name()
     local data = ac.table.UnitData[name]
-    u:set_class(data.class)
-    -- if data.class then 
-    -- end    
+    if data.class then
+        u:set_class(data.class)
+    end       
 end)    
 ac.game:event '单位-创建前'(function(_,data,self,j_id, x, y,face)
     if not data then return end
-    local handle,u = unit.get_unit_handle(data.id,data.class)
+    local handle,u = unit.get_unit_handle(data.id,'模拟死亡')
     -- print(handle,u)
     if handle then 
         
