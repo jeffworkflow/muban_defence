@@ -47,7 +47,7 @@ for i=1,10 do
                 player.cus_server = {}
             end
             player.cus_server[key_name] = val
-            print('存档数据:',key,val)
+            -- print('存档数据:',key,val)
         end
         player:event_notify '读取存档数据'
     end

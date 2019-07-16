@@ -87,16 +87,7 @@ for i =1,3 do
                             unit:issue_order('attack',hero)
                         else    
                             unit:issue_order('attack',point)
-                        end   
-                        -- if distance < 100 then
-                        --     if hero_distance <= 1500 then
-                        --         unit:issue_order('attack',hero) 
-                        --     else    
-                        --         unit:issue_order('attack',point)
-                        --     end  
-                        -- elseif hero_distance > 1500 then 
-                        --     unit:issue_order('attack',point)
-                        -- end    
+                        end      
                     end  
                     unit.last_point = unit:get_point()
                 end   
@@ -134,7 +125,8 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
             ac.game:event_dispatch('游戏-最终boss')
         else
             local boss = ac.player.com[2]:create_unit(ac.attack_boss[ix],point)
-            table.insert(ac.creep['刷怪1'].group,boss)
+            -- table.insert(ac.creep['刷怪1'].group,boss)
+            boss:add_buff '攻击英雄' {}
             boss:add_skill('无敌','英雄')
             boss:add_skill('撕裂大地','英雄')
             

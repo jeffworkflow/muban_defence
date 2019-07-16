@@ -7,11 +7,13 @@ ac.game:event '游戏-最终boss' (function(trg)
     end    
     local point = ac.map.rects['进攻点']:get_point()
     local boss = ac.player.com[2]:create_unit(ac.attack_boss[#ac.attack_boss],point)
+    
+    boss:add_buff '攻击英雄' {}
     boss:add_skill('无敌','英雄')
     boss:add_skill('撕裂大地','英雄')
-    if ac.creep['刷怪1'] then 
-        table.insert(ac.creep['刷怪1'].group,boss)
-    end    
+    -- if ac.creep['刷怪1'] then 
+    --     table.insert(ac.creep['刷怪1'].group,boss)
+    -- end    
     ac.final_boss = boss
     --注册事件
     boss:event '单位-死亡'(function(_,unit,killer) 

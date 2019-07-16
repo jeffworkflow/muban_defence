@@ -684,9 +684,9 @@ function helper:tt()
 	self:add('护甲',1000000000)
 	self:add('会心伤害',10000)
 	
-	if not ac.wtf then
-		helper.wtf(self)
-	end
+	-- if not ac.wtf then
+	-- 	helper.wtf(self)
+	-- end
 	self:add_restriction '免死'
 end
 
