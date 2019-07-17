@@ -75,9 +75,9 @@ ac.game:event '单位-创建'(function(_,unit)
     ac.main_unit = unit
     --添加基地保护buff 基地保护
     -- print(unit:get_name())
-    unit:add_buff('基地保护'){
-        -- time = 99999999
-    } 
+    -- unit:add_buff('基地保护'){
+    --     -- time = 99999999
+    -- } 
 end)  
 
 

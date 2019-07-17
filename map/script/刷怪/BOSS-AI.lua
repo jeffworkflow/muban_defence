@@ -64,4 +64,13 @@ ac.game:event '技能-施法停止' (function(trg, _, skill)
         ac.attack_hero(unit)
     end
 end)
--- 技能-施法停止
+--boss 杀死英雄马上进攻基地
+ac.game:event '单位-杀死单位' (function(trg, killer, target)
+    
+    local unit_str = table.concat(ac.attack_unit) .. table.concat(ac.attack_boss)
+    if not target:is_hero() or not finds(unit_str,killer:get_name()) then 
+        return 
+    end    
+    ac.attack_hero(killer)
+end)    
+
