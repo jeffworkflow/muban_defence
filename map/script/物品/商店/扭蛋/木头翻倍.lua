@@ -2,7 +2,7 @@
 local rect = require 'types.rect'
 
 --物品名称
-local mt = ac.skill['木头赌博']
+local mt = ac.skill['木头翻倍']
 mt{
 --等久
 level = 1,
@@ -43,7 +43,7 @@ rate = 55
 -- end
 -- ac.loop(1000,function() 
 --     mt.player_wood[ac.player.self] = ac.player.self.wood    
---     -- print('木头赌博',ac.player.self.wood)
+--     -- print('木头翻倍',ac.player.self.wood)
 -- end)  
 
 -- function mt:on_add()
@@ -53,7 +53,7 @@ rate = 55
 --     end
 --     ac.loop(1000,function() 
 --         shop_item.player_wood[ac.player.self] = ac.player.self.wood    
---         -- print('木头赌博',ac.player.self.kill_count)
+--         -- print('木头翻倍',ac.player.self.kill_count)
 --     end)  
 -- end   
 
@@ -63,7 +63,7 @@ function mt:on_cast_start()
     local wood = p.wood
     local rand = math.random(100)
     if wood <=10 then 
-        p:sendMsg('|cffFFCC00不够赌|r',5)
+        p:sendMsg('|cffFFCC00不够资源|r',5)
         return 
     end  
     if rand <= self.rate then 

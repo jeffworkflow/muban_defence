@@ -243,15 +243,24 @@ local function shenlong2award()
 end
 shenlong2award()
 
+--替天行道 兑换称号
+local ttxd2award1 = {
+    -- 奖励 = 所需数量 所需等级 --真正逻辑处理再 替天行道.lua 里面
+    ['势不可挡'] = {0,3},
+    ['君临天下'] = {0,4},
+    ['神帝'] = {0,10},
+    ['王者归来'] = {0,11},
+}    
 
 --处理替天行道 永久属性
 local function ttxd2award()
     local content_data = {
-        --奖励 = 每存档力量奖励的值 
-        ['力量'] = {60000},
-        ['敏捷'] = {60000},
-        ['智力'] = {60000},
-        ['全属性'] = {30000},
+        --奖励 = 每存档力量奖励的值 , 每地图等级上限值
+        ['力量'] = {60000,1},
+        ['敏捷'] = {60000,1},
+        ['智力'] = {60000,1},
+        ['全属性'] = {30000,1},
+
         --奖励 = 杀鸡儆猴奖励每秒全属性, 每地图等级上限值
         ['攻击加全属性'] = {1,25},
     }  
@@ -267,13 +276,11 @@ local function ttxd2award()
                     else
                         cnt= player.cus_server and (player.cus_server[name] or 0 )
                     end     
-                    local map_level = player:Map_GetMapLevel() > 0 and  player:Map_GetMapLevel() or 1
-                    if name == '攻击加全属性' then 
-                        value = math.min(cnt * data[1],map_level * data[2])
-                    else
-                        value = cnt * data[1]
-                    end        
+                    local map_level = player:Map_GetMapLevel() > 0 and player:Map_GetMapLevel() or 1
+                    local cnt = math.min(cnt,data[2])
+                    value = cnt * data[1]
                     -- print(player:Map_GetMapLevel())
+                    -- print(name,value)
                     --增加属性
                     player.hero:add(name,value)
                 end   
@@ -293,6 +300,9 @@ local function init_need_map_level()
         ac.server.need_map_level[name] = data[2]
     end
     for name,data in pairs(shenlong2award_data) do
+        ac.server.need_map_level[name] = data[2]
+    end
+    for name,data in pairs(ttxd2award1) do
         ac.server.need_map_level[name] = data[2]
     end
 

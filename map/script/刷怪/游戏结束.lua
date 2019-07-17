@@ -199,7 +199,7 @@ end)
 --基地爆炸的时候结算胜负
 ac.game:event '游戏-大胜利' (function(trg)
 
-	ac.player.self:sendMsg("|cffffe799【系统消息】|r30秒后自动退出游戏")
+	ac.player.self:sendMsg("|cffffe799【系统消息】|r120秒后自动退出游戏")
 
 	ac.wait(120*1000,function()
 		EndGame(true)

@@ -119,6 +119,7 @@ ac.wait(100,function ()
     -- jass.SetAllyColorFilterState(0)
     -- --设置玩家16（中立被动颜色 绿） 1-16
     ac.player(16):setColor(7)
+    -- ac.player(13):setColor(1) --中立敌对 红色
 
 
     -- ac.game:event '游戏-开始' (function()
