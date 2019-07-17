@@ -64,7 +64,7 @@ ac.game:event '技能-施法停止' (function(trg, _, skill)
         ac.attack_hero(unit)
     end
 end)
---boss 杀死英雄马上进攻基地
+--boss 杀死英雄马上进攻其他英雄
 ac.game:event '单位-杀死单位' (function(trg, killer, target)
     
     local unit_str = table.concat(ac.attack_unit) .. table.concat(ac.attack_boss)
@@ -72,5 +72,14 @@ ac.game:event '单位-杀死单位' (function(trg, killer, target)
         return 
     end    
     ac.attack_hero(killer)
+
+    for i=1 ,3 do
+        local creep = ac.creep['刷怪'..i]
+        for _, unit in ipairs(creep.group) do
+            -- print('刷怪单位',unit:get_name())
+            ac.attack_hero(unit)
+        end    
+    end    
+
 end)    
 

@@ -10,7 +10,7 @@ mt.tip = [[
 -- mt.value = 27.5
 
 --重生时间
-mt.time = 5
+mt.time = 8
 mt.cnt = 1
 
 mt.effect = [[Abilities\Spells\Orc\Reincarnation\ReincarnationTarget.mdl]]

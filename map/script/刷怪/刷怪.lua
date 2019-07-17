@@ -61,7 +61,7 @@ for i =1,3 do
     --改变怪物
     function mt:on_change_creep(unit,lni_data)
         --设置搜敌范围
-        unit:set_search_range(500)
+        unit:set_search_range(2000)
         local point = ac.map.rects['主城']:get_point()
         unit:issue_order('attack',point)
 
