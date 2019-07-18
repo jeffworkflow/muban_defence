@@ -123,7 +123,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
             --游戏时长 < 存档时间 
             if os.difftime(cus_value,ac.g_game_time) > 0 then 
                 -- player:SetServerValue(key,ac.g_game_time) 自定义服务器
-                player:Map_SaveServerValue(key,ac.g_game_time) --网易服务器
+                -- player:Map_SaveServerValue(key,ac.g_game_time) --网易服务器
             end    
             --文字提醒
             local str = os.date("!%H:%M:%S",tonumber(ac.g_game_time)) 

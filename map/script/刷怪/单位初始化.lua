@@ -31,7 +31,7 @@ local function init_attribute(unit)
     unit.fall_rate= data.fall_rate
 
     --设置搜敌范围
-    unit:set_search_range(800)
+    unit:set_search_range(500)
     local attr_mul = get_difficult(ac.g_game_degree_attr)
     --根据难度增强属性 
     if data.attribute then  
