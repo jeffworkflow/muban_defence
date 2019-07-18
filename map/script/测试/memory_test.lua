@@ -14,8 +14,8 @@ end
 
 ac.game:event '游戏-开始' (function()
 	print((('游戏开始: %.f'):format(ac.clock() / 1000)))
-	collectgarbage("setpause",100)
-	collectgarbage("setstepmul",5000)
+	-- collectgarbage("setpause",100)
+	-- collectgarbage("setstepmul",5000)
 end)
 
 ac.loop(30 * 1000, function()
