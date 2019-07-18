@@ -51,7 +51,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
 |cff00ffff神龙碎片超过 75 自动获得，已拥有碎片：|r%skin_cnt% 或者
-|cff00ffff挖宝积分超过 2W 自动获得，已拥有积分：|r%wabao_cnt%
+|cff00ffff挖宝积分超过 1W 自动获得，已拥有积分：|r%wabao_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+28   杀怪加全属性|r
