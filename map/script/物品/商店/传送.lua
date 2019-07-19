@@ -27,8 +27,8 @@ ac.quick_arrive ={
 
     ['技能升级书lv1'] = {ac.map.rects['传送-技能1'],'jinengshengji1.blp','\n挑战BOSS并获得|cff00ff00 【技能升级书lv1】|r\n',0,75,0,0,0,nil,0,450} ,
     ['技能升级书lv2'] = {ac.map.rects['传送-技能2'],'jinengshengji2.blp','\n挑战BOSS并获得|cff00ffff 【技能升级书lv2】|r\n',0,500,0,0,0,nil,0,450} ,
-    ['技能升级书lv3'] = {ac.map.rects['传送-技能3'],'jinengshengji3.blp','\n挑战BOSS并获得|cffffff00 【技能升级书lv3】|r\n',0,6000,0,0,0,nil,0,450} ,
-    ['技能升级书lv4'] = {ac.map.rects['传送-技能4'],'jinengshengji4.blp','\n挑战BOSS并获得|cffff0000 【技能升级书lv4】|r\n',0,16000,0,0,0,nil,0,450} ,
+    ['技能升级书lv3'] = {ac.map.rects['传送-技能3'],'jinengshengji3.blp','\n挑战BOSS并获得|cffffff00 【技能升级书lv3】|r\n',0,4000,0,0,0,nil,0,450} ,
+    ['技能升级书lv4'] = {ac.map.rects['传送-技能4'],'jinengshengji4.blp','\n挑战BOSS并获得|cffff0000 【技能升级书lv4】|r\n',0,8000,0,0,0,nil,0,450} ,
     
     ['洗练石boss1'] = {ac.map.rects['传送-洗练石1'],'xilianshi.blp','\n挑战BOSS并获得|cff00ff00 【一号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,150,0,0,0,nil,0,450} ,
     ['洗练石boss2'] = {ac.map.rects['传送-洗练石2'],'xilianshi.blp','\n挑战BOSS并获得|cff00ffff 【二号洗练石】|r\n\n|cffcccccc【可洗练出装备的套装属性】|r',0,1500,0,0,0,nil,0,450} ,
