@@ -49,7 +49,9 @@ for i=1,10 do
             player.cus_server[key_name] = val
             -- print('存档数据:',key,val)
         end
-        player:event_notify '读取存档数据'
+        ac.wait(100,function()
+            player:event_notify '读取存档数据'
+        end)
     end
 end
 
@@ -141,7 +143,6 @@ for i=1,10 do
                 --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
                 local has_item = player.cus_server and (player.cus_server[name] or 0 )
                 local dw_value = player.cus_server and (player.cus_server[data[1]] or 0 )
-                -- print(has_item,sp_cnt,skill.need_sp_cnt)
                 if has_item and has_item == 0 
                 and dw_value >= (data[2] or 9999999)
                 and player:Map_GetMapLevel() >= (data[3]  or 0)
