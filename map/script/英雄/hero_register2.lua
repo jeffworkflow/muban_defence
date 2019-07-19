@@ -9,10 +9,11 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 	-- print(ac.game.multiboard,ac.game.multiboard.player_init)
 	-- ac.game.multiboard:player_init(player,hero)
 
-	hero:event '单位-死亡' (function()
+	--复活时间
+	local time = 8
+	ac.revive_time = time
 	
-		--复活时间
-		local time = 8
+	hero:event '单位-死亡' (function()
 		ac.timer_ex
 		{
 			time = time,

@@ -239,6 +239,7 @@ function mt:start(player)
             if hero == self.owner.hero then 
                 -- self:print_group()
                 -- self:finish(true)
+                self.owner.current_creep = self
                 local ceps = creep:find_creep_by_region(self.region_str)
                 if ceps then 
                     for i =1, #ceps do
