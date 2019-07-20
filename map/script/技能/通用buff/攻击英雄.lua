@@ -35,9 +35,17 @@ local function attack_hero(unit)
 				unit:issue_order('attack',point)
 			elseif hero_distance <= 1500  then
 				unit:issue_order('attack',hero)
-			else    
+			else
 				unit:issue_order('attack',point)
-			end      
+			end   
+			local main_unit = ac.main_unit
+			if main_unit then 
+				local main_distance = ac.main_unit:get_point() * unit:get_point()
+				if main_distance >= 2500 then  
+					unit:issue_order('attack',ac.main_unit) 
+				end	
+			end	
+
 		end  
 		unit.last_point = unit:get_point()
 	end   

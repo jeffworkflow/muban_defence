@@ -14,7 +14,7 @@ for i=1,10 do
         p.mall_flag = {}
     end  
     -- 作弊
-    if finds(p:get_name(),'后山一把刀','卡卡发动机','蜗牛互娱') then 
+    if finds(p:get_name(),'后山一把刀','卡卡发动机','蜗牛互娱','特朗普领航') then 
         p.cheating = true 
         require '测试.helper'
     end  
@@ -25,7 +25,7 @@ if ac.server.init then
     ac.server.init()  
 end    
 
---初始化2 读取自定义服务器的数据 并同步 p.cus_server[jifen] = 0 | 读取有延迟
+--初始化2 读取自定义服务器的数据 并同步 p.cus_server2[jifen] = 0 | 读取有延迟
 -- for i=1,10 do
 --     local player = ac.player[i]
 --     if player:is_player() then
@@ -118,13 +118,13 @@ ac.game:event '游戏-结束' (function(trg,flag)
 
             player:sendMsg('【游戏胜利】|cffff0000'..name..'星数+1|r')
 
-            --保存游戏时长
+            --保存游戏时长 只保存自定义服务器
             local name = name..'时长'
             local key = ac.server.name2key(name)
-            local cus_value = tonumber((player.cus_server and player.cus_server[name]) or 99999999)
+            local cus_value = tonumber((player.cus_server2 and player.cus_server2[name]) or 99999999)
             --游戏时长 < 存档时间 
             if os.difftime(cus_value,ac.g_game_time) > 0 then 
-                -- player:SetServerValue(key,ac.g_game_time) 自定义服务器
+                -- player:SetServerValue(key,ac.g_game_time) --自定义服务器
                 -- player:Map_SaveServerValue(key,ac.g_game_time) --网易服务器
             end    
             --文字提醒
@@ -263,7 +263,7 @@ local function ttxd2award()
         ['全属性'] = {30000,1},
 
         --奖励 = 杀鸡儆猴奖励每秒全属性, 每地图等级上限值
-        ['攻击加全属性'] = {1,25},
+        ['杀怪加全属性'] = {1,25},
     }  
     for i=1,10 do
         local player = ac.player[i]
@@ -272,7 +272,7 @@ local function ttxd2award()
                 for name,data in sortpairs(content_data) do 
                     local cnt = 0
                     local value = 0
-                    if name == '攻击加全属性' then 
+                    if name == '杀怪加全属性' then 
                         cnt= player.cus_server and (player.cus_server['杀鸡儆猴'] or 0 )
                     else
                         cnt= player.cus_server and (player.cus_server[name] or 0 )

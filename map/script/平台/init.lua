@@ -14,6 +14,8 @@ require '平台.神龙'
 require '平台.替天行道'
 require '平台.勇士徽章'
 
+-- require '平台.兑换-点金石'
+
 
 
 

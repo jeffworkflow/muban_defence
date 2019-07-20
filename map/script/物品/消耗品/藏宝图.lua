@@ -88,7 +88,6 @@ function mt:on_cast_start()
                     end 
                     -- print('单位进入')
                     self:on_add() 
-                    --添加东西给英雄
                     self:add_content()  
                     self:add_item_count(-1) 
                     if self.trg then 
@@ -213,7 +212,11 @@ function mt:add_content()
     elseif  rand_name == '木头' then
         self.owner:add_wood(3500)
         tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'+3500|r',2) 
-    end  
+    elseif  finds(rand_name,'格里芬','黑暗项链','最强生物心脏','白胡子的大刀') then
+        --满时，掉在地上
+        self.owner:add_item(rand_name,true)
+        tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'|r',2) 
+    end   
 end
 
 function mt:on_remove()

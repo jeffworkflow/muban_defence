@@ -392,7 +392,7 @@ function helper:test_k_u()
 	-- local u = ac.player(1):create_unit('甲虫',point)
 	local temp = {}
 	ac.test_unit = ac.loop(1000,function()
-		for i=1,20 do
+		for i=1,100 do
 			-- local dummy = u:create_illusion(u:get_point())
 			-- dummy:kill()	
 			-- local x,y = point:get()

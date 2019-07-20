@@ -439,6 +439,9 @@ local function on_texttag(self)
 	if self.source:get_owner() ~= ac.player.self and self.target ~= ac.player.self.hero   then
 		return
 	end
+	if self.source:get_owner().flag_damage_texttag then 
+		return 
+	end	
 	--非暴击就return
 	-- if not self:is_physicals_crit() or not self:is_spells_crit() or not self:is_heart_crit() then
 	-- 	return

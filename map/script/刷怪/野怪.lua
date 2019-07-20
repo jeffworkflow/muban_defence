@@ -61,7 +61,13 @@ function creeps.start()
                 local count = max_cnt - (#creep_groop or 0)
                 for i = 1, count do
                     local point = rct:get_random_point()
-                    -- print(name,point)
+                    -- local data = ac.table.UnitData[name]
+                    -- local id
+                    -- if data then
+                    --     id = data.id
+                    --     -- print('打印创建单位的id',data.id)
+                    -- end
+                    -- print('测试11111111:',name,id)
                     local u = ac.player(13):create_unit(name, point, 270)
                     -- print(u)
                     -- u:add_ability 'A00V'

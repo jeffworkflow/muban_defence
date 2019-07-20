@@ -195,6 +195,17 @@ local reward = {
             hero:add_item(name,true)    
         end 
     end,
+    ['点金石'] = function (player,hero,unit,is_on_hero)
+        local name = '点金石'
+        --英雄死亡时 掉落在地上
+        if not is_on_hero or (not hero:is_alive()) then 
+            local item = ac.item.create_item(name,unit:get_point())
+            -- item_self_skill(item,hero)
+        else
+            hero = hero:get_owner().hero
+            hero:add_item(name,true)    
+        end 
+    end,
     ['召唤boss'] = function (player,hero,unit,is_on_hero)
         local name = '召唤boss'
         --英雄死亡时 掉落在地上
@@ -273,7 +284,8 @@ local unit_reward = {
                 { rand = 1, name = '随机红装'},
             }
         },
-        { rand = 0.01,      name = '吞噬丹'}
+        { rand = 0.01,      name = '吞噬丹'},
+        { rand = 0.04,      name = '点金石'}
     },
     ['随机物品'] =  {
         { rand = 100,      name = {
@@ -336,7 +348,7 @@ local unit_reward = {
         -- 0.5	宠物经验书（大）		
         -- 0.25	挖宝达人：500万全属性，物品获取率+50%		
 
-        {    rand = 57, name = '无' },
+        {    rand = 55, name = '无' },
         {    rand = 10, name = '随机物品',},
         {    rand = 15, name = '随机技能',},
         {    rand = 1.5, name = '杀怪加力量+400 攻击加力量+1200 每秒加力量+2000' },
@@ -351,6 +363,10 @@ local unit_reward = {
         {    rand = 2, name = '火灵',},
         {    rand = 2, name = '木头',},
         {    rand = 1.5, name = '挖宝达人',}, --500万全属性，物品获取率+50%	
+        {    rand = 0.5, name = '格里芬',}, --lv1
+        {    rand = 0.5, name = '黑暗项链',}, --lv2
+        {    rand = 0.5, name = '最强生物心脏',}, --lv1
+        {    rand = 0.5, name = '白胡子的大刀',}, --lv2
     },
     ['抽奖券'] =  {
         {    rand = 70,  name ={

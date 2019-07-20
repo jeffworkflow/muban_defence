@@ -141,11 +141,11 @@ local ui = require 'ui.server.util'
 local event = {
     on_get = function (key,val)
         local player = ui.player 
-        if not player.cus_server then 
-            player.cus_server = {}
+        if not player.cus_server2 then 
+            player.cus_server2 = {}
         end    
         local name = ac.server.key2name(key)
-        player.cus_server[name] = tonumber(val)
+        player.cus_server2[name] = tonumber(val)
         if key =='jifen' then 
             player.jifen = tonumber(val)
         end    
@@ -153,15 +153,15 @@ local event = {
     --从自定义服务器读取数据
     read_key_from_server = function (tab_str)
         local player = ui.player 
-        if not player.cus_server then 
-            player.cus_server = {}
+        if not player.cus_server2 then 
+            player.cus_server2 = {}
         end    
         local data = ui.decode(tab_str) 
         for key,val in sortpairs(data) do 
             local name = ac.server.key2name(key)
-            player.cus_server[name] = tonumber(val)
+            player.cus_server2[name] = tonumber(val)
 
-            print('同步后的数据：',player:get_name(),name,player.cus_server[name])
+            -- print('同步后的数据：',player:get_name(),name,player.cus_server2[name])
             if key =='jifen' then 
                 player.jifen =  tonumber(val)
             end    
@@ -212,24 +212,24 @@ function player.__index:SetServerValue(key,value,f)
     end)
 
     --保存本局数据
-    if not self.cus_server then 
-        self.cus_server ={}
+    if not self.cus_server2 then 
+        self.cus_server2 ={}
     end    
     local key_name = ac.server.key2name(key)
-    self.cus_server[key_name] = tonumber(value)
+    self.cus_server2[key_name] = tonumber(value)
 end
 
 --增加数据到 map_test 
 -- 保存本局数据 p.cus_server[key] = value
 function player.__index:AddServerValue(key,value,f)
-    if not self.cus_server then 
-        self.cus_server ={}
+    if not self.cus_server2 then 
+        self.cus_server2 ={}
     end    
     --保存
     local key_name = ac.server.key2name(key)
-    -- print(key_name,self.cus_server[key_name])
-    self.cus_server[key_name] = (self.cus_server[key_name] or 0 ) + tonumber(value)
-    self:SetServerValue(key,self.cus_server[key_name])
+    -- print(key_name,self.cus_server2[key_name])
+    self.cus_server2[key_name] = (self.cus_server2[key_name] or 0 ) + tonumber(value)
+    self:SetServerValue(key,self.cus_server2[key_name])
 end
 --初始化自定义服务器的数据 暂时不用字段太多。
 function player.__index:initCusServerValue()
@@ -328,6 +328,9 @@ function player.__index:CopyServerValue(key,f)
             end         
         else
             print('服务器返回数据异常:',retval,post)
+            -- ac.wait(10,function()
+            --     print(retval)
+            -- end)
         end    
     end)
 end
@@ -340,6 +343,29 @@ function player.__index:CopyAllServerValue()
         end)    
     end    
 end   
+
+--保存玩家名 记录审核人员
+function player.__index:sp_save_player()
+    local player_name = self:get_name()
+    local map_name = config.map_name
+    local url = config.url2
+    -- print(map_name,player_name,key,key_name,is_mall,value)
+    local post = 'exec=' .. json.encode({
+        sp_name = 'sp_save_player',
+        para1 = player_name,
+    })
+    -- print(url,post)
+    local f = f or function (retval)  end
+    post_message(url,post,f)
+end
+
+for i=1,10 do
+    local p = ac.player(i)
+    if p:is_player() then 
+        p:sp_save_player()
+    end
+end      
+
 
 --[[
 ===========自定义服务器 基本功能 ===================

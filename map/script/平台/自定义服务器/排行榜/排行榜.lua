@@ -54,8 +54,24 @@ class.phb_panel = extends(class.panel){
         local img_phb_df = 'image\\排行榜\\phb_df.tga'
         local img_phb_tgsc = 'image\\排行榜\\phb_tgsc.tga'
         local img_title = 'image\\排行榜\\titile_bg.tga'
-        panel:add_texture(img_phb_df,256,20,183,47) 
-        panel:add_texture(img_phb_tgsc,689,20,183,47) 
+        local img_tip1 = panel:add_button(img_phb_df,256,20,183,47) 
+        -- panel:add_texture(img_phb_df,256,20,183,47) 
+        local img_tip2 = panel:add_button(img_phb_tgsc,689,20,183,47) 
+        -- panel:add_texture(img_phb_tgsc,689,20,183,47) 
+        local info = {
+            name = '',
+            tip = '每小时刷新一次'
+        }
+        function img_tip1:on_button_mouse_enter()
+            if info then 
+                self:tooltip(info.name,info.tip,0,200,84)
+            end
+        end    
+        function img_tip2:on_button_mouse_enter()
+            if info then 
+                self:tooltip(info.name,info.tip,0,200,84)
+            end
+        end    
 
         local texture = panel:add_texture(img_title,160,65,366,48) 
         local text = texture:add_text('名次',30,0,30,34,10,'left')

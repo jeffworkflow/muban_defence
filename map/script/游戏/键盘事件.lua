@@ -146,7 +146,7 @@ ac.game:event '玩家-聊天' (function(self, player, str)
 	end  
 	if str == 'jixu' then
 		player.flag_get_map_test = true 
-    end  
+    end   
     
 
     if str:sub(1, 1) == '-' then
@@ -166,6 +166,14 @@ ac.game:event '玩家-聊天' (function(self, player, str)
             local distance = math.min(tonumber(strs[2]),3000)
             if type(distance) =='number' then  
                 p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', distance)
+            end    
+        end  
+        if str == 'close' then
+            local flag = strs[2] and tonumber(strs[2]) or 1
+            if flag == 1 then 
+                player.flag_damage_texttag = true 
+            else
+                player.flag_damage_texttag = false   
             end    
         end    
 
