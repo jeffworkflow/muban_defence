@@ -19,7 +19,7 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-	return (self.owner:get('力量')*10+10000)* self.level
+	return (self.owner:get('力量')*15+10000)* self.level
 	end,
 	--属性加成
 	['杀怪加力量'] = {75,150,225,300,375},
@@ -29,7 +29,7 @@ mt{
 |cffffff00【杀怪加力量】+75*Lv|r
 
 |cff00bdec【被动效果】攻击(5+Lv)%几率造成范围技能伤害
-【伤害公式】(力量*10+1w)*Lv|r
+【伤害公式】(力量*15+1w)*Lv|r
 	
 ]],
 	--技能图标

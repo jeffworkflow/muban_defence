@@ -449,7 +449,7 @@ local unit_reward = {
         {    rand = 0.02, name = '倒霉蛋',},--木头+5555，火灵+5555，杀敌数+5555
     },
     ['高级扭蛋'] = {
-        {    rand = 30.381, name = '空蛋' },
+        {    rand = 29.581, name = '空蛋' },
 
         {    rand = 2.5, name = '火灵',},
         {    rand = 2.5, name = '木头',},
@@ -521,10 +521,10 @@ local unit_reward = {
         {    rand = 0.02, name = '三号洗练石',},
         {    rand = 0.02, name = '四号洗练石',},
 
-        {    rand = 0.3, name = '格里芬',}, --lv1
-        {    rand = 0.3, name = '黑暗项链',}, --lv2
-        {    rand = 0.3, name = '最强生物心脏',}, --lv1
-        {    rand = 0.3, name = '白胡子的大刀',}, --lv2
+        {    rand = 0.5, name = '格里芬',}, --lv1
+        {    rand = 0.5, name = '黑暗项链',}, --lv2
+        {    rand = 0.5, name = '最强生物心脏',}, --lv1
+        {    rand = 0.5, name = '白胡子的大刀',}, --lv2
 
 
         {    rand = 0.12, name = '玻璃大炮',},--红色小水滴 吸血+10% 攻击回血+500000

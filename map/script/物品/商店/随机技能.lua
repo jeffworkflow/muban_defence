@@ -40,7 +40,7 @@ function mt:on_cast_start()
     --可能会异步
     --改变商店物品物价
     hero.buy_skill_cnt = hero.buy_skill_cnt * 2
-    shop_item.wood = math.min(shop_item.wood * hero.buy_skill_cnt,500000)
+    shop_item.wood = math.min(shop_item.wood * hero.buy_skill_cnt,5000)
 
     -- print( shop_item.wood,self.buy_cnt)
     if hero:get_owner() == ac.player.self then 

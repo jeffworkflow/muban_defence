@@ -15,7 +15,7 @@ mt{
 	passive = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*10+10000)* self.level
+  return (self.owner:get('敏捷')*15+10000)* self.level
 end,
 	--属性加成
  ['攻击加敏捷'] = {200,400,600,800,1000},
@@ -25,7 +25,7 @@ end,
 |cffffff00【攻击加敏捷】+200*Lv|r
 
 |cff00bdec【被动效果】攻击(5+Lv)%几率造成范围技能伤害
-【伤害公式】(敏捷*10+1w)*Lv|r
+【伤害公式】(敏捷*15+1w)*Lv|r
 
 ]],
 	--技能图标

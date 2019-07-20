@@ -17,13 +17,13 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*25+10000)* self.level
+  return (self.owner:get('智力')*40+10000)* self.level
 end,
 	--介绍
     tip = [[
         
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害，并晕眩0.2S
-【伤害公式】(智力*25+1w)*Lv|r
+【伤害公式】(智力*40+1w)*Lv|r
 
 ]],
 

@@ -19,7 +19,7 @@ mt{
 	cool = 1,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*25+10000)* self.level
+  return (self.owner:get('力量')*40+10000)* self.level
 end,
 	--属性加成
  ['每秒加力量'] = {100,200,300,400,500},
@@ -33,7 +33,7 @@ end,
 【杀怪加力量】+100*Lv|r
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】(力量*25+1w)*Lv|r
+【伤害公式】(力量*40+1w)*Lv|r
 
 ]],
 	--特效

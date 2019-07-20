@@ -19,7 +19,7 @@ mt{
 	passive = true,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*10+10000)* self.level
+  return (self.owner:get('力量')*15+10000)* self.level
 end,
 	--属性加成
  ['每秒加力量'] = {500,1000,1500,2000,2500},
@@ -29,7 +29,7 @@ end,
 |cffffff00【每秒加力量】+500*Lv|r
 
 |cff00bdec【被动效果】攻击(5+Lv)%几率造成范围技能伤害
-【伤害公式】(力量*10+1W)*Lv|r
+【伤害公式】(力量*15+1W)*Lv|r
 
 ]],
 	--范围

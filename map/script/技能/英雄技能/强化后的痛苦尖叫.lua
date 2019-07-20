@@ -21,7 +21,7 @@ mt{
 	
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*25+10000)* self.level
+  return (self.owner:get('智力')*40+10000)* self.level
 end,
 	--属性加成
  ['每秒加智力'] = {100,200,300,400,500},
@@ -35,7 +35,7 @@ end,
 【杀怪加智力】+100*Lv|r
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】(智力*25+1w)*Lv|r
+【伤害公式】(智力*40+1w)*Lv|r
 
 ]],
 	--技能图标

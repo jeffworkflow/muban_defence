@@ -18,13 +18,13 @@ mt{
 	cool = 20,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('力量')*10+10000)* self.level*5
+  return (self.owner:get('力量')*15+10000)* self.level*5
 end,
 	--介绍
 	tip = [[
 		
 |cff00bdec【主动施放】对周围敌人造成范围技能伤害，并晕眩1S
-【伤害公式】(力量*10+1w)*Lv*5|r
+【伤害公式】(力量*15+1w)*Lv*5|r
 
 ]],
 	--技能图标

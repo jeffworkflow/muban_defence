@@ -18,7 +18,7 @@ mt{
 	cool = 15,
 	--伤害
 	damage = function(self)
-  return (self.owner:get('智力')*10+10000)* self.level*5
+  return (self.owner:get('智力')*15+10000)* self.level*5
 end,
 	--属性加成
  ['每秒加智力'] = {50,100,150,200,250},
@@ -32,7 +32,7 @@ end,
 【杀怪加智力】+50*Lv|r
 
 |cff00bdec【主动施放】对周围敌人造成范围技能伤害
-【伤害公式】(智力*10+1w)*Lv*5|r
+【伤害公式】(智力*15+1w)*Lv*5|r
 
 ]],
 	--技能图标

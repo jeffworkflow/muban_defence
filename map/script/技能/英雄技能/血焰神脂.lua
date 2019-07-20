@@ -16,7 +16,7 @@ mt{
 	passive = true,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*5+10000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*7+10000)* self.level
 end,
 	--属性加成
  ['杀怪加全属性'] = {35,70,105,140,175},
@@ -26,7 +26,7 @@ end,
 |cffffff00【杀怪加全属性】+35*Lv|r
 
 |cff00bdec【被动效果】攻击(5+Lv)%几率造成范围技能伤害
-【伤害公式】(全属性*5+1w)*Lv|r
+【伤害公式】(全属性*7+1w)*Lv|r
 
 ]],
 	--特效

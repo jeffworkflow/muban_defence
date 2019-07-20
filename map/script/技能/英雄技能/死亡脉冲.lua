@@ -18,7 +18,7 @@ mt{
 	cool = 15,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*5+10000)* self.level*5
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*7+10000)* self.level*5
 end,
 	--属性加成
  ['每秒加全属性'] = {25,50,75,100,125},
@@ -32,7 +32,7 @@ end,
 【杀怪加全属性】+25*Lv|r
 
 |cff00bdec【主动施放】对周围敌人造成范围技能伤害
-【伤害公式】(全属性*5+1w)*Lv*5|r
+【伤害公式】(全属性*7+1w)*Lv*5|r
 
 ]],
 	--技能图标
