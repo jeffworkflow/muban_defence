@@ -3,6 +3,7 @@ local mt = ac.skill['地图等级']
 mt{
 --等级
 level = 1,
+title = '地图等级(会更新)',
 --图标
 art = [[wuqi10.blp]],
 --说明
