@@ -52,6 +52,7 @@ cool = 1,
 gold = 10000,
 --物品模型
 specail_model = [[acorn.mdx]],
+
 model_size = 2,
 --物品数量
 _count = 1,
