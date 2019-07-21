@@ -10,6 +10,8 @@ gold = 5000,
 art = [[item\shou204.blp]],
 --类型
 item_type = "消耗品",
+--模型
+specail_model = [[EarthCrystal.mdx]],
 --品质
 color = "紫",
 --冷却
