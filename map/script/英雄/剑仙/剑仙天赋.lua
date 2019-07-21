@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 5,
     --触发几率
-   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return 20*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 800,
 	--技能类型
@@ -31,7 +31,7 @@ end,
 【攻击减甲】+250
 【对BOSS额外伤害】+50%|r
 
-|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+|cff00bdec【被动效果】攻击20%几率造成范围技能伤害
 【伤害公式】(全属性*60+1w)*Lv
 
 |cff00ff00【凌波微步】按D向鼠标方向飘逸500码距离|r]],

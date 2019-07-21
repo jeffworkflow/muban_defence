@@ -51,10 +51,10 @@ ac.game:event '游戏-结束' (function(trg,flag)
         for i=1,8 do
             local player = ac.player[i]
             if player:is_player() then
-                CustomDefeatBJ(player.handle,name)
                 player.hero:add_restriction('无敌')
                 player.hero:add_restriction('缴械')
                 player.hero:add_restriction('定身')
+                CustomDefeatBJ(player.handle,name)
             end
         end
     end)

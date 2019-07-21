@@ -89,7 +89,7 @@ need_map_level = 4,
 effect = [[htmd.mdx]]
 }
 
-local mt = ac.skill['巅峰天域']
+local mt = ac.skill['风驰电掣']
 mt{
 --等级
 level = 0,
@@ -115,7 +115,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['物品获取率'] = 15,
 need_map_level = 6,
 --特效
-effect = [[dfty.mdx]]
+effect = [[fengjiws6 - 副本.mdx]]
 }
 
 
@@ -147,7 +147,7 @@ need_map_level = 7,
 effect = [[jltx.mdx]]
 }
 
-local mt = ac.skill['九世天尊']
+local mt = ac.skill['无双魅影']
 mt{
 --等级
 level = 0,
@@ -173,7 +173,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 8,
 
 --特效
-effect = [[jstz.mdx]]
+effect = [[myws.mdx]]
 }
 
 
@@ -206,7 +206,7 @@ need_map_level = 9,
 effect = [[shendi.mdx]]
 }
 
-local mt = ac.skill['王者归来']
+local mt = ac.skill['傲世天下']
 mt{
 --等级
 level = 0,
@@ -232,11 +232,11 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['免伤几率'] = 5,
 need_map_level = 10,
 --特效
-effect = [[wzgl.mdx]]
+effect = [[vip.mdx]]
 }
 
 
-for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','巅峰天域','君临天下','九世天尊','神帝','王者归来'}) do
+for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

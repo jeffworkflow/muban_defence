@@ -270,7 +270,7 @@ local function streng_item(alltable,unit,it)
                             -- print_item(unit_item_list)
                             if stack -  tonumber(v) > 0 then 
                                 local new_it 
-                                if ac.table.ItemData[k] then 
+                                if ac.table.ItemData[name] then 
                                     new_it = ac.item.create_item(name)
                                 else
                                     new_it = ac.item.create_skill_item(name)

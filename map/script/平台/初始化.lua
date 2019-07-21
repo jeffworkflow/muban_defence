@@ -95,8 +95,8 @@ local star2award = {
     ['天罡苍羽翼'] = {'最强王者',50,10},
     ['炉火纯青'] = {'青铜',1,2},
     ['毁天灭地'] = {'黄金',5,4},
-    ['巅峰天域'] = {'钻石',10,6},
-    ['九世天尊'] = {'王者',25,8},
+    ['风驰电掣'] = {'钻石',10,6},
+    ['无双魅影'] = {'王者',25,8},
     ['赵子龙'] = {'白银',3,2},
     ['Pa'] = {'铂金',7,4},
     ['手无寸铁的小龙女'] = {'星耀',15,6},
@@ -250,7 +250,7 @@ local ttxd2award1 = {
     ['势不可挡'] = {0,3},
     ['君临天下'] = {0,4},
     ['神帝'] = {0,10},
-    ['王者归来'] = {0,11},
+    ['傲世天下'] = {0,11},
 }    
 
 --处理替天行道 永久属性
@@ -294,6 +294,13 @@ ttxd2award()
 --开始进行地图等级集中过滤
 ac.server.need_map_level = {}
 local function init_need_map_level()
+    for i,data in ipairs(ac.cus_server_key) do
+        if data[3] then 
+            -- print(data[2],data[3])
+            ac.server.need_map_level[data[2]] = data[3]
+        end    
+    end
+
     for name,data in pairs(star2award) do
         ac.server.need_map_level[name] = data[3]
     end
@@ -317,7 +324,7 @@ local function init_need_map_level()
         end   
     end
 end;
-init_need_map_level()
-
+ac.init_need_map_level =init_need_map_level
+ac.init_need_map_level()
 
 

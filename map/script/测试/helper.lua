@@ -254,12 +254,16 @@ function helper:dtdj(lv)
 	end    
 end
 
-function helper:reload_mall()
+function helper:reload_mall(flag)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id) 
 	local peon = p.peon
 	
 	--挖宝积分在读取存档数据后就赋值。
 	p:event_notify '读取存档数据'
+
+	if not flag then 
+		ac.init_need_map_level()
+	end	
 
 	local skl = self:find_skill('巅峰神域')
 	if skl then skl:remove() end
@@ -272,6 +276,9 @@ function helper:reload_mall()
 	local skl = peon:find_skill('宠物天赋')
 	if skl then skl:remove() end
 	peon:add_skill('宠物天赋','英雄',8)
+
+
+
 end	
 
 --积分 正常模式下，101波，boss打完就进入无尽，没有保存当前积分。 貌似要在回合结束统计分数。
@@ -296,7 +303,14 @@ end
 function helper:save(key,value)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)
 	-- p:SetServerValue(key,tonumber(value) or 1) 自定义服务器
-    p:Map_SaveServerValue(key,tonumber(value) or 1) --网易服务器
+	if key == 'all' then 
+		for i,data in ipairs(ac.cus_server_key) do 
+			local key = data[1]
+			p:Map_SaveServerValue(key,tonumber(value) or 1) --网易服务器
+		end		
+	else	
+		p:Map_SaveServerValue(key,tonumber(value) or 1) --网易服务器
+	end	
 end	
 --服务器清空档案
 function helper:clear_server(flag)

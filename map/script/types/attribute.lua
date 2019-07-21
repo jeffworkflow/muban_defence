@@ -552,7 +552,7 @@ end
 
 set['生命上限'] = function(self, max_life, old_max_life)
 	if max_life < 0 then 
-		max_life = 0
+		max_life = 1
 	end	
 	japi.SetUnitState(self.handle, jass.UNIT_STATE_MAX_LIFE, max_life)
 	if self.freshDefenceInfo then
@@ -561,10 +561,10 @@ set['生命上限'] = function(self, max_life, old_max_life)
 end
 
 on_set['生命上限'] = function(self)
-	if self:get '生命上限' <= 0 then 
-		self:kill()
-		return  
-	end	
+	-- if self:get '生命上限' <= 0 then 
+	-- 	self:kill()
+	-- 	return  
+	-- end	
 	local rate = self:get '生命' / self:get '生命上限'
 	return function()
 		-- print('设置生命1',self:get '生命上限' * rate)

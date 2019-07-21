@@ -90,11 +90,11 @@ need_yshz = 500,
 need_map_level = 9,
 }   
 
-local mt = ac.skill['兑换-王者归来']
+local mt = ac.skill['兑换-傲世天下']
 mt{
 --等久
 level = 1,
-store_name = '兑换-王者归来',
+store_name = '兑换-傲世天下',
 --图标
 art = 'wzgl.blp',
 --说明
@@ -221,7 +221,7 @@ need_map_level = 0,
 }   
 
 --存档称号相关
-for i,name in ipairs({'兑换-势不可挡','兑换-君临天下','兑换-神帝','兑换-王者归来'}) do
+for i,name in ipairs({'兑换-势不可挡','兑换-君临天下','兑换-神帝','兑换-傲世天下'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

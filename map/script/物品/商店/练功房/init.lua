@@ -44,9 +44,9 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
         if not finds(killer:get_name(),'火灵','金币','木头怪') then 
             return 
         end
-        print(11111111111111111111111)
+        -- print(11111111111111111111111)
         ac.wait(ac.revive_time * 1000 +10,function()
-            print('sdfsdf')
+            -- print('sdfsdf')
             local p = hero:get_owner()
             p.current_creep = nil  
         end)   
