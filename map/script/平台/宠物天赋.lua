@@ -266,6 +266,7 @@ end
 --宠物经验书处理
 local peon_xp_item ={
     {'宠物经验书(小)',50},
+    {'宠物经验书(中)',200},
     {'宠物经验书(大)',1000}
 }
 for i,data in ipairs(peon_xp_item) do

@@ -227,3 +227,9 @@ function mt:on_remove()
     end    
     
 end
+
+--解决藏宝图在npc脚下，英雄挖不到宝
+ac.game:event '玩家-注册英雄' (function(_, _, hero)
+    hero:add_restriction('幽灵')
+end)    
+

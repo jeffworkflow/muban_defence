@@ -420,7 +420,7 @@ function helper:test_k_u()
 			-- japi.SetUnitState(self.handle, jass.ConvertUnitState(0x12), 123 - 1) --攻击 
 			-- jass.RemoveUnit(handle)
 			-- print(handle)
-			local u = ac.player(1):create_unit('甲虫',point)
+			local u = ac.player(12):create_unit('甲虫',point)
 			u:kill()
 			-- u:remove()
 			-- table.insert(temp,u)
@@ -693,9 +693,11 @@ function helper:tt_unit(where)
 	end	
 end	
 function helper:final()
-	ac.creep['刷怪1'].index = 24
-	ac.creep['刷怪2'].index = 24
-	ac.creep['刷怪3'].index = 24
+	-- ac.creep['刷怪1'].index = 24
+	-- ac.creep['刷怪2'].index = 24
+	-- ac.creep['刷怪3'].index = 24
+	
+	ac.game:event_dispatch('游戏-最终boss')
 end	
 --进入地狱，7个光环
 function helper:tt()

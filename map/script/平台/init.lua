@@ -15,6 +15,8 @@ require '平台.替天行道'
 require '平台.勇士徽章'
 
 -- require '平台.兑换-点金石'
+require '平台.地图等级'
+require '平台.活动'
 
 
 

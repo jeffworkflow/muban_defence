@@ -54,15 +54,16 @@ end
 
 
 ac.game:event '单位-死亡' (function (_,unit,killer)
-    if unit:get_owner() ~= ac.player(12) then 
+    if unit:get_owner().id < 11 then 
         return
     end    
-    --玩家12（敌对死亡才掉落）
-    local rate = 2 
-    local rand = math.random(100)
+    --玩家12（敌对死亡才掉落） 8 0000  40 *200 8000 10*2000 20000
+    local rate = 0.05
+    -- local rate = 10 --测试
+    local rand = math.random(10000)/100
     if rand <= rate then 
         --掉落
-        ac.item.create_item('五一勋章',unit:get_point())
+        ac.item.create_item('宠物经验书(中)',unit:get_point())
     end    
 end)
 

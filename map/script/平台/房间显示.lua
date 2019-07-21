@@ -8,23 +8,28 @@ local function set_fj_data(player)
     for key,value in pairs(player.cus_server) do
         for i,name in ipairs(yxj) do
             if key == name then
-                table.insert(temp,{key = key,value = value,key_yxj = i})
+                if value > 0 then 
+                    table.insert(temp,{key = key,value = value,key_yxj = i})
+                end    
             end    
         end    
     end    
     --根据星数排序
     table.sort(temp,function (a,b)
         local flag 
-        if a.value > b.value then 
+        -- if a.value > b.value then 
+        --     flag = true 
+        -- --根据段位优先级
+        -- elseif a.value == b.value then 
+        --     if a.key_yxj < b.key_yxj then 
+        --         flag = true 
+        --     end
+        -- else
+        --     flag = false
+        -- end    
+        if a.key_yxj < b.key_yxj then 
             flag = true 
-        --根据段位优先级
-        elseif a.value == b.value then 
-            if a.key_yxj < b.key_yxj then 
-                flag = true 
-            end
-        else
-            flag = false
-        end            
+        end                  
 
 		return flag
 	end) 
