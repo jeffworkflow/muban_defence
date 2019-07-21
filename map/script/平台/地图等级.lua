@@ -3,7 +3,8 @@ local mt = ac.skill['地图等级']
 mt{
 --等级
 level = 1,
-title = '地图等级(会更新)',
+title = function(self) return '|cffffe799地图等级(会更新) |r|cffff0000 '..self.map_level ..' 级|r' end,
+is_order = 1,
 --图标
 art = [[wuqi10.blp]],
 --说明
@@ -127,7 +128,7 @@ end,
 end,
 --属性加成： 地图等级7 限量首充资源加成翻倍
 --属性加成： 地图等级8 杀敌加全属性+50（通关N3效果翻倍）
-['杀敌加全属性'] =  function(self)
+['杀怪加全属性'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
     local dw_star = (p.cus_server and p.cus_server['黄金'] or 0) > 0  and 2 or 1
@@ -149,7 +150,7 @@ end,
     return value 
 end,
 --属性加成： 地图等级10 物爆加深+50（通关N4效果翻倍）
-['物爆加深'] =  function(self)
+['暴击加深'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
     local dw_star = (p.cus_server and p.cus_server['铂金'] or 0) > 0  and 2 or 1
@@ -160,7 +161,7 @@ end,
     return value 
 end,
 --属性加成： 地图等级11 技爆加深+50（通关N4效果翻倍）
-['技爆加深'] =  function(self)
+['技暴加深'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
     local dw_star = (p.cus_server and p.cus_server['铂金'] or 0) > 0  and 2 or 1
@@ -171,7 +172,7 @@ end,
     return value 
 end,
 --属性加成： 地图等级12 全身加深+5（通关N5效果翻倍）
-['全身加深'] =  function(self)
+['全伤加深'] =  function(self)
     local p = self.owner:get_owner()
     local map_level = p:Map_GetMapLevel()
     local dw_star = (p.cus_server and p.cus_server['钻石'] or 0) > 0  and 2 or 1
