@@ -12,8 +12,20 @@ mt{
     
 }
 mt.skills = {
-    '游戏说明','礼包','称号','武器','翅膀','地图等级',
-}
+    '游戏说明','礼包','称号','武器','翅膀','地图等级','首充大礼包'
+} 
+function mt:on_add()
+    local hero = self.owner 
+    local player = hero:get_owner()
+    -- print('打开魔法书')
+    for index,skill in ipairs(self.skill_book) do 
+        local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
+        -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
+        if has_mall and has_mall > 0 then 
+            skill:set_level(1)
+        end
+    end 
+end  
 
 local mt = ac.skill['游戏说明']
 mt{
@@ -43,7 +55,7 @@ mt{
     
 }
 mt.skills = {
-    '群号礼包','五星好评礼包','金币礼包','木材礼包','限量首充','寻宝小飞侠','神仙水','永久赞助','永久超级赞助','神装大礼包','神技大礼包',
+    '群号礼包','五星好评礼包','金币礼包','木材礼包','限量首充','寻宝小飞侠','神仙水','永久赞助','永久超级赞助','神装大礼包','神技大礼包'
 }
 
 local mt = ac.skill['武器']

@@ -348,12 +348,13 @@ function helper:get_server(key)
 	if key == 'all' then 
 		for name,val in pairs(p.cus_server) do
 			local key = ac.server.name2key(name)
-			print('服务器存档:',key,val)
+			print('服务器存档:'..key,p:Map_GetServerValue(key))
+			-- print('服务器存档:',key,val)
 		end
 	else		
 		local name = ac.server.key2name(key)	
-		-- print('服务器存档:'..key,p:Map_GetServerValue(key))
-		print('服务器存档:'..key,p.cus_server[name])
+		print('服务器存档:'..key,p:Map_GetServerValue(key))
+		-- print('服务器存档:'..key,p.cus_server[name])
 	end	
 end	
 --波数
