@@ -100,7 +100,7 @@ art = 'wzgl.blp',
 --说明
 tip = [[
 
-消耗 |cffff0000一千枚徽章|r 兑换 |cff00ff00傲视天下|r
+消耗 |cffff0000一千枚徽章|r 兑换 |cff00ff00傲世天下|r
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+268  杀怪加全属性|r

@@ -3,7 +3,7 @@ mt{
 --等久
 level = 0,
 --图标
-art = [[hplb.blp]],
+art = [[scdlb.blp]],
 is_order = 1,
 --说明
 tip = [[
@@ -15,7 +15,9 @@ tip = [[
 |cff00ffff杀敌数加成+15% 木头加成+15% 
 物品获取率+15% 火灵加成+15% |r
 |cffff0000对BOSS额外伤害+5%|r
-地图等级>=7 资源加成效果翻倍
+
+|cffffff00地图等级>=7，首充大礼包的资源属性效果翻倍|r
+
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,

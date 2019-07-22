@@ -240,7 +240,7 @@ function mt:add_content()
                     ac.item.create_item(item_name,point)
                 end    
             end    
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 挖到了 |cffff0000'..rand_name..'，，一大堆碎片散落老家周围，大家快去抢啊|r',2) 
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 在挖宝时挖塌了|cffff0000'..rand_name..'，一大堆碎片散落|cffff0000老家周围|r，大家快去抢啊|r',2) 
         else 
             self:add_content() --已挖到再随机一次
         end    
