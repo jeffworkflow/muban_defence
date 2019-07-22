@@ -126,10 +126,13 @@ tip = [[
 |cffFFE799【神兵属性】：|r
 |cff00ff00+600  杀怪加攻击|r
 |cff00ff00+5%   暴击几率|r
+|cff00ff00+100%   暴击加深|r
 |cff00ff00+5%   技暴几率|r
+|cff00ff00+100%   暴击加深|r
 |cff00ff00+15%   全伤加深|r
 |cff00ff00攻击10%几率造成范围技能伤害|cff00ffff（伤害公式：全属性*40）
-
+羁绊属性：（和皇帝刀可激活）
+攻击减甲+150
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 --触发几率
 chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
@@ -145,7 +148,9 @@ damage_area = 800,
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 600,
 ['暴击几率'] = 5,
+['暴击加深'] = 100,
 ['技暴几率'] = 5,
+['技暴加深'] = 100,
 ['全伤加深'] = 15,
 --特效
 effect = [[wuqi8.mdx]]
@@ -167,10 +172,13 @@ tip = [[
 |cffFFE799【神兵属性】：|r
 |cff00ff00+750  杀怪加攻击|r
 |cff00ff00+5%   暴击几率|r
+|cff00ff00+100%   暴击加深|r
 |cff00ff00+5%   技暴几率|r
+|cff00ff00+100%   技暴加深|r
 |cff00ff00+15%   全伤加深|r
 |cff00ff00攻击10%几率造成范围技能伤害|cff00ffff（伤害公式：全属性*60）
-
+羁绊属性：（和皇帝剑可激活）
+攻击减甲+150
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
 ]],
 --触发几率
@@ -187,8 +195,18 @@ damage_area = 800,
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 750,
 ['暴击几率'] = 5,
+['暴击加深'] = 100,
 ['技暴几率'] = 5,
-['全伤加深'] = 5,
+['技暴加深'] = 100,
+['全伤加深'] = 15,
+['攻击减甲'] = function(self) 
+    local val = 0 
+    local p = self.owner:get_owner()
+    if (p.mall and p.mall['皇帝剑'] or 0) >=1 then 
+        val = 150
+    end    
+    return val
+end,
 --特效
 effect = [[wuqi11.mdx]]
 }

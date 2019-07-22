@@ -69,8 +69,8 @@ for i=1,10 do
                 or (p:Map_GetMapLevel() >= need_map_level) 
                 or (p.cheating)) 
             then
-                local key = ac.mall[n][2]  
-                p.mall[key] = 1  
+                local name = ac.mall[n][2]  
+                p.mall[name] = 1  
             end  
         end    
     end    

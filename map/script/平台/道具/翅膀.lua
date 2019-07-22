@@ -121,18 +121,31 @@ tip = [[
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+200    杀怪加全属性|r
+|cff00ff00+688    每秒加全属性|r
+|cff00ff00+388    攻击加全属性|r
 |cff00ff00+10    每秒加护甲|r
 |cff00ff00+10%   闪避|r
 |cff00ff00+10%   免伤几率|r
-
+羁绊属性: (和轮迴幻魔翼 可激活)
+全伤加深 +100%
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 200,
+['每秒加全属性'] = 688,
+['攻击加全属性'] = 388,
 ['每秒加护甲'] = 10,
 ['免伤几率'] = 10,
 ['闪避'] = 10,
+['全伤加深'] = function(self) 
+    local val = 0 
+    local p = self.owner:get_owner()
+    if (p.mall and p.mall['轮迴幻魔翼'] or 1) >=1 then 
+        val = 100
+    end    
+    return val
+end,
 --特效
 effect = [[chibang8.mdx]]
 }
@@ -151,15 +164,21 @@ tip = [[
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+250    杀怪加全属性|r
+|cff00ff00+788    每秒加全属性|r
+|cff00ff00+488    攻击加全属性|r
 |cff00ff00+10    每秒加护甲|r
 |cff00ff00+10%   免伤|r
 |cff00ff00+10%   免伤几率|r
+羁绊属性: (和绝世阳炎翼 可激活)
+全伤加深 +100%
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 250,
+['每秒加全属性'] = 788,
+['攻击加全属性'] = 488,
 ['每秒加护甲'] = 10,
 ['免伤几率'] = 10,
 ['免伤'] = 10,

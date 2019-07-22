@@ -79,6 +79,9 @@ function mt:on_cast_start()
                     if item[key] and lni_data[key]  then 
                         item[key] = lni_data[key] * (1+(item.level)*0.1)
                     end 
+                    if item[key..'%'] and lni_data[key..'%']  then 
+                        item[key..'%'] = lni_data[key..'%'] * (1+(item.level)*0.1)
+                    end 
                 end
                 if item.level <=10 then 
                     item.show_level = true
