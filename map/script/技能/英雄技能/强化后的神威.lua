@@ -38,7 +38,7 @@ end,
 ]],
 	--特效
     effect = [[GoblinTech_R.mdx]],
-    art = [[jineng006.blp]],
+    art = [[jineng\jineng006.blp]],
     damage_type = '法术',
 }
 function mt:on_add()
