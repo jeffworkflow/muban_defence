@@ -15,7 +15,8 @@ tip = [[
 |cff00ffff杀敌数加成+15% 木头加成+15% 
 物品获取率+15% 火灵加成+15% |r
 |cffff0000对BOSS额外伤害+5%|r
-|cffcccccc（限量首充，限量1000个）|r]],
+
+|cffcccccc（限量首充，限量1000个，已卖光！可与首充大礼包相叠加）|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 38,
