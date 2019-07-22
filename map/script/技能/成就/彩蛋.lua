@@ -264,6 +264,64 @@ mt{
     ['全属性'] = 5000000,
 }
 
+local mt = ac.skill['ONE_PIECE']
+mt{
+    --等久
+    level = 1,
+    --魔法书相关
+    is_order = 1 ,
+    --目标类型
+    target_type = ac.skill.TARGET_TYPE_NONE,
+    --冷却
+    cool = 0,
+    content_tip = '',
+    item_type_tip = '',
+    --物品技能
+    is_skill = true,
+    --商店名词缀
+    store_affix = '',
+    art = [[oneps.blp]], 
+    tip = [[
+    
+|cffFFE799【成就属性】：|r
+|cff00ff00+500W 全属性
++5%  对BOSS额外伤害|r
+
+]],
+    ['全属性'] = 5000000,
+    ['对BOSS额外伤害'] = 5,
+}
+
+local mt = ac.skill['法老的遗产']
+mt{
+    --等久
+    level = 1,
+    --魔法书相关
+    is_order = 1 ,
+    --目标类型
+    target_type = ac.skill.TARGET_TYPE_NONE,
+    --冷却
+    cool = 0,
+    content_tip = '',
+    item_type_tip = '',
+    --物品技能
+    is_skill = true,
+    --商店名词缀
+    store_affix = '',
+    art = [[fldyc.blp]], 
+    tip = [[
+    
+|cffFFE799【成就属性】：|r
+|cff00ff00+500W 全属性
++2.5%  会心几率
++25%  会心伤害|r
+
+]],
+    ['全属性'] = 5000000,
+    ['会心几率'] = 2.5,
+    ['会心伤害'] = 25,
+}
+
 --浴火重生
 ac.game:event '单位-杀死单位'(function(_,killer,target)
     if not killer:is_hero() then 
@@ -280,6 +338,8 @@ ac.game:event '单位-杀死单位'(function(_,killer,target)
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','浴火重生')
                 player.is_show_nickname = '浴火重生'
+                --加火灵
+                hero:add_fire_seed(100000)
                 --给全部玩家发送消息
                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 挑战异火时 领悟成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)
                 ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 挑战异火时 领悟成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)

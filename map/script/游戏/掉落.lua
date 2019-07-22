@@ -348,7 +348,7 @@ local unit_reward = {
         -- 0.5	宠物经验书（大）		
         -- 0.25	挖宝达人：500万全属性，物品获取率+50%		
 
-        {    rand = 54, name = '无' },
+        {    rand = 52, name = '无' },
         {    rand = 10, name = '随机物品',},
         {    rand = 15, name = '随机技能',},
         {    rand = 1.5, name = '杀怪加力量+400 攻击加力量+1200 每秒加力量+2000' },
@@ -368,6 +368,8 @@ local unit_reward = {
         {    rand = 0.5, name = '最强生物心脏',}, --lv1
         {    rand = 0.5, name = '白胡子的大刀',}, --lv2
         {    rand = 1, name = '碎片幼儿园',}, --lv2
+        {    rand = 1, name = 'ONE_PIECE',}, --lv2
+        {    rand = 1, name = '法老的遗产',}, --lv2
 
     },
     ['抽奖券'] =  {

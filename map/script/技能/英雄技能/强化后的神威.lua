@@ -38,7 +38,7 @@ end,
 ]],
 	--特效
     effect = [[GoblinTech_R.mdx]],
-    art = [[qhsw.blp]],
+    art = [[jineng006.blp]],
     damage_type = '法术',
 }
 function mt:on_add()
@@ -62,11 +62,11 @@ function mt:on_add()
                 : of_not_building()
                 : ipairs()
             do
-                u:add_buff '晕眩'
-                {
-                    source = hero,
-                    time = self.time,
-                }
+                -- u:add_buff '晕眩'
+                -- {
+                --     source = hero,
+                --     time = self.time,
+                -- }
                 u:damage
                 {
                     source = hero,

@@ -20,6 +20,7 @@ range = 1000,
 area = 750,
 --致盲
 stun = 2,
+force_cast=1,
 --冷却
 cool = 10
 }

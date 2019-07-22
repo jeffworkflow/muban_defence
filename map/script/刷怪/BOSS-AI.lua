@@ -18,9 +18,9 @@ local function cast_skill(hero,target)
         return 
     end 
     -- print(skill.name,skill:is_cooling())
-    -- if skill:is_cooling() then 
-    --     return 
-    -- end    
+    if skill:is_cooling() then 
+        return 
+    end    
     if skill.target_type == 0 then 
         skill:cast()
     elseif skill.target_type == 1 then  

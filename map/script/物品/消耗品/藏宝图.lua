@@ -88,7 +88,9 @@ function mt:on_cast_start()
                     end 
                     -- print('单位进入')
                     self:on_add() 
+                    -- for i =1,100 do 
                     self:add_content()  
+                    -- end
                     self:add_item_count(-1) 
                     if self.trg then 
                         self.trg:remove()
@@ -244,8 +246,27 @@ function mt:add_content()
         else 
             self:add_content() --已挖到再随机一次
         end    
- 
-
+    elseif rand_name == 'ONE_PIECE' then
+        local skl = hero:find_skill(rand_name,nil,true)
+        if not skl  then 
+            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
+            player.is_show_nickname = rand_name
+            --给全部玩家发送消息
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000500万全属性，对BOSS额外伤害+5%|r',6)
+        else
+            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
+        end  
+    elseif rand_name == '法老的遗产' then
+        local skl = hero:find_skill(rand_name,nil,true)
+        if not skl  then 
+            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋',rand_name)
+            player.is_show_nickname = rand_name  
+            --给全部玩家发送消息
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r 奖励 |cffff0000500万全属性 +2.5%会心几率 +25%会心伤害|r',6)
+        else
+            player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
+        end
+          
     end   
 end
 
