@@ -317,6 +317,9 @@ for i,name in ipairs({'兑换-力量','兑换-敏捷','兑换-智力','兑换-�
                 second_item:add_item_count(-self.need_yshz)
             end   
         else
+            --已经加了属性，需要重新扣除
+            print(real_name,-self[real_name])
+            hero:add(real_name,-self[real_name])
             p:sendMsg('【系统消息】勇气徽章不足')    
         end    
     end    

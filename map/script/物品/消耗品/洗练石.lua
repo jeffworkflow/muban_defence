@@ -113,8 +113,8 @@ for ix =1 ,4 do
         end   
         --移除物品
         if flag then
-            for i=1,6 do
-                local items = hero:get_slot_item(i) 
+            for i=1,30 do
+                local items = hero.item_list and hero.item_list[i]
                 if items and items.suit_type == flag then  
                     items:item_remove()
                 end    

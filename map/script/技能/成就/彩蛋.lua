@@ -209,6 +209,112 @@ mt{
 }
 
 
+local mt = ac.skill['实在是菜']
+mt{
+    --等久
+    level = 1,
+    --魔法书相关
+    is_order = 1 ,
+    --目标类型
+    target_type = ac.skill.TARGET_TYPE_NONE,
+    --冷却
+    cool = 0,
+    content_tip = '',
+    item_type_tip = '',
+    --物品技能
+    is_skill = true,
+    --商店名词缀
+    store_affix = '',
+    art = [[jdbys.blp]], 
+    tip = [[
+    
+|cffFFE799【成就属性】：|r
+|cff00ff00+500 护甲
++500W  生命上限|r
+
+]],
+    ['护甲'] = 500,
+    ['生命上限'] = 5000000,
+}
+
+local mt = ac.skill['浴火重生']
+mt{
+    --等久
+    level = 1,
+    --魔法书相关
+    is_order = 1 ,
+    --目标类型
+    target_type = ac.skill.TARGET_TYPE_NONE,
+    --冷却
+    cool = 0,
+    content_tip = '',
+    item_type_tip = '',
+    --物品技能
+    is_skill = true,
+    --商店名词缀
+    store_affix = '',
+    art = [[jdbys.blp]], 
+    tip = [[
+    
+|cffFFE799【成就属性】：|r
+|cff00ff00+500W 全属性
++10W  火灵|r
+
+]],
+    ['全属性'] = 5000000,
+}
+
+--浴火重生
+ac.game:event '单位-杀死单位'(function(_,killer,target)
+    if not killer:is_hero() then 
+        return 
+    end 
+    if finds(target:get_name(),'星星之火boss','陨落心炎boss','三千焱炎火boss','虚无吞炎boss') then 
+        local player = killer:get_owner()
+        local hero = killer
+        --概率获得成就
+        local rate = 2.5
+        -- local rate = 80 --测试用
+        if math.random(1,10000)/100 < rate then 
+            local skl = hero:find_skill('浴火重生',nil,true)
+            if not skl  then 
+                ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','浴火重生')
+                player.is_show_nickname = '浴火重生'
+                --给全部玩家发送消息
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)
+            end
+        end    
+    end    
+
+end)
+
+
+
+--实在是菜
+ac.game:event '单位-死亡'(function(_,unit,killer)
+    if not unit:is_hero() then 
+        return 
+    end 
+    local player = unit:get_owner()
+    player.dead_cnt = (player.dead_cnt or 0) +1
+    local hero = unit
+    if player.dead_cnt == 10 then 
+        local skl = hero:find_skill('实在是菜',nil,true)
+        if not skl  then 
+            ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','实在是菜')
+            player.is_show_nickname = '实在是菜'
+            --给全部玩家发送消息
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+500护甲 +500W生命上限|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+500护甲 +500W生命上限|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+500护甲 +500W生命上限|r',6)
+        end
+    end    
+
+end)
+
+
 --注册怪物死亡事件 杀鸡狂魔
 ac.game:event '单位-死亡' (function (_,unit,killer)
     if unit:get_name() ~= '鸡' then 

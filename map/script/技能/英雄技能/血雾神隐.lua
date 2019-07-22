@@ -12,6 +12,8 @@ mt{
    damage_area = 500,
 	--技能类型
 	skill_type = "被动,无敌",
+	--被动
+	passive = true,
 	--介绍
     tip = [[
         

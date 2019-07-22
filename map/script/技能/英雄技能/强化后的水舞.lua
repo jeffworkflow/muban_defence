@@ -10,6 +10,8 @@ mt{
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 800,
+   --被动
+   passive = true,
 	--技能类型
 	skill_type = "被动,智力,晕眩",
     title = "|cffdf19d0强化后的水舞|r",

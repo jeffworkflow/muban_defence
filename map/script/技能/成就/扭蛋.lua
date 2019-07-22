@@ -237,3 +237,64 @@ mt{
     ['技暴加深'] = 50,
     ['全属性'] = 5000000,
 }   
+
+
+local mt = ac.skill['矮人的火枪']
+mt{
+    --等久
+    level = 1,
+    --魔法书相关
+    is_order = 1 ,
+    --目标类型
+    target_type = ac.skill.TARGET_TYPE_NONE,
+    --冷却
+    cool = 0,
+    content_tip = '',
+    item_type_tip = '',
+    --物品技能
+    is_skill = true,
+    --商店名词缀
+    store_affix = '',
+    art = [[mrzb.blp]],
+    tip = [[
+
+|cffFFE799【扭蛋属性】：|r
+|cff00ff00+100w 全属性
++50   攻击距离
++15   攻击减甲|r
+
+]],
+    ['攻击距离'] = 5,
+    ['攻击减甲'] = 15,
+    ['全属性'] = 1000000,
+}   
+
+
+
+local mt = ac.skill['龙族血统']
+mt{
+    --等久
+    level = 1,
+    --魔法书相关
+    is_order = 1 ,
+    --目标类型
+    target_type = ac.skill.TARGET_TYPE_NONE,
+    --冷却
+    cool = 0,
+    content_tip = '',
+    item_type_tip = '',
+    --物品技能
+    is_skill = true,
+    --商店名词缀
+    store_affix = '',
+    art = [[mrzb.blp]],
+    tip = [[
+
+|cffFFE799【扭蛋属性】：|r
+|cff00ff00+500w 全属性
++10   每秒加护甲|r
+
+]],
+    ['每秒加护甲'] = 10,
+    ['全属性'] = 5000000,
+}   
