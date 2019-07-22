@@ -60,16 +60,16 @@ tip = [[
 |cffFFE799【神兵属性】：|r
 |cff00ff00+400  杀怪加攻击|r
 |cff00ff00-0.05 攻击间隔|r
-|cff00ff00+35   攻击减甲|r
-|cff00ff00+5%   对BOSS额外伤害|r
+|cff00ff00+50   攻击减甲|r
+|cff00ff00+10%   对BOSS额外伤害|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 400,
 ['攻击间隔'] = -0.05,
-['攻击减甲'] = 35,
-['对BOSS额外伤害'] = 5,
+['攻击减甲'] = 50,
+['对BOSS额外伤害'] = 10,
 need_map_level = 30,
 --特效
 effect = [[wuqi13.mdx]]

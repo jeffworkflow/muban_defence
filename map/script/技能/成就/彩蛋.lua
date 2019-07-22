@@ -225,7 +225,7 @@ mt{
     is_skill = true,
     --商店名词缀
     store_affix = '',
-    art = [[jdbys.blp]], 
+    art = [[szsc.blp]], 
     tip = [[
     
 |cffFFE799【成就属性】：|r
@@ -253,7 +253,7 @@ mt{
     is_skill = true,
     --商店名词缀
     store_affix = '',
-    art = [[jdbys.blp]], 
+    art = [[yhcs.blp]], 
     tip = [[
     
 |cffFFE799【成就属性】：|r
@@ -281,9 +281,9 @@ ac.game:event '单位-杀死单位'(function(_,killer,target)
                 ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','浴火重生')
                 player.is_show_nickname = '浴火重生'
                 --给全部玩家发送消息
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 挑战异火时 领悟成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 挑战异火时 领悟成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 挑战异火时 领悟成就|cffff0000 "浴火重生" |r，奖励 |cffff0000+500W全属性 +10W火灵|r',6)
             end
         end    
     end    

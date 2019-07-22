@@ -77,13 +77,13 @@ tip = [[
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+30    杀怪加全属性|r
-|cff00ff00+10%   物理伤害加深|r
+|cff00ff00+20%   物理伤害加深|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 30,
-['物理伤害加深'] = 10,
+['物理伤害加深'] = 20,
 need_map_level = 4,
 --特效
 effect = [[htmd.mdx]]
@@ -157,19 +157,19 @@ art = [[jstz.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff王者25星 
+|cff00ffff王者15星
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+100 杀怪加全属性|r
 |cff00ff00+5%  免伤|r
-|cff00ff00+10%  全伤加深|r
+|cff00ff00+15%  全伤加深|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 100,
 ['免伤'] = 5,
-['全伤加深'] = 10,
+['全伤加深'] = 15,
 need_map_level = 8,
 
 --特效

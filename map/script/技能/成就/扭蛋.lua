@@ -255,7 +255,7 @@ mt{
     is_skill = true,
     --商店名词缀
     store_affix = '',
-    art = [[mrzb.blp]],
+    art = [[arhq.blp]],
     tip = [[
 
 |cffFFE799【扭蛋属性】：|r
@@ -287,7 +287,7 @@ mt{
     is_skill = true,
     --商店名词缀
     store_affix = '',
-    art = [[mrzb.blp]],
+    art = [[lzxt.blp]],
     tip = [[
 
 |cffFFE799【扭蛋属性】：|r

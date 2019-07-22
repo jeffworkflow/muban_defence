@@ -58,7 +58,7 @@ tip = [[
 |cff00ff00+150    杀怪加全属性|r
 |cff00ff00+3000W 生命|r
 |cff00ff00+3000   护甲
-|cff00ff00+5%   闪避|r
+|cff00ff00+10%   闪避|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
@@ -67,7 +67,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 100,
 ['生命上限'] = 20000000,
 ['护甲'] = 2000,
-['闪避'] = 5,
+['闪避'] = 10,
 need_map_level = 40,
 --特效
 effect = [[chibang4.mdx]]
