@@ -49,6 +49,30 @@ mt{
  ]],
 }
 
+local mt = ac.skill['地图等级福利']
+mt{
+    --类型
+    item_type = "神符",
+    art = [[xsgl.blp]],
+    --物品技能
+    is_skill = true,
+    content_tip = '',
+    store_affix ='',
+    tip = [[ 
+|cff00ff00地图等级可解锁肝的内容|r
+
+|cffffE7993级+五星好评|r 奖励 |cff00ff00【礼包】五星好评礼包（价值15元）
+|cffffE7995级|r 奖励 |cff00ff00【英雄】夏侯霸（价值25元）
+|cffffE79910级|r 奖励 敬请期待
+|cffffE79915级|r 奖励 |cff00ffff【英雄】虞姬（价值55元）
+|cffffE79920级|r 奖励 敬请期待
+|cffffE79925级|r 奖励 |cffffff00【英雄】太极熊猫（价值88元）
+|cffffE79930级|r 奖励 |cffff0000【神器】惊虹奔雷剑（价值75元）
+|cffffE79935级|r 奖励 |cffff0000【英雄】狄仁杰（价值128元）
+|cffffE79940级|r 奖励 |cffff0000【翅膀】玄羽绣云翼（价值100元）
+|cffffE79945级|r 奖励 |cffff0000【英雄】伊利丹（价值198元）
+ ]],
+}
 local mt = ac.skill['挖宝积分说明']
 mt{
     --类型
