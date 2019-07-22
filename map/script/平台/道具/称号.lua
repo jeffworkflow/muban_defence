@@ -130,17 +130,19 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗勇士徽章  200  兑换获得
+|cff00ffff消耗勇士徽章  100  兑换获得
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+250  杀怪加攻击|r
 |cff00ff00+15%   全伤加深|r
+|cff00ff00+25%   分裂伤害|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 250,
 ['全伤加深'] = 15,
+['分裂伤害'] = 25,
 need_map_level = 7,
 
 --特效
@@ -188,18 +190,18 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗勇士徽章  500  兑换获得
+|cff00ffff消耗勇士徽章  250  兑换获得
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+500  杀怪加攻击|r
-|cff00ff00+500  减少周围护甲|r
+|cff00ff00+800  减少周围护甲|r
 |cff00ff00-0.05 攻击间隔|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 500,
-['减少周围护甲'] = 500,
+['减少周围护甲'] = 800,
 ['攻击间隔'] = -0.05,
 need_map_level = 9,
 --特效
@@ -217,19 +219,19 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗勇士徽章  1000  兑换获得
+|cff00ffff消耗勇士徽章  500  兑换获得
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+268  杀怪加全属性|r
-|cff00ff00+5%   免伤几率|r
-|cff00ff00+5%   对BOSS额外伤害|r
+|cff00ff00+10%   免伤几率|r
+|cff00ff00+10%   对BOSS额外伤害|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 750,
-['对BOSS额外伤害'] = 5,
-['免伤几率'] = 5,
+['对BOSS额外伤害'] = 10,
+['免伤几率'] = 10,
 need_map_level = 10,
 --特效
 effect = [[vip.mdx]]

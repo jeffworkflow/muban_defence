@@ -42,11 +42,12 @@ art = 'jltx.blp',
 --说明
 tip = [[
 
-消耗 |cffff0000二百枚徽章|r 兑换 |cff00ff00君临天下|r
+消耗 |cffff0000一百枚徽章|r 兑换 |cff00ff00君临天下|r
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+250  杀怪加攻击|r
 |cff00ff00+15%   全伤加深|r
+|cff00ff00+25%   分裂伤害|r
 
 |cffff0000【所有称号外观可更换，所有称号属性可叠加】|r]],
 --物品类型
@@ -56,8 +57,8 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need_yshz = 200,
-need_map_level = 7,
+need_yshz = 100,
+need_map_level = 4,
 }   
  
 
@@ -71,11 +72,11 @@ art = 'shendi.blp',
 --说明
 tip = [[
 
-消耗 |cffff0000五百枚徽章|r 兑换 |cff00ff00神帝|r
+消耗 |cffff0000两百五十枚徽章|r 兑换 |cff00ff00神帝|r
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+500  杀怪加攻击|r
-|cff00ff00+500  减少周围护甲|r
+|cff00ff00+800  减少周围护甲|r
 |cff00ff00-0.05 攻击间隔|r
 
 |cffff0000【所有称号外观可更换，所有称号属性可叠加】|r]],
@@ -86,7 +87,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need_yshz = 500,
+need_yshz = 250,
 need_map_level = 9,
 }   
 
@@ -100,12 +101,12 @@ art = 'wzgl.blp',
 --说明
 tip = [[
 
-消耗 |cffff0000一千枚徽章|r 兑换 |cff00ff00傲世天下|r
+消耗 |cffff0000五百枚徽章|r 兑换 |cff00ff00傲世天下|r
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+268  杀怪加全属性|r
-|cff00ff00+5%   免伤几率|r
-|cff00ff00+5%   对boss额外伤害|r
+|cff00ff00+10%   免伤几率|r
+|cff00ff00+10%   对boss额外伤害|r
 
 |cffff0000【所有称号外观可更换，所有称号属性可叠加】|r]],
 --物品类型
@@ -115,7 +116,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need_yshz = 1000,
+need_yshz = 500,
 need_map_level = 10,
 }   
 

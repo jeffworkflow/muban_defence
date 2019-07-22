@@ -96,7 +96,7 @@ art = [[ReplaceableTextures\CommandButtons\BTNFaerieDragon.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff神龙碎片超过 500  自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff神龙碎片超过 300  自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+68  杀怪加全属性|r
@@ -112,7 +112,7 @@ skin_cnt = function(self)
     return p.cus_server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 500,
+need_sp_cnt = 300,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 68,
@@ -174,7 +174,7 @@ art = [[ReplaceableTextures\CommandButtons\BTNChimaera.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff神龙碎片超过 800 自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff神龙碎片超过 400 自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+128    杀怪加全属性|r
@@ -189,7 +189,7 @@ skin_cnt = function(self)
     return p.cus_server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 800,
+need_sp_cnt = 400,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 128,
