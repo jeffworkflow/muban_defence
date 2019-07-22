@@ -68,7 +68,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['生命上限'] = 20000000,
 ['护甲'] = 2000,
 ['闪避'] = 10,
-need_map_level = 40,
+need_map_level = 30,
 --特效
 effect = [[chibang4.mdx]]
 }

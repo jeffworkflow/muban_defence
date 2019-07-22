@@ -70,7 +70,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['攻击间隔'] = -0.05,
 ['攻击减甲'] = 50,
 ['对BOSS额外伤害'] = 10,
-need_map_level = 30,
+need_map_level = 20,
 --特效
 effect = [[wuqi13.mdx]]
 }
