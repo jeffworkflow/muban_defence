@@ -31,7 +31,7 @@ require '刷怪'
 -- -- print(12)
 require '测试'
 -- print(13)
---设置天空模型
+--设置天空模型 
 -- jass.SetSkyModel([[sky.mdx]])
 -- jass.CreateDestructable(base.string2id('B04E'), 0, 0, 0, 1, 0)
 
