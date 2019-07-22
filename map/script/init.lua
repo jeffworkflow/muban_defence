@@ -33,7 +33,7 @@ require '测试'
 -- print(13)
 --设置天空模型 
 -- jass.SetSkyModel([[sky.mdx]])
--- jass.CreateDestructable(base.string2id('B04E'), 0, 0, 0, 1, 0)
+-- jass.CreateDestructable(base.string2id('B04E'), 0, 0, 0, 1, 0) 
 
 
 ac.wait(100,function ()
