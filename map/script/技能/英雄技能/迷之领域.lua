@@ -37,7 +37,7 @@ function mt:on_cast_start()
     local hero = self.owner
     
     for _,u in ac.selector()
-        : in_range(hero,skill.area)
+        : in_range(hero,skill.damage_area)
         : is_enemy(hero)
         : ipairs()
     do  

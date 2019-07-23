@@ -9,7 +9,7 @@ mt{
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
-   damage_area = 500,
+   damage_area = 800,
    cool = 1,
 	--技能类型
     skill_type = "被动,降低护甲",

@@ -12,7 +12,7 @@ mt{
     
 }
 mt.skills = {
-    '游戏说明','礼包','称号','武器','翅膀','地图等级','首充大礼包'
+    '游戏说明','礼包','称号','武器','翅膀','地图等级','首充大礼包','神圣领域'
 } 
 function mt:on_add()
     local hero = self.owner 
@@ -121,7 +121,22 @@ mt.skills = {
 --     'Pa','手无寸铁的小龙女','关羽'
 -- }
 
-for i,name in ipairs({'礼包','武器','翅膀','称号'}) do
+local mt = ac.skill['神圣领域']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[wzgl1.blp]],
+    title = '绝对领域',
+    tip = [[
+
+查看绝对领域
+    ]],
+    
+}
+mt.skills = {
+    '血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','孤风青龙领域','远影苍龙领域'
+}
+for i,name in ipairs({'礼包','武器','翅膀','称号','神圣领域'}) do
     local mt = ac.skill[name]
     function mt:on_add()
         local hero = self.owner 

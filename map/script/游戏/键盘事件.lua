@@ -139,6 +139,9 @@ ac.game:event '玩家-聊天' (function(self, player, str)
 		if hero.effect_chenghao then 
 			hero.effect_chenghao:remove()
 		end
+		if hero.effect_lingyu then 
+			hero.effect_lingyu:remove()
+		end
 		local old_model = peon:get_slk 'file'
 		if not getextension(old_model) then 
 			old_model = old_model..'.mdl'

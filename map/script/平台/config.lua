@@ -27,6 +27,9 @@ local item = {
     {'SJDLB','神技大礼包'},
     {'XBXFX','寻宝小飞侠'},
     
+    {'GFQLLY','孤风青龙领域'},
+    {'YYCLLY','远影苍龙领域'},
+
     --key,key_name,地图等级要求
     {'WXHP','五星好评礼包',3},
     {'XHB','夏侯霸',5},
@@ -35,7 +38,9 @@ local item = {
     {'DRJ','狄仁杰',25},
     {'YND','伊利丹',35},
     
-
+    {'ltly','龙腾领域',14},
+    {'fsrlly','飞沙热浪领域',17},
+    {'lxytly','灵霄烟涛领域',22},
 }
 ac.mall = item 
 
@@ -118,7 +123,9 @@ local cus_key = {
     {'dhzl','智力'},
     {'dhqsx','全属性'},
 
-    {'sjjh','杀鸡儆猴'}
+    {'sjjh','杀鸡儆猴'},
+
+    {'xwly','血雾领域',4},
 
 }
 ac.cus_server_key = cus_key
