@@ -3,7 +3,7 @@ mt{
     is_spellbook = 1,
     level = 1,
     is_order = 2,
-    art = [[cjcd.blp]],
+    art = [[hjcpj.blp]],
     tip = [[
 
 |cffFFE799【成就属性】：|r
