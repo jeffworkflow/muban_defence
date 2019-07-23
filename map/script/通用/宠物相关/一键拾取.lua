@@ -65,6 +65,7 @@ function mt:on_cast_shot()
 							ac.item.add_skill_item(v,hero)
 						else 
 							hero:add_item(v,true)
+							-- hero:add_item('装备合成')
 						end
 					end    
 				end    

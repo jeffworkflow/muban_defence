@@ -12,7 +12,7 @@ ac.game:event '技能-升级' (function (_,hero,self)
 	end	
 	--保存物品 ix_now =0 1级+10， ix=10,ix_now=10,ix=20
     local name = self.name
-    if self.level == 1 then self.old_status ={} end
+    if self.level == 1 then self.old_status = self.old_status or {} end
     -- print('老值:',self.old_status)
     -- self.old_status = self.old_status or {}
 	--单位的属性表

@@ -93,6 +93,7 @@ end
 ac.game:event '玩家-聊天' (function(self, player, str)
     local hero = player.hero
     local p = player
+	local peon = player.peon
 
     --输入 hg 回城
     if string.lower(str:sub(1, 2)) == 'hg' then

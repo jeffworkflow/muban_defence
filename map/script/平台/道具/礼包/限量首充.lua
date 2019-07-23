@@ -22,9 +22,41 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 38,
 ['攻击加全属性'] = 68,
 ['每秒加全属性'] = 108,
-['杀敌数加成'] = 15,
-['木头加成'] = 15,
-['物品获取率'] = 15,
-['火灵加成'] = 15,
+['杀敌数加成'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 15
+    if map_level >= 7 then 
+        value = 15 * 2
+    end    
+    return value 
+end,
+['木头加成'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 15
+    if map_level >= 7 then 
+        value = 15 * 2
+    end    
+    return value 
+end,
+['物品获取率'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 15
+    if map_level >= 7 then 
+        value = 15 * 2
+    end    
+    return value 
+end,
+['火灵加成'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 15
+    if map_level >= 7 then 
+        value = 15 * 2
+    end    
+    return value 
+end,
 ['对BOSS额外伤害'] = 5,
 }

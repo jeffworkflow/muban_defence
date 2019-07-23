@@ -383,6 +383,28 @@ function helper:test_offline()
 	end)
 end	
 
+--动画
+function helper:print_item(unit,all)
+	local hero = self
+	local peon = hero:get_owner().peon
+	local pt = ''
+	if not all  then 
+		for i = 1,6 do
+			local item = peon:get_slot_item(i)
+			if item then 
+				pt = pt ..item.slot_id ..item.name .. ','
+			end	
+		end
+	else
+		for i = 1,100 do
+			local item = peon.item_list[i]
+			if item then 
+				pt = pt ..item.slot_id ..item.name .. ','
+			end	
+		end
+	end	
+	print(pt)
+end
 --测试杀怪内存
 function helper:c1()
 	local point = ac.map.rects['出生点']
