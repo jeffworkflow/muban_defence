@@ -60,20 +60,22 @@ for key,value in sortpairs(ac.pratice_man) do
         for i = 1,10 do 
             local player = ac.player(i)
             if player:is_player() then 
-                local name = key..i
-                local mt = ac.creep[name]{    
-                    creeps_datas = value[1]..'*15',
-                    cool = 1,
-                    create_unit_cool = 0,
-                    first_wait_time = 0.6, --调整切换练功怪首次出现时间
-                    is_leave_region_replace = true,
-                    is_region_replace = true,
-                }
-                function mt:on_change_creep(unit,lni_data)
-                    --设置搜敌范围
-                    unit:set_search_range(1000)
+                player:event '玩家-注册英雄后'(function()
+                    local name = key..i
+                    local mt = ac.creep[name]{    
+                        creeps_datas = value[1]..'*'..(player.flag_more_unit and 20 or 15),
+                        cool = 1,
+                        create_unit_cool = 0,
+                        first_wait_time = 0.6, --调整切换练功怪首次出现时间
+                        is_leave_region_replace = true,
+                        is_region_replace = true,
+                    }
+                    function mt:on_change_creep(unit,lni_data)
+                        --设置搜敌范围
+                        unit:set_search_range(1000)
 
-                end    
+                    end  
+                end)  
             end    
         end    
     end)

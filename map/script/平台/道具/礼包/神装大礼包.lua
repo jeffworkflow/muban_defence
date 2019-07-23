@@ -14,7 +14,9 @@ tip = [[
 |cffFFE799【礼包奖励】|r
 |cff00ff00随机物品1个|cffff0000（纯随机，人品好直接出红装）
 |cff00ff00吞噬丹1个 |cffff0000（可直接吞噬某件装备）
-|cff00ff00开局随机激活一套套装属性|cffff0000（不和套装洗练冲突）|r
+|cff00ff00开局随机激活一套套装属性|cffff0000（不和套装洗练冲突）
+羁绊属性：（）
+吞噬丹*1 点金石*10  恶魔果实*1
 |cff00ff00随机套装属性：|r
 %attr_tip%
 ]],
@@ -51,6 +53,8 @@ tip = [[
 |cff00ff00随机物品1个|cffffff00（纯随机，人品好直接出红装）
 |cff00ff00吞噬丹1个 |cffffff00可直接吞噬某件装备
 |cff00ff00开局随机激活一套套装属性|cffffff00（不和套装洗练冲突）|r
+羁绊属性：（）
+吞噬丹*1 点金石*10  恶魔果实*1
 随机套装属性：|r
 %attr_tip%
 ]],
@@ -95,6 +99,15 @@ function mt:on_cast_start()
         end    
         --发送消息
         p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00神装大礼包激活成功|r 激活的套装属性可以在礼包系统中查看',3)
+
+        --添加羁绊物品 
+        if (p.mall and p.mall['神技大礼包'] or 0) >=1 then 
+            self.owner:add_item('吞噬丹',true)
+            local item = ac.item.create_item('点金石',self.owner:get_point())
+            item:set_item_count(10)
+            self.owner:add_item(item,true) 
+            self.owner:add_item('恶魔果实',true) 
+        end 
 
         p.mall_flag[self.name] = true
     end    

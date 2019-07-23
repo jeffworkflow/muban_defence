@@ -107,16 +107,24 @@ function mt:on_upgrade()
             local hero = killer:get_owner().hero
             if hero ~= self.owner then 
                 return 
-            end    
-            --判断概率
-            if math.random(100) > self.chance then 
-                return 
-            end    
+            end      
             if hero and hero:has_item(self.name) and (hero == self.owner) then 
                 local item = hero:has_item(self.name)
                 if item.level >= item.max_level then 
                     return 
                 end
+                if item.level == item.max_level -1  then 
+                    --4级时添加杀死的单位时伏地魔的判断
+                    if item._count >= item.kill_cnt and target:get_name() == '伏地魔' then  
+                        item:set_item_count(1)
+                        item:upgrade(1)  
+                        return 
+                    end  
+                end  
+                --判断概率
+                if math.random(100) > self.chance then 
+                    return 
+                end    
                 --四舍五入
                 local val = math.floor( 1*(1+hero:get('杀敌数加成')/100) +  0.5)
                 item:add_item_count(val)
@@ -125,13 +133,7 @@ function mt:on_upgrade()
                     if item._count >= item.kill_cnt then 
                         item:add_item_count(-item.kill_cnt+1)
                         item:upgrade(1)
-                    end    
-                else
-                    --4级时添加杀死的单位时伏地魔的判断
-                    if item._count >= item.kill_cnt and target:get_name() == '伏地魔' then  
-                        item:add_item_count(-item.kill_cnt+1)
-                        item:upgrade(1)  
-                    end    
+                    end      
                 end    
             end    
         end)

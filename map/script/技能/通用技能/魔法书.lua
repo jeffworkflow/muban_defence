@@ -70,6 +70,7 @@ ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
             skill:remove_ability(skill.ability_id)
         end
     end
+    ac.game:event_notify('技能-插入魔法书后',hero,book_skill,skl)
 end)
 
 ac.game:event '技能-施法完成' (function (_,hero,self)

@@ -154,8 +154,22 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 88,
 ['物品获取率'] = 25,
 ['火灵加成'] = 25,
-['攻击减甲'] = 35,
-['触发概率加成'] = 15,
+['攻击减甲'] = function(self) 
+    local val = 35 
+    local p = self.owner:get_owner()
+    if (p.mall and p.mall['小悟空'] or 0) >=1 then 
+        val = val + 40
+    end    
+    return val
+end,
+['触发概率加成'] = function(self) 
+    local val = 15 
+    local p = self.owner:get_owner()
+    if (p.mall and p.mall['小悟空'] or 0) >=1 then 
+        val = val + 20
+    end    
+    return val
+end,
 ['技能冷却'] = 10,
 --特效
 effect = [[gulong.mdx]]

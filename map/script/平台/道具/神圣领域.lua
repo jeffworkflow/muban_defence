@@ -161,7 +161,12 @@ need_map_level = 2,
 --特效
 effect = [[lingyu5.mdx]]
 }
-
+function mt:on_add()
+    local p = self.owner:get_owner()
+    if (p.mall and p.mall['远影苍龙领域'] or 0) >=1 then 
+        p.flag_more_unit = true
+    end    
+end    
 
 local mt = ac.skill['远影苍龙领域']
 mt{
