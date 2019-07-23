@@ -12,7 +12,7 @@ mt{
     
 }
 mt.skills = {
-    '游戏说明','礼包','称号','武器','翅膀','地图等级','首充大礼包','神圣领域'
+    '游戏说明','礼包','称号','武器','翅膀','神圣领域','首充大礼包','地图等级'
 } 
 function mt:on_add()
     local hero = self.owner 
@@ -125,11 +125,11 @@ local mt = ac.skill['神圣领域']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[wzgl1.blp]],
-    title = '绝对领域',
+    art = [[ssly.blp]],
+    title = '神圣领域',
     tip = [[
 
-查看绝对领域
+查看神圣领域
     ]],
     
 }

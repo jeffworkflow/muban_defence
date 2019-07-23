@@ -125,7 +125,7 @@ local cus_key = {
 
     {'sjjh','杀鸡儆猴'},
 
-    {'xwly','血雾领域',4},
+    {'xwly','血雾领域'},
 
 }
 ac.cus_server_key = cus_key
