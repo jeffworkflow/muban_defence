@@ -12,7 +12,9 @@ ac.game:event '技能-升级' (function (_,hero,self)
 	end	
 	--保存物品 ix_now =0 1级+10， ix=10,ix_now=10,ix=20
     local name = self.name
-    if self.level == 1 then self.old_status = self.old_status or {} end
+    if self.level == 1 then 
+        self.old_status = self.old_status or {} 
+    end
     -- print('老值:',self.old_status)
     -- self.old_status = self.old_status or {}
 	--单位的属性表
@@ -54,6 +56,7 @@ ac.game:event '技能-失去' (function (_,hero,self)
 	if not hero  or self.item_type =='消耗品' or self.item_type =='神符'    then 
 		return
     end	
+    if self.old_status then self.old_status = nil end
 	--单位的属性表
 	local data = ac.unit.attribute
     for key in sortpairs(data) do 
