@@ -830,6 +830,11 @@ function unit.__index:add_item(it,is_fall)
 	if not self:is_alive() then 
 		it:setPoint(self:get_point())
 		it.recycle = false
+		self.buy_suc = true 
+		if it.item_type == '神符' then 
+			-- @神符类的 在英雄死亡时直接删除，不通用可能会由问题************
+			it:item_remove()
+		end	
 		return it
 	end	
 	--如果物品指定所有者，不是所有者就返回

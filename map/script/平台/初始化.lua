@@ -47,7 +47,7 @@ for i=1,10 do
                 player.cus_server = {}
             end
             player.cus_server[key_name] = val
-            -- print('存档数据:',key,val)
+            -- print('存档数据:',key,key_name,val)
         end
         ac.wait(100,function()
             player:event_notify '读取存档数据'
@@ -275,10 +275,10 @@ local function ttxd2award()
                     if name == '杀怪加全属性' then 
                         cnt= player.cus_server and (player.cus_server['杀鸡儆猴'] or 0 )
                     else
-                        cnt= player.cus_server and (player.cus_server[name] or 0 )
+                        cnt= player.cus_server and player.cus_server[name] or 0 
                     end     
                     local map_level = player:Map_GetMapLevel() > 0 and player:Map_GetMapLevel() or 1
-                    local cnt = math.min(cnt,data[2])
+                    local cnt = math.min(cnt,data[2]*map_level)
                     value = cnt * data[1]
                     -- print(player:Map_GetMapLevel())
                     -- print(name,value)
@@ -318,8 +318,12 @@ local function init_need_map_level()
         local p = ac.player(i)
         if p:is_player() then 
             for name,val in pairs(p.cus_server) do 
-                local real_val = p:Map_GetMapLevel() >= (ac.server.need_map_level[name] or 0) and val or 0 
-                p.cus_server[name] = real_val
+                local real_val = (p:Map_GetMapLevel() >= (ac.server.need_map_level[name] or 0))and val or 0 
+                if name ~= '全属性' then 
+                    -- print('地图等级',p:Map_GetMapLevel(),ac.server.need_map_level[name],val)
+                    -- print('经过地图等级之后的数据：',name,val,real_val)
+                    p.cus_server[name] = real_val
+                end    
             end    
         end   
     end

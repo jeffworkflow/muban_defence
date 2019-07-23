@@ -715,6 +715,28 @@ for _,tab in ipairs(devil_deal) do
             mt.fire_seed = tonumber(value[6])
         end   
 
+        local function add_next_skill(skill,seller,hero)
+            local self = skill
+            seller:remove_skill(self.name)
+            local skl_name = ''
+            if num == #tab then 
+                add_skill_by_lv(seller,_+1)
+            else
+                skl_name = tab[num +1][1] --下一个技能名
+            end   
+            -- 激活下商店下一个属性 
+            local skl = seller:find_skill(skl_name,'英雄',true)
+            if skl then 
+                skl:set_level(1)
+            end    
+            --激活人身上的技能及属性
+            local skl = hero:find_skill(self.name,nil,true)
+            if skl then 
+                skl:set_level(1)
+                skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
+                -- skl:fresh_tip()
+            end   
+        end  
         --模拟商店点击
         function mt:on_cast_shot()
             local hero = self.owner
@@ -751,11 +773,19 @@ for _,tab in ipairs(devil_deal) do
 
             local item = setmetatable(self,ac.item)
             item.name = name
-            hero:event_notify('单位-点击商店物品',seller,hero,item)
+            if hero:is_alive() then 
+                hero:event_notify('单位-点击商店物品',seller,hero,item)
+            else
+                local flag = hero:event_dispatch('单位-点击商店物品',seller,hero,item)
+                if flag then 
+                    add_next_skill(self,seller,hero) --增加属性，删除技能
+                    
+                end    
+            end    
             self.owner = seller
             --停止继续执行
             self:stop()
-        end
+        end  
         --商品实际被点击时的执行效果
         function mt:on_cast_finish()
             local hero = self.owner
@@ -769,27 +799,8 @@ for _,tab in ipairs(devil_deal) do
             --处理下一个
             --local next = self.position + 1 
             -- self:remove()
-            -- print(seller,hero,self.name)
-            seller:remove_skill(self.name)
-            local skl_name = ''
-            if num == #tab then 
-                add_skill_by_lv(seller,_+1)
-            else
-                skl_name = tab[num +1][1] --下一个技能名
-            end   
-            -- 激活下商店下一个属性 
-            local skl = seller:find_skill(skl_name,'英雄',true)
-            if skl then 
-                skl:set_level(1)
-            end    
-            --激活人身上的技能及属性
-            local skl = hero:find_skill(self.name,nil,true)
-            if skl then 
-                skl:set_level(1)
-                skl:set('extr_tip','\n|cffFFE799【状态】：|r|cff00ff00已激活|r')
-                -- skl:fresh_tip()
-            end    
-
+            -- print(seller,hero,self.name) 
+            add_next_skill(self,seller,hero)
             
 
         end

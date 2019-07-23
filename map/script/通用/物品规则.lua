@@ -282,8 +282,8 @@
             if it.on_selled_remove then 
                 seller:remove_sell_item(it)
             end    
-
         end
+        return u.buy_suc
     end)
 
     --单位 - 拾取物品

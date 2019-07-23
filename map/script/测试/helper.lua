@@ -723,6 +723,11 @@ function helper:final()
 	ac.game:event_dispatch('游戏-最终boss')
 end	
 --进入地狱，7个光环
+function helper:revive()
+	self:revive()
+	helper.move(self)
+end
+--进入地狱，7个光环
 function helper:tt()
 	ac.item.add_skill_item('战鼓光环',self)
 
