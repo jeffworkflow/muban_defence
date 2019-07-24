@@ -63,7 +63,9 @@ local cus_key = {
     {'cnt_xy','星耀'},
     {'cnt_wz','王者'},
     {'cnt_zqwz','最强王者'},
-
+    {'cntrywz','荣耀王者'},
+    {'cntdfwz','巅峰王者'},
+    
     
     {'time_qt','青铜时长'},
     {'time_by','白银时长'},
@@ -126,6 +128,11 @@ local cus_key = {
     {'sjjh','杀鸡儆猴'},
 
     {'xwly','血雾领域'},
+    {'gjjj','攻击减甲'},
+
+    
+    {'zsas','紫色哀伤'},
+    {'blnsy','白龙凝酥翼'},
 
 }
 ac.cus_server_key = cus_key

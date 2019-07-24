@@ -21,9 +21,9 @@ for i=1,10 do
 end
 
 --初始化1  copy 网易数据到自己的服务器去； 
-if ac.server.init then 
-    ac.server.init()  
-end    
+-- if ac.server.init then 
+--     ac.server.init()  
+-- end    
 
 --初始化2 读取自定义服务器的数据 并同步 p.cus_server2[jifen] = 0 | 读取有延迟
 -- for i=1,10 do
@@ -101,6 +101,8 @@ local star2award = {
     ['Pa'] = {'铂金',7,4},
     ['手无寸铁的小龙女'] = {'星耀',10,6},
     ['关羽'] = {'最强王者',30,10},
+    ['紫色哀伤'] = {'荣耀王者',25,13},
+    ['白龙凝酥翼'] = {'巅峰王者',25,15},
 }
 --注册 保存青铜，王者等星数
 ac.game:event '游戏-结束' (function(trg,flag)
@@ -266,6 +268,8 @@ local function ttxd2award()
 
         --奖励 = 杀鸡儆猴奖励每秒全属性, 每地图等级上限值
         ['杀怪加全属性'] = {1,25},
+        --奖励 = 在线奖励攻击减甲, 每地图等级上限值
+        ['攻击减甲'] = {1,10},
     }  
     for i=1,10 do
         local player = ac.player[i]

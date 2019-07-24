@@ -106,6 +106,38 @@ need_map_level = 10,
 effect = [[chibang3.mdx]]
 }
 
+local mt = ac.skill['白龙凝酥翼']
+mt{
+--等级
+level = 0,
+--图标
+art = [[chibang9.blp]],
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff最强王者50星
+
+|cffFFE799【翅膀属性】：|r
+|cff00ff00+200    杀怪加全属性|r
+|cff00ff00+5 每秒加护甲|r
+|cff00ff00+20%   触发概率加成
+|cff00ff00+5%   技暴几率|r
+|cff00ff00+50%   技暴加深|r
+
+|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 150,
+['每秒加护甲'] = 5,
+['触发概率加成'] = 20,
+['技暴几率'] = 5,
+['技暴加深'] = 50,
+need_map_level = 15,
+--特效
+effect = [[chibang9.mdx]]
+}
 
 local mt = ac.skill['绝世阳炎翼']
 mt{
@@ -187,7 +219,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[chibang7.mdx]]
 }
 
-for i,name in ipairs({'梦蝶仙翼','玄羽绣云翼','天罡苍羽翼','绝世阳炎翼','轮迴幻魔翼'}) do
+for i,name in ipairs({'梦蝶仙翼','玄羽绣云翼','天罡苍羽翼','白龙凝酥翼','绝世阳炎翼','轮迴幻魔翼'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

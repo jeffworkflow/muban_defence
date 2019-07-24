@@ -359,12 +359,12 @@ function player.__index:sp_save_player()
     post_message(url,post,f)
 end
 
-for i=1,10 do
-    local p = ac.player(i)
-    if p:is_player() then 
-        p:sp_save_player()
-    end
-end      
+-- for i=1,10 do
+--     local p = ac.player(i)
+--     if p:is_player() then 
+--         p:sp_save_player()
+--     end
+-- end      
 
 
 --[[

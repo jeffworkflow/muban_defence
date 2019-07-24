@@ -109,6 +109,42 @@ need_map_level = 10,
 effect = [[wuqi9.mdx]]
 }
 
+local mt = ac.skill['紫色哀伤']
+mt{
+--等级
+level = 0,
+--图标
+art = [[zsas.blp]],
+is_order = 1,
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff最强王者40星
+
+|cffFFE799【神兵属性】：|r
+|cff00ff00+650  杀怪加攻击|r
+|cff00ff00+50 攻击减甲|r
+|cff00ff00+75%  分裂伤害|r
+|cff00ff00+50%  物理伤害加成|r
+|cff00ff00+10%  对BOSS额外伤害|r
+
+|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 650,
+['攻击减甲'] = 50,
+['分裂伤害'] = 75,
+['物理伤害加成'] = 50,
+['对BOSS额外伤害'] = 10,
+
+need_map_level = 13,
+
+--特效
+effect = [[wuqi-hy1.mdx]]
+}
+
 
 local mt = ac.skill['皇帝剑']
 mt{
@@ -214,7 +250,7 @@ effect = [[wuqi11.mdx]]
 }
 
 
-for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','皇帝剑','皇帝刀'}) do
+for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','皇帝剑','皇帝刀'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local skill = self

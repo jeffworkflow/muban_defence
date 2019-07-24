@@ -218,7 +218,14 @@ ac.wait(20,function()
                 { name = "星耀" },
                 { name = "王者" },
                 { name = "最强王者" },
+                { name = "荣耀王者" },
+                { name = "巅峰王者" },
             }
+            ac.g_game_degree_list = {} 
+            for i = #list ,1 ,-1 do 
+                print(list[i].name)
+                table.insert(ac.g_game_degree_list,list[i].name)
+            end    
             
             ac.player.self:sendMsg("正在选择 |cffffff00难度|r")
             if player then 
@@ -249,6 +256,12 @@ ac.wait(20,function()
                     end  
                     if ac.g_game_degree == 8 then 
                         ac.g_game_degree_attr = 8  --难度三 属性倍数3倍
+                    end 
+                    if ac.g_game_degree == 9 then 
+                        ac.g_game_degree_attr = 9  --难度三 属性倍数3倍
+                    end 
+                    if ac.g_game_degree == 10 then 
+                        ac.g_game_degree_attr = 10 --难度三 属性倍数3倍
                     end 
                     ac.player.self:sendMsg("选择了 |cffffff00"..list[index].name.."|r")
                     --加载过场动画

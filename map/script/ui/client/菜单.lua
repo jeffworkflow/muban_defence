@@ -3,13 +3,37 @@
 class.screen_button = extends(class.button){
     new = function (parant,x,y,info)
         local button = class.button.new(parant,info.path,x,y,84,84)
-        local text = button:add_text(info.name,0,84,84,84,12,'center')
-
+        button.tx_name = button:add_text(info.name,0,64,84,84,12,'center')
+        button.tx_name:set_color(0xffff0000)
         button.__index = class.screen_button
 
         button.info = info 
         return button
     end,
+    fresh_name = function(self)
+        --处理 在线奖励 
+        local total_time = 30 
+        ac.loop(1000,function(t)
+            --modify by jeff 
+            total_time = total_time - 1
+            local str = os.date("!%H:%M:%S", total_time)
+            self.tx_name:set_text(str)
+            if total_time == 0  then
+                --发送文字
+                ac.player.self:sendMsg('恭喜领到在线奖励： 攻击减甲+1 ，可存档')
+                for i=1,10 do 
+                    local p = ac.player(i)
+                    if p:is_player() then 
+                       if p.hero then p.hero:add('攻击减甲',1) end 
+                       p:Map_AddServerValue('gjjj',1) --保存存档
+                    end       
+                end    
+                self:destroy()
+                t:remove()
+            end
+        
+        end)
+    end,    
 
     on_button_clicked = function (self)
         if self.info then 
@@ -21,7 +45,12 @@ class.screen_button = extends(class.button){
 
     on_button_mouse_enter = function (self)
         if self.info then 
-            self:tooltip(self.info.name,self.info.tip,0,200,84)
+            if self.info.name == '领奖' then 
+                self:tooltip(self.info.name,self.info.tip,-1,200,84)
+            else
+                self:tooltip(self.info.name,self.info.tip,0,200,84)
+            end    
+
         end
     end,
 }
@@ -40,9 +69,25 @@ local ui_info = {
         key = 'F3', 
         tip = "F3进入练功房"
     },
+    {
+        name = '领奖',  
+        path = 'wfz.blp',
+        -- key = 'F3', 
+        tip = "攻击减甲+1 （可存档）",
+        x = 1800,
+        y = 638
+    },
 
 }
 
 for index,info in ipairs(ui_info) do 
-    class.screen_button.create(10,50 + index*84*1.2,info)
+    local button 
+    if info.x and info.y then 
+        button = class.screen_button.create(info.x,info.y,info)
+    else      
+        button = class.screen_button.create(10,50 + index*84*1.2,info)
+    end    
+    if info.name =='领奖' then 
+        button:fresh_name()
+    end    
 end 
