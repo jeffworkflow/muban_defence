@@ -405,6 +405,19 @@ function helper:print_item(unit,all)
 	end	
 	print(pt)
 end
+--测试item.handle 
+function helper:it1()
+	ac.loop(1000,function()
+		for i=1,30 do 
+			-- local item = ac.item.create_item('冰剑',ac.point(0,0))
+			local item = self:add_item('冰剑',true)
+			print(item.handle)
+			item:item_remove()
+		end	
+	end)
+
+
+end	
 --测试杀怪内存
 function helper:c1()
 	local point = ac.map.rects['出生点']

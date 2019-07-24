@@ -1,6 +1,6 @@
 
 ac.game:event '技能-升级' (function (_,hero,self)
-    -- print(hero,self.name)
+    -- print(hero,self.name) 创建物品时，会添加到马甲单位初始化技能，此时由old_status,并赋值给你item，item再初始化时就又有了数据。
     -- --item_type 有值表示为物品，以下代码不生效 or not hero:is_type('英雄') 
     --如果技能在宠物身上，加强效果在人身上
     if self.strong_hero then 
@@ -13,8 +13,10 @@ ac.game:event '技能-升级' (function (_,hero,self)
 	--保存物品 ix_now =0 1级+10， ix=10,ix_now=10,ix=20
     local name = self.name
     if self.level == 1 then 
-        self.old_status = self.old_status or {} 
+        self.old_status =  self.old_status or {} 
+        --self.old_status or
     end
+    -- print_r(self.old_status)
     -- print('老值:',self.old_status)
     -- self.old_status = self.old_status or {}
 	--单位的属性表
@@ -53,10 +55,10 @@ ac.game:event '技能-失去' (function (_,hero,self)
     if self.strong_hero then 
         hero = hero:get_owner().hero
     end    
+    if self.old_status then self.old_status = nil end
 	if not hero  or self.item_type =='消耗品' or self.item_type =='神符'    then 
 		return
     end	
-    if self.old_status then self.old_status = nil end
 	--单位的属性表
 	local data = ac.unit.attribute
     for key in sortpairs(data) do 

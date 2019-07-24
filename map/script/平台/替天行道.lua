@@ -287,7 +287,8 @@ for i,name in ipairs({'兑换-力量','兑换-敏捷','兑换-智力','兑换-�
         --处理上限问题
         if has_mall >= map_level then 
             --已经加了属性，需要重新扣除
-            print(real_name,-self[real_name])
+            -- print_r(self.old_status)
+            -- print(real_name,-self[real_name])
             hero:add(real_name,-self[real_name])
             p:sendMsg('【系统消息】已达兑换上限次数：'..real_name)    
             return true
@@ -319,7 +320,7 @@ for i,name in ipairs({'兑换-力量','兑换-敏捷','兑换-智力','兑换-�
             end   
         else
             --已经加了属性，需要重新扣除
-            print(real_name,-self[real_name])
+            -- print(real_name,-self[real_name])
             hero:add(real_name,-self[real_name])
             p:sendMsg('【系统消息】勇气徽章不足')    
         end    
