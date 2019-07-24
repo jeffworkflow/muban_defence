@@ -1092,7 +1092,7 @@ function item.create_item(name,poi,is)
 	end
 	items.owner = nil
 	skl:remove()
-
+	-- print_r(items.old_status or {})
 	--如果存在lni则继承lni的属性
 	local data = ac.table.ItemData[name]
 	items.lni_data = data
@@ -1100,6 +1100,9 @@ function item.create_item(name,poi,is)
 		for k, v in sortpairs(data) do
 			items[k] = v
 		end
+	end
+	if items.old_status then 
+		items.old_status = nil 
 	end
 	-- print(items['全属性'])
 	
