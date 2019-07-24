@@ -83,7 +83,7 @@ art = [[chibang3.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff最强王者50星
+|cff00ffff最强王者25星
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+150    杀怪加全属性|r

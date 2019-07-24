@@ -86,7 +86,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff最强王者40星
+|cff00ffff最强王者20星
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+500  杀怪加攻击|r
