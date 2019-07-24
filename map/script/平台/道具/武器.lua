@@ -120,13 +120,13 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff最强王者40星
+|cff00ffff巅峰王者25星 
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+650  杀怪加攻击|r
 |cff00ff00+50 攻击减甲|r
 |cff00ff00+75%  分裂伤害|r
-|cff00ff00+50%  物理伤害加成|r
+|cff00ff00+50%  物理伤害加深|r
 |cff00ff00+10%  对BOSS额外伤害|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
@@ -136,7 +136,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 650,
 ['攻击减甲'] = 50,
 ['分裂伤害'] = 75,
-['物理伤害加成'] = 50,
+['物理伤害加深'] = 50,
 ['对BOSS额外伤害'] = 10,
 
 need_map_level = 13,
