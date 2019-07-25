@@ -5,10 +5,10 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[other\suiji101.blp]],
+art = [[zmgdjy.blp]],
 --价格随购买次数增加而增加，|cff00ff00且买且珍惜|r
 --说明
-tip = [[|n获得 |cffff0000随机物品|r，价格随购买次数增加而增加，|cff00ff00且买且珍惜|r|n]],
+tip = [[|n消耗 |cffff00004个红色物品|r 兑换 |cff00ff00一个魔鬼的物品|r|n|n|cffcccccc最大兑换次数12次]],
 
 content_tip = '|cffFFE799【说明】：|r|n',
 --物品类型
@@ -68,7 +68,7 @@ function mt:on_cast_start()
     local name = list[math.random(#list)]
     --满时，掉在地上
     hero:add_item(name,true)
-
+    p:sendMsg('|cff00ff00兑换成功|r')
 end
 
 function mt:on_remove()
