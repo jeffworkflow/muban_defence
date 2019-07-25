@@ -101,6 +101,7 @@ function mt:on_cast_start()
                 item:on_add_state()
                 --移除装备，移除一次属性
                 item:item_remove()
+
                 --吞噬个数 +1
                 if not player.tunshi_cnt then 
                     player.tunshi_cnt =0
@@ -113,14 +114,17 @@ function mt:on_cast_start()
                 end    
                 table.insert(player.tunshi,item)
                 --
-                local skl = ac.skill[item.name]
+                local skl = ac.skill[item.name..' ']
                 skl{
                     title = item.name,
                     art = item.art,
                     tip = item:get_tip(),
                 }
-            
-                ac.game:event_notify('技能-插入魔法书',hero,'吞噬神丹',item.name)
+                local new_skl_name = item.name..' '
+                if finds(item.name,'噬魂','荒芜之戒') then 
+                    new_skl_name = item.name
+                end
+                ac.game:event_notify('技能-插入魔法书',hero,'吞噬神丹',new_skl_name)
 
             else
                 -- print('取消更换技能')

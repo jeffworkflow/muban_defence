@@ -68,7 +68,7 @@ tip = [[
 ]],
 --唯一
 -- unique = true,
-['攻击间隔'] = -0.05,
+-- ['攻击间隔'] = -0.05,
 --物品技能
 is_skill = true,
 --物品详细介绍的title
@@ -77,11 +77,20 @@ content_tip = '|cffffe799物品说明：|r'
 function mt:on_add()
     local hero = self.owner
     hero.flag_attack_gap = true 
+    hero:add('攻击间隔',-0.05)
 end  
 function mt:on_remove()
     local hero = self.owner
-    hero.flag_attack_gap = false 
+    hero:add('攻击间隔',0.05)
 end     
+function mt:after_remove(hero)
+    local item = hero:has_item(self.name)
+    local skl = hero:find_skill(self.name,nil,true)
+    if not item and not skl then 
+        hero.flag_attack_gap = false 
+    end    
+    -- print(123)
+end    
 
 
 local mt = ac.skill['魔鬼金矿']
@@ -335,7 +344,40 @@ is_skill = true,
 content_tip = '|cffffe799物品说明：|r'
 } 
 
+
+local mt = ac.skill['古代护身符']
+mt{
+--等久
+level = 1,
+--图标
+art = [[mkbl.blp]],
+--模型
+specail_model = [[File00000376 - RC.mdx]],
+--类型
+item_type = "装备",
+--品质
+color ='黑',
+--冷却
+cool = 1,
+--描述
+tip = [[
+
+|cffcccccc万花丛中过，片花不沾身
+
+|cff00ff00多重射+1（仅远程有效） 触发概率加成+35%
+]],
+--物品技能
+is_skill = true,
+['技能伤害加深'] = 20,
+--物品详细介绍的title
+content_tip = '|cffffe799物品说明：|r'
+} 
+
+
+
 ac.black_item = {
-   '荒芜之戒','噬魂','魔鬼金矿','魔鬼的砒霜','马可波罗的万花铳','聚宝盆','七星剑','金鼎烈日甲'
+   '荒芜之戒','噬魂','魔鬼金矿','魔鬼的砒霜','古代护身符','马可波罗的万花铳','聚宝盆','七星剑','金鼎烈日甲'
 }
 --,'死神之触' 有问题
+
+

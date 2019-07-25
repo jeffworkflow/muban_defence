@@ -997,6 +997,9 @@ function unit.__index:remove_item(it)
 	end)   
 	
 	jass.UnitRemoveItem(self.handle,it.handle)
+	if it.after_remove then 
+		it:after_remove(self)
+	end	
 	self:event_notify('单位-丢弃物品后',self, it)
 	return it
 end
