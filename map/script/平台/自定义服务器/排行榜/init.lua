@@ -22,7 +22,7 @@ function player.__index:sp_set_rank(key,value,f)
 end
 --读取排名数据
 function player.__index:sp_get_rank(key,order_by,limit_cnt,f)
-    if ac.flag_map < 1 then 
+    if not ac.flag_map or ac.flag_map  < 1 then 
         return 
     end
     local player_name = self:get_name()

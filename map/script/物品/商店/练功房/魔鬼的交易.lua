@@ -89,512 +89,512 @@ local devil_deal ={
 
 } ,
 
---     [2] = {
--- {'无所不知lv1',false,'攻击',200000,'木头',20,[[minjie.blp]],[[
+    [2] = {
+{'无所不知lv1',false,'攻击',200000,'木头',20,[[minjie.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv1|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv1|r
     
--- |cffFFE799【奖励】|r|cff00ff00+20w攻击|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+20w攻击|r
+    ]]},
 
--- {'无所不知lv2',false,'每秒加攻击',125,'木头',30,[[minjie.blp]],[[
+{'无所不知lv2',false,'每秒加攻击',125,'木头',30,[[minjie.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv2|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv2|r
     
--- |cffFFE799【奖励】|r|cff00ff00+125每秒加攻击|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+125每秒加攻击|r
+    ]]},
 
--- {'无所不知lv3',false,'杀怪加攻击',20,'木头',40,[[minjie.blp]],[[
+{'无所不知lv3',false,'杀怪加攻击',20,'木头',40,[[minjie.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv3|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv3|r
     
--- |cffFFE799【奖励】|r|cff00ff00+20杀怪加攻击|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+20杀怪加攻击|r
+    ]]},
 
--- {'无所不知lv4',false,'攻击',400000,'木头',50,[[minjie.blp]],[[
+{'无所不知lv4',false,'攻击',400000,'木头',50,[[minjie.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv4|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv4|r
     
--- |cffFFE799【奖励】|r|cff00ff00+40w攻击|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+40w攻击|r
+    ]]},
 
--- {'无所不知lv5',false,'每秒加攻击',250,'木头',60,[[minjie.blp]],[[
+{'无所不知lv5',false,'每秒加攻击',250,'木头',60,[[minjie.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv5|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv5|r
     
--- |cffFFE799【奖励】|r|cff00ff00+250每秒加攻击|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+250每秒加攻击|r
+    ]]},
 
--- {'无所不知lv6',false,'杀怪加攻击',40,'木头',70,[[minjie.blp]],[[
+{'无所不知lv6',false,'杀怪加攻击',40,'木头',70,[[minjie.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv6|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv6|r
     
--- |cffFFE799【奖励】|r|cff00ff00+40杀怪加攻击|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+40杀怪加攻击|r
+    ]]},
 
---  {'无所不知lv7',false,'攻击',600000,'木头',80,[[minjie.blp]],[[
+ {'无所不知lv7',false,'攻击',600000,'木头',80,[[minjie.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv7|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv7|r
     
--- |cffFFE799【奖励】|r|cff00ff00+60w攻击|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+60w攻击|r
+    ]]},
 
--- {'无所不知lv8',false,'每秒加攻击',375,'木头',90,[[minjie.blp]],[[
+{'无所不知lv8',false,'每秒加攻击',375,'木头',90,[[minjie.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv8|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv8|r
     
--- |cffFFE799【奖励】|r|cff00ff00+375每秒加攻击|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+375每秒加攻击|r
+    ]]},
 
--- {'无所不知lv9',false,'杀怪加攻击',60,'木头',100,[[minjie.blp]],[[
+{'无所不知lv9',false,'杀怪加攻击',60,'木头',100,[[minjie.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv9|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lv9|r
     
--- |cffFFE799【奖励】|r|cff00ff00+60杀怪加攻击|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+60杀怪加攻击|r
+    ]]},
 
--- {'无所不知lvmax',false,'攻击',1000000,'木头',150,[[minjie.blp]],[[
+{'无所不知lvmax',false,'攻击',1000000,'木头',150,[[minjie.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lvmax|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不知Lvmax|r
     
--- |cffFFE799【奖励】|r|cff00ff00+100w攻击|r
---    ]]},
--- },
+|cffFFE799【奖励】|r|cff00ff00+100w攻击|r
+   ]]},
+},
 
--- [3] = {
--- {'无所不为lv1',false,'全属性',80000,'木头',30,[[liliang.blp]],[[
+[3] = {
+{'无所不为lv1',false,'全属性',80000,'木头',30,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv1|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv1|r
     
--- |cffFFE799【奖励】|r|cff00ff00+8w全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+8w全属性|r
+    ]]},
 
--- {'无所不为lv2',false,'攻击',300000,'木头',60,[[liliang.blp]],[[
+{'无所不为lv2',false,'攻击',300000,'木头',60,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv2|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv2|r
     
--- |cffFFE799【奖励】|r|cff00ff00+30w攻击|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+30w攻击|r
+    ]]},
 
--- {'无所不为lv3',false,'护甲',100,'木头',90,[[liliang.blp]],[[
+{'无所不为lv3',false,'护甲',100,'木头',90,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv3|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv3|r
     
--- |cffFFE799【奖励】|r|cff00ff00+100护甲|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+100护甲|r
+    ]]},
 
--- {'无所不为lv4',false,'全属性',300000,'木头',120,[[liliang.blp]],[[
+{'无所不为lv4',false,'全属性',300000,'木头',120,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv4|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv4|r
     
--- |cffFFE799【奖励】|r|cff00ff00+30w全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+30w全属性|r
+    ]]},
 
--- {'无所不为lv5',false,'攻击',500000,'木头',150,[[liliang.blp]],[[
+{'无所不为lv5',false,'攻击',500000,'木头',150,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv5|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv5|r
     
--- |cffFFE799【奖励】|r|cff00ff00+50w攻击|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+50w攻击|r
+    ]]},
 
--- {'无所不为lv6',false,'护甲',200,'木头',180,[[liliang.blp]],[[
+{'无所不为lv6',false,'护甲',200,'木头',180,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv6|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv6|r
     
--- |cffFFE799【奖励】|r|cff00ff00+200护甲|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+200护甲|r
+    ]]},
 
---  {'无所不为lv7',false,'全属性',500000,'木头',210,[[liliang.blp]],[[
+ {'无所不为lv7',false,'全属性',500000,'木头',210,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv7|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv7|r
     
--- |cffFFE799【奖励】|r|cff00ff00+50w全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+50w全属性|r
+    ]]},
 
--- {'无所不为lv8',false,'攻击',1000000,'木头',240,[[liliang.blp]],[[
+{'无所不为lv8',false,'攻击',1000000,'木头',240,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv8|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv8|r
     
--- |cffFFE799【奖励】|r|cff00ff00+100w攻击|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+100w攻击|r
+    ]]},
 
--- {'无所不为lv9',false,'护甲',350,'木头',270,[[liliang.blp]],[[
+{'无所不为lv9',false,'护甲',350,'木头',270,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv9|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lv9|r
     
--- |cffFFE799【奖励】|r|cff00ff00+350护甲|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+350护甲|r
+    ]]},
 
--- {'无所不为lvmax',false,'攻击间隔',-0.05,'木头',300,[[liliang.blp]],[[
+{'无所不为lvmax',false,'攻击间隔',-0.05,'木头',300,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lvmax|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不为Lvmax|r
     
--- |cffFFE799【奖励】|r|cff00ff00-0.05攻击间隔|r
---    ]]},
--- },
+|cffFFE799【奖励】|r|cff00ff00-0.05攻击间隔|r
+   ]]},
+},
 
--- [4] = {
--- {'无所不贪lv1',false,'杀怪加全属性',30,'全属性',100000,[[zhili.blp]],[[
+[4] = {
+{'无所不贪lv1',false,'杀怪加全属性',30,'全属性',100000,[[zhili.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv1|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv1|r
     
--- |cffFFE799【奖励】|r|cff00ff00+30杀怪加全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+30杀怪加全属性|r
+    ]]},
 
--- {'无所不贪lv2',false,'攻击加全属性',150,'全属性',200000,[[zhili.blp]],[[
+{'无所不贪lv2',false,'攻击加全属性',150,'全属性',200000,[[zhili.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv2|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv2|r
     
--- |cffFFE799【奖励】|r|cff00ff00+150攻击加全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+150攻击加全属性|r
+    ]]},
 
--- {'无所不贪lv3',false,'每秒加全属性',300,'全属性',300000,[[zhili.blp]],[[
+{'无所不贪lv3',false,'每秒加全属性',300,'全属性',300000,[[zhili.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv3|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv3|r
     
--- |cffFFE799【奖励】|r|cff00ff00+300每秒加全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+300每秒加全属性|r
+    ]]},
 
--- {'无所不贪lv4',false,'杀怪加全属性',60,'全属性',400000,[[zhili.blp]],[[
+{'无所不贪lv4',false,'杀怪加全属性',60,'全属性',400000,[[zhili.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv4|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv4|r
     
--- |cffFFE799【奖励】|r|cff00ff00+60杀怪加全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+60杀怪加全属性|r
+    ]]},
 
--- {'无所不贪lv5',false,'攻击加全属性',300,'全属性',500000,[[zhili.blp]],[[
+{'无所不贪lv5',false,'攻击加全属性',300,'全属性',500000,[[zhili.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv5|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv5|r
     
--- |cffFFE799【奖励】|r|cff00ff00+300攻击加全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+300攻击加全属性|r
+    ]]},
 
--- {'无所不贪lv6',false,'每秒加全属性',600,'全属性',600000,[[zhili.blp]],[[
+{'无所不贪lv6',false,'每秒加全属性',600,'全属性',600000,[[zhili.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv6|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv6|r
     
--- |cffFFE799【奖励】|r|cff00ff00+600每秒加全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+600每秒加全属性|r
+    ]]},
 
---  {'无所不贪lv7',false,'杀怪加全属性',90,'全属性',700000,[[zhili.blp]],[[
+ {'无所不贪lv7',false,'杀怪加全属性',90,'全属性',700000,[[zhili.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv7|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv7|r
     
--- |cffFFE799【奖励】|r|cff00ff00+90杀怪加全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+90杀怪加全属性|r
+    ]]},
 
--- {'无所不贪lv8',false,'攻击加全属性',450,'全属性',800000,[[zhili.blp]],[[
+{'无所不贪lv8',false,'攻击加全属性',450,'全属性',800000,[[zhili.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv8|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv8|r
     
--- |cffFFE799【奖励】|r|cff00ff00+450攻击加全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+450攻击加全属性|r
+    ]]},
 
--- {'无所不贪lv9',false,'每秒加全属性',900,'全属性',900000,[[zhili.blp]],[[
+{'无所不贪lv9',false,'每秒加全属性',900,'全属性',900000,[[zhili.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv9|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lv9|r
     
--- |cffFFE799【奖励】|r|cff00ff00+900每秒加全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+900每秒加全属性|r
+    ]]},
 
--- {'无所不贪lvmax',false,'全伤加深',5,'全属性',1000000,[[zhili.blp]],[[
+{'无所不贪lvmax',false,'全伤加深',5,'全属性',1000000,[[zhili.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lvmax|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不贪Lvmax|r
     
--- |cffFFE799【奖励】|r|cff00ff00+5%全伤加深|r
---    ]]},
--- },
+|cffFFE799【奖励】|r|cff00ff00+5%全伤加深|r
+   ]]},
+},
 
--- [5] = {
--- {'无所不能lv1',false,'吸血',10,'木头',350,[[liliang.blp]],[[
+[5] = {
+{'无所不能lv1',false,'吸血',10,'木头',350,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv1|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv1|r
     
--- |cffFFE799【奖励】|r|cff00ff00+10%吸血|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+10%吸血|r
+    ]]},
 
--- {'无所不能lv2',false,'攻击减甲',10,'木头',700,[[liliang.blp]],[[
+{'无所不能lv2',false,'攻击减甲',10,'木头',700,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv2|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv2|r
     
--- |cffFFE799【奖励】|r|cff00ff00+10攻击减甲|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+10攻击减甲|r
+    ]]},
 
--- {'无所不能lv3',false,'全属性',600000,'木头',1050,[[liliang.blp]],[[
+{'无所不能lv3',false,'全属性',600000,'木头',1050,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv3|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv3|r
     
--- |cffFFE799【奖励】|r|cff00ff00+60w全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+60w全属性|r
+    ]]},
 
--- {'无所不能lv4',false,'触发概率加成',5,'木头',1400,[[liliang.blp]],[[
+{'无所不能lv4',false,'触发概率加成',5,'木头',1400,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv4|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv4|r
     
--- |cffFFE799【奖励】|r|cff00ff00+5%触发概率加成|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+5%触发概率加成|r
+    ]]},
 
--- {'无所不能lv5',false,'每秒回血',10,'木头',1750,[[liliang.blp]],[[
+{'无所不能lv5',false,'每秒回血',10,'木头',1750,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv5|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv5|r
     
--- |cffFFE799【奖励】|r|cff00ff00+10%每秒回血|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+10%每秒回血|r
+    ]]},
 
--- {'无所不能lv6',false,'减少周围护甲',200,'木头',2100,[[liliang.blp]],[[
+{'无所不能lv6',false,'减少周围护甲',200,'木头',2100,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv6|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv6|r
     
--- |cffFFE799【奖励】|r|cff00ff00+200减少周围护甲|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+200减少周围护甲|r
+    ]]},
 
---  {'无所不能lv7',false,'全属性',1400000,'木头',2450,[[liliang.blp]],[[
+ {'无所不能lv7',false,'全属性',1400000,'木头',2450,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv7|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv7|r
     
--- |cffFFE799【奖励】|r|cff00ff00+140w全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+140w全属性|r
+    ]]},
 
--- {'无所不能lv8',false,'技暴几率',2.5,'木头',2800,[[liliang.blp]],[[
+{'无所不能lv8',false,'技暴几率',2.5,'木头',2800,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv8|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv8|r
     
--- |cffFFE799【奖励】|r|cff00ff00+2.5%技暴几率|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+2.5%技暴几率|r
+    ]]},
 
--- {'无所不能lv9',false,'全属性',2000000,'木头',3150,[[liliang.blp]],[[
+{'无所不能lv9',false,'全属性',2000000,'木头',3150,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv9|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lv9|r
     
--- |cffFFE799【奖励】|r|cff00ff00+200w全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+200w全属性|r
+    ]]},
 
--- {'无所不能lvmax',false,'全伤加深',2.5,'木头',3500,[[liliang.blp]],[[
+{'无所不能lvmax',false,'全伤加深',2.5,'木头',3500,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lvmax|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00无所不能Lvmax|r
     
--- |cffFFE799【奖励】|r|cff00ff00+2.5%全伤加深|r
---    ]]},
--- },
+|cffFFE799【奖励】|r|cff00ff00+2.5%全伤加深|r
+   ]]},
+},
 
--- [6] = {
---  {'身披圣衣lv1',false,'护甲',300,'火灵',2500,[[liliang.blp]],[[
+[6] = {
+ {'身披圣衣lv1',false,'护甲',300,'火灵',2500,[[liliang.blp]],[[
     
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv1|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv1|r
         
--- |cffFFE799【奖励】|r|cff00ff00+300护甲|r
---         ]]},
+|cffFFE799【奖励】|r|cff00ff00+300护甲|r
+        ]]},
     
---     {'身披圣衣lv2',false,'全属性',1500000,'火灵',5000,[[liliang.blp]],[[
+    {'身披圣衣lv2',false,'全属性',1500000,'火灵',5000,[[liliang.blp]],[[
     
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv2|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv2|r
         
--- |cffFFE799【奖励】|r|cff00ff00+150w全属性|r
---         ]]},
+|cffFFE799【奖励】|r|cff00ff00+150w全属性|r
+        ]]},
     
---     {'身披圣衣lv3',false,'护甲',500,'火灵',7500,[[liliang.blp]],[[
+    {'身披圣衣lv3',false,'护甲',500,'火灵',7500,[[liliang.blp]],[[
     
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv3|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv3|r
         
--- |cffFFE799【奖励】|r|cff00ff00+500护甲|r
---         ]]},
+|cffFFE799【奖励】|r|cff00ff00+500护甲|r
+        ]]},
     
---     {'身披圣衣lv4',false,'杀怪加全属性',200,'火灵',10000,[[liliang.blp]],[[
+    {'身披圣衣lv4',false,'杀怪加全属性',200,'火灵',10000,[[liliang.blp]],[[
     
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv4|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv4|r
         
--- |cffFFE799【奖励】|r|cff00ff00+200杀怪加全属性|r
---         ]]},
+|cffFFE799【奖励】|r|cff00ff00+200杀怪加全属性|r
+        ]]},
     
---     {'身披圣衣lv5',false,'攻击加全属性',1000,'火灵',12500,[[liliang.blp]],[[
+    {'身披圣衣lv5',false,'攻击加全属性',1000,'火灵',12500,[[liliang.blp]],[[
     
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv5|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv5|r
         
--- |cffFFE799【奖励】|r|cff00ff00+1000攻击加全属性|r
---         ]]},
+|cffFFE799【奖励】|r|cff00ff00+1000攻击加全属性|r
+        ]]},
     
---     {'身披圣衣lv6',false,'全属性',2000000,'火灵',15000,[[liliang.blp]],[[
+    {'身披圣衣lv6',false,'全属性',2000000,'火灵',15000,[[liliang.blp]],[[
     
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv6|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv6|r
         
--- |cffFFE799【奖励】|r|cff00ff00+200w全属性|r
---         ]]},
+|cffFFE799【奖励】|r|cff00ff00+200w全属性|r
+        ]]},
     
---      {'身披圣衣lv7',false,'杀怪加攻击',800,'火灵',17500,[[liliang.blp]],[[
+     {'身披圣衣lv7',false,'杀怪加攻击',800,'火灵',17500,[[liliang.blp]],[[
     
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv7|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv7|r
         
--- |cffFFE799【奖励】|r|cff00ff00+800杀怪加攻击|r
---         ]]},
+|cffFFE799【奖励】|r|cff00ff00+800杀怪加攻击|r
+        ]]},
     
---     {'身披圣衣lv8',false,'每秒加攻击',8000,'火灵',20000,[[liliang.blp]],[[
+    {'身披圣衣lv8',false,'每秒加攻击',8000,'火灵',20000,[[liliang.blp]],[[
     
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv8|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv8|r
         
--- |cffFFE799【奖励】|r|cff00ff00+8000每秒加攻击|r
---         ]]},
+|cffFFE799【奖励】|r|cff00ff00+8000每秒加攻击|r
+        ]]},
     
---     {'身披圣衣lv9',false,'全属性',3000000,'火灵',22500,[[liliang.blp]],[[
+    {'身披圣衣lv9',false,'全属性',3000000,'火灵',22500,[[liliang.blp]],[[
     
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv9|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lv9|r
         
--- |cffFFE799【奖励】|r|cff00ff00+300w全属性|r
---         ]]},
+|cffFFE799【奖励】|r|cff00ff00+300w全属性|r
+        ]]},
     
---     {'身披圣衣lvmax',false,'攻击速度',50,'火灵',25000,[[liliang.blp]],[[
+    {'身披圣衣lvmax',false,'攻击速度',50,'火灵',25000,[[liliang.blp]],[[
     
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lvmax|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00身披圣衣Lvmax|r
         
--- |cffFFE799【奖励】|r|cff00ff00+50%攻击速度|r
---        ]]},
---     },
+|cffFFE799【奖励】|r|cff00ff00+50%攻击速度|r
+       ]]},
+    },
 
 
--- [7] = {
--- {'脚踩祥云lv1',false,'免伤',2.5,'木头',2000,[[liliang.blp]],[[
+[7] = {
+{'脚踩祥云lv1',false,'免伤',2.5,'木头',2000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv1|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv1|r
     
--- |cffFFE799【奖励】|r|cff00ff00+2.5%免伤|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+2.5%免伤|r
+    ]]},
 
--- {'脚踩祥云lv2',false,'每秒回血',10,'木头',4000,[[liliang.blp]],[[
+{'脚踩祥云lv2',false,'每秒回血',10,'木头',4000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv2|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv2|r
     
--- |cffFFE799【奖励】|r|cff00ff00+10%每秒回血|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+10%每秒回血|r
+    ]]},
 
--- {'脚踩祥云lv3',false,'全属性',4000000,'木头',6000,[[liliang.blp]],[[
+{'脚踩祥云lv3',false,'全属性',4000000,'木头',6000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv3|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv3|r
     
--- |cffFFE799【奖励】|r|cff00ff00+400w全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+400w全属性|r
+    ]]},
 
--- {'脚踩祥云lv4',false,'触发概率加成',5,'木头',8000,[[liliang.blp]],[[
+{'脚踩祥云lv4',false,'触发概率加成',5,'木头',8000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv4|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv4|r
     
--- |cffFFE799【奖励】|r|cff00ff00+5%触发概率加成|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+5%触发概率加成|r
+    ]]},
 
--- {'脚踩祥云lv5',false,'免伤几率',2.5,'木头',10000,[[liliang.blp]],[[
+{'脚踩祥云lv5',false,'免伤几率',2.5,'木头',10000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv5|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv5|r
     
--- |cffFFE799【奖励】|r|cff00ff00+2.5%免伤几率|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+2.5%免伤几率|r
+    ]]},
 
--- {'脚踩祥云lv6',false,'攻击减甲',15,'木头',12000,[[liliang.blp]],[[
+{'脚踩祥云lv6',false,'攻击减甲',15,'木头',12000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv6|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv6|r
     
--- |cffFFE799【奖励】|r|cff00ff00+15攻击减甲|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+15攻击减甲|r
+    ]]},
 
---  {'脚踩祥云lv7',false,'全属性',6000000,'木头',14000,[[liliang.blp]],[[
+ {'脚踩祥云lv7',false,'全属性',6000000,'木头',14000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv7|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv7|r
     
--- |cffFFE799【奖励】|r|cff00ff00+600w全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+600w全属性|r
+    ]]},
 
--- {'脚踩祥云lv8',false,'技暴几率',2.5,'木头',16000,[[liliang.blp]],[[
+{'脚踩祥云lv8',false,'技暴几率',2.5,'木头',16000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv8|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv8|r
     
--- |cffFFE799【奖励】|r|cff00ff00+2.5%技暴几率|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+2.5%技暴几率|r
+    ]]},
 
--- {'脚踩祥云lv9',false,'技暴加深',50,'木头',18000,[[liliang.blp]],[[
+{'脚踩祥云lv9',false,'技暴加深',50,'木头',18000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv9|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lv9|r
     
--- |cffFFE799【奖励】|r|cff00ff00+50%技暴加深|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+50%技暴加深|r
+    ]]},
 
--- {'脚踩祥云lvmax',false,'全伤加深',5,'木头',20000,[[liliang.blp]],[[
+{'脚踩祥云lvmax',false,'全伤加深',5,'木头',20000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lvmax|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00脚踩祥云Lvmax|r
     
--- |cffFFE799【奖励】|r|cff00ff00+5%全伤加深|r
---    ]]},
--- },
+|cffFFE799【奖励】|r|cff00ff00+5%全伤加深|r
+   ]]},
+},
 
--- [8] = {
--- {'头顶乾坤lv1',false,'触发概率加成',5,'火灵',10000,[[liliang.blp]],[[
+[8] = {
+{'头顶乾坤lv1',false,'触发概率加成',5,'火灵',10000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv1|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv1|r
     
--- |cffFFE799【奖励】|r|cff00ff00+5%触发概率加成|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+5%触发概率加成|r
+    ]]},
 
--- {'头顶乾坤lv2',false,'物理伤害加深',25,'火灵',25000,[[liliang.blp]],[[
+{'头顶乾坤lv2',false,'物理伤害加深',25,'火灵',25000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv2|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv2|r
     
--- |cffFFE799【奖励】|r|cff00ff00+25%物理伤害加深|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+25%物理伤害加深|r
+    ]]},
 
--- {'头顶乾坤lv3',false,'全属性',4000000,'火灵',40000,[[liliang.blp]],[[
+{'头顶乾坤lv3',false,'全属性',4000000,'火灵',40000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv3|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv3|r
     
--- |cffFFE799【奖励】|r|cff00ff00+400w全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+400w全属性|r
+    ]]},
 
--- {'头顶乾坤lv4',false,'攻击减甲',20,'火灵',55000,[[liliang.blp]],[[
+{'头顶乾坤lv4',false,'攻击减甲',20,'火灵',55000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv4|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv4|r
     
--- |cffFFE799【奖励】|r|cff00ff00+20攻击减甲|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+20攻击减甲|r
+    ]]},
 
--- {'头顶乾坤lv5',false,'技暴加深',50,'火灵',70000,[[liliang.blp]],[[
+{'头顶乾坤lv5',false,'技暴加深',50,'火灵',70000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv5|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv5|r
     
--- |cffFFE799【奖励】|r|cff00ff00+50%技暴加深|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+50%技暴加深|r
+    ]]},
 
--- {'头顶乾坤lv6',false,'全属性',8000000,'火灵',85000,[[liliang.blp]],[[
+{'头顶乾坤lv6',false,'全属性',8000000,'火灵',85000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv6|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv6|r
     
--- |cffFFE799【奖励】|r|cff00ff00+800w全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+800w全属性|r
+    ]]},
 
---  {'头顶乾坤lv7',false,'暴击加深',150,'火灵',100000,[[liliang.blp]],[[
+ {'头顶乾坤lv7',false,'暴击加深',150,'火灵',100000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv7|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv7|r
     
--- |cffFFE799【奖励】|r|cff00ff00+150%暴击加深|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+150%暴击加深|r
+    ]]},
 
--- {'头顶乾坤lv8',false,'技暴加深',150,'火灵',125000,[[liliang.blp]],[[
+{'头顶乾坤lv8',false,'技暴加深',150,'火灵',125000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv8|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv8|r
     
--- |cffFFE799【奖励】|r|cff00ff00+150%技暴加深|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+150%技暴加深|r
+    ]]},
 
--- {'头顶乾坤lv9',false,'全属性',10000000,'火灵',150000,[[liliang.blp]],[[
+{'头顶乾坤lv9',false,'全属性',10000000,'火灵',150000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv9|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lv9|r
     
--- |cffFFE799【奖励】|r|cff00ff00+1000w全属性|r
---     ]]},
+|cffFFE799【奖励】|r|cff00ff00+1000w全属性|r
+    ]]},
 
--- {'头顶乾坤lvmax',false,'对BOSS额外伤害',5,'火灵',200000,[[liliang.blp]],[[
+{'头顶乾坤lvmax',false,'对BOSS额外伤害',5,'火灵',200000,[[liliang.blp]],[[
 
--- |cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lvmax|r
+|cffFFE799【要求】|r消耗 |cffff0000%show_tip%|r 激活 |cff00ff00头顶乾坤Lvmax|r
     
--- |cffFFE799【奖励】|r|cff00ff00+5%对BOSS额外伤害|r
---    ]]},
+|cffFFE799【奖励】|r|cff00ff00+5%对BOSS额外伤害|r
+   ]]},
 
 
--- },
+},
 }
 ac.devil_deal = devil_deal
 --根据重数 给商店添加10技能，并让第一技能为可点击状态

@@ -67,7 +67,7 @@ tip = [[
 |cff00ff00-0.05攻击间隔，无视攻击间隔上限，仅限携带一个
 ]],
 --唯一
-unique = true,
+-- unique = true,
 ['攻击间隔'] = -0.05,
 --物品技能
 is_skill = true,
@@ -136,14 +136,14 @@ tip = [[
 
 |cffcccccc昨天的蜜糖，今天的砒霜
 
-|cff00ff00点击将砒霜洒向周围1000码的敌人，可减少8%的最大生命值
+|cff00ff00点击将砒霜洒向周围1000码的敌人，可减少8%的最大生命
 ]],
 --物品技能
 is_skill = true,
 --技能目标
 -- target_type = ac.skill.TARGET_TYPE_UNIT,
 --值
-value = 8,
+value = 50,
 --目标允许	
 -- target_data = '敌人', 物品施法没有这些判断
 -- range = 1000,   物品施法没有这些判断
@@ -156,12 +156,15 @@ content_tip = '|cffffe799物品说明：|r'
 function mt:on_cast_start()
     local hero = self.owner
     -- print(unit:get_name(),unit:get('生命上限'))
+    hero:add_effect('origin',self.effect):remove()
     for _,unit in ac.selector()
         : in_range(hero,self.effect_area)
         : is_enemy(hero)
         : ipairs()
     do 
-        unit:add('生命上限',-unit:get('生命上限')*8/100)
+        -- print(-unit:get('生命上限')*self.value/100)
+        unit:add('生命',-unit:get('生命上限')*self.value/100)
+        -- print('扣掉生命',unit:get('生命'))
     end 
 
 end    
@@ -190,23 +193,27 @@ tip = [[
 |cff00ff00练功房数量+3
 ]],
 --唯一
-unique = true,
+-- unique = true,
 --物品技能
 is_skill = true,
 --值
-value = 3,
+value = 20,
 --物品详细介绍的title
 content_tip = '|cffffe799物品说明：|r'
 }  
 function mt:on_add()
     local hero = self.owner
     local p = hero:get_owner()
-    p.more_unit = (p.more_unit or 0)  + self.value
+    -- if not p.flag_added then 
+        p.more_unit = (p.more_unit or 0)  + self.value
+        -- p.flag_added = true 
+    -- end    
 end  
 function mt:on_remove()
     local hero = self.owner
     local p = hero:get_owner()
     p.more_unit = (p.more_unit or 0)  - self.value
+    -- p.flag_added = false 
 end 
 
 
@@ -329,6 +336,6 @@ content_tip = '|cffffe799物品说明：|r'
 } 
 
 ac.black_item = {
-   '荒芜之戒','噬魂','魔鬼金矿','魔鬼的砒霜','死神之触','马可波罗的万花铳','聚宝盆','七星剑','金鼎烈日甲'
+   '荒芜之戒','噬魂','魔鬼金矿','魔鬼的砒霜','马可波罗的万花铳','聚宝盆','七星剑','金鼎烈日甲'
 }
-
+--,'死神之触' 有问题

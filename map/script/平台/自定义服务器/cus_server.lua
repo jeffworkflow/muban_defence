@@ -11,7 +11,7 @@ ac.server_config = config
 
 --读取 map_test 单个并同步
 function player.__index:GetServerValue(KEY,f)
-    if ac.flag_map < 1 then 
+    if not ac.flag_map or ac.flag_map  < 1 then 
         return 
     end
     local player_name = self:get_name()
@@ -145,6 +145,11 @@ end
 local ui = require 'ui.server.util'
 --处理同步请求
 local event = {
+    onoff = function (val)
+        local player = ui.player 
+        ac.flag_map = val
+        print('同步后的数据',ac.flag_map)
+    end,
     on_get = function (key,val)
         local player = ui.player 
         if not player.cus_server2 then 
@@ -374,6 +379,7 @@ end
 -- end      
 
 --读取全局开关，是否读服务器存档
+local ui = require 'ui.client.util'
 function player.__index:sp_get_map_flag(f)
     local player_name = self:get_name()
     local map_name = config.map_name
@@ -390,21 +396,24 @@ function player.__index:sp_get_map_flag(f)
             -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
             if tbl and tbl.code == 0 then 
                 local flag_map = tbl.data[1][1].flag
-                print(flag_map)
-                --同步配置数据
-                local msg = {flag_map = flag_map}
+                -- print('打印开关：',flag_map)
+                -- ac.wait(10,function()
+                --     --同步配置数据 有问题，不用
+                --     -- local msg = {flag_map = flag_map}
+                --     -- self:SyncData(msg,function(p,message)
+                --     --     p.flag_map = tonumber(message.flag_map)
+                --     -- end)
+                -- end)
                 ac.wait(10,function()
-                    self:SyncData(msg,function(p,message)
-                        -- print_r(message)
-                        ac.flag_map = tonumber(message.flag_map)
-                        for i=1,10 do 
-                            local player = ac.player(i)
-                            if player:is_player() then 
-                                player.flag_get_map_test = true 
-                            end
-                        end        
-                    end)
-                end)
+                    local info = {
+                        type = 'cus_server',
+                        func_name = 'onoff',
+                        params = {
+                            [1] = tonumber(flag_map),
+                        }
+                    }
+                    ui.send_message(info)
+                end)   
                 f(tbl)
             else
                 print(self:get_name(),post,'上传失败')
@@ -414,6 +423,7 @@ function player.__index:sp_get_map_flag(f)
         end    
     end)
 end
+-- ac.flag_map = 1
 --读取配置
 ac.player(1):sp_get_map_flag()
 
