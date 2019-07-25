@@ -106,7 +106,7 @@ local attribute = {
 	
 	['全伤加深'] = true, --默认表示为%
 	['物品获取率'] = true,--默认表示为% 怪物物品掉落率加成
-	['法术攻击'] = true, --默认表示为% 技能的法术伤害加成
+	['技能伤害加深'] = true, --默认表示为% 技能的法术伤害加成
 	['召唤物'] = true, --默认表示为基础值,召唤物数量
 	['召唤物属性'] = true, --默认表示为%, 召唤物属性加成
 	['主动释放的增益效果'] = true,  --默认表示为%
@@ -654,15 +654,23 @@ get['攻击间隔'] = function(self)
 end
 
 on_get['攻击间隔'] = function(self, attack_gap)
-	if attack_gap < 0.5 then
-		attack_gap = 0.5
+	if attack_gap <= 0.5 then
+		if self.flag_attack_gap and attack_gap <= 0.45 then 
+			attack_gap = 0.45 
+		else	
+			attack_gap = 0.5
+		end	
 	end
 	return attack_gap
 end
 
 set['攻击间隔'] = function(self, attack_gap)
-	if attack_gap < 0.5 then
-		attack_gap = 0.5
+	if attack_gap <= 0.5 then
+		if self.flag_attack_gap and attack_gap <= 0.45 then 
+			attack_gap = 0.45 
+		else	
+			attack_gap = 0.5
+		end	
 	end
 	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x25), attack_gap)
 end

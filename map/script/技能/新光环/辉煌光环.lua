@@ -12,7 +12,7 @@ mt{
 	--技能目标
 	target_type = ac.skill.TARGET_TYPE_NONE,
 	--介绍
-    tip = [[|cff11ccff%skill_type%:|r 所有友军法术攻击增加%value% %
+    tip = [[|cff11ccff%skill_type%:|r 所有友军技能伤害加深增加%value% %
     ]],
 	--技能图标
 	art = [[ReplaceableTextures\PassiveButtons\PASBTNBrilliance.blp]],
@@ -74,14 +74,14 @@ mt.effect = [[]]
 function mt:on_add()
     local target = self.target
     self.eff = target:add_effect('origin',self.effect)
-    target:add('法术攻击',self.value)
+    target:add('技能伤害加深',self.value)
 
 end
 
 function mt:on_remove()
     local target = self.target
     if self.eff then self.eff:remove() end
-    target:add('法术攻击',-self.value)
+    target:add('技能伤害加深',-self.value)
 end
 function mt:on_cover(new)
 	return new.value > self.value

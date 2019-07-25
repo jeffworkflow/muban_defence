@@ -446,7 +446,7 @@ local function on_texttag(self)
 	-- if not self:is_physicals_crit() or not self:is_spells_crit() or not self:is_heart_crit() then
 	-- 	return
 	-- end
-    --普攻，法术攻击 颜色 白色
+    --普攻，技能伤害加深 颜色 白色
 	local color ={}
 	color['r'] = 255
 	color['g'] = 255
@@ -819,10 +819,10 @@ function mt:on_skill_damage()
 	
 end
 
---计算法术攻击 伤害加成
+--计算技能伤害加深 伤害加成
 function mt:on_more_magic_damage()
 	local source = self.source
-	local dmg = source:get '法术攻击'
+	local dmg = source:get '技能伤害加深'
 	-- local dmg_base = source:get '技能基础伤害'
 
 	if dmg <=0 then 
@@ -1001,7 +1001,7 @@ function damage:__call()
 			self.current_damage = self.current_damage + source:get('技能基础伤害')
 			--计算技能伤害加成
 			self:on_skill_damage()
-			--计算计算法术攻击加成
+			--计算计算技能伤害加深加成
 			self:on_more_magic_damage()
 		end
 		--判断伤害类型

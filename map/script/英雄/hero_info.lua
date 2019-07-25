@@ -133,7 +133,7 @@ function mt:dummy_attr()
 	return ('|cffF9C801%.f|r'):format(self.owner:get '召唤物属性')
 end
 function mt:magic_attack()
-	return ('|cffF9C801%.f|r'):format(self.owner:get '法术攻击')
+	return ('|cffF9C801%.f|r'):format(self.owner:get '技能伤害加深')
 end
 
 

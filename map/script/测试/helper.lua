@@ -575,6 +575,10 @@ function helper:add_sub_skill(skill,book_skill)
 end
 
 --强制下一波
+function helper:test_gjjg()
+	self.flag_attack_gap = true 
+end	
+--强制下一波
 function helper:next()
 	--强制下一波
 	local self 
