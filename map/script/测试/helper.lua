@@ -575,6 +575,14 @@ function helper:add_sub_skill(skill,book_skill)
 end
 
 --强制下一波
+function helper:add_red()
+	for i =1,6 do 
+		local name = ac.quality_item['红'][math.random(#ac.quality_item['红'])]
+		self:add_item(name,true)
+	end	
+end	
+
+--强制下一波
 function helper:test_gjjg()
 	self.flag_attack_gap = true 
 end	

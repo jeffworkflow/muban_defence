@@ -55,9 +55,8 @@ function shop.create(name,x,y,face,is_selling,player)
 	if not unit.sell_new_gold then 
 		unit.sell_new_gold = {}
 	end	
-
+	local data = ac.table.UnitData[name]
 	if not is_selling then 
-		local data = ac.table.UnitData[name]
 		local sell = data.sell
 		unit.sell = sell
 		if sell then 
@@ -68,6 +67,10 @@ function shop.create(name,x,y,face,is_selling,player)
 	end	
 	--创建文字
 	-- unit.texttag = on_texttag(name,unit)
+	--加头上模型
+	if data.head_effect then 
+		unit:add_effect('overhead',data.head_effect)
+	end  
 
 	shop.unit_list[unit.handle] = unit
 
@@ -131,6 +134,9 @@ function mt:add_sell_item(name,i)
 	-- end
 	if not self.sell_item_list then 
 		self.sell_item_list = {}
+	end	
+	if not self.sell then 
+		self.sell = {}
 	end	
 	if item then 
 		self.sell_item_list[i] = item
@@ -200,14 +206,14 @@ end
 --无用
 function mt:remove_all()
 	for i =1,12 do
-		if self.sell_item_list[i] then
+		if self.sell_item_list and self.sell_item_list[i] then
 			self:remove_sell_item(self.sell_item_list[i].name)
 		end	
 	end	
 end
 function mt:fresh_sell()
 	for i =1,12 do
-		if self.sell_item_list[i] then
+		if self.sell_item_list and self.sell_item_list[i] then
 			self.sell[i] = self.sell_item_list[i].name
 		end	
 	end	

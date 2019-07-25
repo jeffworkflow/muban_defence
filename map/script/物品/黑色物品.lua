@@ -1,0 +1,308 @@
+--物品名称
+local mt = ac.skill['荒芜之戒']
+mt{
+--等久
+level = 1,
+--图标
+art = [[item\shou204.blp]],
+--类型
+item_type = "装备",
+--品质
+color ='黑',
+--模型
+specail_model = [[EarthCrystal.mdx]],
+--冷却
+cool = 0,
+--描述
+tip = [[
+    人不仁，无信无义。王不仁，无德无量。地不仁，无草无木。天不仁，无世间万物。万年圣物，荒芜之戒。
+
+    全队队友，攻击减甲+150
+]],
+--攻击减甲数值
+value = 150,
+--物品技能
+is_skill = true,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+}
+function mt:on_add()
+    local hero = self.owner
+    if not hero:is_hero() then 
+        return 
+    end    
+    if not ac.team_attr then ac.team_attr ={} end
+    ac.team_attr['攻击减甲'] = (ac.team_attr['攻击减甲'] or 0) + self.value
+end  
+function mt:on_remove()
+    local hero = self.owner
+    if not hero:is_hero() then 
+        return 
+    end    
+    if not ac.team_attr then ac.team_attr ={} end
+    ac.team_attr['攻击减甲'] = (ac.team_attr['攻击减甲'] or 0) - self.value
+end     
+
+
+local mt = ac.skill['噬魂']
+mt{
+--等久
+level = 1,
+--图标
+art = [[item\shou204.blp]],
+--类型
+item_type = "装备",
+--品质
+color ='黑',
+--冷却
+cool = 0,
+--描述
+tip = [[
+    上古时期，一根充满戾气的魔棒
+
+    -0.05攻击间隔，无视攻击间隔上限，仅限携带一个
+]],
+--唯一
+unique = true,
+['攻击间隔'] = -0.05,
+--物品技能
+is_skill = true,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+}
+function mt:on_add()
+    local hero = self.owner
+    hero.flag_attack_gap = true 
+end  
+function mt:on_remove()
+    local hero = self.owner
+    hero.flag_attack_gap = false 
+end     
+
+
+local mt = ac.skill['魔鬼金矿']
+mt{
+--等久
+level = 1,
+--图标
+art = [[item\shou204.blp]],
+--类型
+item_type = "装备",
+--品质
+color ='黑',
+--冷却
+cool = 0,
+--描述
+tip = [[
+    金矿被魔鬼占据之后，侍僧才可以从中采集黄金资源。
+
+    杀敌数+40%，物品获取率+40%,木头+40%,火灵+40%
+]],
+['杀敌数加成'] = 40,
+['物品获取率'] = 40,
+['木头加成'] = 40,
+['火灵加成'] = 40,
+--物品技能
+is_skill = true,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+}
+
+
+
+local mt = ac.skill['魔鬼的砒霜']
+mt{
+--等久
+level = 1,
+--图标
+art = [[item\shou204.blp]],
+--类型
+item_type = "消耗品",
+--品质
+color ='黑',
+--冷却
+cool = 1,
+--描述
+tip = [[
+    昨天的蜜糖，今天的砒霜
+
+    消耗品，减少周围敌人8%的最大生命值，可对BOSS使用
+]],
+--物品技能
+is_skill = true,
+--技能目标
+-- target_type = ac.skill.TARGET_TYPE_UNIT,
+--值
+value = 8,
+--目标允许	
+-- target_data = '敌人', 物品施法没有这些判断
+-- range = 1000,   物品施法没有这些判断
+effect_area = 1000,
+--特效
+effect = [[]],
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+}
+function mt:on_cast_start()
+    local hero = self.owner
+    -- print(unit:get_name(),unit:get('生命上限'))
+    for _,unit in ac.selector()
+        : in_range(hero,self.effect_area)
+        : is_enemy(hero)
+        : ipairs()
+    do 
+        unit:add('生命上限',-unit:get('生命上限')*8/100)
+    end 
+
+end    
+
+
+
+local mt = ac.skill['死神之触']
+mt{
+--等久
+level = 1,
+--图标
+art = [[item\shou204.blp]],
+--类型
+item_type = "消耗品",
+--品质
+color ='黑',
+--冷却
+cool = 1,
+--描述
+tip = [[
+    嗜血阴灵，伴身左右，逆鳞在手，傲视神魔
+
+    练功房数量+3
+]],
+--唯一
+unique = true,
+--物品技能
+is_skill = true,
+--值
+value = 3,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+}  
+function mt:on_add()
+    local hero = self.owner
+    local p = hero:get_owner()
+    p.more_unit = (p.more_unit or 0)  + self.value
+end  
+function mt:on_remove()
+    local hero = self.owner
+    local p = hero:get_owner()
+    p.more_unit = (p.more_unit or 0)  - self.value
+end 
+
+
+local mt = ac.skill['马可波罗的万花铳']
+mt{
+--等久
+level = 1,
+--图标
+art = [[item\shou204.blp]],
+--类型
+item_type = "装备",
+--品质
+color ='黑',
+--冷却
+cool = 1,
+--描述
+tip = [[
+万花丛中过，片花不沾身
+
+多重射+1（仅远程有效）
+触发概率+35%
+]],
+--物品技能
+is_skill = true,
+['多重射'] = 1,
+['触发概率加成'] = 35,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+} 
+
+
+local mt = ac.skill['聚宝盆']
+mt{
+--等久
+level = 1,
+--图标
+art = [[item\shou204.blp]],
+--类型
+item_type = "装备",
+--品质
+color ='黑',
+--冷却
+cool = 1,
+--描述
+tip = [[
+    每秒加木头+500
+    每秒加火灵+500
+]],
+--物品技能
+is_skill = true,
+['每秒加木头'] = 500,
+['每秒加火灵'] = 500,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+} 
+
+
+local mt = ac.skill['七星剑']
+mt{
+--等久
+level = 1,
+--图标
+art = [[item\shou204.blp]],
+--类型
+item_type = "装备",
+--品质
+color ='黑',
+--冷却
+cool = 1,
+--描述
+tip = [[
+睹二龙之追飞，见七星之明灭
+
+全属性+5%
+]],
+--物品技能
+is_skill = true,
+['力量%'] = 5,
+['敏捷%'] = 5,
+['智力%'] = 5,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+} 
+
+
+local mt = ac.skill['金鼎烈日甲']
+mt{
+--等久
+level = 1,
+--图标
+art = [[item\shou204.blp]],
+--类型
+item_type = "装备",
+--品质
+color ='黑',
+--冷却
+cool = 1,
+--描述
+tip = [[
+护甲+10%
+]],
+--物品技能
+is_skill = true,
+['护甲%'] = 10,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+} 
+
+ac.black_item = {
+   '荒芜之戒','噬魂','魔鬼金矿','魔鬼的砒霜','死神之触','马可波罗的万花铳','聚宝盆','七星剑','金鼎烈日甲'
+}
+

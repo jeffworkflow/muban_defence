@@ -11,6 +11,9 @@ ac.server_config = config
 
 --读取 map_test 单个并同步
 function player.__index:GetServerValue(KEY,f)
+    if ac.flag_map < 1 then 
+        return 
+    end
     local player_name = self:get_name()
     local map_name = config.map_name
     local url = config.url
@@ -20,29 +23,30 @@ function player.__index:GetServerValue(KEY,f)
         player_name = player_name,
         key = KEY,
     })
-
+    print(url,post)
+    local f = f or function (retval)  end
     post_message(url,post,function (retval)  
-        local value = string.find(retval, 'error_code')
-        if value == nil then
+
+        if not finds(retval,'http','https','') or not finds(retval,'error_code')then 
             local tbl = json.decode(retval)
             for k, v in ipairs(tbl) do
-                --发起同步请求
-                local info = {
-                    type = 'cus_server',
-                    func_name = 'on_get',
-                    params = {
-                        [1] = KEY,
-                        [2] = v,
+                -- --发起同步请求
+                ac.wait(10,function()
+                    local info = {
+                        type = 'cus_server',
+                        func_name = 'on_get',
+                        params = {
+                            [1] = KEY,
+                            [2] = tonumber(v.value),
+                        }
                     }
-                }
-                ui.send_message(info)
-                ac.wait(500,function()
-                    f(v)
+                    ui.send_message(info)
                 end)   
             end
         else 
             f(false)
             print('数据读取失败')
+            ac.wait(10,function()print(retval)end)
         end
     end)
 end
@@ -148,6 +152,7 @@ local event = {
         end    
         local name = ac.server.key2name(key)
         player.cus_server2[name] = tonumber(val)
+        print('自定义服务器读取完后同步的数据',key,name,val)
         if key =='jifen' then 
             player.jifen = tonumber(val)
         end    

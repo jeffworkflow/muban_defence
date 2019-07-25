@@ -164,7 +164,7 @@ effect = [[lingyu5.mdx]]
 function mt:on_add()
     local p = self.owner:get_owner()
     if (p.mall and p.mall['远影苍龙领域'] or 0) >=1 then 
-        p.flag_more_unit = true
+        p.more_unit = p.more_unit or 0 + 5
     end    
 end    
 

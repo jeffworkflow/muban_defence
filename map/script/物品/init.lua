@@ -6,6 +6,7 @@ require '物品.商店'
 require '物品.合成装备'
 require '物品.套装'
 require '物品.特殊处理'
+require '物品.黑色物品'
 
 
 

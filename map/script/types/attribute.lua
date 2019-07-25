@@ -125,6 +125,8 @@ local attribute = {
 
 	['每秒加金币'] = true,  --默认表示为基础值
 	['每秒加木头'] = true,  --默认表示为基础值
+	['每秒加火灵'] = true,  --默认表示为基础值
+	
 	['每秒加力量'] = true,  --默认表示为基础值
 	['每秒加敏捷'] = true,  --默认表示为基础值
 	['每秒加智力'] = true,  --默认表示为基础值
@@ -169,6 +171,7 @@ local base_attr =[[
 攻击减甲
 减少周围护甲
 额外杀敌数
+每秒加火灵
 ]]
 ac.base_attr = base_attr
 
@@ -885,6 +888,9 @@ ac.loop(1*1000,function(t)
 			--每秒加木头
 			local wood = player.hero:get('每秒加木头') 
 			player:add_wood(wood) 
+			--每秒加火灵
+			local fire_seed = player.hero:get('每秒加火灵') 
+			player:add_fire_seed(fire_seed) 
 
 			local hero = player.hero
 			--每秒属性 
@@ -900,6 +906,18 @@ ac.loop(1*1000,function(t)
 
 			--每秒回血
 			hero:add('生命',hero:get('生命上限')*hero:get('每秒回血')/100)
+
+			--全队光环类的，每秒加一次buff,buff持续1秒
+			if ac.team_attr then 
+				for key,val in sortpairs(ac.team_attr) do
+					hero:add_buff(key)
+					{
+						value = val,
+						time = 1
+					}
+				end
+			end		
+
 		end	
 	end	
 end)

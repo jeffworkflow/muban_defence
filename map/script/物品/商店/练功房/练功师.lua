@@ -63,7 +63,7 @@ for key,value in sortpairs(ac.pratice_man) do
                 player:event '玩家-注册英雄后'(function()
                     local name = key..i
                     local mt = ac.creep[name]{    
-                        creeps_datas = value[1]..'*'..(player.flag_more_unit and 20 or 15),
+                        creeps_datas = value[1]..'*'..(15 + (player.more_unit or 0)),
                         cool = 1,
                         create_unit_cool = 0,
                         first_wait_time = 0.6, --调整切换练功怪首次出现时间

@@ -25,7 +25,6 @@ end)
 
 
 
-
 -- for k,v in pairs(quality_item) do
 --     print(k,v[1])
 -- end
@@ -239,7 +238,7 @@ local function streng_item(alltable,unit,it)
                         --创建新的物品，并设置物品数量为 总数量-合成需要的数量
                         --已经找过的
                         --等待0.10秒，等全部物品都删了后，再添加
-                        ac.wait(10,function()
+                        ac.wait(0,function()
                             local stack = find_item(unit_item_list,k,true)
                             if stack -  tonumber(v) > 0 then
                                 local new_it 
@@ -265,7 +264,7 @@ local function streng_item(alltable,unit,it)
 
                     if name then
                         -- print(name)
-                        ac.wait(10,function()
+                        ac.wait(0,function()
                             local stack = find_item(unit_item_list,name,true)
                             -- print_item(unit_item_list)
                             if stack -  tonumber(v) > 0 then 
