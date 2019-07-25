@@ -49,7 +49,9 @@ end
 
 --读取 map_test 多个个并同步
 function player.__index:sp_get_map_test(f)
-    
+    if ac.flag_map < 1 then 
+        return 
+    end
     local player_name = self:get_name()
     local map_name = ac.server_config.map_name
     local url = ac.server_config.url2
@@ -127,9 +129,9 @@ function player.__index:sp_get_map_test(f)
                     end)
                 else
                     ac.wait(10,function()
-                        self:sendMsg('|cffff0000读取存档失败,建议重开,以免覆盖存档数据。输入jixu可继续玩|r')
-                        self:sendMsg('|cffff0000读取存档失败,建议重开,以免覆盖存档数据。输入jixu可继续玩|r')
-                        self:sendMsg('|cffff0000读取存档失败,建议重开,以免覆盖存档数据。输入jixu可继续玩|r')
+                        self:sendMsg('|cffff0000读取存档失败,获得胜利时排行榜数据将被覆盖,输入jixu可继续玩|r')
+                        self:sendMsg('|cffff0000读取存档失败,获得胜利时排行榜数据将被覆盖,输入jixu可继续玩|r')
+                        self:sendMsg('|cffff0000读取存档失败,获得胜利时排行榜数据将被覆盖,输入jixu可继续玩|r')
                     end)
                 end    
             end    
@@ -365,6 +367,50 @@ end
 --         p:sp_save_player()
 --     end
 -- end      
+
+--读取全局开关，是否读服务器存档
+function player.__index:sp_get_map_flag(f)
+    local player_name = self:get_name()
+    local map_name = config.map_name
+    local url = config.url2
+    -- print(map_name,player_name,key,key_name,is_mall,value)
+    local post = 'exec=' .. json.encode({
+        sp_name = 'sp_get_map_flag'
+    })
+    -- print(url,post)
+    local f = f or function (retval)  end 
+    post_message(url,post,function (retval)  
+        if not finds(retval,'http','https','') or finds(retval,'成功')then 
+            local tbl = json.decode(retval)
+            -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
+            if tbl and tbl.code == 0 then 
+                local flag_map = tbl.data[1][1].flag
+                print(flag_map)
+                --同步配置数据
+                local msg = {flag_map = flag_map}
+                ac.wait(10,function()
+                    self:SyncData(msg,function(p,message)
+                        -- print_r(message)
+                        ac.flag_map = tonumber(message.flag_map)
+                        for i=1,10 do 
+                            local player = ac.player(i)
+                            if player:is_player() then 
+                                player.flag_get_map_test = true 
+                            end
+                        end        
+                    end)
+                end)
+                f(tbl)
+            else
+                print(self:get_name(),post,'上传失败')
+            end         
+        else
+            print('服务器返回数据异常:',retval,post)
+        end    
+    end)
+end
+--读取配置
+ac.player(1):sp_get_map_flag()
 
 
 --[[

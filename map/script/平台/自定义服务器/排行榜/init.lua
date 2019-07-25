@@ -1,6 +1,9 @@
 local player = require("ac.player")
 --保存排名数据
 function player.__index:sp_set_rank(key,value,f)
+    -- if not ac.flag_map then 
+    --     return 
+    -- end
     local player_name = self:get_name()
     local map_name = ac.server_config.map_name
     local url = ac.server_config.url2
@@ -19,6 +22,9 @@ function player.__index:sp_set_rank(key,value,f)
 end
 --读取排名数据
 function player.__index:sp_get_rank(key,order_by,limit_cnt,f)
+    if ac.flag_map < 1 then 
+        return 
+    end
     local player_name = self:get_name()
     local map_name = ac.server_config.map_name
     local url = ac.server_config.url2

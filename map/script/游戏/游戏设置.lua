@@ -19,10 +19,12 @@ local ti = ac.loop(1000,function(t)
     -- ranking.ui.date:set_text('游戏时长:'..str)
     ac.game.multiboard:set_time(str) --多面板显示
 	-- ac.game.multiboard:set_title()
-    -- if total_time == 0  then
-    --     ac.game:event_notify('游戏-结束','游戏胜利')
-    --     t:remove()
-    -- end
+	local end_time = 60*60*7.5
+	-- local end_time = 30-- 测试
+    if ac.g_game_time == end_time  then
+        ac.game:event_notify('游戏-结束')
+        t:remove()
+    end
 
 end)
 

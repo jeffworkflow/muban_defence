@@ -223,7 +223,7 @@ ac.wait(20,function()
             }
             ac.g_game_degree_list = {} 
             for i = #list ,1 ,-1 do 
-                print(list[i].name)
+                -- print(list[i].name)
                 table.insert(ac.g_game_degree_list,list[i].name)
             end    
             
