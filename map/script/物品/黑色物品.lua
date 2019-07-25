@@ -350,7 +350,7 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[mkbl.blp]],
+art = [[gdhsf.blp]],
 --模型
 specail_model = [[File00000376 - RC.mdx]],
 --类型
@@ -362,9 +362,9 @@ cool = 1,
 --描述
 tip = [[
 
-|cffcccccc万花丛中过，片花不沾身
+|cffcccccc耶路撒冷发现的一件迷人的小护身符，是人们一直痴迷于抵御传说中的邪恶之眼
 
-|cff00ff00多重射+1（仅远程有效） 触发概率加成+35%
+|cff00ff00技能伤害加深+20%
 ]],
 --物品技能
 is_skill = true,

@@ -59,7 +59,7 @@ ac.quick_arrive ={
     ['百兽'] = {ac.map.rects['传送-百兽'],'baishou.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：最强生物心脏|r\n',0,66666,0} ,
     ['白胡子'] = {ac.map.rects['传送-白胡子'],'baihuzi.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：白胡子的大刀|r\n',0,66666,0} ,
     
-    ['替天行道'] = {ac.map.rects['传送-替天行道'],'ttxd.blp','\n请大侠|cff00ffff闲暇的时候|r前往袭击食人魔，获得|cff00ffff勇士徽章（可存档）|r\n\n|cffcccccc建议最后挑战|r',0,0,0,1000} ,
+    ['替天行道'] = {ac.map.rects['传送-替天行道'],'ttxd.blp','\n请大侠|cff00ffff闲暇的时候|r前往袭击食人魔，有几率获得|cff00ffff勇士徽章（可存档）|r\n\n|cffcccccc建议最后挑战|r',0,0,0,1000} ,
 
 }
 

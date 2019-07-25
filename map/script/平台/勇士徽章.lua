@@ -13,8 +13,7 @@ tip = [[
 
 |cff00ffff可在替天行道处兑换|cffdf19d0可存档称号或属性
 
-|cffcccccc每局最多可获得5个徽章|r
-|cffcccccc切勿丢地上,直接退游戏,存档会没。|r]],
+|cffcccccc每局最多可获得8个徽章|r |cffcccccc切勿丢弃 否则存档不生效|r]],
 --品质
 color = '紫',
 --物品类型
