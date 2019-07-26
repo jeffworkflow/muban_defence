@@ -160,7 +160,7 @@ function mt:on_cast_start()
                 --触发超级彩蛋
                 if player.ruti_cnt  == 8 then 
                     ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋','霸王色的霸气')
-                    ac.player.self:sendMsg('|cff00ff00恭喜 '..player:get_name()..' 获得超级大彩蛋 霸王色的霸气  |r')
+                    ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 不断食用恶魔果实|r 惊喜获得技能|cffff0000 "霸王色的霸气" |r |cff00ff00每5秒触发一次，对周围敌人造成全属性*30的伤害，并晕眩0.8秒|r',6)
                 end   
                 
 
