@@ -24,10 +24,42 @@ chance = 10,
 ['杀怪加全属性'] = 88,
 ['攻击加全属性'] = 188,
 ['每秒加全属性'] = 588,
-['杀敌数加成'] = 30,
-['木头加成'] = 30,
-['物品获取率'] = 30,
-['火灵加成'] = 30,
+['杀敌数加成'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 30
+    if map_level >= 10 then 
+        value = 30 * 2
+    end    
+    return value 
+end,
+['木头加成'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 30
+    if map_level >= 10 then 
+        value = 30 * 2
+    end    
+    return value 
+end,
+['物品获取率'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 30
+    if map_level >= 10 then 
+        value = 30 * 2
+    end    
+    return value 
+end,
+['火灵加成'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local value = 30
+    if map_level >= 10 then 
+        value = 30 * 2
+    end    
+    return value 
+end,
 ['减少周围护甲'] = 1000,
 ['攻击减甲'] = 25,
 
