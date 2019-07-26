@@ -156,7 +156,13 @@ function mt:on_cast_start()
                     player.ruti = {}
                 end    
                 table.insert(player.ruti,skill)
-            
+                
+                --触发超级彩蛋
+                if player.ruti_cnt  == 8 then 
+                    ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋','霸王色的霸气')
+                    ac.player.self:sendMsg('|cff00ff00恭喜 '..player:get_name()..' 获得超级大彩蛋 霸王色的霸气  |r')
+                end   
+                
 
             else
                 -- print('取消更换技能')

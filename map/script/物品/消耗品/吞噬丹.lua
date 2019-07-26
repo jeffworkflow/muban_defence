@@ -126,6 +126,13 @@ function mt:on_cast_start()
                 end
                 ac.game:event_notify('技能-插入魔法书',hero,'吞噬神丹',new_skl_name)
 
+                --触发超级彩蛋
+                if player.tunshi_cnt  == 8 then 
+                    ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋','大胃王')
+                    ac.player.self:sendMsg('|cff00ff00恭喜 '..player:get_name()..' 获得超级大彩蛋 大胃王  |r')
+                end    
+                    
+
             else
                 -- print('取消更换技能')
                 if self._count > 1 then 
