@@ -7,19 +7,20 @@ mt{
 	--初始等级
 	level = 1,
 	title = function(self)
-		return '自动合成：'..self.auto_hecheng..')'
+		return '自动合成开关'
 	end,	
 	max_level = 5,
 	auto_fresh_tip = false,
 	
 	tip = [[
-自动合成： %auto_hecheng%	
+|cffcccccc（当前状态： %auto_hecheng%）
+
 |cffFFE799【使用说明】：|r
-可使一键拾取时，自动合成物品。
-（有红装不会自动合）
+|cff00ff00打开后，使用一键拾取，拾取周围物品时，能自动合成高品质物品|cffffff00（红装不会被合成）
+
 ]],
 	--技能图标
-	art = [[icon\jineng037.blp]],
+	art = [[kaiguan.blp]],
 	--cd
 	cool = 1,
 	--自动合成

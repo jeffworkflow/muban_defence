@@ -243,13 +243,12 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[wzgl.blp]],
+art = [[zltz.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗勇士徽章  500  兑换获得
+|cff00ffff商城购买自动激活
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+488  杀怪加全属性|r

@@ -16,6 +16,8 @@ tip = [[
 物品获取率+30% 火灵加成+30% |r
 |cffff0000攻击减甲+25 减少周围护甲1000|r
 
+|cffffff00地图等级>=10，永久赞助的资源属性效果翻倍|r
+
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,

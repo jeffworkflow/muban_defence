@@ -7,13 +7,14 @@ mt{
 	--初始等级
 	level = 1,
 	title = function(self)
-		return '一键拾取 (自动合成：'..self.auto_hecheng..')'
+		return '一键拾取'
 	end,	
 	max_level = 5,
 	auto_fresh_tip = false,
 	
 	tip = [[
-自动合成： %auto_hecheng%	
+（当前状态：%auto_hecheng%）
+
 |cffFFE799【使用说明】：|r
 一键|cff00ff00拾取|r周围 %area% 码的物品
 
