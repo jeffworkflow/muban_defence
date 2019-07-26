@@ -10,27 +10,267 @@ store_name = '挑战 pa',
 --等级
 level = 0,
 --图标
-art = [[chibang8.blp]],
+art = [[ReplaceableTextures\CommandButtons\BTNHeroWarden.blp]],
 --说明
-tip = [[商城218
-激活地图等级：%need_map_level%
-已拥有碎片：%skin_cnt%
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000达到铂金7星 且 地图等级≥3|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+50*Lv
+【物理伤害加深】+25
+【攻击减甲】+35|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(敏捷*20+1w)*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
 ]],
-need_map_level = 3,
-skin_cnt = function(self)
-    local p = ac.player.self
-    return p.cus_server[self.name..'碎片'] or 0
-end,
---所需激活碎片
-need_sp_cnt = 50,
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
--- ['杀怪加攻击'] = 750,
--- ['暴击几率'] = 5,
--- ['技暴几率'] = 5,
--- ['全伤加深'] = 5,
---特效
-effect = [[chibang7.mdx]]
+}
+
+local mt = ac.skill['赵子龙']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[zhaoyun.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000达到白银3星 且 地图等级≥2|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+35*Lv
+【分裂伤害】+25%
+【攻击减甲】+5
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（力量*15+10000）*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+}
+
+local mt = ac.skill['夏侯霸']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[xiahouba.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥5|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+35*Lv
+【护甲】+1000
+【物品获取率】+20%|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（力量*15+10000）*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+}
+
+local mt = ac.skill['虞姬']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[yuji.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥10|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+100*Lv
+【攻击速度】+50%
+【全伤加深】+25%
+【减少周围护甲】+1000
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（敏捷*25+10000）*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+}
+
+local mt = ac.skill['太极熊猫']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[taijixiongmao.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥15|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+188*Lv
+【物品获取率】+75%
+【木头加成】+75%
+【杀敌数加成】+75%
+【火灵加成】+75%|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（智力*30+10000）*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+}
+
+local mt = ac.skill['至尊宝']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[zhizunbao.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000商城购买|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+288*Lv
+【攻击减甲】+100
+【物理伤害加深】+150%
+【全伤加深】+50%
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（全属性*20+10000）*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+}
+
+local mt = ac.skill['狄仁杰']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[direnjie.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥25|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+288*Lv
+【攻击速度】+100%
+【攻击减甲】+50
+【物理伤害加深】+50%
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（全属性*20+10000）*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+}
+
+local mt = ac.skill['伊利丹']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[yinudan.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥35|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+388*Lv
+【触发概率加成】+50%
+【技暴几率】+20%
+【技暴加深】+200%|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(全属性*25+1w)*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+}
+
+local mt = ac.skill['鬼厉']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[guili.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000商城购买|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+588*Lv
+【减少周围护甲】+3500
+【物理伤害加深】+400%
+【免伤】+35%
+【全伤加深】+100%
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（全属性*40+10000）*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+}
+
+local mt = ac.skill['剑仙']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[jianxian.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000商城购买|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+888*Lv
+【免伤】+50%
+【全伤加深】+200%
+【攻击减甲】+250
+【对BOSS额外伤害】+50%|r
+
+|cff00bdec【被动效果】攻击20%几率造成范围技能伤害
+【伤害公式】(全属性*60+1w)*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
 }
 
 local mt = ac.skill['手无寸铁的小龙女']
@@ -42,11 +282,23 @@ store_name = '挑战 手无寸铁的小龙女',
 --等级
 level = 0,
 --图标
-art = [[chibang8.blp]],
+art = [[xiaolongnv.blp]],
 --说明
-tip = [[商城218
-激活地图等级：%need_map_level%
-已拥有碎片：%skin_cnt%
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000达到星耀10星 且 地图等级≥6|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+100*Lv
+【触发概率加成】+25%
+【技暴几率】+15%
+【技暴加深】+150%
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】（智力*25+10000）*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
 ]],
 need_map_level = 3,
 skin_cnt = function(self)
@@ -74,11 +326,24 @@ store_name = '挑战 关羽',
 --等级
 level = 0,
 --图标
-art = [[chibang8.blp]],
+art = [[guanyu.blp]],
 --说明
-tip = [[商城218
-激活地图等级：%need_map_level%
-已拥有碎片：%skin_cnt%
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000达到最强王者15星 且 地图等级≥10|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+188*Lv
+【杀敌数加成】+75%
+【物品获取率】+75%
+【木头加成】+75%
+【火灵加成】+75%|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(全属性*10+1w)*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
 ]],
 need_map_level = 3,
 skin_cnt = function(self)
@@ -100,7 +365,7 @@ effect = [[chibang7.mdx]]
 
 
 
-for i,name in ipairs({'Pa','手无寸铁的小龙女','关羽'}) do
+for i,name in ipairs({'赵子龙','Pa','虞姬','手无寸铁的小龙女','太极熊猫','关羽','狄仁杰','伊利丹','至尊宝','鬼厉','剑仙',}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner
