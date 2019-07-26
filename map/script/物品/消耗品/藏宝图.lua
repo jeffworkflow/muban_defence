@@ -266,7 +266,20 @@ function mt:add_content()
         else
             player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
         end
-          
+    elseif rand_name == '家里有矿' then
+        if finds(hero:get_name(),'剑仙','至尊宝','鬼厉') then 
+            local skl = hero:find_skill(rand_name,nil,true)
+            if not skl  then 
+                ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋',rand_name)
+                player.is_show_nickname = rand_name  
+                --给全部玩家发送消息
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cffff0000运气暴涨!!!|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 惊喜获得 |cffff0000'..rand_name..' |r ',6)
+            else
+                player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 使用|cff00ff00'..self.name..'|r 什么事情都没有发生 |cffff0000(挖宝积分+1，当前挖宝积分 '..player.cus_server['挖宝积分']..' )|r',2)
+            end
+        else 
+            self:add_content() --已挖到再随机一次
+        end    
     end   
 end
 

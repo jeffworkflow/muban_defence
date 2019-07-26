@@ -72,6 +72,12 @@ ac.game:event '玩家-注册英雄' (function(trg, player, hero)
 end)
 
 local practise_room =ac.region.create(ac.map.rects['练功房刷怪1'],ac.map.rects['练功房刷怪2'],ac.map.rects['练功房刷怪3'],ac.map.rects['练功房刷怪4'],ac.map.rects['练功房刷怪5'],ac.map.rects['练功房刷怪6'])
+--物品是否在练功房内
+ac.game.is_in_room = function(self,it)
+    if not it then return end 
+    -- print(it,it.name)
+    return practise_room < it:get_point()
+end    
 ac.game.clear_item = function()
     local tbl = {}
     for _,v in pairs(ac.item.item_map) do

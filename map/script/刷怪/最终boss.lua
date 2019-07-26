@@ -11,6 +11,10 @@ ac.game:event '游戏-最终boss' (function(trg)
     boss:add_buff '攻击英雄' {}
     boss:add_skill('无敌','英雄')
     boss:add_skill('撕裂大地','英雄')
+    boss:add_skill('伤害守卫','英雄')
+    
+
+    boss:add('免伤',1.5*(ac.g_game_degree or 1))
     -- if ac.creep['刷怪1'] then 
     --     table.insert(ac.creep['刷怪1'].group,boss)
     -- end    

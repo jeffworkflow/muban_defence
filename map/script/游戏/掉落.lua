@@ -348,7 +348,7 @@ local unit_reward = {
         -- 0.5	宠物经验书（大）		
         -- 0.25	挖宝达人：500万全属性，物品获取率+50%		
 
-        {    rand = 52, name = '无' },
+        {    rand = 51, name = '无' },
         {    rand = 10, name = '随机物品',},
         {    rand = 15, name = '随机技能',},
         {    rand = 1.5, name = '杀怪加力量+400 攻击加力量+1200 每秒加力量+2000' },
@@ -371,6 +371,8 @@ local unit_reward = {
         {    rand = 1, name = 'ONE_PIECE',}, --lv2
         {    rand = 1, name = '法老的遗产',}, --lv2
 
+        {    rand = 1, name = '家里有矿',}, --超级彩蛋
+        
     },
     ['抽奖券'] =  {
         {    rand = 70,  name ={
@@ -762,8 +764,28 @@ ac.game:event '单位-即将获得物品' (function (_,unit,item)
     on_texttag('获得 '..item.name,item.color,unit)
 end )   
 
+--自动优化内存，1小时后自动开启，物品3分钟后清理
+-- local time = 30
+-- local auto_clean_time = 30
+-- ac.wait(time*1000,function() 
+--     ac.flag_auto_item_recycle = true
+--     --设置多面板数据
+--     ac.game.multiboard:set_auto_tip()
+--     --3分钟后，清理一次物品
+--     ac.wait(auto_clean_time*1000,function()
+--         ac.game:clear_item()
+--     end)    
+-- end)
+
+
 ac.game:event '物品-创建'  (function (_,item)
     if not item then return end 
+    if ac.flag_auto_item_recycle then 
+        --练功房的物品除外
+        if not ac.game:is_in_room(item) then 
+            item.time_removed = auto_clean_time
+        end    
+    end    
     if item.time_removed then 
         item_self_skill(item,nil,item.time_removed)
     end    
@@ -775,6 +797,20 @@ ac.game:event '单位-获得物品后' (function (_,unit,item)
         item._self_skill_timer = nil 
     end 
 end)
+
+-- ac.game:event '单位-丢弃物品后' (function (_,unit,item)
+--     if not item then return end 
+--     if ac.flag_auto_item_recycle then 
+--         --练功房的物品除外
+--         -- print(item.name)
+--         if not ac.game:is_in_room(item) then 
+--             item.time_removed = auto_clean_time
+--         end    
+--     end    
+--     if item.time_removed then 
+--         item_self_skill(item,nil,item.time_removed)
+--     end       
+-- end)
 
 
 

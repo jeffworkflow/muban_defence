@@ -121,7 +121,7 @@ function mt:on_cast_start()
                     tip = item:get_tip(),
                 }
                 local new_skl_name = item.name..' '
-                if finds(item.name,'噬魂','荒芜之戒') then 
+                if ac.tunshi_black_item and finds(ac.tunshi_black_item,item.name) then 
                     new_skl_name = item.name
                 end
                 ac.game:event_notify('技能-插入魔法书',hero,'吞噬神丹',new_skl_name)

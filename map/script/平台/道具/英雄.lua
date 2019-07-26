@@ -271,6 +271,46 @@ tip = [[
 
 |cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
 ]],
+['技能伤害加深'] = function(self) 
+    local val = 0 
+    local p = self.owner:get_owner()
+    if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
+        val = 35
+    end    
+    return val
+end,
+['物理伤害加深'] = function(self) 
+    local val = 0 
+    local p = self.owner:get_owner()
+    if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
+        val = 100
+    end    
+    return val
+end,
+['攻击减甲'] = function(self) 
+    local val = 0 
+    local p = self.owner:get_owner()
+    if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
+        val = 125
+    end    
+    return val
+end,
+['全伤加深'] = function(self) 
+    local val = 0 
+    local p = self.owner:get_owner()
+    if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
+        val = 100
+    end    
+    return val
+end,
+['对BOSS额外伤害'] = function(self) 
+    local val = 0 
+    local p = self.owner:get_owner()
+    if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
+        val = 25
+    end    
+    return val
+end,
 }
 
 local mt = ac.skill['手无寸铁的小龙女']

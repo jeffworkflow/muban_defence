@@ -115,7 +115,13 @@ local function init()
 			player.ix = ix
 			ix = ix + 1 --位置第几行
 		end	
-    end 
+	end 
+	
+	mtb:setWidth(1,ix+1,0.1)
+	function mtb:set_auto_tip()
+		mtb:setText(1,ix+1,'自动回收物品： |cff00ff00开启|r    (放地上3分钟后，自动回收)')
+	end	
+	
 	--初始化格式
 	mtb:setAllStyle(true,false)
 	mtb:show()

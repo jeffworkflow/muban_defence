@@ -20,13 +20,17 @@ local function cast_skill(hero,target)
     -- print(skill.name,skill:is_cooling())
     if skill:is_cooling() then 
         return 
-    end    
+    end     
     if skill.target_type == 0 then 
         skill:cast()
-    elseif skill.target_type == 1 then  
-        skill:cast(target)
+    elseif skill.target_type == 1 then
+        if target then  
+            skill:cast(target)
+        end    
     else 
-        skill:cast(target:get_point())
+        if target then  
+            skill:cast(target:get_point())
+        end   
     end    
 end    
 
@@ -50,7 +54,7 @@ ac.loop(1000,function()
         : is_type('boss')
         : ipairs()
     do
-        cast_skill(u,u)
+        cast_skill(u,nil)
     end
 
 end)

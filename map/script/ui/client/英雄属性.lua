@@ -38,6 +38,26 @@ class.hero_info_panel = extends(class.panel){
             '免伤','闪避','免伤几率','每秒回血',
             '木头加成','杀敌数加成','火灵加成','物品获取率',
         }
+        panel.titles2 = {
+            '每秒加攻击','每秒加全属性','每秒加力量','每秒加敏捷','每秒加智力',
+            '攻击加力量','攻击加敏捷','攻击加智力','攻击加护甲',
+            '每秒加金币','每秒加木头','每秒加火灵',
+            '分裂伤害','攻击速度','会心几率','会心伤害','技能伤害加深',
+            '移动速度','吸血','每秒加护甲','额外杀敌数','生命上限',
+        }
+        panel.page = 1 
+        local next_button = panel:add_button('image\\right.blp',773,371,64,64)
+        function next_button:on_button_clicked()
+            if panel.page == 1  then 
+                panel.page = 2
+                self:set_normal_image('image\\left.blp')
+            else
+                panel.page = 1
+                self:set_normal_image('image\\right.blp')
+            end    
+            panel:fresh()
+        end    
+        --right.blp
         --属性列数
         local col ={
             --x,y,w,h,字体大小，对齐方式
@@ -53,21 +73,7 @@ class.hero_info_panel = extends(class.panel){
         for i=1,26 do 
             local name = panel.titles[i]
             if not name then break end
-            --颜色相关
-            local show_name = ''
-            if i <=5 then 
-                show_name = '|cffF2F200'..name..'|r'
-            elseif i<=9 then 
-                show_name = '|cff00ABE9'..name..'|r'
-            elseif i<=13 then 
-                show_name = '|cff00B04F'..name..'|r'
-            elseif i<=18 then 
-                show_name = '|cffF30101'..name..'|r'
-            elseif i<=22 then 
-                show_name = '|cffFFC100'..name..'|r'
-            else
-                show_name = '|cffF2F200'..name..'|r'
-            end        
+            --颜色相关   
             local value = 0
             if hero then
                 value = hero:get(name)
@@ -78,7 +84,20 @@ class.hero_info_panel = extends(class.panel){
             y1 = y1 + (i-1)*cre_height - base_y
             y2 = y2 + (i-1)*cre_height - base_y
 
-            local attr_name = panel:add_text(show_name,x1,y1,w1,h1,line_height1,align1)
+            local attr_name = panel:add_text(name,x1,y1,w1,h1,line_height1,align1)
+            if i <=5 then 
+                attr_name:set_color(0xffF2F200)
+            elseif i<=9 then 
+                attr_name:set_color(0xff00ABE9)
+            elseif i<=13 then 
+                attr_name:set_color(0xff00B04F)
+            elseif i<=18 then 
+                attr_name:set_color(0xffF30101)
+            elseif i<=22 then 
+                attr_name:set_color(0xffFFC100)
+            else
+                attr_name:set_color(0xffF2F200)
+            end   
             local attr_value = panel:add_text(value,x2,y2,w2,h2,line_height2,align2)
             table.insert(panel.attrs,{attr_name,attr_value}) 
             if i % 13 == 0 then 
@@ -108,16 +127,32 @@ class.hero_info_panel = extends(class.panel){
         end    
 
         for i,data in ipairs(self.attrs) do
-            local name_text,value_text = table.unpack(data)
-            local name = clean_color(name_text:get_text()) --去除颜色代码
-            local new_value = string.format("%.f",hero:get(name))
-            if name == '攻击间隔' then 
-                new_value = string.format("%.2f",hero:get(name))
+            local name_text,value_text = table.unpack(data) 
+            local name
+
+            local function set_all(name)
+                if name then 
+                    local new_value = string.format("%.f",hero:get(name))
+                    if name == '攻击间隔' then 
+                        new_value = string.format("%.2f",hero:get(name))
+                    end    
+                    new_value = bignum2string(new_value)
+                    if not finds(ac.base_attr,name) then 
+                        new_value = new_value..'%'
+                    end    
+                    name_text:set_text(name) 
+                    value_text:set_text(new_value)
+                else 
+                    name_text:set_text('')  
+                    value_text:set_text('')
+                end    
             end    
-            if not finds(ac.base_attr,name) then 
-                new_value = new_value..'%'
+            if self.page == 1 then 
+                name = self.titles[i] 
+            else
+                name = self.titles2[i] 
             end    
-            value_text:set_text(new_value)
+            set_all(name)
         end    
 
     end,

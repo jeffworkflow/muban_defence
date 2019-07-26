@@ -911,7 +911,7 @@ ac.loop(1*1000,function(t)
 			if ac.team_attr then 
 				for key,val in sortpairs(ac.team_attr) do
 					if val > 0 then 
-						hero:add_buff(key)
+						hero:add_buff('属性_'..key)
 						{
 							value = val,
 							time = 1

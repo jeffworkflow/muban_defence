@@ -23,7 +23,7 @@ function player.__index:GetServerValue(KEY,f)
         player_name = player_name,
         key = KEY,
     })
-    print(url,post)
+    -- print(url,post)
     local f = f or function (retval)  end
     post_message(url,post,function (retval)  
 

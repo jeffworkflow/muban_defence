@@ -352,8 +352,8 @@ tip = [[
 --物品技能
 is_skill = true,
 --值
-value = 20,
-chance = 10,
+value = 8,
+chance = 1,
 effect = [[AZ_Leviathan_V2.mdx]],
 --物品详细介绍的title
 content_tip = '|cffffe799物品说明：|r'
@@ -367,17 +367,26 @@ function mt:on_add()
 			return 
         end 
 		--技能是否正在CD
-        if skill:is_cooling() then
-			return 
-		end
+        -- if skill:is_cooling() then
+		-- 	return 
+		-- end
 		local rand = math.random(1,100)
         if rand <= self.chance then 
             --目标特效
-            damage.target:add_effect('origin',self.effect):remove()
+            -- print(self.effect)
+            ac.effect(damage.target:get_point(),self.effect,0,1,'origin'):remove()
+            -- damage.target:add_effect('origin',self.effect):remove()
             --目标减最大
-            damage.target:add('生命',-damage.target:get('生命上限')*self.value/100)
+            damage.target:damage
+            {
+                source = hero,
+                damage = damage.target:get('生命上限')*self.value/100,
+                skill = skill,
+                real_damage = true --真伤
+
+            }
             --激活cd
-            skill:active_cd()
+            -- skill:active_cd()
 		end
     end)    
    
@@ -390,10 +399,76 @@ function mt:on_remove()
     -- p.flag_added = false 
 end 
 
+
+local mt = ac.skill['大力丸']
+mt{
+--等久
+level = 1,
+--图标
+art = [[ReplaceableTextures\CommandButtons\BTNSatyrTrickster.blp]],
+--模型
+specail_model = [[File00000376 - RC.mdx]],
+--类型
+item_type = "消耗品",
+--品质
+color ='黑',
+--冷却
+cool = 1,
+--描述
+tip = [[
+固本培元、养益气血
+点击可食用，最大生命值+10%
+]],
+['生命上限%'] = 10,
+--唯一
+-- unique = true,
+--物品技能
+is_skill = true,
+--物品详细介绍的title
+content_tip = '|cffffe799物品说明：|r'
+}  
+
+
+local mt = ac.skill['末世']
+mt{
+--等久
+level = 1,
+--图标
+art = [[moshi.blp]],
+--模型
+specail_model = [[File00000376 - RC.mdx]],
+--类型
+item_type = "装备",
+--品质
+color ='黑',
+--冷却
+cool = 1,
+--描述
+tip = [[
+满目疮痍的崩塌世界，逆天崛起的武道强者。十里之内，漫山遍野。
+杀敌数额外+1
+]],
+['额外杀敌数'] = 1,
+--唯一
+-- unique = true,
+--物品技能
+is_skill = true,
+--物品详细介绍的title
+content_tip = '|cffffe799物品说明：|r'
+}  
+
+
+
+
+
 ac.black_item = {
    '荒芜之戒','噬魂','魔鬼金矿','魔鬼的砒霜','古代护身符','马可波罗的万花铳','聚宝盆','七星剑','金鼎烈日甲',
-   '死神之触',
+   '死神之触','大力丸','末世'
 }
---,'死神之触' 有问题
+--吞噬丹 吞噬技能（会执行技能上面的属性和on_add）
+ac.tunshi_black_item =[[
+荒芜之戒 噬魂 死神之触 
+
+]]
 
 

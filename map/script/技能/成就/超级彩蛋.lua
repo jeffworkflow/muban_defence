@@ -181,6 +181,42 @@ function mt:on_remove()
     end
 end
 
+local mt = ac.skill['家里有矿']
+mt{
+    is_spellbook = 1,
+    level = 1,
+    is_order = 2,
+    art = [[jlyk.blp]],
+    tip = [[
+
+|cffFFE799【成就属性】：|r
+【彩蛋说明】所有队友的全属性+5%
+    ]],
+    value = 5
+}
+function mt:on_add()
+    local hero = self.owner
+    if not hero:is_hero() then 
+        return 
+    end    
+    if not ac.team_attr then ac.team_attr ={} end
+    ac.team_attr['力量%'] = (ac.team_attr['力量%'] or 0) + self.value
+    ac.team_attr['敏捷%'] = (ac.team_attr['敏捷%'] or 0) + self.value
+    ac.team_attr['智力%'] = (ac.team_attr['智力%'] or 0) + self.value
+end  
+function mt:on_remove()
+    local hero = self.owner
+    if not hero:is_hero() then 
+        return 
+    end    
+    if not ac.team_attr then ac.team_attr ={} end
+    ac.team_attr['力量%'] = (ac.team_attr['力量%'] or 0) - self.value
+    ac.team_attr['敏捷%'] = (ac.team_attr['敏捷%'] or 0) - self.value
+    ac.team_attr['智力%'] = (ac.team_attr['智力%'] or 0) - self.value
+end 
+
+
+
 
 
 

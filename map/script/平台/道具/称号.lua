@@ -238,7 +238,42 @@ effect = [[vip.mdx]]
 }
 
 
-for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下'}) do
+local mt = ac.skill['真龙天子']
+mt{
+--等级
+level = 0,
+--图标
+art = [[wzgl.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff消耗勇士徽章  500  兑换获得
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+488  杀怪加全属性|r
+|cff00ff00+50%   每秒回血|r
+|cff00ff00+200   攻击减甲|r
+|cff00ff00+388%   全伤加深|r
+|cff00ff00+10   会心几率|r
+|cff00ff00+100   会心伤害|r
+
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 488,
+['每秒回血'] = 50,
+['攻击减甲'] = 200,
+['全伤加深'] = 388,
+['会心几率'] = 10,
+['会心伤害'] = 100,
+--特效
+effect = [[zhenlongtianzi.mdx]]
+}
+
+
+for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','真龙天子'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner
