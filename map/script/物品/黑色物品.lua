@@ -179,53 +179,6 @@ function mt:on_cast_start()
 end    
 
 
-
-local mt = ac.skill['死神之触']
-mt{
---等久
-level = 1,
---图标
-art = [[sszc.blp]],
---模型
-specail_model = [[File00000376 - RC.mdx]],
---类型
-item_type = "装备",
---品质
-color ='黑',
---冷却
-cool = 1,
---描述
-tip = [[
-
-|cffcccccc嗜血阴灵，伴身左右，逆鳞在手，傲视神魔
-
-|cff00ff00练功房数量+3
-]],
---唯一
--- unique = true,
---物品技能
-is_skill = true,
---值
-value = 20,
---物品详细介绍的title
-content_tip = '|cffffe799物品说明：|r'
-}  
-function mt:on_add()
-    local hero = self.owner
-    local p = hero:get_owner()
-    -- if not p.flag_added then 
-        p.more_unit = (p.more_unit or 0)  + self.value
-        -- p.flag_added = true 
-    -- end    
-end  
-function mt:on_remove()
-    local hero = self.owner
-    local p = hero:get_owner()
-    p.more_unit = (p.more_unit or 0)  - self.value
-    -- p.flag_added = false 
-end 
-
-
 local mt = ac.skill['马可波罗的万花铳']
 mt{
 --等久
@@ -374,9 +327,72 @@ content_tip = '|cffffe799物品说明：|r'
 } 
 
 
+local mt = ac.skill['死神之触']
+mt{
+--等久
+level = 1,
+--图标
+art = [[sszc.blp]],
+--模型
+specail_model = [[File00000376 - RC.mdx]],
+--类型
+item_type = "装备",
+--品质
+color ='黑',
+--冷却
+cool = 1,
+--描述
+tip = [[
+    嗜血阴灵，伴身左右，逆鳞在手，傲视神魔
+
+    攻击1%几率对敌人造成最大生命值8%的伤害
+]],
+--唯一
+-- unique = true,
+--物品技能
+is_skill = true,
+--值
+value = 20,
+chance = 10,
+effect = [[AZ_Leviathan_V2.mdx]],
+--物品详细介绍的title
+content_tip = '|cffffe799物品说明：|r'
+}  
+function mt:on_add()
+    local hero = self.owner
+    local p = hero:get_owner()
+    local skill = self
+    self.trg = hero:event '造成伤害效果' (function(_,damage)
+		if not damage:is_common_attack()  then 
+			return 
+        end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
+		local rand = math.random(1,100)
+        if rand <= self.chance then 
+            --目标特效
+            damage.target:add_effect('origin',self.effect):remove()
+            --目标减最大
+            damage.target:add('生命',-damage.target:get('生命上限')*self.value/100)
+            --激活cd
+            skill:active_cd()
+		end
+    end)    
+   
+end  
+function mt:on_remove()
+    if self.trg then 
+        self.trg:remove()
+        self.trg = nil 
+    end    
+    -- p.flag_added = false 
+end 
 
 ac.black_item = {
-   '荒芜之戒','噬魂','魔鬼金矿','魔鬼的砒霜','古代护身符','马可波罗的万花铳','聚宝盆','七星剑','金鼎烈日甲'
+   '荒芜之戒','噬魂','魔鬼金矿','魔鬼的砒霜','古代护身符','马可波罗的万花铳','聚宝盆','七星剑','金鼎烈日甲',
+   '死神之触',
 }
 --,'死神之触' 有问题
 
