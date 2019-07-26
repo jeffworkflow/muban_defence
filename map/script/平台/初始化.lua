@@ -37,18 +37,18 @@ end
 --     end
 -- end)
 --初始化2 读取自定义服务器 部分数据
--- ac.game:event '游戏-开始' (function()
---     for i=1,10 do
---         local player = ac.player[i]
---         if player:is_player() then
---             if player:is_self() then 
---                 local key = ac.server.name2key(ac.g_game_degree_name)
---                 player:GetServerValue(key)
---             end    
---         end
---     end
+ac.game:event '游戏-开始' (function()
+    for i=1,10 do
+        local player = ac.player[i]
+        if player:is_player() then
+            if player:is_self() then 
+                local key = ac.server.name2key(ac.g_game_degree_name)
+                player:GetServerValue(key)
+            end    
+        end
+    end
     
--- end)
+end)
 
 
 

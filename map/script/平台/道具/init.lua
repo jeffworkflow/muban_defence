@@ -29,4 +29,6 @@ require '平台.道具.宠物皮肤'
 require '平台.道具.英雄'
 require '平台.道具.神圣领域'
 
+require '平台.道具.英雄'
+
 

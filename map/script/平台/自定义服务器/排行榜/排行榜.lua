@@ -286,69 +286,69 @@ end)
 
 local game_event = {}
 game_event.on_key_down = function (code)
-    if code == KEY.F5 then 
-        ac.player(ac.player.self.id):sendMsg('排行榜还在努力制作中，敬请期待',5)
-    end
     -- if code == KEY.F5 then 
-    --     if panel == nil then return end 
-    --     if panel.is_show then 
-    --         panel:hide()
-    --     else 
-    --         panel:show()
-    --     end 
-    -- elseif code == KEY.ESC then 
-    --     panel:hide()
-    -- end 
+    --     ac.player(ac.player.self.id):sendMsg('排行榜还在努力制作中，敬请期待',5)
+    -- end
+    if code == KEY.F5 then 
+        if panel == nil then return end 
+        if panel.is_show then 
+            panel:hide()
+        else 
+            panel:show()
+        end 
+    elseif code == KEY.ESC then 
+        panel:hide()
+    end 
 end 
 
 game.register_event(game_event)
 
 
 
--- local rank = {
---     {'cnt_qt','青铜'},
---     {'cnt_by','白银'},
---     {'cnt_hj','黄金'},
---     {'cnt_bj','铂金'},
---     {'cnt_zs','钻石'},
---     {'cnt_xy','星耀'},
---     {'cnt_wz','王者'},
---     {'cnt_zqwz','最强王者'},
+local rank = {
+    {'cnt_qt','青铜'},
+    {'cnt_by','白银'},
+    {'cnt_hj','黄金'},
+    {'cnt_bj','铂金'},
+    {'cnt_zs','钻石'},
+    {'cnt_xy','星耀'},
+    {'cnt_wz','王者'},
+    {'cnt_zqwz','最强王者'},
 
     
---     {'time_qt','青铜时长'},
---     {'time_by','白银时长'},
---     {'time_hj','黄金时长'},
---     {'time_bj','铂金时长'},
---     {'time_zs','钻石时长'},
---     {'time_xy','星耀时长'},
---     {'time_wz','王者时长'},
---     {'time_zqwz','最强王者时长'},
--- }
--- --处理,显示排行榜数据
--- --取前10名数据
--- ac.wait(5*1000,function() 
---     for i,content in ipairs(rank) do
---         local p = ac.player(1);
---         p:sp_get_rank(content[1],'rank',10,function(data)
---             -- print_r(data)
---             ac.wait(10,function()
---                 if not panel.rank then 
---                     panel.rank = {}
---                 end    
---                 if not panel.rank[content[2]] then 
---                     panel.rank[content[2]]  = {}
---                 end
---                 for i = 1, #data do
---                     table.insert(panel.rank[content[2]],data[i])
---                 end    
---                 --首次刷新最强王者
---                 if finds(content[2] ,'最强王者') then 
---                     panel:fresh('最强王者')
---                 end    
---             end)
---         end);
---     end    
--- end)
+    {'time_qt','青铜时长'},
+    {'time_by','白银时长'},
+    {'time_hj','黄金时长'},
+    {'time_bj','铂金时长'},
+    {'time_zs','钻石时长'},
+    {'time_xy','星耀时长'},
+    {'time_wz','王者时长'},
+    {'time_zqwz','最强王者时长'},
+}
+--处理,显示排行榜数据
+--取前10名数据
+ac.wait(5*1000,function() 
+    for i,content in ipairs(rank) do
+        local p = ac.player(1);
+        p:sp_get_rank(content[1],'rank',10,function(data)
+            -- print_r(data)
+            ac.wait(10,function()
+                if not panel.rank then 
+                    panel.rank = {}
+                end    
+                if not panel.rank[content[2]] then 
+                    panel.rank[content[2]]  = {}
+                end
+                for i = 1, #data do
+                    table.insert(panel.rank[content[2]],data[i])
+                end    
+                --首次刷新最强王者
+                if finds(content[2] ,'最强王者') then 
+                    panel:fresh('最强王者')
+                end    
+            end)
+        end);
+    end    
+end)
 
 

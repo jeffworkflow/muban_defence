@@ -12,7 +12,7 @@ mt{
     
 }
 mt.skills = {
-    '游戏说明','礼包','称号','武器','翅膀','神圣领域','首充大礼包','地图等级'
+    '游戏说明','礼包','称号','武器','翅膀','神圣领域','首充大礼包','地图等级','英雄'
 } 
 function mt:on_add()
     local hero = self.owner 
@@ -106,20 +106,20 @@ mt.skills = {
     '炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下'
 }
 
--- local mt = ac.skill['英雄']
--- mt{
---     is_spellbook = 1,
---     is_order = 2,
---     art = [[cwpf.blp]],
---     title = '查看英雄',
---     tip = [[
+local mt = ac.skill['英雄']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[cwpf.blp]],
+    title = '查看英雄',
+    tip = [[
 
--- 查看英雄
---     ]],
--- }
--- mt.skills = {
---     'Pa','手无寸铁的小龙女','关羽'
--- }
+查看英雄
+    ]],
+}
+mt.skills = {
+    'Pa','手无寸铁的小龙女','关羽'
+}
 
 local mt = ac.skill['神圣领域']
 mt{
@@ -136,7 +136,7 @@ mt{
 mt.skills = {
     '血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','孤风青龙领域','远影苍龙领域'
 }
-for i,name in ipairs({'礼包','武器','翅膀','称号','神圣领域'}) do
+for i,name in ipairs({'礼包','武器','翅膀','称号','神圣领域','英雄'}) do
     local mt = ac.skill[name]
     function mt:on_add()
         local hero = self.owner 

@@ -71,11 +71,14 @@ ac.game:event '玩家-注册英雄' (function(trg, player, hero)
 	hero:add_skill('F3小黑屋', '隐藏')
 end)
 
+local practise_room =ac.region.create(ac.map.rects['练功房刷怪1'],ac.map.rects['练功房刷怪2'],ac.map.rects['练功房刷怪3'],ac.map.rects['练功房刷怪4'],ac.map.rects['练功房刷怪5'],ac.map.rects['练功房刷怪6'])
 ac.game.clear_item = function()
     local tbl = {}
     for _,v in pairs(ac.item.item_map) do
         if not v.owner  then 
-            table.insert(tbl,v)
+            if not (practise_room < v:get_point()) then 
+                table.insert(tbl,v)
+            end    
         end	
     end
     table.sort(tbl,function (a,b)

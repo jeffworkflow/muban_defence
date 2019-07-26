@@ -16,7 +16,7 @@ mt{
 自动合成： %auto_hecheng%	
 |cffFFE799【使用说明】：|r
 可使一键拾取时，自动合成物品。
-
+（有红装不会自动合）
 ]],
 	--技能图标
 	art = [[icon\jineng037.blp]],

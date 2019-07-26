@@ -910,11 +910,13 @@ ac.loop(1*1000,function(t)
 			--全队光环类的，每秒加一次buff,buff持续1秒
 			if ac.team_attr then 
 				for key,val in sortpairs(ac.team_attr) do
-					hero:add_buff(key)
-					{
-						value = val,
-						time = 1
-					}
+					if val > 0 then 
+						hero:add_buff(key)
+						{
+							value = val,
+							time = 1
+						}
+					end	
 				end
 			end		
 

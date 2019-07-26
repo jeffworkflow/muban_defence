@@ -85,7 +85,9 @@ function mt:on_cast_shot()
 									else	
 										hero:add_item(v,true)
 									end	
-									hero:add_item('装备合成')
+									if not hero:has_item('红') then
+										hero:add_item('装备合成')
+									end	
 								else
 									hero:add_item(v,true)
 								end	
