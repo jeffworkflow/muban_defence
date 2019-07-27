@@ -11,9 +11,9 @@ ac.server_config = config
 
 --读取 map_test 单个并同步
 function player.__index:GetServerValue(KEY,f)
-    if not ac.flag_map or ac.flag_map  < 1 then 
-        return 
-    end
+    -- if not ac.flag_map or ac.flag_map  < 1 then 
+    --     return 
+    -- end
     local player_name = self:get_name()
     local map_name = config.map_name
     local url = config.url

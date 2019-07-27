@@ -904,9 +904,6 @@ ac.loop(1*1000,function(t)
 			hero:add('护甲',defence)
 			hero:add('攻击',hero:get('每秒加攻击'))
 
-			--每秒回血
-			hero:add('生命',hero:get('生命上限')*hero:get('每秒回血')/100)
-
 			--全队光环类的，每秒加一次buff,buff持续1秒
 			if ac.team_attr then 
 				for key,val in sortpairs(ac.team_attr) do
@@ -923,7 +920,18 @@ ac.loop(1*1000,function(t)
 		end	
 	end	
 end)
-
+--优化每秒回血
+local pulse = 0.2
+ac.loop(pulse*1000,function(t)
+	for i = 1,10 do 
+		local player= ac.player(i)
+		if player:is_player() and player.hero then 
+			--每秒回血
+			local hero = player.hero
+			hero:add('生命',hero:get('生命上限')*hero:get('每秒回血')*pulse/100)
+		end
+	end		
+end)
 
 --攻击加全属性通用规则
 ac.game:event '造成伤害效果' (function(_,damage)

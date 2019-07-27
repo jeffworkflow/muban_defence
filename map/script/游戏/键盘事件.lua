@@ -183,11 +183,46 @@ ac.game:event '玩家-聊天' (function(self, player, str)
         end  
         if str == 'close' then
             local flag = strs[2] and tonumber(strs[2]) or 1
+            --关文字特效
             if flag == 1 then 
                 player.flag_damage_texttag = true 
+                player.flag_qxtx = true 
             else
                 player.flag_damage_texttag = false   
+                player.flag_qxtx = false 
             end    
+            
+            --关技能特效
+            -- print(p.flag_qxtx)
+            if player:is_self() then 
+                --异步使所有玩家英雄学的技能。
+                for i=1,10 do 
+                    local hero = ac.player(i).hero 
+                    if hero then 
+                        for skl in hero:each_skill() do  
+                            local allstr = table.concat(ac.skill_list2) .. table.concat(ac.skill_list4)
+                            if finds(allstr,skl.name) then
+                                if player.flag_qxtx then 
+                                    skl.old_model = skl.model
+                                    skl.model = ''
+                                    -- print(skl.name,skl.model,skl.old_model)
+                                    skl.old_effect = skl.effect
+                                    skl.effect = ''
+                                    skl.old_effect1 = skl.effect1
+                                    skl.effect1 = ''
+                                    skl.old_effect2 = skl.effect2
+                                    skl.effect2 = ''
+                                else
+                                    skl.effect = skl.old_effect
+                                    skl.effect1 = skl.old_effect1
+                                    skl.effect2 = skl.old_effect2
+                                    skl.model = skl.old_model
+                                end	
+                            end    
+                        end	
+                    end    
+                end    
+            end	
         end    
 
     end    

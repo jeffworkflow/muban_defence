@@ -8,7 +8,8 @@ mt{
     is_skill = true,
     
     content_tip = '',
-	auto_fresh_tip = false,
+    auto_fresh_tip = false,
+    cool = 1,
 
     art = [[other\hecheng.blp]],
     tip = [[

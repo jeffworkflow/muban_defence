@@ -38,6 +38,9 @@ function mt:on_cast_start()
     local p = hero:get_owner()
     
     if not ac.final_boss then 
+        for i=1,3 do 
+            ac.creep['刷怪'..i]:finish()
+        end    
         ac.game:event_dispatch('游戏-最终boss')
         ac.player.self:sendMsg('|cff00bdec【系统消息】|r 有玩家直接|cffff0000挑战最终boss|r，请大家共同前往击杀',3)
         ac.player.self:sendMsg('|cff00bdec【系统消息】|r 有玩家直接|cffff0000挑战最终boss|r，请大家共同前往击杀',3)

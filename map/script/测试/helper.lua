@@ -891,6 +891,14 @@ function helper:add_ch(str,zoffset)
 	self.ch = ac.nick_name(str,self,zoffset)
 end
 
+--添加技能羁绊
+function helper:add_skill_suit()
+	ac.item.add_skill_item('财富',self)
+	ac.item.add_skill_item('贪婪者的心愿',self)
+	ac.item.add_skill_item('凰燃天成',self)
+	ac.item.add_skill_item('龙凤佛杀',self)
+end
+
 function helper:never_dead(flag)
 	if flag == nil then
 		flag = true
