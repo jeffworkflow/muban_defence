@@ -27,7 +27,7 @@ range = 1500,
 area = 100,
 --数量
 num = 12,
-cool = 1,
+
 --必填
 is_skill = true,
 --冷却
