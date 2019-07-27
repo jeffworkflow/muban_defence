@@ -15,10 +15,10 @@ mt{
     ['火灵加成'] = 35,
 	--技能图标
     art = [[jineng\jineng019.blp]],
-    --获得时发送给全部玩家的tip
-    on_add_tip = [[财富+贪婪者的心愿+凰燃天成+龙凤佛杀，激活赤灵传奇，获得额外属性：全属性+500万，物品获取率+35%，杀敌数加成+35%，木头加成+35%，火灵加成+35%]],
-    --获得时发送给全部玩家的tip
-    send_tip = [[财富+贪婪者的心愿+凰燃天成+龙凤佛杀，激活赤灵传奇，获得额外属性：全属性+500万，物品获取率+35%，杀敌数加成+35%，木头加成+35%，火灵加成+35%]]
+     --获得时给每个材料技能添加的文字
+    on_add_tip = [[]],
+     --提示的tip
+    send_tip = [[|cffffe799【系统消息】|r 恭喜获得隐藏羁绊技能|cffff0000 "赤灵传奇" |r，|cff00ff00全属性+500万，物品获取率+35%，杀敌数加成+35%，木头加成+35%，火灵加成+35%|r']]
 }
 
 local mt = ac.skill['血牛']
@@ -34,16 +34,37 @@ mt{
 	--技能图标
     art = [[jineng\jineng019.blp]],
     --获得时给每个材料技能添加的文字
-    on_add_tip = [[嗜血术+吸血鬼+血焰神脂+血雾神隐，激活血牛，获得额外属性：生命上限加成+25%]],
+    on_add_tip = [[]],
     --发送给全部玩家的tip
-    send_tip =[[嗜血术+吸血鬼+血焰神脂+血雾神隐，激活血牛，获得额外属性：生命上限加成+25%]],
+    send_tip =[[|cffffe799【系统消息】|r 恭喜获得隐藏羁绊技能|cffff0000 "血牛" |r，|cff00ff00生命上限加成+25%|r']],
 }
 
+local mt = ac.skill['为爆炸而生']
+mt{
+    --必填
+    is_skill = true,
+    --初始等级
+    level = 1,
+	--被动
+	passive = true,
+	--属性加成
+    ['暴击几率'] = 5,
+    ['暴击加深'] = 200,
+    ['技暴几率'] = 10,
+    ['技暴加深'] = 100,
+	--技能图标
+    art = [[jineng\jineng019.blp]],
+    --获得时给每个材料技能添加的文字
+    on_add_tip = [[]],
+    --发送给全部玩家的tip
+    send_tip =[[|cffffe799【系统消息】|r 恭喜获得隐藏羁绊技能|cffff0000 "为爆炸而生" |r，|cff00ff00暴击几率+5%,暴击加深+200%，技暴几率+10%,技暴加深+100%|r']],
+}
 
 local streng_skill_list = {
     --羁绊技能，'要求技能1 要求技能2 ..'
     {'赤灵传奇','财富 贪婪者的心愿 凰燃天成 龙凤佛杀'},
     {'血牛','嗜血术 吸血鬼 血焰神脂 血雾神隐'},
+    {'为爆炸而生','狂龙爆 红莲爆 渡业妖爆'}, 
     -- {'赤灵传奇','财富 贪婪者的心愿'},
     -- {'血牛','嗜血术 吸血鬼'},
  
@@ -61,7 +82,7 @@ for i,data in ipairs(streng_skill_list) do
     --激活是发送文字信息
     function mt:on_add()
         local p = self.owner:get_owner()
-        p:sendMsg(send_tip,5)
+        p:sendMsg(self.send_tip,5)
     end    
 end    
 --@要合成的skill
@@ -103,7 +124,7 @@ ac.game:event '技能-获得' (function (_,hero,self)
                     local skl = hero:find_skill(name,nil)
                     if skl then 
                         skl.old_tip = skl.tip
-                        skl.tip = skl.tip..'\n'..new_skill.on_add_tip
+                        skl.tip = skl.tip..new_skill.on_add_tip
                         skl:fresh_tip()
                     end   
                 end  
