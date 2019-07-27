@@ -9,7 +9,7 @@ local function get_difficult(degree)
         return get_difficult(degree -1) *base_rate  
     end 
 end    
-
+ac.get_difficult=get_difficult
 local function init_attribute(unit)
     
     -- 英雄返回

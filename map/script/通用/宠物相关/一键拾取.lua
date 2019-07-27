@@ -71,7 +71,7 @@ function mt:on_cast_shot()
 				local item_unit = v._eff.unit
 				if item_unit then 
 					if item_unit:is_in_range(hero,self.area) then 
-						ac.wait(11*i,function()
+						ac.wait(0,function()
 							if v.name =='学习技能' then 
 								ac.item.add_skill_item(v,hero)
 							else 
@@ -80,7 +80,7 @@ function mt:on_cast_shot()
 									--满格
 									if not slot then 
 										local it = hero:remove_item(hero.item_list[math.random(1,6)])
-										ac.wait(11*i,function()
+										ac.wait(0,function()
 											hero:add_item(it,true)
 										end)
 									else	

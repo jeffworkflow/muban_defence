@@ -872,6 +872,15 @@ function helper:print_p(str,index)
 	end	
 end
 
+function helper:addit(flag)
+	for i=1,30 do 
+        -- local name = ac.all_item[math.random( 1,#ac.all_item)]
+        local list = ac.quality_item['白'] 
+        local name = list[math.random(#list)]
+		self.owner.peon:add_item(name,true)
+	end	
+end
+
 --打印hero键值对应的key值
 function helper:print_hero()
 	for i = 1,10 do 

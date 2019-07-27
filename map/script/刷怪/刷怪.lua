@@ -130,7 +130,9 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
             boss:add_skill('无敌','英雄')
             boss:add_skill('撕裂大地','英雄')
 
-            boss:add('免伤',1.5*(ac.g_game_degree or 1))
+            boss:add('免伤',1.5 * ac.get_difficult(ac.g_game_degree))
+            boss:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree))
+            
         end    
 
     end    

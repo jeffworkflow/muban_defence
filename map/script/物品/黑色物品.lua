@@ -67,7 +67,6 @@ tip = [[
 |cff00ff00-0.05 攻击间隔，无视攻击间隔上限，仅限携带一个
 |cff00ff00+50%  吸血
 ]],
-['吸血'] = 50,
 --唯一
 -- unique = true,
 -- ['攻击间隔'] = -0.05,
@@ -80,10 +79,12 @@ function mt:on_add()
     local hero = self.owner
     hero.flag_attack_gap = true 
     hero:add('攻击间隔',-0.05)
+    hero:add('吸血',50)
 end  
 function mt:on_remove()
     local hero = self.owner
     hero:add('攻击间隔',0.05)
+    hero:add('吸血',-50)
 end     
 function mt:after_remove(hero)
     local item = hero:has_item(self.name)
