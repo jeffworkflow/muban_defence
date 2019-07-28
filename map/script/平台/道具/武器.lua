@@ -145,6 +145,43 @@ need_map_level = 13,
 effect = [[wuqi-hy1.mdx]]
 }
 
+local mt = ac.skill['霜之哀伤']
+mt{
+--等级
+level = 0,
+--图标
+art = [[xlmswq.blp]],
+is_order = 1,
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff修罗模式25星 
+
+|cffFFE799【神兵属性】：|r
+|cff00ff00+850  杀怪加攻击|r
+|cff00ff00+100 攻击减甲|r
+|cff00ff00+100%  分裂伤害|r
+|cff00ff00+75%  物理伤害加深|r
+|cff00ff00+15%  对BOSS额外伤害|r
+
+|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 850,
+['攻击减甲'] = 100,
+['分裂伤害'] = 100,
+['物理伤害加深'] = 75,
+['对BOSS额外伤害'] = 15,
+
+need_map_level = 20,
+
+--特效
+effect = [[BingPoHanGuangJian.mdx]]
+}
+
+
 
 local mt = ac.skill['皇帝剑']
 mt{
@@ -250,7 +287,7 @@ effect = [[wuqi11.mdx]]
 }
 
 
-for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','皇帝剑','皇帝刀'}) do
+for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','霜之哀伤','皇帝剑','皇帝刀'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local skill = self
