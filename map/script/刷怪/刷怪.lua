@@ -223,6 +223,7 @@ ac.wait(20,function()
                 { name = "最强王者" },
                 { name = "荣耀王者" },
                 { name = "巅峰王者" },
+                { name = "修罗模式" },
             }
             ac.g_game_degree_list = {} 
             for i = #list ,1 ,-1 do 
@@ -265,6 +266,9 @@ ac.wait(20,function()
                     end 
                     if ac.g_game_degree == 10 then 
                         ac.g_game_degree_attr = 10 --难度三 属性倍数3倍
+                    end 
+                    if ac.g_game_degree == 11 then 
+                        ac.g_game_degree_attr = 11 --难度三 属性倍数3倍
                     end 
                     ac.player.self:sendMsg("选择了 |cffffff00"..list[index].name.."|r")
                     --加载过场动画

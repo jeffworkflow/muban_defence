@@ -13,8 +13,6 @@ mt{
 	auto_fresh_tip = false,
 	
 	tip = [[
-（当前状态：%auto_hecheng%）
-
 |cffFFE799【使用说明】：|r
 一键|cff00ff00拾取|r周围 %area% 码的物品
 
@@ -58,6 +56,13 @@ function mt:on_cast_shot()
 	-- hero:add_effect('origin',self.effect)
 	-- local target = self.target
 	-- local point = target:get_point()
+	
+	local slot = hero:get_nil_slot()
+	--满格
+	if not slot then 
+		p:sendMsg('物品栏已满')
+		return 
+	end	
 
     -- self.eff = ac.effect(point, self.effect, 270, 1,'origin')
 	local i = 1

@@ -31,7 +31,7 @@ class.player_info_panel = extends(class.panel){
         -- panel.close_button = panel:add_button('image\\操作栏\\cross.blp',panel.w - 32-5,5,32,32,true)
         panel.titles = {
             '地图等级',
-            '巅峰王者','荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
+            '修罗模式','巅峰王者','荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
 
             '宠物等级','挖宝积分',
             
