@@ -11,13 +11,13 @@ mt{
     tip = [[ 
 游戏分十个难度，通关会获得一个对应难度的星数
 
-|cffffE799青铜1星|r 奖励 |cff00ff00【称号】炉火纯青（价值15元）
-|cffFFE799白银3星|r 奖励 |cff00ff00【英雄】赵子龙（价值25元）
-|cffFFE799黄金5星|r 奖励 |cff00ffff【称号】毁天灭地（价值35元）
-|cffFFE799铂金7星|r 奖励 |cff00ffff【英雄】Pa（价值45元）
-|cffFFE799钻石10星|r 奖励 |cffffff00【称号】风驰电掣（价值55元）
-|cffFFE799星耀10星|r 奖励 |cffFFff00【英雄】手无寸铁的小龙女（价值65元）
-|cffFFE799王者15星|r 奖励 |cffFFff00【称号】无双魅影（价值100元）
+|cffffE799青铜1星|r 奖励 |cff00ff00【称号】炉火纯青
+|cffFFE799白银3星|r 奖励 |cff00ff00【英雄】赵子龙
+|cffFFE799黄金5星|r 奖励 |cff00ffff【称号】毁天灭地
+|cffFFE799铂金7星|r 奖励 |cff00ffff【英雄】Pa
+|cffFFE799钻石10星|r 奖励 |cffffff00【称号】风驰电掣
+|cffFFE799星耀10星|r 奖励 |cffFFff00【英雄】手无寸铁的小龙女
+|cffFFE799王者15星|r 奖励 |cffFFff00【称号】无双魅影
 |cffFFE799最强王者15星|r 奖励 |cffFF0000【英雄】关羽
 |cffFFE799最强王者20星|r 奖励 |cffFF0000【神器】幻海雪饮剑
 |cffFFE799最强王者25星|r 奖励 |cffFF0000【神器】天罡苍羽翼

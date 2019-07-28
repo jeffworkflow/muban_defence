@@ -18,10 +18,10 @@ tip = [[
 
 |cffcccccc人不仁，无信无义。王不仁，无德无量。地不仁，无草无木。天不仁，无世间万物。万年圣物，荒芜之戒。
 
-|cff00ff00所有队友的攻击减甲+175
+|cff00ff00所有队友的攻击减甲+250
 ]],
 --攻击减甲数值
-value = 175,
+value = 250,
 --物品技能
 is_skill = true,
 --物品详细介绍的title
@@ -65,7 +65,7 @@ tip = [[
 |cffcccccc上古时期，一根充满戾气的魔棒
 
 |cff00ff00-0.05 攻击间隔，无视攻击间隔上限，仅限携带一个
-|cff00ff00+50%  吸血
+|cff00ff00+100%  吸血
 ]],
 --唯一
 -- unique = true,
@@ -79,12 +79,12 @@ function mt:on_add()
     local hero = self.owner
     hero.flag_attack_gap = true 
     hero:add('攻击间隔',-0.05)
-    hero:add('吸血',50)
+    hero:add('吸血',100)
 end  
 function mt:on_remove()
     local hero = self.owner
     hero:add('攻击间隔',0.05)
-    hero:add('吸血',-50)
+    hero:add('吸血',-100)
 end     
 function mt:after_remove(hero)
     local item = hero:has_item(self.name)
@@ -115,12 +115,12 @@ tip = [[
 
 |cffcccccc金矿被魔鬼占据之后，侍僧才可以从中采集黄金资源。
 
-|cff00ff00杀敌数加成+50% 物品获取率+50% 木头加成+50% 火灵加成+50%
+|cff00ff00杀敌数加成+60% 物品获取率+60% 木头加成+60% 火灵加成+60%
 ]],
-['杀敌数加成'] = 50,
-['物品获取率'] = 50,
-['木头加成'] = 50,
-['火灵加成'] = 50,
+['杀敌数加成'] = 60,
+['物品获取率'] = 60,
+['木头加成'] = 60,
+['火灵加成'] = 60,
 --物品技能
 is_skill = true,
 --物品详细介绍的title
@@ -320,11 +320,11 @@ tip = [[
 
 |cffcccccc耶路撒冷发现的一件迷人的小护身符，是人们一直痴迷于抵御传说中的邪恶之眼
 
-|cff00ff00技能伤害加深+35%
+|cff00ff00技能伤害加深+50%
 ]],
 --物品技能
 is_skill = true,
-['技能伤害加深'] = 35,
+['技能伤害加深'] = 50,
 --物品详细介绍的title
 content_tip = '|cffffe799物品说明：|r'
 } 
@@ -349,14 +349,14 @@ tip = [[
 
 |cffcccccc嗜血阴灵，伴身左右，逆鳞在手，傲视神魔
 
-|cff00ff00攻击1% 几率对敌人造成最大生命值10%的伤害
+|cff00ff00攻击1% 几率对敌人造成最大生命值12%的伤害
 ]],
 --唯一
 -- unique = true,
 --物品技能
 is_skill = true,
 --值
-value = 10,
+value = 12,
 chance = 1,
 effect = [[AZ_Leviathan_V2.mdx]],
 --物品详细介绍的title
@@ -423,9 +423,9 @@ tip = [[
 
 |cffcccccc固本培元、养益气血
 
-|cff00ff00点击可食用，最大生命值+15%
+|cff00ff00点击可食用，最大生命值+25%
 ]],
-['生命上限%'] = 15,
+['生命上限%'] = 25,
 --唯一
 -- unique = true,
 --物品技能

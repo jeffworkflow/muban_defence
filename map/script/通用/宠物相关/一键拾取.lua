@@ -13,6 +13,7 @@ mt{
 	auto_fresh_tip = false,
 	
 	tip = [[
+		
 |cffFFE799【使用说明】：|r
 一键|cff00ff00拾取|r周围 %area% 码的物品
 

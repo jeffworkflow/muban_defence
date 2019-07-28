@@ -160,8 +160,8 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+850  杀怪加攻击|r
-|cff00ff00+100 攻击减甲|r
-|cff00ff00+100%  分裂伤害|r
+|cff00ff00+100  攻击减甲|r
+|cff00ff00+100% 分裂伤害|r
 |cff00ff00+75%  物理伤害加深|r
 |cff00ff00+15%  对BOSS额外伤害|r
 
@@ -175,7 +175,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['物理伤害加深'] = 75,
 ['对BOSS额外伤害'] = 15,
 
-need_map_level = 20,
+need_map_level = 18,
 
 --特效
 effect = [[BingPoHanGuangJian.mdx]]
