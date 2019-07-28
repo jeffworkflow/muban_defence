@@ -16,9 +16,9 @@ mt{
 
 ]],
 	--技能图标
-	art = [[icon\jineng037.blp]],
+	art = [[yijianhecheng.blp]],
 	--施法范围
-	area = 800,
+	area = 400,
 	--cd
 	cool = 1,
 	--施法距离

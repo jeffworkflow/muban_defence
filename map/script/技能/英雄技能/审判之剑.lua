@@ -57,7 +57,7 @@ function mt:on_add()
 			ac.effect(damage.target:get_point(),skill.effect,angle,1,'origin'):remove()
 			--计算伤害
 			for _,unit in ac.selector()
-			: in_range(hero,self.damage_area)
+			: in_range(damage.target,self.damage_area)
 			: is_enemy(hero)
 			: ipairs()
 			do 
