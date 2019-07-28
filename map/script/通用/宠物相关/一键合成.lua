@@ -9,10 +9,9 @@ mt{
 	end,	
 	max_level = 5,
 	tip = [[
-（当前状态：%auto_hecheng%）
 
 |cffFFE799【使用说明】：|r
-一键|cff00ff00拾取|r周围 %area% 码的物品
+|cff00ff00对指定范围的内物品，进行|cff00ffff自动合成
 
 ]],
 	--技能图标
@@ -22,7 +21,7 @@ mt{
 	--cd
 	cool = 1,
 	--施法距离
-	range = 2000,
+	range = 1000,
 }
 
 
