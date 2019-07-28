@@ -1,12 +1,12 @@
 
-local function get_difficult(degree)
+local function get_difficult(degree,br)
     local base =1
-    local base_rate =1.45
+    local base_rate = br or 1.45
     local degree = degree or 1 
     if degree == 1 then 
         return base 
     else
-        return get_difficult(degree -1) *base_rate  
+        return get_difficult(degree -1,base_rate) *base_rate  
     end 
 end    
 ac.get_difficult=get_difficult
@@ -51,6 +51,7 @@ local function init_attribute(unit)
     if unit:get_name() == '最终boss' then
         unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
     end  
+ 
 end
 ac.unit.init_attribute = init_attribute    
 --单位创建 属性增强

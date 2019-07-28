@@ -9,6 +9,7 @@ require '刷怪.boss挑战'
 require '刷怪.境界'
 
 require '刷怪.野怪'
+require '刷怪.刷怪无尽'
 
 
 

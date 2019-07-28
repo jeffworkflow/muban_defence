@@ -257,6 +257,7 @@ tip = [[
 |cff00ff00+388%  全伤加深|r
 |cff00ff00+10%   会心几率|r
 |cff00ff00+100%  会心伤害|r
+|cff00ff00+10%  闪避|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
@@ -267,6 +268,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['全伤加深'] = 388,
 ['会心几率'] = 10,
 ['会心伤害'] = 100,
+['闪避'] = 10,
 --特效
 effect = [[zhenlongtianzi.mdx]]
 }

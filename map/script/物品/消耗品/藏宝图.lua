@@ -221,27 +221,7 @@ function mt:add_content()
     elseif rand_name == '碎片幼儿园' then
         if not ac.flag_spyey  then 
             ac.flag_spyey = true 
-            local cnt = math.random(5,10)
-            for i=1,cnt do 
-                local item_name = ac.shenlong_suipin[math.random(1,#ac.shenlong_suipin)]
-                local point = ac.map.rects['藏宝区']:get_random_point(true)
-                --运动
-                local mvr = ac.mover.target
-				{
-					source = self.owner,
-					target = point,
-					model = [[RedCrystalShard.mdx]],
-					height = 800,
-                    speed = 1000,
-                    skill = '碎片运动'
-				}
-				if not mvr then
-					return
-                end
-                function mvr:on_finish()
-                    ac.item.create_item(item_name,point)
-                end    
-            end    
+            ac.func_give_suipian(self.owner:get_point())
             ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 在挖宝时挖塌了|cffff0000'..rand_name..'，一大堆碎片散落|cffff0000老家周围|r，大家快去抢啊|r',2) 
         else 
             self:add_content() --已挖到再随机一次
@@ -291,6 +271,32 @@ function mt:on_remove()
     end    
     
 end
+
+--散落碎片
+ac.func_give_suipian = function(start)
+    local cnt = math.random(5,10)
+    for i=1,cnt do 
+        local item_name = ac.shenlong_suipin[math.random(1,#ac.shenlong_suipin)]
+        local point = ac.map.rects['藏宝区']:get_random_point(true)
+        --运动
+        local mvr = ac.mover.target
+        {
+            source = start,
+            target = point,
+            model = [[RedCrystalShard.mdx]],
+            height = 800,
+            speed = 1000,
+            skill = '碎片运动'
+        }
+        if not mvr then
+            return
+        end
+        function mvr:on_finish()
+            ac.item.create_item(item_name,point)
+        end    
+    end    
+end
+
 
 --解决藏宝图在npc脚下，英雄挖不到宝
 ac.game:event '玩家-注册英雄' (function(_, _, hero)

@@ -91,7 +91,13 @@ function creeps.start()
 		--刷第一波野
         ac.wait(start_time * 1000, create)
         --每2秒检测一次，不满最大单位数量，就补充
-        ac.loop(revive_time *1000,create)
+        ac.loop(revive_time *1000,function(t)
+            if ac.flag_endless then 
+                t:remove()
+                return
+            end    
+            create()
+        end)
 	end
 end
 --加载完直接刷怪

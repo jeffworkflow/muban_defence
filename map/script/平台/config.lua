@@ -71,7 +71,9 @@ local cus_key = {
     {'cnt_zqwz','最强王者'},
     {'cntrywz','荣耀王者'},
     {'cntdfwz','巅峰王者'},
-    {'cntxlms','修罗模式'},
+    {'cntxlms','修罗模式'}, -- 星数
+
+    {'wjxlms','修罗模式无尽'}, -- 星数
     
     
     {'time_qt','青铜时长'},
@@ -82,6 +84,9 @@ local cus_key = {
     {'time_xy','星耀时长'},
     {'time_wz','王者时长'},
     {'time_zqwz','最强王者时长'},
+    {'time_rywz','荣耀王者时长'},
+    {'time_dfwz','巅峰王者时长'},
+    {'time_xlms','修罗模式时长'},
 
     {'bwllc','霸王莲龙锤'},
     {'hhxyj','幻海雪饮剑'},
@@ -140,7 +145,8 @@ local cus_key = {
     
     {'zsas','紫色哀伤'},
     {'blnsy','白龙凝酥翼'},
-
+    {'szas','霜之哀伤'},
+    
 }
 ac.cus_server_key = cus_key
 

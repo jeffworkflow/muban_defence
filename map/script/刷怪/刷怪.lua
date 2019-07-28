@@ -223,7 +223,7 @@ ac.wait(20,function()
                 { name = "最强王者" },
                 { name = "荣耀王者" },
                 { name = "巅峰王者" },
-                { name = "修罗模式" },
+                { name = "修罗模式(无尽)" },
             }
             ac.g_game_degree_list = {} 
             for i = #list ,1 ,-1 do 
@@ -236,7 +236,11 @@ ac.wait(20,function()
                 ac.flag_choose_dialog = create_dialog(player,"选择难度",list,function (index)  
                     ac.flag_choose_dialog = false
                     ac.g_game_degree = index
-                    ac.g_game_degree_name = list[index].name
+                    if index < 11 then 
+                        ac.g_game_degree_name = list[index].name
+                    else    
+                        ac.g_game_degree_name = "修罗模式"
+                    end    
                     if ac.g_game_degree == 1 then 
                         ac.g_game_degree_attr = 1  --难度一 属性倍数1倍
                     end    

@@ -780,7 +780,7 @@ function helper:tt()
 	-- if not ac.wtf then
 	-- 	helper.wtf(self)
 	-- end
-	self:add_restriction '免死'
+	-- self:add_restriction '免死'
 end
 
 --给商店添加商品
