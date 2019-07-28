@@ -120,7 +120,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff巅峰王者25星 
+|cff00ffff荣耀王者25星 
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+650  杀怪加攻击|r
