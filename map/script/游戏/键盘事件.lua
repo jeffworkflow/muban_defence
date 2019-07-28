@@ -160,7 +160,45 @@ ac.game:event '玩家-聊天' (function(self, player, str)
 	if str == 'jixu' then
 		player.flag_get_map_test = true 
     end   
-    
+    --取消技能特效
+    if str == 'tx' then
+        --文字特效开关
+        player.flag_damage_texttag = not player.flag_damage_texttag  and true or false
+        --技能特效开关
+        player.flag_qxtx = not player.flag_qxtx  and true or false
+
+        --关技能特效
+        -- print(p.flag_qxtx)
+        if player:is_self() then 
+            --异步使所有玩家英雄学的技能。
+            for i=1,10 do 
+                local hero = ac.player(i).hero 
+                if hero then 
+                    for skl in hero:each_skill() do  
+                        local allstr = table.concat(ac.skill_list2) .. table.concat(ac.skill_list4)
+                        if finds(allstr,skl.name) then
+                            if player.flag_qxtx then 
+                                skl.old_model = skl.model
+                                skl.model = ''
+                                -- print(skl.name,skl.model,skl.old_model)
+                                skl.old_effect = skl.effect
+                                skl.effect = ''
+                                skl.old_effect1 = skl.effect1
+                                skl.effect1 = ''
+                                skl.old_effect2 = skl.effect2
+                                skl.effect2 = ''
+                            else
+                                skl.effect = skl.old_effect
+                                skl.effect1 = skl.old_effect1
+                                skl.effect2 = skl.old_effect2
+                                skl.model = skl.old_model
+                            end	
+                        end    
+                    end	
+                end    
+            end    
+        end	
+    end    
 
     if str:sub(1, 1) == '-' then
 
@@ -181,49 +219,6 @@ ac.game:event '玩家-聊天' (function(self, player, str)
                 p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', distance)
             end    
         end  
-        if str == 'close' then
-            local flag = strs[2] and tonumber(strs[2]) or 1
-            --关文字特效
-            if flag == 1 then 
-                player.flag_damage_texttag = true 
-                player.flag_qxtx = true 
-            else
-                player.flag_damage_texttag = false   
-                player.flag_qxtx = false 
-            end    
-            
-            --关技能特效
-            -- print(p.flag_qxtx)
-            if player:is_self() then 
-                --异步使所有玩家英雄学的技能。
-                for i=1,10 do 
-                    local hero = ac.player(i).hero 
-                    if hero then 
-                        for skl in hero:each_skill() do  
-                            local allstr = table.concat(ac.skill_list2) .. table.concat(ac.skill_list4)
-                            if finds(allstr,skl.name) then
-                                if player.flag_qxtx then 
-                                    skl.old_model = skl.model
-                                    skl.model = ''
-                                    -- print(skl.name,skl.model,skl.old_model)
-                                    skl.old_effect = skl.effect
-                                    skl.effect = ''
-                                    skl.old_effect1 = skl.effect1
-                                    skl.effect1 = ''
-                                    skl.old_effect2 = skl.effect2
-                                    skl.effect2 = ''
-                                else
-                                    skl.effect = skl.old_effect
-                                    skl.effect1 = skl.old_effect1
-                                    skl.effect2 = skl.old_effect2
-                                    skl.model = skl.old_model
-                                end	
-                            end    
-                        end	
-                    end    
-                end    
-            end	
-        end    
 
     end    
 

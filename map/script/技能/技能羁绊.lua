@@ -138,19 +138,23 @@ ac.game:event '技能-失去' (function (_,hero,self)
     if not hero:is_hero() then return end
     if self.item_type then return end
     for i,target_skill in ipairs(ac.skill_list5) do 
-        local flag = get_steng(hero,target_skill,self.name)
-        if flag then 
-            local has_skill = hero:find_skill(target_skill,nil)
-            if has_skill then 
-                has_skill:remove()--移除技能
-                --改老技能的文字说明
-                for i,name in ipairs(has_skill.need_skills) do
-                    local skl = hero:find_skill(name,nil)
-                    if skl then 
-                        skl.tip = skl.old_tip
-                        skl:fresh_tip()
-                    end   
-                end  
+        local sk = ac.skill[target_skill]
+        local need_skill_str = table.concat(sk.need_skills)
+        if finds(need_skill_str,self.name) then 
+            local flag = get_steng(hero,target_skill,self.name)
+            if flag then 
+                local has_skill = hero:find_skill(target_skill,nil)
+                if has_skill then 
+                    has_skill:remove()--移除技能
+                    --改老技能的文字说明
+                    for i,name in ipairs(has_skill.need_skills) do
+                        local skl = hero:find_skill(name,nil)
+                        if skl then 
+                            skl.tip = skl.old_tip
+                            skl:fresh_tip()
+                        end   
+                    end  
+                end    
             end    
         end    
     end    
