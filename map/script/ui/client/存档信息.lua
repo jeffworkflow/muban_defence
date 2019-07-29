@@ -31,12 +31,12 @@ class.player_info_panel = extends(class.panel){
         -- panel.close_button = panel:add_button('image\\操作栏\\cross.blp',panel.w - 32-5,5,32,32,true)
         panel.titles = {
             '地图等级',
-            '修罗模式','巅峰王者','荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
-            '宠物等级','挖宝积分',
+            '修罗(无尽-最高)','修罗模式','巅峰王者','荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
+            '宠物等级',
+            '挖宝积分',
             '勇士徽章',
             '杀猴次数',
             '神奇的五分钟',
-            '修罗(无尽-最高)',
             '修罗(无尽-累计)',
             '评论数',
             '地图总评论数',
@@ -156,9 +156,11 @@ class.player_info_panel = extends(class.panel){
                     elseif name =='修罗(无尽-最高)' then
                         name = '修罗模式无尽' 
                         new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = new_value..' 波'
                     elseif name =='修罗(无尽-累计)' then
                         name = '修罗模式无尽累计' 
                         new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = new_value..' 波'
                     elseif name =='评论数' then
                         new_value = string.format("%.f",player:Map_CommentCount())  
                     elseif name =='地图总评论数' then

@@ -202,17 +202,17 @@ tip = [[
 |cff00ff00+100%   暴击加深|r
 |cff00ff00+5%   技暴几率|r
 |cff00ff00+100%   技暴加深|r
-|cff00ff00+15%   全伤加深|r
-|cff00ff00攻击10%几率造成范围技能伤害|cff00ffff（伤害公式：全属性*40）
+|cff00ff00+25%   全伤加深|r
+|cff00ff00攻击10%几率造成范围技能伤害|cff00ffff（伤害公式：全属性*50）
 
-|cffffff00皇帝剑+皇帝刀激活特殊属性：攻击减甲+150
+|cffffff00皇帝剑+皇帝刀激活特殊属性：攻击减甲+250
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r]],
 --触发几率
 chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
 --伤害
 damage = function(self)
-    return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*40)
+    return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*50)
 end,
 --特效2
 damage_effect = [[jn_tf2.mdx]],
@@ -225,7 +225,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['暴击加深'] = 100,
 ['技暴几率'] = 5,
 ['技暴加深'] = 100,
-['全伤加深'] = 15,
+['全伤加深'] = 25,
 --特效
 effect = [[wuqi8.mdx]]
 }
@@ -249,10 +249,10 @@ tip = [[
 |cff00ff00+100%   暴击加深|r
 |cff00ff00+5%   技暴几率|r
 |cff00ff00+100%   技暴加深|r
-|cff00ff00+15%   全伤加深|r
-|cff00ff00攻击10%几率造成范围技能伤害|cff00ffff（伤害公式：全属性*60）
+|cff00ff00+30%   全伤加深|r
+|cff00ff00攻击10%几率造成范围技能伤害|cff00ffff（伤害公式：全属性*75）
 
-|cffffff00皇帝剑+皇帝刀激活特殊属性：攻击减甲+150
+|cffffff00皇帝剑+皇帝刀激活特殊属性：攻击减甲+250
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
 ]],
@@ -260,7 +260,7 @@ tip = [[
 chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
 --伤害
 damage = function(self)
-    return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*60)
+    return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*75)
 end,
 --特效2
 damage_effect = [[jn_tf2.mdx]],
@@ -273,12 +273,12 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['暴击加深'] = 100,
 ['技暴几率'] = 5,
 ['技暴加深'] = 100,
-['全伤加深'] = 15,
+['全伤加深'] = 30,
 ['攻击减甲'] = function(self) 
     local val = 0 
     local p = self.owner:get_owner()
     if (p.mall and p.mall['皇帝剑'] or 0) >=1 then 
-        val = 150
+        val = 250
     end    
     return val
 end,

@@ -179,3 +179,19 @@ mt{
  ]],
 }
 
+local mt = ac.skill['评论礼包说明']
+mt{
+    --类型
+    item_type = "神符",
+    art = [[xsgl.blp]],
+    --物品技能
+    is_skill = true,
+    content_tip = '',
+    store_affix ='',
+    tip = [[ 
+|cff00ff00平台进行评论即可获得，评论礼包属性可存档|r 
+
+|cffffE7991个评论次数|r 奖励 |cffff0000【减少周围护甲】|cff00ffff+1.5*地图等级*评论次数
+ ]],
+}
+

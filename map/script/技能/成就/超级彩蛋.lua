@@ -226,7 +226,9 @@ mt{
     tip = [[
 
 |cffFFE799【成就属性】：|r
-|cff00ff00所有队友的全属性+5%
+|cff00ff00+3000万 全属性
++3万  护甲
++15%  技能伤害加深
     ]],
     ['全属性'] = 30000000,
     ['护甲'] = 30000,
@@ -287,7 +289,7 @@ ac.game:event '游戏-开始' (function()
             local skl = hero:find_skill('神格护体',nil,true)
             if not skl then 
                 ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋','神格护体')
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 触发超级彩蛋，|r 获得成就|cffff0000 "神格护体" |r，奖励 |cffff00003000万全属性，3万护甲，技能伤害加深+15%|r',6)
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 打桩爽翻了天，|r 获得成就|cffff0000 "神格护体" |r，奖励 |cffff00003000万全属性，3万护甲，技能伤害加深+15%|r',6)
             end    
 
         end
