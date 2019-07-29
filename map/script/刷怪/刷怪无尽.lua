@@ -83,7 +83,7 @@ for i =1,3 do
             ['会心伤害'] = 200,
         }
         local degree_attr_mul = ac.get_difficult(ac.g_game_degree)
-        local endless_attr_mul = ac.get_difficult(self.index,1.2)
+        local endless_attr_mul = ac.get_difficult(self.index,1.15)
         -- print('难度系数',degree_attr_mul)
         -- print('无尽系数',endless_attr_mul)
         --设置属性
@@ -196,7 +196,7 @@ ac.game:event '游戏-无尽开始'(function(trg)
     
     --游戏开始后 刷怪时间  
     local time = force_cool
-    BJDebugMsg(time .. "秒后开始（无尽）第一波怪物进攻",10)
+    BJDebugMsg("|cffffe799【系统消息】|r|cffff0000无尽挑战开始|r |cff00ffff 第一波修罗怪物 |r|cff00ff00在".. time .. "秒后开始进攻！",10)
     ac.timer_ex 
     {
         time = time,

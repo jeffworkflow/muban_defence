@@ -79,7 +79,7 @@ mt{
             str = str ..'|cffFFE799【进阶】|r收集%kill_cnt%灵魂，并|cffff0000挑战伏地魔|r（新手任务处）后，自动进阶'
             end 
         else 
-        str = str ..'|cffcccccc【更多玩法敬请期待】|r'
+        
         end 
         return str
     end,    
