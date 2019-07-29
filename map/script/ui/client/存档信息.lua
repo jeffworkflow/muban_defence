@@ -33,15 +33,30 @@ class.player_info_panel = extends(class.panel){
             '地图等级',
             '修罗模式','巅峰王者','荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
             '宠物等级','挖宝积分',
-            
-            '耐瑟龙碎片','Pa碎片','冰龙碎片','小龙女碎片','霸王莲龙锤碎片','梦蝶仙翼碎片','关羽碎片','精灵龙碎片', '奇美拉碎片',
-
             '勇士徽章',
             '杀猴次数',
             '神奇的五分钟',
             '修罗(无尽-最高)',
             '修罗(无尽-累计)',
+            '评论数',
+            '地图总评论数',
         }
+        
+        panel.titles2 = {
+            '耐瑟龙碎片','Pa碎片','冰龙碎片','小龙女碎片','霸王莲龙锤碎片','梦蝶仙翼碎片','关羽碎片','精灵龙碎片', '奇美拉碎片',
+        }
+        panel.page = 1 
+        local next_button = panel:add_button('image\\right.blp',773,371,64,64)
+        function next_button:on_button_clicked()
+            if panel.page == 1  then 
+                panel.page = 2
+                self:set_normal_image('image\\left.blp')
+            else
+                panel.page = 1
+                self:set_normal_image('image\\right.blp')
+            end    
+            panel:fresh()
+        end 
         --属性列数
         local col ={
             --x,y,w,h,字体大小，对齐方式
@@ -57,36 +72,37 @@ class.player_info_panel = extends(class.panel){
         for i=1,#panel.titles do 
             local name = panel.titles[i]
             if not name then break end
-            --颜色相关
-            local show_name = ''
-            if i <=1 then 
-                show_name = '|cffF2F200'..name..'|r'
-            elseif i<=5 then 
-                show_name = '|cffF30101'..name..'|r'
-            elseif i<=9 then 
-                show_name = '|cff00ABE9'..name..'|r' 
-            elseif i<=11 then 
-                show_name = '|cff00ff00'..name..'|r'
-            elseif i<=13 then 
-                show_name = '|cffF2F200'..name..'|r'
-            elseif i<=22 then 
-                show_name = '|cffFFC100'..name..'|r'
-            else
-                show_name = '|cffF30101'..name..'|r'
-            end        
+            --颜色相关   
             local value = 0
+            if hero then
+                value = hero:get(name)
+            end 
 
             local x1,y1,w1,h1,line_height1,align1 = table.unpack(col[ix])
             local x2,y2,w2,h2,line_height2,align2 = table.unpack(col[ix+1])
             y1 = y1 + (i-1)*cre_height - base_y
             y2 = y2 + (i-1)*cre_height - base_y
 
-            local attr_name = panel:add_text(show_name,x1,y1,w1,h1,line_height1,align1)
+            local attr_name = panel:add_text(name,x1,y1,w1,h1,line_height1,align1)
+            if i <=5 then 
+                attr_name:set_color(0xffF2F200)
+            elseif i<=9 then 
+                attr_name:set_color(0xff00ABE9)
+            elseif i<=13 then 
+                attr_name:set_color(0xff00B04F)
+            elseif i<=18 then 
+                attr_name:set_color(0xffF30101)
+            elseif i<=22 then 
+                attr_name:set_color(0xffFFC100)
+            else
+                attr_name:set_color(0xffF2F200)
+            end  
+
             local attr_value = panel:add_text(value,x2,y2,w2,h2,line_height2,align2)
             table.insert(panel.attrs,{attr_name,attr_value}) 
-            if i % 14 == 0 then 
+            if i % 13 == 0 then 
                 ix = ix + 2
-                base_y = cre_height *14
+                base_y = cre_height *13
             end 
             
         end 
@@ -114,37 +130,56 @@ class.player_info_panel = extends(class.panel){
         end    
 
         for i,data in ipairs(self.attrs) do
-            local name_text,value_text = table.unpack(data)
-            local name = clean_color(name_text:get_text()) --去除颜色代码
-            local new_value = 0
-            if name =='地图等级' then 
-                new_value = player:Map_GetMapLevel()
-            elseif name =='宠物等级' then
-                new_value = peon.peon_lv
-            elseif name =='小龙女碎片' then
-                name = '手无寸铁的小龙女碎片' 
-                new_value = string.format("%.f",player.cus_server[name] or 0)  
-            elseif finds(name,'修罗模式','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜') then
-                new_value = string.format("%.f",player.cus_server[name] or 0)
-                new_value = new_value..' 星'
-            elseif name =='杀猴次数' then
-                name = '杀鸡儆猴' 
-                new_value = string.format("%.f",player.cus_server[name] or 0)  
-            elseif name =='神奇的五分钟' then
-                name = '攻击减甲' 
-                new_value = string.format("%.f",player.cus_server[name] or 0)  
-            elseif name =='修罗(无尽-最高)' then
-                name = '修罗模式无尽' 
-                new_value = string.format("%.f",player.cus_server[name] or 0)  
-            elseif name =='修罗(无尽-累计)' then
-                name = '修罗模式无尽累计' 
-                new_value = string.format("%.f",player.cus_server[name] or 0)  
-            else
-                new_value = string.format("%.f",player.cus_server[name] or 0)
-            end    
-            value_text:set_text(new_value)
-        end    
+            local name_text,value_text = table.unpack(data) 
+            local name
 
+            local function set_all(name)
+                if name then 
+                    local new_value = 0
+                    local show_name = name
+                    if name =='地图等级' then 
+                        new_value = player:Map_GetMapLevel()
+                    elseif name =='宠物等级' then
+                        new_value = peon.peon_lv
+                    elseif name =='小龙女碎片' then
+                        name = '手无寸铁的小龙女碎片' 
+                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                    elseif finds(name,'修罗模式','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜') then
+                        new_value = string.format("%.f",player.cus_server[name] or 0)
+                        new_value = new_value..' 星'
+                    elseif name =='杀猴次数' then
+                        name = '杀鸡儆猴' 
+                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                    elseif name =='神奇的五分钟' then
+                        name = '攻击减甲' 
+                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                    elseif name =='修罗(无尽-最高)' then
+                        name = '修罗模式无尽' 
+                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                    elseif name =='修罗(无尽-累计)' then
+                        name = '修罗模式无尽累计' 
+                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                    elseif name =='评论数' then
+                        new_value = string.format("%.f",player:Map_CommentCount())  
+                    elseif name =='地图总评论数' then
+                        new_value = string.format("%.f",player:Map_CommentTotalCount())  
+                    else
+                        new_value = string.format("%.f",player.cus_server[name] or 0)
+                    end    
+                    name_text:set_text(show_name) 
+                    value_text:set_text(new_value)
+                else 
+                    name_text:set_text('')  
+                    value_text:set_text('')
+                end    
+            end    
+            if self.page == 1 then 
+                name = self.titles[i] 
+            else
+                name = self.titles2[i] 
+            end    
+            set_all(name)
+        end  
     end,
     set_chess_list = function (self,list)
         for index,unit in ipairs(self.list) do 

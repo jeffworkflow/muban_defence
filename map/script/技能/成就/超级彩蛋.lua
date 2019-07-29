@@ -217,6 +217,21 @@ end
 
 
 
+local mt = ac.skill['神格护体']
+mt{
+    is_spellbook = 1,
+    level = 1,
+    is_order = 2,
+    art = [[sgrt.blp]],
+    tip = [[
+
+|cffFFE799【成就属性】：|r
+|cff00ff00所有队友的全属性+5%
+    ]],
+    ['全属性'] = 30000000,
+    ['护甲'] = 30000,
+    ['技能伤害加深'] = 15
+}
 
 
 
@@ -258,4 +273,26 @@ ac.game:event '技能-插入魔法书后' (function (_,hero,book_skill,skl)
     end    
 
 end)
+
+ac.game:event '游戏-开始' (function()
+    local unit = ac.game.findunit_byname('游戏说明')
+    unit:event '受到伤害效果'(function(_,damage)
+        if not damage.source:is_hero() then 
+            return 
+        end    
+        local hero = damage.source
+        local player = hero:get_owner()
+        local item = hero:has_item('紫金碧玺佩')
+        if item and item.level == item.max_level then 
+            local skl = hero:find_skill('神格护体',nil,true)
+            if not skl then 
+                ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋','神格护体')
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 触发超级彩蛋，|r 获得成就|cffff0000 "神格护体" |r，奖励 |cffff00003000万全属性，3万护甲，技能伤害加深+15%|r',6)
+            end    
+
+        end
+    end)
+end)
+
+
 

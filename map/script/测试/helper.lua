@@ -235,6 +235,18 @@ function helper:lv(lv)
 	self:set_level(tonumber(lv))
 end
 
+--评论数相关
+function helper:pl(cnt)
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	p.comment = tonumber(cnt)
+	print('个人评论次数：',p:Map_CommentCount())
+end	
+--总评论数相关
+function helper:allpl(cnt)
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	p.total_comment = tonumber(cnt)
+	print('地图总评论次数：',p:Map_CommentTotalCount())
+end	
 --地图等级相关
 function helper:dtdj(lv)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)

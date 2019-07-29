@@ -31,7 +31,29 @@ register_japi[[
     native DzGetMouseTerrainX               takes nothing returns real
     native DzGetMouseTerrainY               takes nothing returns real
     native DzGetMouseTerrainZ               takes nothing returns real
+    native DzAPI_Map_CommentCount           takes player whichPlayer returns integer
+    native DzAPI_Map_CommentTotalCount      takes nothing returns integer
 ]]
+
+--获取玩家评论数
+function player.__index:Map_CommentCount()
+    local handle = self.handle
+    if global_test then 
+        return self.comment or 1
+    else    
+        return japi.DzAPI_Map_CommentCount(handle)
+    end    
+end
+
+--获取地图总评论数
+function player.__index:Map_CommentTotalCount()
+    local handle = self.handle
+    if global_test then 
+        return self.total_comment or 1
+    else    
+        return japi.DzAPI_Map_CommentTotalCount()
+    end 
+end
 
 --玩家 清空服务器数据 (自定义服务器)
 function player.__index:clear_server()
