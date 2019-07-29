@@ -118,9 +118,10 @@ local function init()
 	end 
 	
 	mtb:setWidth(1,ix+1,0.1)
-	function mtb:set_auto_tip()
-		mtb:setText(1,ix+1,'自动回收物品： |cff00ff00开启|r    (放地上3分钟后，自动回收)')
-	end	
+	-- function mtb:set_auto_tip()
+	-- 	mtb:setText(1,ix+1,'|cffff0000F6查看无尽排行榜|r')
+	-- end	
+	mtb:setText(1,ix+1,'|cffff0000F6查看无尽排行榜|r')
 	
 	--初始化格式
 	mtb:setAllStyle(true,false)

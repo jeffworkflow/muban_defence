@@ -74,9 +74,9 @@ class.player_info_panel = extends(class.panel){
             if not name then break end
             --颜色相关   
             local value = 0
-            if hero then
-                value = hero:get(name)
-            end 
+            -- if hero then
+            --     value = hero:get(name)
+            -- end 
 
             local x1,y1,w1,h1,line_height1,align1 = table.unpack(col[ix])
             local x2,y2,w2,h2,line_height2,align2 = table.unpack(col[ix+1])

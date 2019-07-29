@@ -148,7 +148,7 @@ local event = {
     onoff = function (val)
         local player = ui.player 
         ac.flag_map = val
-        print('同步后的数据',ac.flag_map)
+        -- print('同步后的数据',ac.flag_map)
     end,
     on_get = function (key,val)
         local player = ui.player 
@@ -157,7 +157,7 @@ local event = {
         end    
         local name = ac.server.key2name(key)
         player.cus_server2[name] = tonumber(val)
-        print('自定义服务器读取完后同步的数据',key,name,val)
+        -- print('自定义服务器读取完后同步的数据',key,name,val)
         if key =='jifen' then 
             player.jifen = tonumber(val)
         end    
