@@ -149,14 +149,14 @@ art = [[tszg.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff巅峰王者25星
+|cff00ffff修罗模式累计无尽波数=150波
 
 |cffFFE799【翅膀属性】：|r
-|cff00ff00+200  杀怪加全属性|r
-|cff00ff00+5    每秒加护甲|r
-|cff00ff00+20%  触发概率加成
-|cff00ff00+5%   技暴几率|r
-|cff00ff00+50%  技暴加深|r
+|cff00ff00+250  杀怪加全属性|r
+|cff00ff00+750  减少周围护甲|r
+|cff00ff00+5    每秒加护甲
+|cff00ff00+1500 初始护甲|r
+|cff00ff00+10%  技能冷却|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],

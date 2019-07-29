@@ -21,30 +21,30 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[chibang7.blp]],
+art = [[rlsh.blp]],
 --说明
-tip = [[
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff商城购买后自动激活
+|cff00ffff在平台上，本地图的全部评论数超过 5.5W 自动激活
 
-|cffFFE799【翅膀属性】：|r
-|cff00ff00+250    杀怪加全属性|r
-|cff00ff00+488    攻击加全属性|r
-|cff00ff00+788    每秒加全属性|r
-|cff00ff00+10    每秒加护甲|r
-|cff00ff00+10%   免伤|r
-|cff00ff00+10%   免伤几率|r
+|cffFFE799【奖励属性】：|r
+|cff00ff00+20%  杀敌数加成|r
+|cff00ff00+10   攻击减甲|r
+|cff00ff00+2%   对BOSS额外伤害|r
+|cff00ff00+1%   会心几率|r
+|cff00ff00+10%  会心伤害|r
 
-|cffffff00轮迴幻魔翼+绝世阳炎翼可激活属性：全伤加深+100%
-
-|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['每秒加护甲'] = 1000,
---特效
-effect = [[chibang7.mdx]]
+need_map_level = 5,
+['杀敌数加成'] = 20,
+['攻击减甲'] = 10,
+['对BOSS额外伤害'] = 2,
+['会心几率'] = 1,
+['会心伤害'] = 10,
+
 }
 
 local mt = ac.skill['勇攀新高']
@@ -52,30 +52,28 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[chibang7.blp]],
+art = [[ypxg.blp]],
 --说明
-tip = [[
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff商城购买后自动激活
+|cff00ffff在平台上，本地图的全部评论数超过 7.5W 自动激活
 
-|cffFFE799【翅膀属性】：|r
-|cff00ff00+250    杀怪加全属性|r
-|cff00ff00+488    攻击加全属性|r
-|cff00ff00+788    每秒加全属性|r
-|cff00ff00+10    每秒加护甲|r
-|cff00ff00+10%   免伤|r
-|cff00ff00+10%   免伤几率|r
+|cffFFE799【奖励属性】：|r
+|cff00ff00+30   攻击减甲|r
+|cff00ff00+20%  物理伤害加深|r
+|cff00ff00+10%  技能伤害加深|r
+|cff00ff00+10%  全伤加深|r
 
-|cffffff00轮迴幻魔翼+绝世阳炎翼可激活属性：全伤加深+100%
-
-|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['每秒加木头'] = 1000,
---特效
-effect = [[chibang7.mdx]]
+['攻击减甲'] = 30,
+['物理伤害加深'] = 20,
+['技能伤害加深'] = 10,
+['全伤加深'] = 10,
+need_map_level = 8,
+
 }
 
 
@@ -84,7 +82,7 @@ local mt = ac.skill['全服奖励']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[ssly.blp]],
+    art = [[qfjl.blp]],
     title = '全服奖励',
     tip = [[
 
