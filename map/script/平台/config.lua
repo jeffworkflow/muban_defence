@@ -73,7 +73,8 @@ local cus_key = {
     {'cntdfwz','巅峰王者'},
     {'cntxlms','修罗模式'}, -- 星数
 
-    {'wjxlms','修罗模式无尽'}, -- 星数
+    {'wjxlms','修罗模式无尽'}, -- 无尽层数最高值
+    {'ljwjxlms','修罗模式无尽累计'},-- 无尽层数累计值
     
     
     {'time_qt','青铜时长'},
@@ -146,6 +147,8 @@ local cus_key = {
     {'zsas','紫色哀伤'},
     {'blnsy','白龙凝酥翼'},
     {'szas','霜之哀伤'},
+
+    {'tszg','天使之光'},
     
 }
 ac.cus_server_key = cus_key

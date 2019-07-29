@@ -228,7 +228,11 @@ ac.wait(20,function()
             ac.g_game_degree_list = {} 
             for i = #list ,1 ,-1 do 
                 -- print(list[i].name)
-                table.insert(ac.g_game_degree_list,list[i].name)
+                local name = list[i].name
+                if finds(name,'无尽') then 
+                    name = "修罗模式"
+                end    
+                table.insert(ac.g_game_degree_list,name)
             end    
             
             ac.player.self:sendMsg("正在选择 |cffffff00难度|r")

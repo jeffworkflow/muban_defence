@@ -3,14 +3,14 @@ local slk = require 'jass.slk'
 class.phb_panel = extends(class.panel){
     create = function ()
         local hero = ac.player.self.hero
-        local panel = class.panel.create('image\\排行榜\\phb_bg.tga',468,204,985,472)
+        local panel = class.panel.create('image\\排行榜\\phb_bg.tga',372,176,1193,593)
         panel.__index = class.phb_panel 
 
         panel:add_button('',0,0,panel.w,panel.h)
 
         --左边菜单 
         panel.menu_titles = {
-            '最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
+            '修罗模式', '巅峰王者', '荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
         }
         local menu_press_status = 'image\\排行榜\\menu.tga'
         local menu_line = 'image\\排行榜\\menu_line.tga'
@@ -51,12 +51,25 @@ class.phb_panel = extends(class.panel){
 
         --右边排行榜数据
         --巅峰排行榜
+        local off_left = 70
+        local off_top = 30
+        local mul_width = 1.2
+        local line_height = 42
+        panel.off_left = off_left
+        panel.off_top = off_top
+        panel.mul_width = mul_width
+        panel.line_height = line_height
+        
+        local main_box_width = 508
+        panel.main_box_width = 508
+        local menu_width = 106
+        panel.menu_width = 106
         local img_phb_df = 'image\\排行榜\\phb_df.tga'
         local img_phb_tgsc = 'image\\排行榜\\phb_tgsc.tga'
         local img_title = 'image\\排行榜\\titile_bg.tga'
-        local img_tip1 = panel:add_button(img_phb_df,256,20,183,47) 
+        local img_tip1 = panel:add_button(img_phb_df,150+menu_width+off_left, 20+off_top,183,47) 
         -- panel:add_texture(img_phb_df,256,20,183,47) 
-        local img_tip2 = panel:add_button(img_phb_tgsc,689,20,183,47) 
+        local img_tip2 = panel:add_button(img_phb_tgsc,150+menu_width+main_box_width+off_left ,20+off_top,183,47) 
         -- panel:add_texture(img_phb_tgsc,689,20,183,47) 
         local info = {
             name = '',
@@ -73,14 +86,14 @@ class.phb_panel = extends(class.panel){
             end
         end    
 
-        local texture = panel:add_texture(img_title,160,65,366,48) 
+        local texture = panel:add_texture(img_title,54+menu_width+off_left,65+off_top,366,48) 
         local text = texture:add_text('名次',30,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
         local text = texture:add_text('玩家昵称',139,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
         local text = texture:add_text('段位星数',276,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
-        local texture = panel:add_texture(img_title,587,65,366,48) 
+        local texture = panel:add_texture(img_title,54+menu_width+main_box_width+off_left,65+off_top,366,48) 
         local text =  texture:add_text('名次',30,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
         local text = texture:add_text('玩家昵称',139,0,30,34,10,'left')
@@ -94,8 +107,8 @@ class.phb_panel = extends(class.panel){
         panel.df_star = {}
         panel.df_line_bg = {}
         for i=1,10 do 
-            local y = 102 + 35*(i-1)
-            local text = panel:add_text('',200,y,20,35,10,'left')
+            local y = 102 + line_height*(i-1) +off_top
+            local text = panel:add_text('',94+menu_width+off_left,y,20,line_height,10,'left')
             table.insert(panel.df_rank,text)
             if i == 1 then
                 text:set_color(0xffff0000)
@@ -107,7 +120,7 @@ class.phb_panel = extends(class.panel){
                 text:set_color(0xffF4F4D3)    
             end    
 
-            local text = panel:add_text('',280,y,80,35,10,'left')
+            local text = panel:add_text('',174+menu_width+off_left,y,80,line_height,10,'left')
             table.insert(panel.df_player,text)
             if i == 1 then
                 text:set_color(0xffff0000)
@@ -118,8 +131,7 @@ class.phb_panel = extends(class.panel){
             else
                 text:set_color(0xffF4F4D3)    
             end    
-
-            local text = panel:add_text('',455,y,20,35,10,'center')
+            local text = panel:add_text('',349+menu_width+off_left,y,20,line_height,10,'center')
             table.insert(panel.df_star,text)
             if i == 1 then
                 text:set_color(0xffff0000)
@@ -138,8 +150,8 @@ class.phb_panel = extends(class.panel){
         panel.tgsc_time = {}
         panel.tgsc_line_bg = {}
         for i=1,10 do 
-            local y = 102 + 35*(i-1)
-            local text = panel:add_text('',627,y,20,35,10,'left')
+            local y = 102 + line_height*(i-1) +off_top
+            local text = panel:add_text('',94+menu_width+main_box_width+off_left,y,20,line_height,10,'left')
             table.insert(panel.tgsc_rank,text)
             if i == 1 then
                 text:set_color(0xffff0000)
@@ -151,8 +163,7 @@ class.phb_panel = extends(class.panel){
                 text:set_color(0xffF4F4D3)    
             end    
 
-
-            local text = panel:add_text('',707,y,80,35,10,'left')
+            local text = panel:add_text('',174+menu_width+main_box_width+off_left,y,80,line_height,10,'left')
             text:set_color(0xffF4F4D3)
             table.insert(panel.tgsc_player,text)
             if i == 1 then
@@ -165,7 +176,7 @@ class.phb_panel = extends(class.panel){
                 text:set_color(0xffF4F4D3)    
             end    
 
-            local text = panel:add_text('',885,y,20,35,10,'center')
+            local text = panel:add_text('',349+menu_width+main_box_width+off_left,y,20,line_height,10,'center')
             text:set_color(0xffF4F4D3)
             table.insert(panel.tgsc_time,text)
             if i == 1 then
@@ -219,8 +230,8 @@ class.phb_panel = extends(class.panel){
             -- print_r(data)
             --隔行加背景
             if i % 2 == 0 then 
-                local y = 102 + 35*(i-1)
-                local title_background = self:add_texture('image\\角色信息\\line.tga',160,y,366,35)
+                local y = 102 + self.line_height*(i-1) +self.off_top
+                local title_background = self:add_texture('image\\角色信息\\line.tga',54+self.menu_width+self.off_left,y,366,self.line_height)
                 title_background:set_alpha(0xff*0.1)
                 table.insert(self.df_line_bg,title_background)
             end    
@@ -245,8 +256,8 @@ class.phb_panel = extends(class.panel){
         for i,data in ipairs(list) do 
             --隔行加背景
             if i % 2 == 0 then 
-                local y = 102 + 35*(i-1)
-                local title_background = self:add_texture('image\\角色信息\\line.tga',587,y,366,35)
+                local y = 102 + self.line_height*(i-1) +self.off_top
+                local title_background = self:add_texture('image\\角色信息\\line.tga',54+self.menu_width+self.main_box_width+self.off_left,y,366,self.line_height)
                 title_background:set_alpha(0xff*0.1)
                 table.insert(self.tgsc_line_bg,title_background)
             end    
@@ -314,6 +325,9 @@ local rank = {
     {'cnt_xy','星耀'},
     {'cnt_wz','王者'},
     {'cnt_zqwz','最强王者'},
+    {'cntrywz','荣耀王者'},
+    {'cntdfwz','巅峰王者'},
+    {'cntxlms','修罗模式'},
 
     
     {'time_qt','青铜时长'},
@@ -324,6 +338,9 @@ local rank = {
     {'time_xy','星耀时长'},
     {'time_wz','王者时长'},
     {'time_zqwz','最强王者时长'},
+    {'time_rywz','荣耀王者时长'},
+    {'time_dfwz','巅峰王者时长'},
+    {'time_xlms','修罗模式时长'},
 }
 --处理,显示排行榜数据
 --取前10名数据
@@ -343,8 +360,8 @@ ac.wait(5*1000,function()
                     table.insert(panel.rank[content[2]],data[i])
                 end    
                 --首次刷新最强王者
-                if finds(content[2] ,'最强王者') then 
-                    panel:fresh('最强王者')
+                if finds(content[2] ,'修罗模式') then 
+                    panel:fresh('修罗模式')
                 end    
             end)
         end);

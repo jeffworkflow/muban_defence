@@ -44,6 +44,11 @@ ac.game:event '游戏-开始' (function()
             if player:is_self() then 
                 local key = ac.server.name2key(ac.g_game_degree_name)
                 player:GetServerValue(key)
+
+                local key = ac.server.name2key(ac.g_game_degree_name..'无尽')
+                if key then 
+                    player:GetServerValue(key)
+                end    
             end    
         end
     end
@@ -121,38 +126,59 @@ local star2award = {
     ['紫色哀伤'] = {'荣耀王者',25,13},
     ['白龙凝酥翼'] = {'巅峰王者',25,15},
     ['霜之哀伤'] = {'修罗模式',25,18},
+
+    ['天使之光'] = {'修罗模式无尽累计',150,20},
 }
 
 --保存修罗模式 星数
 ac.game:event '游戏-无尽开始'(function(trg) 
-    for i=1,10 do
-        local player = ac.player[i]
-        if player:is_player() then
-            --保存星数
-            local name = ac.g_game_degree_name
-            local key = ac.server.name2key(name)
-            player:AddServerValue(key,1)  -- 自定义服务器
-            player:Map_AddServerValue(key,1) --网易服务器
+    ac.wait(10,function()   
+        for i=1,10 do
+            local player = ac.player[i]
+            if player:is_player() then
+                --保存星数
+                local name = ac.g_game_degree_name
+                local key = ac.server.name2key(name)
+                player:AddServerValue(key,1)  -- 自定义服务器
+                player:Map_AddServerValue(key,1) --网易服务器
 
-            player:sendMsg('【游戏胜利】|cffff0000'..name..'星数+1|r')
+                player:sendMsg('【游戏胜利】|cffff0000'..name..'星数+1|r')
 
-            --保存游戏时长 只保存自定义服务器
-            local name = name..'时长'
-            local key = ac.server.name2key(name)
-            local cus_value = tonumber((player.cus_server2 and player.cus_server2[name]) or 99999999)
-            --游戏时长 < 存档时间 
-            if os.difftime(cus_value,ac.g_game_time) > 0 then 
-                player:SetServerValue(key,ac.g_game_time) --自定义服务器
-                -- player:Map_SaveServerValue(key,ac.g_game_time) --网易服务器
-            end    
-            --文字提醒
-            local str = os.date("!%H:%M:%S",tonumber(ac.g_game_time)) 
-            player:sendMsg('【游戏胜利】|cffff0000本次通关时长：'..str..'|r')
-            
+                --保存游戏时长 只保存自定义服务器
+                local name = name..'时长'
+                local key = ac.server.name2key(name)
+                local cus_value = tonumber((player.cus_server2 and player.cus_server2[name]) or 99999999)
+                --游戏时长 < 存档时间 
+                if os.difftime(cus_value,ac.g_game_time) > 0 then 
+                    player:SetServerValue(key,ac.g_game_time) --自定义服务器
+                    -- player:Map_SaveServerValue(key,ac.g_game_time) --网易服务器
+                end    
+                --文字提醒
+                local str = os.date("!%H:%M:%S",tonumber(ac.g_game_time)) 
+                player:sendMsg('【游戏胜利】|cffff0000本次通关时长：'..str..'|r')
+                
+            end
         end
-    end
-
+    end)
 end)
+-- 游戏结束，今日排行榜
+ac.game:event '游戏-结束'(function(_)
+    --不是圣人模式返回
+    if ac.g_game_degree < 11 then 
+        return 
+    end    
+    if ac.creep['刷怪-无尽1'].index == 0 then 
+        return 
+    end    
+    for i=1,10 do
+        local p = ac.player[i]
+        if p:is_player() then 
+            --保存波束
+            p:sp_set_rank('today_wjxlms',ac.creep['刷怪-无尽1'].index)
+        end
+    end        
+
+end)    
 
 --保存修罗模式 无尽层数
 ac.game:event '游戏-回合开始'(function(trg,index, creep) 
@@ -162,19 +188,21 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
     for i=1,10 do
         local player = ac.player[i]
         if player:is_player() then
-            --保存星数
+            --保存无尽波数
             local name = ac.g_game_degree_name..'无尽'
             local key = ac.server.name2key(name)
             
+            player:Map_AddServerValue('ljwjxlms',1)  -- 网易服务器 无尽累计值
             --波数>存档波数
-            local cus_value = tonumber((player.cus_server2 and player.cus_server2[name]) or 99999999)
+            local cus_value = tonumber((player.cus_server2 and player.cus_server2[name]) or 0)
+            -- p:sp_set_rank('today_boshu',value)
             if index > cus_value then 
                 if ac.flag_map == 1 then  
                     player:SetServerValue(key,index)  -- 自定义服务器 
                 end    
             end   
 
-            local cus_value = tonumber((player.cus_server and player.cus_server[name]) or 99999999)
+            local cus_value = tonumber((player.cus_server and player.cus_server[name]) or 0)
             if index > cus_value then 
                 player:Map_SaveServerValue(key,index) --网易服务器
             end 

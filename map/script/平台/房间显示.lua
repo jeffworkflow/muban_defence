@@ -56,3 +56,14 @@ ac.game:event '游戏-结束' (function(trg,flag)
         end
     end
 end) 
+
+--设置房间显示数据
+ac.game:event '游戏-无尽开始'(function(trg) 
+    for i=1,10 do
+        local player = ac.player[i]
+        if player:is_player() then
+            --设置房间数据
+            set_fj_data(player)
+        end
+    end
+end)    
