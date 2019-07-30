@@ -39,7 +39,6 @@ class.player_info_panel = extends(class.panel){
             '神奇的五分钟',
             '修罗(无尽-累计)',
             '评论数',
-            '地图总评论数',
         }
         
         panel.titles2 = {
@@ -164,8 +163,8 @@ class.player_info_panel = extends(class.panel){
                         new_value = new_value..' 波'
                     elseif name =='评论数' then
                         new_value = string.format("%.f",player:Map_CommentCount())  
-                    elseif name =='地图总评论数' then
-                        new_value = string.format("%.f",player:Map_CommentTotalCount())  
+                    -- elseif name =='地图总评论数' then
+                    --     new_value = string.format("%.f",player:Map_CommentTotalCount())  
                     else
                         new_value = string.format("%.f",player.cus_server[name] or 0)
                     end    

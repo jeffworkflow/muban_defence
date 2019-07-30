@@ -121,7 +121,7 @@ local function init()
 	-- function mtb:set_auto_tip()
 	-- 	mtb:setText(1,ix+1,'|cffff0000F6查看无尽排行榜|r')
 	-- end	
-	mtb:setText(1,ix+1,'|cffff0000F6|r查看无尽排行榜')
+	-- mtb:setText(1,ix+1,'|cffff0000F6|r查看无尽排行榜')
 	
 	--初始化格式
 	mtb:setAllStyle(true,false)
