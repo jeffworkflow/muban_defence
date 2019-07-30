@@ -254,8 +254,48 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[xwk.mdx]],
 }
 
+local mt = ac.skill['魅影']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+strong_hero = 1, --作用在人身上
+--图标
+art = [[meiying.blp]],
+--说明
+tip = [[
+|cffffe799【获得方式】：|r
+|cff00ffff挖宝积分超过 4.5W 自动获得，已拥有积分：|r%wabao_cnt% 或者
+|cff00ffff神龙碎片超过 500  自动获得，已拥有碎片：|r%skin_cnt%
+
+|cffFFE799【属性】：|r
+|cff00ff00+148  杀怪加全属性|r
+|cff00ff00+45   攻击减甲|r
+|cff00ff00+2.5% 免伤几率|r
+|cff00ff00+10%  技能伤害加深|r
+
+|cffff0000【点击可更换领域外观，所有领域属性可叠加】|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 5,
+skin_cnt = function(self)
+    local p = ac.player.self
+    return p.cus_server[self.name..'碎片'] or 0
+end,
+
+wabao_cnt = function(self)
+    local p = ac.player.self
+    return p.cus_server['挖宝积分'] or 0
+end,
+
+--特效
+effect = [[Hero_Netherdrake_N1.mdx]],
+}
+
+
 --统一加方法
-for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','骨龙','奇美拉','小悟空'}) do
+for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','骨龙','奇美拉','小悟空','魅影'}) do
     local mt = ac.skill[name]
 
     function mt:on_cast_start()
@@ -297,7 +337,7 @@ mt{
     ]],
 }
 mt.skills = {
-    '耐瑟龙','冰龙','精灵龙','奇美拉','骨龙','小悟空'
+    '耐瑟龙','冰龙','精灵龙','奇美拉','骨龙','小悟空','魅影'
 }
 function mt:on_add()
     local hero = self.owner 

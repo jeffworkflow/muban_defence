@@ -144,6 +144,41 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[units\nightelf\Chimaera\Chimaera.mdx]]
 }
 
+local mt = ac.skill['挑战魅影']
+mt{
+is_skill = 1,
+item_type ='神符',
+--商店品
+store_name = '|cffdf19d0挑战 |r奇魅影碎片',
+content_tip = '|cffFFE799\n【任务说明】：|r\n',
+--等级
+level = 0,
+strong_hero = 1, --作用在人身上
+--图标
+art = [[meiying.blp]],
+--说明
+tip = [[
+|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 500 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
+
+|cffFFE799【宠物属性】：|r
+|cff00ff00+128    杀怪加全属性|r
+|cff00ff00+25%  火灵加成|r
+|cff00ff00+25%  物品获取率|r
+|cff00ff00-0.05  攻击间隔|r
+
+|cffff0000【所有宠物外观可更换，所有宠物属性可叠加】|r]],
+
+need_map_level = 15,
+skin_cnt = function(self)
+    local p = ac.player.self
+    return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
+end,
+--所需激活碎片
+need_sp_cnt = 500,
+--特效
+effect = [[Hero_Netherdrake_N1.mdx]]
+}
+
 local mt = ac.skill['挑战Pa']
 mt{
 is_skill = 1,
@@ -344,7 +379,7 @@ weapon_effect = 'wuqi10.mdx',
 
 
 --统一加方法
-for i,name in ipairs({'挑战耐瑟龙','挑战冰龙','挑战精灵龙','挑战奇美拉','挑战Pa','挑战手无寸铁的小龙女','挑战关羽','挑战霸王莲龙锤','挑战梦蝶仙翼'}) do
+for i,name in ipairs({'挑战耐瑟龙','挑战冰龙','挑战精灵龙','挑战奇美拉','挑战魅影','挑战Pa','挑战手无寸铁的小龙女','挑战关羽','挑战霸王莲龙锤','挑战梦蝶仙翼'}) do
     
     local mt = ac.skill[name]
     
