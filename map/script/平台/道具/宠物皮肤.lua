@@ -198,7 +198,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00-0.05  攻击间隔|r
 
 |cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
-need_map_level = 15,
+need_map_level = 13,
 skin_cnt = function(self)
     local p = ac.player.self
     return p.cus_server[self.name..'碎片'] or 0
