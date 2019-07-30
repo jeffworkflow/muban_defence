@@ -446,13 +446,72 @@ is_skill = true,
 content_tip = '|cffffe799物品说明：|r'
 }  
 
+local mt = ac.skill['明光追影刀']
+mt{
+--等久
+level = 1,
+art = [[mgzyd.blp]],
+specail_model = [[File00000376 - RC.mdx]],
+item_type = "装备",
+color ='黑',
+tip = [[
+
+|cffcccccc满目疮痍的崩塌世界，逆天崛起的武道强者。十里之内，漫山遍野。
+
+|cff00ff00全属性+3500万，杀敌数额外+1
+]],
+['力量'] = function(self)
+    return self.owner.production=='战士' and  100000000 or 0
+end,
+['分裂伤害'] =  function(self)
+    return self.owner.production=='战士'  and  200 or 0
+end,
+['暴击加深'] = function(self)
+    return self.owner.production=='战士'  and  500 or 0
+end,
+['物理伤害加深'] = function(self)
+    return self.owner.production=='战士'  and  100 or 0
+end,
+is_skill = true,
+content_tip = '|cffffe799物品说明：|r'
+}  
 
 
+local mt = ac.skill['血魂冰魄魔杖']
+mt{
+--等久
+level = 1,
+art = [[bhfz.blp]],
+specail_model = [[File00000376 - RC.mdx]],
+item_type = "装备",
+color ='黑',
+tip = [[
+
+|cffcccccc满目疮痍的崩塌世界，逆天崛起的武道强者。十里之内，漫山遍野。
+
+|cff00ff00全属性+3500万，杀敌数额外+1
+]],
+['智力'] = function(self)
+    return self.owner.production=='法师' and  100000000 or 0
+end,
+['技能冷却'] =  function(self)
+    return self.owner.production=='法师'  and  15 or 0
+end,
+['触发概率加成'] = function(self)
+    return self.owner.production=='法师'  and  25 or 0
+end,
+['技暴加深'] = function(self)
+    return self.owner.production=='法师'  and  500 or 0
+end,
+is_skill = true,
+content_tip = '|cffffe799物品说明：|r'
+}  
 
 
 ac.black_item = {
    '荒芜之戒','噬魂','魔鬼金矿','魔鬼的砒霜','古代护身符','马可波罗的万花铳','聚宝盆','七星剑','金鼎烈日甲',
-   '死神之触','大力丸','末世'
+   '死神之触','大力丸','末世',
+   '明光追影刀','血魂冰魄魔杖'
 }
 --吞噬丹 吞噬技能（会执行技能上面的属性和on_add）
 ac.tunshi_black_item =[[
