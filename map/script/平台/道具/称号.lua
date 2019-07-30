@@ -78,12 +78,14 @@ tip = [[
 |cffFFE799【称号属性】：|r
 |cff00ff00+30    杀怪加全属性|r
 |cff00ff00+20%   物理伤害加深|r
+|cff00ff00+2.5%  全伤加深|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 30,
 ['物理伤害加深'] = 20,
+['全伤加深'] = 2.5,
 need_map_level = 4,
 --特效
 effect = [[htmd.mdx]]
@@ -104,14 +106,14 @@ tip = [[
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+68   杀怪加全属性|r
-|cff00ff00+20   攻击减甲|r
+|cff00ff00+30   攻击减甲|r
 |cff00ff00+15%  物品获取率|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 68,
-['攻击减甲'] = 20,
+['攻击减甲'] = 30,
 ['物品获取率'] = 15,
 need_map_level = 6,
 --特效
@@ -135,14 +137,14 @@ tip = [[
 |cffFFE799【称号属性】：|r
 |cff00ff00+250  杀怪加攻击|r
 |cff00ff00+15%   全伤加深|r
-|cff00ff00+25%   分裂伤害|r
+|cff00ff00+35%   分裂伤害|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 250,
 ['全伤加深'] = 15,
-['分裂伤害'] = 25,
+['分裂伤害'] = 35,
 need_map_level = 7,
 
 --特效
@@ -164,14 +166,14 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cffFFE799【称号属性】：|r
 |cff00ff00+100 杀怪加全属性|r
 |cff00ff00+5%  免伤|r
-|cff00ff00+15%  全伤加深|r
+|cff00ff00+25%  全伤加深|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 100,
 ['免伤'] = 5,
-['全伤加深'] = 15,
+['全伤加深'] = 25,
 need_map_level = 8,
 
 --特效

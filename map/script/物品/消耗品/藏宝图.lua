@@ -19,7 +19,7 @@ mt{
     --挖图范围
     area = 500,
     --售价
-    kill_count = 1000,
+    kill_count = 100,
     --cd
     cool = 0.5,
     --物品详细介绍的title

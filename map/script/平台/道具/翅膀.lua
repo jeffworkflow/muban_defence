@@ -149,7 +149,7 @@ art = [[tszg.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff修罗模式累计无尽波数=150波
+|cff00ffff修罗模式|cffff0000累计|cff00ffff无尽波数=150波
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+250  杀怪加全属性|r
