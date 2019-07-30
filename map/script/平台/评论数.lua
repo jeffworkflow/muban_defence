@@ -5,21 +5,13 @@ mt{
 --等级
 level = 1,
 --图标
-art = [[rlsh.blp]],
+art = [[pllb.blp]],
 --说明
-tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+tip = [[ 
+|cff00ff00平台进行评论即可获得，评论礼包属性可存档|r 
 
-|cffffe799【获得方式】：|r
-|cff00ffff在平台上，本地图的全部评论数超过 5.5W 自动激活
-
-|cffFFE799【奖励属性】：|r
-|cff00ff00+20%  杀敌数加成|r
-|cff00ff00+10   攻击减甲|r
-|cff00ff00+2%   对BOSS额外伤害|r
-|cff00ff00+1%   会心几率|r
-|cff00ff00+10%  会心伤害|r
-
-]],
+|cffffE7991个评论次数|r 奖励 |cffff0000【减少周围护甲】|cff00ffff+1.5*地图等级
+ ]],
 ['减少周围护甲'] = function(self)
     local p = self.owner:get_owner()
     local value = p:Map_CommentCount()

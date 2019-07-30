@@ -13,8 +13,10 @@ mt{
 
     art = [[zmgdjy.blp]],
     tip = [[
-将 |cff00ff00两个黑色品质装备|r 合成 |cffdf19d0另一个黑色品质装备|r
 
+|cffffe799【说明】:|r
+
+消耗 |cffff0000两个魔鬼的物品|r 兑换 |cffdf19d0另一个魔鬼的物品|r
 ]],
 }
 

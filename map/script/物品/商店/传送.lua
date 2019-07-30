@@ -45,7 +45,7 @@ ac.quick_arrive ={
     ['境界-斗尊'] = {ac.map.rects['传送-境界8'],'tupo8.blp','\n挑战BOSS并突破境界至|cffff0000 【斗尊】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+800w 全属性\n+2.5%  闪避\n+2.5%  技暴几率\n+25%   技暴加深\n+5      攻击减甲\n|r',0,0,70000,0,0,nil,0,500} ,
     ['境界-斗圣'] = {ac.map.rects['传送-境界9'],'tupo9.blp','\n挑战BOSS并突破境界至|cffdf19d0 【斗圣】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+850w 全属性\n+2.5%  免伤几率\n+2.5%  全伤加深\n-0.05   攻击间隔\n|r',0,0,80000,0,0,nil,0,500} ,
     ['境界-斗帝'] = {ac.map.rects['传送-境界10'],'tupo10.blp','\n挑战BOSS并突破境界至|cffdf19d0 【斗帝】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+1000w 全属性\n+5%    全伤加深\n|r',0,0,100000,0,0,nil,0,500} ,
-    ['境界-神帝'] = {ac.map.rects['传送-境界11'],'doushen.blp','\n挑战BOSS并突破境界至|cffdf19d0 【斗帝】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+1000w 全属性\n+5%    全伤加深\n|r',0,0,100000,0,0,nil,0,500} ,
+    ['境界-斗神'] = {ac.map.rects['传送-境界11'],'doushen.blp','\n挑战BOSS并突破境界至|cffdf19d0 【斗神】|r\n\n|cffFFE799【境界属性】：|r\n|cff00ff00+1500w 全属性\n+5%    对BOSS额外伤害\n|r',0,0,150000,0,0,nil,0,500} ,
 
     ['伏地魔'] = {ac.map.rects['传送-伏地魔'],'xianglian402.blp','\n满足一定条件后，战胜伏地魔，可获得|cffff0000顶级的紫金碧玺佩|r\n',0,100000,0} ,
 

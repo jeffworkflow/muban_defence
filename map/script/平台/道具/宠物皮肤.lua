@@ -274,8 +274,9 @@ tip = [[
 |cff00ff00+2.5% 免伤几率|r
 |cff00ff00+10%  技能伤害加深|r
 
-|cffff0000【点击可更换领域外观，所有领域属性可叠加】|r
+|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r
 ]],
+
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
@@ -289,6 +290,10 @@ wabao_cnt = function(self)
     return p.cus_server['挖宝积分'] or 0
 end,
 
+['杀怪加全属性'] = 148,
+['攻击减甲'] = 45,
+['免伤几率'] = 2.5,
+['技能伤害加深'] = 10,
 --特效
 effect = [[Hero_Netherdrake_N1.mdx]],
 }

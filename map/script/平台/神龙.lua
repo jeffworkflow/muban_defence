@@ -161,12 +161,12 @@ tip = [[
 |cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 500 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
-|cff00ff00+128    杀怪加全属性|r
-|cff00ff00+25%  火灵加成|r
-|cff00ff00+25%  物品获取率|r
-|cff00ff00-0.05  攻击间隔|r
+|cff00ff00+148  杀怪加全属性|r
+|cff00ff00+45   攻击减甲|r
+|cff00ff00+2.5% 免伤几率|r
+|cff00ff00+10%  技能伤害加深|r
 
-|cffff0000【所有宠物外观可更换，所有宠物属性可叠加】|r]],
+|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
 
 need_map_level = 15,
 skin_cnt = function(self)

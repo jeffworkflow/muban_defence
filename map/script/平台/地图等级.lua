@@ -28,9 +28,6 @@ tip = [[
 (条件：已购买永久赞助)
 |cffffff00等级Lv11 技暴加深+50%（通关钻石翻倍）
 等级Lv12 全伤加深+5%（通关钻石翻倍）
-|cffff0000等级Lv14 龙腾领域（价值55元）
-等级Lv17 飞沙热浪领域（价值75元）
-等级Lv22 灵霄烟涛领域（价值98元）
 
 |cffffe799持续更新中
 ]],
@@ -211,9 +208,9 @@ art = [[ditudengji.blp]],
 --说明
 tip = [[
 
-|cff00ff00等级Lv2 攻击加全属性+20，杀怪加金币+50
-（通关青铜翻倍）
-等级Lv3 每秒加护甲0.5，每秒加全属性+250
+|cffff0000等级Lv14 龙腾领域（价值55元）
+等级Lv17 飞沙热浪领域（价值75元）
+等级Lv22 灵霄烟涛领域（价值98元）
 
 |cffffe799持续更新中
 ]],
@@ -224,16 +221,5 @@ map_level = function(self)
 end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
---属性加成： 地图等级2
-['攻击加全属性'] = function(self)
-    local p = self.owner:get_owner()
-    local map_level = p:Map_GetMapLevel()
-    local dw_star = (p.cus_server and p.cus_server['青铜'] or 0) > 0  and 2 or 1
-    local value = 0
-    if map_level >= 2 then 
-        value = 20 * dw_star
-    end    
-    return value 
-end,
 
 }
