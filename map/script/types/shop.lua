@@ -85,6 +85,9 @@ function mt:on_remove()
 	if self.texttag then 
 		self.texttag:remove()
 	end	
+	--移除各种引用
+	shop.unit_list[self.handle] = nil
+
 end	
 --打印商品
 function mt:print_item()

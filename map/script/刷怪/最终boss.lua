@@ -24,6 +24,7 @@ ac.game:event '游戏-最终boss' (function(trg)
     ac.final_boss = boss
     --注册事件
     boss:event '单位-死亡'(function(_,unit,killer) 
+        ac.final_boss = nil
         if ac.g_game_degree_name == '修罗模式' then 
             -- print(unit:get_point())
             ac.func_give_suipian(unit:get_point()) --散落碎片

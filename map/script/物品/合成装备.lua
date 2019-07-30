@@ -1,26 +1,45 @@
 --按照装备品阶 筛选出 lni 装备。
 --quality_item={'白' = {'新手剑','新手戒指'},'蓝' = {..}}
 local quality_item ={}
+local all_item ={}
 for name,data in pairs(ac.table.ItemData) do 
     local color = data.color 
     if color then 
         local list = quality_item[color] or {}
         quality_item[color] = list 
         table.insert(list,name)
+        if finds(color,'白','蓝','金','红') then 
+            table.insert(all_item,name)
+        end    
     end 
 end 
---处理技能
 ac.wait(10,function()
+    --处理技能 （青）
     quality_item['青'] ={}
     for i,name in ipairs(ac.skill_list2) do
         table.insert(quality_item['青'],name)
     end    
 
+    -- --处理黑色物品 （黑）
+    -- quality_item['黑'] ={}
+    -- for i,name in ipairs(ac.black_item) do
+    --     print(name)
+    --     table.insert(quality_item['黑'],name)
+    -- end   
+    --排序
     for color,list in pairs(quality_item) do 
         table.sort(list,function (a,b)
             return a < b
         end)
     end 
+    table.sort(all_item,function (strA,strB)
+        return strA<strB
+    end)
+
+    --全局
+    ac.quality_item = quality_item
+    ac.all_item = all_item
+    
 end)
 
 
@@ -46,6 +65,7 @@ local streng_item_list = {
     {'金^100','蓝*1 蓝*1 蓝*1 蓝*1 装备合成*1'},
     {'红^100','金*1 金*1 金*1 金*1 装备合成*1'},
     {'红^100','红*1 红*1  装备合成*1'},
+    {'黑^100','黑*1 黑*1  魔鬼的合成*1'},
     
     {'星星之火','星星之火碎片*100'},
     {'陨落心炎','陨落心炎碎片*100'},

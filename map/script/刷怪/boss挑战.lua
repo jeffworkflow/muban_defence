@@ -44,6 +44,7 @@ ac.challenge_boss = {
     ['斗尊'] = {ac.map.rects['boss-境界8'],270},
     ['斗圣'] = {ac.map.rects['boss-境界9'],270},
     ['斗帝'] = {ac.map.rects['boss-境界10'],270},
+    ['神帝'] = {ac.map.rects['boss-境界11'],270},
 
     ['伏地魔'] = {ac.map.rects['boss-伏地魔'],270},
     

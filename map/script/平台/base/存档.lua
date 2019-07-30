@@ -31,8 +31,7 @@ register_japi[[
     native DzGetMouseTerrainX               takes nothing returns real
     native DzGetMouseTerrainY               takes nothing returns real
     native DzGetMouseTerrainZ               takes nothing returns real
-    native DzAPI_Map_CommentCount           takes player whichPlayer returns integer
-    native DzAPI_Map_CommentTotalCount      takes nothing returns integer
+    native RequestExtraIntegerData          takes integer dataType, player whichPlayer, string param1, string param2, boolean param3, integer param4, integer param5, integer param6 returns integer
 ]]
 
 --获取玩家评论数
@@ -41,7 +40,7 @@ function player.__index:Map_CommentCount()
     if global_test then 
         return self.comment or 1
     else    
-        return japi.DzAPI_Map_CommentCount(handle)
+        return japi.RequestExtraIntegerData(46, handle, nil, nil, false, 0, 0, 0)
     end    
 end
 
@@ -51,7 +50,7 @@ function player.__index:Map_CommentTotalCount()
     if global_test then 
         return self.total_comment or 1
     else    
-        return japi.DzAPI_Map_CommentTotalCount()
+        return japi.RequestExtraIntegerData(51, nil, nil, nil, false, 0, 0, 0)
     end 
 end
 

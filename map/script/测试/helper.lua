@@ -183,6 +183,10 @@ function helper:reload()
 	ac.game:event_notify('游戏-脚本重载')
 end
 
+
+
+
+
 --创建全图视野
 function helper:icu()
 	fogmodifier.create(self:get_owner(), require('maps.map').rects['全地图'])
@@ -593,6 +597,13 @@ function helper:add_red()
 		self:add_item(name,true)
 	end	
 end	
+function helper:add_black()
+	for i =1,6 do 
+		print(ac.quality_item['黑'][1])
+		local name = ac.quality_item['黑'][math.random(#ac.quality_item['黑'])]
+		self:add_item(name,true)
+	end	
+end	
 
 --强制下一波
 function helper:test_gjjg()
@@ -892,6 +903,12 @@ function helper:addit(flag)
 		self.owner.peon:add_item(name,true)
 	end	
 end
+
+function helper:gsp()
+	ac.func_give_suipian(self:get_point())
+end
+
+
 
 --打印hero键值对应的key值
 function helper:print_hero()

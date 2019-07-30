@@ -19,6 +19,7 @@ ac.game:event '游戏-开始' (function()
 end)
 
 ac.loop(30 * 1000, function()
+	collectgarbage("collect")
 	local lua_memory = collectgarbage 'count'
 	print(('------------------------定期体检报告------------------------'))
 	print((('时间: %.f'):format(ac.clock() / 1000)))

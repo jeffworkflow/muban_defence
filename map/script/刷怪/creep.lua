@@ -545,7 +545,7 @@ end
 
 local function init()
     creep.all_creep ={}
-
+    ac.all_creep = creep.all_creep
     ac.creep = setmetatable({}, {__index = function(self, name)
         return function(data)
             return register_creep(self, name, data)

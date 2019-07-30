@@ -12,13 +12,17 @@ ac.game:event '技能-获得' (function (_,hero,self)
     
     local skill_book = {}
 
-    for index,name in ipairs(self.skills) do 
-        local skill = hero:add_skill(name,page_type,slots[index],{
-            book = self,
-        })
-        skill_map[name] = skill
-        table.insert(skill_list,skill)
-        table.insert(skill_book,skill)
+    -- for index,name in ipairs(self.skills) do 
+    for i = 1,#self.skills do     
+        local name = self.skills[i]
+        if name then 
+            local skill = hero:add_skill(name,page_type,slots[i],{
+                book = self,
+            })
+            skill_map[name] = skill
+            table.insert(skill_list,skill)
+            table.insert(skill_book,skill)
+        end    
     end 
     local skill = hero:add_skill('关闭',page_type,slots[12],{
         book = self,

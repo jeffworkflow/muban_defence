@@ -169,6 +169,20 @@ ac.prod_level = {
 
 ]]
 },
+['神帝'] = {{
+['全属性']=10000000,
+['免伤几率']=2.5,
+['全伤加深']=2.5,
+['攻击间隔']=-0.05,
+},[[doushen.blp]],[[
+%extr_tip%
+
+|cffFFE799【境界属性】：|r
+|cff00ff00+1000w 全属性
++5%    全伤加深|r
+
+]]
+},
 }
 for key,val in sortpairs(ac.prod_level) do 
     local mt = ac.skill[key]
@@ -218,11 +232,11 @@ mt{
 点击查看 |cff00ff00境界突破|r
     ]],
 }
-mt.skills = {'小斗气','斗者','斗师','斗灵','斗王','斗皇','斗宗','斗尊','斗圣','斗帝'}
+mt.skills = {'小斗气','斗者','斗师','斗灵','斗王','斗皇','斗宗','斗尊','斗圣','斗帝','神帝'}
 --注册死亡事件升级技能
 ac.game:event '单位-死亡'(function(_,unit,killer)
     local name = unit:get_name()
-    if finds(name,'小斗气','斗者','斗师','斗灵','斗王','斗皇','斗宗','斗尊','斗圣','斗帝') then
+    if finds(name,'小斗气','斗者','斗师','斗灵','斗王','斗皇','斗宗','斗尊','斗圣','斗帝','神帝') then
         local skl = killer:find_skill(name,nil,true)
         local p = killer:get_owner()
         p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00境界突破成功|r 突破后的属性可以在境界系统中查看',3)

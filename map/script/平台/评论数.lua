@@ -1,19 +1,32 @@
 
 --------个人评论次数和奖励---------------------
+local mt = ac.skill['评论礼包']
+mt{
+--等级
+level = 1,
+--图标
+art = [[rlsh.blp]],
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-ac.wait(13,function()
-    for i=1,10 do
-        local p = ac.player[i]
-        if p:is_player() then
-            p:event '玩家-注册英雄后' (function(_, _, hero)
-                local value = p:Map_CommentCount()
-                local map_level = p:Map_GetMapLevel()
-                print('玩家评论数',value)
-                hero:add('减少周围护甲',value*map_level*1.5)
-            end)
-        end
-    end
-end);
+|cffffe799【获得方式】：|r
+|cff00ffff在平台上，本地图的全部评论数超过 5.5W 自动激活
+
+|cffFFE799【奖励属性】：|r
+|cff00ff00+20%  杀敌数加成|r
+|cff00ff00+10   攻击减甲|r
+|cff00ff00+2%   对BOSS额外伤害|r
+|cff00ff00+1%   会心几率|r
+|cff00ff00+10%  会心伤害|r
+
+]],
+['减少周围护甲'] = function(self)
+    local p = self.owner:get_owner()
+    local value = p:Map_CommentCount()
+    local map_level = p:Map_GetMapLevel()
+    return value*map_level*1.5
+end,
+}
 
 --------总评论次数和奖励---------------------
 local mt = ac.skill['日益精进']
@@ -91,7 +104,7 @@ mt{
     
 }
 mt.skills = {
-    '日益精进','勇攀新高'
+    '评论礼包',nil,nil,nil,'日益精进','勇攀新高'
 }
 
 function mt:on_add()
@@ -99,12 +112,14 @@ function mt:on_add()
     local p = hero:get_owner()
     -- print('打开魔法书')
     for index,skill in ipairs(self.skill_book) do 
-        local total_common = p:Map_CommentTotalCount()
-        local map_level = p:Map_GetMapLevel()
-        -- print('地图总评论数',total_common)
-        if total_common >= skill.need_common  and map_level >= skill.need_map_level then 
-            skill:set_level(1)
-        end
+        if skill and skill.name ~= '评论礼包' then 
+            local total_common = p:Map_CommentTotalCount()
+            local map_level = p:Map_GetMapLevel()
+            -- print('地图总评论数',total_common)
+            if total_common >= skill.need_common  and map_level >= skill.need_map_level then 
+                skill:set_level(1)
+            end
+        end    
     end 
 end  
 

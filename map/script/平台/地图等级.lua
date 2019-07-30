@@ -1,5 +1,5 @@
---商城武器
-local mt = ac.skill['地图等级']
+--地图等级
+local mt = ac.skill['地图等级1']
 mt{
 --等级
 level = 1,
@@ -192,6 +192,46 @@ end,
     local value = 0
     if map_level >= 12 then 
         value = 5 * dw_star
+    end    
+    return value 
+end,
+
+}
+
+
+--商城武器
+local mt = ac.skill['地图等级2']
+mt{
+--等级
+level = 1,
+title = function(self) return '|cffffe799地图等级(会更新) |r|cffff0000 '..self.map_level ..' 级|r' end,
+is_order = 1,
+--图标
+art = [[ditudengji.blp]],
+--说明
+tip = [[
+
+|cff00ff00等级Lv2 攻击加全属性+20，杀怪加金币+50
+（通关青铜翻倍）
+等级Lv3 每秒加护甲0.5，每秒加全属性+250
+
+|cffffe799持续更新中
+]],
+map_level = function(self)
+    local p = self.owner:get_owner()
+    local res = p:Map_GetMapLevel()
+    return res
+end,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+--属性加成： 地图等级2
+['攻击加全属性'] = function(self)
+    local p = self.owner:get_owner()
+    local map_level = p:Map_GetMapLevel()
+    local dw_star = (p.cus_server and p.cus_server['青铜'] or 0) > 0  and 2 or 1
+    local value = 0
+    if map_level >= 2 then 
+        value = 20 * dw_star
     end    
     return value 
 end,

@@ -347,24 +347,26 @@ local rank = {
 ac.wait(5*1000,function() 
     for i,content in ipairs(rank) do
         local p = ac.player(1);
-        p:sp_get_rank(content[1],'rank',10,function(data)
-            -- print_r(data)
-            ac.wait(10,function()
-                if not panel.rank then 
-                    panel.rank = {}
-                end    
-                if not panel.rank[content[2]] then 
-                    panel.rank[content[2]]  = {}
-                end
-                for i = 1, #data do
-                    table.insert(panel.rank[content[2]],data[i])
-                end    
-                --首次刷新最强王者
-                if finds(content[2] ,'修罗模式') then 
-                    panel:fresh('修罗模式')
-                end    
-            end)
-        end);
+        ac.wait(200*i,function()
+            p:sp_get_rank(content[1],'rank',10,function(data)
+                -- print_r(data)
+                ac.wait(10,function()
+                    if not panel.rank then 
+                        panel.rank = {}
+                    end    
+                    if not panel.rank[content[2]] then 
+                        panel.rank[content[2]]  = {}
+                    end
+                    for i = 1, #data do
+                        table.insert(panel.rank[content[2]],data[i])
+                    end    
+                    --首次刷新最强王者
+                    if finds(content[2] ,'修罗模式') then 
+                        panel:fresh('修罗模式')
+                    end    
+                end)
+            end);
+        end)
     end    
 end)
 

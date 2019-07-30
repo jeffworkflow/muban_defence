@@ -11,8 +11,6 @@ item_type = "装备",
 color ='黑',
 --模型
 specail_model = [[File00000376 - RC.mdx]],
---冷却
-cool = 0,
 --描述
 tip = [[
 
@@ -57,8 +55,6 @@ item_type = "装备",
 specail_model = [[File00000376 - RC.mdx]],
 --品质
 color ='黑',
---冷却
-cool = 0,
 --描述
 tip = [[
 
@@ -108,8 +104,6 @@ specail_model = [[File00000376 - RC.mdx]],
 item_type = "装备",
 --品质
 color ='黑',
---冷却
-cool = 0,
 --描述
 tip = [[
 
@@ -141,7 +135,7 @@ specail_model = [[File00000376 - RC.mdx]],
 item_type = "消耗品",
 --品质
 color ='黑',
---冷却
+--cd
 cool = 1,
 --描述
 tip = [[
@@ -194,8 +188,6 @@ specail_model = [[File00000376 - RC.mdx]],
 item_type = "装备",
 --品质
 color ='黑',
---冷却
-cool = 1,
 --描述
 tip = [[
 
@@ -224,8 +216,6 @@ specail_model = [[File00000376 - RC.mdx]],
 item_type = "装备",
 --品质
 color ='黑',
---冷却
-cool = 1,
 --描述
 tip = [[
 
@@ -254,8 +244,6 @@ specail_model = [[File00000376 - RC.mdx]],
 item_type = "装备",
 --品质
 color ='黑',
---冷却
-cool = 1,
 --描述
 tip = [[
 
@@ -285,8 +273,6 @@ specail_model = [[File00000376 - RC.mdx]],
 item_type = "装备",
 --品质
 color ='黑',
---冷却
-cool = 1,
 --描述
 tip = [[
 |cffcccccc连上古之神都编不下去的一件衣服
@@ -313,8 +299,6 @@ specail_model = [[File00000376 - RC.mdx]],
 item_type = "装备",
 --品质
 color ='黑',
---冷却
-cool = 1,
 --描述
 tip = [[
 
@@ -342,8 +326,6 @@ specail_model = [[File00000376 - RC.mdx]],
 item_type = "装备",
 --品质
 color ='黑',
---冷却
-cool = 1,
 --描述
 tip = [[
 
@@ -414,10 +396,10 @@ art = [[dlw.blp]],
 specail_model = [[File00000376 - RC.mdx]],
 --类型
 item_type = "消耗品",
+--cd 
+cool = 1,
 --品质
 color ='黑',
---冷却
-cool = 1,
 --描述
 tip = [[
 
@@ -447,8 +429,6 @@ specail_model = [[File00000376 - RC.mdx]],
 item_type = "装备",
 --品质
 color ='黑',
---冷却
-cool = 1,
 --描述
 tip = [[
 

@@ -2,33 +2,31 @@
 
 --按照装备品阶 筛选出 lni 装备。
 --quality_item={'白' = {'新手剑','新手戒指'},'蓝' = {..}}
-local quality_item ={}
-local all_item = {}
-for name,data in pairs(ac.table.ItemData) do 
-    local color = data.color 
-    if color then 
-        if data.item_type == '装备' or data.item_type == '消耗品'   then
-            if not quality_item[color] then 
-                quality_item[color] = {}
-            end    
-            table.insert(quality_item[color],name)
-            --打印 可合成或是掉落的物品 
-            -- print(name,color)
-            table.insert(all_item,name)
-        end    
-    end 
-end
+-- local quality_item ={}
+-- local all_item = {}
+-- for name,data in pairs(ac.table.ItemData) do 
+--     local color = data.color 
+--     if color then 
+--         if data.item_type == '装备' or data.item_type == '消耗品'   then
+--             if not quality_item[color] then 
+--                 quality_item[color] = {}
+--             end    
+--             table.insert(quality_item[color],name)
+--             --打印 可合成或是掉落的物品 
+--             -- print(name,color)
+--             table.insert(all_item,name)
+--         end    
+--     end 
+-- end
 
-ac.quality_item = quality_item
-ac.all_item = all_item
-for k,v in pairs(quality_item) do 
-    table.sort(v,function (strA,strB)
-        return strA < strB
-    end)
-end    
-table.sort(ac.all_item,function (strA,strB)
-    return strA<strB
-end)
+-- for k,v in pairs(quality_item) do 
+--     table.sort(v,function (strA,strB)
+--         return strA < strB
+--     end)
+-- end    
+-- table.sort(ac.all_item,function (strA,strB)
+--     return strA<strB
+-- end)
 
 --英雄技能，钥匙怪掉落表
 ac.skill_list2 = ac.skill_list2
@@ -101,7 +99,7 @@ local reward = {
     end,
 
     ['随机白装'] = function (player,hero,unit,is_on_hero)
-        local list = quality_item['白']
+        local list = ac.quality_item['白']
         if list == nil then 
             print('没有白色装备 添加失败')
             return 
@@ -118,7 +116,7 @@ local reward = {
         end    
     end,
     ['随机蓝装'] = function (player,hero,unit,is_on_hero)
-        local list = quality_item['蓝']
+        local list = ac.quality_item['蓝']
         if list == nil then 
             print('没有蓝色装备 添加失败')
             return 
@@ -136,7 +134,7 @@ local reward = {
 
 
     ['随机金装'] = function (player,hero,unit,is_on_hero)
-        local list = quality_item['金']
+        local list = ac.quality_item['金']
         if list == nil then 
             print('没有金色装备 添加失败')
             return 
@@ -153,7 +151,7 @@ local reward = {
     end,
 
     ['随机红装'] = function (player,hero,unit,is_on_hero)
-        local list = quality_item['红']
+        local list = ac.quality_item['红']
         if list == nil then 
             print('没有红色装备 添加失败')
             return 

@@ -176,23 +176,35 @@ end
 
 ac.game:event '游戏-无尽开始'(function(trg) 
     --删除商店
-    -- local del_shop = [[练功师 异火 技能商店 新手任务]]
-    -- for key,unit in pairs(ac.shop.unit_list) do 
-	-- 	if finds(del_shop,unit:get_name()) then 
-	-- 		unit:remove()
-	-- 	end	
-    -- end	
+    local del_shop = [[练功师]]
+    for key,unit in pairs(ac.shop.unit_list) do 
+		if finds(del_shop,unit:get_name()) then 
+			unit:remove()
+		end	
+    end	
     
     -- --练功房 自动刷怪停止
-    -- for i=1,10 do 
-    --     local p = ac.player(i)
-    --     if p:is_player() then 
-    --         p.current_creep = nil  
-    --     end
-    -- end     
+    for i=1,10 do 
+        local p = ac.player(i)
+        if p:is_player() then 
+            p.current_creep = nil  
+        end
+    end     
 
-    -- 野怪刷新开关 ，true 关闭
-    -- ac.flag_endless = true 
+    -- 关闭所有刷怪并清除怪物
+    for name,crep in  pairs(ac.all_creep) do 
+        if crep and crep.has_started then 
+            crep:finish(true)
+        end    
+    end    
+    -- 野怪刷新开关 ，true 关闭,清理所有场上敌对怪物
+    ac.flag_endless = true 
+    for key,unit in pairs(ac.unit.all_units) do 
+		if unit:is_alive() and unit.category =='进攻怪' then 
+			unit:remove()
+		end	
+    end	
+
     
     --游戏开始后 刷怪时间  
     local time = force_cool

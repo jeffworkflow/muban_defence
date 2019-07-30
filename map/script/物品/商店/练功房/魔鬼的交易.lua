@@ -603,6 +603,8 @@ local function add_skill_by_lv(shop,lv,flag)
     --最后一重时，增加魔鬼的交易
     if lv > #devil_deal then 
         shop:add_sell_item('真魔鬼的交易',1)
+        shop:add_sell_item('魔鬼的合成',4)
+        
         -- local x,y = shop:get_point():get()
         -- shop:remove()
         -- ac.shop.create('真魔鬼的交易',x,y,0,nil)

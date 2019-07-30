@@ -284,6 +284,7 @@ ac.map.rects={
 	['传送-境界8'] =rect.j_rect('jj8') ,
 	['传送-境界9'] =rect.j_rect('jj9') ,
 	['传送-境界10'] =rect.j_rect('jj10') ,
+	['传送-境界11'] =rect.j_rect('sd1') ,
 
 	['boss-境界1'] =rect.j_rect('jj11') ,
 	['boss-境界2'] =rect.j_rect('jj22') ,
@@ -295,6 +296,7 @@ ac.map.rects={
 	['boss-境界8'] =rect.j_rect('jj88') ,
 	['boss-境界9'] =rect.j_rect('jj99') ,
 	['boss-境界10'] =rect.j_rect('jj1010') ,
+	['boss-境界11'] =rect.j_rect('sd11') ,
 
 	['传送-伏地魔'] =rect.j_rect('fdm1') ,
 	['boss-伏地魔'] =rect.j_rect('fdm11') ,
