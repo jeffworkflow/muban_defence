@@ -458,11 +458,12 @@ tip = [[
 
 |cffcccccc刀光一闪，寒光下映射的一道血光溅起，被砍死的人看到了自己的眼睛。
 
-|cff00ff00+1亿力量
+|cff00ff00+1亿   力量
 +200% 分裂伤害
 +500% 暴击加深
 +100% 物理伤害加深
-]],
+
+|cffff0000战士专属（仅战士携带有效）]],
 ['力量'] = function(self)
     return self.owner.production=='战士' and  100000000 or 0
 end,
@@ -490,13 +491,14 @@ item_type = "装备",
 color ='黑',
 tip = [[
 
-|cffcccccc强者的世界,属性的世界
+|cffcccccc强者的世界,属性的世界。
 
-|cff00ff00+1亿  智力
+|cff00ff00+1亿   智力
 +15%  技能冷却
 +25%  触发概率加成
 +500% 技暴加深
-]],
+
+|cffff0000法师专属（仅法师携带有效）]],
 ['智力'] = function(self)
     return self.owner.production=='法师' and  100000000 or 0
 end,
