@@ -743,8 +743,8 @@ on_set['技能冷却'] = function(self)
 end
 
 on_get['吸血'] = function(self, value)
-	if value > 150 then
-		return 150
+	if value > 250 then
+		return 250
 	end
 	return value
 end

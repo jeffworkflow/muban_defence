@@ -516,10 +516,85 @@ content_tip = '|cffffe799物品说明：|r'
 }  
 
 
+local mt = ac.skill['灵魂之弦']
+mt{
+--等久
+level = 1,
+art = [[lhzx.blp]],
+specail_model = [[File00000376 - RC.mdx]],
+item_type = "装备",
+color ='黑',
+tip = [[
+
+|cffcccccc灵云缥缈海凝光，疑有疑无在哪边？
+
+|cff00ff00+1亿   敏捷
++2   多重射
+-0.2  攻击间隔
++200 攻击距离
++150% 物理伤害加深
+
+|cffff0000射手专属（仅射手携带有效）]],
+['敏捷'] = function(self)
+    return self.owner.production=='射手' and  100000000 or 0
+end,
+['多重射'] =  function(self)
+    return self.owner.production=='射手'  and  2 or 0
+end,
+['攻击间隔'] = function(self)
+    return self.owner.production=='射手'  and  -0.2 or 0
+end,
+['攻击距离'] = function(self)
+    return self.owner.production=='射手'  and  200 or 0
+end,
+['物理伤害加深'] = function(self)
+    return self.owner.production=='射手'  and  150 or 0
+end,
+is_skill = true,
+content_tip = '|cffffe799物品说明：|r'
+}  
+
+
+local mt = ac.skill['无尽战刃']
+mt{
+--等久
+level = 1,
+art = [[wjzr.blp]],
+specail_model = [[File00000376 - RC.mdx]],
+item_type = "装备",
+color ='黑',
+tip = [[
+
+|cffcccccc暗月洒下第一滩污血，时空之神的瞳孔即将打开。
+
+|cff00ff00+1亿   敏捷
++2   多重射
+-0.2  攻击间隔
++200 攻击距离
++150% 物理伤害加深
+
+|cffff0000杀手专属（仅杀手携带有效）]],
+['全属性'] = function(self)
+    return self.owner.production=='杀手' and  50000000 or 0
+end,
+['暴击加深'] =  function(self)
+    return self.owner.production=='杀手'  and  350 or 0
+end,
+['技暴加深'] = function(self)
+    return self.owner.production=='杀手'  and  350 or 0
+end,
+['会心伤害'] = function(self)
+    return self.owner.production=='杀手'  and  350 or 0
+end,
+is_skill = true,
+content_tip = '|cffffe799物品说明：|r'
+}  
+
+
 ac.black_item = {
    '荒芜之戒','噬魂','魔鬼金矿','魔鬼的砒霜','古代护身符','马可波罗的万花铳','聚宝盆','七星剑','金鼎烈日甲',
    '死神之触','大力丸','末世',
-   '明光追影刀','血魂冰魄魔杖'
+   '明光追影刀','血魂冰魄魔杖','灵魂之弦','无尽战刃'
 }
 --吞噬丹 吞噬技能（会执行技能上面的属性和on_add）
 ac.tunshi_black_item =[[

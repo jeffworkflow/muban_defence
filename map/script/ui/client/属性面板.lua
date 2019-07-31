@@ -110,11 +110,12 @@ class.attr_panel = extends(class.panel){
                 end   
             elseif data.name =='护甲' then 
                 if hero:has_restriction '无敌' then
-                    data.value:set_text('|cffffff00无敌|r')
+                    data.value:set_text('|cffff0000无敌|r')
+                else
+                    -- str = bignum2string(hero:get(data.name)) 
+                    str = string.format('%.f',hero:get(data.name))
+                    data.value:set_text(str) 
                 end
-                -- str = bignum2string(hero:get(data.name)) 
-                str = string.format('%.f',hero:get(data.name))
-                data.value:set_text(str) 
             else  
                 -- str = bignum2string(hero:get(data.name)) 
                 str = string.format('%.f',hero:get(data.name))
