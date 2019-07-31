@@ -229,11 +229,11 @@ mt{
     tip = [[
     
 |cffFFE799【成就属性】：|r
-|cff00ff00+500 护甲
+|cff00ff00+1500 护甲
 +500W  生命上限|r
 
 ]],
-    ['护甲'] = 500,
+    ['护甲'] = 1500,
     ['生命上限'] = 5000000,
 }
 
@@ -366,9 +366,9 @@ ac.game:event '单位-死亡'(function(_,unit,killer)
             ac.game:event_notify('技能-插入魔法书',hero,'彩蛋','实在是菜')
             player.is_show_nickname = '实在是菜'
             --给全部玩家发送消息
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+500护甲 +500W生命上限|r',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+500护甲 +500W生命上限|r',6)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+500护甲 +500W生命上限|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1500护甲 +500W生命上限|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1500护甲 +500W生命上限|r',6)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r|cff00ffff 怎么一直送？ |r 获得成就|cffff0000 "实在是菜" |r，奖励 |cffff0000+1500护甲 +500W生命上限|r',6)
         end
     end    
 

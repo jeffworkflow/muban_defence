@@ -263,7 +263,8 @@ strong_hero = 1, --作用在人身上
 --图标
 art = [[meiying.blp]],
 --说明
-tip = [[
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
 |cffffe799【获得方式】：|r
 |cff00ffff挖宝积分超过 4.5W 自动获得，已拥有积分：|r%wabao_cnt% 或者
 |cff00ffff神龙碎片超过 500  自动获得，已拥有碎片：|r%skin_cnt%
@@ -279,7 +280,7 @@ tip = [[
 
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-need_map_level = 5,
+need_map_level = 15,
 skin_cnt = function(self)
     local p = ac.player.self
     return p.cus_server[self.name..'碎片'] or 0
@@ -300,7 +301,7 @@ effect = [[Hero_Netherdrake_N1.mdx]],
 
 
 --统一加方法
-for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','骨龙','奇美拉','小悟空','魅影'}) do
+for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','奇美拉','魅影','骨龙','小悟空'}) do
     local mt = ac.skill[name]
 
     function mt:on_cast_start()
@@ -342,7 +343,7 @@ mt{
     ]],
 }
 mt.skills = {
-    '耐瑟龙','冰龙','精灵龙','奇美拉','骨龙','小悟空','魅影'
+    '耐瑟龙','冰龙','精灵龙','奇美拉','魅影','骨龙','小悟空'
 }
 function mt:on_add()
     local hero = self.owner 

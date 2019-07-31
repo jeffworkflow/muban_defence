@@ -191,6 +191,7 @@ tip = [[
 |cff00ff00+10    每秒加护甲|r
 |cff00ff00+10%   闪避|r
 |cff00ff00+10%   免伤几率|r
+|cff00ff00+10%   对BOSS额外伤害|r
 
 |cffffff00轮迴幻魔翼+绝世阳炎翼可激活属性：全伤加深+100%
 
@@ -203,6 +204,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['攻击加全属性'] = 388,
 ['每秒加护甲'] = 10,
 ['免伤几率'] = 10,
+['对BOSS额外伤害'] = 10,
 ['闪避'] = 10,
 ['全伤加深'] = function(self) 
     local val = 0 
@@ -235,6 +237,7 @@ tip = [[
 |cff00ff00+10    每秒加护甲|r
 |cff00ff00+10%   免伤|r
 |cff00ff00+10%   免伤几率|r
+|cff00ff00+10%   对BOSS额外伤害|r
 
 |cffffff00轮迴幻魔翼+绝世阳炎翼可激活属性：全伤加深+100%
 
@@ -247,6 +250,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['攻击加全属性'] = 488,
 ['每秒加护甲'] = 10,
 ['免伤几率'] = 10,
+['对BOSS额外伤害'] = 10,
 ['免伤'] = 10,
 --特效
 effect = [[chibang7.mdx]]
