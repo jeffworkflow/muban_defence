@@ -44,6 +44,7 @@ end,
 	tm = 1
 }
 mt.model = [[Abilities\Spells\Demon\RainOfFire\RainOfFireTarget.mdl]]
+mt.effect = [[Abilities\Weapons\FireBallMissile\FireBallMissile.mdl]]
 
 function mt:atk_pas_shot(damage)
 	local hero = self.owner
@@ -77,7 +78,7 @@ function mt:atk_pas_shot(damage)
 					damage = skill.damage,
 					damage_type = skill.damage_type,
 				}
-				u:add_effect('chest',[[Abilities\Weapons\FireBallMissile\FireBallMissile.mdl]]):remove()
+				u:add_effect('chest',skill.effect):remove()
 			end
 		end)
 	end

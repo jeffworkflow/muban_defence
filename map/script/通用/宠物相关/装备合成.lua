@@ -19,6 +19,8 @@ mt{
 将 |cff00ff00两个红色品质装备|r 合成 |cffdf19d0另一个红色品质装备|r
 
 ]],
+
+    ignore_cool_save = true, --忽略技能冷却
 }
 
 

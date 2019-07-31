@@ -413,121 +413,26 @@ ac.wait(0,function ()
 
 
 -------------------------属性面板---------------------------
-	-- local attr_panel = class.attr_panel.create(670,925)
+	local attr_panel = class.attr_panel.create(492,934)
 
 
 
----------------------当选中单位时 更新UI内容--------------------------------- 
+-------------------当选中单位时 更新UI内容--------------------------------- 
 
-	-- console.update_timer = ac.loop(100,function ()
+	console.update_timer = ac.loop(100,function ()
 
-	-- 	local unit_handle = japi.GetRealSelectUnit()
-	-- 	local unit = ac.unit.j_unit(unit_handle)
+		local unit_handle = japi.GetRealSelectUnit()
+		local unit = ac.unit.j_unit(unit_handle)
 
-	-- 	if unit and unit ~= actor.hero then 
-	-- 		--如果这个单位 有这个base_id属性 则更新 模型观察器中的模型
-	-- 		local name = unit.base_id or unit:get_name()
-	-- 		if name and ac.table.model[name] then 
-	-- 			actor:set_actor(name)
-	-- 		else 
-	-- 			actor:hide()
-	-- 		end 
-	-- 		observe.text:set_text(actor:get_title() .. ' Lv' .. unit:get_level())
-	-- 		observe:show()
-
-	-- 		attr_panel:set_hero(unit)
-	-- 	end 
-
-	-- 	actor.hero = unit
- 
-	-- 	--当有选中单位时
-	-- 	if unit then 
-
-	-- 		if unit.get_exp_info then 
-	-- 			local info = unit:get_exp_info()
-	-- 			local width = 192 * math.max(math.min((info.exp / info.exp_max),0.9999),0.0001)
-	-- 			exp_texture:set_control_size(width,exp_texture.h)
-	-- 			exp_texture:show()
-
-	-- 			if info_button.is_enter then 
-	-- 				info_button:on_button_mouse_enter()
-	-- 			end 
-	-- 		else 
-	-- 			exp_texture:hide()
-	-- 		end
-
-	-- 		observe.text:set_text(actor:get_title() .. ' Lv' .. unit:get_level())
-			
-	-- 		level_texture.text:set_text(tostring(unit:get_level()))
-
-	-- 		--更新血条蓝条
-	-- 		hp_model:set_value(unit:get('生命'),unit:get('生命上限'))
-	-- 		if hp_model.rate <= 0.3 then 
-	-- 			hp_model:replace_id_texture('ReplaceableTextures\\TeamColor\\TeamColor00.blp',1)
-	-- 		else 
-	-- 			hp_model:replace_id_texture('bar_green.tga',1)
-	-- 		end
-
-	-- 		mp_model:set_value(unit:get('魔法'),unit:get('魔法上限'))
-
-			
-
-	-- 		--如果这个单位不是自己的 而是别人的，则绘制一层技能图标上去 以此观察对方的技能
-	-- 		if unit:get_owner() ~= ac.player.self then 
-	-- 			for i,button in ipairs(buttons) do 
-	-- 				local skill = unit:find_skill(i,'英雄')
-	-- 				if skill then 
-	-- 					button:set_normal_image(skill:get_art(nil,true))
-	-- 				else 
-	-- 					button:set_normal_image('')
-	-- 				end
-	-- 			end 
-
-	-- 			enable_skill_button = false
-	-- 		else 
-	-- 			--否则这个单位是自己的
-
-	-- 			for i,button in ipairs(buttons) do 
-	-- 				local skill = unit:find_skill(i,'英雄')
-	-- 				local skill_control = button.skill
-
-	-- 				--取得该控件上的技能id
-	-- 				local ability_id = message.button(skill_control.column,skill_control.row) or 0
-
-	-- 				--如果 有这个技能对象 并且 该控件上的技能id 是0 的时候
-	-- 				--就是在用鼠标准星 选择目标的时候，控制台上的技能按钮被魔兽隐藏了
-	-- 				--故此在这里重新绘制一层新的图标
-	-- 				if skill and ability_id == 0 then 
-	-- 					enable_skill_button = false
-	-- 					button:set_normal_image(skill:get_art(nil,true))
-	-- 				else 
-	-- 					enable_skill_button = true 
-	-- 					--否则清空绘制的图标
-	-- 					button:set_normal_image('')
-	-- 				end 
-	-- 			end 
-	-- 		end 
-
-			
-	-- 	else
-
-	-- 		--如果没有选中单位，将UI界面清空跟隐藏
-	-- 		hp_model:clear()
-	-- 		mp_model:clear()
-	-- 		for i,button in ipairs(buttons) do 
-	-- 			button:set_normal_image('')
-	-- 		end 
-	-- 		actor:hide()
-	-- 		observe:hide()
-
-	-- 		attr_panel:set_hero(nil)
-
-	-- 		enable_skill_button = false
-	-- 	end 
-		
-	-- end)
-
-
+		if unit  then 
+			--如果这个单位 有这个base_id属性 则更新 模型观察器中的模型
+			local name = unit:get_name()
+			attr_panel:set_hero(unit)
+		else
+			attr_panel:set_hero(nil)	
+		end 
+	end)
+	
 
 end)
 

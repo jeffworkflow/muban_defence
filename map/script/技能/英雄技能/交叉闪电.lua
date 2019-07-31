@@ -48,6 +48,8 @@ end,
 
     --投射物模型
     model = [[FirecrackerArrow.mdx]],
+    effect = [[AZ_SSCrow_R2.mdx]],
+
     title = '交叉闪电',
 	damage_type = '法术',
 }
@@ -67,7 +69,7 @@ local function jiaocha_sd(skill,target,damage)
     for _, u in ac.selector():in_range(target,800):is_enemy(hero):random_int(skill.lig_count) do
         local ln = ac.lightning('LN01', hero, u,get_hith(hero),get_hith(u))
         ln:fade(-5)
-        u:add_effect('origin',[[AZ_SSCrow_R2.mdx]]):remove()
+        u:add_effect('origin',skill.effect):remove()
         u:damage{
             source = hero,
             skill = skill,

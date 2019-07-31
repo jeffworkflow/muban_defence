@@ -41,7 +41,7 @@ end,
 	--伤害类型
 	damage_type = '法术',
 
-
+	effect = [[[TX]ES_Q.mdl]]
 }
 mt.effect_data = {
 	['chest'] = [[Abilities\Weapons\Bolt\BoltImpact.mdl]],
@@ -55,7 +55,7 @@ function mt:atk_pas_shot(damage)
 	{
 		source = hero,
 		skill = skill,
-		model = [[[TX]ES_Q.mdl]],
+		model = skill.effect,
 		speed = 900,
 		angle = hero:get_point()/target:get_point(),
 		hit_area = skill.hit_area,

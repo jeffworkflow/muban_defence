@@ -18,6 +18,8 @@ mt{
 	
 	--技能图标
 	art = [[yijianchushou.blp]],
+	
+    ignore_cool_save = true, --忽略技能冷却
 
 	--技能目标类型 无目标
 	target_type = ac.skill.TARGET_TYPE_NONE,

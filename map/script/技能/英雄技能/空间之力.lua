@@ -33,6 +33,7 @@ end,
 ]],
     --模型
     model = [[AZ_Goods_TP_Target_effect.MDX]],
+    effect = [[Effect_RightDust.mdx]],
     art =[[kongjianzhili.blp]],
 	--爆炸半径
     hit_area = function(self,hero)
@@ -60,7 +61,7 @@ function mt:on_add()
         local target = damage.target
         local area = self.hit_area
 
-        ac.effect(target:get_point(),[[Effect_RightDust.mdx]],0,1,'origin'):remove()
+        ac.effect(target:get_point(),skill.effect,0,1,'origin'):remove()
         for _, u in ac.selector():in_range(target,area):is_enemy(hero):ipairs() do
             u:damage{
                 source = hero,

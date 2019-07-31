@@ -42,7 +42,7 @@ mt{
 
 }
 mt.model = [[war3mapimported\!huobao.mdx]]
-mt.model2 = [[Abilities\Weapons\PhoenixMissile\Phoenix_Missile.mdl]]
+mt.effect = [[Abilities\Weapons\PhoenixMissile\Phoenix_Missile.mdl]]
 
 function mt:atk_pas_shot(damage)
 	local hero = self.owner
@@ -54,7 +54,7 @@ function mt:atk_pas_shot(damage)
 		source = hero,
 		target = target,
 		skill = skill,
-		model = skill.model2,
+		model = skill.effect,
 		speed = 900,
 		high = 120,
 		size = 1,

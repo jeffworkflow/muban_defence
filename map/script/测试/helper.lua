@@ -806,6 +806,29 @@ function helper:tt()
 	-- self:add_restriction '免死'
 end
 
+function helper:tt2()
+	ac.item.add_skill_item('战鼓光环',self)
+
+	self:add('杀怪加全属性',3000)
+	-- self:add('攻击距离',2000)
+	self:add('攻击间隔',-1)
+	self:add('暴击几率',90)
+	self:add('会心几率',90)
+	self:add('多重射',10)
+	self:add('分裂伤害',100)
+	self:add('全属性',1000000000)
+	self:add('护甲',1000000000)
+	self:add('会心伤害',10000)
+
+	for i,name in ipairs({'空间之力','炎爆术','回旋刃','交叉闪电','飞焰','阳光枪','风暴之力'}) do
+		local skl = self:add_skill(name,'英雄')
+		skl:upgrade(5)
+	end	
+
+
+
+	
+end
 --给商店添加商品
 function helper:add_sell_item(shop,item,slotid)
 	for key,unit in pairs(ac.shop.unit_list) do 

@@ -13,7 +13,8 @@ mt{
     art = [[ReplaceableTextures\CommandButtons\BTNPackBeast.blp]],
     
 	--技能说明
-	title = '切换背包',
+    title = '切换背包',
+    ignore_cool_save = true, --忽略技能冷却
 
     tip = [[
 

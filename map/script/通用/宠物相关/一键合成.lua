@@ -14,6 +14,8 @@ mt{
 |cff00ff00对指定范围的内物品，进行|cff00ffff自动合成
 
 ]],
+
+	ignore_cool_save = true, --忽略技能冷却
 	--技能图标
 	art = [[yijianhecheng.blp]],
 	--施法范围

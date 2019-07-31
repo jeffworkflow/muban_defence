@@ -7,6 +7,7 @@ require 'ui.client.提示框'
 require 'ui.client.控制台'
 require 'ui.client.英雄属性'
 require 'ui.client.存档信息'
+require 'ui.client.属性面板'
 
 -- require 'ui.client.操作栏'
 -- require 'ui.client.属性面板'

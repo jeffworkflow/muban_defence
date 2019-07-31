@@ -39,6 +39,7 @@ end,
 	art = [[taijixiongmao.blp]],
 	--特效
 	effect = [[jn_tf3.mdx]],
+	cool=1
 }
 function mt:on_add()
     local skill = self
@@ -46,6 +47,10 @@ function mt:on_add()
     
 	self.trg = hero:event '造成伤害效果' (function(_,damage)
 		if not damage:is_common_attack()  then 
+			return 
+		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
 			return 
 		end 
         --触发时修改攻击方式
@@ -67,6 +72,8 @@ function mt:on_add()
 					damage_type = '法术'
 				}
 			end 
+            --激活cd
+            skill:active_cd() 
         end
     end)
 end

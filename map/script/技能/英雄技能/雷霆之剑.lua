@@ -41,6 +41,7 @@ end,
     --投射物数量
     count = 5,
     model = [[leitingzhijian.mdx]],
+    effect = [[AZ_CocoChristmas_D_Impact.mdx]],
     art = [[leitingzhijian.blp]],
     damage_type = '法术'
 }
@@ -93,7 +94,7 @@ function mt:on_add()
 						: ipairs()
 					do 
                         if not unit_mark[target] then 
-                            ac.effect(target:get_point(),[[AZ_CocoChristmas_D_Impact.mdx]],0,3,'origin'):remove()
+                            ac.effect(target:get_point(),skill.effect,0,3,'origin'):remove()
                             -- print(target,target.handle)
 							-- if target == u then --命中中心的敌人额外伤害，并允许触发额外辅助
                             target:damage

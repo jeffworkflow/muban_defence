@@ -45,6 +45,23 @@ ac.skill_list4 = {
     --'超新星',
 }
 
+--不受技能冷却影响
+local temp = {}
+for i,name in ipairs(ac.skill_list2) do 
+    table.insert(temp,name)
+end    
+for i,name in ipairs(ac.skill_list4) do 
+    table.insert(temp,name)
+end    
+ac.wait(1000,function()
+    for i,name in ipairs(temp) do 
+        local mt = ac.skill[name]
+        -- print(mt.name,mt.passive)
+        if mt.passive then 
+            mt.ignore_cool_save = true
+        end    
+    end    
+end)
 --统一定 技能价格 技能售价
 for _,name in ipairs(ac.skill_list2) do
     ac.skill[name].gold = 2000

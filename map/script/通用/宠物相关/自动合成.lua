@@ -21,6 +21,8 @@ mt{
 ]],
 	--技能图标
 	art = [[kaiguan.blp]],
+	
+    ignore_cool_save = true, --忽略技能冷却
 	--cd
 	cool = 1,
 	--自动合成
