@@ -149,7 +149,7 @@ mt{
 is_skill = 1,
 item_type ='神符',
 --商店品
-store_name = '|cffdf19d0挑战 |r奇魅影碎片',
+store_name = '|cffdf19d0挑战 |r魅影碎片',
 content_tip = '|cffFFE799\n【任务说明】：|r\n',
 --等级
 level = 0,
