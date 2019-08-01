@@ -11,6 +11,7 @@ local suipian ={
     {'霸王莲龙锤碎片',[[wuqi10.blp]]},
     {'梦蝶仙翼碎片',[[chibang2.blp]]},
     {'魅影碎片',[[meiying.blp]]},
+    {'紫霜幽幻龙鹰碎片',[[zsyhly.blp]]},
     
 }
 ac.shenlong_suipin = {}

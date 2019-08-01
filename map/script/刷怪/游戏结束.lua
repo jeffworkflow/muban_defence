@@ -19,6 +19,29 @@ ac.game:event '单位-死亡' (function(_,unit,killer)
 	end	
 end)	
 
+--每秒判断无尽怪的累计数量
+ac.game:event '游戏-无尽开始'(function(trg) 
+	ac.loop(2*1000,function(t)
+		local unit_cnt =0
+		local max_cnt = 150
+		for i=1,3 do 
+			local crep = ac.creep['刷怪-无尽'..i]
+			unit_cnt = unit_cnt + crep.current_count
+		end	
+		if unit_cnt >= max_cnt * 0.5 then 
+			ac.player.self:sendMsg("【系统提示】当前怪物存活过多，还剩 |cffE51C23 "..(max_cnt - unit_cnt).." 只|r 游戏结束，请及时清怪",3)
+		end	
+		if unit_cnt >= max_cnt then 
+			t:remove()
+			ac.game:event_notify('游戏-结束')
+			for i=1,3 do 
+				local crep = ac.creep['刷怪-无尽'..i]
+				crep:finish()
+			end	
+		end    
+	end)
+end)	
+
 
 --基地爆炸的时候结算胜负
 ac.game:event '游戏-结束' (function(trg,flag)

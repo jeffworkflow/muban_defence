@@ -786,6 +786,15 @@ function helper:revive()
 	self:revive()
 	helper.move(self)
 end
+function helper:pk(flag) 
+	if flag then
+		ac.init_enemy()
+	else
+		ac.init_alliance()
+	end	 
+end	
+
+
 --进入地狱，7个光环
 function helper:tt()
 	ac.item.add_skill_item('战鼓光环',self)
@@ -799,7 +808,8 @@ function helper:tt()
 	self:add('全属性',10000000000)
 	self:add('护甲',1000000000)
 	self:add('会心伤害',10000)
-	
+	self:add_wood(10000000)
+	self:add_fire_seed(10000000)
 	-- if not ac.wtf then
 	-- 	helper.wtf(self)
 	-- end

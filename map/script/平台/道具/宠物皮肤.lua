@@ -300,8 +300,109 @@ effect = [[Hero_Netherdrake_N1.mdx]],
 }
 
 
+local mt = ac.skill['紫霜幽幻龙鹰']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+strong_hero = 1, --作用在人身上
+--图标
+art = [[zsyhly.blp]],
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff挖宝积分超过 7W 自动获得，已拥有积分：|r%wabao_cnt% 或者
+|cff00ffff神龙碎片超过 650  自动获得，已拥有碎片：|r%skin_cnt%
+
+|cffFFE799【宠物属性】：|r
+|cff00ff00+188  杀怪加全属性|r
+|cff00ff00+60 攻击减甲|r
+|cff00ff00+2.5% 闪避|r
+|cff00ff00+10% 技能伤害加深|r
+|cff00ff00+10% 会心伤害|r
+
+|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
+need_map_level = 19,
+skin_cnt = function(self)
+    local p = ac.player.self
+    return p.cus_server[self.name..'碎片'] or 0
+end,
+wabao_cnt = function(self)
+    local p = ac.player.self
+    return p.cus_server['挖宝积分'] or 0
+end,
+--所需激活碎片
+need_sp_cnt = 650,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 188,
+['攻击减甲'] = 60,
+['闪避'] = 2.5,
+['技能伤害加深'] = 10,
+['会心伤害'] = 10,
+--特效
+effect = [[Hero_Phoenix_N1_purple.mdx]],
+}
+
+
+local mt = ac.skill['齐天大圣']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+strong_hero = 1, --作用在人身上
+--图标
+art = [[cwqtds.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cff00ffff商城购买后自动激活
+
+|cffFFE799【宠物属性】：|r
+|cff00ff00+488  杀怪加全属性|r
+|cff00ff00+40 每秒加护甲|r
+|cff00ff00+1 杀敌数额外|r
+|cff00ff00+3 练功房怪物数量|r
+|cffffff00小悟空+骨龙激活：攻击减甲+65，触发概率加成+25%
+
+|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 488,
+['每秒加护甲'] = 40,
+['额外杀敌数'] = 1,
+['攻击减甲'] = function(self) 
+    local val = 0 
+    local p = self.owner:get_owner()
+    if (p.mall and p.mall['真龙天子'] or 0) >=1 then 
+        val = 288
+    end    
+    return val
+end,  
+['全伤加深'] = function(self) 
+    local val = 0 
+    local p = self.owner:get_owner()
+    if (p.mall and p.mall['真龙天子'] or 0) >=1 then 
+        val = 288
+    end    
+    return val
+end,    
+--特效
+effect = [[qtds.mdx]],
+}
+function mt:on_add()
+    --唯一被动
+    self.owner:add_skill('火焰','隐藏')
+    --练功房数量
+    local p = self.owner:get_owner()
+    p.more_unit = (p.more_unit or 0) + 3
+end    
+
+
 --统一加方法
-for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','奇美拉','魅影','骨龙','小悟空'}) do
+for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫霜幽幻龙鹰','骨龙','小悟空','齐天大圣'}) do
     local mt = ac.skill[name]
 
     function mt:on_cast_start()
@@ -343,7 +444,7 @@ mt{
     ]],
 }
 mt.skills = {
-    '耐瑟龙','冰龙','精灵龙','奇美拉','魅影','骨龙','小悟空'
+    '耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫霜幽幻龙鹰','骨龙','小悟空','齐天大圣'
 }
 function mt:on_add()
     local hero = self.owner 

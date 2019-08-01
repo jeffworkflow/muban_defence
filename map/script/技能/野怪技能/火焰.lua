@@ -8,8 +8,6 @@ mt{
         被动2：降低自己的三维30%
     ]],
 
-    -- 影响三维值 (怪物为：生命上限，护甲，攻击力)
-    value = 30,
 
     -- 魔抗
     magic_defence = 100,
@@ -18,13 +16,13 @@ mt{
     area = 300,
 
     -- 每几秒
-    pulse = 0.2,
+    pulse = 1,
 
-    -- 每几秒
-    life_rate = 2,
+    -- 生命百分比
+    life_rate = 5,
   
-    -- 特效
-    effect = [[Abilities\Spells\NightElf\Immolation\ImmolationTarget.mdl]]
+    -- 特效 Abilities\Spells\NightElf\Immolation\ImmolationTarget.mdl  
+    effect = [[Abilities\Spells\Other\ImmolationRed\ImmolationTarget.mdx]]
 
 }
 
@@ -32,13 +30,7 @@ mt{
 function mt:on_add()
     local skill = self
     local hero = self.owner 
-    -- 降低三维(生命上限，护甲，攻击)
-    hero:add('生命上限%', -self.value)
-    hero:add('护甲%', -self.value)
-    hero:add('攻击%', -self.value)
-
-
-    self.eff = hero:add_effect('origin',self.effect)
+    -- self.eff = hero:add_effect('origin',self.effect)
 
     -- local unit_mark = {}
     self.trg = hero:loop(1000,function ()
@@ -74,10 +66,6 @@ end
 function mt:on_remove()
 
     local hero = self.owner 
-    -- 提升三维(生命上限，护甲，攻击)
-    hero:add('生命上限%', self.value)
-    hero:add('护甲%', self.value)
-    hero:add('攻击%', self.value)
 
     if self.eff then 
         self.eff:remove()
@@ -98,14 +86,13 @@ mt.cover_type = 1
 mt.cover_max = 1
 
 function mt:on_add()
-	self.eff = self.target:add_effect('chest', [[Abilities\Spells\Other\BreathOfFire\BreathOfFireDamage.mdl]])
-end
+    --Abilities\Spells\NightElf\Immolation\ImmolationTarget.mdl
+    --Abilities\Spells\Other\BreathOfFire\BreathOfFireDamage.mdl
+    --Abilities\Spells\NightElf\Immolation\ImmolationDamage.mdl
 
-function mt:on_remove()
-	self.eff:remove()
-end
-
-function mt:on_pulse()
+    --Abilities\Spells\Other\ImmolationRed\ImmolationRedDamage.mdx
+    self.target:add_effect('overhead', [[Abilities\Spells\Other\ImmolationRed\ImmolationRedDamage.mdx]]):remove()
+    
 	self.target:damage
 	{
 		source = self.source,
@@ -113,5 +100,12 @@ function mt:on_pulse()
         skill = self.skill,
         real_damage = true
 	}
+end
+
+function mt:on_remove()
+	-- self.eff:remove()
+end
+
+function mt:on_pulse()
 end
 

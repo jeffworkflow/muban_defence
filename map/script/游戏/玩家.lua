@@ -45,7 +45,43 @@ for x = 0, 10 do
 	--允许控制中立被动的单位
 	player.force[1][x]:enableControl(player[16])
 	player.force[2][0]:enableControl(player[16])
+end 
+
+--玩家结盟
+ac.init_alliance = function()
+	for x = 0, 10 do
+		for y = 0, 10 do
+			player.force[1][x]:setAllianceSimple(player.force[1][y], true)
+			player.force[1][x]:setAllianceSimple(player.force[2][0], false)
+			player.force[2][0]:setAllianceSimple(player.force[1][y], false)
+			player.force[2][0]:setAllianceSimple(player.force[2][0], true)
+		end
+		player.force[1][x]:setTeam(1)
+		player.force[2][0]:setTeam(2)
+	end 
 end
+--玩家敌对
+ac.init_enemy = function() 
+	for x = 1, 10 do
+		for y = 1, 10 do
+			if x == y then 
+				player.force[1][x]:setAllianceSimple(player.force[1][y], true)
+			else
+				player.force[1][x]:setAllianceSimple(player.force[1][y], false)
+			end	
+			
+			if x == y then 
+				player.force[1][y]:setAllianceSimple(player.force[1][x], true)
+			else
+				player.force[1][y]:setAllianceSimple(player.force[1][x], false)
+			end	
+			--设置队伍
+			player.force[1][x]:setTeam(x)
+		end
+	end	
+end	
+
+
 
 --电脑与野怪互相友好
 player.force[1][0]:setAllianceSimple(player[13], true)

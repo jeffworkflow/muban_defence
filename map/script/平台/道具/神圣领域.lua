@@ -164,7 +164,7 @@ effect = [[lingyu5.mdx]]
 function mt:on_add()
     local p = self.owner:get_owner()
     if (p.mall and p.mall['远影苍龙领域'] or 0) >=1 then 
-        p.more_unit = p.more_unit or 0 + 5
+        p.more_unit = (p.more_unit or 0) + 5
     end    
 end    
 
@@ -208,9 +208,39 @@ need_map_level = 2,
 effect = [[lingyu8.mdx]]
 }
 
+local mt = ac.skill['白云四海领域']
+mt{
+--等级
+level = 0,
+--图标
+art = [[bysh.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cff00ffff地图等级=%need_map_level%
+
+|cffFFE799【领域属性】：|r
+|cff00ff00+125  杀怪加全属性|r
+|cff00ff00+15%  会心伤害|r
+|cff00ff00+15%  技能伤害加深|r
+|cff00ff00+15%  全伤加深|r
+
+|cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 125,
+['会心伤害'] = 15,
+['技能伤害加深'] = 15,
+['全伤加深'] = 15,
+need_map_level = 24,
+--特效
+effect = [[Rune Blue Aura.mdx]]
+}
 
 
-for i,name in ipairs({'血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','孤风青龙领域','远影苍龙领域'}) do
+
+for i,name in ipairs({'血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','白云四海领域','孤风青龙领域','远影苍龙领域'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

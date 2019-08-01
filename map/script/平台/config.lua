@@ -31,6 +31,7 @@ local item = {
     {'YYCLLY','远影苍龙领域'},
 
     {'ZLTZ','真龙天子'},
+    {'QTDS','齐天大圣'},
     
 
     --key,key_name,地图等级要求
@@ -112,6 +113,7 @@ local cus_key = {
     {'jll','精灵龙'},
     {'qml','奇美拉'},
     {'my','魅影'},
+    {'zsyhly','紫霜幽幻龙鹰'},
     
 
     {'spnsl','耐瑟龙碎片'},
@@ -119,6 +121,7 @@ local cus_key = {
     {'spjll','精灵龙碎片'},
     {'spqml','奇美拉碎片'},
     {'spmy','魅影碎片'},
+    {'spzsyhly','紫霜幽幻龙鹰碎片'},
 
     {'zzl','赵子龙'},
     {'pa','Pa'},
@@ -152,6 +155,9 @@ local cus_key = {
     {'szas','霜之哀伤'},
 
     {'tszg','天使之光'},
+    {'byshly','白云四海领域'},
+
+    
     
 }
 ac.cus_server_key = cus_key
