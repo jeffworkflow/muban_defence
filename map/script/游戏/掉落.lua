@@ -254,6 +254,7 @@ local unit_reward = {
     ['防具boss8'] = {{rand =100,name = '丹霞真元甲'}},
     ['防具boss9'] = {{rand =100,name = '血焰赤阳甲'}},
     ['防具boss10'] = {{rand =100,name = '神魔蚀日甲'}},
+    ['防具boss11'] = {{rand =100,name = '皇龙阴阳甲'}},
 
     ['技能BOSS1'] = {{rand =100,name = '技能升级书Lv1'}},
     ['技能BOSS2'] = {{rand =100,name = '技能升级书Lv2'}},

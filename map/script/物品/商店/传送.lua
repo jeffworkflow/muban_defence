@@ -24,7 +24,8 @@ ac.quick_arrive ={
     ['神甲-丹霞真元甲'] = {ac.map.rects['传送-甲8'],'jia8.blp','\n挑战BOSS并获得|cffff0000 【八阶神甲】-丹霞真元甲|r\n',0,8000,0} ,
     ['神甲-血焰赤阳甲'] = {ac.map.rects['传送-甲9'],'jia9.blp','\n挑战BOSS并获得|cffdf19d0 【九阶神甲】-血焰赤阳甲|r\n',0,10000,0} ,
     ['神甲-神魔蚀日甲'] = {ac.map.rects['传送-甲10'],'jia10.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神甲】-神魔蚀日甲|r\n',0,14000,0} ,
-
+    ['神甲-皇龙阴阳甲'] = {ac.map.rects['传送-甲11'],'syjhj.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神甲】-神魔蚀日甲|r\n',0,14000,0} ,
+    
     ['技能升级书lv1'] = {ac.map.rects['传送-技能1'],'jinengshengji1.blp','\n挑战BOSS并获得|cff00ff00 【技能升级书lv1】|r\n',0,75,0,0,0,nil,0,450} ,
     ['技能升级书lv2'] = {ac.map.rects['传送-技能2'],'jinengshengji2.blp','\n挑战BOSS并获得|cff00ffff 【技能升级书lv2】|r\n',0,500,0,0,0,nil,0,450} ,
     ['技能升级书lv3'] = {ac.map.rects['传送-技能3'],'jinengshengji3.blp','\n挑战BOSS并获得|cffffff00 【技能升级书lv3】|r\n',0,4000,0,0,0,nil,0,450} ,

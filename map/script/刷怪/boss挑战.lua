@@ -23,6 +23,7 @@ ac.challenge_boss = {
     ['防具boss8'] = {ac.map.rects['boss-甲8']},
     ['防具boss9'] = {ac.map.rects['boss-甲9']},
     ['防具boss10'] = {ac.map.rects['boss-甲10']},
+    ['防具boss11'] = {ac.map.rects['boss-甲11']},
 
     ['技能BOSS1'] = {ac.map.rects['boss-技能1'],270,nil,nil,8},
     ['技能BOSS2'] = {ac.map.rects['boss-技能2'],270,nil,nil,8},

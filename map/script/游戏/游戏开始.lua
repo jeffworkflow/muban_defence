@@ -78,6 +78,9 @@ ac.game:event '游戏-开始' (function()
             if unit:get_name() == '境界突破'  then 
                 unit:add_sell_item('境界-斗神',11)
             end	
+            if unit:get_name() == '护天神甲'  then 
+                unit:add_sell_item('神甲-皇龙阴阳甲',11)
+            end	
         end	
     end    
 

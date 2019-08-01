@@ -239,6 +239,8 @@ ac.map.rects={
 	['传送-甲8'] =rect.j_rect('jia8') ,
 	['传送-甲9'] =rect.j_rect('jia9') ,
 	['传送-甲10'] =rect.j_rect('jia10') ,
+	['传送-甲11'] =rect.j_rect('jia111') ,
+
 
 	['boss-甲1'] =rect.j_rect('jia11') ,
 	['boss-甲2'] =rect.j_rect('jia22') ,
@@ -250,6 +252,7 @@ ac.map.rects={
 	['boss-甲8'] =rect.j_rect('jia88') ,
 	['boss-甲9'] =rect.j_rect('jia99') ,
 	['boss-甲10'] =rect.j_rect('jia1010') ,
+	['boss-甲11'] =rect.j_rect('jia1111') ,
 
 	--技能
 	['传送-技能1'] =rect.j_rect('jn1') ,
