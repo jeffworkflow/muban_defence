@@ -215,24 +215,24 @@ level = 0,
 --图标
 art = [[bysh.blp]],
 --说明
-tip = [[
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff地图等级=%need_map_level%
+|cff00ffff修罗模式|cffff0000累计|cff00ffff无尽波数=500波
 
 |cffFFE799【领域属性】：|r
-|cff00ff00+125  杀怪加全属性|r
-|cff00ff00+15%  会心伤害|r
-|cff00ff00+15%  技能伤害加深|r
-|cff00ff00+15%  全伤加深|r
+|cff00ff00+155  杀怪加全属性|r
+|cff00ff00+25%  会心伤害|r
+|cff00ff00+25%  技能伤害加深|r
+|cff00ff00+25%  全伤加深|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 125,
-['会心伤害'] = 15,
-['技能伤害加深'] = 15,
-['全伤加深'] = 15,
+['杀怪加全属性'] = 155,
+['会心伤害'] = 25,
+['技能伤害加深'] = 25,
+['全伤加深'] = 25,
 need_map_level = 24,
 --特效
 effect = [[Rune Blue Aura.mdx]]
