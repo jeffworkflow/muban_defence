@@ -415,12 +415,14 @@ for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫
         end     
         ac.wait(10,function() 
             --改变大小
+            local skl = hero:find_skill('宠物天赋',nil,true)
+            local base_size = skl.level * 0.5/100
             if name == '骨龙' then 
-                hero:set_size(2.5)
+                hero:set_size(2.5 *(1+base_size))
             elseif name == '精灵龙' then 
-                hero:set_size(1.5)
+                hero:set_size(1.5*(1+base_size))
             else
-                hero:set_size(1)
+                hero:set_size(1*(1+base_size))
             end  
             
         end)
