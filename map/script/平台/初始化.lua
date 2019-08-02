@@ -411,7 +411,7 @@ end
 ttxd2award()
 
 
-local wldh2award = {
+local wldh2award_data = {
     --奖励 = 武林大会积分，地图等级
     ['江湖小虾'] = {250,3},
     ['明日之星'] = {500,6},
@@ -423,7 +423,7 @@ local function wldh2award()
         local player = ac.player[i]
         if player:is_player() then
             player:event '读取存档数据' (function()
-                for name,data in sortpairs(wldh2award) do 
+                for name,data in sortpairs(wldh2award_data) do 
                     --商城 或是 自定义服务器有对应数据则
                     --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
                     local has_item = player.cus_server and (player.cus_server[name] or 0 )
