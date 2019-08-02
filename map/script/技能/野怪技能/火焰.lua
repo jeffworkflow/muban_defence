@@ -82,8 +82,9 @@ end
 
 local mt = ac.buff['火焰']
 mt.ref = 'origin' 
-mt.cover_type = 1
-mt.cover_max = 1
+mt.cover_type = 0
+-- mt.cover_max = 1
+-- mt.cover_global = 1
 
 function mt:on_add()
     --Abilities\Spells\NightElf\Immolation\ImmolationTarget.mdl
@@ -93,6 +94,10 @@ function mt:on_add()
     --Abilities\Spells\Other\ImmolationRed\ImmolationRedDamage.mdx
     self.target:add_effect('overhead', [[Abilities\Spells\Other\ImmolationRed\ImmolationRedDamage.mdx]]):remove()
     
+end
+
+function mt:on_remove()
+	-- self.eff:remove()
 	self.target:damage
 	{
 		source = self.source,
@@ -102,10 +107,10 @@ function mt:on_add()
 	}
 end
 
-function mt:on_remove()
-	-- self.eff:remove()
+function mt:on_pulse()
 end
 
-function mt:on_pulse()
+function mt:on_cover()
+    -- return false
 end
 

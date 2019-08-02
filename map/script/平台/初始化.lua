@@ -410,6 +410,41 @@ local function ttxd2award()
 end
 ttxd2award()
 
+
+local wldh2award = {
+    --奖励 = 武林大会积分，地图等级
+    ['江湖小虾'] = {250,3},
+    ['明日之星'] = {500,6},
+    ['武林高手'] = {1000,10},
+} 
+--处理神龙碎片 及对应的奖励
+local function wldh2award() 
+    for i=1,10 do
+        local player = ac.player[i]
+        if player:is_player() then
+            player:event '读取存档数据' (function()
+                for name,data in sortpairs(wldh2award) do 
+                    --商城 或是 自定义服务器有对应数据则
+                    --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
+                    local has_item = player.cus_server and (player.cus_server[name] or 0 )
+                    local jifen = player.cus_server and (player.cus_server['武林积分'] or 0 )
+                    -- print(has_item,sp_cnt,skill.need_sp_cnt)
+                    if has_item and has_item == 0 
+                    and jifen >= (data[1] or 9999999)
+                    and player:Map_GetMapLevel() >= (data[2]  or 9999999)
+                    then 
+                        local key = ac.server.name2key(name)
+                        -- player:SetServerValue(key,1) 自定义服务器
+                        player:Map_SaveServerValue(key,1) --网易服务器
+                        -- player:sendMsg('激活成功：'..key)
+                    end    
+                end   
+            end) 
+        end
+    end    
+end
+wldh2award()
+
 --开始进行地图等级集中过滤
 ac.server.need_map_level = {}
 local function init_need_map_level()

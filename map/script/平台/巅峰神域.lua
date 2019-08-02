@@ -12,7 +12,7 @@ mt{
     
 }
 mt.skills = {
-    '游戏说明','礼包','称号','武器','翅膀','神圣领域','英雄','全服奖励'
+    '游戏说明','礼包','称号','武器','翅膀','神圣领域','英雄','全服奖励','武林大会'
 } 
 -- function mt:on_add()
 --     local hero = self.owner 
@@ -154,7 +154,7 @@ mt.skills = {
 }
 
 
-for i,name in ipairs({'礼包','武器','翅膀','称号','神圣领域','英雄','首充','游戏说明'}) do
+for i,name in ipairs({'礼包','武器','翅膀','称号','神圣领域','英雄','首充','游戏说明','武林大会'}) do
     local mt = ac.skill[name]
     function mt:on_add()
         local hero = self.owner 
