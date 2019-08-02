@@ -63,7 +63,7 @@ function mt:on_add()
 	-- end)
 	-- 是否文字显示计时
 	if self.show then
-		on_texttag((self.text or '')..time,self.target,self.xoffset,self.zoffset)
+		on_texttag(time..(self.text or ''),self.target,self.xoffset,self.zoffset)
 	end	
 	if self.is_god then 
 		self.target:add_restriction '无敌'
@@ -71,7 +71,7 @@ function mt:on_add()
 	self.timer1 = ac.timer(1*1000, math.ceil(time),function()
 		time = time - 1
 		if self.show then
-			on_texttag((self.text or '')..time,self.target,self.xoffset,self.zoffset)
+			on_texttag(time..(self.text or ''),self.target,self.xoffset,self.zoffset)
 		end	
 		self:set_time(time)
 		if self.on_timer then 

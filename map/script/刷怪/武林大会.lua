@@ -16,11 +16,11 @@ local function ss_wldh(text)
         end,
     }
     --快到时，进行提醒
-    local t_time = 30
+    local t_time = 15
     ac.wait( (start_time - t_time)*1000,function() 
         ac.timer(1000,t_time,function(t)
             t_time = t_time -1 
-            ac.player.self:sendMsg('距离武林大会开始还剩：'..t_time..' 秒')
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r武林大会|cffff0000 '..t_time..' |r秒后开始，请做好准备')
             if t_time <=0 then 
                 t:remove()
             end    
@@ -43,11 +43,11 @@ ac.game.start_wldh = function()
         end,
     }
     --快到时，进行提醒
-    local t_time = 30
+    local t_time = 15
     ac.wait( (duration_time - t_time)*1000,function() 
         ac.timer(1000,t_time,function(t)
             t_time = t_time -1 
-            ac.player.self:sendMsg('距离武林大会结束还剩：'..t_time..' 秒')
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r武林大会|cffff0000 '..t_time..' |r秒后结束')
             if t_time <=0 then 
                 t:remove()
             end    
@@ -87,10 +87,10 @@ ac.game:event '武林大会-开始' (function()
             hero:add_buff '时停'
             {
                 time = 5,
-                text = '传送武林大会： ',
+                text = '秒后进入武林大会',
                 skill = '武林大会',
                 source = hero,
-                xoffset = -200,
+                xoffset = -205,
                 zoffset = 220,
                 show = true,
                 is_god = true,
@@ -220,7 +220,7 @@ function give_award()
         local name = list[math.random(#list)]
         local it = hero:add_item(name,true)
         -- print(i,data.player,data.wldh_jf)
-        local tip = '|cffffff00No.'..i..'、 |r|cffff0000'..data.player:get_name()..'|r|cffffff00: 比武积分[|cffff0000'..data.wldh_jf..'|r|cffffff00]奖励 '..it.color_name..' |r'..'\n'
+        local tip = '|cffffe799【系统消息】|r武林大会结束，发放奖励如下\n|cff00ff00第'..i..'名|r |cff00ffff'..data.player:get_name()..'|r |cff00ff00本场获得 |cffff0000'..data.wldh_jf..' |cff00ff00积分|r |cff00ff00奖励 '..it.color_name..' |r'..'\n'
         ac.player.self:sendMsg(tip)
     end    
     
@@ -253,9 +253,9 @@ local function check_vote()
     end 
 
     if ac.flag_use_mall then 
-        ac.player.self:sendMsg('多数玩家 选择了 |cff00ff00是|r,本局|cff00ff00开启|r商城道具和存档内容')   
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r投票结束，本局|cff00ff00开启|r商城道具和存档内容')   
     else 
-        ac.player.self:sendMsg('多数玩家 选择了 |cffff0000否|r,本局|cffff0000关闭|r商城道具和存档内容')  
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r投票结束，本局|cffff0000禁用|r商城道具和存档内容')  
     end    
 
     ac.game:event_notify('投票结束',ac.flag_use_mall)
@@ -285,17 +285,18 @@ ac.game.start_vote = function()
     for i =1,10 do 
         local p = ac.player(i)
         if p:is_player() then 
-            create_dialog(p,"是否开启商城道具及可存档内容？",list,function (index)  
+            create_dialog(p,"是否开启商城道具及存档内容？",list,function (index)  
                 -- local name = list[index].name
                 if index == 1 then 
                     use_mall = use_mall + 1
                     if use_mall >= half_online_cnt then 
                         ac.flag_use_mall = true 
                     end  
-                    ac.player.self:sendMsg('玩家 '..p:get_name()..' 选择了 |cff00ff00是|r')      
+                    ac.player.self:sendMsg('|cff00ffff等待其他玩家投票中...|r')      
                 else
-                    ac.player.self:sendMsg('玩家 '..p:get_name()..' 选择了 |cffff0000否|r')      
+                    ac.player.self:sendMsg('|cff00ffff等待其他玩家投票中...|r')      
                 end  
+                --'玩家 '..p:get_name()..' 选择了 |cff00ff00是|r'
                 click_cnt = click_cnt + 1 
                 if click_cnt >= get_player_count() then 
                     check_vote()

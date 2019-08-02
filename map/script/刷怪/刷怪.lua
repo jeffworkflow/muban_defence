@@ -224,7 +224,7 @@ ac.wait(20,function()
                 { name = "荣耀王者" },
                 { name = "巅峰王者" },
                 { name = "修罗模式(无尽)" },
-                { name = "pk模式" },
+                { name = "武林大会(可PK)" },
             }
             ac.g_game_degree_list = {} 
             for i = #list ,1 ,-1 do 
@@ -233,7 +233,10 @@ ac.wait(20,function()
                 if finds(name,'无尽') then 
                     name = "修罗模式"
                 end    
-                if name ~= 'pk模式' then 
+                if finds(name,'可PK') then 
+                    name = "武林大会"
+                end    
+                if name ~= '武林大会' then 
                     table.insert(ac.g_game_degree_list,name)
                 end    
 
@@ -244,10 +247,12 @@ ac.wait(20,function()
                 ac.flag_choose_dialog = create_dialog(player,"选择难度",list,function (index)  
                     ac.flag_choose_dialog = false
                     ac.g_game_degree = index
-                    if index ~= 11 then 
-                        ac.g_game_degree_name = list[index].name
-                    else    
+                    if index == 11 then 
                         ac.g_game_degree_name = "修罗模式"
+                    elseif index == 12 then 
+                        ac.g_game_degree_name = "武林大会"
+                    else
+                        ac.g_game_degree_name = list[index].name    
                     end    
                     if ac.g_game_degree == 1 then 
                         ac.g_game_degree_attr = 1  --难度一 属性倍数1倍
