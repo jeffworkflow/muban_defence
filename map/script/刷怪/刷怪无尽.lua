@@ -82,7 +82,7 @@ for i =1,3 do
             ['会心几率'] = 20,
             ['会心伤害'] = 200,
         }
-        local degree_attr_mul = ac.get_difficult(ac.g_game_degree)
+        local degree_attr_mul = ac.get_difficult(ac.g_game_degree_attr)
         local endless_attr_mul = ac.get_difficult(self.index,1.15)
         -- print('难度系数',degree_attr_mul)
         -- print('无尽系数',endless_attr_mul)
@@ -169,8 +169,8 @@ end
 --         boss:add_skill('无敌','英雄')
 --         boss:add_skill('撕裂大地','英雄')
 
---         boss:add('免伤',1.5 * ac.get_difficult(ac.g_game_degree))
---         boss:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree))
+--         boss:add('免伤',1.5 * ac.get_difficult(ac.g_game_degree_attr))
+--         boss:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree_attr))
 --     end    
 -- end)    
 

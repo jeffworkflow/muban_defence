@@ -73,6 +73,7 @@ local cus_key = {
     {'cntrywz','荣耀王者'},
     {'cntdfwz','巅峰王者'},
     {'cntxlms','修罗模式'}, -- 星数
+    {'cntpkms','pk模式'}, -- 星数
 
     {'wjxlms','修罗模式无尽'}, -- 无尽层数最高值
     {'ljwjxlms','修罗模式无尽累计'},-- 无尽层数累计值
@@ -89,6 +90,7 @@ local cus_key = {
     {'time_rywz','荣耀王者时长'},
     {'time_dfwz','巅峰王者时长'},
     {'time_xlms','修罗模式时长'},
+    {'time_pkms','pk模式时长'},
 
     {'bwllc','霸王莲龙锤'},
     {'hhxyj','幻海雪饮剑'},

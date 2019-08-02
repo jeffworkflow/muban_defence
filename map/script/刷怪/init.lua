@@ -10,6 +10,7 @@ require '刷怪.境界'
 
 require '刷怪.野怪'
 require '刷怪.刷怪无尽'
+require '刷怪.pk模式'
 
 
 

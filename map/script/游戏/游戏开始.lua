@@ -70,7 +70,7 @@ ac.game:event '游戏-开始' (function()
     end    
 
     --难五 添加伏地魔 和斗神
-    if ac.g_game_degree >= 5 then 
+    if ac.g_game_degree_attr >= 5 then 
         for key,unit in pairs(ac.shop.unit_list) do 
             if unit:get_name() == '新手任务' then 
                 unit:add_sell_item('伏地魔',3)

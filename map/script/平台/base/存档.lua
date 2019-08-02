@@ -33,6 +33,7 @@ register_japi[[
     native DzGetMouseTerrainZ               takes nothing returns real
     native RequestExtraIntegerData          takes integer dataType, player whichPlayer, string param1, string param2, boolean param3, integer param4, integer param5, integer param6 returns integer
 ]]
+ac.flag_use_mall = true --默认使用商城数据
 
 --获取玩家评论数
 function player.__index:Map_CommentCount()
@@ -140,7 +141,11 @@ end
 --获取玩家地图等级
 if global_test then 
     function player.__index:Map_GetMapLevel()
-        return self.map_level or 1
+        if ac.flag_use_mall then 
+            return self.map_level or 1
+        else     
+            return 1
+        end    
     end
 else
     function player.__index:Map_GetMapLevel()
@@ -148,7 +153,11 @@ else
         local level = japi.DzAPI_Map_GetMapLevel(handle)
         if level == 0 then 
             level = 1
-        end    
+        end 
+        
+        if not ac.flag_use_mall then 
+            level = 1
+        end       
         return level
     end
 end    

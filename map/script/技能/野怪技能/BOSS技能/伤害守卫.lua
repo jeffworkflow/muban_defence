@@ -47,7 +47,7 @@ function mt:boss_skill_shot()
             {
                 source = hero,
                 skill = self,
-                damage = u:get('生命上限') * self.value * self.pulse_time*(ac.g_game_degree or 1) /100,
+                damage = u:get('生命上限') * self.value * self.pulse_time*(ac.g_game_degree_attr or 1) /100,
                 real_damage = true
 
             }

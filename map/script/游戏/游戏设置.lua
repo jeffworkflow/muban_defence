@@ -149,6 +149,8 @@ ac.map.rects={
 	
     ['刷怪-boss'] = rect.j_rect('cgboss4') ,
 	['选人区域'] =rect.j_rect('xuanren') ,
+	['武林大会'] =rect.j_rect('wldh') ,
+
 	['npc1'] =rect.j_rect('npc1') ,
 	['npc2'] =rect.j_rect('npc2') ,
 	['npc3'] =rect.j_rect('npc3') ,

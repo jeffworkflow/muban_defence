@@ -21,11 +21,21 @@ ac.game:event '玩家-注册英雄' (function(_, player, hero)
 			player = hero:get_owner(),
 		}
 		ac.timer(time*1000,1,function()
-			local random_point = ac.map.rects['出生点']:get_point()
-			hero:revive(random_point)
+
+			local random_point 
+			if ac.flag_wldh then 
+				random_point = ac.map.rects['武林大会']:get_random_point(true)
+				hero:revive(random_point)
+				hero:add_buff '无敌' {
+					time = 3
+				}
+			else	
+				random_point = ac.map.rects['出生点']:get_point()
+				hero:revive(random_point)
+			end	
 		end)
 		--文字提醒
-		ac.player.self:sendMsg('玩家 |cffff0000'..hero:get_owner():get_name()..' 已阵亡|r，5秒后复活',5)
+		ac.player.self:sendMsg('玩家 |cffff0000'..hero:get_owner():get_name()..' 已阵亡|r，8秒后复活',5)
 	end)
 
 	

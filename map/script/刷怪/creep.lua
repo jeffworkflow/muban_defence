@@ -272,11 +272,22 @@ function mt:PauseTimer(time)
     if not self.force_timer then 
         return 
     end
-    self.force_timer:PauseTimer()   
+    self.force_timer:PauseTimer() 
     if time then 
-        ac.wait(time*1000,function()
-            self:ResumeTimer()
-        end)
+        self.remaining_time = (self.remaining_time or 0) + time
+        if not self.flag_pause then  
+            -- print('设置倒计时',self.remaining_time)
+            self.flag_pause = ac.loop(1000,function(t)
+                self.remaining_time = self.remaining_time - 1
+                -- print('倒计时：',self.remaining_time)
+                if self.remaining_time <=0 then 
+                    self:ResumeTimer()
+                    t:remove()
+                    self.remaining_time = 0
+                    self.flag_pause = nil
+                end    
+            end)
+        end    
     end    
     return self.force_timer
 end    

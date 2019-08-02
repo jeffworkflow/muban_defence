@@ -19,7 +19,9 @@ mt{
 
     --施法前摇后摇
     cast_start_time = 0.0,
-    cast_finish_time = 0.0,
+	cast_finish_time = 0.0,
+	--忽略技能冷却
+    ignore_cool_save = true, 
 
 	--施法距离
 	range = 99999,

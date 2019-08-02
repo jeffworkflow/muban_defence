@@ -15,8 +15,8 @@ ac.game:event '游戏-最终boss' (function(trg)
     boss:add_skill('boss光子灵枪','英雄')
     
 
-    boss:add('免伤',1.5 * ac.get_difficult(ac.g_game_degree))
-    boss:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree))
+    boss:add('免伤',1.5 * ac.get_difficult(ac.g_game_degree_attr))
+    boss:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree_attr))
     
     -- if ac.creep['刷怪1'] then 
     --     table.insert(ac.creep['刷怪1'].group,boss)

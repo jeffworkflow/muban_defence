@@ -47,7 +47,7 @@ function mt:on_cast_start()
         creep:PauseTimer(self.stu_time)
     end
     --启用另一个计时器 显示停怪恢复倒计时	
-    ac.timer_ex
+    ac.main_stop_timer = ac.timer_ex
     {
         time = self.stu_time,
         title = '停怪还剩：',
@@ -55,6 +55,7 @@ function mt:on_cast_start()
             ac.player.self:sendMsg('|cffff0000停怪结束！！！ 请注意进攻怪来袭。|r')
             ac.player.self:sendMsg('|cffff0000停怪结束！！！ 请注意进攻怪来袭。|r')
             ac.player.self:sendMsg('|cffff0000停怪结束！！！ 请注意进攻怪来袭。|r')
+            ac.main_stop_timer = nil
         end,
     }
     ac.player.self:sendMsg('玩家 '..p:get_name()..' 购买了|cffff0000停怪！|r停怪90秒。')

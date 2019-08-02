@@ -130,8 +130,8 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
             boss:add_skill('无敌','英雄')
             boss:add_skill('撕裂大地','英雄')
 
-            boss:add('免伤',1.5 * ac.get_difficult(ac.g_game_degree))
-            boss:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree))
+            boss:add('免伤',1.5 * ac.get_difficult(ac.g_game_degree_attr))
+            boss:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree_attr))
             
         end    
 
@@ -224,6 +224,7 @@ ac.wait(20,function()
                 { name = "荣耀王者" },
                 { name = "巅峰王者" },
                 { name = "修罗模式(无尽)" },
+                { name = "pk模式" },
             }
             ac.g_game_degree_list = {} 
             for i = #list ,1 ,-1 do 
@@ -232,7 +233,10 @@ ac.wait(20,function()
                 if finds(name,'无尽') then 
                     name = "修罗模式"
                 end    
-                table.insert(ac.g_game_degree_list,name)
+                if name ~= 'pk模式' then 
+                    table.insert(ac.g_game_degree_list,name)
+                end    
+
             end    
             
             ac.player.self:sendMsg("正在选择 |cffffff00难度|r")
@@ -240,7 +244,7 @@ ac.wait(20,function()
                 ac.flag_choose_dialog = create_dialog(player,"选择难度",list,function (index)  
                     ac.flag_choose_dialog = false
                     ac.g_game_degree = index
-                    if index < 11 then 
+                    if index ~= 11 then 
                         ac.g_game_degree_name = list[index].name
                     else    
                         ac.g_game_degree_name = "修罗模式"
@@ -278,21 +282,31 @@ ac.wait(20,function()
                     if ac.g_game_degree == 11 then 
                         ac.g_game_degree_attr = 11 --难度三 属性倍数3倍
                     end 
+                    
+                    if ac.g_game_degree == 12 then 
+                        ac.g_game_degree_attr = 2 --难度三 属性倍数3倍
+                    end 
                     ac.player.self:sendMsg("选择了 |cffffff00"..list[index].name.."|r")
-                    --加载过场动画
-                    -- ac.skip_animation(4)
-                    -- ac.wait(0.6 * 1000,function() 
-                        --创建预设商店
-                        -- local init_shop = require('物品.商店.创建商店')
-                        -- init_shop()
+                    if ac.g_game_degree ~= 12 then 
                         --创建预设英雄
                         ac.choose_hero()
                         --游戏-开始
                         ac.wait(30*1000,function()
                             ac.game:event_notify('游戏-开始')
                         end)
-                    -- end)
-                    -- ac.game:event_notify '游戏-开始' ; --测试用
+                    else
+                        --发起投票
+                        ac.game.start_vote()
+                        ac.game:event '投票结束'(function(_,flag)
+                            -- print(11111)
+                            --创建预设英雄
+                            ac.choose_hero()
+                            --游戏-开始
+                            ac.wait(30*1000,function()
+                                ac.game:event_notify('游戏-开始')
+                            end)
+                        end)
+                    end    
                 end)
 
             end 

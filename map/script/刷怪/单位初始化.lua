@@ -32,7 +32,7 @@ local function init_attribute(unit)
 
     --设置搜敌范围
     unit:set_search_range(800)
-    local attr_mul = get_difficult(ac.g_game_degree)
+    local attr_mul = get_difficult(ac.g_game_degree_attr)
     --根据难度增强属性 
     if data.attribute then  
         unit:set('攻击',data.attribute['攻击'] )

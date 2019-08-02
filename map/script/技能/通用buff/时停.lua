@@ -7,7 +7,7 @@ mt.cover_type = 0
 mt.debuff = true
 mt.model = [[]]
 
-local function on_texttag(time,hero,zoffset)
+local function on_texttag(time,hero,xoffset,zoffset)
 	local target = hero
 	local x, y = target:get_point():get()
 	local z = target:get_point():getZ()
@@ -15,7 +15,7 @@ local function on_texttag(time,hero,zoffset)
 	{
 		string = tostring(time),
 		size = 10,
-		position = ac.point(x , y, z + (zoffset or 100)),
+		position = ac.point(x + (xoffset or 0) , y, z + (zoffset or 100)),
 		speed = 250,
 		angle = 90,
 		red = 238,
@@ -63,11 +63,16 @@ function mt:on_add()
 	-- end)
 	-- 是否文字显示计时
 	if self.show then
-		on_texttag(time,self.target,self.zoffset)
+		on_texttag((self.text or '')..time,self.target,self.xoffset,self.zoffset)
+	end	
+	if self.is_god then 
+		self.target:add_restriction '无敌'
 	end	
 	self.timer1 = ac.timer(1*1000, math.ceil(time),function()
 		time = time - 1
-		on_texttag(time,self.target,self.zoffset)
+		if self.show then
+			on_texttag((self.text or '')..time,self.target,self.xoffset,self.zoffset)
+		end	
 		self:set_time(time)
 		if self.on_timer then 
 			self:on_timer(time)
@@ -82,6 +87,9 @@ function mt:on_add()
 				self.eff = nil
 			end
 			self.target:remove_restriction '时停'
+			if self.target:has_restriction '无敌' then 
+				self.target:remove_restriction '无敌'
+			end	
 			self:remove()
 		end	
 	end);
