@@ -210,7 +210,7 @@ function give_award()
     table.sort(temp_tab,function(a,b)
         return a.wldh_jf>b.wldh_jf
     end)
-    local tip = '|cffffe799【系统消息】|r武林大会结束，发放奖励如下\n'
+    local tip = '|cffffe799【系统消息】|r|cffff0000武林大会结束，发放奖励如下|r\n\n'
     --循环给奖励
     for i,data in ipairs(temp_tab) do 
         local ad_it = table.unpack(award_item[i])
@@ -219,7 +219,7 @@ function give_award()
         local name = list[math.random(#list)]
         local it = hero:add_item(name,true)
         -- print(i,data.player,data.wldh_jf)
-        tip = tip..'|cff00ff00第'..i..'名|r |cff00ffff'..data.player:get_name()..'|r |cff00ff00本场获得 |cffff0000'..data.wldh_jf..' |cff00ff00积分|r |cff00ff00奖励 '..it.color_name..' |r'..'\n'
+        tip = tip..'第'..i..'名 |cff00ffff'..data.player:get_name()..'|r获得|cffff0000'..data.wldh_jf..'|r积分，奖励'..it.color_name..'|r'..'\n\n'
     end    
     ac.player.self:sendMsg(tip)
     
