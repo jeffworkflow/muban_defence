@@ -39,7 +39,7 @@ class.player_info_panel = extends(class.panel){
             '神奇的五分钟',
             '修罗(无尽-累计)',
             '评论数',
-            '武林积分',
+            '比武积分',
         }
         
         panel.titles2 = {

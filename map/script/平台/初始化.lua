@@ -427,7 +427,7 @@ local function wldh2award()
                     --商城 或是 自定义服务器有对应数据则
                     --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
                     local has_item = player.cus_server and (player.cus_server[name] or 0 )
-                    local jifen = player.cus_server and (player.cus_server['武林积分'] or 0 )
+                    local jifen = player.cus_server and (player.cus_server['比武积分'] or 0 )
                     -- print(has_item,sp_cnt,skill.need_sp_cnt)
                     if has_item and has_item == 0 
                     and jifen >= (data[1] or 9999999)

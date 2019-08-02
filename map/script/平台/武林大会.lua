@@ -4,29 +4,33 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[rlsh.blp]],
+art = [[jhxx.blp]],
 --说明
-tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+tip = [[|cffffff00【要求地图等级>3|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff在平台上，本地图的全部评论数超过 5.5W 自动激活
+|cff00ffff比武积分|cffff0000（武林大会模式获得）|cff00ffff超过 250  自动获得，已拥有积分：|r%wabao_cnt%
 
-|cffFFE799【奖励属性】：|r
-|cff00ff00+20%  杀敌数加成|r
-|cff00ff00+10   攻击减甲|r
-|cff00ff00+2%   对BOSS额外伤害|r
-|cff00ff00+1%   会心几率|r
-|cff00ff00+10%  会心伤害|r
-
-]],
+|cffFFE799【成就属性】：|r
+|cff00ff00+28 杀怪加全属性|r
+|cff00ff00+10% 物理伤害加深|r
+|cff00ff00+5% 技能伤害加深|r
+|cff00ff00+10% 暴击伤害加深|r
+|cff00ff00+10% 技暴伤害加深|r
+ ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
-['杀敌数加成'] = 20,
-['攻击减甲'] = 10,
-['对BOSS额外伤害'] = 2,
-['会心几率'] = 1,
-['会心伤害'] = 10,
+['杀怪加全属性'] = 28,
+['物理伤害加深'] = 10,
+['技能伤害加深'] = 5,
+['暴击伤害加深'] = 10,
+['技暴伤害加深'] = 10,
+
+wabao_cnt = function(self)
+    local p = ac.player.self
+    return p.cus_server['比武积分'] or 0
+end,
 
 }
 
@@ -35,27 +39,32 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[ypxg.blp]],
+art = [[mrzx.blp]],
 --说明
-tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+tip = [[|cffffff00【要求地图等级>6|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff在平台上，本地图的全部评论数超过 7.5W 自动激活
+|cff00ffff比武积分|cffff0000（武林大会模式获得）|cff00ffff超过 500  自动获得，已拥有积分：|r%wabao_cnt%
 
-|cffFFE799【奖励属性】：|r
-|cff00ff00+30   攻击减甲|r
-|cff00ff00+20%  物理伤害加深|r
-|cff00ff00+10%  技能伤害加深|r
-|cff00ff00+10%  全伤加深|r
-
-]],
+|cffFFE799【成就属性】：|r
+|cff00ff00+58 杀怪加全属性|r
+|cff00ff00+20% 物理伤害加深|r
+|cff00ff00+10% 技能伤害加深|r
+|cff00ff00+20% 暴击伤害加深|r
+|cff00ff00+20% 技暴伤害加深|r
+ ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['攻击减甲'] = 30,
+['杀怪加全属性'] = 58,
 ['物理伤害加深'] = 20,
 ['技能伤害加深'] = 10,
-['全伤加深'] = 10,
-need_map_level = 8,
+['暴击伤害加深'] = 20,
+['技暴伤害加深'] = 20,
+
+wabao_cnt = function(self)
+    local p = ac.player.self
+    return p.cus_server['比武积分'] or 0
+end,
 
 }
 
@@ -64,27 +73,32 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[ypxg.blp]],
+art = [[wlgs.blp]],
 --说明
-tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+tip = [[|cffffff00【要求地图等级>10|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff在平台上，本地图的全部评论数超过 7.5W 自动激活
+|cff00ffff比武积分|cffff0000（武林大会模式获得）|cff00ffff超过 1000  自动获得，已拥有积分：|r%wabao_cnt%
 
-|cffFFE799【奖励属性】：|r
-|cff00ff00+30   攻击减甲|r
-|cff00ff00+20%  物理伤害加深|r
-|cff00ff00+10%  技能伤害加深|r
-|cff00ff00+10%  全伤加深|r
-
-]],
+|cffFFE799【成就属性】：|r
+|cff00ff00+88 杀怪加全属性|r
+|cff00ff00+30% 物理伤害加深|r
+|cff00ff00+15% 技能伤害加深|r
+|cff00ff00+30% 暴击伤害加深|r
+|cff00ff00+30% 技暴伤害加深|r
+ ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['攻击减甲'] = 30,
-['物理伤害加深'] = 20,
-['技能伤害加深'] = 10,
-['全伤加深'] = 10,
-need_map_level = 8,
+['杀怪加全属性'] = 88,
+['物理伤害加深'] = 30,
+['技能伤害加深'] = 15,
+['暴击伤害加深'] = 30,
+['技暴伤害加深'] = 30,
+
+wabao_cnt = function(self)
+    local p = ac.player.self
+    return p.cus_server['比武积分'] or 0
+end,
 
 }
 
