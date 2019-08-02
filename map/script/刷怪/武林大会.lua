@@ -1,8 +1,8 @@
 
 
 --每15分钟传送进武林大会
-local start_time = 60 * 15
-local duration_time = 60 * 2 --持续时间
+local start_time = 60 * 1
+local duration_time = 45 * 1 --持续时间
 local give_award 
 
 --武林大会倒计时（文字提醒）
@@ -173,21 +173,19 @@ ac.game:event '武林大会-结束' (function()
 
 end)
 
------------------------------------------比武统计-------------------------------------------------------
-ac.game:event '游戏-开始'(function()
-    for i=1,10 do 
-        local p= ac.player(i)
-        if p:is_player() then 
-            local hero = p.hero
-            hero:event '单位-死亡' (function(_,unit,killer)
-                if not killer:is_hero() then 
-                    return 
-                end
-                local p = killer:get_owner()
-                p.wldh_jf = (p.wldh_jf or 0 ) + 1
-            end)    
+-----------------------------------------比武统计------------------------------------------------------- 
+ac.game:event '玩家-注册英雄' (function(_, p, hero)
+
+    hero:event '单位-死亡' (function(_,unit,killer)
+        if not killer:is_hero() then 
+            return 
         end
-    end
+        local p = killer:get_owner()
+        p.wldh_jf = (p.wldh_jf or 0 ) + 1
+        --保存比武积分
+        p:Map_AddServerValue('wljf',1) --网易服务器
+    end) 
+
 end)    
 -----------------------------------------发放奖励-------------------------------------------------------
 local award_item = {
@@ -212,6 +210,7 @@ function give_award()
     table.sort(temp_tab,function(a,b)
         return a.wldh_jf>b.wldh_jf
     end)
+    local tip = '|cffffe799【系统消息】|r武林大会结束，发放奖励如下\n'
     --循环给奖励
     for i,data in ipairs(temp_tab) do 
         local ad_it = table.unpack(award_item[i])
@@ -220,9 +219,9 @@ function give_award()
         local name = list[math.random(#list)]
         local it = hero:add_item(name,true)
         -- print(i,data.player,data.wldh_jf)
-        local tip = '|cffffe799【系统消息】|r武林大会结束，发放奖励如下\n|cff00ff00第'..i..'名|r |cff00ffff'..data.player:get_name()..'|r |cff00ff00本场获得 |cffff0000'..data.wldh_jf..' |cff00ff00积分|r |cff00ff00奖励 '..it.color_name..' |r'..'\n'
-        ac.player.self:sendMsg(tip)
+        tip = tip..'|cff00ff00第'..i..'名|r |cff00ffff'..data.player:get_name()..'|r |cff00ff00本场获得 |cffff0000'..data.wldh_jf..' |cff00ff00积分|r |cff00ff00奖励 '..it.color_name..' |r'..'\n'
     end    
+    ac.player.self:sendMsg(tip)
     
 end    
 
