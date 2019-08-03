@@ -81,6 +81,9 @@ ac.game:event '游戏-开始' (function()
             if unit:get_name() == '护天神甲'  then 
                 unit:add_sell_item('神甲-皇龙阴阳甲',11)
             end	
+            if unit:get_name() == '神兵利器'  then 
+                unit:add_sell_item('神兵-九幽白蛇剑',11)
+            end	
         end	
     end    
 

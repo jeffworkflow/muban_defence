@@ -243,6 +243,7 @@ local unit_reward = {
     ['武器boss8'] = {{rand =100,name = '封神冰心剑'}},
     ['武器boss9'] = {{rand =100,name = '冰莲穿山剑'}},
     ['武器boss10'] = {{rand =100,name = '十绝冰火剑'}},
+    ['武器boss11'] = {{rand =100,name = '九幽白蛇剑'}},
 
     ['防具boss1'] = {{rand =100,name = '芙蓉甲'}},
     ['防具boss2'] = {{rand =100,name = '鱼鳞甲'}},

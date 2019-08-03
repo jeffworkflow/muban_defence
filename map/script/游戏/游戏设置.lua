@@ -218,7 +218,8 @@ ac.map.rects={
 	['传送-武器8'] =rect.j_rect('wuqi8') ,
 	['传送-武器9'] =rect.j_rect('wuqi9') ,
 	['传送-武器10'] =rect.j_rect('wuqi10') ,
-
+	['传送-武器11'] =rect.j_rect('wuqi111') ,
+	
 	['boss-武器1'] =rect.j_rect('wuqi11') ,
 	['boss-武器2'] =rect.j_rect('wuqi22') ,
 	['boss-武器3'] =rect.j_rect('wuqi33') ,
@@ -229,7 +230,8 @@ ac.map.rects={
 	['boss-武器8'] =rect.j_rect('wuqi88') ,
 	['boss-武器9'] =rect.j_rect('wuqi99') ,
 	['boss-武器10'] =rect.j_rect('wuqi1010') ,
-
+	['boss-武器11'] =rect.j_rect('wuqi1111') ,
+	
 	--甲
 	['传送-甲1'] =rect.j_rect('jia1') ,
 	['传送-甲2'] =rect.j_rect('jia2') ,
