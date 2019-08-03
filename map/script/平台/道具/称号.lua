@@ -261,6 +261,8 @@ tip = [[
 |cff00ff00+100%  会心伤害|r
 |cff00ff00+10%  闪避|r
 
+|cffffff00齐天大圣+真龙天子激活：攻击减甲+288，全伤加深+288%
+
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
