@@ -38,6 +38,7 @@ function mt:on_add()
         for i, u in ac.selector()
             : in_range(hero,self.area)
             : is_enemy(hero)
+            : of_not_type('boss')
 			: of_not_building()
 			: ipairs()
         do

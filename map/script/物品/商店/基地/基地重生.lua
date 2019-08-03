@@ -79,9 +79,18 @@ ac.game:event '单位-创建'(function(_,unit)
     --     -- time = 99999999
     -- } 
 end)  
-
-
+local max_cnt = 100
 function mt:on_cast_start()
+    local hero = self.owner
+    local player = hero:get_owner()
+
+    hero = player.hero
+    max_cnt = max_cnt - 1
+    if max_cnt <= 0 then 
+        player:sendMsg('已达上限')
+        return true
+    end    
+
     local unit = self.seller
     local skl = unit:find_skill('重生')
     if not skl then 
@@ -90,9 +99,6 @@ function mt:on_cast_start()
         skl.cnt = skl.cnt + 1
     end   
 
-    local hero = self.owner
-    local player = hero:get_owner()
-    hero = player.hero
     hero:add('全属性',self.award_all_attr)
     player:sendMsg('|cffFFE799【系统消息】|r|cff00ffff'..player:get_name()..'|r 购买了基地重生 奖励|cff00ff001288888全属性|r',2)
     

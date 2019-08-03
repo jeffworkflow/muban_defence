@@ -129,10 +129,17 @@ function api:of_hero()
 	end)
 end
 
---必须是英雄
+--必须是类别
 function api:is_type(type)
 	return self:add_filter(function(dest)
 		return dest:is_type(type)
+	end)
+end
+
+--必须是类别
+function api:of_not_type(type)
+	return self:add_filter(function(dest)
+		return not dest:is_type(type)
 	end)
 end
 

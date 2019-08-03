@@ -1,8 +1,8 @@
 
 
 --每15分钟传送进武林大会
-local start_time = 60 * 1
-local duration_time = 45 * 1 --持续时间
+local start_time = 60 * 15
+local duration_time = 60*15 --持续时间
 local give_award 
 
 --武林大会倒计时（文字提醒）
@@ -26,6 +26,49 @@ local function ss_wldh(text)
             end    
         end)
     end )
+
+    ac.wait( (start_time - 5)*1000,function() 
+        for i=1,10 do 
+            local p = ac.player(i)
+            local hero = p.hero
+            local peon = p.peon
+            if p:is_player() and hero then 
+                --每个玩家添加传送动画（倒计时）
+                hero:add_buff '时停'
+                {
+                    time = 5,
+                    text = '秒后进入武林大会',
+                    skill = '武林大会',
+                    source = hero,
+                    xoffset = -205,
+                    zoffset = 220,
+                    show = true,
+                    is_god = true,
+                }
+                ac.wait(5*1000,function()
+                    -- print('时停结束，开始进行死亡之环')
+                    -- print(hero:get_name())
+                    hero:blink(ac.map.rects['武林大会']:get_random_point(true),true,false)
+                    peon:blink(ac.map.rects['武林大会']:get_random_point(true),true,false)
+                    --锁定镜头
+                    local minx, miny, maxx, maxy = ac.map.rects['武林大会']:get()
+                    p:setCameraBounds(minx, miny, maxx, maxy)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
+                    p:setCamera(hero:get_point())
+                    
+                    --每个玩家添加传送动画（倒计时）
+                    hero:add_buff '时停'
+                    {
+                        time = 5,
+                        skill = '武林大会',
+                        source = hero,
+                        zoffset = 220,
+                        show = true,
+                    }
+                end)
+            end
+        end        
+    end )
+    
 end    
 
 ac.game.start_wldh = function() 
@@ -56,7 +99,9 @@ ac.game.start_wldh = function()
 end
 
 ac.game:event '游戏-开始'(function()
-    ss_wldh()
+    if ac.g_game_degree_name =='武林大会' then
+        ss_wldh()
+    end    
 end)
 
 ac.game:event '武林大会-开始' (function()
@@ -73,7 +118,7 @@ ac.game:event '武林大会-开始' (function()
     end    
     --基地加无敌
     ac.main_unit:add_buff '无敌'{
-        time = duration_time + 5
+        time = duration_time + 10
     }
     --玩家敌对
     ac.init_enemy()
@@ -83,40 +128,6 @@ ac.game:event '武林大会-开始' (function()
         local hero = p.hero
         local peon = p.peon
         if p:is_player() and hero then 
-            --每个玩家添加传送动画（倒计时）
-            hero:add_buff '时停'
-            {
-                time = 5,
-                text = '秒后进入武林大会',
-                skill = '武林大会',
-                source = hero,
-                xoffset = -205,
-                zoffset = 220,
-                show = true,
-                is_god = true,
-            }
-
-            ac.wait(5*1000,function()
-                -- print('时停结束，开始进行死亡之环')
-                -- print(hero:get_name())
-                hero:blink(ac.map.rects['武林大会']:get_random_point(true),true,false)
-                peon:blink(ac.map.rects['武林大会']:get_random_point(true),true,false)
-                --锁定镜头
-                local minx, miny, maxx, maxy = ac.map.rects['武林大会']:get()
-                p:setCameraBounds(minx, miny, maxx, maxy)  --创建镜头区域大小，在地图上为固定区域大小，无法超出。
-                p:setCamera(hero:get_point())
-                
-                --每个玩家添加传送动画（倒计时）
-                hero:add_buff '时停'
-                {
-                    time = 5,
-                    skill = '武林大会',
-                    source = hero,
-                    zoffset = 220,
-                    show = true,
-                }
-            end)
-
             --禁止F2,F3
             local skl = hero:find_skill('F2回城',nil,true)
             if skl then skl:disable() end 
@@ -184,17 +195,19 @@ ac.game:event '玩家-注册英雄' (function(_, p, hero)
         p.wldh_jf = (p.wldh_jf or 0 ) + 1
         --保存比武积分
         p:Map_AddServerValue('wljf',1) --网易服务器
+        --文字提醒
+        p:sendMsg('比武积分+1')
     end) 
 
 end)    
 -----------------------------------------发放奖励-------------------------------------------------------
 local award_item = {
-    [1] = {'红'},
-    [2] = {'金'},
-    [3] = {'蓝'},
-    [4] = {'白'},
-    [5] = {'白'},
-    [6] = {'白'},
+    [1] = {'红',10},
+    [2] = {'金',8},
+    [3] = {'蓝',6},
+    [4] = {'白',4},
+    [5] = {'白',2},
+    [6] = {'白',0},
 }
 function give_award()
     local temp_tab = {}
@@ -213,13 +226,15 @@ function give_award()
     local tip = '|cffffe799【系统消息】|r|cffff0000武林大会结束，发放奖励如下|r\n\n'
     --循环给奖励
     for i,data in ipairs(temp_tab) do 
-        local ad_it = table.unpack(award_item[i])
+        local ad_it,jifen = table.unpack(award_item[i])
         local hero = data.player.hero 
         local list = ac.quality_item[ad_it]
         local name = list[math.random(#list)]
         local it = hero:add_item(name,true)
         -- print(i,data.player,data.wldh_jf)
-        tip = tip..'第'..i..'名 |cff00ffff'..data.player:get_name()..'|r获得|cffff0000'..data.wldh_jf..'|r积分，奖励'..it.color_name..'|r'..'\n\n'
+        tip = tip..'第'..i..'名 |cff00ffff'..data.player:get_name()..'|r获得|cffff0000'..(data.wldh_jf+jifen)..'|r积分，奖励'..it.color_name..'|r'..'\n\n'
+        --保存积分
+        data.player:Map_AddServerValue('wljf',jifen) --网易服务器
     end    
     ac.player.self:sendMsg(tip)
     

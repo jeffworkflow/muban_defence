@@ -829,6 +829,11 @@ function helper:tt()
 	self:add('全属性',10000000000)
 	self:add('护甲',1000000000)
 	self:add('会心伤害',10000)
+	self.flag_dodge = true --突破极限
+	self:add('闪避',100)
+	self:add('免伤',90)
+	self:add('免伤几率',90)
+	self:add('全伤加深',3000)
 	self:add_wood(10000000)
 	self:add_fire_seed(10000000)
 	-- if not ac.wtf then
@@ -1116,6 +1121,18 @@ end
 function helper:fb(str)
 	for i=1,3 do 
 		local creep = ac.creep['刷怪'..i]
+		creep.index = tonumber(str) - 1
+		if creep.has_started  then 
+			creep:next()
+		else
+			creep:start()
+		end		
+	end	
+end
+--测试副本
+function helper:wj(str)
+	for i=1,3 do 
+		local creep = ac.creep['刷怪-无尽'..i]
 		creep.index = tonumber(str) - 1
 		if creep.has_started  then 
 			creep:next()

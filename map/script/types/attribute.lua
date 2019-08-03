@@ -557,6 +557,10 @@ set['生命上限'] = function(self, max_life, old_max_life)
 	if max_life < 0 then 
 		max_life = 1
 	end	
+	--生命上限 10000亿 10000000000
+	if max_life >= 1000000000000 then 
+		max_life = 1000000000000
+	end	
 	japi.SetUnitState(self.handle, jass.UNIT_STATE_MAX_LIFE, max_life)
 	if self.freshDefenceInfo then
 		self:freshDefenceInfo()
@@ -646,11 +650,25 @@ get['护甲'] = function(self)
 end
 
 set['护甲'] = function(self, defence)
+	if defence >= 2100000000 then 
+		defence = 2100000000
+	end	
 	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x20), defence)
 	if self.freshDefenceInfo then
 		self:freshDefenceInfo()
 	end
 end
+
+on_set['护甲'] =  function(self)
+    -- print("新值：",self:get '力量', "老值：",old_value)
+	local old_value =  self:get '护甲' --老值
+	return function()
+		local value = self:get '护甲' - old_value
+		if self:is_hero() then 
+			self:add('魔抗',  value )
+		end	
+	end		
+end	
 
 get['攻击间隔'] = function(self)
 	return japi.GetUnitState(self.handle, jass.ConvertUnitState(0x25))
@@ -833,8 +851,8 @@ on_get['法术伤害减免'] = function(self, reduce_magic_damage)
 end
 
 on_get['闪避'] = function(self, value)
-	if value > 90 then
-		return 90
+	if not self.flag_dodge and value > 90 then
+		value = 90
 	end
 	return value
 end

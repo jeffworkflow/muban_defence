@@ -321,18 +321,16 @@ local unit_reward = {
             }
         }
     },
-    ['命运花'] =  {
-        {    rand = 10, name = '无' },
-        {    rand = 9, name = '中毒',},
-        {    rand = 9, name = '沉默',},
-        {    rand = 9, name = '减速',},
-        {    rand = 9, name = '暴击率翻倍',},
-        {    rand = 9, name = '生命全满',},
-        {    rand = 9, name = '攻击力翻倍',},
-        {    rand = 9, name = '护甲加50',},
-        {    rand = 9, name = '全属性加100',},
-        {    rand = 9, name = '全属性加1000',},
-        {    rand = 9, name = '全属性加10000',},
+    ['随机神符'] =  {
+        {    rand = 11, name = '无敌' },
+        {    rand = 11, name = '治疗',},
+        {    rand = 11, name = '暴击',},
+        {    rand = 11, name = '攻击',},
+        {    rand = 11, name = '法术',},
+        {    rand = 11, name = '减甲',},
+        {    rand = 11, name = '中毒',},
+        {    rand = 11, name = '沉默',},
+        {    rand = 12, name = '定身',},
     },
     ['藏宝图'] =  {
         -- 75	什么事情都没有发生，挖宝经验（可存档）+1，当前挖宝经验XX		
