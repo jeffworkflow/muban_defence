@@ -4,7 +4,7 @@ mt.control = 2
 mt.cover_type = 1
 mt.cover_max = 1
 mt.effect = nil
-mt.ref = 'chest'
+mt.ref = 'overhead'
 mt.model = [[Abilities\Spells\Orc\Bloodlust\BloodlustTarget.mdl]]
 mt.mul = 1
 

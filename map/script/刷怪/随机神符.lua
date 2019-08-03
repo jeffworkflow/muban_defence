@@ -49,12 +49,12 @@ function mt:on_cast_start()
 
     if rand_name == '无' then
     elseif  rand_name == '无敌' then
-        ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 拾取了'..rand_name..'神符, |cff00ffff 无敌3秒 |r',10)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r玩家 |cff00ffff'..player:get_name()..'|r 捡到'..rand_name..'神符, |cffdf19d0拥有无敌状态|r |cff00ff00持续3秒|r',6)
         hero:add_buff '无敌' {
             time = 3
         }
     elseif  rand_name == '治疗' then
-        ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 拾取了命运花, |cff00ffff沉默，无法使用法术，持续10s |r',10)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r玩家 |cff00ffff'..player:get_name()..'|r 捡到'..rand_name..'神符, |cffdf19d0瞬间满血|r',6)
         hero:heal
 		{
 			source = hero,
@@ -63,7 +63,7 @@ function mt:on_cast_start()
 			heal = hero:get('生命上限'),
 		}
     elseif  rand_name == '暴击' then
-        ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 拾取了命运花, |cff00ffff暴击率100%，持续10S |r',10)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r玩家 |cff00ffff'..player:get_name()..'|r 捡到'..rand_name..'神符, |cffdf19d0暴击/技暴几率翻倍|r |cff00ff00持续8秒|r',6)
         hero:add_buff '暴击'{
             time = 8,
             skill = self,
@@ -71,7 +71,7 @@ function mt:on_cast_start()
             mul = 1,
         }
     elseif  rand_name == '攻击' then
-        ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 拾取了命运花, |cff00ffff减速，移动速度减少60%，持续10s |r',10)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r玩家 |cff00ffff'..player:get_name()..'|r 捡到'..rand_name..'神符, |cffdf19d0攻击+1亿|r |cff00ff00持续8秒|r',6)
         hero:add_buff '攻击'{
             time = 8,
             skill = self,
@@ -79,15 +79,17 @@ function mt:on_cast_start()
             value = 100000000, 
         }
     elseif  rand_name == '法术' then
-        ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 拾取了命运花, |cff00ffff生命全满，补满当前生命值 |r',10)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r玩家 |cff00ffff'..player:get_name()..'|r 捡到'..rand_name..'神符, |cffdf19d0技能伤害加深+100%|r |cff00ff00持续8秒|r',6)
         hero:add_buff '技能伤害加深'{
             time = 8,
             skill = self,
             source = hero,
+            model =[[Abilities\Spells\Human\Brilliance\Brilliance.mdl]],
+            ref = 'origin',
             value = 100, 
         }
     elseif  rand_name == '减甲' then
-        ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 拾取了命运花, |cff00ffff攻击力翻倍，持续10S |r',10)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r玩家 |cff00ffff'..player:get_name()..'|r 捡到'..rand_name..'神符, |cffdf19d0减少周围护甲+5000|r |cff00ff00持续8秒|r',6)
         hero:add_buff '减甲神符'{
             time = 8,
             skill = self,
@@ -95,7 +97,7 @@ function mt:on_cast_start()
             value = 5000, 
         }
     elseif  rand_name == '中毒' then
-        ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 拾取了命运花, |cff00ffff护甲加50 |r',10)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r玩家 |cff00ffff'..player:get_name()..'|r 捡到'..rand_name..'神符, |cffdf19d0生命-50%|r',6)
         hero:damage{
             source = hero,
             damage = hero:get('生命')*0.5,
@@ -103,17 +105,19 @@ function mt:on_cast_start()
             real_damage = true
         }
     elseif  rand_name == '沉默' then
-        ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 拾取了命运花, |cff00ffff全属性加100 |r',10)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r玩家 |cff00ffff'..player:get_name()..'|r 捡到'..rand_name..'神符, |cffdf19d0拥有沉默状态|r |cff00ff00持续5秒|r',6)
         hero:add_buff '沉默'{
-            time = 10,
+            time = 5,
             skill = self,
             source = hero
         }
     elseif  rand_name == '定身' then
-        ac.player.self:sendMsg('玩家 |cff00ffff'..player:get_name()..'|r 拾取了命运花, |cff00ffff全属性加1000 |r',10)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r玩家 |cff00ffff'..player:get_name()..'|r 捡到'..rand_name..'神符, |cffdf19d0拥有定身状态|r |cff00ff00持续3秒|r',6)
         hero:add_buff '定身'{
-            time = 10,
+            time = 3,
             skill = self,
+            model =[[Abilities\Spells\NightElf\EntanglingRoots\EntanglingRootsTarget.mdl]],
+            ref = 'origin',
             source = hero
         }
     end

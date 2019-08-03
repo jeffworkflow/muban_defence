@@ -147,11 +147,12 @@ is_order = 2,
 art = [[zhizunbao.blp]],
 --说明
 tip = [[
-点击 查看至尊宝皮肤
-]],
+
+查看 至尊宝皮肤
+ ]],
 }
 mt.skills = {
-    '至尊宝1','至尊宝2',
+    '至尊宝皮肤A','至尊宝皮肤B',
 }
 -- mt.on_add = ac.skill['巅峰神域'].on_add
 function mt:on_add()
@@ -168,7 +169,7 @@ function mt:on_add()
 
 end    
 
-local mt = ac.skill['至尊宝1']
+local mt = ac.skill['至尊宝皮肤A']
 mt{
 is_skill = 1,
 is_order = 1,
@@ -196,7 +197,7 @@ tip = [[
 effect = 'zhizunbao.mdx'
 }
 
-local mt = ac.skill['至尊宝2']
+local mt = ac.skill['至尊宝皮肤B']
 mt{
 is_skill = 1,
 is_order = 1,
@@ -466,7 +467,7 @@ effect = [[chibang7.mdx]]
 
 
 
-for i,name in ipairs({'赵子龙','Pa','虞姬','手无寸铁的小龙女','太极熊猫','关羽','狄仁杰','伊利丹','至尊宝1','至尊宝2','鬼厉','剑仙',}) do
+for i,name in ipairs({'赵子龙','Pa','虞姬','手无寸铁的小龙女','太极熊猫','关羽','狄仁杰','伊利丹','至尊宝皮肤A','至尊宝皮肤B','鬼厉','剑仙',}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

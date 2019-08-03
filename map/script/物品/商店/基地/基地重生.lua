@@ -87,7 +87,7 @@ function mt:on_cast_start()
     hero = player.hero
     max_cnt = max_cnt - 1
     if max_cnt <= 0 then 
-        player:sendMsg('已达上限')
+        player:sendMsg('|cff00ff00购买次数已达上限|r',5)
         return true
     end    
 

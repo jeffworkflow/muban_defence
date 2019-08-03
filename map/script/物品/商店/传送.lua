@@ -13,7 +13,7 @@ ac.quick_arrive ={
     ['神兵-封神冰心剑'] = {ac.map.rects['传送-武器8'],'wuqi3.blp','\n挑战BOSS并获得|cffff0000 【八阶神兵】-封神冰心剑|r\n',0,8000,0} ,
     ['神兵-冰莲穿山剑'] = {ac.map.rects['传送-武器9'],'wuqi15.blp','\n挑战BOSS并获得|cffdf19d0 【九阶神兵】-冰莲穿山剑|r\n',0,10000,0} ,
     ['神兵-十绝冰火剑'] = {ac.map.rects['传送-武器10'],'wuqi17.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神兵】-十绝冰火剑|r\n',0,14000,0} ,
-    ['神兵-九幽白蛇剑'] = {ac.map.rects['传送-武器11'],'wuqi17.blp','\n挑战BOSS并获得|cffdf19d0 【十阶神兵】-十绝冰火剑|r\n',0,14000,0} ,
+    ['神兵-九幽白蛇剑'] = {ac.map.rects['传送-武器11'],'jybsj.blp','\n挑战BOSS并获得|cffdf19d0 【十一阶神兵】-九幽白蛇剑|r\n',0,20000,0} ,
     
     ['神甲-芙蓉甲'] = {ac.map.rects['传送-甲1'],'jia1.blp','\n挑战BOSS并获得|cff00ff00 【一阶神甲】-芙蓉甲|r\n',0,20,0} ,
     ['神甲-鱼鳞甲'] = {ac.map.rects['传送-甲2'],'jia2.blp','\n挑战BOSS并获得|cff00ff00 【二阶神甲】-鱼鳞甲|r\n',0,50,0} ,

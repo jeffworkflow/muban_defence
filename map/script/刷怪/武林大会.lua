@@ -2,7 +2,7 @@
 
 --每15分钟传送进武林大会
 local start_time = 60 * 15
-local duration_time = 60*15 --持续时间
+local duration_time = 60 * 2 --持续时间
 local give_award 
 
 --武林大会倒计时（文字提醒）
@@ -118,7 +118,7 @@ ac.game:event '武林大会-开始' (function()
     end    
     --基地加无敌
     ac.main_unit:add_buff '无敌'{
-        time = duration_time + 10
+        time = duration_time + 30
     }
     --玩家敌对
     ac.init_enemy()
@@ -196,7 +196,7 @@ ac.game:event '玩家-注册英雄' (function(_, p, hero)
         --保存比武积分
         p:Map_AddServerValue('wljf',1) --网易服务器
         --文字提醒
-        p:sendMsg('比武积分+1')
+        p:sendMsg('|cffffe799比武积分+1|r',5)
     end) 
 
 end)    
@@ -232,7 +232,7 @@ function give_award()
         local name = list[math.random(#list)]
         local it = hero:add_item(name,true)
         -- print(i,data.player,data.wldh_jf)
-        tip = tip..'第'..i..'名 |cff00ffff'..data.player:get_name()..'|r获得|cffff0000'..(data.wldh_jf+jifen)..'|r积分，奖励'..it.color_name..'|r'..'\n\n'
+        tip = tip..'第'..i..'名 |cff00ffff'..data.player:get_name()..'|r共获得|cffff0000'..(data.wldh_jf+jifen)..'|r积分，奖励'..it.color_name..'|r'..'\n\n'
         --保存积分
         data.player:Map_AddServerValue('wljf',jifen) --网易服务器
     end    
