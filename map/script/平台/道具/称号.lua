@@ -268,13 +268,28 @@ tip = [[
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 488,
 ['每秒回血'] = 50,
-['攻击减甲'] = 200,
-['全伤加深'] = 388,
 ['会心几率'] = 10,
 ['会心伤害'] = 100,
 ['闪避'] = 10,
 --特效
-effect = [[zhenlongtianzi.mdx]]
+effect = [[zhenlongtianzi.mdx]],
+
+['攻击减甲'] = function(self) 
+    local val = 200 
+    local p = self.owner:get_owner()
+    if (p.mall and p.mall['齐天大圣A'] or 0) >=1 or (p.mall and p.mall['齐天大圣B'] or 0) >=1  then 
+        val = val + 288
+    end    
+    return val
+end,  
+['全伤加深'] = function(self) 
+    local val = 388 
+    local p = self.owner:get_owner()
+    if (p.mall and p.mall['齐天大圣A'] or 0) >=1 or (p.mall and p.mall['齐天大圣B'] or 0) >=1  then 
+        val = val + 288
+    end    
+    return val
+end,  
 }
 
 

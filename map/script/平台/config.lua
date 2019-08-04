@@ -31,8 +31,8 @@ local item = {
     {'YYCLLY','远影苍龙领域'},
 
     {'ZLTZ','真龙天子'},
-    {'QTDS','齐天大圣'},
-    
+    {'QTDS','齐天大圣A'},
+    {'QTDSB','齐天大圣B'},
 
     --key,key_name,地图等级要求
     {'WXHP','五星好评礼包',3},

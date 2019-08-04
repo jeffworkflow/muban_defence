@@ -1,4 +1,4 @@
-local mt = ac.skill['火焰'] 
+local mt = ac.skill['火焰1'] 
 
 mt{
     level = 1,
@@ -38,11 +38,11 @@ function mt:on_add()
         for i, u in ac.selector()
             : in_range(hero,self.area)
             : is_enemy(hero)
-            -- : of_not_type('boss')
+            : of_not_type('boss')
 			: of_not_building()
 			: ipairs()
         do
-            u:add_buff('火焰')
+            u:add_buff('火焰1')
 			{
 				source = hero,
 				skill = skill,
@@ -81,7 +81,7 @@ end
 
 
 
-local mt = ac.buff['火焰']
+local mt = ac.buff['火焰1']
 mt.ref = 'origin' 
 mt.cover_type = 0
 -- mt.cover_max = 1
