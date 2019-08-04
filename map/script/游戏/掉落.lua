@@ -274,11 +274,11 @@ local unit_reward = {
     ['毁灭者'] =  {{ rand = 25,      name = '吞噬丹'}},
 
     ['奶牛'] = {
-        {rand =0.1,name = '初级扭蛋券(十连抽)'},
-        {rand =0.1,name = '初级扭蛋券(百连抽)'},
-        {rand =0.1,name = '高级扭蛋券'},
-        {rand =0.1,name = '高级扭蛋券(十连抽)'},
-        {rand =0.1,name = '高级扭蛋券(百连抽)'},
+        {rand =0.15,name = '初级扭蛋券(十连抽)'},
+        {rand =0.15,name = '初级扭蛋券(百连抽)'},
+        {rand =0.15,name = '高级扭蛋券'},
+        {rand =0.15,name = '高级扭蛋券(十连抽)'},
+        {rand =0.15,name = '高级扭蛋券(百连抽)'},
     },
 
     
@@ -615,7 +615,7 @@ ac.unit_reward = unit_reward
 
 --递归匹配唯一奖励
 local function get_reward_name(tbl)
-    local rand = math.random(1,10000) / 100
+    local rand = math.random(1,100000) / 1000
     local num = 0
     for index,info in ipairs(tbl) do 
         num = num + info.rand 
@@ -636,7 +636,7 @@ ac.get_reward_name = get_reward_name
 --递归匹配多个奖励
 local function get_reward_name_list(tbl,list,level)
     local level = level or 0
-    local rand = math.random(1,10000) / 100
+    local rand = math.random(1,100000) / 1000
 
     local num = 0
     for index,info in ipairs(tbl) do 
