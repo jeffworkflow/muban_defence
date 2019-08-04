@@ -20,6 +20,8 @@ mt{
     content_tip = '',
     --售价
     wood = 6800,
+    --兑换材料
+    raffle = '初级扭蛋券(百连抽)*1',
     --物品技能
     is_skill = true,
     --全部玩家发送信息概率

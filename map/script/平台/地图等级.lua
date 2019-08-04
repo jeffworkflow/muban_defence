@@ -221,5 +221,16 @@ map_level = function(self)
 end,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-
 }
+function mt:on_add()
+    local hero =self.owner
+    if self.map_level >=16 then 
+        local skl = hero:add_skill('神仙水','隐藏')
+        skl:set_level(1)
+    end    
+    if self.map_level >=40 then 
+        local skl = hero:add_skill('永久超级赞助','隐藏')
+        skl:set_level(1)
+    end    
+
+end    

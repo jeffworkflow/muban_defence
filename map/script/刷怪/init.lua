@@ -12,6 +12,7 @@ require '刷怪.野怪'
 require '刷怪.刷怪无尽'
 require '刷怪.武林大会'
 require '刷怪.随机神符'
+require '刷怪.刷怪奶牛'
 
 
 

@@ -330,7 +330,10 @@ local function on_splash(self)
 		: is_enemy(source)
 		: is_not(target)
 		: ipairs()
-	do
+	do	
+		if u:get_name() =='最终boss' then 
+			dmg = dmg * 0.1
+		end	
 		u:damage
 		{
 			source = source,

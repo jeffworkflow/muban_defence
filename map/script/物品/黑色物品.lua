@@ -589,6 +589,63 @@ is_skill = true,
 content_tip = '|cffffe799物品说明：|r'
 }  
 
+local mt = ac.skill['维特的另一条腿']
+mt{
+--等久
+level = 1,
+art = [[wtzj.blp]],
+specail_model = [[File00000376 - RC.mdx]],
+--类型
+item_type = "消耗品",
+--cd 
+cool = 1,
+color ='黑',
+tip = [[
+
+|cffcccccc暗月洒下第一滩污血，时空之神的瞳孔即将打开。
+
+|cff00ff00+5000万 全属性
++350% 暴击加深
++350% 技暴加深
++350% 会心伤害
+
+|cffff0000杀手专属（仅杀手携带有效）]],
+is_skill = true,
+content_tip = '|cffffe799物品说明：|r'
+}  
+function mt:on_cast_start()
+    --传送
+    local hero = self.owner
+    local p = hero:get_owner()
+    hero = p.hero
+    -- print(ac.map.rects['奶牛区'],ac.map.rects['奶牛区']:get_point())
+    hero:blink(ac.map.rects['奶牛区'],true,false,true)
+
+    --开启奶牛刷怪
+    for i=1,3 do 
+        local crep = ac.creep['奶牛'..i]
+        crep:start()
+    end 
+    --倒计时
+    ac.timer_ex 
+    {
+        -- time = 3*60, 
+        time = 30,  --测试
+        title = "奶牛区关闭倒计时：",
+        func = function ()
+            --关闭刷怪
+            for i=1 ,3 do 
+                local crep = ac.creep['奶牛'..i] 
+                crep:finish(true)
+            end  
+            --传送英雄出去
+            hero:blink(ac.map.rects['主城'],true,false,true)
+        end,
+    }
+
+
+end    
+
 
 
 

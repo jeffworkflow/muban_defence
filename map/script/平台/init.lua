@@ -19,6 +19,7 @@ require '平台.活动'
 require '平台.碎片'
 require '平台.评论数'
 require '平台.武林大会'
+require '平台.难度礼包'
 
 
 

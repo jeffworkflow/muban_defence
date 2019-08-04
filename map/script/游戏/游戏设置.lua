@@ -322,6 +322,7 @@ ac.map.rects={
 	['藏宝图 '] =rect.j_rect('cbt1') ,
 	['boss-藏宝图'] =rect.j_rect('cbt111'),
 	['藏宝区'] =rect.j_rect('cbt2'),
+	['奶牛区'] =rect.j_rect('nainiu1') ,
 
 	--恶魔果实
 	['传送-红发'] =rect.j_rect('emo1') ,
