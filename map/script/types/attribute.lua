@@ -557,9 +557,9 @@ set['生命上限'] = function(self, max_life, old_max_life)
 	if max_life < 0 then 
 		max_life = 1
 	end	
-	--生命上限 10000亿 10000000000
-	if max_life >= 1000000000000 then 
-		max_life = 1000000000000
+	--生命上限 100亿 10000000000
+	if max_life >= 10000000000 then 
+		max_life = 10000000000
 	end	
 	japi.SetUnitState(self.handle, jass.UNIT_STATE_MAX_LIFE, max_life)
 	if self.freshDefenceInfo then

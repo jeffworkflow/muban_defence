@@ -53,6 +53,7 @@ function mt:on_cast_start()
             --不响应丢弃物品事件
             item.is_discard_event = true
             local handle = item.handle
+            -- local x,y = hero:get_point():get()
             jass.SetItemPosition(handle,0,0)
             --隐藏起来
             jass.SetItemVisible(handle,false)
