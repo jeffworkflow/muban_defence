@@ -180,7 +180,32 @@ mt{
  ]],
 }
 
-local mt = ac.skill['评论礼包说明']
+local mt = ac.skill['其它可存档内容说明']
+mt{
+    --类型
+    item_type = "神符",
+    art = [[xsgl.blp]],
+    --物品技能
+    is_skill = true,
+    content_tip = '',
+    store_affix ='',
+    tip = [[
+
+|cffffE799【杀鸡儆猴】|r 奖励 
+|cffff0000【杀怪加全属性】|cff00ffff+1*杀猴次数
+
+|cffffE799【神奇的五分钟】|r 奖励 
+|cffff0000【攻击减甲】|cff00ffff+1*游戏时间超过5分钟的局数
+
+|cffffE799【评论礼包】|r 奖励 
+|cffff0000【减少周围护甲】|cff00ffff+1.5*地图等级*评论次数
+
+|cffffE799【难度礼包】|r 奖励 
+|cffff0000【每秒加护甲】|cff00ffff+0.1*地图等级*游戏难度
+ ]],
+}
+
+local mt = ac.skill['比武积分说明']
 mt{
     --类型
     item_type = "神符",
@@ -190,9 +215,11 @@ mt{
     content_tip = '',
     store_affix ='',
     tip = [[ 
-|cff00ff00平台进行评论即可获得，评论礼包属性可存档|r 
+|cff00ff00开局选择“武林大会”模式，局内和玩家PK可获得|r 
 
-|cffffE7991个评论次数|r 奖励 |cffff0000【减少周围护甲】|cff00ffff+1.5*地图等级
+|cffffE799比武积分超过250|r 奖励 |cff00ff00【成就】江湖小虾（价值28元）
+|cffffE799比武积分超过500|r 奖励 |cff00ffff【成就】明日之星（价值58元）
+|cffffE799比武积分超过1000|r 奖励 |cffffff00【成就】武林高手（价值88元）
  ]],
 }
 
