@@ -9,17 +9,18 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗勇士徽章  500  兑换获得
+|cff00ffff消耗 |cffff0000三十根喜鹊翎毛|r |cff00ffff兑换获得
 
-|cffFFE799【称号属性】：|r
-|cff00ff00+268  杀怪加全属性|r
-|cff00ff00+10%   免伤几率|r
-|cff00ff00+10%   对BOSS额外伤害|r
+|cffFFE799【成就属性】：|r
+|cff00ff00+13.8   杀怪加全属性|r
+|cff00ff00+13.8   攻击减甲|r
+|cff00ff00+13.8%  木头加成|r
+|cff00ff00+13.8%  会心伤害|r
 
-|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 750,
+['杀怪加全属性'] = 13.8,
 ['木头加成'] = 13.8,
 ['攻击减甲'] = 13.8,
 ['会心伤害'] = 13.8,

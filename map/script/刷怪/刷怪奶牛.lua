@@ -15,7 +15,7 @@ for i=1,3 do
             local player = killer.owner
             local hero = player.hero
             --概率 超级彩蛋
-            local rate = 0.015
+            local rate = 0.02
             -- local rate = 10 --测试
             local rand = math.random(100000)/1000
             if rand <= rate then 

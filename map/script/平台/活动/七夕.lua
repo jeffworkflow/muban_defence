@@ -5,7 +5,10 @@ level = 1,
 --图标
 art = [[xique.blp]],
 --说明
-tip = [[五一节活动： 5个自动合成 宠物经验书（可存档）]],
+tip = [[ 
+|cffffe799【活动时间】|r|cff00ff008月6日-8月8日
+|cffffe799【活动说明】|r|cff00ff00金风玉露一相逢，便胜却人间无数。年年岁岁架鹊桥，牛郎织女偷相会。少侠既然也是有心之人，还请帮忙收集|cffffff00喜鹊翎毛|r|cffcccccc（挖宝掉落）
+]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -14,8 +17,10 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 cool = 1,
 --物品技能
 is_skill = true,
+store_affix = '',
+-- store_name = '|cffdf19d0挑战 |r',
 --物品详细介绍的title
-content_tip = '使用说明：'
+content_tip = ''
 }
 
 function mt:on_cast_start() 
@@ -38,8 +43,7 @@ art = [[item\shou204.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000100|r 挖宝积分 兑换 |cff00ff00点金石|r
-|cffff0000点金石： 可提高物品属性10%,每个物品可用10次。|r
+消耗 |cffff0000一根喜鹊翎毛|r 兑换 |cff00ff00点金石|r
 ]],
 --物品类型
 item_type = '神符',
@@ -58,12 +62,11 @@ mt{
 level = 1,
 store_name = '兑换-吞噬丹',
 --图标
-art = [[item\shou204.blp]],
+art = [[icon\tunshi.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000100|r 挖宝积分 兑换 |cff00ff00吞噬丹|r
-|cffff0000吞噬丹： 可提高物品属性10%,每个物品可用10次。|r
+消耗 |cffff0000十根喜鹊翎毛|r 兑换 |cff00ff00吞噬丹|r
 ]],
 --物品类型
 item_type = '神符',
@@ -81,12 +84,11 @@ mt{
 level = 1,
 store_name = '兑换-恶魔果实',
 --图标
-art = [[item\shou204.blp]],
+art = [[guoshi.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000100|r 挖宝积分 兑换 |cff00ff00恶魔果实|r
-|cffff0000恶魔果实： 可提高物品属性10%,每个物品可用10次。|r
+消耗 |cffff0000十五根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实|r
 ]],
 --物品类型
 item_type = '神符',
@@ -104,12 +106,13 @@ mt{
 level = 1,
 store_name = '兑换-格里芬',
 --图标
-art = [[item\shou204.blp]],
+art = [[gelifen.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000100|r 挖宝积分 兑换 |cff00ff00格里芬|r
-|cffff0000格里芬： 可提高物品属性10%,每个物品可用10次。|r
+消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实合成材料-格里芬|r
+
+|cffdf19d0格里芬|cff00ffff+黑暗项链+最强生物心脏+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
 ]],
 --物品类型
 item_type = '神符',
@@ -128,12 +131,13 @@ mt{
 level = 1,
 store_name = '兑换-黑暗项链',
 --图标
-art = [[item\shou204.blp]],
+art = [[heianxianglian.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000100|r 挖宝积分 兑换 |cff00ff00黑暗项链|r
-|cffff0000黑暗项链： 可提高物品属性10%,每个物品可用10次。|r
+消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实合成材料-黑暗项链|r
+
+|cff00ffff格里芬+|cffdf19d0黑暗项链|cff00ffff+最强生物心脏+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
 ]],
 --物品类型
 item_type = '神符',
@@ -152,12 +156,13 @@ mt{
 level = 1,
 store_name = '兑换-最强生物心脏',
 --图标
-art = [[item\shou204.blp]],
+art = [[zqswxz.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000100|r 挖宝积分 兑换 |cff00ff00最强生物心脏|r
-|cffff0000最强生物心脏： 可提高物品属性10%,每个物品可用10次。|r
+消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实合成材料-最强生物心脏|r
+
+|cff00ffff格里芬+黑暗项链+|cffdf19d0最强生物心脏|cff00ffff+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
 ]],
 --物品类型
 item_type = '神符',
@@ -176,12 +181,13 @@ mt{
 level = 1,
 store_name = '兑换-白胡子的大刀',
 --图标
-art = [[item\shou204.blp]],
+art = [[zhidao.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000100|r 挖宝积分 兑换 |cff00ff00白胡子的大刀|r
-|cffff0000白胡子的大刀： 可提高物品属性10%,每个物品可用10次。|r
+消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实合成材料-白胡子的大刀|r
+
+|cff00ffff格里芬+黑暗项链+最强生物心脏+|r|cffdf19d0白胡子的大刀|r|cff00ffff=恶魔果实（食用后可以获得惊人能力！)|r
 ]],
 --物品类型
 item_type = '神符',
@@ -200,13 +206,19 @@ mt{
 level = 1,
 store_name = '兑换-缘定三生',
 --图标
-art = [[item\shou204.blp]],
+art = [[ydss.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000100|r 挖宝积分 兑换 |cff00ff00缘定三生|r
-|cffff0000缘定三生： 可提高物品属性10%,每个物品可用10次。|r
-]],
+消耗 |cffff0000三十根喜鹊翎毛|r 兑换 |cff00ff00可存档成就-缘定三生|r
+
+|cffFFE799【成就属性】|r
+|cff00ff00杀怪加全属性 +13.8
+攻击减甲 +13.8
+木头加成 +13.8%
+会心伤害 +13.8%
+
+|cffcccccc【要求地图等级>5】|r]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -287,7 +299,7 @@ for i,name in ipairs({'兑换-格里芬','兑换-黑暗项链','兑换-最强生
                 p:sendMsg('本局已达兑换上限')    
             end    
         else
-            p:sendMsg('【系统消息】材料不足')    
+            p:sendMsg('|cffffe799【系统消息】|r|cff00ff00材料不足|r')    
         end    
     end    
 end    
@@ -300,7 +312,11 @@ level = 1,
 --图标
 art = [[lushui.blp]],
 --说明
-tip = [[五一节活动： 5个自动合成 宠物经验书（可存档）]],
+tip = [[
+
+|cff00ff00传说七夕节时的露水是牛郎织女相会时的眼泪,如抹在眼上和手上,可使人眼明手快。|cffffff00使用后增加10%攻速|r
+
+|cffcccccc七夕活动物品|r]],
 --品质
 color = '紫',
 --物品类型
@@ -310,7 +326,7 @@ cool = 1,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
-content_tip = '使用说明：'
+content_tip = '|cffffe799使用说明：|r'
 }
 
 local mt = ac.skill['喜鹊翎毛']
@@ -320,7 +336,11 @@ level = 1,
 --图标
 art = [[xique.blp]],
 --说明
-tip = [[五一节活动： 5个自动合成 宠物经验书（可存档）]],
+tip = [[
+
+|cff00ff00可前往活动使者处（基地右下角）兑换奖励
+
+|cffcccccc七夕活动物品|r]],
 --品质
 color = '紫',
 --物品类型
@@ -330,7 +350,7 @@ no_use = true,
 target_type = ac.skill.TARGET_TYPE_NONE,
 no_use = true,
 --物品详细介绍的title
-content_tip = '使用说明：'
+content_tip = '|cffffe799使用说明：|r'
 }
 
 
@@ -351,7 +371,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local rate = 0.5
     local max_cnt = 150
     local name ='露水'
-    local max_cnt = 5 --测试
+    -- local max_cnt = 5 --测试
     local rand = math.random(10000)/100
     if rand <= rate then 
         --掉落
@@ -370,7 +390,7 @@ ac.game:event '挖图成功'(function(trg,hero)
     end  
 
     local rate = 10
-    local max_cnt = 5
+    local max_cnt = 30
     local name ='喜鹊翎毛'
     -- local rate = 10 --测试
     local rand = math.random(10000)/100
@@ -378,6 +398,7 @@ ac.game:event '挖图成功'(function(trg,hero)
         if (p.max_cnt[name] or 0 ) < max_cnt then 
             hero:add_item(name,true)
             p.max_cnt[name] = (p.max_cnt[name] or 0) + 1
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r 使用|cff00ff00藏宝图|r 惊喜获得 |cffff0000喜鹊翎毛|r',6) 
         end    
     end  
 

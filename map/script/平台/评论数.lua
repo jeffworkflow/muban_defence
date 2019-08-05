@@ -31,7 +31,7 @@ art = [[rlsh.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff在平台上，本地图的全部评论数超过 5.5W 自动激活
+|cff00ffff在平台上，本地图的全部评论数超过 |cffff00005.5W |cff00ffff自动激活
 
 |cffFFE799【奖励属性】：|r
 |cff00ff00+20%  杀敌数加成|r
@@ -62,7 +62,7 @@ art = [[ypxg.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff在平台上，本地图的全部评论数超过 7.5W 自动激活
+|cff00ffff在平台上，本地图的全部评论数超过 |cffff00007.5W |cff00ffff自动激活
 
 |cffFFE799【奖励属性】：|r
 |cff00ff00+30   攻击减甲|r
@@ -92,10 +92,10 @@ art = [[dspls.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff在平台上，本地图的全部评论数超过 10W 自动激活
+|cff00ffff在平台上，本地图的全部评论数超过 |cffff000010W |cff00ffff自动激活
 
 |cffFFE799【奖励属性】：|r
-|cff00ff00+30%   物品获取率
+|cff00ff00+30% 物品获取率
 +45 攻击减甲
 +50 移动速度
 +50 攻击距离
@@ -105,7 +105,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['物品获取率'] = 25,
+['物品获取率'] = 30,
 ['攻击减甲'] = 45,
 ['移动速度'] = 50,
 ['攻击距离'] = 50,
