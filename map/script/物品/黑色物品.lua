@@ -623,8 +623,8 @@ function mt:on_cast_start()
     --倒计时
     ac.timer_ex 
     {
-        -- time = 3*60, 
-        time = 30,  --测试
+        time = 3*60, 
+        -- time = 30,  --测试
         title = "奶牛区关闭倒计时：",
         func = function ()
             --关闭刷怪

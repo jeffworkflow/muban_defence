@@ -349,7 +349,7 @@ local mt = ac.skill['齐天大圣']
 mt{
 is_skill = 1,
 --等级
-level = 1,
+level = 0,
 is_spellbook = 1,
 is_order = 2,
 --图标
@@ -518,6 +518,10 @@ function mt:on_add()
     for index,skill in ipairs(self.skill_book) do 
 
         local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
+        if skill.name == '齐天大圣' then 
+            print( player.mall[skill.name..'A'], player.mall[skill.name..'B'])
+            has_mall = player.mall[skill.name..'A'] or player.mall[skill.name..'B']
+        end    
         if has_mall and has_mall > 0 then 
             skill:set_level(1)
         end

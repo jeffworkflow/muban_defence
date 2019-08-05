@@ -60,7 +60,11 @@ function mt:on_cast_start()
     
     --删除物品
     for i,item in ipairs(temp_item) do 
-        item:item_remove()
+        if item._count > 1 then 
+            item:add_item_count(-1)
+        else    
+            item:item_remove()
+        end    
     end    
 
     --添加 
