@@ -49,7 +49,7 @@ end
 function player.__index:Map_CommentTotalCount()
     local handle = self.handle
     if global_test then 
-        return self.total_comment or 1
+        return self.total_comment or 75500
     else    
         return 75500
         --japi.RequestExtraIntegerData(51, nil, nil, nil, false, 0, 0, 0) 不准

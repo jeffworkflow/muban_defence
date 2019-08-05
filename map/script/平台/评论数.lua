@@ -82,6 +82,38 @@ need_map_level = 8,
 }
 
 
+local mt = ac.skill['扶摇直上']
+mt{
+--等级
+level = 0,
+--图标
+art = [[dspls.blp]],
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff在平台上，本地图的全部评论数超过 10W 自动激活
+
+|cffFFE799【奖励属性】：|r
+|cff00ff00+30%   物品获取率
++45 攻击减甲
++50 移动速度
++50 攻击距离
++25% 暴击加深
++25% 技暴加深
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['物品获取率'] = 25,
+['攻击减甲'] = 45,
+['移动速度'] = 50,
+['攻击距离'] = 50,
+['暴击加深'] = 25,
+['技暴加深'] = 25,
+need_map_level = 11,
+
+}
 
 local mt = ac.skill['全服奖励']
 mt{
@@ -96,7 +128,7 @@ mt{
     
 }
 mt.skills = {
-    '评论礼包',nil,nil,nil,'日益精进','勇攀新高'
+    '评论礼包',nil,nil,nil,'日益精进','勇攀新高','扶摇直上'
 }
 
 function mt:on_add()
@@ -121,6 +153,7 @@ local condition = {
     --福利 = 评论数，激活所需地图等级
     ['日益精进'] = {55000,5},
     ['勇攀新高'] = {75000,8},
+    ['扶摇直上'] = {100000,11},
 }
 
 for name,data in pairs(condition) do 

@@ -166,6 +166,8 @@ function mt:add_content()
     -- player:AddServerValue('wbjf',1) 自定义服务器
     player:Map_AddServerValue('wbjf',1) --网易服务器
 
+    ac.game:event_notify('挖图成功',hero) --发布事件回调
+
     --什么事情都没有发生，挖宝经验（可存档）+1，当前挖宝经验XX
     --再处理特殊的 
     if rand_name == '无' then

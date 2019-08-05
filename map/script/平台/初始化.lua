@@ -368,6 +368,8 @@ local ttxd2award1 = {
     ['君临天下'] = {0,4},
     ['神帝'] = {0,9},
     ['傲世天下'] = {0,10},
+    --精彩活动
+    ['缘定三生'] = {0,5},
 }    
 
 --处理替天行道 永久属性
@@ -465,6 +467,10 @@ local function init_need_map_level()
         ac.server.need_map_level[name] = data[2]
     end
     for name,data in pairs(ttxd2award1) do
+        ac.server.need_map_level[name] = data[2]
+    end
+
+    for name,data in pairs(wldh2award_data) do
         ac.server.need_map_level[name] = data[2]
     end
 

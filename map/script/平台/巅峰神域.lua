@@ -12,7 +12,7 @@ mt{
     
 }
 mt.skills = {
-    '游戏说明','礼包','称号','武器','翅膀','神圣领域','英雄','全服奖励','武林大会'
+    '游戏说明','礼包','称号','武器','翅膀','神圣领域','英雄','全服奖励','武林大会','精彩活动'
 } 
 -- function mt:on_add()
 --     local hero = self.owner 
@@ -174,4 +174,4 @@ end
 --注册添加给英雄
 ac.game:event '玩家-注册英雄' (function(_, player, hero)
     hero:add_skill('巅峰神域','英雄',12)
-end)    
+end) 
