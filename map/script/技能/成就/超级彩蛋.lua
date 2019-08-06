@@ -255,7 +255,7 @@ mt{
 }
 
 
-local mt = ac.skill['一代du神']
+local mt = ac.skill['一代幸运神']
 mt{
     is_spellbook = 1,
     level = 1,
