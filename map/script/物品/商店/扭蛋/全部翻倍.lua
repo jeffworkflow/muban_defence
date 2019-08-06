@@ -43,7 +43,7 @@ function mt:on_cast_start()
     local kill_count = p.kill_count
 
     local rand = math.random(100)
-    if fire_seed <=10 or wood <=10  or kill_count <=10 then 
+    if fire_seed <=10 and wood <=10  and kill_count <=10 then 
         p:sendMsg('|cffFFCC00不够资源|r')
         return 
     end    
