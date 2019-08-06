@@ -260,7 +260,7 @@ mt{
     is_spellbook = 1,
     level = 1,
     is_order = 2,
-    art = [[ydds.blp]],
+    art = [[qbfb.blp]],
     tip = [[
 
 |cffFFE799【成就属性】：|r
