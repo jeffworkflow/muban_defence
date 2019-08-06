@@ -64,13 +64,13 @@ function mt:on_cast_start()
     end    
     
     --超级彩蛋触发
-    local rate = 67.5
+    local rate = 7.5
     if kill_count >=10000 then 
         if math.random(10000)/100 <= rate then 
-            local skl = hero:find_skill('一代赌神',nil,true)
+            local skl = hero:find_skill('一代du神',nil,true)
             if not skl then 
-                ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋','一代赌神')
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 打桩爽翻了天，|r 获得成就|cffff0000 "一代赌神" |r，奖励 |cffff00003000万全属性，3万护甲，技能伤害加深+15%|r',6)
+                ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋','一代du神')
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 赌bo一时爽，一直赌bo一直爽，|r 获得成就|cffff0000 "一代du神" |r，奖励 |cffff00005000万全属性，+100%杀敌数加成，+100%物品获取率，+100%木头加成，+100%火灵加成|r',6)
             end    
         end
     end  
