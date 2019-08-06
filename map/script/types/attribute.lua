@@ -126,6 +126,7 @@ local attribute = {
 	['每秒加金币'] = true,  --默认表示为基础值
 	['每秒加木头'] = true,  --默认表示为基础值
 	['每秒加火灵'] = true,  --默认表示为基础值
+	['每秒加杀敌数'] = true,  --默认表示为基础值
 	
 	['每秒加力量'] = true,  --默认表示为基础值
 	['每秒加敏捷'] = true,  --默认表示为基础值
@@ -557,10 +558,10 @@ set['生命上限'] = function(self, max_life, old_max_life)
 	if max_life < 0 then 
 		max_life = 1
 	end	
-	--生命上限 100亿 10000000000
-	if max_life >= 10000000000 then 
-		max_life = 10000000000
-	end	
+	--生命上限 100000亿 10000000000
+	-- if max_life >= 10000000000000 then 
+	-- 	max_life = 10000000000000
+	-- end	
 	japi.SetUnitState(self.handle, jass.UNIT_STATE_MAX_LIFE, max_life)
 	if self.freshDefenceInfo then
 		self:freshDefenceInfo()
@@ -909,6 +910,9 @@ ac.loop(1*1000,function(t)
 			--每秒加火灵
 			local fire_seed = player.hero:get('每秒加火灵') 
 			player:add_fire_seed(fire_seed) 
+			--每秒加杀敌数
+			local kill_count = player.hero:get('每秒加杀敌数') 
+			player:add_kill_count(kill_count) 
 
 			local hero = player.hero
 			--每秒属性 

@@ -98,13 +98,13 @@ function mt:on_cast_shot()
 			ac.effect(self.mover:get_point(),skill.effect1,0,1,'origin'):remove()  
 		end	
 		function mvr:on_hit(dest)
-			for i, u in ac.selector()
-				: in_range(dest,skill.hit_area)
-				: is_enemy(hero)
-				: of_not_building()
-				: ipairs()
-			do
-				
+			-- for i, u in ac.selector()
+			-- 	: in_range(dest,skill.hit_area)
+			-- 	: is_enemy(hero)
+			-- 	: of_not_building()
+			-- 	: ipairs()
+			-- do
+				local u = dest
 				u:add_effect('origin',skill.effect):remove()
 				u:add_buff '晕眩'
 				{
@@ -125,9 +125,9 @@ function mt:on_cast_shot()
 					skill = skill,
 					source = hero,
 					damage = skill.damage,
-					damage_type = '物理'
+					damage_type = '法术'
 				}
-			end	
+			-- end	
 		end	
 	end	
 	--先释放一次，再释放4次

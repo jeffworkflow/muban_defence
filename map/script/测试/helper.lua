@@ -373,11 +373,6 @@ function helper:get_server(key)
 		-- print('服务器存档:'..key,p.cus_server[name])
 	end	
 end	
---波数
-function helper:boshu(str,index)
-	local creep = ac.creep[str]
-	ac.creep[str].index = math.ceil(index)
-end
 
 --动画
 function helper:ani(name)
@@ -428,7 +423,9 @@ function helper:it1()
 			-- local item = ac.item.create_item('冰剑',ac.point(0,0))
 			local item = self:add_item('冰剑',true)
 			print(item.handle)
-			item:item_remove()
+			ac.wait(10*1000,function()
+				item:item_remove()
+			end)
 		end	
 	end)
 
@@ -955,7 +952,7 @@ function helper:print_p(str,index)
 end
 
 function helper:addit(flag)
-	for i=1,30 do 
+	for i=1,100 do 
         -- local name = ac.all_item[math.random( 1,#ac.all_item)]
         local list = ac.quality_item['白'] 
         local name = list[math.random(#list)]

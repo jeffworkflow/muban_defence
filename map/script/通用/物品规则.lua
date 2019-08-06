@@ -135,7 +135,7 @@
         local kill_counts = it:sell_kill_count()
         local jifens = it:sell_jifen()
         local fire_seeds = it:sell_fire_seed()
-        print(it.name,woods)
+        -- print(it.name,woods)
         if golds > 0  then
             player:addGold(golds,u)
         end

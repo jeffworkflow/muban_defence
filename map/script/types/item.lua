@@ -973,7 +973,9 @@ function unit.__index:remove_item(it)
 	-- it:on_remove_state()
 	-- print('触发丢弃物品',it.name,it.type,it.handle)
 	--移除技能
-	it:_call_event 'on_remove'
+	if it.owner then 
+		it:_call_event 'on_remove'
+	end	
 
 	--神符类的物品，有所有者，但是没有slot_id 所以，需要做一重判断
 	local slot = it.slot_id
@@ -991,7 +993,7 @@ function unit.__index:remove_item(it)
 	it.is_discard_event = true
 	
 	--触发丢弃物品时，没有马上返回物品位置。
-	ac.wait(10,function()
+	ac.wait(0,function()
 		-- print(it:get_point())
 		it:show(true)
 	end)   

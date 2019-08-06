@@ -51,6 +51,7 @@ function mt:on_cast_shot()
 		local items = hero:get_slot_item(i)
 		if items then 
 			print(items.name,items.handle)
+			
 			gold = gold + items:sell_price()
 			items:item_remove()
 		end
