@@ -123,7 +123,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ffff荣耀王者25星 
 
 |cffFFE799【神兵属性】：|r
-|cff00ff00+650  杀怪加攻击|r
+|cff00ff00+600  杀怪加攻击|r
 |cff00ff00+50 攻击减甲|r
 |cff00ff00+75%  分裂伤害|r
 |cff00ff00+50%  物理伤害加深|r
@@ -133,7 +133,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 650,
+['杀怪加攻击'] = 600,
 ['攻击减甲'] = 50,
 ['分裂伤害'] = 75,
 ['物理伤害加深'] = 50,
@@ -159,7 +159,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ffff修罗模式25星 
 
 |cffFFE799【神兵属性】：|r
-|cff00ff00+850  杀怪加攻击|r
+|cff00ff00+700  杀怪加攻击|r
 |cff00ff00+100  攻击减甲|r
 |cff00ff00+100% 分裂伤害|r
 |cff00ff00+75%  物理伤害加深|r
@@ -169,7 +169,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 850,
+['杀怪加攻击'] = 700,
 ['攻击减甲'] = 100,
 ['分裂伤害'] = 100,
 ['物理伤害加深'] = 75,
