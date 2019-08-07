@@ -55,10 +55,11 @@ tip = [[
 |cff00ffff|cff00ffff地图等级=%need_map_level%
 
 |cffFFE799【翅膀属性】：|r
-|cff00ff00+150    杀怪加全属性|r
-|cff00ff00+3000W 生命|r
-|cff00ff00+3000   护甲
-|cff00ff00+10%   闪避|r
+|cff00ff00+150     杀怪加全属性|r
+|cff00ff00+3000W 初始生命|r
+|cff00ff00+3000  初始护甲
+|cff00ff00+10%     闪避|r
+|cff00ff00+25     每秒加木头|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
@@ -68,6 +69,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['生命上限'] = 20000000,
 ['护甲'] = 2000,
 ['闪避'] = 10,
+['每秒加木头'] = 25,
 need_map_level = 30,
 --特效
 effect = [[chibang4.mdx]]
