@@ -77,6 +77,7 @@ function mt:on_cast_start()
     
     --超级彩蛋触发
     local rate = 7.5
+    local hero = p.hero
     if wood >=30000 then 
         if math.random(10000)/100 <= rate then 
             local skl = hero:find_skill('一代幸运神',nil,true)

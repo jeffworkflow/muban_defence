@@ -48,6 +48,9 @@ local item = {
     {'ltly','龙腾领域',14},
     {'fsrlly','飞沙热浪领域',17},
     {'lxytly','灵霄烟涛领域',22},
+
+    {'fxlhj','飞星雷火剑',26},
+    
 }
 ac.mall = item 
 

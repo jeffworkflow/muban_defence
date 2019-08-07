@@ -60,6 +60,7 @@ function mt:on_cast_start()
     end    
 
     --超级彩蛋触发
+    local hero = p.hero
     local rate = 7.5
     if fire_seed >= 90000 or wood >=30000 or kill_count >=10000 then 
         if math.random(10000)/100 <= rate then 

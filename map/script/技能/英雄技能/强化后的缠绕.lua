@@ -53,6 +53,7 @@ function mt:on_add()
                 time = self.time,
                 skill = self,
                 source = hero,
+                ref= 'origin',
                 model = self.effect,
             }
             u:damage
@@ -75,7 +76,7 @@ function mt:on_add()
 		end
         --触发时修改攻击方式
         if math.random(100) <= self.chance then
-            start_damage()
+            start_damage(damage)
             --激活cd
             skill:active_cd()
         end

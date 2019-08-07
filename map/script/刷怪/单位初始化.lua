@@ -48,7 +48,7 @@ local function init_attribute(unit)
     end    
 
     --单独增强最终boss
-    if unit:get_name() == '最终boss' then
+    if unit:get_name() == '毁灭者' then
         unit:set('攻击减甲',data.attribute['攻击减甲'] * (attr_mul or 1) )
     end  
  

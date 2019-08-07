@@ -1,30 +1,27 @@
-local mt = ac.skill['憎恶']
+local mt = ac.skill['强化后的憎恶']
 mt{
     --必填
     is_skill = true,
     --初始等级
-    level = 1,
+    level = 5,
     --最大等级
    max_level = 5,
+    --触发几率
+   chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
 	--技能类型
-	skill_type = "主动,控制",
+	skill_type = "被动,全属性,晕眩",
+	--被动
+	passive = true,
+    title = "|cffdf19d0强化后的憎恶|r",
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*15+10000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*16+10000)* self.level
 end,
-	--属性加成
- ['每秒加敏捷'] = {50,100,150,200,250},
- ['攻击加敏捷'] = {50,100,150,200,250},
- ['杀怪加敏捷'] = {50,100,150,200,250},
 	--介绍
-    tip = [[
-
-|cffffff00【每秒加敏捷】+50*Lv
-【攻击加敏捷】+50*Lv
-【杀怪加敏捷】+50*Lv|r
-
-|cff00bdec【被动效果】攻击(5+Lv)%几率造成范围技能伤害
-【伤害公式】(敏捷*15+1w)*Lv|r
+	tip = [[
+        
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害，并晕眩0.2S
+【伤害公式】(全属性*16+1w)*Lv|r
 
 ]],
     --技能目标
@@ -32,33 +29,25 @@ end,
     --图标
     art = 'BTNChainLightning.blp',
     --施法距离
-    range =  1200,
+    range =  1000,
     --投射物碰撞距离
     hit_area = 150,
-    speed = 1200,
+    speed = 1000,
     --投射物模型
     model = [[SentinelMissile.mdx]],
     effect = [[Abilities\Weapons\WardenMissile\WardenMissile.mdl]],
     --cd
-    cool = 15,
+    cool = 3,
     damage_type = '法术',
     --减速事件
     reduce_time = 3,
     move_speed_rate = 50
 }
-
 function mt:on_add()
-    local skill = self
-    local hero = self.owner
-end
- 
-
-
-function mt:on_cast_start()
     local hero = self.owner
     local target = self.target
     local skill = self
-
+   
     local function recycle_hook(poi,tbl,dest)
         --把英雄放在最后，当做参照点
         tbl[#tbl+ 1] = hero
@@ -186,7 +175,6 @@ function mt:on_cast_start()
         end
 
         function mvr:on_hit(dest)
-            print(dest:get_name())
             if dest:get_name() ~='毁灭者' then 
                 self.flag_hit = true
                 recycle_hook(self.mover:get_point(),tbl,dest)
@@ -200,5 +188,27 @@ function mt:on_cast_start()
         end
     end    
 
-    start_hook(target)
+    
+    self.trg = hero:event '造成伤害效果' (function(_,damage)
+		if not damage:is_common_attack()  then 
+			return 
+		end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
+        --触发时修改攻击方式
+        if math.random(100) <= self.chance then
+            start_hook(damage.target:get_point())
+            --激活cd
+            skill:active_cd()
+        end
+    end)
+end
+function mt:on_remove()
+    local hero = self.owner
+    if self.trg then
+        self.trg:remove()
+        self.trg = nil
+    end
 end

@@ -62,6 +62,7 @@ function mt:on_cast_shot()
 			time = self.time,
 			skill = self,
 			source = hero,
+			ref ='origin',
 			model = self.effect,
 		}
 		u:damage

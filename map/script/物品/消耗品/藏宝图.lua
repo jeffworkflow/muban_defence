@@ -76,7 +76,7 @@ function mt:on_cast_start()
     --自动寻宝
     if self.wabao_auto_use then 
         --区域修改
-        rect = ac.rect.create( tx - 32, ty-32, tx + 32, ty + 32)
+        rect = ac.rect.create( tx - 64, ty-64, tx + 64, ty + 64)
         region = ac.region.create(rect)
         if not self.trg then 
             self.trg = region:event '区域-进入' (function(trg, unit)

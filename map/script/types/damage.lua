@@ -331,7 +331,7 @@ local function on_splash(self)
 		: is_not(target)
 		: ipairs()
 	do	
-		if u:get_name() =='最终boss' then 
+		if u:get_name() =='毁灭者' then 
 			dmg = dmg * 0.1
 		end	
 		u:damage

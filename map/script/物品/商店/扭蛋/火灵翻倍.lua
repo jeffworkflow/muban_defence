@@ -75,7 +75,9 @@ function mt:on_cast_start()
         hero:add_fire_seed(-fire_seed)
         p:sendMsg('|cffff0000凉凉|r')
     end 
+    
     local rate = 7.5
+    local hero = p.hero
     if fire_seed >=90000 then 
         if math.random(10000)/100 <= rate then 
             local skl = hero:find_skill('一代幸运神',nil,true)
