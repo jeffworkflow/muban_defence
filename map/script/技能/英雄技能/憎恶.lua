@@ -10,27 +10,27 @@ mt{
 	skill_type = "主动,控制",
 	--伤害
 	damage = function(self)
-  return (self.owner:get('敏捷')*15+10000)* self.level
+  return (self.owner:get('力量')*15+10000)* self.level
 end,
 	--属性加成
- ['每秒加敏捷'] = {50,100,150,200,250},
- ['攻击加敏捷'] = {50,100,150,200,250},
- ['杀怪加敏捷'] = {50,100,150,200,250},
+ ['每秒加力量'] = {50,100,150,200,250},
+ ['攻击加力量'] = {50,100,150,200,250},
+ ['杀怪加力量'] = {50,100,150,200,250},
 	--介绍
     tip = [[
 
-|cffffff00【每秒加敏捷】+50*Lv
-【攻击加敏捷】+50*Lv
-【杀怪加敏捷】+50*Lv|r
+|cffffff00【每秒加力量】+50*Lv
+【攻击加力量】+50*Lv
+【杀怪加力量】+50*Lv|r
 
-|cff00bdec【被动效果】攻击(5+Lv)%几率造成范围技能伤害
-【伤害公式】(敏捷*15+1w)*Lv|r
+|cff00bdec【主动施放】向指定方向投出钩子，将敌人钩回身边
+【伤害公式】(力量*15+1w)*Lv*5|r
 
 ]],
     --技能目标
     target_type = ac.skill.TARGET_TYPE_POINT,
     --图标
-    art = 'BTNChainLightning.blp',
+    art = 'zengwu.blp',
     --施法距离
     range =  1200,
     --投射物碰撞距离
@@ -44,7 +44,7 @@ end,
     damage_type = '法术',
     --减速事件
     reduce_time = 3,
-    move_speed_rate = 50
+    move_speed_rate = 20
 }
 
 function mt:on_add()

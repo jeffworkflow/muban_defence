@@ -6,16 +6,28 @@ mt{
 	--初始等级
 	level = 1,
 	max_level = 5,
+	damage = function(self)
+		return (self.owner:get('智力')*15+10000)* self.level*5
+	  end,
+	  ['每秒加智力'] = {50,100,150,200,250},
+	  ['攻击加智力'] = {50,100,150,200,250},
+	  ['杀怪加智力'] = {50,100,150,200,250},
 	tip = [[
-		主动：在英雄朝向每 %pulse_time% 秒，发射一波X射线，每条造成攻击力*2+智力*5的法术伤害 (%damage%) ；
-		被动：睿智，智力 + %int% %
+
+|cffffff00【每秒加智力】+50*Lv
+【攻击加智力】+50*Lv
+【杀怪加智力】+50*Lv|r
+
+|cff00bdec【主动施放】对周围敌人造成范围技能伤害
+【伤害公式】(智力*15+1w)*Lv*5|r
+
 	]],
 	--技能图标 3（40°扇形分三条，角度20%）+3+3+1+1，一共5波，
     art = [[jineng\jineng032.blp]],
 	--技能类型
-	skill_type = "主动,智力,晕眩",
+	skill_type = "主动,智力",
 	--冷却时间
-    cool = 20,
+    cool = 15,
 	--技能目标类型 无目标
 	target_type = ac.skill.TARGET_TYPE_NONE,
 	--持续时间
@@ -25,9 +37,6 @@ mt{
 	--每次最大数量
 	count = 3,
 	--伤害
-	damage = function(self,hero)
-		return hero:get('攻击')*2 + hero:get('智力')*5
-	end,	
 	--耗蓝
 	cost = 100,
 	effect = [[gx.mdx]],

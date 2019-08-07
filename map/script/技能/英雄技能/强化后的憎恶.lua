@@ -9,25 +9,31 @@ mt{
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
 	--技能类型
-	skill_type = "被动,全属性,晕眩",
+	skill_type = "被动,力量,晕眩",
 	--被动
 	passive = true,
     title = "|cffdf19d0强化后的憎恶|r",
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*16+10000)* self.level
-end,
+        return (self.owner:get('力量')*40+10000)* self.level
+      end,
+ ['每秒加力量'] = {100,200,300,400,500},
+ ['攻击加力量'] = {100,200,300,400,500},
+ ['杀怪加力量'] = {100,200,300,400,500},
 	--介绍
 	tip = [[
         
-|cff00bdec【被动效果】攻击10%几率造成范围技能伤害，并晕眩0.2S
-【伤害公式】(全属性*16+1w)*Lv|r
+|cffffff00【每秒加力量】+100*Lv
+【攻击加力量】+100*Lv
+【杀怪加力量】+100*Lv|r
+
+|cff00bdec【被动效果1】攻击10%几率向指定方向投出钩子，将敌人钩回身边
+【伤害公式】(力量*40+1w)*Lv|r
 
 ]],
-    --技能目标
-    target_type = ac.skill.TARGET_TYPE_POINT,
+    
     --图标
-    art = 'BTNChainLightning.blp',
+    art = 'qhzw.blp',
     --施法距离
     range =  1000,
     --投射物碰撞距离
@@ -41,7 +47,7 @@ end,
     damage_type = '法术',
     --减速事件
     reduce_time = 3,
-    move_speed_rate = 50
+    move_speed_rate = 20
 }
 function mt:on_add()
     local hero = self.owner

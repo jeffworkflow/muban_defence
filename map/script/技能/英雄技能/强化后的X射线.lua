@@ -7,20 +7,30 @@ mt{
     level = 5,
     --最大等级
    max_level = 5,
+   ['每秒加智力'] = {100,200,300,400,500},
+   ['攻击加智力'] = {100,200,300,400,500},
+   ['杀怪加智力'] = {100,200,300,400,500},
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+   damage = function(self)
+	return (self.owner:get('智力')*40+10000)* self.level
+  end,
 	tip = [[
-		主动：在英雄朝向每 %pulse_time% 秒，发射一波X射线，每条造成攻击力*2+智力*5的法术伤害 (%damage%) ；
-		被动：睿智，智力 + %int% %
-	]],
+		
+|cffffff00【每秒加智力】+100*Lv
+【攻击加智力】+100*Lv
+【杀怪加智力】+100*Lv|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(智力*40+1w)*Lv|r
+
+]],
 	--技能图标 3（40°扇形分三条，角度20%）+3+3+1+1，一共5波，
-    art = [[jineng\jineng032.blp]],
+    art = [[xsx.blp]],
 	--技能类型
-	skill_type = "被动,敏捷",
+	skill_type = "被动,智力",
 	--被动
 	passive = true,
-	--冷却时间
-    cool = 20,
 	--技能目标类型 无目标
 	target_type = ac.skill.TARGET_TYPE_NONE,
 	--持续时间
@@ -32,9 +42,6 @@ mt{
 	--每次最大数量
 	count = 3,
 	--伤害
-	damage = function(self,hero)
-		return hero:get('攻击')*2 + hero:get('智力')*5
-	end,	
 	--耗蓝
 	cost = 100,
 	effect = [[gx.mdx]],

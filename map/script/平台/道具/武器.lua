@@ -186,35 +186,34 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[xlmswq.blp]],
+art = [[fxlhj.blp]],
 is_order = 1,
 --说明
-tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
+tip = [[
 |cffffe799【获得方式】：|r
-|cff00ffff修罗模式25星 
+|cff00ffff地图等级=26级 
 
 |cffFFE799【神兵属性】：|r
-|cff00ff00+850  杀怪加攻击|r
-|cff00ff00+100  攻击减甲|r
-|cff00ff00+100% 分裂伤害|r
-|cff00ff00+75%  物理伤害加深|r
+|cff00ff00+800  杀怪加攻击|r
+|cff00ff00+50%  物理伤害加深|r
+|cff00ff00+50%  暴击加深|r
 |cff00ff00+15%  对BOSS额外伤害|r
+|cff00ff00+15%  全伤加深|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 850,
-['攻击减甲'] = 100,
-['分裂伤害'] = 100,
-['物理伤害加深'] = 75,
+['杀怪加攻击'] = 800,
+['物理伤害加深'] = 50,
+['暴击加深'] = 50,
+['全伤加深'] = 15,
 ['对BOSS额外伤害'] = 15,
 
 need_map_level = 18,
 
 --特效
-effect = [[BingPoHanGuangJian.mdx]]
+effect = [[wuqi123.mdx]]
 }
 
 
