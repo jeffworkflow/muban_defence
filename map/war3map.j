@@ -256,6 +256,12 @@ rect gg_rct_nainiu11= null
 rect gg_rct_nainiu12= null
 rect gg_rct_nainiu13= null
 rect gg_rct_hdsz= null
+rect gg_rct_tsgd1= null
+rect gg_rct_tsgd11= null
+rect gg_rct_tsgd22= null
+rect gg_rct_tsgd33= null
+rect gg_rct_npc10= null
+
 endglobals
 
     native DzGetMouseTerrainX takes nothing returns real
@@ -1935,6 +1941,11 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_nainiu12=Rect(9408.0, - 5760.0, 9888.0, - 5216.0)
     set gg_rct_nainiu13=Rect(11360.0, - 5760.0, 11840.0, - 5216.0)
     set gg_rct_hdsz=Rect(18912.0, - 17536.0, 19424.0, - 17024.0)
+    set gg_rct_tsgd1=Rect(19072.0, - 5248.0, 19360.0, - 5024.0)
+    set gg_rct_tsgd11=Rect(18944.0, - 4544.0, 19424.0, - 3904.0)
+    set gg_rct_tsgd22=Rect(18208.0, - 5568.0, 18688.0, - 5024.0)
+    set gg_rct_tsgd33=Rect(19680.0, - 5568.0, 20160.0, - 5024.0)
+    set gg_rct_npc10=Rect(15552.0, - 15552.0, 15808.0, - 15328.0)
 endfunction
 
 //===========================================================================

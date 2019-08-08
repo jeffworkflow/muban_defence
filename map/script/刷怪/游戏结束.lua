@@ -28,6 +28,7 @@ ac.game:event '游戏-无尽开始'(function(trg)
 			local crep = ac.creep['刷怪-无尽'..i]
 			unit_cnt = unit_cnt + crep.current_count
 		end	
+		ac.unit_cnt = unit_cnt
 		if unit_cnt >= max_cnt * 0.5 then 
 			ac.player.self:sendMsg("【系统提示】当前怪物存活过多，还剩 |cffE51C23 "..(max_cnt - unit_cnt).." 只|r 游戏结束，请及时清怪",3)
 		end	

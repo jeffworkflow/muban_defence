@@ -5,6 +5,7 @@ local fire = {
     ['陨落心炎'] = {[[huo2.blp]],[[|n|n收集|cffdf19d0100个陨落心炎碎片|r，将自动合成|cff00ffff初级异火：星星之火|r|n]]},
     ['三千焱炎火'] = {[[huo3.blp]],[[|n|n收集|cffdf19d0100个三千焱炎火碎片|r，将自动合成|cffffff00初级异火：星星之火|r|n]]},
     ['虚无吞炎'] = {[[huo4.blp]],[[|n|n收集|cffdf19d0100个虚无吞炎碎片|r，将自动合成|cffff0000初级异火：星星之火|r|n]]}, 
+    ['陀舍古帝'] = {[[huo4.blp]],[[|n|n收集|cffdf19d0100个陀舍古帝碎片|r，将自动合成|cffff0000初级异火：星星之火|r|n]]}, 
 }
 
 for key,val in pairs(fire) do 

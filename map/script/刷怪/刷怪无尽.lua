@@ -121,7 +121,11 @@ for i =1,3 do
                             --1500码内，优先攻击英雄，英雄死亡则攻向基地点
                             unit:issue_order('attack',point)
                         elseif hero_distance <= 1500  then
-                            unit:issue_order('attack',hero)
+                            if ac.unit_cnt and ac.unit_cnt >60 then 
+                                unit:issue_order('move',hero:get_point())
+                            else    
+                                unit:issue_order('attack',hero)
+                            end    
                         else    
                             unit:issue_order('attack',point)
                         end      
