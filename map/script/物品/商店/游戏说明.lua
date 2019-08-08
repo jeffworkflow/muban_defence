@@ -27,7 +27,7 @@ mt{
  ]],
 }
 
-local mt = ac.skill['地图等级说明']
+local mt = ac.skill['地图等级说明1']
 mt{
     --类型
     item_type = "神符",
@@ -50,7 +50,7 @@ mt{
  ]],
 }
 
-local mt = ac.skill['地图等级福利']
+local mt = ac.skill['地图等级说明2']
 mt{
     --类型
     item_type = "神符",
@@ -78,13 +78,31 @@ mt{
 (条件：已购买永久赞助)
 |cffffff00等级Lv11 技暴加深+50%（通关钻石翻倍）
 等级Lv12 全伤加深+5%（通关钻石翻倍）
-|cffff0000等级Lv14 龙腾领域（价值55元）
-等级Lv17 飞沙热浪领域（价值75元）
-等级Lv22 灵霄烟涛领域（价值98元）
-
-|cffffe799持续更新中
  ]],
 }
+
+local mt = ac.skill['地图等级说明3']
+mt{
+    --类型
+    item_type = "神符",
+    art = [[xsgl.blp]],
+    --物品技能
+    is_skill = true,
+    content_tip = '',
+    store_affix ='',
+    tip = [[
+
+|cff00ff00等级Lv14 龙腾领域
+|cffdf19d0等级Lv16 商城道具-神仙水（如果已购买，属性可叠加）
+|cff00ff00等级Lv17 飞沙热浪领域
+|cff00ffff等级Lv22 灵霄烟涛领域
+|cff00ffff等级Lv26 飞星雷火剑
+|cffffff00等级Lv28 白羽金虹翼
+|cffdf19d0等级Lv40 商城道具-永久超级赞助（如果已购买，属性可叠加）
+
+|cffffe799持续更新中]],
+}
+
 local mt = ac.skill['挖宝积分说明']
 mt{
     --类型

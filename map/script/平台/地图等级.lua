@@ -3,10 +3,10 @@ local mt = ac.skill['地图等级1']
 mt{
 --等级
 level = 1,
-title = function(self) return '|cffffe799地图等级(会更新) |r|cffff0000 '..self.map_level ..' 级|r' end,
+title = function(self) return '地图等级说明2' end,
 is_order = 1,
 --图标
-art = [[ditudengji.blp]],
+art = [[xsgl.blp]],
 --说明
 tip = [[
 
@@ -28,9 +28,7 @@ tip = [[
 (条件：已购买永久赞助)
 |cffffff00等级Lv11 技暴加深+50%（通关钻石翻倍）
 等级Lv12 全伤加深+5%（通关钻石翻倍）
-
-|cffffe799持续更新中
-]],
+ ]],
 map_level = function(self)
     local p = self.owner:get_owner()
     local res = p:Map_GetMapLevel()
@@ -201,21 +199,21 @@ local mt = ac.skill['地图等级2']
 mt{
 --等级
 level = 1,
-title = function(self) return '|cffffe799地图等级(会更新) |r|cffff0000 '..self.map_level ..' 级|r' end,
+title = function(self) return '地图等级说明3' end,
 is_order = 1,
 --图标
-art = [[ditudengji.blp]],
+art = [[xsgl.blp]],
 --说明
 tip = [[
 
-|cffffff00等级Lv14 龙腾领域（价值55元）
+|cff00ff00等级Lv14 龙腾领域
 |cffdf19d0等级Lv16 商城道具-神仙水（如果已购买，属性可叠加）
-|cffffff00等级Lv17 飞沙热浪领域（价值75元）
-|cffff0000等级Lv22 灵霄烟涛领域（价值98元）
+|cff00ff00等级Lv17 飞沙热浪领域
+|cff00ffff等级Lv22 灵霄烟涛领域
+|cff00ffff等级Lv26 飞星雷火剑
+|cffffff00等级Lv28 白羽金虹翼
 |cffdf19d0等级Lv40 商城道具-永久超级赞助（如果已购买，属性可叠加）
-
-|cffffe799持续更新中
-]],
+ ]],
 map_level = function(self)
     local p = self.owner:get_owner()
     local res = p:Map_GetMapLevel()

@@ -181,27 +181,27 @@ level = 0,
 --图标
 art = [[byjhy.blp]],
 --说明
-tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+tip = [[
 
 |cffffe799【获得方式】：|r
-|cff00ffff修罗模式|cffff0000累计|cff00ffff无尽波数=150波
+|cff00ffff|cff00ffff地图等级=%need_map_level%
 
 |cffFFE799【翅膀属性】：|r
-|cff00ff00+250  杀怪加全属性|r
-|cff00ff00+750  减少周围护甲|r
-|cff00ff00+5    每秒加护甲
-|cff00ff00+1500 初始护甲|r
-|cff00ff00+10%  技能冷却|r
+|cff00ff00+300  杀怪加全属性|r
+|cff00ff00+2500W  初始生命|r
+|cff00ff00+2500   初始护甲|r
+|cff00ff00+20%  对BOSS额外伤害|r
+|cff00ff00+25   每秒加火灵|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 250,
-['减少周围护甲'] = 750,
-['每秒加护甲'] = 5,
-['护甲'] = 1500,
-['技能冷却'] = 10,
+['杀怪加全属性'] = 300,
+['初始生命'] = 25000000,
+['护甲'] = 2500,
+['对BOSS额外伤害'] = 20,
+['每秒加火灵'] = 25,
 need_map_level = 28,
 --特效
 effect = [[chibang03.mdx]]
