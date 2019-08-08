@@ -50,6 +50,7 @@ local item = {
     {'lxytly','灵霄烟涛领域',22},
 
     {'fxlhj','飞星雷火剑',26},
+    {'byjhy','白羽金虹翼',28},
     
 }
 ac.mall = item 

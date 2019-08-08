@@ -25,7 +25,7 @@ end
 ac.game:event '单位-创建'(function(_,u)
     local name = u:get_name()
     local data = ac.table.UnitData[name]
-    if data.class then
+    if data and data.class then
         u:set_class(data.class)
     end       
 end)    
