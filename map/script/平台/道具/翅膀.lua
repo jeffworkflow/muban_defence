@@ -55,7 +55,7 @@ tip = [[
 |cff00ffff|cff00ffff地图等级=%need_map_level%
 
 |cffFFE799【翅膀属性】：|r
-|cff00ff00+150     杀怪加全属性|r
+|cff00ff00+350     杀怪加全属性|r
 |cff00ff00+3000W 初始生命|r
 |cff00ff00+3000  初始护甲
 |cff00ff00+10%     闪避|r
@@ -65,7 +65,7 @@ tip = [[
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 100,
+['杀怪加全属性'] = 350,
 ['生命上限'] = 20000000,
 ['护甲'] = 2000,
 ['闪避'] = 10,

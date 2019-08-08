@@ -18,10 +18,10 @@ mt{
 
 %xxzhtip%
 |cffFFE799【基本属性】
-|cffffff00+%全属性%  |cff00ff00全属性
-|cffffff00+%全伤加深% |cffffff00%  |cff00ff00全伤加深
-|cffffff00+%免伤% |cffffff00%  |cff00ff00免伤
-|cffffff00+%触发概率% |cffffff00%  |cff00ff00触发概率|r
+|cffffff00+%会心伤害% |cffffff00% |cff00ff00会心伤害
+|cffffff00+%会心几率% |cffffff00%   |cff00ff00会心几率
+|cffffff00+%全属性% |cff00ff00全属性
+|cffffff00+%每秒加护甲% |cffffff00   |cff00ff00每秒加护甲|r
 ]],
     xxzhtip = function(self)
         return  '|cffffe799【品阶】|r'..'|cff'..ac.color_code[self.color or '白']..self.quality..'|r \n'
@@ -38,7 +38,7 @@ mt{
     content_tip = '|cffFF0000【点击可吞噬入体，相同异火只能吞噬一次】|r\n',
 
     --技能图标
-    art = [[huo4.blp]],
+    art = [[tsgd.blp]],
     is_order = 1, --没显示等级，注释显示等级
     item_type ='消耗品', --
     not_use_state = true, -- 不可使用消耗品
