@@ -12,7 +12,7 @@ mt{
     value = 20,
 
     -- 生命上限比
-    life_rate = 2,
+    life_rate = 10,
 
     -- 概率
     rate = 75,

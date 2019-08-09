@@ -227,7 +227,7 @@ ac.game:event '游戏-无尽开始'(function(trg)
     
     --游戏开始后 刷怪时间  
     local time = force_cool
-    BJDebugMsg("|cffffe799【系统消息】|r|cffff0000无尽挑战开始|r |cff00ffff 第一波修罗怪物 |r|cff00ff00在".. time .. "秒后开始进攻！",10)
+    BJDebugMsg("|cffffe799【系统消息】|r|cffff0000无尽挑战开始|r |cff00ffff 第一波妖怪 |r|cff00ff00在".. time .. "秒后开始进攻！",10)
     ac.timer_ex 
     {
         time = time,

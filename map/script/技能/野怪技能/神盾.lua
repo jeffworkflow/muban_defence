@@ -15,7 +15,7 @@ mt.move_speed = 50
 
 --护甲
 mt.defence_base = 20
-mt.defence_rate = 200
+mt.defence_rate = 150
 
 function mt:on_add()
 
