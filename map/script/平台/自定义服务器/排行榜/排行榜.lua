@@ -10,7 +10,7 @@ class.phb_panel = extends(class.panel){
 
         --左边菜单 
         panel.menu_titles = {
-            '修罗模式', '巅峰王者', '荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
+            '斗破苍穹','修罗模式', '巅峰王者', '荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
         }
         local menu_press_status = 'image\\排行榜\\menu.tga'
         local menu_line = 'image\\排行榜\\menu_line.tga'
@@ -328,6 +328,7 @@ local rank = {
     {'cntrywz','荣耀王者'},
     {'cntdfwz','巅峰王者'},
     {'cntxlms','修罗模式'},
+    {'cntdpcq','斗破苍穹'},
 
     
     {'time_qt','青铜时长'},
@@ -341,6 +342,7 @@ local rank = {
     {'time_rywz','荣耀王者时长'},
     {'time_dfwz','巅峰王者时长'},
     {'time_xlms','修罗模式时长'},
+    {'time_dpcq','斗破苍穹时长'},
 }
 --处理,显示排行榜数据
 --取前10名数据
@@ -361,8 +363,8 @@ ac.wait(5*1000,function()
                         table.insert(panel.rank[content[2]],data[i])
                     end    
                     --首次刷新最强王者
-                    if finds(content[2] ,'修罗模式') then 
-                        panel:fresh('修罗模式')
+                    if finds(content[2] ,'斗破苍穹') then 
+                        panel:fresh('斗破苍穹')
                     end    
                 end)
             end);

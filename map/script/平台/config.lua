@@ -80,11 +80,14 @@ local cus_key = {
     {'cntrywz','荣耀王者'},
     {'cntdfwz','巅峰王者'},
     {'cntxlms','修罗模式'}, -- 星数
+    {'cntdpcq','斗破苍穹'}, -- 星数
     {'cntpkms','武林大会'}, -- 星数
 
     {'wjxlms','修罗模式无尽'}, -- 无尽层数最高值
     {'ljwjxlms','修罗模式无尽累计'},-- 无尽层数累计值
     
+    {'wjdpcq','斗破苍穹无尽'}, -- 无尽层数最高值
+    {'ljwjdpcq','斗破苍穹无尽累计'},-- 无尽层数累计值
     
     {'time_qt','青铜时长'},
     {'time_by','白银时长'},
@@ -97,6 +100,7 @@ local cus_key = {
     {'time_rywz','荣耀王者时长'},
     {'time_dfwz','巅峰王者时长'},
     {'time_xlms','修罗模式时长'},
+    {'time_dpcq','斗破苍穹时长'},
     {'time_pkms','武林大会时长'},
 
     {'bwllc','霸王莲龙锤'},

@@ -54,7 +54,10 @@ for i =1,3 do
         -- local index = self.index
         self.creeps_datas = ac.attack_unit[math.random(#ac.attack_unit)]..'*20'
         self:set_creeps_datas()
-
+        --难度 12 （斗破苍穹） 增加技能
+        if ac.rand_skill_name then 
+            ac.player.self:sendMsg('本波怪物特性： '..ac.rand_skill_name)
+        end   
     end
 
     --改变怪物
@@ -100,6 +103,11 @@ for i =1,3 do
         --掉落金币和经验
         unit.gold = 0
         unit.exp = 467
+
+        --难度 12 （斗破苍穹） 增加技能
+        if ac.rand_skill_name then 
+            unit:add_skill(ac.rand_skill_name,'隐藏')
+        end    
 
 
     end
@@ -148,14 +156,21 @@ for i =1,3 do
         if self.attack_hero_timer then 
             self.attack_hero_timer:remove()
         end  
-        -- ac.game:event_dispatch('游戏-最终boss',self.index,self)
     end   
+
 end    
 
 
 
 
-
+ac.game:event '游戏-回合开始'(function(trg,index, creep) 
+    if creep.name ~= '刷怪-无尽1' then
+        return
+    end    
+    if ac.g_game_degree_attr >=12 then 
+        ac.rand_skill_name = ac.skill_list[math.random(#ac.skill_list)]  
+    end    
+end)
 
 --注册boss进攻事件
 -- ac.game:event '游戏-回合开始'(function(trg,index, creep) 

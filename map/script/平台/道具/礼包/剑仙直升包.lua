@@ -31,6 +31,11 @@ function mt:on_add()
     -- print('剑仙直升包11111')
     --设置为远程
     hero:setMelee(false)
+    
+    if not hero.weapon then 
+        hero.weapon = {}
+    end    
+    hero.weapon['弹道速度'] = 3000
 end    
 
 ac.game:event '玩家-注册英雄后'(function(_, _, hero)

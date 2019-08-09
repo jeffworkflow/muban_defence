@@ -224,18 +224,22 @@ ac.wait(20,function()
                 { name = "荣耀王者" },
                 { name = "巅峰王者" },
                 { name = "修罗模式(无尽)" },
+                { name = "斗破苍穹(无尽)" },
                 { name = "武林大会(可PK)" },
             }
             ac.g_game_degree_list = {} 
             for i = #list ,1 ,-1 do 
                 -- print(list[i].name)
                 local name = list[i].name
-                if finds(name,'无尽') then 
+                if finds(name,'修罗模式') then 
                     name = "修罗模式"
                 end    
                 if finds(name,'可PK') then 
                     name = "武林大会"
                 end    
+                if finds(name,'斗破苍穹') then 
+                    name = "斗破苍穹"
+                end 
                 if name ~= '武林大会' then 
                     table.insert(ac.g_game_degree_list,name)
                 end    
@@ -250,6 +254,8 @@ ac.wait(20,function()
                     if index == 11 then 
                         ac.g_game_degree_name = "修罗模式"
                     elseif index == 12 then 
+                        ac.g_game_degree_name = "斗破苍穹"
+                    elseif index == 13 then 
                         ac.g_game_degree_name = "武林大会"
                     else
                         ac.g_game_degree_name = list[index].name    
@@ -287,12 +293,15 @@ ac.wait(20,function()
                     if ac.g_game_degree == 11 then 
                         ac.g_game_degree_attr = 11 --难度三 属性倍数3倍
                     end 
-                    
                     if ac.g_game_degree == 12 then 
+                        ac.g_game_degree_attr = 12 --难度三 属性倍数3倍
+                    end 
+                    
+                    if ac.g_game_degree == 13 then 
                         ac.g_game_degree_attr = 2 --难度三 属性倍数3倍
                     end 
                     ac.player.self:sendMsg("选择了 |cffffff00"..list[index].name.."|r")
-                    if ac.g_game_degree ~= 12 then 
+                    if ac.g_game_degree ~= 13 then 
                         --创建预设英雄
                         ac.choose_hero()
                         --游戏-开始

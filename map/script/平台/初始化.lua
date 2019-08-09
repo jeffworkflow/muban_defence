@@ -192,11 +192,14 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
     for i=1,10 do
         local player = ac.player[i]
         if player:is_player() then
+            --保存无尽累计值
+            local name = ac.g_game_degree_name..'无尽累计'
+            local key = ac.server.name2key(name)
+            player:Map_AddServerValue(key,1)  -- 网易服务器 无尽累计值
+            
             --保存无尽波数
             local name = ac.g_game_degree_name..'无尽'
             local key = ac.server.name2key(name)
-            
-            player:Map_AddServerValue('ljwjxlms',1)  -- 网易服务器 无尽累计值
             --波数>存档波数
             local cus_value = tonumber((player.cus_server2 and player.cus_server2[name]) or 0)
             -- p:sp_set_rank('today_boshu',value)
