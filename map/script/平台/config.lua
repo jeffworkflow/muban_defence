@@ -21,6 +21,7 @@ local item = {
     {'YXZZB','至尊宝'},
     {'YXGL','鬼厉'},
     {'YXJX','剑仙'},
+    {'YXZSB','剑仙直升包'},
 
     {'SXS','神仙水'},
     {'SZDLB','神装大礼包'},
@@ -51,6 +52,8 @@ local item = {
 
     {'fxlhj','飞星雷火剑',26},
     {'byjhy','白羽金虹翼',28},
+
+    {'gg','关公',40},
     
 }
 ac.mall = item 

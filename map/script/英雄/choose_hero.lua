@@ -130,7 +130,6 @@ local function start()
 	-- print(minx, miny, maxx, maxy)
 	for i, name in ipairs(hero.hero_list) do
 		ac.wait(i*200,function() 
-			local name, hero_data = name,hero.hero_list[name].data
 			
 			local shadow01 = jass.CreateImage([[ReplaceableTextures\CommandButtons\BTNPeasant.blp]], 1, 1, 1, 0, 0, 0, 0, 0, 0, 2)
 			local shadow02 = jass.CreateImage([[ReplaceableTextures\CommandButtons\BTNPeasant.blp]], 1, 1, 1, 0, 0, 0, 0, 0, 0, 2)
@@ -143,30 +142,33 @@ local function start()
 				ix = 0
 			end    
 			local x = minx + area * ix +75
-			local y = miny + area* iy +200
+			local y = miny + area* iy +150
 			local where = ac.point(x,y)
 			ix = ix + 1 
 			--创建特效
-			ac.effect(where,[[xrdh.mdx]],270,1,'origin'):remove()
-			local hero = player[16]:createHero(name, where,270)
-			--添加淡化buff
-			-- hero:add_buff '淡化*改'
-			-- {
-			-- 	source_alpha = 0,
-			-- 	target_alpha = 100,
-			-- 	time = 0.4,
-			-- 	remove_when_hit = false,
-			-- }
-			hero.name = name
-			hero:remove_ability 'Amov'
-			hero:add_restriction '缴械'
-			hero:add_restriction '无敌'
-			hero:set_data('英雄类型', name)
-			setHeroState(hero)
-			jass.DestroyImage(shadow01)
+			if name ~='' then 
+				local name, hero_data = name,hero.hero_list[name].data
+				ac.effect(where,[[xrdh.mdx]],270,1,'origin'):remove()
+				local hero = player[16]:createHero(name, where,270)
+				--添加淡化buff
+				-- hero:add_buff '淡化*改'
+				-- {
+				-- 	source_alpha = 0,
+				-- 	target_alpha = 100,
+				-- 	time = 0.4,
+				-- 	remove_when_hit = false,
+				-- }
+				hero.name = name
+				hero:remove_ability 'Amov'
+				hero:add_restriction '缴械'
+				hero:add_restriction '无敌'
+				hero:set_data('英雄类型', name)
+				setHeroState(hero)
+				jass.DestroyImage(shadow01)
 
-			hero:add_effect('origin',[[modeldekan\ui\DEKAN_Tag_Ally.mdl]])
-			hero_types[name] = hero
+				hero:add_effect('origin',[[modeldekan\ui\DEKAN_Tag_Ally.mdl]])
+				hero_types[name] = hero
+			end
 		end)
 	end
 	-- ac.game.hero_lists = flygroup
