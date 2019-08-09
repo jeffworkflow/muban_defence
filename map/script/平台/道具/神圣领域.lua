@@ -243,29 +243,29 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[bysh.blp]],
+art = [[lhjyly.blp]],
 --说明
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff修罗模式|cffff0000累计|cff00ffff无尽波数=500波
+|cff00ffff斗破苍穹 25星
 
 |cffFFE799【领域属性】：|r
-|cff00ff00+155  杀怪加全属性|r
-|cff00ff00+25%  会心伤害|r
-|cff00ff00+25%  技能伤害加深|r
-|cff00ff00+25%  全伤加深|r
+|cff00ff00+185  杀怪加全属性|r
+|cff00ff00+750  减少周围护甲|r
+|cff00ff00+15%  技能伤害加深|r
+|cff00ff00+15%  全伤加深|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 155,
-['会心伤害'] = 25,
-['技能伤害加深'] = 25,
-['全伤加深'] = 25,
-need_map_level = 24,
+['杀怪加全属性'] = 185,
+['减少周围护甲'] = 750,
+['技能伤害加深'] = 15,
+['全伤加深'] = 15,
+need_map_level = 27,
 --特效
-effect = [[Rune Blue Aura.mdx]]
+effect = [[az_kaer_t2_1.mdx]]
 }
 
 local mt = ac.skill['黄沙昇龙领域']
@@ -273,29 +273,29 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[bysh.blp]],
+art = [[hlfsly.blp]],
 --说明
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff修罗模式|cffff0000累计|cff00ffff无尽波数=500波
+|cff00ffff斗破苍穹|cffff0000累计|cff00ffff无尽波数=150波
 
 |cffFFE799【领域属性】：|r
-|cff00ff00+155  杀怪加全属性|r
-|cff00ff00+25%  会心伤害|r
-|cff00ff00+25%  技能伤害加深|r
-|cff00ff00+25%  全伤加深|r
+|cff00ff00+215  杀怪加全属性|r
+|cff00ff00+900  减少周围护甲|r
+|cff00ff00+20%  技能伤害加深|r
+|cff00ff00+20%  全伤加深|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 155,
-['会心伤害'] = 25,
-['技能伤害加深'] = 25,
-['全伤加深'] = 25,
-need_map_level = 24,
+['杀怪加全属性'] = 215,
+['减少周围护甲'] = 900,
+['技能伤害加深'] = 20,
+['全伤加深'] = 20,
+need_map_level = 29,
 --特效
-effect = [[Rune Blue Aura.mdx]]
+effect = [[TX_hjl,mdx]]
 }
 
 
