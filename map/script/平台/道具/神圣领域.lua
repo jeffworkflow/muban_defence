@@ -238,9 +238,68 @@ need_map_level = 24,
 effect = [[Rune Blue Aura.mdx]]
 }
 
+local mt = ac.skill['烈火金焰领域']
+mt{
+--等级
+level = 0,
+--图标
+art = [[bysh.blp]],
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff修罗模式|cffff0000累计|cff00ffff无尽波数=500波
+
+|cffFFE799【领域属性】：|r
+|cff00ff00+155  杀怪加全属性|r
+|cff00ff00+25%  会心伤害|r
+|cff00ff00+25%  技能伤害加深|r
+|cff00ff00+25%  全伤加深|r
+
+|cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 155,
+['会心伤害'] = 25,
+['技能伤害加深'] = 25,
+['全伤加深'] = 25,
+need_map_level = 24,
+--特效
+effect = [[Rune Blue Aura.mdx]]
+}
+
+local mt = ac.skill['黄沙昇龙领域']
+mt{
+--等级
+level = 0,
+--图标
+art = [[bysh.blp]],
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff修罗模式|cffff0000累计|cff00ffff无尽波数=500波
+
+|cffFFE799【领域属性】：|r
+|cff00ff00+155  杀怪加全属性|r
+|cff00ff00+25%  会心伤害|r
+|cff00ff00+25%  技能伤害加深|r
+|cff00ff00+25%  全伤加深|r
+
+|cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 155,
+['会心伤害'] = 25,
+['技能伤害加深'] = 25,
+['全伤加深'] = 25,
+need_map_level = 24,
+--特效
+effect = [[Rune Blue Aura.mdx]]
+}
 
 
-for i,name in ipairs({'血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','白云四海领域','孤风青龙领域','远影苍龙领域'}) do
+for i,name in ipairs({'血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','白云四海领域','烈火金焰领域','黄沙昇龙领域','孤风青龙领域','远影苍龙领域'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner
