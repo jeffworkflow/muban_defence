@@ -129,9 +129,12 @@ local star2award = {
     ['紫色哀伤'] = {'荣耀王者',25,13},
     ['白龙凝酥翼'] = {'巅峰王者',25,15},
     ['霜之哀伤'] = {'修罗模式',25,18},
-
+    ['烈火金焰领域'] = {'斗破苍穹',25,27},
+    
     ['天使之光'] = {'修罗模式无尽累计',150,20},
     ['白云四海领域'] = {'修罗模式无尽累计',500,24},
+    
+    ['黄沙昇龙领域'] = {'斗破苍穹无尽累计',150,29},
 }
 
 --保存修罗模式 星数
@@ -196,7 +199,7 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
             local name = ac.g_game_degree_name..'无尽累计'
             local key = ac.server.name2key(name)
             player:Map_AddServerValue(key,1)  -- 网易服务器 无尽累计值
-            
+
             --保存无尽波数
             local name = ac.g_game_degree_name..'无尽'
             local key = ac.server.name2key(name)
