@@ -268,7 +268,7 @@ need_map_level = 27,
 effect = [[az_kaer_t2_1.mdx]]
 }
 
-local mt = ac.skill['黄沙昇龙领域']
+local mt = ac.skill['烈火天翔领域']
 mt{
 --等级
 level = 0,
@@ -299,7 +299,7 @@ effect = [[TX_hjl,mdx]]
 }
 
 
-for i,name in ipairs({'血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','白云四海领域','烈火金焰领域','黄沙昇龙领域','孤风青龙领域','远影苍龙领域'}) do
+for i,name in ipairs({'血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','白云四海领域','烈火金焰领域','烈火天翔领域','孤风青龙领域','远影苍龙领域'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner
