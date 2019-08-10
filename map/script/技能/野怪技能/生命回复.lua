@@ -7,10 +7,10 @@ mt.tip = [[
 ]]
 
 --影响三维值 (怪物为：生命上限，护甲，攻击力)
-mt.value = 30
+mt.value = 40
 
 --每秒恢复
-mt.life_recover = 5
+mt.life_recover = 4
 
 mt.effect = [[Abilities\Spells\Other\ANrm\ANrmTarget.mdl]]
 

@@ -9,10 +9,10 @@ mt{
     ]],
 
     -- 影响三维值 (怪物为：生命上限，护甲，攻击力)
-    value = 30,
+    value = 25,
 
     -- 魔抗
-    magic_defence = 70,
+    magic_defence = 80,
   
     -- 特效
     effect = [[]]

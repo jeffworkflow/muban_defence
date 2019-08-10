@@ -7,10 +7,10 @@ mt.tip = [[
 ]]
 
 --影响三维值 (怪物为：生命上限，护甲，攻击力)
-mt.value = 25
+mt.value = 20
 
 --闪避
-mt.dodge = 45
+mt.dodge = 50
 
 
 function mt:on_add()

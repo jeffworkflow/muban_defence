@@ -12,7 +12,7 @@ mt{
     value = 5,
    
     -- 攻击距离
-    attack_distance = 800,
+    attack_distance = 1000,
 
     --弹道模型
     weapon_model = [[Abilities\Weapons\WaterElementalMissile\WaterElementalMissile.mdl]],
