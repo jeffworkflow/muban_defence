@@ -88,7 +88,7 @@ ac.game:event '游戏-开始' (function()
             --特殊boss处理
             if unit:get_name() == '食人魔' then
                 unit:event '单位-死亡'(function(_,unit,killer)
-                    local rate = 30 + (10*ac.g_game_degree)
+                    local rate = 30 + (10*ac.g_game_degree_attr)
                     local max_cnt = 8 --每人一局最大掉落次数
                     local p= killer:get_owner()
                     if unit:is_ally(killer) then

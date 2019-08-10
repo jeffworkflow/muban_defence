@@ -213,6 +213,12 @@ ac.wait(20,function()
         local function create_choose_dialog()
             local player = get_first_player()
             local list = {
+                { name = "普通模式" },
+                { name = "修罗模式(无尽)" },
+                { name = "斗破苍穹(无尽)" },
+                { name = "武林大会(可PK)" },
+            }
+            local list2 = {
                 { name = "青铜" },
                 { name = "白银" },
                 { name = "黄金" },
@@ -223,14 +229,11 @@ ac.wait(20,function()
                 { name = "最强王者" },
                 { name = "荣耀王者" },
                 { name = "巅峰王者" },
-                { name = "修罗模式(无尽)" },
-                { name = "斗破苍穹(无尽)" },
-                { name = "武林大会(可PK)" },
             }
             ac.g_game_degree_list = {} 
-            for i = #list ,1 ,-1 do 
+            for i = #list2 ,1 ,-1 do 
                 -- print(list[i].name)
-                local name = list[i].name
+                local name = list2[i].name
                 if finds(name,'修罗模式') then 
                     name = "修罗模式"
                 end    
@@ -240,68 +243,57 @@ ac.wait(20,function()
                 if finds(name,'斗破苍穹') then 
                     name = "斗破苍穹"
                 end 
-                if name ~= '武林大会' then 
+                if name ~= '武林大会' or name ~= '普通模式' then 
                     table.insert(ac.g_game_degree_list,name)
                 end    
-
+            end  
+            for i = #list ,1 ,-1 do 
+                local name = list[i].name  
+                table.insert(ac.g_game_degree_list,name)
             end    
             
             ac.player.self:sendMsg("正在选择 |cffffff00难度|r")
             if player then 
                 ac.flag_choose_dialog = create_dialog(player,"选择难度",list,function (index)  
+                    -- print(index)
                     ac.flag_choose_dialog = false
-                    ac.g_game_degree = index
-                    if index == 11 then 
+                    if index == 2 then 
+                        ac.g_game_degree = 11
                         ac.g_game_degree_name = "修罗模式"
-                    elseif index == 12 then 
+                    elseif index == 3 then 
+                        ac.g_game_degree = 12
                         ac.g_game_degree_name = "斗破苍穹"
-                    elseif index == 13 then 
-                        ac.g_game_degree_name = "武林大会"
-                    else
-                        ac.g_game_degree_name = list[index].name    
+                    elseif index == 4 then 
+                        ac.g_game_degree = 13
+                        ac.g_game_degree_name = "武林大会"  
                     end    
-                    if ac.g_game_degree == 1 then 
-                        ac.g_game_degree_attr = 1  --难度一 属性倍数1倍
-                    end    
-                    if ac.g_game_degree == 2 then 
-                        ac.g_game_degree_attr = 2  --难度二 属性倍数2倍
+                       
+                    if index == 2 then 
+                        ac.g_game_degree_attr = 11  --难度二 属性倍数2倍
                     end  
-                    if ac.g_game_degree == 3 then 
-                        ac.g_game_degree_attr = 3  --难度三 属性倍数3倍
+                    if index == 3 then 
+                        ac.g_game_degree_attr = 12  --难度三 属性倍数3倍
                     end  
-                    if ac.g_game_degree == 4 then 
-                        ac.g_game_degree_attr = 4  --难度三 属性倍数3倍
+                    if index == 4 then 
+                        ac.g_game_degree_attr = 2  --难度三 属性倍数3倍
                     end  
-                    if ac.g_game_degree == 5 then 
-                        ac.g_game_degree_attr = 5  --难度三 属性倍数3倍
-                    end  
-                    if ac.g_game_degree == 6 then 
-                        ac.g_game_degree_attr = 6  --难度三 属性倍数3倍
-                    end  
-                    if ac.g_game_degree == 7 then 
-                        ac.g_game_degree_attr = 7  --难度三 属性倍数3倍
-                    end  
-                    if ac.g_game_degree == 8 then 
-                        ac.g_game_degree_attr = 8  --难度三 属性倍数3倍
-                    end 
-                    if ac.g_game_degree == 9 then 
-                        ac.g_game_degree_attr = 9  --难度三 属性倍数3倍
-                    end 
-                    if ac.g_game_degree == 10 then 
-                        ac.g_game_degree_attr = 10 --难度三 属性倍数3倍
-                    end 
-                    if ac.g_game_degree == 11 then 
-                        ac.g_game_degree_attr = 11 --难度三 属性倍数3倍
-                    end 
-                    if ac.g_game_degree == 12 then 
-                        ac.g_game_degree_attr = 12 --难度三 属性倍数3倍
-                    end 
-                    
-                    if ac.g_game_degree == 13 then 
-                        ac.g_game_degree_attr = 2 --难度三 属性倍数3倍
-                    end 
+
                     ac.player.self:sendMsg("选择了 |cffffff00"..list[index].name.."|r")
-                    if ac.g_game_degree ~= 13 then 
+                    if index == 1 then
+                        --进入普通模式的选择
+                        create_dialog(player,"选择难度",list2,function (index)  
+                            ac.g_game_degree = index
+                            ac.g_game_degree_attr = index
+                            ac.g_game_degree_name = list2[index].name  
+                            --创建预设英雄
+                            ac.choose_hero()
+                            --游戏-开始
+                            ac.wait(30*1000,function()
+                                ac.game:event_notify('游戏-开始')
+                            end)
+                            ac.player.self:sendMsg("选择了 |cffffff00"..list2[index].name.."|r")
+                        end)
+                    elseif  index == 2 or index == 3  then 
                         --创建预设英雄
                         ac.choose_hero()
                         --游戏-开始
@@ -312,7 +304,6 @@ ac.wait(20,function()
                         --发起投票
                         ac.game.start_vote()
                         ac.game:event '投票结束'(function(_,flag)
-                            -- print(11111)
                             --创建预设英雄
                             ac.choose_hero()
                             --游戏-开始

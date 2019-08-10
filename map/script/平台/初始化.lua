@@ -171,7 +171,7 @@ end)
 -- 游戏结束，今日排行榜
 ac.game:event '游戏-结束'(function(_)
     --不是圣人模式返回
-    if ac.g_game_degree < 11 then 
+    if ac.g_game_degree_attr < 11 then 
         return 
     end    
     if ac.creep['刷怪-无尽1'].index == 0 then 
@@ -379,6 +379,7 @@ local ttxd2award1 = {
     ['傲世天下'] = {0,10},
     --精彩活动
     ['缘定三生'] = {0,5},
+    ['井底之蛙'] = {0,5},
 }    
 
 --处理替天行道 永久属性

@@ -113,7 +113,7 @@ function mt:on_upgrade()
                     item:add_item_count(-item.kill_cnt+1)
                     item:upgrade(1)
                     if item.level >= item.max_level then 
-                        print('满级触发移除物品',ac.g_game_degree)
+                        -- print('满级触发移除物品',ac.g_game_degree)
                         --难5时，删掉五色飞石，新增 紫金碧玺佩
                         if ac.g_game_degree_attr >=5 then 
                             item:item_remove()

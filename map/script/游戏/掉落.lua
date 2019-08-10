@@ -611,7 +611,22 @@ local unit_reward = {
         {rand =0.2,name = '完美的鸡翅'},
         {rand =0.2,name = '完美的鸡腿'},
         {rand =0.2,name = '完美的鸡蛋'},
-},
+    },
+    
+    ['井底之蛙'] =  {
+        { rand = 5, name = '金'},
+        { rand = 5, name = '红'},
+        { rand = 5, name = '随机技能书'},
+        { rand = 5, name = '点金石'},
+        { rand = 5, name = '恶魔果实'},
+        { rand = 5, name = '吞噬丹'},
+        { rand = 5, name = '格里芬'},
+        { rand = 5, name = '黑暗项链'},
+        { rand = 5, name = '最强生物心脏'},
+        { rand = 5, name = '白胡子的大刀'},
+        { rand = 10, name = '井底之蛙'},
+        { rand = 40, name = '无'},
+    },
 
    
 }
