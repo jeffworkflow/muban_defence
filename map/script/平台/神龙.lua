@@ -454,7 +454,6 @@ for i,name in ipairs({'挑战耐瑟龙','挑战冰龙','挑战精灵龙','挑战
                 --加碎片，存档。
                 local name = real_name..'碎片'
                 local key = ac.server.name2key(name)
-                -- player:AddServerValue(key,ac.g_game_degree) 自定义服务器
                 player:Map_AddServerValue(key,ac.g_game_degree_attr) --网易服务器
                 
                 player:sendMsg('|cffffe799【系统消息】|r|cff00ff00挑战成功|r 获得|cff00ffff'..ac.g_game_degree_attr..'个'..name..'|r 还差|cff00ffff'..self.need_sp_cnt - player.cus_server[name]..'个碎片|r即可激活')

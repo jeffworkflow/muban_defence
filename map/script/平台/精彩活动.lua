@@ -27,6 +27,35 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
 }
 
+local mt = ac.skill['井底之蛙']
+mt{
+--等级
+level = 1, --要动态插入
+--图标
+art = [[ydss.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff消耗 |cffff0000三十根喜鹊翎毛|r |cff00ffff兑换获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+13.8   杀怪加全属性|r
+|cff00ff00+13.8   攻击减甲|r
+|cff00ff00+13.8%  木头加成|r
+|cff00ff00+13.8%  会心伤害|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 13.8,
+['木头加成'] = 13.8,
+['攻击减甲'] = 13.8,
+['会心伤害'] = 13.8,
+need_map_level = 5,
+}
+
 
 
 
@@ -43,7 +72,7 @@ mt{
     
 }
 mt.skill_name ={
-    '缘定三生'
+    '缘定三生','井底之蛙'
 }
 mt.skills = {
 }

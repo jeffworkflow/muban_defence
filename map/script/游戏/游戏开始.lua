@@ -85,6 +85,9 @@ ac.game:event '游戏-开始' (function()
                 unit:add_sell_item('神兵-九幽白蛇剑',11)
             end	
         end	
+        --创建 超级异火
+        local x,y = ac.rect.j_rect('npc10'):get_point():get()
+        local shop = ac.shop.create('超级异火',x,y,270,nil)  
     end    
 
 end)    

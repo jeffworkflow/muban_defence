@@ -29,7 +29,7 @@ local function init_shop()
                            player = id and ac.player(id)
                         end
                         --超级异火商店 难5才创建
-                        if name ~= '超级异火' or ( name == '超级异火' and ac.g_game_degree_attr >=5) then
+                        if name ~= '超级异火'  then
                             local x,y = ac.rect.j_rect(str):get_point():get()
                             local shop = ac.shop.create(name,x,y,face,nil,player)  
                             -- print(shop:get_name(),name,x,y)

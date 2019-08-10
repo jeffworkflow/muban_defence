@@ -261,6 +261,7 @@ rect gg_rct_tsgd11= null
 rect gg_rct_tsgd22= null
 rect gg_rct_tsgd33= null
 rect gg_rct_npc10= null
+rect gg_rct_jing= null
 
 endglobals
 
@@ -1946,6 +1947,7 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_npc10=Rect(15552.0, - 15552.0, 15808.0, - 15328.0)
     set gg_rct_tsgd22=Rect(19776.0, - 5440.0, 20000.0, - 5216.0)
     set gg_rct_tsgd33=Rect(18400.0, - 5440.0, 18624.0, - 5216.0)
+    set gg_rct_jing=Rect(21056.0, - 17632.0, 21696.0, - 17056.0)
 endfunction
 
 //===========================================================================
