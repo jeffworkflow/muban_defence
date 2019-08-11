@@ -168,6 +168,10 @@ ac.game:event '游戏-无尽开始'(function(trg)
         end
     end)
 end)
+local today_rank = {
+    {'today_wjxlms','今日修罗模式无尽'},
+    {'today_wjdpcq','今日斗破苍穹无尽'},
+}
 -- 游戏结束，今日排行榜
 ac.game:event '游戏-结束'(function(_)
     --不是圣人模式返回
@@ -181,7 +185,9 @@ ac.game:event '游戏-结束'(function(_)
         local p = ac.player[i]
         if p:is_player() then 
             --保存波束
-            p:sp_set_rank('today_wjxlms',ac.creep['刷怪-无尽1'].index)
+            for i ,content in ipairs(today_rank) do 
+                p:sp_set_rank(content[1],ac.creep['刷怪-无尽1'].index)
+            end    
         end
     end        
 

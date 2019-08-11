@@ -1,10 +1,10 @@
 local slk = require 'jass.slk'
 
-class.today_panel = extends(class.panel){
+class.today_dpwj_panel = extends(class.panel){
     create = function()
         --创建底层面板 x,y,width,height
-        local panel = class.panel.create('image\\提示框\\bj2.tga',170+400+30,200,400,620)
-        panel.__index = class.today_panel 
+        local panel = class.panel.create('image\\提示框\\bj2.tga',170+400+400+400+30+30+30,200,400,620)
+        panel.__index = class.today_dpwj_panel 
         
         --头部
         local top_panel = panel:add_panel('',0,20,400,100)
@@ -13,8 +13,8 @@ class.today_panel = extends(class.panel){
         title:set_color(243,246,4,1)
         panel.title = title
         --小标题 显示难度
-        local two_title = top_panel:add_text('(斗破苍穹)',0,0,400,25,10,4)
-        two_title:set_color(0xffff0000)
+        local two_title = top_panel:add_text('(修罗模式)',0,0,400,25,10,4)
+        two_title:set_color(200,202,8,1)
         panel.two_title = two_title
 
         -- --时间
@@ -101,7 +101,7 @@ class.today_panel = extends(class.panel){
 local panel
 
 ac.wait(10,function ()
-    panel = class.today_panel.get_instance()
+    panel = class.today_dpwj_panel.get_instance()
 end)
 
 local game_event = {}
@@ -126,7 +126,7 @@ game.register_event(game_event)
 
 
 local rank = {
-    {'today_wjdpcq','今日斗破苍穹无尽'},
+    {'today_wjxlms','今日修罗模式无尽'},
 }
 --处理,显示排行榜数据
 --取前10名数据

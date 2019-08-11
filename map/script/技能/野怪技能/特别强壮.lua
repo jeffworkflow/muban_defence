@@ -1,14 +1,14 @@
-local mt = ac.skill['强壮']
+local mt = ac.skill['特别强壮']
 
-mt.title = "强壮"
+mt.title = "特别强壮"
 mt.tip = [[
     被动1：提升自己死亡掉落的经验50%，提升自己死亡掉落的金钱50%
     被动2：提升自己的三维10%
 ]]
 
 --影响三维值 (怪物为：生命上限，护甲，攻击力)
-mt.value = 5
-mt.rate = 25
+mt.value = 15
+mt.rate = 50
 
 local cast_item ={}
 for name,data in pairs(ac.table.ItemData) do 

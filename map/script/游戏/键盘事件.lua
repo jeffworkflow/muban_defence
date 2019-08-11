@@ -169,6 +169,11 @@ ac.game:event '玩家-聊天' (function(self, player, str)
 
         --关技能特效
         -- print(p.flag_qxtx)
+        if player.flag_qxtx then 
+            player:sendMsg('特效|cffff0000关闭|r |cffFFE799(只关闭已学技能特效)|r')
+        else
+            player:sendMsg('特效|cffff0000开启|r')
+        end    
         if player:is_self() then 
             --异步使所有玩家英雄学的技能。
             for i=1,10 do 
@@ -197,6 +202,7 @@ ac.game:event '玩家-聊天' (function(self, player, str)
                     end	
                 end    
             end    
+            
         end	
     end    
 

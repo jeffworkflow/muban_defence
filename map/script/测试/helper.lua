@@ -663,6 +663,21 @@ function helper:psetcolor(str,pid)
 	p:setColor(tonumber(str))
 end
 
+--给进攻怪增加技能 
+function helper:ads(str)
+	for i=1,3 do 
+		local crep = ac.creep['刷怪-无尽'..i]
+		for i,u in ipairs(crep.group) do 
+			if u and u:is_alive() then 
+				--先删旧技能，再加新技能
+				for skl in u:each_skill() do 
+					skl:remove()
+				end
+				u:add_skill(str,'隐藏')
+			end
+		end
+	end				
+end
 
 --增加 属性
 function helper:add(str,cnt)

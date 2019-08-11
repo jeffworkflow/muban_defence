@@ -19,7 +19,7 @@ local function range_attack_start(hero,damage)
     for i,u in ac.selector()
         : in_range(hero,hero:get('攻击距离')+100) -- +100 避免怪物逃跑时超出攻击距离而选不到人
         : is_enemy(hero)
-        : of_not_building()
+        : is_not(ac.main_unit)
         : sort_nearest_hero(hero) --优先选择距离英雄最近的敌人。
         : set_sort_first(target)
         : ipairs()

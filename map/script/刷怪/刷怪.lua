@@ -323,9 +323,9 @@ ac.wait(20,function()
             if ac.g_game_degree then 
                 t:remove()
             else
-                if not ac.flag_choose_dialog then 
-                    create_choose_dialog()  
-                end    
+                -- if not ac.flag_choose_dialog then 
+                --     create_choose_dialog()  
+                -- end    
                 ac.player.self:sendMsg("等待主机选择模式、难度")
             end
         end)

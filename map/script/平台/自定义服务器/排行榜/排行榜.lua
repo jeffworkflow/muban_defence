@@ -17,7 +17,7 @@ class.phb_panel = extends(class.panel){
         for i=1,#panel.menu_titles do 
             local name = panel.menu_titles[i]
             local button 
-            button = panel:add_button('',10,39 + 48*(i-1),106,40,true)
+            button = panel:add_button('',10,20 + 48*(i-1),106,40,true)
             --预设优先展示与难度相挂钩的数据
             if i == 1 then 
                 button:set_normal_image(menu_press_status)
