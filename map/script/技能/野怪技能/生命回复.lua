@@ -7,7 +7,7 @@ mt.tip = [[
 ]]
 
 --影响三维值 (怪物为：生命上限，护甲，攻击力)
-mt.value = 40
+mt.value = 45
 
 --每秒恢复
 mt.life_recover = 4

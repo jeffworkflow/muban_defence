@@ -13,7 +13,7 @@ mt{
     --触发几率
    chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
    damage = function(self)
-	return (self.owner:get('智力')*40+10000)* self.level
+	return (self.owner:get('智力')*80+10000)* self.level
   end,
 	tip = [[
 		
@@ -22,7 +22,7 @@ mt{
 【杀怪加智力】+100*Lv|r
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】(智力*40+1w)*Lv|r
+【伤害公式】(智力*80+1w)*Lv|r
 
 ]],
 	--技能图标 3（40°扇形分三条，角度20%）+3+3+1+1，一共5波，

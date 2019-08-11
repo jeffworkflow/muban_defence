@@ -8,7 +8,7 @@ mt.tip = [[
 ]]
 
 --影响三维值 (怪物为：生命上限，护甲，攻击力)
-mt.value = 30
+mt.value = 20
 
 --移速
 mt.move_speed = 50

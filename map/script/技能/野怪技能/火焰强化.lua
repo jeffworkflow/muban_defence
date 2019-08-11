@@ -37,7 +37,7 @@ mt{
     effect = [[IceNova.mdx]],
     --降低移速 2秒
     time = 2,
-    move_speed_rate = 15
+    move_speed_rate = 70
 }
 
 function mt:on_add()
@@ -75,7 +75,8 @@ mt{
     effect = [[LightningNova.mdx]],
     --降低攻速35%，持续2秒
     time = 2,
-    attack_speed = 15
+    attack_speed = 400
+
 }
 
 function mt:on_add()
