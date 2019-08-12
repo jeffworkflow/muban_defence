@@ -122,7 +122,8 @@ ac.wait(10,function()
     end
     for i=1,10 do
         local player = ac.player[i]
-        if player:is_player() and finds(name,player:get_name())  then
+        if player:is_player() --and finds(name,player:get_name())  
+        then
             player:clear_server(temp_mall)
         end
     end

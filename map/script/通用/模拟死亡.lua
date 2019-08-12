@@ -149,7 +149,7 @@ function unit.all_real_remove()
     end	 
 end
 --5分钟清除一次 地图上的模拟死亡单位
-local time = 10*60
+local time = 5*60
 ac.loop(time*1000,function()
     ac.unit.all_real_remove()
 end)

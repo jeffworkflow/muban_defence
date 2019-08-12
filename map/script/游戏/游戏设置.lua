@@ -371,9 +371,9 @@ local function pathRegionInit(minx, miny, maxx, maxy)
 				if fly then
 					jass.SetTerrainPathable(x, y, 2, false)
 				end
+				-- jass.RemoveDestructable(dstrct)
 			end
 		end
-		
 	end)
 end
 pathRegionInit(minx, miny, maxx, maxy)

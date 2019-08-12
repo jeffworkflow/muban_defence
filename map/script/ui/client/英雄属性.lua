@@ -44,7 +44,7 @@ class.hero_info_panel = extends(class.panel){
             '每秒加金币','每秒加木头','每秒加火灵','移动速度',
             '攻击速度','物理伤害加深','会心几率','会心伤害',
             '吸血','每秒加护甲','额外杀敌数',
-            '攻击距离','分裂伤害'
+            '攻击距离','分裂伤害','多重射'
         }
         panel.page = 1 
         local next_button = panel:add_button('image\\right.blp',773,371,64,64)
