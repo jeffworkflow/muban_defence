@@ -199,6 +199,9 @@ tip = [[
 is_skill = true,
 ['多重射'] = 2,
 ['触发概率加成'] = 50,
+['攻击加敏捷'] = 1000,
+['杀怪加敏捷'] = 1000,
+['每秒加敏捷'] = 1000,
 --物品详细介绍的title
 content_tip = '|cffffe799物品说明：|r'
 } 
@@ -348,6 +351,8 @@ function mt:on_add()
     local hero = self.owner
     local p = hero:get_owner()
     local skill = self
+    hero:add('攻击速度',200)
+
     self.trg = hero:event '造成伤害效果' (function(_,damage)
 		if not damage:is_common_attack()  then 
 			return 
@@ -378,6 +383,10 @@ function mt:on_add()
    
 end  
 function mt:on_remove()
+    local hero = self.owner
+    local p = hero:get_owner()
+    local skill = self
+    hero:add('攻击速度',-200)
     if self.trg then 
         self.trg:remove()
         self.trg = nil 

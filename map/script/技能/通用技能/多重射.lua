@@ -58,7 +58,6 @@ local function range_attack_start(hero,damage)
                         damage = damage,
                         skill = '多重射',--必中，不会攻击丢失
                         missile = self.mover,
-                        common_attack = true,
                         -- aoe = true,
                     }
                     

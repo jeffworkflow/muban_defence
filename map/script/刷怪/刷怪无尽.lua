@@ -224,6 +224,29 @@ ac.game:event '游戏-无尽开始'(function(trg)
 		end	
     end	
 
+    --无尽后，地上技能120秒自动消失
+    local mt = ac.skill['学习技能']
+    mt.time_removed = 120 --自动消失时间
+    local t_time = 30 --倒计时
+
+    ac.wait(5*1000,function()
+        ac.player.self:sendMsg('|cffff0000'..mt.time_removed..'秒|r后，清理地上技能',10)
+        --倒计时清理地上技能
+        ac.wait((mt.time_removed-t_time)*1000,function()
+            ac.timer(1*1000,t_time,function(t)
+                t_time = t_time -1
+                ac.player.self:sendMsg('|cffff0000'..t_time..'秒|r后，清理地上技能',2)
+                if t_time <= 0 then 
+                    --开始清理
+                    for _,v in pairs(ac.item.item_map) do
+                        if not v.owner and v.cus_type =='技能' then 
+                            v:item_remove()
+                        end
+                    end    
+                end    
+            end)
+        end)
+    end)
     
     --游戏开始后 刷怪时间  
     local time = force_cool
