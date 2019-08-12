@@ -69,7 +69,7 @@ function mt:on_cast_start()
             local skl = hero:find_skill(save_name,nil,true) 
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'精彩活动','食物链顶端的人')
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r  将青蛙丢进井里，惊喜获得|cffff0000【可存档成就】'..save_name..'|r |cff00ff00+16.8杀怪加全属性|r |cff00ff00+16.8攻击减甲|r |cff00ff00+16.8%杀敌数加成|r |cff00ff00+16.8%物理伤害加深|r',6) 
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 食用了青蛙，惊喜获得|cffff0000【可存档成就】'..save_name..'|r |cff00ff00+18.8杀怪加全属性|r |cff00ff00+18.8攻击减甲|r |cff00ff00+18.8%物品获取率|r |cff00ff00+18.8%暴击加深|r',6) 
             end 
         end    
     end    

@@ -175,7 +175,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['物理伤害加深'] = 75,
 ['对BOSS额外伤害'] = 15,
 
-need_map_level = 18,
+need_map_level = 16,
 
 --特效
 effect = [[BingPoHanGuangJian.mdx]]

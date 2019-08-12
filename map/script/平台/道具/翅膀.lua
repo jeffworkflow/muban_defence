@@ -169,7 +169,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['每秒加护甲'] = 5,
 ['护甲'] = 1500,
 ['技能冷却'] = 10,
-need_map_level = 20,
+need_map_level = 18,
 --特效
 effect = [[Hero_Slayer_N5S_F_Chest.mdx]]
 }
