@@ -25,7 +25,9 @@ mt{
     --物品技能
     is_skill = true,
     --全部玩家发送信息概率
-    rate = 1.5,
+    rate = 0.13,
+    --发给自己的概率
+    rate1 = 1.5,
     --商店名词缀
     store_affix = '',
 }
@@ -62,10 +64,19 @@ function mt:add_content()
         flag = true
         hero:add(k,v)
     end  
-    local tran_player = rand_rate < self.rate and ac.player.self or nil
+    if rand_rate < self.rate then 
+        tran_player = ac.player.self
+    elseif rand_rate < self.rate1 then 
+        tran_player = player     
+    else 
+        tran_player = nil
+    end        
+    
     --发送消息
-    if flag and tran_player then 
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
+    if flag  then 
+        if tran_player then 
+            tran_player:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cffff0000'..rand_name..'|r',2)
+        end        
     end    
     
     --再处理特殊的 
