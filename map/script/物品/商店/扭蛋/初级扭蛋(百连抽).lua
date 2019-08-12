@@ -64,6 +64,7 @@ function mt:add_content()
         flag = true
         hero:add(k,v)
     end  
+    local tran_player
     if rand_rate < self.rate then 
         tran_player = ac.player.self
     elseif rand_rate < self.rate1 then 
@@ -71,7 +72,7 @@ function mt:add_content()
     else 
         tran_player = nil
     end        
-    
+
     --发送消息
     if flag  then 
         if tran_player then 
