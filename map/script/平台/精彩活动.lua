@@ -62,7 +62,7 @@ mt{
 --等级
 level = 1, --要动态插入
 --图标
-art = [[jdzw.blp]],
+art = [[swldd.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
@@ -71,18 +71,18 @@ tip = [[
 |cff00ffff抓青蛙活动获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+16.8   杀怪加全属性|r
-|cff00ff00+16.8   攻击减甲|r
-|cff00ff00+16.8%  杀敌数加成|r
-|cff00ff00+16.8%  物理伤害加深|r
+|cff00ff00+18.8   杀怪加全属性|r
+|cff00ff00+18.8   攻击减甲|r
+|cff00ff00+18.8%  物品获取率|r
+|cff00ff00+18.8%  暴击加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 18.8,
-['木头加成'] = 18.8,
+['物品获取率'] = 18.8,
 ['攻击减甲'] = 18.8,
-['会心伤害'] = 18.8,
+['暴击加深'] = 18.8,
 need_map_level = 5,
 }
 
