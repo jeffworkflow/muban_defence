@@ -57,7 +57,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 55,
 ['减少周围护甲'] = 300,
 ['物理伤害加深'] = 40,
-need_map_level = 14,
+need_map_level = 13,
 --特效
 effect = [[lingyu13.mdx]]
 }
@@ -233,7 +233,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['会心伤害'] = 25,
 ['技能伤害加深'] = 25,
 ['全伤加深'] = 25,
-need_map_level = 24,
+need_map_level = 22,
 --特效
 effect = [[Rune Blue Aura.mdx]]
 }
@@ -263,7 +263,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['减少周围护甲'] = 750,
 ['技能伤害加深'] = 15,
 ['全伤加深'] = 15,
-need_map_level = 27,
+need_map_level = 25,
 --特效
 effect = [[az_kaer_t2_1.mdx]]
 }
@@ -293,7 +293,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['减少周围护甲'] = 900,
 ['技能伤害加深'] = 20,
 ['全伤加深'] = 20,
-need_map_level = 29,
+need_map_level = 24,
 --特效
 effect = [[TX_hjl,mdx]]
 }
