@@ -23,7 +23,7 @@ mt{
 
 	]],
 	--技能图标 3（40°扇形分三条，角度20%）+3+3+1+1，一共5波，
-    art = [[jineng\jineng032.blp]],
+    art = [[ReplaceableTextures\CommandButtons\BTNStarfall.blp]],
 	--技能类型
 	skill_type = "主动,智力",
 	--冷却时间
