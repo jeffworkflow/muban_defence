@@ -48,7 +48,7 @@ local function range_attack_start(hero,damage)
                         damage = damage,
                         skill = false,
                         missile = self.mover,
-                        attack = true,
+                        attack = true, --触发攻击特效 （分裂伤害等）
                         common_attack = true,
                     }
                 else
@@ -56,8 +56,10 @@ local function range_attack_start(hero,damage)
                     {
                         source = hero,
                         damage = damage,
-                        skill = '多重射',
+                        skill = '多重射',--必中，不会攻击丢失
                         missile = self.mover,
+                        common_attack = true,
+                        -- aoe = true,
                     }
                     
                 end    

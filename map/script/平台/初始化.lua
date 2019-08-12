@@ -113,6 +113,23 @@ ac.wait(3000,function()
     end
 end)
 
+--清理不必要的存档
+ac.wait(10,function()
+    local name = [[谜情小伙]]
+    local temp_mall = {}
+    for i,data in ipairs(ac.mall) do 
+        table.insert(temp_mall,data[1])
+    end
+    for i=1,10 do
+        local player = ac.player[i]
+        if player:is_player() and finds(name,player:get_name())  then
+            player:clear_server(temp_mall)
+        end
+    end
+end)
+
+
+
 local star2award = {
     --奖励 = 段位 星数 需求地图等级
     

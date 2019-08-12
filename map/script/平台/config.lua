@@ -181,6 +181,7 @@ local cus_key = {
     {'hsslly','烈火天翔领域'},
 
     {'jdzw','井底之蛙'},
+    {'swldddr','食物链顶端的人'},
     
     
 }

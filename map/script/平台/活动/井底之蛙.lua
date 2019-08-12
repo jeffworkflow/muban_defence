@@ -47,11 +47,35 @@ color = '紫',
 item_type = '消耗品',
 cool = 1,
 ['生命上限%'] = 10,
+rate = 10,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
+function mt:on_cast_start()
+    local hero = self.owner 
+    local p = hero:get_owner()
+    local player = hero:get_owner()
+    hero = p.hero
+    local save_name = '食物链顶端的人'
+    -- print(self.rate)
+    if math.random(100) <= self.rate then 
+        local key = ac.server.name2key(save_name)
+        if p:Map_GetServerValue(key) < 1 then 
+            --激活成就（存档） 
+            p:Map_SaveServerValue(key,1) --网易服务器
+            --动态插入魔法书
+            local skl = hero:find_skill(save_name,nil,true) 
+            if not skl  then 
+                ac.game:event_notify('技能-插入魔法书',hero,'精彩活动','食物链顶端的人')
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r  将青蛙丢进井里，惊喜获得|cffff0000【可存档成就】'..save_name..'|r |cff00ff00+16.8杀怪加全属性|r |cff00ff00+16.8攻击减甲|r |cff00ff00+16.8%杀敌数加成|r |cff00ff00+16.8%物理伤害加深|r',6) 
+            end 
+        end    
+    end    
+
+
+end    
 
 local function give_award(hero) 
     local p = hero:get_owner()
@@ -91,7 +115,7 @@ local function give_award(hero)
         ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 救蛙一命，胜造七级浮屠，奖励 |cffff0000'..rand_name..'|r',4) 
     elseif  rand_name == '井底之蛙' then 
         local key = ac.server.name2key(rand_name)
-        if p:Map_GetServerValue(key) < 1 and p:Map_GetMapLevel()>=5 then 
+        if p:Map_GetServerValue(key) < 1  then 
             --激活成就（存档） 
             p:Map_SaveServerValue(key,1) --网易服务器
             --动态插入魔法书

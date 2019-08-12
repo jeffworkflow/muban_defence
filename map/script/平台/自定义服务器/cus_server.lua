@@ -289,25 +289,6 @@ end
 ac.server.init = init  
 
 
---玩家 清空服务器数据 (自定义服务器)
-function player.__index:clear_server()
-    local player = self
-    for i,v in ipairs(ac.cus_server_key) do 
-        local key = v[1]
-        -- player:SetServerValue(key,0) 自定义服务器
-        player:Map_SaveServerValue(key,0) --网易服务器
-    end    
-end    
-
---所有玩家 清空服务器档案
-function ac.clear_all_server()
-	for i = 1, 10 do
-        local player = ac.player(i)
-        if player:is_player() then 
-            player:clear_server()
-        end   
-	end
-end
 
 --===============网易数据与自定义服务器数据交互===========================
 --copy 网易数据 到 map_test 

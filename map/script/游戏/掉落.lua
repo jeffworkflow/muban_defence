@@ -292,7 +292,8 @@ local unit_reward = {
             }
         },
         { rand = 0.01,      name = '吞噬丹'},
-        { rand = 0.04,      name = '点金石'}
+        { rand = 0.04,      name = '点金石'},
+        { rand = 0.01,      name = '随机技能'}
     },
     ['随机物品'] =  {
         { rand = 100,      name = {

@@ -24,14 +24,15 @@ function mt:on_add()
     hero:add('攻击%', -self.value)
     hero:add('魔抗%', -self.value)
 
-    hero:add_effect('origin',self.effect)
+    hero:add('每秒回血', self.life_recover)
+    -- hero:add_effect('origin',self.effect)
 
-    self.trg = hero:loop(1000,function()
+    -- self.trg = hero:loop(1000,function()
 
-        local max_life = hero:get('生命上限')
-        hero:add('生命',max_life * self.life_recover/100)
+    --     local max_life = hero:get('生命上限')
+    --     hero:add('生命',max_life * self.life_recover/100)
 
-    end)
+    -- end)
 
 end
 
@@ -44,11 +45,12 @@ function mt:on_remove()
     hero:add('护甲%', self.value)
     hero:add('攻击%', self.value)
     hero:add('魔抗%', self.value)
+    hero:add('每秒回血', -self.life_recover)
 
-    if self.trg then
-        self.trg:remove()
-        self.trg = nil
-    end    
+    -- if self.trg then
+    --     self.trg:remove()
+    --     self.trg = nil
+    -- end    
 
 end
 

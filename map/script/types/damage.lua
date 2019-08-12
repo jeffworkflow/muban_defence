@@ -332,7 +332,7 @@ local function on_splash(self)
 		: ipairs()
 	do	
 		if u:get_name() =='毁灭者' then 
-			dmg = dmg * 0.1
+			dmg = 0
 		end	
 		u:damage
 		{

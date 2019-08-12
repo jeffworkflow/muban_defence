@@ -57,6 +57,35 @@ need_map_level = 5,
 }
 
 
+local mt = ac.skill['食物链顶端的人']
+mt{
+--等级
+level = 1, --要动态插入
+--图标
+art = [[jdzw.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff抓青蛙活动获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+16.8   杀怪加全属性|r
+|cff00ff00+16.8   攻击减甲|r
+|cff00ff00+16.8%  杀敌数加成|r
+|cff00ff00+16.8%  物理伤害加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 18.8,
+['木头加成'] = 18.8,
+['攻击减甲'] = 18.8,
+['会心伤害'] = 18.8,
+need_map_level = 5,
+}
+
 
 
 local mt = ac.skill['精彩活动']
@@ -72,7 +101,7 @@ mt{
     
 }
 mt.skill_name ={
-    '缘定三生','井底之蛙'
+    '缘定三生','井底之蛙','食物链顶端的人'
 }
 mt.skills = {
 }

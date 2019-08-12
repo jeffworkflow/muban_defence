@@ -57,23 +57,33 @@ function player.__index:Map_CommentTotalCount()
 end
 
 --玩家 清空服务器数据 (自定义服务器)
-function player.__index:clear_server()
+function player.__index:clear_server(...)
     local player = self
-    for i,v in ipairs(ac.cus_server_key) do 
-        local key = v[1]
-        -- player:SetServerValue(key,0) 自定义服务器
-        player:Map_SaveServerValue(key,0) --网易服务器
+    --没有传参，默认全部清除
+    if not ... then 
+        for i,v in ipairs(ac.cus_server_key) do 
+            local key = v[1]
+            -- player:SetServerValue(key,0) 自定义服务器
+            
+            -- player:Map_SaveServerValue(key,0) --网易服务器
+            player:Map_FlushStoredMission(key) --网易服务器
+        end    
+    else
+        for i,key in ipairs(...) do
+            -- print(key,value)
+            player:Map_FlushStoredMission(key) --网易服务器
+        end   
     end    
 end    
 
 --所有玩家 清空服务器档案
-function ac.clear_all_server()
-	for i = 1, 10 do
+function ac.clear_all_server(...)
+    for i = 1, 10 do
         local player = ac.player(i)
         if player:is_player() then 
-            player:clear_server()
+            player:clear_server(...)
         end   
-	end
+    end
 end
 
 -- for key, value in pairs(japi) do
@@ -177,9 +187,8 @@ end
 
 --删除存档 清除掉后无法还原
     --type 大写的 I,S,R,B
-function player.__index:Map_FlushStoredMission(Key,type)
+function player.__index:Map_FlushStoredMission(key)
     local handle = self.handle
-    local key = type..Key
     japi.DzAPI_Map_SaveServerValue(handle,key,nil)
 end
 

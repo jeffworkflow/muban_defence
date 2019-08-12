@@ -231,9 +231,9 @@ ac.wait(20,function()
                 { name = "巅峰王者" },
             }
             ac.g_game_degree_list = {} 
-            for i = #list2 ,1 ,-1 do 
+            for i = #list ,1 ,-1 do 
                 -- print(list[i].name)
-                local name = list2[i].name
+                local name = list[i].name
                 if finds(name,'修罗模式') then 
                     name = "修罗模式"
                 end    
@@ -243,14 +243,14 @@ ac.wait(20,function()
                 if finds(name,'斗破苍穹') then 
                     name = "斗破苍穹"
                 end 
-                if name ~= '武林大会' or name ~= '普通模式' then 
+                if not finds(name,'普通模式','武林大会') then 
                     table.insert(ac.g_game_degree_list,name)
                 end    
             end  
-            for i = #list ,1 ,-1 do 
-                local name = list[i].name  
+            for i = #list2 ,1 ,-1 do 
+                local name = list2[i].name  
                 table.insert(ac.g_game_degree_list,name)
-            end    
+            end     
             
             ac.player.self:sendMsg("正在选择 |cffffff00难度|r")
             if player then 
