@@ -121,8 +121,8 @@ local task_detail = {
         --召唤物杀死也继承
         local p = killer:get_owner()
         if p.flag_tsjx then return end
-        local per_kill_cnt = 20 --每20只给奖励
-        local max_kill_cnt = 100 --达到100只给奖励
+        local per_kill_cnt = 100 --每20只给奖励
+        local max_kill_cnt = 500 --达到100只给奖励
 
         local hero = p.hero
         if hero  then 
@@ -130,10 +130,10 @@ local task_detail = {
             --处理每20只奖励杀怪+金币
             local cnt = math.floor(p.tsjx_cnt/per_kill_cnt)
 
-            p:sendMsg('|cffFFE799【系统消息】|r当前杀鸡进度：|cffff0000'..(p.tsjx_cnt - cnt*per_kill_cnt)..'|r/'..per_kill_cnt,2)
+            p:sendMsg('|cffFFE799【系统消息】|r当前挑战进度：|cffff0000'..(p.tsjx_cnt - cnt*per_kill_cnt)..'|r/'..per_kill_cnt,2)
             if p.tsjx_cnt % per_kill_cnt == 0 then 
                 hero:add_item('点金石',true)
-                p:sendMsg('|cffFFE799【系统消息】|r完成杀鸡任务：|cffff0000'..cnt.. '|r/5，获得|cff00ff00杀怪+50金币，攻击+50金币，每秒+50金币|r',2)
+                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000点金石+1|r',2)
             end
 
             if p.tsjx_cnt == max_kill_cnt then
@@ -149,9 +149,9 @@ local task_detail = {
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     hero:add_item('吞噬丹',true)
                     p.max_tunshi_cnt = 9 --最大吞噬次数为9次，之前8次。
-                    p:sendMsg('|cffFFE799【系统消息】|r恭喜获得 |cff00ff00杀怪加全属性+1|r 的|cffff0000永久存档奖励|r',6)
+                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000吞噬丹+1 物品吞噬极限+1|r',6)
                 end)    
-                p:sendMsg('|cffFFE799【系统消息】|r|cffff0000齐天大圣|r已出现，小心他的金箍棒 ',2)
+                p:sendMsg('|cffFFE799【系统消息】|r|cffff0000极限BOSS|r已出现，请尽快击杀',2)
                 p.flag_tsjx = true
             end
         end    
@@ -161,8 +161,8 @@ local task_detail = {
         --召唤物杀死也继承
         local p = killer:get_owner()
         if p.flag_qhjx then return end
-        local per_kill_cnt = 20 --每20只给奖励
-        local max_kill_cnt = 100 --达到100只给奖励
+        local per_kill_cnt = 100 --每20只给奖励
+        local max_kill_cnt = 500 --达到100只给奖励
 
         local hero = p.hero
         if hero  then 
@@ -170,18 +170,18 @@ local task_detail = {
             --处理每20只奖励杀怪+金币
             local cnt = math.floor(p.qhjx_cnt/per_kill_cnt)
 
-            p:sendMsg('|cffFFE799【系统消息】|r当前杀鸡进度：|cffff0000'..(p.qhjx_cnt - cnt*per_kill_cnt)..'|r/'..per_kill_cnt,2)
+            p:sendMsg('|cffFFE799【系统消息】|r当前挑战进度：|cffff0000'..(p.qhjx_cnt - cnt*per_kill_cnt)..'|r/'..per_kill_cnt,2)
             if p.qhjx_cnt % per_kill_cnt == 0 then 
                 --奖励随机技能书
                 local skl_name = ac.skill_list2[math.random(#ac.skill_list2)]
                 hero:add_skill_item(skl_name)
-                p:sendMsg('|cffFFE799【系统消息】|r完成杀鸡任务：|cffff0000'..cnt.. '|r/5，获得|cff00ff00杀怪+50金币，攻击+50金币，每秒+50金币|r',2)
+                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000随机技能书|r',2)
             end
 
             if p.qhjx_cnt == max_kill_cnt then
                 --boss事件
                 local point = hero:get_point()-{hero:get_facing(),100}--在英雄附近 100 到 400 码 随机点
-                local unit = ac.player(12):create_unit('吞噬极限BOSS',point)
+                local unit = ac.player(12):create_unit('强化极限BOSS',point)
                 unit:add_buff '定身'{
                     time = 2
                 }
@@ -191,9 +191,9 @@ local task_detail = {
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     hero:add_item('恶魔果实',true)
                     p.max_ruti_cnt = 9 --最大吞噬次数为9次，之前8次。
-                    p:sendMsg('|cffFFE799【系统消息】|r恭喜获得 |cff00ff00杀怪加全属性+1|r 的|cffff0000永久存档奖励|r',6)
+                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000恶魔果实+1 技能强化极限+1|r',6)
                 end)    
-                p:sendMsg('|cffFFE799【系统消息】|r|cffff0000齐天大圣|r已出现，小心他的金箍棒 ',2)
+                p:sendMsg('|cffFFE799【系统消息】|r|cffff0000极限BOSS|r已出现，请尽快击杀',2)
                 p.flag_qhjx = true
             end
         end    

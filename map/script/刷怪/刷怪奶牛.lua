@@ -33,8 +33,9 @@ end
 local mt = ac.creep['物品吞噬极限']{    
     creeps_datas = '吞噬极限守卫*15',
     region = 'tssx11',
+    cool = 1,
     create_unit_cool = 0,
-    cool_count = 3,
+    -- cool_count = 3,
 }
 function mt:on_change_creep(unit,lni_data)
     --设置搜敌范围
@@ -45,8 +46,9 @@ end
 local mt = ac.creep['技能强化极限']{    
     creeps_datas = '强化极限守卫*15',
     region = 'tssx22',
+    cool = 1,
     create_unit_cool = 0,
-    cool_count = 3,
+    -- cool_count = 3,
 }
 function mt:on_change_creep(unit,lni_data)
     --设置搜敌范围
