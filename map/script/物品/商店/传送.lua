@@ -64,6 +64,9 @@ ac.quick_arrive ={
     ['白胡子'] = {ac.map.rects['传送-白胡子'],'baihuzi.blp','\n挑战四皇之一，并获得|cffff0000恶魔果实合成材料：白胡子的大刀|r\n',0,66666,0} ,
     
     ['替天行道'] = {ac.map.rects['传送-替天行道'],'ttxd.blp','\n请大侠|cff00ffff闲暇的时候|r前往袭击食人魔，有几率获得|cff00ffff勇士徽章（可存档）|r\n\n|cffcccccc建议最后挑战|r',0,0,0,1000} ,
+    
+    ['物品吞噬极限'] = {ac.map.rects['传送-吞噬极限'],'ttxd.blp','\n请大侠|cff00ffff闲暇的时候|r前往袭击食人魔，有几率获得|cff00ffff勇士徽章（可存档）|r\n\n|cffcccccc建议最后挑战|r',0,0,0,1000} ,
+    ['技能强化极限'] = {ac.map.rects['传送-强化极限'],'ttxd.blp','\n请大侠|cff00ffff闲暇的时候|r前往袭击食人魔，有几率获得|cff00ffff勇士徽章（可存档）|r\n\n|cffcccccc建议最后挑战|r',0,0,0,1000} ,
 
 }
 
@@ -128,6 +131,33 @@ for key,value in pairs(ac.quick_arrive) do
         local x,y=hero:get_point():get()
 
         p:setCamera(ac.point(x+(value[10] or 0),y+(value[11] or 0)))
+
+        --开始进行特殊处理 
+        if finds(key,'物品吞噬极限','技能强化极限') then 
+            --开始刷怪
+            ac.creep[key]:start()
+            --倒计时
+            if not ac.flag_jixian then
+                ac.flag_jixian={}
+            end    
+            if ac.flag_jixian[key] then 
+                ac.flag_jixian[key]:remove()
+            end    
+            ac.flag_jixian[key] = ac.timer_ex 
+            {
+                time = 3*60, 
+                -- time = 30,  --测试
+                title = key.."区,关闭倒计时：",
+                func = function ()
+                    --关闭刷怪
+                    local crep = ac.creep[key] 
+                    crep:finish(true)
+                    --传送英雄出去
+                    -- hero:blink(ac.map.rects['主城'],true,false,true) --不需要传送出去
+                end,
+            }
+        end    
+
     end
 
 end    

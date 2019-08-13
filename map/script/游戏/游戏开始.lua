@@ -88,6 +88,9 @@ ac.game:event '游戏-开始' (function()
         --创建 超级异火
         local x,y = ac.rect.j_rect('npc10'):get_point():get()
         local shop = ac.shop.create('超级异火',x,y,270,nil)  
+        --创建 超越极限
+        local x,y = ac.rect.j_rect('cyjx'):get_point():get()
+        local shop = ac.shop.create('超越极限',x,y,270,nil)  
     end    
 
 end)    

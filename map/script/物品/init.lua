@@ -7,6 +7,7 @@ require '物品.合成装备'
 require '物品.套装'
 require '物品.特殊处理'
 require '物品.黑色物品'
+local unit = require 'types.unit'
 
 
 
@@ -71,4 +72,17 @@ function ac.item.add_skill_item(it,hero,is_drop)
     return it
 end 
 
-
+function unit.__index:add_skill_item(it,is_drop)
+	if type(it) =='string'  then 	
+		it = ac.item.create_skill_item(it,nil,true)
+		it:hide()
+		it.recycle = true
+    end	
+    if not is_drop then 
+        --如果英雄满物品，创建在地上
+        self:add_item(it,true)
+    else
+        self:add_item(it)
+    end    
+    return it
+end    

@@ -43,7 +43,7 @@ function mt:on_add()
 		end 
         --触发时修改攻击方式
         if math.random(100) <= self.chance then
-            print('触发效果')
+            -- print('触发效果')
 
             self.buff = hero:add_buff('不灭佛隐')
             {

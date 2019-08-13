@@ -340,6 +340,12 @@ ac.map.rects={
 	['传送-替天行道'] =rect.j_rect('ttxd1') ,
 	['boss-食人魔'] =rect.j_rect('ttxd11') ,
 
+	['传送-吞噬极限'] =rect.j_rect('tssx1') ,
+	['刷怪-吞噬极限'] =rect.j_rect('tssx11') ,
+
+	['传送-强化极限'] =rect.j_rect('tssx2') ,
+	['刷怪-强化极限'] =rect.j_rect('tssx22') ,
+
 }
 
 -- local minx, miny, maxx, maxy = ac.map.rects['刷怪']:get()

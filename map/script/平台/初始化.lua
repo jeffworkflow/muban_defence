@@ -204,7 +204,10 @@ ac.game:event '游戏-结束'(function(_)
         if p:is_player() then 
             --保存波束
             for i ,content in ipairs(today_rank) do 
-                p:sp_set_rank(content[1],ac.creep['刷怪-无尽1'].index)
+                if finds(content[2],ac.g_game_degree_name) then 
+                    p:sp_set_rank(content[1],ac.creep['刷怪-无尽1'].index)
+                    break
+                end    
             end    
         end
     end        
@@ -418,8 +421,8 @@ local function ttxd2award()
 
         --奖励 = 杀鸡儆猴奖励每秒全属性, 每地图等级上限值
         ['杀怪加全属性'] = {1,25},
-        --奖励 = 在线奖励攻击减甲, 每地图等级上限值
-        ['攻击减甲'] = {1,10},
+        --奖励 = 在线奖励攻击减甲, 每地图等级上限值（神奇的五分钟）
+        ['攻击减甲'] = {1,30},
     }  
     for i=1,10 do
         local player = ac.player[i]

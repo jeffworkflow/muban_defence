@@ -14,7 +14,7 @@ tip = [[
 
 可以|cff00ff00吞噬装备|r 永久增加对应的属性|cffffff00（套装效果无法加成）|r
 
-|cff00ffff已吞噬|r %cnt%|cffffff00/8|r |cff00ffff个：|r %content%]],
+|cff00ffff已吞噬|r %cnt%|cffffff00 / %max_cnt%|r |cff00ffff个：|r %content%]],
 cnt = function(self) 
     local cnt = 0
     if self and self.owner and self.owner:is_hero() then 
@@ -24,6 +24,16 @@ cnt = function(self)
     end    
     return cnt
 end,
+max_cnt = function(self) 
+    local cnt = 0
+    if self and self.owner and self.owner:is_hero() then 
+        local hero = self.owner
+        local player = hero:get_owner()
+        cnt = player.max_tunshi_cnt or 8
+    end    
+    return cnt
+end,
+
 content = function(self) 
     local content = '' 
     --吞噬丹在宠物也可以展示
@@ -54,11 +64,13 @@ function mt:on_cast_start()
     local name = self:get_name()
     hero = player.hero
     local list = {}
+    --超越极限
+    player.max_tunshi_cnt = player.max_tunshi_cnt or 8
     --只能吞噬 10 个 物品类的，没法更新数据
-    local cnt = 8
+    local cnt = player.max_tunshi_cnt 
     if (player.tunshi_cnt or 0) >= cnt then 
         self:add_item_count(1)
-        player:sendMsg('|cffffe799【系统消息】|r已经吞噬过多物品(最多8个)，无法继续吞噬')
+        player:sendMsg('|cffffe799【系统消息】|r已经吞噬过多物品(最多'..cnt..'个)，无法继续吞噬')
         return 
     end    
 
