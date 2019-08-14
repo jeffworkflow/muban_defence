@@ -10,8 +10,9 @@ art = [[pllb.blp]],
 tip = [[ 
 |cff00ff00平台进行评论即可获得，评论礼包属性可存档|r 
 
-|cffffE7991个评论次数|r 奖励 |cffff0000【减少周围护甲】|cff00ffff+1.5*地图等级
-
+|cffffe799【礼包属性】
+|cffff0000【减少周围护甲】|cff00ffff+1.5*地图等级*评论次数
+|cffff0000【攻击加全属性】|cff00ffff+1*地图等级*评论次数
  ]],
 ['减少周围护甲'] = function(self)
     local p = self.owner:get_owner()
@@ -84,7 +85,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['物理伤害加深'] = 20,
 ['技能伤害加深'] = 10,
 ['全伤加深'] = 10,
-need_map_level = 8,
+need_map_level = 7,
 
 }
 
@@ -118,7 +119,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['攻击距离'] = 50,
 ['暴击加深'] = 25,
 ['技暴加深'] = 25,
-need_map_level = 11,
+need_map_level = 10,
 
 }
 
@@ -159,8 +160,8 @@ end
 local condition = {
     --福利 = 评论数，激活所需地图等级
     ['日益精进'] = {55000,5},
-    ['勇攀新高'] = {75000,8},
-    ['扶摇直上'] = {100000,11},
+    ['勇攀新高'] = {75000,7},
+    ['扶摇直上'] = {100000,10},
 }
 
 for name,data in pairs(condition) do 

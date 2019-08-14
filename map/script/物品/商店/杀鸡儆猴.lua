@@ -121,8 +121,8 @@ local task_detail = {
         --召唤物杀死也继承
         local p = killer:get_owner()
         if p.flag_tsjx then return end
-        local per_kill_cnt = 100 --每20只给奖励
-        local max_kill_cnt = 500 --达到100只给奖励
+        local per_kill_cnt = 200 --每20只给奖励
+        local max_kill_cnt = 1000 --达到100只给奖励
 
         local hero = p.hero
         if hero  then 
@@ -161,8 +161,8 @@ local task_detail = {
         --召唤物杀死也继承
         local p = killer:get_owner()
         if p.flag_qhjx then return end
-        local per_kill_cnt = 100 --每20只给奖励
-        local max_kill_cnt = 500 --达到100只给奖励
+        local per_kill_cnt = 200 --每20只给奖励
+        local max_kill_cnt = 1000 --达到100只给奖励
 
         local hero = p.hero
         if hero  then 
