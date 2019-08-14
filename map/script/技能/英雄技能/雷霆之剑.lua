@@ -87,6 +87,7 @@ function mt:on_add()
 					return
 				end
 				function mvr:on_finish()
+                    ac.effect(u:get_point(),skill.effect,0,3,'origin'):remove()
 					for _,target in ac.selector()
 						: in_range(u,skill.boom_area)
 						: is_enemy(hero)
@@ -94,7 +95,6 @@ function mt:on_add()
 						: ipairs()
 					do 
                         if not unit_mark[target] then 
-                            ac.effect(target:get_point(),skill.effect,0,3,'origin'):remove()
                             -- print(target,target.handle)
 							-- if target == u then --命中中心的敌人额外伤害，并允许触发额外辅助
                             target:damage

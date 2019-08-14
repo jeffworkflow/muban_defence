@@ -202,14 +202,14 @@ ac.game:event '玩家-聊天' (function(self, player, str)
                         end    
                     end	
                     --干掉 英雄的弹道模型
-                    if hero.weapon then 
-                        if player.flag_qxtx then 
-                            hero.old_weapon1 = hero.weapon['弹道模型']
-                            hero.weapon['弹道模型'] = ''
-                        else
-                            hero.weapon['弹道模型'] = hero.old_weapon1
-                        end    
-                    end  
+                    -- if hero.weapon then 
+                    --     if player.flag_qxtx then 
+                    --         hero.old_weapon1 = hero.weapon['弹道模型']
+                    --         hero.weapon['弹道模型'] = ''
+                    --     else
+                    --         hero.weapon['弹道模型'] = hero.old_weapon1
+                    --     end    
+                    -- end  
                 end    
             end    
             
