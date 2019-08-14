@@ -267,6 +267,10 @@ rect gg_rct_tssx11= null
 rect gg_rct_tssx1= null
 rect gg_rct_tssx22= null
 rect gg_rct_tssx2= null
+rect gg_rct_tssx33= null
+rect gg_rct_tssx3= null
+rect gg_rct_tssx44= null
+rect gg_rct_tssx4= null
 
 endglobals
 
@@ -1958,6 +1962,10 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_tssx1=Rect(25536.0, 5216.0, 25792.0, 5504.0)
     set gg_rct_tssx22=Rect(28576.0, 5184.0, 28832.0, 5472.0)
     set gg_rct_tssx2=Rect(27776.0, 5216.0, 28032.0, 5504.0)
+    set gg_rct_tssx33=Rect(26336.0, 3392.0, 26592.0, 3680.0)
+    set gg_rct_tssx3=Rect(25536.0, 3424.0, 25792.0, 3712.0)
+    set gg_rct_tssx44=Rect(28576.0, 3392.0, 28832.0, 3680.0)
+    set gg_rct_tssx4=Rect(27776.0, 3424.0, 28032.0, 3712.0)
 endfunction
 
 //===========================================================================

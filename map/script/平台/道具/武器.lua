@@ -216,6 +216,41 @@ need_map_level = 18,
 effect = [[wuqi123.mdx]]
 }
 
+local mt = ac.skill['方天画戟']
+mt{
+--等级
+level = 0,
+--图标
+art = [[fxlhj.blp]],
+is_order = 1,
+--说明
+tip = [[
+|cffffe799【获得方式】：|r
+|cff00ffff地图等级=26级 
+
+|cffFFE799【神兵属性】：|r
+|cff00ff00+800  杀怪加攻击|r
+|cff00ff00+50%  物理伤害加深|r
+|cff00ff00+50%  暴击加深|r
+|cff00ff00+15%  对BOSS额外伤害|r
+|cff00ff00+15%  全伤加深|r
+
+|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 800,
+['物理伤害加深'] = 50,
+['暴击加深'] = 50,
+['全伤加深'] = 15,
+['对BOSS额外伤害'] = 15,
+
+need_map_level = 26,
+
+--特效
+effect = [[wuqi123.mdx]]
+}
+
 
 
 local mt = ac.skill['皇帝剑']
@@ -322,7 +357,7 @@ effect = [[wuqi11.mdx]]
 }
 
 
-for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','霜之哀伤','飞星雷火剑','皇帝剑','皇帝刀'}) do
+for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','霜之哀伤','飞星雷火剑','方天画戟','皇帝剑','皇帝刀'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local skill = self

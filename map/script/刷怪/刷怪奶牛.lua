@@ -56,3 +56,28 @@ function mt:on_change_creep(unit,lni_data)
 end  
 
 
+local mt = ac.creep['暴击几率极限']{    
+    creeps_datas = '暴击极限守卫*15',
+    region = 'tssx33',
+    cool = 1,
+    create_unit_cool = 0,
+    -- cool_count = 3,
+}
+function mt:on_change_creep(unit,lni_data)
+    --设置搜敌范围
+    unit:set_search_range(1000)
+end  
+
+
+local mt = ac.creep['免伤几率极限']{    
+    creeps_datas = '免伤几率极限守卫*15',
+    region = 'tssx44',
+    cool = 1,
+    create_unit_cool = 0,
+    -- cool_count = 3,
+}
+function mt:on_change_creep(unit,lni_data)
+    --设置搜敌范围
+    unit:set_search_range(1000)
+end  
+

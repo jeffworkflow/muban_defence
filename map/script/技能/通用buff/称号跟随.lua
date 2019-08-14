@@ -10,7 +10,7 @@ function mt:on_add()
 		self.follow = self.target:follow{
 			source = self.target,
 			model = self.model,
-			-- angle_follow = true,
+			angle_follow = true,
 			-- face_follow = true,
 			angle = -90,
 			distance = 120,

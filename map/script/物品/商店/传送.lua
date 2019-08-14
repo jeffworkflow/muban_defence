@@ -67,7 +67,8 @@ ac.quick_arrive ={
     
     ['物品吞噬极限'] = {ac.map.rects['传送-吞噬极限'],'tsjx.blp','\n前往杀死|cff00ffff极限守卫和BOSS|r，奖励|cffff0000物品吞噬极限+1|r\n\n|cffcccccc限时三分钟，尽最大努力，超越最强极限。|r',0,0,666666} ,
     ['技能强化极限'] = {ac.map.rects['传送-强化极限'],'jnqh.blp','\n前往杀死|cff00ffff极限守卫和BOSS|r，奖励|cffff0000技能强化极限+1|r\n\n|cffcccccc限时三分钟，尽最大努力，超越最强极限。|r',0,0,666666} ,
-
+    ['暴击几率极限'] = {ac.map.rects['传送-暴击几率'],'jnqh.blp','\n前往杀死|cff00ffff极限守卫和BOSS|r，奖励|cffff0000技能强化极限+1|r\n\n|cffcccccc限时三分钟，尽最大努力，超越最强极限。|r',0,0,666666} ,
+    ['免伤几率极限'] = {ac.map.rects['传送-免伤几率'],'jnqh.blp','\n前往杀死|cff00ffff极限守卫和BOSS|r，奖励|cffff0000技能强化极限+1|r\n\n|cffcccccc限时三分钟，尽最大努力，超越最强极限。|r',0,0,666666} ,
 }
 
 
@@ -133,7 +134,7 @@ for key,value in pairs(ac.quick_arrive) do
         p:setCamera(ac.point(x+(value[10] or 0),y+(value[11] or 0)))
 
         --开始进行特殊处理 
-        if finds(key,'物品吞噬极限','技能强化极限') then 
+        if finds(key,'物品吞噬极限','技能强化极限','暴击几率极限','免伤几率极限') then 
             --开始刷怪
             ac.creep[key]:start()
             --倒计时

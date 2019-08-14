@@ -58,6 +58,7 @@ local attribute = {
 	['暴击']       = true,   --默认%
 	['暴击伤害']    = true,  --默认%
 	['闪避'] = true,  --默认表示为%
+	['闪避极限']		=	true, --默认%
 	['攻击丢失'] = true,  --默认表示为%
 	
 	['破甲']       = true,  --默认表示为基础值  破加伤害计算时，默认0,增加属性时，若用add[破甲%]，将无效。伤害计算时，直接扣掉点数
@@ -67,12 +68,15 @@ local attribute = {
 	['护盾']       = true,  --默认表示为基础值 
 
 	['暴击几率']		=	true, --默认%
+	['暴击几率极限']		=	true, --默认%
 	['暴击加深']		=	true,--默认%
 
 	['会心几率']		=	true,--默认%
+	['会心几率极限']		=	true, --默认%
 	['会心伤害']		=	true,--默认%
 
 	['技暴几率']		=	true,--默认%
+	['技暴几率极限']		=	true, --默认%
 	['技暴加深']		=	true,--默认%
 
 	['技能伤害']		=	true, --默认表示为%
@@ -80,7 +84,9 @@ local attribute = {
 
 	['伤害减少']		    =	true, --默认表示为基础值
 	['免伤']			=	true, --默认表示为%
+	['免伤极限']			=	true, --默认表示为%
 	['免伤几率']			=	true, --默认表示为%
+	['免伤几率极限']		=	true, --默认%
 
 	['法术伤害减免']			=	true, --默认表示为%
 	['法术伤害减伤']		    =	true, --默认表示为基础值
@@ -809,14 +815,14 @@ end
 
 on_get['暴击几率'] = function(self, physical_rate)
 	if physical_rate > 90 then
-		return 90
+		physical_rate = math.min(physical_rate,90 + self:get('暴击几率极限')) 
 	end
 	return physical_rate
 end
 
 on_get['技暴几率'] = function(self, magic_rate)
 	if magic_rate > 90 then
-		return 90
+		magic_rate = math.min(magic_rate,90 + self:get('技暴几率极限')) 
 	end
 	return magic_rate
 end
@@ -824,14 +830,14 @@ end
 
 on_get['会心几率'] = function(self, heart_rate)
 	if heart_rate > 90 then
-		return 90
+		heart_rate = math.min(heart_rate,90 + self:get('会心几率极限')) 
 	end
 	return heart_rate
 end
 
 on_get['免伤几率'] = function(self, reduce_rate)
 	if reduce_rate > 90 then
-		return 90
+		reduce_rate = math.min(reduce_rate,90 + self:get('免伤几率极限')) 
 	end
 	return reduce_rate
 end
@@ -839,7 +845,7 @@ end
 
 on_get['免伤'] = function(self, reduce_damage)
 	if reduce_damage > 90 then
-		return 90
+		reduce_damage = math.min(reduce_damage,90 + self:get('免伤极限')) 
 	end
 	return reduce_damage
 end
@@ -852,8 +858,8 @@ on_get['法术伤害减免'] = function(self, reduce_magic_damage)
 end
 
 on_get['闪避'] = function(self, value)
-	if not self.flag_dodge and value > 90 then
-		value = 90
+	if value > 90 then
+		value = math.min(value,90 + self:get('闪避极限')) 
 	end
 	return value
 end
@@ -943,17 +949,17 @@ ac.loop(1*1000,function(t)
 	end	
 end)
 --优化每秒回血
-local pulse = 0.2
-ac.loop(pulse*1000,function(t)
-	for i = 1,10 do 
-		local player= ac.player(i)
-		if player:is_player() and player.hero then 
-			--每秒回血
-			local hero = player.hero
-			hero:add('生命',hero:get('生命上限')*hero:get('每秒回血')*pulse/100)
-		end
-	end		
-end)
+-- local pulse = 0.2
+-- ac.loop(pulse*1000,function(t)
+-- 	for i = 1,10 do 
+-- 		local player= ac.player(i)
+-- 		if player:is_player() and player.hero then 
+-- 			--每秒回血
+-- 			local hero = player.hero
+-- 			hero:add('生命',hero:get('生命上限')*hero:get('每秒回血')*pulse/100)
+-- 		end
+-- 	end		
+-- end)
 
 --攻击加全属性通用规则
 ac.game:event '造成伤害效果' (function(_,damage)

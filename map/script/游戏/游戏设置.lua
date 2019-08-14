@@ -346,6 +346,12 @@ ac.map.rects={
 	['传送-强化极限'] =rect.j_rect('tssx2') ,
 	['刷怪-强化极限'] =rect.j_rect('tssx22') ,
 
+	['传送-暴击几率'] =rect.j_rect('tssx3') ,
+	['刷怪-暴击几率'] =rect.j_rect('tssx33') ,
+
+	['传送-免伤几率'] =rect.j_rect('tssx4') ,
+	['刷怪-免伤几率'] =rect.j_rect('tssx44') ,
+
 }
 
 -- local minx, miny, maxx, maxy = ac.map.rects['刷怪']:get()

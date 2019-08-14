@@ -841,7 +841,8 @@ function helper:tt()
 	self:add('全属性',10000000000)
 	self:add('护甲',1000000000)
 	self:add('会心伤害',10000)
-	self.flag_dodge = true --突破极限
+	-- self.flag_dodge = true --突破极限
+	self:add('闪避极限',5)
 	self:add('闪避',100)
 	self:add('免伤',90)
 	self:add('免伤几率',90)

@@ -166,6 +166,7 @@ local cus_key = {
     {'zsas','紫色哀伤'},
     {'blnsy','白龙凝酥翼'},
     {'szas','霜之哀伤'},
+    {'fthj','方天画戟'},
 
     {'tszg','天使之光'},
     {'byshly','白云四海领域'},
@@ -182,7 +183,7 @@ local cus_key = {
 
     {'jdzw','井底之蛙'},
     {'swldddr','食物链顶端的人'},
-    
+
     
 }
 ac.cus_server_key = cus_key
