@@ -69,13 +69,6 @@ function player.__index:sp_get_map_test(f)
     local f = f or function (retval)  end
     post_message(url,post,function (retval) 
         if not finds(retval,'http','https','') or finds(retval,'成功')then 
-            ac.wait(10,function()
-                local msg = {flag_get_map_test = true}
-                self:SyncData(msg,function(p,message)
-                    -- print_r(message)
-                    p.flag_get_map_test = message.flag_get_map_test
-                end)
-            end)
             local is_json = json.is_json(retval)
             if is_json then 
                 local tbl = json.decode(retval)
@@ -84,11 +77,14 @@ function player.__index:sp_get_map_test(f)
                     -- print_r(tbl)
                     for i,data in ipairs(tbl.data[1]) do 
                         temp_tab[data.key] = data.value
-                        --预设没有的值，从服务器读取并动态插入预设的key
-                        local name = ac.server.key2name(data.key)
-                        if not name then 
-                            table.insert(ac.cus_server_key,{data.key,data.key_name})
-                        end 
+                       
+                        --处理排行榜数据
+                        if finds(data.key ,'today_wjdpcq','today_wjxlms') then
+                            local new_key = data.key..'rank'
+                            local new_key_name = ac.server.key2name(data.key)..'排名'
+                            temp_tab[new_key] = data.rank
+                        end    
+
                     end    
                     local tab_str = ui.encode(temp_tab)
                     -- print('数据长度',#tab_str) 
@@ -116,12 +112,6 @@ function player.__index:sp_get_map_test(f)
                 print(retval)
             end   
             if  finds(retval,'执行失败') then
-                ac.wait(10,function()
-                    local msg = {flag_get_map_test = true}
-                    self:SyncData(msg,function(p,message)
-                        p.flag_get_map_test = message.flag_get_map_test
-                    end)
-                end)
             else    
                 self.try_server_cnt = (self.try_server_cnt or 0 ) + 1
                 if self.try_server_cnt <= 3 then 
@@ -130,12 +120,6 @@ function player.__index:sp_get_map_test(f)
                     end)
                     ac.wait(5*1000,function(t)
                         self:sp_get_map_test()
-                    end)
-                else
-                    ac.wait(10,function()
-                        self:sendMsg('|cffff0000读取存档失败,获得胜利时排行榜数据将被覆盖,输入jixu可继续玩|r')
-                        self:sendMsg('|cffff0000读取存档失败,获得胜利时排行榜数据将被覆盖,输入jixu可继续玩|r')
-                        self:sendMsg('|cffff0000读取存档失败,获得胜利时排行榜数据将被覆盖,输入jixu可继续玩|r')
                     end)
                 end    
             end    
@@ -178,7 +162,7 @@ local event = {
                 player.jifen =  tonumber(val)
             end    
         end    
-        player:event_notify('读取存档数据')
+        -- player:event_notify('读取存档数据')
 
     end,
 }
@@ -407,7 +391,6 @@ end
 -- ac.flag_map = 1
 --读取配置
 ac.player(1):sp_get_map_flag()
-
 
 --[[
 ===========自定义服务器 基本功能 ===================

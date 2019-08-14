@@ -103,6 +103,12 @@ local cus_key = {
     {'time_dpcq','斗破苍穹时长'},
     {'time_pkms','武林大会时长'},
 
+    
+    {'today_wjxlms','今日修罗模式无尽'},
+    {'today_wjxlmsrank','今日修罗模式无尽排名'},
+    {'today_wjdpcq','今日斗破苍穹无尽'},
+    {'today_wjdpcqrank','今日斗破苍穹无尽排名'},
+
     {'bwllc','霸王莲龙锤'},
     {'hhxyj','幻海雪饮剑'},
     -- {'hjblj','惊虹奔雷剑',20},

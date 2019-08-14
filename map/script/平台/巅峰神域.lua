@@ -119,7 +119,7 @@ mt{
     
 }
 mt.skills = {
-    '炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','真龙天子'
+    '炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','真龙天子','独孤求败'
 }
 
 local mt = ac.skill['英雄']
@@ -166,6 +166,18 @@ for i,name in ipairs({'礼包','武器','翅膀','称号','神圣领域','英雄
             if has_mall and has_mall > 0 then 
                 skill:set_level(1)
             end
+            if skill.name =='独孤求败' then 
+                local has_rank
+                -- print(player.cus_server2['今日斗破苍穹无尽排名'],player.cus_server2['今日修罗模式无尽排名'])
+                if player.cus_server2  then 
+                    if  ((player.cus_server2['今日斗破苍穹无尽排名'] or 0) >0 and (player.cus_server2['今日斗破苍穹无尽排名'] or 0) <= 10)
+                        or
+                        ((player.cus_server2['今日修罗模式无尽排名'] or 0) >0 and (player.cus_server2['今日修罗模式无尽排名'] or 0) <= 10)
+                    then 
+                        skill:set_level(1)
+                    end
+                end    
+            end    
         end 
     end  
 end    

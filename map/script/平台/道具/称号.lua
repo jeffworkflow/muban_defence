@@ -292,8 +292,39 @@ end,
 end,  
 }
 
+local mt = ac.skill['独孤求败']
+mt{
+--等级
+level = 0,
+--图标
+art = [[wzgl.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','真龙天子'}) do
+|cffffe799【获得方式】：|r
+|cff00ffff消耗勇士徽章  500  兑换获得
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+268  杀怪加全属性|r
+|cff00ff00+10%   免伤几率|r
+|cff00ff00+10%   对BOSS额外伤害|r
+
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 750,
+['对BOSS额外伤害'] = 10,
+['免伤几率'] = 10,
+need_map_level = 10,
+--特效
+effect = [[CH_duguqiubai.mdx]]
+}
+
+
+
+
+for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','真龙天子','独孤求败'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner
