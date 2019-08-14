@@ -60,6 +60,16 @@ attr_tip = '',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 } 
+local temp_item = {}
+ac.wait(11,function()
+    for i,name in ipairs(ac.all_item) do 
+        table.insert(temp_item,name)
+    end    
+    for i,name in ipairs(ac.black_item) do 
+        table.insert(temp_item,name)
+    end   
+end)
+
 function mt:on_cast_start()
     local hero = self.owner
     local target = self.target
@@ -71,7 +81,7 @@ function mt:on_cast_start()
         --添加吞噬丹
         self.owner:add_item('吞噬丹',true)
         --随机添加物品
-        local name = ac.all_item[math.random( 1,#ac.all_item)]
+        local name = temp_item[math.random( 1,#temp_item)]
         self.owner:add_item(name,true)
 
         --给英雄随机添加套装属性
