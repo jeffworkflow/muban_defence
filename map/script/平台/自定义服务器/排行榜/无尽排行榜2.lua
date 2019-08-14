@@ -21,8 +21,8 @@ class.today_panel = extends(class.panel){
         -- local time = top_panel:add_text('17:59',750,top_panel.h-53,200,25,8,4)
         -- time:set_color(120,120,120,1)
         --日期
-        local date = top_panel:add_text('1小时刷新一次',210,top_panel.h-35,200,25,8,4)
-        date:set_color(120,120,120,1)
+        local date = top_panel:add_text('|cff7878781小时刷新一次|r|cffff0000(有奖)|r',210,top_panel.h-35,200,25,8,4)
+        -- date:set_color(120,120,120,1)
         panel.date = date
 
         --画一条线 (image_path,x,y,width,height)
