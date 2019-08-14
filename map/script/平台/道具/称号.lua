@@ -297,26 +297,30 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[wzgl.blp]],
+art = [[dgqb.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗勇士徽章  500  兑换获得
+|cff00ffff进入|cffffff00修罗模式/斗破苍穹-今日排行榜前十名（按F6查看）|cff00ffff即可获得|r
+|cffcccccc（非可存档称号，掉出排行榜将失去称号）|r
 
 |cffFFE799【称号属性】：|r
-|cff00ff00+268  杀怪加全属性|r
-|cff00ff00+10%   免伤几率|r
-|cff00ff00+10%   对BOSS额外伤害|r
+|cff00ff00+368   杀怪加全属性|r
+|cff00ff00+200   攻击减甲|r
+|cff00ff00+5%    会心几率|r
+|cff00ff00+100%  会心伤害|r
+|cff00ff00+168%  全伤加深|r
 
 |cffff0000【点击可更换称号外观，所有称号属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 750,
-['对BOSS额外伤害'] = 10,
-['免伤几率'] = 10,
-need_map_level = 10,
+['杀怪加全属性'] = 368,
+['攻击减甲'] = 200,
+['会心几率'] = 5,
+['会心伤害'] = 100,
+['全伤加深'] = 168,
+need_map_level = 8,
 --特效
 effect = [[CH_duguqiubai.mdx]]
 }
