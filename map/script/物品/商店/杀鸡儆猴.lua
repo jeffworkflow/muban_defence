@@ -231,7 +231,7 @@ local task_detail = {
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     hero:add('暴击几率',5)
                     hero:add('暴击几率极限',5)
-                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000暴击几率+5% 暴击几率极限+5%|r',6)
+                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000暴击几率+5%（无视暴击几率上限）|r',6)
                 end)    
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000极限BOSS|r已出现，请尽快击杀',2)
                 p.flag_bjjx = true
@@ -271,7 +271,7 @@ local task_detail = {
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     hero:add('免伤几率',5)
                     hero:add('免伤几率极限',5)
-                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000免伤几率+5% 免伤几率极限+5%|r',6)
+                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000免伤几率+5%（无视免伤几率上限）|r',6)
                 end)    
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000极限BOSS|r已出现，请尽快击杀',2)
                 p.flag_msjl = true

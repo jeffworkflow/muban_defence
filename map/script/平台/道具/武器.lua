@@ -224,13 +224,14 @@ level = 0,
 art = [[fthj.blp]],
 is_order = 1,
 --说明
-tip = [[
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
 |cffffe799【获得方式】：|r
-|cff00ffff地图等级=26级 
+|cff00ffff斗破苍穹|cffff0000累计|cff00ffff无尽波数=500波
 
 |cffFFE799【武器属性】：|r
 |cff00ff00+900  杀怪加攻击|r
-|cff00ff00+150  攻击减甲|r
+|cff00ff00+150   攻击减甲|r
 |cff00ff00+150% 分裂伤害|r
 |cff00ff00+100% 物理伤害加深|r|r
 
@@ -246,7 +247,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 26,
 
 --特效
-effect = [[wuqi123.mdx]]
+effect = [[Wuqi_fangtainhuaji.mdx]]
 }
 
 
