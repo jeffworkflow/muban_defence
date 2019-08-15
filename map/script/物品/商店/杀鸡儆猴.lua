@@ -294,7 +294,7 @@ local task_detail = {
             p:sendMsg('|cffFFE799【系统消息】|r当前挑战进度：|cffff0000'..(p.jbjx_cnt - cnt*per_kill_cnt)..'|r/'..per_kill_cnt,2)
             if p.jbjx_cnt % per_kill_cnt == 0 then 
                 hero:add('技暴加深',50)
-                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000生命上限+5%|r',2)
+                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000技暴加深+50%|r',2)
             end
 
             if p.jbjx_cnt == max_kill_cnt then
@@ -310,7 +310,7 @@ local task_detail = {
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     hero:add('技暴几率',5)
                     hero:add('技暴几率极限',5)
-                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000免伤几率+5%（无视免伤几率上限）|r',6)
+                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000技暴几率+5%（无视技暴几率上限）|r',6)
                 end)    
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000极限BOSS|r已出现，请尽快击杀',2)
                 p.flag_jbjx = true
@@ -333,7 +333,7 @@ local task_detail = {
             p:sendMsg('|cffFFE799【系统消息】|r当前挑战进度：|cffff0000'..(p.sbjx_cnt - cnt*per_kill_cnt)..'|r/'..per_kill_cnt,2)
             if p.sbjx_cnt % per_kill_cnt == 0 then 
                 hero:add('敏捷%',5)
-                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000生命上限+5%|r',2)
+                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000敏捷+5%|r',2)
             end
 
             if p.sbjx_cnt == max_kill_cnt then
@@ -349,7 +349,7 @@ local task_detail = {
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     hero:add('闪避',5)
                     hero:add('闪避极限',5)
-                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000免伤几率+5%（无视免伤几率上限）|r',6)
+                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000闪避+5%（无视闪避上限）|r',6)
                 end)    
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000极限BOSS|r已出现，请尽快击杀',2)
                 p.flag_sbjx = true
