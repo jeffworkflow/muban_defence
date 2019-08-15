@@ -82,7 +82,9 @@ ac.game:event '单位-移除'(function(_,self)
             t:remove()
         end
     end
-
+    --移除事件events
+    self.events = nil
+    
     unit.remove_handle_map[self.handle] = true
 
     --商店移除时使用

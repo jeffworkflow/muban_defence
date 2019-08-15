@@ -32,6 +32,7 @@ mt{
 	is_skill = true,
 	--是否开启智能施法 0关闭 1开启 2开启并显示施法指示圈
 	-- smart_type = 1,
+	effect = [[]],
 
 	--技能id
 	ability_id = 'AX21',
@@ -99,6 +100,7 @@ function mt:on_cast_shot()
 		source = hero,
 		target = new_point,
 		mover = hero,
+		model = skill.effect,
 		speed = 2000,
 		min_speed = 522,
 		skill = skill,
