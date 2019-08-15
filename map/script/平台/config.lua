@@ -189,7 +189,9 @@ local cus_key = {
 
     {'jdzw','井底之蛙'},
     {'swldddr','食物链顶端的人'},
-
+    
+    {'yqdlh','有趣的灵魂'},
+    
     
 }
 ac.cus_server_key = cus_key
