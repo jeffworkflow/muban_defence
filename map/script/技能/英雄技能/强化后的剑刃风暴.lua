@@ -35,6 +35,7 @@ mt{
 	target_type = ac.skill.TARGET_TYPE_NONE,
 	--冷却时间
 	cool = 4.5,
+	ignore_cool_save = true,
 	--施法范围
 	area = 500,
 	area2 = 1000,

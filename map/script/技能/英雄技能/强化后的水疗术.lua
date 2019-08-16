@@ -17,6 +17,7 @@ mt{
     title = "|cffdf19d0强化后的水疗术|r",
 	--冷却时间
     cool = 1,
+	ignore_cool_save = true,
     ['每秒回血'] = 35,
 	--介绍
     tip = [[

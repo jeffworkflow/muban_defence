@@ -17,6 +17,7 @@ mt{
 	title = "|cffdf19d0强化后的招架之力|r",
 	--冷却时间
 	cool = 1,
+	ignore_cool_save = true,
 	--介绍
     tip = [[
         

@@ -16,7 +16,8 @@ mt{
 	passive = true,
     title = "|cffdf19d0强化后的狂龙爆|r",
 	--冷却时间
-	cool = 20,
+	cool = 1,
+	ignore_cool_save = true,
 	--介绍
     tip = [[
         

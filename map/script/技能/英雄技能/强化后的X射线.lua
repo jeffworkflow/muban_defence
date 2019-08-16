@@ -37,6 +37,7 @@ mt{
 	pulse_time = 0.4,
 	--冷却时间
 	cool = 1,
+	ignore_cool_save = true,
 	--角度
 	angle = 20,
 	--每次最大数量

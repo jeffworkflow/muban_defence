@@ -44,6 +44,7 @@ mt{
     effect = [[Abilities\Weapons\WardenMissile\WardenMissile.mdl]],
     --cd
     cool = 3,
+	ignore_cool_save = true,
     damage_type = '法术',
     --减速事件
     reduce_time = 3,

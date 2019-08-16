@@ -20,7 +20,8 @@ mt{
     art = [[qhjbf.blp]],
 
 	--冷却时间
-	cool = 20,
+	cool = 1,
+	ignore_cool_save = true,
 	--介绍
     tip = [[
         

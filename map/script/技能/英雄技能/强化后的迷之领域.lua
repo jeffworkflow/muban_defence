@@ -12,7 +12,9 @@ mt{
    damage_area = 500,
    title = "|cffdf19d0强化后的迷之领域|r",
 	--技能类型
-	skill_type = "被动,降低护甲",
+    skill_type = "被动,降低护甲",
+    cool = 1,
+	ignore_cool_save = true,
 	--被动
 	passive = true,
 	--介绍

@@ -17,6 +17,7 @@ mt{
     title = "|cffdf19d0强化后的水舞|r",
 	--冷却时间
 	cool = 1,
+	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
   return (self.owner:get('智力')*40+10000)* self.level

@@ -165,7 +165,9 @@ ac.game:event '游戏-无尽开始'(function(trg)
                 --保存星数
                 local name = ac.g_game_degree_name
                 local key = ac.server.name2key(name)
-                player:AddServerValue(key,1)  -- 自定义服务器
+                if player:Map_GetMapLevel() >=3 then 
+                    player:AddServerValue(key,1)  -- 自定义服务器
+                end    
                 player:Map_AddServerValue(key,1) --网易服务器
 
                 player:sendMsg('【游戏胜利】|cffff0000'..name..'星数+1|r')
@@ -176,7 +178,9 @@ ac.game:event '游戏-无尽开始'(function(trg)
                 local cus_value = tonumber((player.cus_server2 and player.cus_server2[name]) or 99999999)
                 --游戏时长 < 存档时间 
                 if os.difftime(cus_value,ac.g_game_time) > 0 then 
-                    player:SetServerValue(key,ac.g_game_time) --自定义服务器
+                    if player:Map_GetMapLevel() >=3 then 
+                        player:SetServerValue(key,ac.g_game_time) --自定义服务器
+                    end    
                     -- player:Map_SaveServerValue(key,ac.g_game_time) --网易服务器
                 end    
                 --文字提醒
@@ -206,7 +210,9 @@ ac.game:event '游戏-结束'(function(_)
             --保存波束
             for i ,content in ipairs(today_rank) do 
                 if finds(content[2],ac.g_game_degree_name) then 
-                    p:sp_set_rank(content[1],ac.creep['刷怪-无尽1'].index)
+                    if p:Map_GetMapLevel() >=3 then 
+                        p:sp_set_rank(content[1],ac.creep['刷怪-无尽1'].index)
+                    end    
                     break
                 end    
             end    
@@ -236,7 +242,9 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
             -- p:sp_set_rank('today_boshu',value)
             if index > cus_value then 
                 if ac.flag_map == 1 then  
-                    player:SetServerValue(key,index)  -- 自定义服务器 
+                    if player:Map_GetMapLevel() >=3 then 
+                        player:SetServerValue(key,index)  -- 自定义服务器 
+                    end    
                 end    
             end   
 
@@ -260,7 +268,10 @@ ac.game:event '游戏-结束' (function(trg,flag)
             --保存星数
             local name = ac.g_game_degree_name
             local key = ac.server.name2key(name)
-            player:AddServerValue(key,1)  -- 自定义服务器
+            
+            if player:Map_GetMapLevel() >=3 then 
+                player:AddServerValue(key,1)  -- 自定义服务器
+            end    
             player:Map_AddServerValue(key,1) --网易服务器
 
             player:sendMsg('【游戏胜利】|cffff0000'..name..'星数+1|r')
@@ -271,7 +282,9 @@ ac.game:event '游戏-结束' (function(trg,flag)
             local cus_value = tonumber((player.cus_server2 and player.cus_server2[name]) or 99999999)
             --游戏时长 < 存档时间 
             if os.difftime(cus_value,ac.g_game_time) > 0 then 
-                player:SetServerValue(key,ac.g_game_time) --自定义服务器
+                if player:Map_GetMapLevel() >=3 then 
+                    player:SetServerValue(key,ac.g_game_time) --自定义服务器
+                end    
                 -- player:Map_SaveServerValue(key,ac.g_game_time) --网易服务器
             end    
             --文字提醒

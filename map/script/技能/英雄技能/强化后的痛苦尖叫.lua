@@ -20,6 +20,7 @@ mt{
 
 	--冷却时间
 	cool = 1,
+	ignore_cool_save = true,
 	
 	--伤害
 	damage = function(self)

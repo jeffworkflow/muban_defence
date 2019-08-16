@@ -23,6 +23,8 @@ mt{
 ]],
 	--技能图标
     art = [[qhdyyb.blp]],
+    cool = 1,
+	ignore_cool_save = true,
     time = 0.75,
     skill_rate = 30,
     skill_damage = 300

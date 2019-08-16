@@ -11,6 +11,7 @@ mt{
     --伤害范围
    damage_area = 800,
    cool = 1,
+   ignore_cool_save = true,
 	--技能类型
     skill_type = "被动,降低护甲",
     title = "|cffdf19d0强化后的暗之领域|r",

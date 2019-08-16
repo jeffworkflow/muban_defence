@@ -181,7 +181,7 @@ ac.game:event '玩家-聊天' (function(self, player, str)
                 if hero then 
                     --干掉英雄身上的技能特效
                     for skl in hero:each_skill() do  
-                        local allstr = table.concat(ac.skill_list2) .. table.concat(ac.skill_list4)
+                        local allstr = table.concat(ac.skill_list2) .. table.concat(ac.skill_list4)..table.concat(ac.skill_list6)
                         if finds(allstr,skl.name) then
                             if player.flag_qxtx then 
                                 skl.old_model = skl.model

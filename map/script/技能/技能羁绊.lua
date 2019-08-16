@@ -111,8 +111,6 @@ local streng_skill_list = {
     -- {'血牛','嗜血术 吸血鬼'},
  
 }
---统一处理 
-ac.skill_list5 = {}
 for i,data in ipairs(streng_skill_list) do
     local target_skill ,source_skills = table.unpack(data)
     local mt = ac.skill[target_skill]

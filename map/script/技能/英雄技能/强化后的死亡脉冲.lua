@@ -15,6 +15,7 @@ mt{
 	title = "|cffdf19d0强化后的死亡脉冲|r",
 	--冷却时间
 	cool = 1,
+	ignore_cool_save = true,
     --伤害范围
    area = 800,
 	--伤害

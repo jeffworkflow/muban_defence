@@ -15,6 +15,7 @@ mt{
     title = "|cffdf19d0强化后的缠绕|r",
 	--冷却时间
 	cool = 1,
+	ignore_cool_save = true,
 	--伤害
 	damage = function(self)
   return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*16+10000)* self.level

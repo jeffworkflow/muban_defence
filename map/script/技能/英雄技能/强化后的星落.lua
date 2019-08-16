@@ -35,6 +35,7 @@ mt{
 	target_type = ac.skill.TARGET_TYPE_NONE,
 	--冷却时间
 	cool = 3,
+	ignore_cool_save = true,
 	--延迟1秒轰炸
 	delay_time = 2.5,
 	--碰撞范围
