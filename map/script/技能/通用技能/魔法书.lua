@@ -22,6 +22,8 @@ ac.game:event '技能-获得' (function (_,hero,self)
             skill_map[name] = skill
             table.insert(skill_list,skill)
             table.insert(skill_book,skill)
+            --记录一下所在位置
+            skill.book_slot_id = #skill_list
         end    
     end 
     local skill = hero:add_skill('关闭',page_type,slots[12],{
@@ -63,6 +65,7 @@ ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
             book = self,
         })
 
+    skill.book_slot_id = index
     self.skill_map[name] = skill
     table.insert(self.skill_list,skill)
     table.insert(self.skill_book,skill)
@@ -76,6 +79,43 @@ ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
     end
     ac.game:event_notify('技能-插入魔法书后',hero,book_skill,skl)
 end)
+
+
+ac.game:event '技能-删除魔法书' (function (_,hero,book_skill,skl)
+    if type(book_skill) == 'string' then 
+        book_skill = hero:find_skill(book_skill,nil,true)
+    end    
+    if not book_skill then 
+        return 
+    end 
+    local self = book_skill
+
+    if type(skl) == 'string' then
+        skl = self.skill_map[skl]
+    elseif type(skl) == 'table' then
+        if not skl.book then
+            return
+        end
+        skl = skl
+    else
+        skl = self.skill_list[skl]
+    end
+    
+    if not skl then
+        return
+    end
+    
+    local slot = skl.book_slot_id
+    skl.book_slot_id = nil
+    self.skill_map[skl.name] = nil
+    self.skill_list[slot] = nil
+    self.skill_book[slot] = nil
+    
+    skl:remove()
+
+    ac.game:event_notify('技能-删除魔法书后',hero,book_skill,skl)
+end)
+
 
 ac.game:event '技能-施法完成' (function (_,hero,self)
     if self.is_spellbook == nil or self.skills == nil then 

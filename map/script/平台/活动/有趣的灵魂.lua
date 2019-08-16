@@ -244,42 +244,47 @@ end
 ac.game:event '游戏-开始'(function()
     -- 注册材料获得事件
     local time = 60 * 6 
-    local rate = 50
+    local rate = 55
     -- local time = 10
     ac.loop(time*1000,function()
-        local point = ac.map.rects['藏宝区']:get_random_point()
-        local unit = ac.player(16):create_unit('灵魂',point)
+        local online_cnt = get_player_count()
+        local cnt = math.floor(online_cnt/3) + 1 
 
-        unit:add_buff '随机逃跑' {}
-        ac.nick_name('有人唠嗑不',unit,250)
+        for i= 1, cnt do 
+            local point = ac.map.rects['藏宝区']:get_random_point()
+            local unit = ac.player(16):create_unit('灵魂',point)
 
-        unit:event '单位-死亡'(function(_,unit,killer)
-            local p = killer:get_owner()
-            if p.id >= 11 then 
-                return 
-            end    
-            local player = killer:get_owner()
-            local hero = p.hero
-            local save_name = '有趣的灵魂'
-            -- print(self.rate)
-            if math.random(100) <= rate then 
-                local key = ac.server.name2key(save_name)
-                --激活成就（存档） 
-                p:Map_AddServerValue(key,1) --网易服务器
-                --动态插入魔法书
-                local skl = hero:find_skill(save_name,nil,true) 
-                if not skl  then 
-                    ac.game:event_notify('技能-插入魔法书',hero,'精彩活动','有趣的灵魂')
-                    ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 超度了一个灵魂，获得|cffff0000【可存档成就】'..save_name..'|r，成就属性可在“巅峰神域-精彩活动”中查看',6) 
+            unit:add_buff '随机逃跑' {}
+            ac.nick_name('有人唠嗑不',unit,250)
+
+            unit:event '单位-死亡'(function(_,unit,killer)
+                local p = killer:get_owner()
+                if p.id >= 11 then 
+                    return 
+                end    
+                local player = killer:get_owner()
+                local hero = p.hero
+                local save_name = '有趣的灵魂'
+                -- print(self.rate)
+                if math.random(100) <= rate then 
+                    local key = ac.server.name2key(save_name)
+                    --激活成就（存档） 
+                    p:Map_AddServerValue(key,1) --网易服务器
+                    --动态插入魔法书
+                    local skl = hero:find_skill(save_name,nil,true) 
+                    if not skl  then 
+                        ac.game:event_notify('技能-插入魔法书',hero,'精彩活动','有趣的灵魂')
+                        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 超度了一个灵魂，获得|cffff0000【可存档成就】'..save_name..'|r，成就属性可在“巅峰神域-精彩活动”中查看',6) 
+                    else
+                        --有魔法书的情况下，升级
+                        skl:upgrade(1)
+                        ac.player.self:sendMsg('|cffff0000【可存档成就】'..save_name..'+1',6) 
+                    end   
                 else
-                    --有魔法书的情况下，升级
-                    skl:upgrade(1)
-                    ac.player.self:sendMsg('|cffff0000【可存档成就】'..save_name..'+1',6) 
-                end   
-            else
-                p:sendMsg('|cffffe799【系统消息】|r阁下人品略低 |cffff0000超度失败',6) 
-            end     
-        end)
+                    p:sendMsg('|cffffe799【系统消息】|r阁下人品略低 |cffff0000超度失败',6) 
+                end     
+            end)
+        end    
     end)
 
 end)

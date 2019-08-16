@@ -980,6 +980,19 @@ function helper:gsp()
 	ac.func_give_suipian(self:get_point())
 end
 
+--测试 魔法书功能
+function helper:test_b1()
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	local hero = p.hero
+	ac.game:event_notify('技能-插入魔法书',hero,'精彩活动','有趣的灵魂')
+
+end	
+function helper:test_b2()
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	local hero = p.hero
+	ac.game:event_notify('技能-删除魔法书',hero,'精彩活动','有趣的灵魂')
+	
+end	
 
 
 --打印hero键值对应的key值

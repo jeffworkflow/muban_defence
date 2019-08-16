@@ -357,6 +357,14 @@ ac.map.rects={
 
 	['传送-闪避'] =rect.j_rect('tsjx6') ,
 	['刷怪-闪避'] =rect.j_rect('tsjx66') ,
+	
+	['传送-会心几率'] =rect.j_rect('tsjx7') ,
+	['刷怪-会心几率'] =rect.j_rect('tsjx77') ,
+
+	['传送-免伤'] =rect.j_rect('tsjx8') ,
+	['刷怪-免伤'] =rect.j_rect('tsjx88') ,
+
+	
 
 }
 
