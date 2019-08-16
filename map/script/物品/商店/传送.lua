@@ -73,8 +73,8 @@ ac.quick_arrive ={
     ['技暴几率极限'] = {ac.map.rects['传送-技暴几率'],'jbjx.blp','\n前往杀死|cff00ffff极限守卫和BOSS|r，奖励|cffff0000技暴几率+5%（无视技暴几率上限）|r\n\n|cffcccccc限时三分钟，尽最大努力，超越最强极限。|r',0,0,666666} ,
     ['闪避极限'] = {ac.map.rects['传送-闪避'],'sbjx.blp','\n前往杀死|cff00ffff极限守卫和BOSS|r，奖励|cffff0000闪避+5%（无视闪避上限）|r\n\n|cffcccccc限时三分钟，尽最大努力，超越最强极限。|r',0,0,666666} ,
     
-    ['会心几率极限'] = {ac.map.rects['传送-会心几率'],'jbjx.blp','\n前往杀死|cff00ffff极限守卫和BOSS|r，奖励|cffff0000技暴几率+5%（无视技暴几率上限）|r\n\n|cffcccccc限时三分钟，尽最大努力，超越最强极限。|r',0,0,666666} ,
-    ['免伤极限'] = {ac.map.rects['传送-免伤'],'sbjx.blp','\n前往杀死|cff00ffff极限守卫和BOSS|r，奖励|cffff0000闪避+5%（无视闪避上限）|r\n\n|cffcccccc限时三分钟，尽最大努力，超越最强极限。|r',0,0,666666} ,
+    ['会心几率极限'] = {ac.map.rects['传送-会心几率'],'hxjx.blp','\n前往杀死|cff00ffff极限守卫和BOSS|r，奖励|cffff0000会心几率+5%（无视会心几率上限）|r\n\n|cffcccccc限时三分钟，尽最大努力，超越最强极限。|r',0,0,666666} ,
+    ['免伤极限'] = {ac.map.rects['传送-免伤'],'msjx.blp','\n前往杀死|cff00ffff极限守卫和BOSS|r，奖励|cffff0000免伤+5%（无视免伤上限）|r\n\n|cffcccccc限时三分钟，尽最大努力，超越最强极限。|r',0,0,666666} ,
 
 }
 

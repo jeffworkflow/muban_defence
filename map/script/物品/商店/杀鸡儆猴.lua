@@ -373,13 +373,13 @@ local task_detail = {
             p:sendMsg('|cffFFE799【系统消息】|r当前挑战进度：|cffff0000'..(p.hxjl_cnt - cnt*per_kill_cnt)..'|r/'..per_kill_cnt,2)
             if p.hxjl_cnt % per_kill_cnt == 0 then 
                 hero:add('会心伤害',50)
-                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000敏捷+5%|r',2)
+                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000会心伤害+50%|r',2)
             end
 
             if p.hxjl_cnt == max_kill_cnt then
                 --boss事件
                 local point = hero:get_point()-{hero:get_facing(),100}--在英雄附近 100 到 400 码 随机点
-                local unit = ac.player(12):create_unit('会心几率极限BOSS',point)
+                local unit = ac.player(12):create_unit('会心极限BOSS',point)
                 unit:add_buff '定身'{
                     time = 2
                 }
@@ -389,7 +389,7 @@ local task_detail = {
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     hero:add('会心几率',5)
                     hero:add('会心几率极限',5)
-                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000闪避+5%（无视闪避上限）|r',6)
+                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000会心几率+5%（无视会心几率上限）|r',6)
                 end)    
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000极限BOSS|r已出现，请尽快击杀',2)
                 p.flag_hxjl = true
@@ -413,7 +413,7 @@ local task_detail = {
             p:sendMsg('|cffFFE799【系统消息】|r当前挑战进度：|cffff0000'..(p.msjx_cnt - cnt*per_kill_cnt)..'|r/'..per_kill_cnt,2)
             if p.msjx_cnt % per_kill_cnt == 0 then 
                 hero:add('护甲%',5)
-                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000敏捷+5%|r',2)
+                p:sendMsg('|cffFFE799【系统消息】|r完成挑战任务：|cffff0000'..cnt.. '|r/5，获得|cffff0000护甲+5%|r',2)
             end
 
             if p.msjx_cnt == max_kill_cnt then
@@ -429,7 +429,7 @@ local task_detail = {
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     hero:add('免伤',5)
                     hero:add('免伤极限',5)
-                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000闪避+5%（无视闪避上限）|r',6)
+                    p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000免伤+5%（无视免伤上限）|r',6)
                 end)    
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000极限BOSS|r已出现，请尽快击杀',2)
                 p.flag_msjx = true
