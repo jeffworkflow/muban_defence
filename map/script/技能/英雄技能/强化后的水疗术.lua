@@ -31,6 +31,12 @@ mt{
 	art = [[qhsls.blp]],
 	--特效
     effect = [[Abilities\Spells\Human\HolyBolt\HolyBoltSpecialArt.mdl]],
+    effect1 = [[Effect_az_heiseguangzhu]],
+    --内伤
+    area = 500,
+    value = -50,
+    time = 0.5,
+
     --补血量
     heal = 20
 }
@@ -57,6 +63,20 @@ function mt:on_add()
                 size = 10,
                 heal = hero:get('生命上限') * skill.heal/100,
             }	
+
+            for _,unit in ac.selector()
+			: in_range(damage.target,skill.area)
+			: is_enemy(hero)
+			: ipairs()
+			do 
+                unit:add_buff('生命恢复效果')
+                {
+                    value = self.value,
+                    source = hero,
+                    time = self.time,
+                    skill = self,
+                }
+			end 
             --激活cd
             skill:active_cd()
         end

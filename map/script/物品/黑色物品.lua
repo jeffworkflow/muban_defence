@@ -650,6 +650,82 @@ function mt:on_cast_start()
 
 end    
 
+local mt = ac.skill['制裁之刃']
+mt{
+--等久
+level = 1,
+--图标
+art = [[sszc.blp]],
+--模型
+specail_model = [[File00000376 - RC.mdx]],
+--类型
+item_type = "装备",
+--品质
+color ='黑',
+--描述
+tip = [[
+
+|cffcccccc嗜血阴灵，伴身左右，逆鳞在手，傲视神魔
+
+|cff00ff00攻击速度+200% 
+|cff00ff00攻击1% 几率对敌人造成最大生命值12%的伤害
+]],
+area = 500,
+--物品技能
+is_skill = true,
+--值
+value = -50,
+time =0.5,
+chance = 10,
+effect = [[Effect_az_heiseguangzhu.mdx]],
+--物品详细介绍的title
+content_tip = '|cffffe799物品说明：|r'
+}  
+function mt:on_add()
+    local hero = self.owner
+    local p = hero:get_owner()
+    local skill = self
+    hero:add('攻击',250000000)
+    hero:add('吸血',20)
+
+    self.trg = hero:event '造成伤害效果' (function(_,damage)
+		if not damage:is_common_attack()  then 
+			return 
+        end 
+		local rand = math.random(1,100)
+        if rand <= self.chance then 
+            --目标特效
+            ac.effect(damage.target:get_point(),self.effect,0,1,'origin'):remove()
+
+            for _,unit in ac.selector()
+			: in_range(damage.target,skill.area)
+			: is_enemy(hero)
+			: ipairs()
+			do 
+                unit:add_buff('生命恢复效果')
+                {
+                    value = self.value,
+                    source = hero,
+                    time = self.time,
+                    skill = self,
+                }
+			end 
+		end
+    end)    
+   
+end  
+function mt:on_remove()
+    local hero = self.owner
+    local p = hero:get_owner()
+    local skill = self
+    hero:add('攻击',-250000000)
+    hero:add('吸血',-20)
+    if self.trg then 
+        self.trg:remove()
+        self.trg = nil 
+    end    
+    -- p.flag_added = false 
+end 
 
 
 

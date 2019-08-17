@@ -30,6 +30,10 @@ mt{
 	art = [[sls.blp]],
 	--特效
     effect = [[Abilities\Spells\Human\HolyBolt\HolyBoltSpecialArt.mdl]],
+    effect2 = [[Effect_az_heiseguangzhu.mdx]],
+    --内伤
+    area = 500,--范围
+    value = -50,--减少生命恢复效果值
     --治疗量
     heal = 35,
     stu_heal = {10,20,30,40,50},
@@ -61,6 +65,23 @@ function mt:on_cast_start()
         time = self.time,
         skill = self,
     }
+
+    --内伤技能
+    for _,unit in ac.selector()
+    : in_range(hero,skill.area)
+    : is_enemy(hero)
+    : ipairs()
+    do 
+        unit:add_buff('生命恢复效果')
+        {
+            value = self.value,
+            source = hero,
+            time = self.time,
+            skill = self,
+        }
+    end 
+
+
 end    
 function mt:on_remove()
     local hero = self.owner
