@@ -295,7 +295,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['全伤加深'] = 20,
 need_map_level = 24,
 --特效
-effect = [[TX_hjl,mdx]]
+effect = [[TX_hjl.mdx]]
 }
 
 
