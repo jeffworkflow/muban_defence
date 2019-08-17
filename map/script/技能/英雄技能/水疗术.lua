@@ -23,14 +23,16 @@ mt{
 
 |cffffff00【生命恢复】+100w*Lv|r
         
-|cff00bdec【主动施放】回复35%生命值 并每秒回复|r|cffffff00【10%*lv】的生命值|r |cff00bdec持续5秒|r
-    
+|cff00bdec【主动施放1】回复35%生命值 并每秒回复|r|cffffff00【10%*lv】的生命值|r |cff00bdec持续5秒|r
+
+|cff00bdec【主动施放2】唯一技能-内伤：对周围敌人造成|r|cffffff00生命恢复效果减少50%|r，|cff00bdec持续5秒|r
+
 ]],
 	--技能图标
 	art = [[sls.blp]],
 	--特效
     effect = [[Abilities\Spells\Human\HolyBolt\HolyBoltSpecialArt.mdl]],
-    effect2 = [[Effect_az_heiseguangzhu.mdx]],
+    effect1 = [[Effect_az_heiseguangzhu.mdx]],
     --内伤
     area = 500,--范围
     value = -50,--减少生命恢复效果值
@@ -48,6 +50,7 @@ function mt:on_cast_start()
     local hero = self.owner
     --特效
     hero:add_effect(self.effect,'chest'):remove()
+    ac.effect(hero:get_point(),self.effect1,0,1,'origin'):remove()
     --补血
     hero:heal
     {

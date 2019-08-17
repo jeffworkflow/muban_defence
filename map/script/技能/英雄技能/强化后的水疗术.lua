@@ -24,14 +24,16 @@ mt{
 
 |cffffff00【每秒回血】+35%|r
         
-|cff00bdec【被动效果】攻击10%几率触发， 回复20%的生命值|r
+|cff00bdec【被动效果1】攻击10%几率触发， 回复20%的生命值|r
+
+|cff00bdec【被动效果2】唯一技能-内伤：10几率对周围敌人造成|r|cffffff00生命恢复效果减少50%|r，|cff00bdec持续0.5秒|r
     
 ]],
 	--技能图标
 	art = [[qhsls.blp]],
 	--特效
     effect = [[Abilities\Spells\Human\HolyBolt\HolyBoltSpecialArt.mdl]],
-    effect1 = [[Effect_az_heiseguangzhu]],
+    effect1 = [[Effect_az_heiseguangzhu.mdx]],
     --内伤
     area = 500,
     value = -50,
@@ -64,6 +66,7 @@ function mt:on_add()
                 heal = hero:get('生命上限') * skill.heal/100,
             }	
 
+            ac.effect(damage.target:get_point(),self.effect1,0,1,'origin'):remove()
             for _,unit in ac.selector()
 			: in_range(damage.target,skill.area)
 			: is_enemy(hero)
