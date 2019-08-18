@@ -265,7 +265,7 @@ art = [[yinudan.blp]],
 tip = [[
 
 |cffffe799【获得方式】：|r
-|cffff0000地图等级≥35|r
+|cffff0000地图等级≥32|r
 
 |cffFFE799【天赋属性】：|r
 |cffffff00【杀怪加全属性】+388*Lv
