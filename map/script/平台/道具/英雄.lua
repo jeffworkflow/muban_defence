@@ -467,9 +467,186 @@ effect = [[chibang7.mdx]]
 }
 
 
+local mt = ac.skill['关公']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[guanyu.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000达到最强王者15星 且 地图等级≥10|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+188*Lv
+【杀敌数加成】+75%
+【物品获取率】+75%
+【木头加成】+75%
+【火灵加成】+75%|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(全属性*10+1w)*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+--特效
+effect = [[chibang7.mdx]]
+}
 
 
-for i,name in ipairs({'赵子龙','Pa','虞姬','手无寸铁的小龙女','太极熊猫','关羽','狄仁杰','伊利丹','至尊宝皮肤A','至尊宝皮肤B','鬼厉','剑仙',}) do
+local mt = ac.skill['女法师']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+--图标
+art = [[wzj.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000达到最强王者15星 且 地图等级≥10|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+188*Lv
+【杀敌数加成】+75%
+【物品获取率】+75%
+【木头加成】+75%
+【火灵加成】+75%|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(全属性*10+1w)*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+--特效
+effect = [[Npc_18.mdx]]
+}
+
+local mt = ac.skill['魔化的小龙女']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+--图标
+art = [[wzj.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000达到最强王者15星 且 地图等级≥10|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+188*Lv
+【杀敌数加成】+75%
+【物品获取率】+75%
+【木头加成】+75%
+【火灵加成】+75%|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(全属性*10+1w)*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+--特效
+effect = [[hero_hs01.mdx]]
+}
+
+local mt = ac.skill['雅典娜']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+--图标
+art = [[wzj.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000达到最强王者15星 且 地图等级≥10|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+188*Lv
+【杀敌数加成】+75%
+【物品获取率】+75%
+【木头加成】+75%
+【火灵加成】+75%|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(全属性*10+1w)*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+--特效
+effect = [[hero_hc04.mdx]]
+}
+
+local mt = ac.skill['肖若兰']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+--图标
+art = [[wzj.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000达到最强王者15星 且 地图等级≥10|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+188*Lv
+【杀敌数加成】+75%
+【物品获取率】+75%
+【木头加成】+75%
+【火灵加成】+75%|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(全属性*10+1w)*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+--特效
+effect = [[hero_hb01.mdx]]
+}
+
+local mt = ac.skill['复仇天神']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+--图标
+art = [[wzj.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000达到最强王者15星 且 地图等级≥10|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+188*Lv
+【杀敌数加成】+75%
+【物品获取率】+75%
+【木头加成】+75%
+【火灵加成】+75%|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(全属性*10+1w)*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+--特效
+effect = [[HeroSpecblue.mdx]]
+}
+
+for i,name in ipairs({
+    '赵子龙','Pa','虞姬','手无寸铁的小龙女','太极熊猫','关羽','狄仁杰','伊利丹','至尊宝皮肤A','至尊宝皮肤B','鬼厉','剑仙','关公',
+    '女法师','魔化的小龙女','雅典娜','肖若兰','复仇天神',
+}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner
@@ -482,7 +659,7 @@ for i,name in ipairs({'赵子龙','Pa','虞姬','手无寸铁的小龙女','太�
 
         local id 
         local new_model 
-        if not finds(target_name,'至尊宝') then 
+        if not finds(target_name,'至尊宝','女法师','魔化的小龙女','雅典娜','肖若兰','复仇天神') then 
             id = ac.table.UnitData[target_name].id
             new_model = slk.unit[id].file
             if new_model and not getextension(new_model) then 
