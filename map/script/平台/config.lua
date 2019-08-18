@@ -35,6 +35,8 @@ local item = {
     {'QTDS','齐天大圣A'},
     {'QTDSB','齐天大圣B'},
 
+    {'BBDLB','百变大礼包'},
+
     --key,key_name,地图等级要求
     {'WXHP','五星好评礼包',3},
     {'XHB','夏侯霸',5},

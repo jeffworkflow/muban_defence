@@ -337,26 +337,6 @@ function helper:clear_server(flag)
 		p:clear_server()
 	end	
 end
---难3测试
-function helper:test_n3()
-	local p = self and self:get_owner() or ac.player(ac.player.self.id)
-
-    p:Map_SaveServerValue('JBLB',1) --网易服务器
-    p:Map_SaveServerValue('MCLB',1) --网易服务器
-    p:Map_SaveServerValue('WXHP',1) --网易服务器
-    p:Map_SaveServerValue('zzl',1) --网易服务器
-    p:Map_SaveServerValue('XHB',1) --网易服务器
-    p:Map_SaveServerValue('lhcq',1) --网易服务器
-    p:Map_SaveServerValue('sbkd',1) --网易服务器
-    p:Map_SaveServerValue('nsl',1) --网易服务器
-    p:Map_SaveServerValue('sjjh',50) --网易服务器
-    p:Map_SaveServerValue('yshz',20) --网易服务器
-    p:Map_SaveServerValue('wbjf',2000) --网易服务器
-    p:Map_SaveServerValue('cwtf',60000) --网易服务器
-
-	
-
-end	
 
 --服务器存档 读取 
 function helper:get_server(key)
@@ -378,22 +358,6 @@ end
 function helper:ani(name)
 	self:set_animation(name)
 end
-
---测试掉线
-function helper:test_offline()
-	ac.loop(3000,function()
-		for i=1,10 do
-			local p = ac.player(i)
-			if p:is_player() then 
-				local u = p:create_unit('民兵',ac.point(0,0))
-				ac.wait(1000,function()
-					u:kill()
-				end)
-			end    
-		end    
-	end)
-end	
-
 --动画
 function helper:print_item(unit,all)
 	local hero = self
@@ -482,12 +446,46 @@ function helper:test_k_u()
 	end)	
 end	
 
+
 --测试杀怪内存
 function helper:test_stop()
 	if ac.test_unit then 
 		ac.test_unit:remove()
 		ac.test_unit = nil
 	end	
+end	
+--测试掉线
+function helper:test_offline()
+	ac.loop(3000,function()
+		for i=1,10 do
+			local p = ac.player(i)
+			if p:is_player() then 
+				local u = p:create_unit('民兵',ac.point(0,0))
+				ac.wait(1000,function()
+					u:kill()
+				end)
+			end    
+		end    
+	end)
+end	
+
+--难3测试
+function helper:test_n3()
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+
+    p:Map_SaveServerValue('JBLB',1) --网易服务器
+    p:Map_SaveServerValue('MCLB',1) --网易服务器
+    p:Map_SaveServerValue('WXHP',1) --网易服务器
+    p:Map_SaveServerValue('zzl',1) --网易服务器
+    p:Map_SaveServerValue('XHB',1) --网易服务器
+    p:Map_SaveServerValue('lhcq',1) --网易服务器
+    p:Map_SaveServerValue('sbkd',1) --网易服务器
+    p:Map_SaveServerValue('nsl',1) --网易服务器
+    p:Map_SaveServerValue('sjjh',50) --网易服务器
+    p:Map_SaveServerValue('yshz',20) --网易服务器
+    p:Map_SaveServerValue('wbjf',2000) --网易服务器
+    p:Map_SaveServerValue('cwtf',60000) --网易服务器
+
 end	
 
 --伤害自己
@@ -602,10 +600,6 @@ function helper:add_black()
 	end	
 end	
 
---强制下一波
-function helper:test_gjjg()
-	self.flag_attack_gap = true 
-end	
 --强制下一波
 function helper:next()
 	--强制下一波
@@ -992,6 +986,17 @@ function helper:test_b2()
 	local hero = p.hero
 	ac.game:event_notify('技能-删除魔法书',hero,'精彩活动','有趣的灵魂')
 	
+end	
+--创建 魔兽自带兵
+function helper:u1()
+	local point = ac.map.rects['出生点']
+	local x,y = point:get()
+	local handle = jass.CreateUnit(ac.player(1).handle, base.string2id('u002'), x, y,0)
+end	
+--创建 英萌兵
+function helper:u2()
+	local point = ac.map.rects['出生点']
+	ac.player(1):create_unit('甲虫',point)
 end	
 
 

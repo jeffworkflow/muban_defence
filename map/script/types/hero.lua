@@ -206,19 +206,6 @@ function player.__index.createHero(p, name, where, face)
 
 	u:add_ability 'AInv'
 	u.hero_data = hero_data
-	-- print(u.name,u:get('力量'),u:get('敏捷'),u:get('智力'))
-	-- 属性已经在创建单位时初始化所以不用再重复
-	for k, v in sortpairs(hero_data.attribute) do
-		if not finds(k,'力量','敏捷','智力')then
-			u:set(k, v)
-		end	
-	end
-
-	for k, v in sortpairs(hero_data.attribute) do
-		if  finds(k,'力量','敏捷','智力')then
-			u:add(k, v)
-		end	
-	end
 	--应用：选择英雄时，替换皮肤英雄
 	p:event_notify('玩家-创建英雄', p, u)
 	return u

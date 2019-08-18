@@ -1124,6 +1124,10 @@ function item.create_item(name,poi,is)
 	
 	--创建一个实例物品
 	local item_handle = jass.CreateItem(base.string2id(type_id),x,y)
+	if item_handle and ac.item.item_map[item_handle] then 
+		print('该物品已被创建在地图',ac.item.item_map[item_handle].name,item_handle)
+		-- return ac.item.item_map[items.handle]
+	end	
 	dbg.handle_ref(item_handle)
 	items.handle = item_handle
 

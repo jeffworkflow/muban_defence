@@ -268,14 +268,14 @@ tip = [[
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 488,
 ['每秒回血'] = 50,
-['会心几率'] = 10,
-['会心伤害'] = 100,
+['会心几率'] = 15,
+['会心伤害'] = 150,
 ['闪避'] = 10,
 --特效
 effect = [[zhenlongtianzi.mdx]],
 
 ['攻击减甲'] = function(self) 
-    local val = 200 
+    local val = 488 
     local p = self.owner:get_owner()
     if (p.mall and p.mall['齐天大圣A'] or 0) >=1 or (p.mall and p.mall['齐天大圣B'] or 0) >=1  then 
         val = val + 288
@@ -283,14 +283,65 @@ effect = [[zhenlongtianzi.mdx]],
     return val
 end,  
 ['全伤加深'] = function(self) 
-    local val = 388 
+    local val = 488 
     local p = self.owner:get_owner()
     if (p.mall and p.mall['齐天大圣A'] or 0) >=1 or (p.mall and p.mall['齐天大圣B'] or 0) >=1  then 
         val = val + 288
     end    
     return val
 end,  
+effect1 = [[Hero_EmberSpirit_N4S_F_Blast.mdx]],
+--触发几率
+chance = function(self) return 10*(1+self.owner:get('触发概率加成')/100) end,
+cool = 1,
+ignore_cool_save = true,
+area = 600,
+--伤害
+damage = function(self)
+    return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*150)
+end,
 }
+function mt:on_add()
+    local hero =self.owner
+    local skill =self
+    self.trg = hero:event '造成伤害效果' (function(_,damage)
+        if not damage:is_common_attack()  then 
+            return 
+        end 
+		--技能是否正在CD
+        if skill:is_cooling() then
+			return 
+		end
+        --触发时修改攻击方式
+        if math.random(100) <= self.chance then
+            --创建特效
+            local angle = damage.source:get_point() / damage.target:get_point()
+            ac.effect(damage.target:get_point(),skill.effect1,angle,1,'origin'):remove()
+            --计算伤害
+            for _,unit in ac.selector()
+            : in_range(damage.target:get_point(),self.area)
+            : is_enemy(hero)
+            : ipairs()
+            do 
+                unit:damage
+                {
+                    source = hero,
+                    damage = skill.damage,
+                    skill = skill,
+                    damage_type = '法术'
+                }
+            end 
+            --激活cd
+            skill:active_cd()
+        end
+    end)
+end    
+function mt:on_remove()
+    if self.trg then 
+        self.trg:remove()
+        self.trg = nil
+    end   
+end    
 
 local mt = ac.skill['独孤求败']
 mt{

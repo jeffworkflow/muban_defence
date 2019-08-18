@@ -23,12 +23,6 @@ function mt:on_add()
     hero:add('魔抗%', -self.value)
     hero:add('攻击%', -self.value)
     
-    hero:event '单位-死亡' (function()
-        if math.random(100) < self.rate then 
-            local item_name = cast_item[math.random(#cast_item)]
-            ac.item.create_item(item_name,hero:get_point())
-        end    
-    end)
 
 end
 

@@ -55,8 +55,25 @@ mt{
     
 }
 mt.skills = {
-    '群号礼包','五星好评礼包','金币礼包','木材礼包','首充','寻宝小飞侠','神仙水','永久赞助','永久超级赞助','神装大礼包','神技大礼包'
+    '群号礼包','五星好评礼包','金币礼包','木材礼包','首充','寻宝小飞侠','神仙水','赞助','神装大礼包','神技大礼包','百变大礼包'
 }
+
+local mt = ac.skill['赞助']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[sffl.blp]],
+    title = '赞助',
+    tip = [[
+
+查看赞助
+    ]],
+    
+}
+mt.skills = {
+    '永久赞助','永久超级赞助'
+}
+
 
 local mt = ac.skill['首充']
 mt{
@@ -134,8 +151,21 @@ mt{
     ]],
 }
 mt.skills = {
-    '赵子龙','Pa','虞姬','手无寸铁的小龙女','太极熊猫','关羽','狄仁杰','伊利丹','至尊宝','鬼厉','剑仙'
+    '赵子龙','Pa','虞姬','手无寸铁的小龙女','太极熊猫','关羽','狄仁杰','伊利丹','至尊宝','鬼厉','英雄-下一页'
 }
+
+local mt = ac.skill['英雄-下一页']
+mt{
+    art = [[ReplaceableTextures\CommandButtons\BTNReplay-Play.blp]],
+    title = '下一页',
+    tip = [[
+
+查看 下一页
+    ]], 
+    is_spellbook = 1,
+    is_order = 2,
+}
+mt.skills = {'剑仙','关公','女法师','魔化的小龙女','雅典娜','肖若兰','复仇天神',}
 
 local mt = ac.skill['神圣领域']
 mt{
@@ -152,15 +182,13 @@ mt{
 mt.skills = {
     '血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','白云四海领域','烈火金焰领域','烈火天翔领域','孤风青龙领域','远影苍龙领域'
 }
-
-
-for i,name in ipairs({'礼包','武器','翅膀','称号','神圣领域','英雄','首充','游戏说明','武林大会'}) do
-    local mt = ac.skill[name]
-    function mt:on_add()
-        local hero = self.owner 
-        local player = hero:get_owner()
-        -- print('打开魔法书')
-        for index,skill in ipairs(self.skill_book) do 
+--循环遍历 skill_book 的技能
+local function upgrade_skill(player,skill)
+    local self = skill
+    for index,skill in ipairs(self.skill_book) do 
+        if skill.is_spellbook == 1 then  
+            upgrade_skill(player,skill)
+        else
             local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
             -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
             if has_mall and has_mall > 0 then 
@@ -177,8 +205,44 @@ for i,name in ipairs({'礼包','武器','翅膀','称号','神圣领域','英雄
                         skill:set_level(1)
                     end
                 end    
+            end   
+            --特殊处理 英雄 类别的
+            if finds(self.name ,'英雄','英雄-下一页','至尊宝') then 
+                local has_baibian = player.mall and player.mall['百变大礼包'] or 0
+                if has_baibian and has_baibian > 0 then 
+                    skill:set_level(1)
+                end
             end    
-        end 
+        end    
+    end    
+end    
+
+for i,name in ipairs({'礼包','武器','翅膀','称号','神圣领域','英雄','游戏说明','武林大会'}) do
+    local mt = ac.skill[name]
+    function mt:on_add()
+        local hero = self.owner 
+        local player = hero:get_owner()
+        -- print('打开魔法书')
+        upgrade_skill(player,self)
+        -- for index,skill in ipairs(self.skill_book) do 
+        --     local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
+        --     -- print(skill.name,'所需地图等级',ac.server.need_map_level[skill.name]) and player:Map_GetMapLevel() >= (ac.server.need_map_level[skill.name]  or 0) 
+        --     if has_mall and has_mall > 0 then 
+        --         skill:set_level(1)
+        --     end
+        --     if skill.name =='独孤求败' then 
+        --         local has_rank
+        --         -- print(player.cus_server2['今日斗破苍穹无尽排名'],player.cus_server2['今日修罗模式无尽排名'])
+        --         if player.cus_server2  then 
+        --             if  ((player.cus_server2['今日斗破苍穹无尽排名'] or 0) >0 and (player.cus_server2['今日斗破苍穹无尽排名'] or 0) <= 10)
+        --                 or
+        --                 ((player.cus_server2['今日修罗模式无尽排名'] or 0) >0 and (player.cus_server2['今日修罗模式无尽排名'] or 0) <= 10)
+        --             then 
+        --                 skill:set_level(1)
+        --             end
+        --         end    
+        --     end    
+        -- end 
     end  
 end    
 

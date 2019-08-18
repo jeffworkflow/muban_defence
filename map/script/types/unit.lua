@@ -1320,9 +1320,7 @@ function unit.init_unit(handle, p)
 		u.unit_type = data.unit_type
 		if data.attribute then
 			for k, v in sortpairs(data.attribute) do
-				if not finds(k,'力量','敏捷','智力')then
-					u:set(k, v)
-				end	
+				u:set(k, v)
 			end
 		end
 		if data.restriction then
@@ -1679,12 +1677,12 @@ end
 
 local function restriction_fly(unit, flag)
     if flag then
-        japi.EXSetUnitMoveType(unit.handle, 4)
+        japi.EXSetUnitMoveType(unit.handle, 4) --飞行
     else
     	if unit:has_restriction '幽灵' then
-        	japi.EXSetUnitMoveType(unit.handle, 16)
+        	japi.EXSetUnitMoveType(unit.handle, 16) --不知道 幽灵，无法通行有破坏物的，但可穿越 a.jass设定地面不可通行的区域。 b.有碰撞体积的。
 		else
-        	japi.EXSetUnitMoveType(unit.handle, 2)
+        	japi.EXSetUnitMoveType(unit.handle, 2)--步行
     	end
     end
 end

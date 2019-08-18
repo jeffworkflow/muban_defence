@@ -178,6 +178,18 @@ mt{
     is_order = 1,
     key = 'Esc',
 }
+
+-- local mt = ac.skill['下一页']
+-- mt{
+--     art = [[ReplaceableTextures\CommandButtons\BTNReplay-Play.blp]],
+--     title = '下一页',
+--     tip = [[
+
+-- 查看 下一页
+--     ]],
+--     instant = 1,
+--     is_order = 1,
+-- }
 -- ['魔法书']
 -- is_order = 2
 -- art = [[ReplaceableTextures\CommandButtons\BTNSpellBookBLS.blp]]

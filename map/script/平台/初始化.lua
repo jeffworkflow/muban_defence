@@ -129,7 +129,33 @@ ac.wait(10,function()
     end
 end)
 
-
+--保存今日榜
+local function save_today_rank()
+    local today_rank = {
+        {'today_wjxlms','今日修罗模式无尽'},
+        {'today_wjdpcq','今日斗破苍穹无尽'},
+    }
+    if ac.g_game_degree_attr < 11 then 
+        return 
+    end    
+    if ac.creep['刷怪-无尽1'].index == 0 then 
+        return 
+    end    
+    for i=1,10 do
+        local p = ac.player[i]
+        if p:is_player() then 
+            --保存波束
+            for i ,content in ipairs(today_rank) do 
+                if finds(content[2],ac.g_game_degree_name) then 
+                    if p:Map_GetMapLevel() >=3 then 
+                        p:sp_set_rank(content[1],ac.creep['刷怪-无尽1'].index)
+                    end    
+                    break
+                end    
+            end    
+        end
+    end   
+end    
 
 local star2award = {
     --奖励 = 段位 星数 需求地图等级
@@ -190,36 +216,18 @@ ac.game:event '游戏-无尽开始'(function(trg)
             end
         end
     end)
-end)
-local today_rank = {
-    {'today_wjxlms','今日修罗模式无尽'},
-    {'today_wjdpcq','今日斗破苍穹无尽'},
-}
--- 游戏结束，今日排行榜
-ac.game:event '游戏-结束'(function(_)
-    --不是圣人模式返回
-    if ac.g_game_degree_attr < 11 then 
-        return 
-    end    
-    if ac.creep['刷怪-无尽1'].index == 0 then 
-        return 
-    end    
-    for i=1,10 do
-        local p = ac.player[i]
-        if p:is_player() then 
-            --保存波束
-            for i ,content in ipairs(today_rank) do 
-                if finds(content[2],ac.g_game_degree_name) then 
-                    if p:Map_GetMapLevel() >=3 then 
-                        p:sp_set_rank(content[1],ac.creep['刷怪-无尽1'].index)
-                    end    
-                    break
-                end    
-            end    
-        end
-    end        
 
-end)    
+    --没两分钟保存一次今日榜
+    local time = 2 * 60
+    ac.loop(time*1000,function() 
+        save_today_rank()
+    end)
+
+end)
+-- 游戏结束，今日排行榜
+ac.game:event '游戏-结束'(function(_)     
+    save_today_rank()
+end)   
 
 --保存修罗模式 无尽层数
 ac.game:event '游戏-回合开始'(function(trg,index, creep) 

@@ -300,8 +300,8 @@ ac.func_give_suipian = function(start)
 end
 
 
---解决藏宝图在npc脚下，英雄挖不到宝
+--解决藏宝图在npc脚下，英雄挖不到宝，幽灵会导致 物品地上卡人的位置。
 ac.game:event '玩家-注册英雄' (function(_, _, hero)
-    hero:add_restriction('幽灵')
+    -- hero:add_restriction('幽灵') 
 end)    
 

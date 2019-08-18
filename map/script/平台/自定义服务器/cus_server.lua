@@ -14,6 +14,9 @@ function player.__index:GetServerValue(KEY,f)
     -- if not ac.flag_map or ac.flag_map  < 1 then 
     --     return 
     -- end
+    if not self:is_self() then 
+        return 
+    end    
     local player_name = self:get_name()
     local map_name = config.map_name
     local url = config.url
@@ -56,6 +59,9 @@ function player.__index:sp_get_map_test(f)
     if ac.flag_map < 1 then 
         return 
     end
+    if not self:is_self() then 
+        return 
+    end    
     local player_name = self:get_name()
     local map_name = ac.server_config.map_name
     local url = ac.server_config.url2
@@ -171,6 +177,9 @@ ui.register_event('cus_server',event)
 --保存到 map_test 
 -- 保存本局数据 p.cus_server[key] = value
 function player.__index:SetServerValue(key,value,f)
+    if not self:is_self() then 
+        return 
+    end    
     local player_name = self:get_name()
     local map_name = config.map_name
     local url = config.url2
@@ -218,6 +227,9 @@ end
 --增加数据到 map_test 
 -- 保存本局数据 p.cus_server[key] = value
 function player.__index:AddServerValue(key,value,f)
+    if not self:is_self() then 
+        return 
+    end    
     if not self.cus_server2 then 
         self.cus_server2 ={}
     end    
@@ -229,6 +241,9 @@ function player.__index:AddServerValue(key,value,f)
 end
 --初始化自定义服务器的数据 暂时不用字段太多。
 function player.__index:initCusServerValue()
+    if not self:is_self() then 
+        return 
+    end    
     for i,v in ipairs(ac.cus_server_key) do 
         local key = v[1]
         local player_name = self:get_name()
@@ -277,6 +292,9 @@ ac.server.init = init
 --===============网易数据与自定义服务器数据交互===========================
 --copy 网易数据 到 map_test 
 function player.__index:CopyServerValue(key,f)
+    if not self:is_self() then 
+        return 
+    end    
     local player_name = self:get_name()
     local map_name = config.map_name
     local url = config.url2
@@ -323,6 +341,9 @@ end
 
 --保存玩家名 记录审核人员
 function player.__index:sp_save_player()
+    if not self:is_self() then 
+        return 
+    end    
     local player_name = self:get_name()
     local map_name = config.map_name
     local url = config.url2
@@ -346,6 +367,9 @@ end
 --读取全局开关，是否读服务器存档
 local ui = require 'ui.client.util'
 function player.__index:sp_get_map_flag(f)
+    if not self:is_self() then 
+        return 
+    end    
     local player_name = self:get_name()
     local map_name = config.map_name
     local url = config.url2
