@@ -45,10 +45,6 @@ is_order = 1,
 item_type ='消耗品',
 --说明
 tip = [[
-
-|cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
-
-|cffFFE799【礼包奖励】|r
 |cff00ff00随机物品1个|cffffff00（纯随机，人品好直接出黑装）
 |cff00ff00吞噬丹1个 |cffffff00可直接吞噬某件装备
 |cff00ff00开局随机激活一套套装属性|cffffff00（不和套装洗练冲突）|r

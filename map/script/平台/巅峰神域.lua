@@ -55,7 +55,7 @@ mt{
     
 }
 mt.skills = {
-    '群号礼包','五星好评礼包','金币礼包','木材礼包','首充','寻宝小飞侠','神仙水','赞助','神装大礼包','神技大礼包','百变大礼包'
+    '群号礼包','五星好评礼包','金币礼包','木材礼包','首充','寻宝小飞侠','神仙水','赞助','神装大礼包','神技大礼包','百变英雄礼包'
 }
 
 local mt = ac.skill['赞助']
@@ -165,7 +165,7 @@ mt{
     is_spellbook = 1,
     is_order = 2,
 }
-mt.skills = {'剑仙','关公','女法师','魔化的小龙女','雅典娜','肖若兰','复仇天神',}
+mt.skills = {'剑仙','关公','王昭君','魔化的小龙女','雅典娜','萧若兰','复仇天神',}
 
 local mt = ac.skill['神圣领域']
 mt{
@@ -208,7 +208,7 @@ local function upgrade_skill(player,skill)
             end   
             --特殊处理 英雄 类别的
             if finds(self.name ,'英雄','英雄-下一页','至尊宝') then 
-                local has_baibian = player.mall and player.mall['百变大礼包'] or 0
+                local has_baibian = player.mall and player.mall['百变英雄礼包'] or 0
                 if has_baibian and has_baibian > 0 then 
                     skill:set_level(1)
                 end

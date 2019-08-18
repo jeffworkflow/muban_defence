@@ -1,9 +1,9 @@
-local mt = ac.skill['百变大礼包']
+local mt = ac.skill['百变英雄礼包']
 mt{
 --等久
 level = 0,
 --图标
-art = [[yjcjzz.blp]],
+art = [[bbyxlb.blp]],
 is_order = 1,
 --说明
 tip = [[
@@ -11,13 +11,17 @@ tip = [[
 |cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
 
 |cffFFE799【礼包奖励】|r
-|cff00ff00杀怪加288全属性，攻击加488全属性，每秒加888全属性，
-|cff00ffff暴击几率+25% 暴击加深+500% 
-技暴几率+25% 技暴加深+500%
-攻击减甲+125 全伤加深+250% |r
-|cffffff00杀敌数额外+1|r
+|cff00ff00可解锁全部英雄的皮肤（天赋属性不解锁）
+|cff00ff00额外赠送5只精美英雄皮肤（赠送皮肤非固定皮肤，可能随时变更，在 “巅峰神域-英雄皮肤-下一页” 查看）
 
-杀怪加全属性488，攻击减甲+488，全伤加深+488%，吞噬丹+2，恶魔果实+2，点金石+20
+|cff00ffff杀怪加全属性488，攻击减甲+488，全伤加深+488%
+|cffffff00吞噬丹+2，恶魔果实+2，点金石+20
+
+|cffff0000百变英雄礼包+神装大礼包+神技大礼包，激活额外属性：
+|cff00ff00吞噬上限额外+2(不与“超越极限”冲突)；技能强化上限额外+2(不与“超越极限”冲突)
+
+|cffdf19d0百变英雄礼包+独孤求败（在 “巅峰神域-称号” 内查看获得方式），激活额外属性：
+|cff00ff00杀怪加全属性+150 会心几率+15% 会心伤害+150% 全伤加深+150%
 
 ]],
 --目标类型
@@ -36,30 +40,21 @@ function mt:on_add()
     if hero:has_item(self.name) then 
         return 
     end   
-    hero:add_item('百变大礼包 ') 
+    hero:add_item('百变英雄礼包 ') 
 end  
 
 
-local mt = ac.skill['百变大礼包 ']
+local mt = ac.skill['百变英雄礼包 ']
 mt{
 --等久
 level = 1,
 --图标
-art = [[szdlb.blp]],
+art = [[bbyxlb.blp]],
 is_order = 1,
 item_type ='消耗品',
 --说明
 tip = [[
-
-|cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
-
-|cffFFE799【礼包奖励】|r
-|cff00ff00随机物品1个|cffffff00（纯随机，人品好直接出黑装）
-|cff00ff00吞噬丹1个 |cffffff00可直接吞噬某件装备
-|cff00ff00开局随机激活一套套装属性|cffffff00（不和套装洗练冲突）|r
-|cffffff00神装大礼包+神技大礼包激活：吞噬丹*1，点金石*10，恶魔果实*1
-随机套装属性：|r
-%attr_tip%
+|cff00ff00点击获得|cffffff00吞噬丹+2，恶魔果实+2，点金石+20|r，|cff00ff00其它属性在 |cff00ffff“巅峰神域-礼包” |cff00ff00中查看
 ]],
 attr_tip = '',
 --目标类型
@@ -83,7 +78,7 @@ function mt:on_cast_start()
         self.owner:add_item(item,true)
 
         --发送消息
-        p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00神装大礼包激活成功|r 激活的套装属性可以在礼包系统中查看',3)
+        -- p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00百变英雄礼包激活成功|r 激活的套装属性可以在礼包系统中查看',3)
 
         --添加羁绊1
         if p.mall and (p.mall['神技大礼包'] or 0) >=1 and (p.mall['神装大礼包'] or 0) >=1  then 
