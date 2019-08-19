@@ -367,9 +367,6 @@ end
 --读取全局开关，是否读服务器存档
 local ui = require 'ui.client.util'
 function player.__index:sp_get_map_flag(f)
-    if not self:is_self() then 
-        return 
-    end    
     local player_name = self:get_name()
     local map_name = config.map_name
     local url = config.url2

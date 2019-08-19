@@ -84,12 +84,17 @@ local cus_key = {
     {'cntxlms','修罗模式'}, -- 星数
     {'cntdpcq','斗破苍穹'}, -- 星数
     {'cntpkms','武林大会'}, -- 星数
+    {'cntwszj','无上之境'},
+    
 
     {'wjxlms','修罗模式无尽'}, -- 无尽层数最高值
     {'ljwjxlms','修罗模式无尽累计'},-- 无尽层数累计值
     
     {'wjdpcq','斗破苍穹无尽'}, -- 无尽层数最高值
     {'ljwjdpcq','斗破苍穹无尽累计'},-- 无尽层数累计值
+
+    {'wjwszj','无上之境无尽'}, -- 无尽层数最高值
+    {'ljwjwszj','无上之境无尽累计'},-- 无尽层数累计值
     
     {'time_qt','青铜时长'},
     {'time_by','白银时长'},
@@ -103,6 +108,7 @@ local cus_key = {
     {'time_dfwz','巅峰王者时长'},
     {'time_xlms','修罗模式时长'},
     {'time_dpcq','斗破苍穹时长'},
+    {'time_wszj','无上之境时长'},
     {'time_pkms','武林大会时长'},
 
     
@@ -110,6 +116,9 @@ local cus_key = {
     {'today_wjxlmsrank','今日修罗模式无尽排名'},
     {'today_wjdpcq','今日斗破苍穹无尽'},
     {'today_wjdpcqrank','今日斗破苍穹无尽排名'},
+    
+    {'today_wjwszj','今日无上之境无尽'},
+    {'today_wjwszjrank','今日无上之境无尽排名'},
 
     {'bwllc','霸王莲龙锤'},
     {'hhxyj','幻海雪饮剑'},
@@ -118,6 +127,7 @@ local cus_key = {
     {'mdxy','梦蝶仙翼'},
     {'tgcyy','天罡苍羽翼'},
     -- {'xyxyy','玄羽绣云翼',30},
+    {'lysxy','龙吟双形翼'},
     
 
     {'lhcq','炉火纯青'},
@@ -175,6 +185,7 @@ local cus_key = {
     {'blnsy','白龙凝酥翼'},
     {'szas','霜之哀伤'},
     {'fthj','方天画戟'},
+    {'sswsj','圣神无双剑'},
 
     {'tszg','天使之光'},
     {'byshly','白云四海领域'},

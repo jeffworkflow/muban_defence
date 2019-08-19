@@ -1,6 +1,6 @@
-local function cast_skill(hero,target)
+local function cast_skill(hero,target,type)
     -- print(hero,hero.data.type)
-    if hero.data and hero.data.unit_type ~= 'boss' then 
+    if not finds(hero.unit_type,'boss','精英') then 
         return 
     end   
 
@@ -12,15 +12,22 @@ local function cast_skill(hero,target)
     if #list == 0 then 
         return 
     end 
-    local skill  = list[math.random(#list)]
-    -- print(skill.name)
-    if skill == nil then 
-        return 
-    end 
-    -- print(skill.name,skill:is_cooling())
+    local skill  
+    --@type=1 攻击概率触发， 2 每秒触发 
+    if type ==1 then 
+        skill = list[math.random(#list)]
+    else
+        for i=1,#list do 
+            skill = list[i]
+            if not skill:is_cooling() and skill.target_type == 0 then 
+                break
+            end    
+        end    
+    end    
     if skill:is_cooling() then 
         return 
     end     
+
     if skill.target_type == 0 then 
         skill:cast()
     elseif skill.target_type == 1 then
@@ -43,7 +50,7 @@ ac.game:event '造成伤害开始' (function (_,damage)
     -- print(rand)
     local rand = math.random(100)
     if rand <= 30 then 
-        cast_skill(hero,target)
+        cast_skill(hero,target,1)
     end 
 end)
 
@@ -51,10 +58,12 @@ end)
 ac.loop(1000,function()
     for _,u in ac.selector()
         : in_rect()
-        : is_type('boss')
+        : add_filter(function(dest)
+            return (dest:is_type('boss') or dest:is_type('精英'))
+        end)
         : ipairs()
     do
-        cast_skill(u,nil)
+        cast_skill(u,nil,2)
     end
 
 end)

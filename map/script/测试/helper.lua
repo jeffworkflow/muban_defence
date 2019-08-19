@@ -384,10 +384,10 @@ end
 function helper:it1()
 	ac.loop(1000,function()
 		for i=1,30 do 
-			-- local item = ac.item.create_item('冰剑',ac.point(0,0))
-			local item = self:add_item('冰剑',true)
-			print(item.handle)
-			ac.wait(10*1000,function()
+			local item = ac.item.create_item('冰剑',ac.point(0,0))
+			-- local item = self:add_item('冰剑',true)
+			-- print(item.handle)
+			ac.wait(1*1000,function()
 				item:item_remove()
 			end)
 		end	

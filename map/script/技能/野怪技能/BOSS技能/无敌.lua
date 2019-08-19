@@ -1,6 +1,6 @@
 local mt = ac.skill['无敌']
 mt{--目标类型 = 单位
-target_type = ac.skill.TARGET_TYPE_POINT,
+target_type = ac.skill.TARGET_TYPE_NONE,
 --施法信息
 cast_start_time = 0,
 cast_channel_time = 0,
@@ -15,11 +15,6 @@ title = '无敌',
 tip = [[
     无敌
 ]],
---范围
-range = 1000,
-area = 750,
---致盲
-stun = 2,
 force_cast=1,
 --冷却
 cool = 10
@@ -29,12 +24,6 @@ function mt:on_cast_start()
     -- if self:is_cooling() then 
     --     return 
     -- end    
-    self.eft = ac.warning_effect_ring
-    {
-        point = self.target,
-        area = self.area,
-        time = self.cast_channel_time,
-    }
 
 end
 

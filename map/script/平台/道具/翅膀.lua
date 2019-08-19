@@ -207,6 +207,38 @@ need_map_level = 28,
 effect = [[chibang03.mdx]]
 }
 
+local mt = ac.skill['龙吟双形翼']
+mt{
+--等级
+level = 0,
+--图标
+art = [[byjhy.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cff00ffff|cff00ffff地图等级=%need_map_level%
+
+|cffFFE799【翅膀属性】：|r
+|cff00ff00+300  杀怪加全属性|r
+|cff00ff00+2500W  初始生命|r
+|cff00ff00+2500   初始护甲|r
+|cff00ff00+20%  对BOSS额外伤害|r
+|cff00ff00+25   每秒加火灵|r
+
+|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 300,
+['初始生命'] = 25000000,
+['护甲'] = 2500,
+['对BOSS额外伤害'] = 20,
+['每秒加火灵'] = 25,
+need_map_level = 28,
+--特效
+effect = [[chibang03.mdx]]
+}
 
 local mt = ac.skill['绝世阳炎翼']
 mt{
@@ -292,7 +324,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[chibang7.mdx]]
 }
 
-for i,name in ipairs({'梦蝶仙翼','玄羽绣云翼','天罡苍羽翼','白龙凝酥翼','天使之光','白羽金虹翼','绝世阳炎翼','轮迴幻魔翼'}) do
+for i,name in ipairs({'梦蝶仙翼','玄羽绣云翼','天罡苍羽翼','白龙凝酥翼','天使之光','白羽金虹翼','龙吟双形翼','绝世阳炎翼','轮迴幻魔翼'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

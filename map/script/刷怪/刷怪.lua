@@ -216,6 +216,7 @@ ac.wait(20,function()
                 { name = "普通模式" },
                 { name = "修罗模式(无尽)" },
                 { name = "斗破苍穹(无尽)" },
+                { name = "无上之境(无尽)" },
                 { name = "武林大会(可PK)" },
             }
             local list2 = {
@@ -243,6 +244,9 @@ ac.wait(20,function()
                 if finds(name,'斗破苍穹') then 
                     name = "斗破苍穹"
                 end 
+                if finds(name,'无上之境') then 
+                    name = "无上之境"
+                end 
                 if not finds(name,'普通模式','武林大会') then 
                     table.insert(ac.g_game_degree_list,name)
                 end    
@@ -259,24 +263,21 @@ ac.wait(20,function()
                     ac.flag_choose_dialog = false
                     if index == 2 then 
                         ac.g_game_degree = 11
+                        ac.g_game_degree_attr = 11  
                         ac.g_game_degree_name = "修罗模式"
                     elseif index == 3 then 
                         ac.g_game_degree = 12
+                        ac.g_game_degree_attr = 12  
                         ac.g_game_degree_name = "斗破苍穹"
                     elseif index == 4 then 
                         ac.g_game_degree = 13
+                        ac.g_game_degree_attr = 13 
+                        ac.g_game_degree_name = "无上之境"  
+                    elseif index == 5 then 
+                        ac.g_game_degree = 14
+                        ac.g_game_degree_attr = 2  
                         ac.g_game_degree_name = "武林大会"  
                     end    
-                       
-                    if index == 2 then 
-                        ac.g_game_degree_attr = 11  --难度二 属性倍数2倍
-                    end  
-                    if index == 3 then 
-                        ac.g_game_degree_attr = 12  --难度三 属性倍数3倍
-                    end  
-                    if index == 4 then 
-                        ac.g_game_degree_attr = 2  --难度三 属性倍数3倍
-                    end  
 
                     ac.player.self:sendMsg("选择了 |cffffff00"..list[index].name.."|r")
                     if index == 1 then
@@ -293,7 +294,7 @@ ac.wait(20,function()
                             end)
                             ac.player.self:sendMsg("选择了 |cffffff00"..list2[index].name.."|r")
                         end)
-                    elseif  index == 2 or index == 3  then 
+                    elseif  index < #list  then 
                         --创建预设英雄
                         ac.choose_hero()
                         --游戏-开始

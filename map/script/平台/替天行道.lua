@@ -281,7 +281,7 @@ for i,name in ipairs({'兑换-力量','兑换-敏捷','兑换-智力','兑换-�
 
         local real_name = string.gsub(self.name,'兑换%-','')
         local has_yshz = p.cus_server and (p.cus_server['勇士徽章'] or 0 )
-        local map_level = p:Map_GetMapLevel()
+        local map_level = p:Map_GetMapLevel() * 2
         local has_mall = p.cus_server and (p.cus_server[real_name] or 0 )
 
         --处理上限问题
