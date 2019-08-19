@@ -266,7 +266,7 @@ for i,name in ipairs({'兑换-势不可挡','兑换-君临天下','兑换-神帝
             end    
 
         else
-            p:sendMsg('【系统消息】勇气徽章不足或地图等级不够')    
+            p:sendMsg('|cffffe799【系统消息】|r勇气徽章不足或地图等级不够')    
         end    
     end    
 end    
@@ -290,7 +290,7 @@ for i,name in ipairs({'兑换-力量','兑换-敏捷','兑换-智力','兑换-�
             -- print_r(self.old_status)
             -- print(real_name,-self[real_name])
             hero:add(real_name,-self[real_name])
-            p:sendMsg('【系统消息】已达兑换上限次数：'..real_name)    
+            p:sendMsg('|cffffe799【系统消息】|r已达兑换上限次数：'..real_name)    
             return true
         end
         --处理兑换
@@ -322,7 +322,7 @@ for i,name in ipairs({'兑换-力量','兑换-敏捷','兑换-智力','兑换-�
             --已经加了属性，需要重新扣除
             -- print(real_name,-self[real_name])
             hero:add(real_name,-self[real_name])
-            p:sendMsg('【系统消息】勇气徽章不足')    
+            p:sendMsg('|cffffe799【系统消息】|r勇气徽章不足')    
         end    
     end    
 end    
