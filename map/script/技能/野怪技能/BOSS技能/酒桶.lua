@@ -18,14 +18,14 @@ tip = [[
 --消耗
 cost_data = {	type = '魔法',	num_type = '三维',	rate = 0.2,},
 --范围
-area = 2000, 
-value  = 50,
-per_value = 10, --每层+10
+area = 1000, 
+value  = 40,
+per_value = 4, --每层+10
 --持续时间
 time = 5,
-speed = 1000,
+speed = 800,
 --冷却
-cool = 1}
+cool = 2}
 mt.effect = [[Hero_Tusk_N2S_W_Walk.mdx]]
 
 function mt:boss_skill_shot()

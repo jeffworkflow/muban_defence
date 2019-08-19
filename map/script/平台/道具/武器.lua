@@ -255,33 +255,35 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[fthj.blp]],
+art = [[ssws.blp]],
 is_order = 1,
 --说明
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff斗破苍穹|cffff0000累计|cff00ffff无尽波数=500波
+|cff00ffff无上之境|cffff0000累计|cff00ffff无尽波数=150波
 
 |cffFFE799【武器属性】：|r
-|cff00ff00+900  杀怪加攻击|r
-|cff00ff00+150   攻击减甲|r
-|cff00ff00+150% 分裂伤害|r
-|cff00ff00+100% 物理伤害加深|r|r
+|cff00ff00+1000  杀怪加攻击|r
+|cff00ff00+250   攻击减甲|r
+|cff00ff00+50% 技暴加深|r
+|cff00ff00+50% 技能伤害加深|r
+|cff00ff00+50% 会心伤害|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 900,
-['物理伤害加深'] = 100,
-['分裂伤害'] = 150,
-['攻击减甲'] = 150,
+['杀怪加攻击'] = 1000,
+['攻击减甲'] = 250,
+['技暴加深'] = 50,
+['技能伤害加深'] = 50,
+['会心伤害'] = 50,
 
-need_map_level = 26,
+need_map_level = 31,
 
 --特效
-effect = [[Wuqi_fangtainhuaji.mdx]]
+effect = [[Wuqi_tianlongshengjian.mdx]]
 }
 
 

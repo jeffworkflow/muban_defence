@@ -212,32 +212,32 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[byjhy.blp]],
+art = [[lysxy.mdx]],
 --说明
-tip = [[
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff|cff00ffff地图等级=%need_map_level%
+|cff00ffff无上之境25星
 
 |cffFFE799【翅膀属性】：|r
-|cff00ff00+300  杀怪加全属性|r
-|cff00ff00+2500W  初始生命|r
-|cff00ff00+2500   初始护甲|r
-|cff00ff00+20%  对BOSS额外伤害|r
-|cff00ff00+25   每秒加火灵|r
+|cff00ff00+350  杀怪加全属性|r
+|cff00ff00+350  攻击减甲|r
+|cff00ff00+3500W  初始生命|r
+|cff00ff00+3500   初始护甲|r
+|cff00ff00+5    每秒加杀敌数|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 300,
-['初始生命'] = 25000000,
-['护甲'] = 2500,
-['对BOSS额外伤害'] = 20,
-['每秒加火灵'] = 25,
-need_map_level = 28,
+['杀怪加全属性'] = 350,
+['初始生命'] = 35000000,
+['护甲'] = 3500,
+['攻击减甲'] = 350,
+['每秒加杀敌数'] = 5,
+need_map_level = 29,
 --特效
-effect = [[chibang03.mdx]]
+effect = [[Cb_tianlongshengyiBlue.mdx]]
 }
 
 local mt = ac.skill['绝世阳炎翼']

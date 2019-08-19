@@ -26,7 +26,7 @@ local base_attr = {
     ['魔抗'] = 45000,
     ['生命上限'] = 2800000000,
     ['魔法上限'] = 1000000,
-    ['移动速度'] = 520,
+    ['移动速度'] = 400,
     ['攻击间隔'] = 0.75,
     ['生命恢复'] = 281902,
     ['魔法恢复'] = 10000,
@@ -199,8 +199,8 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
     boss:add_skill('撕裂大地','英雄')
     boss:add_skill('酒桶','英雄')
     
-    boss:add('免伤',1.5 * ac.get_difficult(ac.g_game_degree_attr))
-    boss:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree_attr))
+    -- boss:add('免伤',1.5 * ac.get_difficult(ac.g_game_degree_attr))
+    -- boss:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree_attr))
     -- end    
 end)    
 
@@ -261,7 +261,7 @@ ac.game:event '游戏-无尽开始'(function(trg)
     
     --游戏开始后 刷怪时间  
     local time = force_cool
-    BJDebugMsg("|cffffe799【系统消息】|r|cffff0000无尽挑战开始|r |cff00ffff 第一波妖怪 |r|cff00ff00在".. time .. "秒后开始进攻！",10)
+    BJDebugMsg("|cffffe799【系统消息】|r|cffff0000无尽挑战开始|r |cff00ffff 第一波妖怪 |r|cff00ff00在".. time .. "秒后开始进攻！|r|cffff0000(部分精英怪对所有真伤型技能免疫)",10)
     ac.timer_ex 
     {
         time = time,
