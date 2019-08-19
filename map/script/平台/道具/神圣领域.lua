@@ -303,29 +303,31 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[hlfsly.blp]],
+art = [[hsly.blp]],
 --说明
-tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+tip = [[
 
 |cffffe799【获得方式】：|r
-|cff00ffff斗破苍穹|cffff0000累计|cff00ffff无尽波数=150波
+|cff00ffff地图等级=%need_map_level%
 
 |cffFFE799【领域属性】：|r
-|cff00ff00+215  杀怪加全属性|r
-|cff00ff00+900  减少周围护甲|r
-|cff00ff00+20%  技能伤害加深|r
-|cff00ff00+20%  全伤加深|r
+|cff00ff00+245  杀怪加全属性|r
+|cff00ff00+1000  减少周围护甲|r
+|cff00ff00+25%  暴击加深|r
+|cff00ff00+25%  技暴加深|r
+|cff00ff00+25%  会心伤害|r
 
 |cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 215,
-['减少周围护甲'] = 900,
-['技能伤害加深'] = 20,
-['全伤加深'] = 20,
+['杀怪加全属性'] = 245,
+['减少周围护甲'] = 1000,
+['暴击加深'] = 25,
+['技暴加深'] = 25,
+['会心伤害'] = 25,
 need_map_level = 38,
 --特效
-effect = [[TX_hjl.mdx]]
+effect = [[Rune Red.mdx]]
 }
 
 

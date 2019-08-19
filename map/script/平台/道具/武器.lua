@@ -392,7 +392,7 @@ effect = [[wuqi11.mdx]]
 }
 
 
-for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','霜之哀伤','飞星雷火剑','方天画戟','皇帝剑','皇帝刀'}) do
+for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','霜之哀伤','飞星雷火剑','方天画戟','皇帝剑','皇帝刀','圣神无双剑'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local skill = self
