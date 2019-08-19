@@ -31,7 +31,8 @@ class.player_info_panel = extends(class.panel){
         -- panel.close_button = panel:add_button('image\\操作栏\\cross.blp',panel.w - 32-5,5,32,32,true)
         panel.titles = {
             '地图等级',
-            '斗破(无尽-最高)','斗破苍穹','修罗(无尽-最高)','修罗模式','巅峰王者','荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
+            '无上(无尽-最高)','无上之境','斗破(无尽-最高)','斗破苍穹','修罗(无尽-最高)','修罗模式',
+            '巅峰王者','荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
             '宠物等级',
             '挖宝积分',
             '勇士徽章',
@@ -39,6 +40,7 @@ class.player_info_panel = extends(class.panel){
             '神奇的五分钟',
             '修罗(无尽-累计)',
             '斗破(无尽-累计)',
+            '无上(无尽-累计)',
             '评论数',
             '比武积分',
         }
@@ -103,9 +105,9 @@ class.player_info_panel = extends(class.panel){
 
             local attr_value = panel:add_text(value,x2,y2,w2,h2,line_height2,align2)
             table.insert(panel.attrs,{attr_name,attr_value}) 
-            if i % 13 == 0 then 
+            if i % 14 == 0 then 
                 ix = ix + 2
-                base_y = cre_height *13
+                base_y = cre_height *14
             end 
             
         end 
@@ -147,7 +149,7 @@ class.player_info_panel = extends(class.panel){
                     elseif name =='小龙女碎片' then
                         name = '手无寸铁的小龙女碎片' 
                         new_value = string.format("%.f",player.cus_server[name] or 0)  
-                    elseif finds(name,'斗破苍穹','修罗模式','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜') then
+                    elseif finds(name,'无上之境','斗破苍穹','修罗模式','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜') then
                         new_value = string.format("%.f",player.cus_server[name] or 0)
                         new_value = new_value..' 星'
                     elseif name =='杀猴次数' then
@@ -170,6 +172,14 @@ class.player_info_panel = extends(class.panel){
                         new_value = new_value..' 波'
                     elseif name =='斗破(无尽-累计)' then
                         name = '斗破苍穹无尽累计' 
+                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = new_value..' 波'
+                    elseif name =='无上(无尽-最高)' then
+                        name = '无上之境无尽' 
+                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = new_value..' 波'
+                    elseif name =='无上(无尽-累计)' then
+                        name = '无上之境无尽累计' 
                         new_value = string.format("%.f",player.cus_server[name] or 0)  
                         new_value = new_value..' 波'
                     elseif name =='评论数' then

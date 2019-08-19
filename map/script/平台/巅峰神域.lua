@@ -104,7 +104,7 @@ mt{
     
 }
 mt.skills = {
-    '霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','霜之哀伤','飞星雷火剑','方天画戟','皇帝剑','皇帝刀'
+    '霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','霜之哀伤','飞星雷火剑','方天画戟','圣神无双剑','皇帝剑','皇帝刀'
 }
 
 local mt = ac.skill['翅膀']
@@ -120,7 +120,7 @@ mt{
     
 }
 mt.skills = {
-    '梦蝶仙翼','天罡苍羽翼','白龙凝酥翼','天使之光','白羽金虹翼','玄羽绣云翼','绝世阳炎翼','轮迴幻魔翼'
+    '梦蝶仙翼','天罡苍羽翼','白龙凝酥翼','天使之光','白羽金虹翼','玄羽绣云翼','龙吟双形翼','绝世阳炎翼','轮迴幻魔翼'
 }
 
 local mt = ac.skill['称号']
@@ -201,6 +201,8 @@ local function upgrade_skill(player,skill)
                     if  ((player.cus_server2['今日斗破苍穹无尽排名'] or 0) >0 and (player.cus_server2['今日斗破苍穹无尽排名'] or 0) <= 10)
                         or
                         ((player.cus_server2['今日修罗模式无尽排名'] or 0) >0 and (player.cus_server2['今日修罗模式无尽排名'] or 0) <= 10)
+                        or
+                        ((player.cus_server2['今日无上之境无尽排名'] or 0) >0 and (player.cus_server2['今日无上之境无尽排名'] or 0) <= 10)
                     then 
                         skill:set_level(1)
                     end

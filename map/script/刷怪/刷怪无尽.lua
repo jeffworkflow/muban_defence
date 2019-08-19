@@ -18,6 +18,59 @@ if global_test then
     force_cool = 60
 end    
 local skill_list = ac.skill_list
+
+--无尽怪物改变所有属性
+local base_attr = {
+    ['攻击'] = 1000000000,
+    ['护甲'] = 45000,
+    ['魔抗'] = 45000,
+    ['生命上限'] = 2800000000,
+    ['魔法上限'] = 1000000,
+    ['移动速度'] = 520,
+    ['攻击间隔'] = 0.75,
+    ['生命恢复'] = 281902,
+    ['魔法恢复'] = 10000,
+    ['攻击距离'] = 200,
+    ['攻击速度'] = 300,
+    ['暴击几率'] = 20,
+    ['暴击加深'] = 20000,
+    ['会心几率'] = 20,
+    ['会心伤害'] = 200,
+}
+local function change_attr(unit,index,factor)
+
+    --设置搜敌范围 因子
+    unit:set_search_range(1000)
+    local point = ac.map.rects['主城']:get_point()
+    unit:issue_order('attack',point)
+
+    local degree_attr_mul = ac.get_difficult(ac.g_game_degree_attr)
+    local endless_attr_mul = ac.get_difficult(index,1.15)
+    local boss_mul = factor or 1
+    -- print('难度系数',degree_attr_mul)
+    -- print('无尽系数',endless_attr_mul)
+    --设置属性
+    for key,value in sortpairs(base_attr) do 
+        if finds('攻击 护甲 魔抗 生命上限 暴击加深',key) then 
+            -- print(key)
+            unit:set(key, value * degree_attr_mul * endless_attr_mul*boss_mul)
+        end    
+    end    
+    unit:set('移动速度', base_attr['移动速度'] + index*10) 
+    
+
+    --掉落概率
+    unit.fall_rate = 0
+    --掉落金币和经验
+    unit.gold = 0
+    unit.exp = 467
+
+    --难度 12 （斗破苍穹） 增加技能
+    if ac.rand_skill_name then 
+        unit:add_skill(ac.rand_skill_name,'隐藏')
+    end    
+end    
+
 for i =1,3 do 
     local mt = ac.creep['刷怪-无尽'..i]{    
         region = 'cg'..i,
@@ -59,57 +112,9 @@ for i =1,3 do
             ac.player.self:sendMsg('本波怪物特性： '..ac.rand_skill_name)
         end   
     end
-
     --改变怪物
     function mt:on_change_creep(unit,lni_data)
-        --设置搜敌范围
-        unit:set_search_range(1000)
-        local point = ac.map.rects['主城']:get_point()
-        unit:issue_order('attack',point)
-
-        --无尽怪物改变所有属性
-        local base_attr = {
-            ['攻击'] = 1000000000,
-            ['护甲'] = 45000,
-            ['魔抗'] = 45000,
-            ['生命上限'] = 2800000000,
-            ['魔法上限'] = 1000000,
-            ['移动速度'] = 520,
-            ['攻击间隔'] = 0.75,
-            ['生命恢复'] = 281902,
-            ['魔法恢复'] = 10000,
-            ['攻击距离'] = 200,
-            ['攻击速度'] = 300,
-            ['暴击几率'] = 20,
-            ['暴击加深'] = 20000,
-            ['会心几率'] = 20,
-            ['会心伤害'] = 200,
-        }
-        local degree_attr_mul = ac.get_difficult(ac.g_game_degree_attr)
-        local endless_attr_mul = ac.get_difficult(self.index,1.15)
-        -- print('难度系数',degree_attr_mul)
-        -- print('无尽系数',endless_attr_mul)
-        --设置属性
-        
-        for key,value in sortpairs(base_attr) do 
-            if finds('攻击 护甲 魔抗 生命上限 暴击加深',key) then 
-                -- print(key)
-                unit:set(key, value * degree_attr_mul * endless_attr_mul )
-            end    
-        end     
-
-        --掉落概率
-        unit.fall_rate = 0
-        --掉落金币和经验
-        unit.gold = 0
-        unit.exp = 467
-
-        --难度 12 （斗破苍穹） 增加技能
-        if ac.rand_skill_name then 
-            unit:add_skill(ac.rand_skill_name,'隐藏')
-        end    
-
-
+        change_attr(unit,self.index)
     end
     --每3秒刷新一次攻击目标 原地不动才发起攻击
     function mt:attack_hero() 
@@ -162,7 +167,7 @@ end
 
 
 
-
+--无尽技能
 ac.game:event '游戏-回合开始'(function(trg,index, creep) 
     if creep.name ~= '刷怪-无尽1' then
         return
@@ -173,25 +178,31 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
 end)
 
 --注册boss进攻事件
--- ac.game:event '游戏-回合开始'(function(trg,index, creep) 
---     if creep.name ~= '刷怪-无尽1' then
---         return
---     end    
---     --取余数
---     local value = ac.creep['刷怪-无尽1'].index % 5
---     if value == 0 then 
---         local point = ac.map.rects['进攻点']:get_point()
---         --最后一波时，发布最终波数
---         local boss = ac.player.com[2]:create_unit(ac.attack_boss[math.random(#ac.attack_boss)],point)
---         -- table.insert(ac.creep['刷怪-无尽1'].group,boss)
---         boss:add_buff '攻击英雄' {}
---         boss:add_skill('无敌','英雄')
---         boss:add_skill('撕裂大地','英雄')
+ac.game:event '游戏-回合开始'(function(trg,index, creep) 
+    if creep.name ~= '刷怪-无尽1' then
+        return
+    end    
+    if ac.g_game_degree_attr <=12 then 
+        return 
+    end    
+    --取余数
+    -- local value = ac.creep['刷怪-无尽1'].index % 5
+    -- if value == 0 then 
+    local point = ac.map.rects['进攻点']:get_point()
+    --最后一波时，发布最终波数
+    local boss = ac.player.com[2]:create_unit(ac.attack_boss[math.random(#ac.attack_boss)],point)
+    boss.unit_type = '精英'
+    change_attr(boss,creep.index,1.5) --普通怪倍数
 
---         boss:add('免伤',1.5 * ac.get_difficult(ac.g_game_degree_attr))
---         boss:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree_attr))
---     end    
--- end)    
+    boss:add_buff '攻击英雄' {}
+    boss:add_skill('无敌','英雄')
+    boss:add_skill('撕裂大地','英雄')
+    boss:add_skill('酒桶','英雄')
+    
+    boss:add('免伤',1.5 * ac.get_difficult(ac.g_game_degree_attr))
+    boss:add('物理伤害加深',1.45 * ac.get_difficult(ac.g_game_degree_attr))
+    -- end    
+end)    
 
 ac.game:event '游戏-无尽开始'(function(trg) 
     --删除商店

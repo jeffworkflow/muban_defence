@@ -6,9 +6,18 @@ local move = {}
 function move.update_speed(u, move_speed)
 	if move_speed > 522 and not move.last[u] then
 		move.add(u)
+		if not u.move_trg then 
+			u.move_trg = u:event '单位-死亡' (function(_,unit,killer)
+				move.remove(u)
+			end)
+		end	
 	elseif move_speed <= 520 and move.last[u] then
 		move.remove(u)
 	end
+	--单位死亡时，要移除group table
+	-- if not u:is_alive() and move.last[u] then
+	-- 	move.remove(u)
+	-- end	
 end
 
 function move.add(u)
@@ -47,5 +56,4 @@ function move.update()
 		end
 	end
 end
-
 return move
