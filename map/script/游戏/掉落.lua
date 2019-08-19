@@ -702,6 +702,10 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     if unit:is_hero() then 
         return 
     end 
+    --无尽后，死亡不掉落任何东西
+    if ac.creep['刷怪-无尽1'].index >= 1 then 
+        return 
+    end
     local player = killer:get_owner()
     local dummy_unit = player.hero or ac.dummy
     -- 进攻怪 和 boss 掉落 日常掉落物品
@@ -715,7 +719,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local tab = unit_reward[unit:get_name()]
     if not tab then 
         return 
-    end
+    end    
     --藏宝图概率提升
     if unit:get_name() == '强盗' then 
         tab[1].rand  = 2 * (1 + (player.up_fall_wabao or 0)/100)

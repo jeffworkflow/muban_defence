@@ -298,8 +298,38 @@ need_map_level = 24,
 effect = [[TX_hjl.mdx]]
 }
 
+local mt = ac.skill['赤霞万象领域']
+mt{
+--等级
+level = 0,
+--图标
+art = [[hlfsly.blp]],
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-for i,name in ipairs({'血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','白云四海领域','烈火金焰领域','烈火天翔领域','孤风青龙领域','远影苍龙领域'}) do
+|cffffe799【获得方式】：|r
+|cff00ffff斗破苍穹|cffff0000累计|cff00ffff无尽波数=150波
+
+|cffFFE799【领域属性】：|r
+|cff00ff00+215  杀怪加全属性|r
+|cff00ff00+900  减少周围护甲|r
+|cff00ff00+20%  技能伤害加深|r
+|cff00ff00+20%  全伤加深|r
+
+|cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 215,
+['减少周围护甲'] = 900,
+['技能伤害加深'] = 20,
+['全伤加深'] = 20,
+need_map_level = 38,
+--特效
+effect = [[TX_hjl.mdx]]
+}
+
+
+for i,name in ipairs({'血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','白云四海领域','烈火金焰领域','烈火天翔领域','赤霞万象领域','孤风青龙领域','远影苍龙领域'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner
