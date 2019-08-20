@@ -283,21 +283,19 @@ mt{
     is_spellbook = 1,
     level = 1,
     is_order = 2,
-    art = [[qbfb.blp]],
+    art = [[bncf.blp]],
     tip = [[
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+5000万 全属性
-+100%  杀敌数加成
-+100%  物品获取率
-+100%  木头加成
-+100%  火灵加成
++5%     闪避
++5%     免伤几率
++35%    全伤加深
     ]],
     ['全属性'] = 50000000,
-    ['杀敌数加成'] = 100,
-    ['木头加成'] = 100,
-    ['火灵加成'] = 100,
-    ['物品获取率'] = 100
+    ['免伤几率'] = 5,
+    ['闪避'] = 5,
+    ['全伤加深'] = 35,
 }
 
 
@@ -382,7 +380,7 @@ reg:event '区域-进入'(function(trg,unit,reg)
     function p.down_time_tg:on_timeout()
         --获得彩蛋
         ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋','百鸟朝凤')
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 打桩爽翻了天，|r 获得成就|cffff0000 "神格护体" |r，奖励 |cffff00003000万全属性，3万护甲，技能伤害加深+15%|r',6)
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 的宠物一呼百应，|r 获得成就|cffff0000 "百鸟朝凤" |r，奖励 |cffff00005000万全属性，5%闪避，5%免伤几率，35%全伤加深|r',6)
     end    
 
 end)
