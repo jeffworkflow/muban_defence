@@ -94,7 +94,7 @@ ac.game:event '游戏-开始' (function()
         
         --百鸟朝凤相关
         local time = 8 * 60
-        local time = 30
+        -- local time = 30
         for i=1,8 do 
             ac.wait(i*time*1000,function()
                 local u = ac.player(16):create_unit('鸟',ac.rect.j_rect('bncf'..i))

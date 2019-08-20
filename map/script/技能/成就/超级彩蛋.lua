@@ -358,7 +358,7 @@ end)
 --白鸟朝凤 触发
 local reg = ac.region.create(ac.rect.j_rect('bncf9'))
 reg:event '区域-进入'(function(trg,unit,reg)
-    local time = 1 * 60
+    local time = 65 * 60
     if ac.g_game_time < time  then 
         return 
     end    

@@ -65,8 +65,8 @@ class.wjphb_panel = extends(class.panel){
         panel.main_box_width = 508
         local menu_width = 106
         panel.menu_width = 106
-        local img_phb_df = 'image\\排行榜\\phb_df.tga'
-        local img_phb_tgsc = 'image\\排行榜\\phb_tgsc.tga'
+        local img_phb_df = 'image\\排行榜\\tt1.tga'
+        local img_phb_tgsc = 'image\\排行榜\\tt2.tga'
         local img_title = 'image\\排行榜\\titile_bg.tga'
         local img_tip1 = panel:add_button(img_phb_df,150+menu_width+off_left, 20+off_top,183,47) 
         -- panel:add_texture(img_phb_df,256,20,183,47) 
