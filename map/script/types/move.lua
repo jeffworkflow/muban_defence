@@ -47,7 +47,7 @@ function move.update()
 		local now = u:get_point()
 		local speed = now * last / frame
 		if speed > 520 and speed < 525 then
-			--认为是正常移动
+			--在魔兽速度520-525 之间，认为有超出520移动速度的可能性，做一次位置偏移，同时记录新的位置。
 			local target = last - {last / now, u:get('移动速度') * frame}
 			u:setPoint(target)
 			move.last[u] = target
@@ -56,4 +56,9 @@ function move.update()
 		end
 	end
 end
+-- 移动速度 1000 500 * 0.03 = 15
+-- frame 0.03
+-- 1000 * 0.03 = 330
+
+
 return move

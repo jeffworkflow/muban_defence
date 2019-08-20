@@ -28,6 +28,9 @@ function player.__index:sp_get_rank(key,order_by,limit_cnt,f)
     if not ac.flag_map or ac.flag_map  < 1 then 
         return 
     end
+    if not self:is_self() then 
+        return 
+    end
     local player_name = self:get_name()
     local map_name = ac.server_config.map_name
     local url = ac.server_config.url2
@@ -59,8 +62,9 @@ end
   
 
 require("平台.自定义服务器.排行榜.排行榜")
-require("平台.自定义服务器.排行榜.无尽排行榜1")
-require("平台.自定义服务器.排行榜.无尽排行榜2")
-require("平台.自定义服务器.排行榜.无尽排行榜3")
-require("平台.自定义服务器.排行榜.无尽排行榜4")
+require("平台.自定义服务器.排行榜.无尽榜")
+-- require("平台.自定义服务器.排行榜.无尽排行榜1")
+-- require("平台.自定义服务器.排行榜.无尽排行榜2")
+-- require("平台.自定义服务器.排行榜.无尽排行榜3")
+-- require("平台.自定义服务器.排行榜.无尽排行榜4")
 

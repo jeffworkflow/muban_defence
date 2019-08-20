@@ -377,6 +377,16 @@ need_map_level = 8,
 --特效
 effect = [[CH_duguqiubai.mdx]]
 }
+function mt:on_add()
+    local hero = self.owner
+    local player = self.owner:get_owner()
+    hero = player.hero 
+    --改变外观，添加武器
+    if hero.effect_chenghao then 
+        hero.effect_chenghao:remove()
+    end     
+    hero.effect_chenghao = hero:add_effect('overhead',self.effect)
+end    
 
 
 

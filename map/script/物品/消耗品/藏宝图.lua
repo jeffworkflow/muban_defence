@@ -165,6 +165,10 @@ function mt:add_content()
     --加挖宝积分
     -- player:AddServerValue('wbjf',1) 自定义服务器
     player:Map_AddServerValue('wbjf',1) --网易服务器
+    if not player.cus_server3 then 
+        player.cus_server3 = {}
+    end    
+    player.cus_server3['挖宝'] = (player.cus_server3['挖宝'] or 0) + 1
 
     ac.game:event_notify('挖图成功',hero) --发布事件回调
 
@@ -304,4 +308,33 @@ end
 ac.game:event '玩家-注册英雄' (function(_, _, hero)
     -- hero:add_restriction('幽灵') 
 end)    
+--挖宝排行榜相关
+--每1分钟保存一次
 
+--保存今日榜
+local function save_wb()
+    for i=1,10 do
+        local p = ac.player[i]
+        if p:is_player() then 
+            if not p.cus_server3 then 
+                p.cus_server3 = {}
+            end   
+            if p.cus_server3['挖宝'] then 
+                p.cus_server3['总挖宝'] = (p.cus_server3['总挖宝'] or 0) + p.cus_server3['挖宝']
+                --自定义服务器 保存总积分 
+                p:AddServerValue('cntwb',p.cus_server3['挖宝'])  
+                --自定义服务器 保存今日最高积分
+                p:sp_set_rank('today_cntwb',p.cus_server3['总挖宝'])
+                
+                --保存完需要清空，下次保存时才能正确增加上去
+                p.cus_server3['挖宝'] = 0 
+            end    
+        end
+    end   
+end  
+ac.game:event '游戏-开始' (function() 
+    local time =30
+    ac.loop(time*1000,function()
+        save_wb()
+    end)
+end)

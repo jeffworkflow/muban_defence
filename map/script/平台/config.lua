@@ -57,6 +57,8 @@ local item = {
 
     {'gg','关公',35},
     {'cxwxly','赤霞万象领域',38},
+
+    {'gd','肝帝',60},
     
 }
 ac.mall = item 
@@ -146,6 +148,7 @@ local cus_key = {
     {'qml','奇美拉'},
     {'my','魅影'},
     {'zsyhly','紫霜幽幻龙鹰'},
+    {'tmxk','天马行空'},
     
 
     {'spnsl','耐瑟龙碎片'},
@@ -154,6 +157,7 @@ local cus_key = {
     {'spqml','奇美拉碎片'},
     {'spmy','魅影碎片'},
     {'spzsyhly','紫霜幽幻龙鹰碎片'},
+    {'sptmxk','天马行空碎片'},
 
     {'zzl','赵子龙'},
     {'pa','Pa'},
@@ -205,6 +209,9 @@ local cus_key = {
     {'swldddr','食物链顶端的人'},
     
     {'yqdlh','有趣的灵魂'},
+
+    {'cntwb','挖宝'},
+    {'today_cntwb','今日挖宝'},
     
     
 }

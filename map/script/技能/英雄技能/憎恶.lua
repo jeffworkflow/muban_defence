@@ -186,7 +186,7 @@ function mt:on_cast_start()
         end
 
         function mvr:on_hit(dest)
-            print(dest:get_name())
+            -- print(dest:get_name())
             if dest:get_name() ~='毁灭者' then 
                 self.flag_hit = true
                 recycle_hook(self.mover:get_point(),tbl,dest)

@@ -52,11 +52,15 @@ local function change_attr(unit,index,factor)
     --设置属性
     for key,value in sortpairs(base_attr) do 
         if finds('攻击 护甲 魔抗 生命上限 暴击加深',key) then 
-            -- print(key)
             unit:set(key, value * degree_attr_mul * endless_attr_mul*boss_mul)
+        else
+            unit:set(key, value)
         end    
     end    
     unit:set('移动速度', base_attr['移动速度'] + index*10) 
+    if unit:get_name() =='毁灭者' then 
+        unit:set('攻击减甲',0)
+    end    
     
 
     --掉落概率

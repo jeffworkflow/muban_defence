@@ -279,6 +279,15 @@ rect gg_rct_tsjx7= null
 rect gg_rct_tsjx77= null
 rect gg_rct_tsjx8= null
 rect gg_rct_tsjx88= null
+rect gg_rct_bncf1= null
+rect gg_rct_bncf2= null
+rect gg_rct_bncf8= null
+rect gg_rct_bncf7= null
+rect gg_rct_bncf3= null
+rect gg_rct_bncf9= null
+rect gg_rct_bncf4= null
+rect gg_rct_bncf6= null
+rect gg_rct_bncf5= null
 
 endglobals
 
@@ -1982,6 +1991,15 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_tsjx77=Rect(12256.0, - 4256.0, 12576.0, - 3904.0)
     set gg_rct_tsjx8=Rect(14848.0, 4768.0, 15104.0, 4960.0)
     set gg_rct_tsjx88=Rect(14848.0, 5632.0, 15104.0, 5856.0)
+    set gg_rct_bncf1=Rect(7776.0, 4320.0, 7872.0, 4416.0)
+    set gg_rct_bncf2=Rect(7776.0, 4032.0, 7872.0, 4128.0)
+    set gg_rct_bncf8=Rect(8064.0, 4320.0, 8160.0, 4416.0)
+    set gg_rct_bncf7=Rect(8352.0, 4320.0, 8448.0, 4416.0)
+    set gg_rct_bncf3=Rect(7776.0, 3744.0, 7872.0, 3840.0)
+    set gg_rct_bncf9=Rect(8064.0, 4032.0, 8160.0, 4128.0)
+    set gg_rct_bncf4=Rect(8064.0, 3744.0, 8160.0, 3840.0)
+    set gg_rct_bncf6=Rect(8352.0, 4032.0, 8448.0, 4128.0)
+    set gg_rct_bncf5=Rect(8352.0, 3744.0, 8448.0, 3840.0)
 endfunction
 
 //===========================================================================

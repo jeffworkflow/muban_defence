@@ -1,17 +1,17 @@
 local slk = require 'jass.slk'
 local ui  = require 'ui.client.util'
 
-class.phb_panel = extends(class.panel){
+class.wjphb_panel = extends(class.panel){
     create = function ()
         local hero = ac.player.self.hero
         local panel = class.panel.create('image\\排行榜\\phb_bg.tga',372,176,1193,593)
-        panel.__index = class.phb_panel 
+        panel.__index = class.wjphb_panel 
 
         panel:add_button('',0,0,panel.w,panel.h)
 
         --左边菜单 
         panel.menu_titles = {
-            '无上之境','斗破苍穹','修罗模式', '巅峰王者', '荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
+            '无上之境无尽','斗破苍穹无尽','修罗模式无尽','挖宝',
         }
         local menu_press_status = 'image\\排行榜\\menu.tga'
         local menu_line = 'image\\排行榜\\menu_line.tga'
@@ -92,14 +92,14 @@ class.phb_panel = extends(class.panel){
         text:set_color(0xffA9A6F7)
         local text = texture:add_text('玩家昵称',139,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
-        local text = texture:add_text('段位星数',276,0,30,34,10,'left')
+        local text = texture:add_text('最高',276,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
         local texture = panel:add_texture(img_title,54+menu_width+main_box_width+off_left,65+off_top,366,48) 
         local text =  texture:add_text('名次',30,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
         local text = texture:add_text('玩家昵称',139,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
-        local text = texture:add_text('通关时长',276,0,30,34,10,'left')
+        local text = texture:add_text('最高',276,0,30,34,10,'left')
         text:set_color(0xffA9A6F7)
 
         --巅峰数据
@@ -265,8 +265,8 @@ class.phb_panel = extends(class.panel){
             --设置数据
             self.tgsc_rank[i]:set_text(data.rank)
             self.tgsc_player[i]:set_text(data.player_name)
-            local str = os.date("!%H:%M:%S",tonumber(data.value)) 
-            self.tgsc_time[i]:set_text(str)
+            -- local str = os.date("!%H:%M:%S",tonumber(data.value)) 
+            self.tgsc_time[i]:set_text(data.value)
         end 
     end,
 
@@ -277,7 +277,7 @@ class.phb_panel = extends(class.panel){
         -- self.rank[name],self.rank[name..'时长']
 
         self:set_df_data(self.rank[name])
-        self:set_tgsc_data(self.rank[name..'时长'])
+        self:set_tgsc_data(self.rank['今日'..name])
     end,
 
 
@@ -293,7 +293,7 @@ class.phb_panel = extends(class.panel){
 local panel
 
 ac.wait(10,function ()
-    panel = class.phb_panel.get_instance()
+    panel = class.wjphb_panel.get_instance()
 end)
 
 local game_event = {}
@@ -301,7 +301,7 @@ game_event.on_key_down = function (code)
     -- if code == KEY.F5 then 
     --     ac.player(ac.player.self.id):sendMsg('排行榜还在努力制作中，敬请期待',5)
     -- end
-    if code == KEY.F5 then 
+    if code == KEY.F6 then 
         if panel == nil then return end 
         if panel.is_show then 
             panel:hide()
@@ -318,34 +318,15 @@ game.register_event(game_event)
 
 
 local rank = {
-    {'cnt_qt','青铜'},
-    {'cnt_by','白银'},
-    {'cnt_hj','黄金'},
-    {'cnt_bj','铂金'},
-    {'cnt_zs','钻石'},
-    {'cnt_xy','星耀'},
-    {'cnt_wz','王者'},
-    {'cnt_zqwz','最强王者'},
-    {'cntrywz','荣耀王者'},
-    {'cntdfwz','巅峰王者'},
-    {'cntxlms','修罗模式'},
-    {'cntdpcq','斗破苍穹'},
-    {'cntwszj','无上之境'},
+    {'wjxlms','修罗模式无尽'},
+    {'wjdpcq','斗破苍穹无尽'},
+    {'wjwszj','无上之境无尽'},
+    {'cntwb','挖宝'},
 
-    
-    {'time_qt','青铜时长'},
-    {'time_by','白银时长'},
-    {'time_hj','黄金时长'},
-    {'time_bj','铂金时长'},
-    {'time_zs','钻石时长'},
-    {'time_xy','星耀时长'},
-    {'time_wz','王者时长'},
-    {'time_zqwz','最强王者时长'},
-    {'time_rywz','荣耀王者时长'},
-    {'time_dfwz','巅峰王者时长'},
-    {'time_xlms','修罗模式时长'},
-    {'time_dpcq','斗破苍穹时长'},
-    {'time_wszj','无上之境时长'},
+    {'today_wjxlms','今日修罗模式无尽'},
+    {'today_wjdpcq','今日斗破苍穹无尽'},
+    {'today_wjwszj','今日无上之境无尽'},
+    {'today_cntwb','今日挖宝'},
 }
 --处理,显示排行榜数据
 --取前10名数据
@@ -366,18 +347,14 @@ ac.wait(5*1000,function()
                         table.insert(panel.rank[content[2]],data[i])
                     end  
 
-                    --首次刷新最强王者
-                    if finds(content[2] ,'无上之境') then 
-                        panel:fresh('无上之境')
-                    end   
 
                     --发起同步请求
                     local tab_str = ui.encode(panel.rank[content[2]])  
                     -- print('数据长度',#tab_str) 
                     ac.wait(10,function()
                         local info = {
-                            type = 'sync_rank',
-                            func_name = 'sync_rank',
+                            type = 'sync_rank_wj',
+                            func_name = 'sync_rank_wj',
                             params = {
                                 [1] = tab_str,
                                 [2] = content[2],
@@ -396,7 +373,7 @@ local ui = require 'ui.server.util'
 --处理同步请求
 local event = {
     --从自定义服务器读取数据
-    sync_rank = function (tab_str,str)
+    sync_rank_wj = function (tab_str,str)
         local player = ui.player 
         if not panel.rank then 
             panel.rank = {}
@@ -408,6 +385,6 @@ local event = {
 
     end,
 }
-ui.register_event('sync_rank',event)
+ui.register_event('sync_rank_wj',event)
 
 

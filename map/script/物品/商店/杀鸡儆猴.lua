@@ -148,7 +148,7 @@ local task_detail = {
                 }
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     hero:add_item('吞噬丹',true)
-                    p.max_tunshi_cnt = 9 --最大吞噬次数为9次，之前8次。
+                    p.max_tunshi_cnt = (p.max_tunshi_cnt or 8) + 1  --最大吞噬次数为9次，之前8次。
                     p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000吞噬丹+1 物品吞噬极限+1|r',6)
                 end)    
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000极限BOSS|r已出现，请尽快击杀',2)
@@ -190,7 +190,7 @@ local task_detail = {
                 }
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     hero:add_item('恶魔果实',true)
-                    p.max_ruti_cnt = 9 --最大吞噬次数为9次，之前8次。
+                    p.max_ruti_cnt = (p.max_ruti_cnt or 8) + 1 
                     p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000恶魔果实+1 技能强化极限+1|r',6)
                 end)    
                 p:sendMsg('|cffFFE799【系统消息】|r|cffff0000极限BOSS|r已出现，请尽快击杀',2)

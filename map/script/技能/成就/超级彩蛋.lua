@@ -278,6 +278,28 @@ mt{
 }
 
 
+local mt = ac.skill['百鸟朝凤']
+mt{
+    is_spellbook = 1,
+    level = 1,
+    is_order = 2,
+    art = [[qbfb.blp]],
+    tip = [[
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+5000万 全属性
++100%  杀敌数加成
++100%  物品获取率
++100%  木头加成
++100%  火灵加成
+    ]],
+    ['全属性'] = 50000000,
+    ['杀敌数加成'] = 100,
+    ['木头加成'] = 100,
+    ['火灵加成'] = 100,
+    ['物品获取率'] = 100
+}
+
 
 local mt = ac.skill['超级彩蛋']
 mt{
@@ -335,5 +357,33 @@ ac.game:event '游戏-开始' (function()
     end)
 end)
 
+--白鸟朝凤 触发
+local reg = ac.region.create(ac.rect.j_rect('bncf9'))
+reg:event '区域-进入'(function(trg,unit,reg)
+    local time = 1 * 60
+    if ac.g_game_time < time  then 
+        return 
+    end    
+    if not unit:is_type('宠物') then 
+        return 
+    end  
+    local p = unit:get_owner()
+    local player = unit:get_owner()
+    local hero =p.hero
+    local skl = hero:find_skill('百鸟朝凤',nil,true)
+    if skl then 
+        return 
+    end    
+    --倒计时 得到彩蛋
+    if p.down_time_tg then 
+        p.down_time_tg:remove()
+    end    
+    p.down_time_tg = ac.timer(1000,30,function(t)end)
+    function p.down_time_tg:on_timeout()
+        --获得彩蛋
+        ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋','百鸟朝凤')
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..player:get_name()..'|r 打桩爽翻了天，|r 获得成就|cffff0000 "神格护体" |r，奖励 |cffff00003000万全属性，3万护甲，技能伤害加深+15%|r',6)
+    end    
 
+end)
 

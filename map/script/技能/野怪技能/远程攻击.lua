@@ -15,7 +15,8 @@ mt{
     attack_distance = 1000,
 
     --弹道模型
-    weapon_model = [[Abilities\Weapons\WaterElementalMissile\WaterElementalMissile.mdl]],
+    -- weapon_model = [[Abilities\Weapons\WaterElementalMissile\WaterElementalMissile.mdl]],
+    weapon_model =[[]]
     -- 特效
     -- effect = [[Abilities\Spells\Orc\Purge\PurgeBuffTarget.mdl]]
 

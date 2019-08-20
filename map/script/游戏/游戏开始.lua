@@ -91,6 +91,20 @@ ac.game:event '游戏-开始' (function()
         --创建 超越极限
         local x,y = ac.rect.j_rect('cyjx'):get_point():get()
         local shop = ac.shop.create('超越极限',x,y,270,nil)  
+        
+        --百鸟朝凤相关
+        local time = 8 * 60
+        local time = 30
+        for i=1,8 do 
+            ac.wait(i*time*1000,function()
+                local u = ac.player(16):create_unit('鸟',ac.rect.j_rect('bncf'..i))
+                local angle = ac.rect.j_rect('bncf'..i):get_point() / ac.rect.j_rect('bncf9'):get_point()
+                u:add_restriction '无敌'
+                u:add_restriction '定身'
+                u:set_facing(angle)
+            end)
+        end    
+
     end    
 
 end)    

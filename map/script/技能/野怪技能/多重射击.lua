@@ -15,7 +15,8 @@ function mt:on_add()
     if not hero.weapon then 
         hero.weapon = {}
     end    
-    hero.weapon['弹道模型'] = [[Abilities\Weapons\WaterElementalMissile\WaterElementalMissile.mdl]]
+    -- hero.weapon['弹道模型'] = [[Abilities\Weapons\WaterElementalMissile\WaterElementalMissile.mdl]]
+    hero.weapon['弹道模型'] = [[]]
     hero.weapon['弹道速度'] = 1000
 
 end    
