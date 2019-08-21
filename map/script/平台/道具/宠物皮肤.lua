@@ -501,7 +501,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+35%  技能伤害加深|r
 |cff00ff00+35%  会心伤害|r
 
-|cffffff00获得特殊技能：自动寻宝（点击藏宝图试试）|r
+|cffffff00获得特殊技能：自动寻宝（英雄技能）|r
 
 |cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
 need_map_level = 33,

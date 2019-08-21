@@ -29,32 +29,40 @@ local mall = {
 }
 
 
-local mt = ac.skill['全赞助']
+local mt = ac.skill['满赞']
 mt{
 --等久
 level = 0,
 --图标
-art = [[yjzz.blp]],
+art = [[quanzz.blp]],
 is_order = 1,
 --说明
 tip = [[
 
-|cffFFE799【领取条件】|r|cffff0000商城购买|r后自动激活
+|cffFFE799【领取条件】|r|cffff0000购买全部商城道具|cffcccccc（新版/旧版齐天大圣、限量首充/首充大礼包 除外）|r后自动激活
 
-|cffFFE799【礼包奖励】|r
-|cff00ff00杀怪加88全属性，攻击加188全属性，每秒加588全属性
-|cff00ffff杀敌数加成+30% 木头加成+30% 
-物品获取率+30% 火灵加成+30% |r
-|cffff0000攻击减甲+25 减少周围护甲1000|r
-
-|cffffff00地图等级>=10，永久赞助的资源属性效果翻倍|r
+|cffFFE799【满赞奖励】|r
+|cff00ff00杀怪加全属性+888 攻击加全属性+888 每秒加全属性+888
+|cff00ffff攻击减甲+888 减少周围护甲+1888
+|cffffff00暴击加深+488% 技暴加深+488% 会心伤害+488%
+|cffff0000物理伤害加深+488% 技能伤害加深+488% 全伤加深+488%
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 88,
-['攻击加全属性'] = 188,
-['每秒加全属性'] = 588,
+['杀怪加全属性'] = 888,
+['攻击加全属性'] = 888,
+['每秒加全属性'] = 888,
+['攻击减甲'] = 888,
+['减少周围护甲'] = 1888,
+['暴击加深'] = 488,
+['技暴加深'] = 488,
+['会心伤害'] = 488,
+['物理伤害加深'] = 488,
+['技能伤害加深'] = 488,
+['全伤加深'] = 488,
+
+
 }
 
 ac.game:event '玩家-注册英雄' (function(_,p,hero)
@@ -71,7 +79,7 @@ ac.game:event '玩家-注册英雄' (function(_,p,hero)
     end        
 
     if flag then 
-        local skl = hero:find_skill('全赞助',nil,true)
+        local skl = hero:find_skill('满赞',nil,true)
         skl:set_level(1)
     end    
 

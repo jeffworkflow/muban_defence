@@ -4,14 +4,13 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[zyj.blp]],
+art = [[sldzx.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff008月16日-8月19日
-|cffffe799【活动说明】|r
-|cff00ff001.时至中元，举办祭祀活动，以慰在基地游玩的众家鬼魂，并祈求大家全年的平安顺利。|cff00ff00还请少侠帮忙|cffff0000贡献一些食物|r
+|cffffe799【活动时间】|r|cff00ff008月22日-8月25日
+|cffffe799【活动说明】|r|cff00ff00传说，蒙娜丽莎的微笑中，含有83%的高兴、 9%的厌恶、 6%的恐惧、 2%的愤怒。 |cff00ffff最近，名画《蒙娜丽莎的微笑》又不见了，这让达芬奇头疼得很。
 
-|cff00ff002.好看的皮囊千篇一律，有趣的灵魂万里挑一。|cff00ffff基地经常出现一些有趣的灵魂。|cff00ff00还请少侠帮忙|cffff0000击败并超度它们|r
+|cffff0000还请帮忙收集83个“高兴”、9个“厌恶”、6个“恐惧”、2个“愤怒”，交付于我
  ]],
 --物品类型
 item_type = '神符',
@@ -22,7 +21,7 @@ cool = 1,
 --物品技能
 is_skill = true,
 store_affix = '',
-store_name = '|cffdf19d0中元节活动|r',
+store_name = '|cffdf19d0失落的真相|r',
 --物品详细介绍的title
 content_tip = ''
 }
@@ -34,20 +33,20 @@ local mt = ac.skill['真相-点金石']
 mt{
 --等久
 level = 1,
-store_name = '真相-点金石',
+store_name = '兑换-点金石',
 --图标
 art = [[item\shou204.blp]],
 --说明
 tip = [[
-拥有 ： %has_material%
-贡献 |cffff0000一个完美的鸡翅|r 奖励 |cff00ff00点金石|r
 
-|cffcccccc最大贡献次数=10次|r]],
+消耗 |cffff0000四个“高兴”|r 兑换 |cff00ff00一个点金石|r
+
+|cffcccccc当前拥有“高兴”数量：%has_material%|cffcccccc，每局最大兑换次数=20次|r]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-content_tip = '|cffFFE799【真相说明】：|r\n',
+content_tip = '|cffFFE799【兑换说明】：|r\n',
 
 has_material = function(self)
     local p = ac.player.self
@@ -55,31 +54,36 @@ has_material = function(self)
 end,
 --物品技能
 is_skill = true,
-need_material = '高兴*1',
-max_cnt = 10,
+need_material = '高兴*4',
+max_cnt = 20,
 }   
 
 local mt = ac.skill['真相-吞噬丹']
 mt{
 --等久
 level = 1,
-store_name = '真相-吞噬丹',
+store_name = '兑换-吞噬丹',
 --图标
 art = [[icon\tunshi.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000五个完美的鸡腿|r 奖励 |cff00ff00吞噬丹|r
+消耗 |cffff0000三个“厌恶”|r 兑换 |cff00ff00一个吞噬丹|r
 
-|cffcccccc最大贡献次数=2次|r]],
+|cffcccccc当前拥有“厌恶”数量：%has_material%|cffcccccc，每局最大兑换次数=2次|r]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-content_tip = '|cffFFE799【真相说明】：|r\n',
+content_tip = '|cffFFE799【兑换说明】：|r\n',
+
+has_material = function(self)
+    local p = ac.player.self
+    return p.cus_server['厌恶'] or 0
+end,
 --物品技能
 is_skill = true,
-need_material = '厌恶*5',
+need_material = '厌恶*3',
 max_cnt = 2,
 }   
 
@@ -87,48 +91,54 @@ local mt = ac.skill['真相-恶魔果实']
 mt{
 --等久
 level = 1,
-store_name = '真相-恶魔果实',
+store_name = '兑换-恶魔果实',
 --图标
 art = [[guoshi.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000十个完美的鸡头|r 奖励 |cff00ff00恶魔果实|r
+消耗 |cffff0000两个“恐惧”|r 兑换 |cff00ff00一个恶魔果实|r
 
-|cffcccccc最大贡献次数=1次|r]],
+|cffcccccc当前拥有“恐惧”数量：%has_material%|cffcccccc，每局最大兑换次数=2次|r]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-content_tip = '|cffFFE799【真相说明】：|r\n',
+content_tip = '|cffFFE799【兑换说明】：|r\n',
+has_material = function(self)
+    local p = ac.player.self
+    return p.cus_server['恐惧'] or 0
+end,
 --物品技能
 is_skill = true,
-need_material = '恐惧*10',
-max_cnt = 1,
+need_material = '恐惧*2',
+max_cnt = 2,
 }  
 local mt = ac.skill['真相-魔鬼的砒霜']
 mt{
 --等久
 level = 1,
-store_name = '真相-魔鬼的砒霜',
+store_name = '兑换-魔鬼的砒霜',
 --图标
-art = [[gelifen.blp]],
+art = [[mgdps.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000两个完美的鸡汤|r 奖励 |cff00ff00格里芬|r
+消耗 |cffff0000一个“愤怒”|r 兑换 |cff00ff00一个魔鬼的砒霜|r
 
-|cffdf19d0格里芬|cff00ffff+黑暗项链+最强生物心脏+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
-
-|cffcccccc最大贡献次数=1次|r]],
+|cffcccccc当前拥有“愤怒”数量：%has_material%|cffcccccc，每局最大兑换次数=1次|r]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-content_tip = '|cffFFE799【祭祀说明】：|r\n',
+content_tip = '|cffFFE799【兑换说明】：|r\n',
+has_material = function(self)
+    local p = ac.player.self
+    return p.cus_server['愤怒'] or 0
+end,
 --物品技能
 is_skill = true,
-need_material = '愤怒*2',
+need_material = '愤怒*1',
 max_cnt = 1,
 }  
 
@@ -136,22 +146,20 @@ local mt = ac.skill['真相-蒙娜丽莎的微笑']
 mt{
 --等久
 level = 1,
-store_name = '真相-蒙娜丽莎的微笑',
+store_name = '蒙娜丽莎的微笑',
 --图标
-art = [[gelifen.blp]],
+art = [[sldzx.blp]],
 --说明
 tip = [[
 
-贡献 |cffff0000两个完美的鸡汤|r 奖励 |cff00ff00格里芬|r
+|cff00ff00传说，蒙娜丽莎的微笑中，含有83%的高兴、9%的厌恶、6%的恐惧、2%的愤怒。请帮忙收集83个高兴+9个厌恶+6个恐惧+2个愤怒，交给我
 
-|cffdf19d0格里芬|cff00ffff+黑暗项链+最强生物心脏+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
-
-|cffcccccc最大贡献次数=1次|r]],
+ ]],
 --物品类型
 item_type = '神符',
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-content_tip = '|cffFFE799【祭祀说明】：|r\n',
+content_tip = '|cffFFE799【任务说明】：|r\n',
 --物品技能
 is_skill = true,
 need_material = '愤怒*2',
@@ -236,7 +244,7 @@ end
 --注册获得方式
 local unit_reward = { 
     ['进攻怪'] =  {
-        { rand = 10.166,     name = '高兴'},
+        { rand = 0.166,     name = '高兴'},
         { rand = 0.018,      name = '厌恶'},
         { rand = 0.012,      name = '恐惧'},
         { rand = 0.005,      name = '愤怒'}
@@ -253,6 +261,6 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     end    
     local key = ac.server.name2key(rand_name)
     p:Map_AddServerValue(key,1)
-    p:sendMsg('|cffff0000'..rand_name..'+1|r')   
+    p:sendMsg('|cffffe799【系统消息】|cffff0000'..rand_name..'+1|r，|cff00ff00可按F4查看总量')   
 
 end)

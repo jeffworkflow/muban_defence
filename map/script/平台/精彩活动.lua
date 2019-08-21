@@ -127,35 +127,29 @@ local mt = ac.skill['蒙娜丽莎的微笑']
 mt{
 --等级
 level = 1, --要动态插入
-max_level = 35,
 --图标
-art = [[zyj.blp]],
+art = [[sldzx.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff通过中元节活动获得 |cffff0000重复超度灵魂可升级成就|r |cff00ffff最大等级=35
+|cff00ffff通过活动-失落的真相获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+%暴击加深% |cff00ff00% |cff00ff00暴击加深
-+%技暴加深% |cff00ff00% |cff00ff00技暴加深
-+%会心伤害% |cff00ff00% |cff00ff00会心伤害
-+%物理伤害加深% |cff00ff00% |cff00ff00物理伤害加深
-+%技能伤害加深% |cff00ff00% |cff00ff00技能伤害加深
-+%全伤加深% |cff00ff00% |cff00ff00全伤加深
-+%对BOSS额外伤害% |cff00ff00% |cff00ff00对BOSS额外伤害|r
+|cff00ff00+23.8   杀怪加全属性|r
+|cff00ff00+23.8   攻击减甲|r
+|cff00ff00+23.8%  火灵加成|r
+|cff00ff00+23.8%  全伤加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['暴击加深'] = {1,35},
-['技暴加深'] = {1,35},
-['会心伤害'] = {1,35},
-['物理伤害加深'] = {1,35},
-['技能伤害加深'] = {1,35},
-['全伤加深'] = {1,35},
-['对BOSS额外伤害'] = {1,35},
+['杀怪加全属性'] = 23.8,
+['火灵加成'] = 23.8,
+['攻击减甲'] = 23.8,
+['全伤加深'] = 23.8,
+
 need_map_level = 5,
 }
 
