@@ -213,6 +213,13 @@ local cus_key = {
     {'cntwb','挖宝'},
     {'today_cntwb','今日挖宝'},
     
+    {'hdgx','高兴'},
+    {'hdfn','愤怒'},
+    {'hdyw','厌恶'},
+    {'hdkj','恐惧'},
+    {'hdmnlsdwx','蒙娜丽莎的微笑'},
+    
+    
     
 }
 ac.cus_server_key = cus_key
