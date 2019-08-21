@@ -166,7 +166,7 @@ need_material = '愤怒*2',
 max_cnt = 1,
 }  
 
-for i,name in ipairs({'真相-点金石','真相-吞噬丹','真相-恶魔果实','真相-魔鬼的砒霜','真相-蒙娜丽莎的微笑'}) do
+for i,name in ipairs({'真相-点金石','真相-吞噬丹','真相-恶魔果实','真相-魔鬼的砒霜'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner
@@ -175,51 +175,7 @@ for i,name in ipairs({'真相-点金石','真相-吞噬丹','真相-恶魔果实
         if not p.max_cnt then 
             p.max_cnt = {} 
         end    
-        local real_name = string.gsub(self.name,'真相%-','')
-        --特殊处理 蒙娜丽莎的微笑
-        if real_name == '蒙娜丽莎的微笑' then 
-            local has_mall = p.mall[real_name] or (p.cus_server and p.cus_server[real_name])
-            --已有物品的处理
-            if has_mall > 0 then 
-                p:sendMsg('【系统消息】已有'..real_name)    
-                return 
-            end
-            if not p.cus_server then 
-                return 
-            end    
-            local temp = {
-                {'高兴',83},
-                {'厌恶',9},
-                {'恐惧',6},
-                {'愤怒',2},
-            }
-            local flag = true 
-            --其中有一项不满足就跳出
-            for i,data in ipairs(temp) do 
-                if p.cus_server[data[1]] < data[2] then 
-                    flag = false 
-                    break
-                end
-            end
-            if flag then 
-                --扣除存档数据
-                for i,data in ipairs(temp) do 
-                    local key = ac.server.name2key(data[1])
-                    p:Map_AddServerValue(key,-data[2])
-                end   
-                --保存存档
-                local key = ac.server.name2key(real_name)
-                p:Map_SaveServerValue(key,1)
-                --当局生效
-                local skl = hero:find_skill(real_name,nil,true) 
-                if not skl  then 
-                    ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',real_name)
-                end 
-                p:sendMsg('|cffff0000兑换'..real_name..'成功|r')   
-            end
-            return
-        end    
-
+        local real_name = string.gsub(self.name,'真相%-','') 
         local _, _, it_name, cnt = string.find(self.need_material,"(%S+)%*(%d+)")
         cnt = tonumber(cnt)
         local has_cnt = (p.cus_server and p.cus_server[it_name]) or 0
@@ -263,4 +219,58 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     p:Map_AddServerValue(key,1)
     p:sendMsg('|cffffe799【系统消息】|cffff0000'..rand_name..'+1|r，|cff00ff00可按F4查看总量')   
 
+end)
+
+
+--处理区域触发
+local minx, miny, maxx, maxy = ac.rect.j_rect('hdsz'):get()
+local rect = ac.rect.create(minx-250, miny-250, maxx+250, maxy+250)
+local reg = ac.region.create(rect)
+
+reg:event '区域-进入' (function(trg,unit)
+    local p = unit:get_owner()
+    if p.id>=11 then 
+        return 
+    end
+    if not p.cus_server then 
+        return 
+    end  
+    local hero = p.hero 
+    local real_name ='蒙娜丽莎的微笑'
+    local has_mall = p:Map_GetServerValue(ac.server.name2key(real_name))
+    --已有物品的处理
+    if has_mall > 0 then 
+        -- p:sendMsg('【系统消息】已有'..real_name)   
+        return 
+    end 
+    local temp = {
+        {'高兴',83},
+        {'厌恶',9},
+        {'恐惧',6},
+        {'愤怒',2},
+    }
+    local flag = true 
+    --其中有一项不满足就跳出
+    for i,data in ipairs(temp) do 
+        if p.cus_server[data[1]] < data[2] then 
+            flag = false 
+            break
+        end
+    end
+    if flag then 
+        --扣除存档数据
+        for i,data in ipairs(temp) do 
+            local key = ac.server.name2key(data[1])
+            p:Map_AddServerValue(key,-data[2])
+        end   
+        --保存存档
+        local key = ac.server.name2key(real_name)
+        p:Map_SaveServerValue(key,1)
+        --当局生效
+        local skl = hero:find_skill(real_name,nil,true) 
+        if not skl  then 
+            ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',real_name)
+        end 
+        p:sendMsg('|cffff0000兑换'..real_name..'成功|r')   
+    end
 end)
