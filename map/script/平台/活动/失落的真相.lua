@@ -271,6 +271,6 @@ reg:event '区域-进入' (function(trg,unit)
         if not skl  then 
             ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',real_name)
         end 
-        p:sendMsg('|cffff0000兑换'..real_name..'成功|r')   
+        p:sendMsg('|cffffe799【系统消息】|r任务完成，恭喜获得|cffff0000【可存档成就】蒙娜丽莎的微笑|r 奖励 |cff00ff00+23.8杀怪加全属性|r |cff00ff00+23.8攻击减甲|r |cff00ff00+23.8%火灵加成|r |cff00ff00+23.8%全伤加深|r',6)
     end
 end)

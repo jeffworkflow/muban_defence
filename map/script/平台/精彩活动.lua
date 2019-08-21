@@ -134,7 +134,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff通过活动-失落的真相获得
+|cff00ffff通过 活动-失落的真相 获得
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+23.8   杀怪加全属性|r
