@@ -17,7 +17,6 @@ tip = [[
 攻击减甲+125 全伤加深+250% |r
 |cffffff00杀敌数额外+1|r
 
-
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
