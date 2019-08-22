@@ -204,6 +204,8 @@ local function upgrade_skill(player,skill)
                         ((player.cus_server2['今日修罗模式无尽排名'] or 0) >0 and (player.cus_server2['今日修罗模式无尽排名'] or 0) <= 10)
                         or
                         ((player.cus_server2['今日无上之境无尽排名'] or 0) >0 and (player.cus_server2['今日无上之境无尽排名'] or 0) <= 10)
+                        or
+                        ((player.cus_server2['今日挖宝排名'] or 0) >0 and (player.cus_server2['今日挖宝排名'] or 0) <= 10)
                     then 
                         skill:set_level(1)
                     end

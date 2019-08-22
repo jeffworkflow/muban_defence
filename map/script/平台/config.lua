@@ -212,6 +212,7 @@ local cus_key = {
 
     {'cntwb','挖宝'},
     {'today_cntwb','今日挖宝'},
+    {'today_cntwbrank','今日挖宝排名'},
     
     {'hdgx','高兴'},
     {'hdfn','愤怒'},

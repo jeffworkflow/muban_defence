@@ -168,12 +168,16 @@ for k,v in sortpairs(peon_skill) do
         end    
         
         local skl = hero:find_skill('宠物天赋',nil,true)
-        if skl.remain_point >0  then 
-            skl:set('used_point',skl.used_point + 1) 
-            skl:set('remain_point',skl.remain_point - 1)
+        local up_level = skl.level >=40 and 10 or 1 
+        up_level = skl.remain_point >=10 and 10 or 1
 
+        if skl.remain_point >= up_level  then 
+            skl:set('used_point',skl.used_point + up_level) 
+            skl:set('remain_point',skl.remain_point - up_level)
+
+            -- self:upgrade(up_level)
             local t_skl = hero:find_skill(self.name,nil,true)
-            if t_skl then t_skl:upgrade(1) end
+            if t_skl then t_skl:upgrade(up_level) end
             
         end    
     end    
