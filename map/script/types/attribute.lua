@@ -735,10 +735,13 @@ get['移动速度'] = function(self)
 end
 --最低移动速度
 set['移动速度'] = function(self, move_speed)
+	if move_speed < 150 then
+		move_speed = 150
+	elseif move_speed > 1250 then
+		move_speed = 1250
+	end
+	
 	if not self:has_restriction '定身' then
-		if move_speed < 150 then
-			move_speed = 150
-		end
 		jass.SetUnitMoveSpeed(self.handle, move_speed)
 	end
 	move.update_speed(self, on_get['移动速度'](self, move_speed))

@@ -23,6 +23,8 @@ require '平台.难度礼包'
 require '平台.精彩活动'
 require '平台.重置版奖励'
 
+require '平台.赛季奖励'
+
 
 
 

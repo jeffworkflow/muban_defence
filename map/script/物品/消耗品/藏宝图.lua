@@ -333,7 +333,7 @@ local function save_wb()
     end   
 end  
 ac.game:event '游戏-开始' (function() 
-    local time =30
+    local time =60 * 2
     ac.loop(time*1000,function()
         save_wb()
     end)
