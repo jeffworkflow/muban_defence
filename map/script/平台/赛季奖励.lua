@@ -20,28 +20,21 @@ local cnt_ljwj_config = { --通关
 }
 
 
-local mt = ac.skill['S0赛季']
+local mt = ac.skill['S0赛季说明']
 mt{
 --等级
 level = 1, --要动态插入
 --图标
-art = [[ydss.blp]],
+art = [[SJ0.blp]],
 --说明
 tip = [[
-通关次数：%cnt_succ%
-无尽累计: %cnt_ljwj%
 
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+|cffffe799【赛季时间】|r|cff00ff00X月X日-8月24日
+|cffffe799【赛季说明】|r|cff00ff00赛季结束时，将发放丰厚的赛季奖励
 
-|cffffe799【获得方式】：|r
-|cff00ffff消耗 |cffff0000三十根喜鹊翎毛|r |cff00ffff兑换获得
-
-|cffFFE799【成就属性】：|r
-|cff00ff00+13.8   杀怪加全属性|r
-|cff00ff00+13.8   攻击减甲|r
-|cff00ff00+13.8%  木头加成|r
-|cff00ff00+13.8%  会心伤害|r
-
+|cffcccccc当前赛季 通关次数：%cnt_succ%
+|cffcccccc当前赛季 无尽累计波数: %cnt_ljwj%
+|cffcccccc当前赛季 挖宝积分: %cnt_ljwj%
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
@@ -71,24 +64,19 @@ cnt_ljwj = function(self)
 end,
 }
 
-local mt = ac.skill['S0赛季奖励A']
+local mt = ac.skill['S0赛季奖励']
 mt{
 --等级
 level = 0, --要动态插入
 --图标
-art = [[jdzw.blp]],
+art = [[sj01.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff抓青蛙活动获得
-
-|cffFFE799【成就属性】：|r
-|cff00ff00+16.8   杀怪加全属性|r
-|cff00ff00+16.8   攻击减甲|r
-|cff00ff00+16.8%  杀敌数加成|r
-|cff00ff00+16.8%  物理伤害加深|r
+|cffFFE799【赛季奖励】：|r
+|cffff0000【杀怪加力量】|cff00ffff+1*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
+|cffff0000【攻击加力量】|cff00ffff+1*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
+|cffff0000【每秒加力量】|cff00ffff+1*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
 
 ]],
 --目标类型
@@ -97,24 +85,25 @@ need_map_level = 5,
 }
 
 
-local mt = ac.skill['S0赛季奖励B']
+local mt = ac.skill['S0赛季王者']
 mt{
 --等级
 level = 0, --要动态插入
 --图标
-art = [[swldd.blp]],
+art = [[sj02.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff抓青蛙活动获得
+|cffFFE799【获得方式】：|r
+|cff00ff00赛季结束时，所有在 |cffff0000F5-巅峰排行榜、F5-通关时长排行榜、 F6-无尽总排行榜、F6-挖宝总排行榜 |cff00ff00上面的玩家，均可获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+18.8   杀怪加全属性|r
-|cff00ff00+18.8   攻击减甲|r
-|cff00ff00+18.8%  物品获取率|r
-|cff00ff00+18.8%  暴击加深|r
+|cff00ff00+36.8   杀怪加全属性|r
+|cff00ff00+36.8   攻击减甲|r
+|cff00ff00+1%     会心几率|r
+|cff00ff00+10%    会心伤害|r
+|cff00ff00+16.8%  全伤加深|r
+|cffff0000局内地图等级+1
 
 ]],
 --目标类型
@@ -123,52 +112,37 @@ need_map_level = 5,
 }
 
 
-local mt = ac.skill['S1赛季']
+local mt = ac.skill['S1赛季说明']
 mt{
 --等级
 level = 1, --要动态插入
 max_level = 35,
 --图标
-art = [[zyj.blp]],
+art = [[sj1.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【成就说明】：|r
-|cff00ffff通过中元节活动获得 |cffff0000重复超度灵魂可升级成就|r |cff00ffff最大等级=35
-
-|cffFFE799【成就属性】：|r
-|cff00ff00+%暴击加深% |cff00ff00% |cff00ff00暴击加深
-+%技暴加深% |cff00ff00% |cff00ff00技暴加深
-+%会心伤害% |cff00ff00% |cff00ff00会心伤害
-+%物理伤害加深% |cff00ff00% |cff00ff00物理伤害加深
-+%技能伤害加深% |cff00ff00% |cff00ff00技能伤害加深
-+%全伤加深% |cff00ff00% |cff00ff00全伤加深
-+%对BOSS额外伤害% |cff00ff00% |cff00ff00对BOSS额外伤害|r
+|cffffe799【赛季时间】|r|cff00ff008月25日-8月31日
+|cffffe799【赛季说明】|r|cff00ff00赛季结束时，将发放丰厚的赛季奖励
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 }
 
-local mt = ac.skill['S1赛季奖励A']
+local mt = ac.skill['S1赛季奖励']
 mt{
 --等级
 level = 0, --要动态插入
 --图标
-art = [[sldzx.blp]],
+art = [[sj11.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【成就说明】：|r
-|cff00ffff通过 活动-失落的真相 获得
-
-|cffFFE799【成就属性】：|r
-|cff00ff00+23.8   杀怪加全属性|r
-|cff00ff00+23.8   攻击减甲|r
-|cff00ff00+23.8%  火灵加成|r
-|cff00ff00+23.8%  全伤加深|r
+|cffFFE799【赛季奖励】：|r
+|cffff0000【杀怪加敏捷】|cff00ffff+1*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
+|cffff0000【攻击加敏捷】|cff00ffff+1*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
+|cffff0000【每秒加敏捷】|cff00ffff+1*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
 
 ]],
 --目标类型
@@ -177,24 +151,25 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
 }
 
-local mt = ac.skill['S1赛季奖励B']
+local mt = ac.skill['S1赛季王者']
 mt{
 --等级
 level = 0, --要动态插入
 --图标
-art = [[sldzx.blp]],
+art = [[sj12.blp]],
 --说明
 tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【成就说明】：|r
-|cff00ffff通过 活动-失落的真相 获得
+|cffFFE799【获得方式】：|r
+|cff00ff00赛季结束时，所有在 |cffff0000F5-巅峰排行榜、F5-通关时长排行榜、 F6-无尽总排行榜、F6-挖宝总排行榜 |cff00ff00上面的玩家，均可获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+23.8   杀怪加全属性|r
-|cff00ff00+23.8   攻击减甲|r
-|cff00ff00+23.8%  火灵加成|r
-|cff00ff00+23.8%  全伤加深|r
+|cff00ff00+36.8   杀怪加全属性|r
+|cff00ff00+36.8   攻击减甲|r
+|cff00ff00+1%     会心几率|r
+|cff00ff00+10%    会心伤害|r
+|cff00ff00+16.8%  全伤加深|r
+|cffff0000局内地图等级+1
 
 ]],
 --目标类型
@@ -207,7 +182,7 @@ local mt = ac.skill['赛季奖励']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[jchd.blp]],
+    art = [[sjjl.blp]],
     title = '赛季奖励',
     tip = [[
 
@@ -216,8 +191,8 @@ mt{
     
 }
 mt.skills = {
-    'S0赛季','S0赛季奖励A','S0赛季奖励B',nil,
-    'S1赛季','S1赛季奖励A','S1赛季奖励B'
+    'S0赛季说明','S0赛季奖励','S0赛季王者',nil,
+    'S1赛季说明','S1赛季奖励','S1赛季王者'
 }
 
 function mt:on_add()

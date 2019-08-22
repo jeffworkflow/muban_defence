@@ -203,7 +203,7 @@ local unit_reward = {
         { rand = 0.166,     name = '高兴'},
         { rand = 0.018,      name = '厌恶'},
         { rand = 0.012,      name = '恐惧'},
-        { rand = 0.005,      name = '愤怒'}
+        { rand = 0.004,      name = '愤怒'}
     },
 }
 ac.game:event '单位-死亡' (function (_,unit,killer)
@@ -217,7 +217,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     end    
     local key = ac.server.name2key(rand_name)
     p:Map_AddServerValue(key,1)
-    p:sendMsg('|cffffe799【系统消息】|cffff0000'..rand_name..'+1|r，|cff00ff00可按F4查看总量')   
+    p:sendMsg('|cffffe799【系统消息】|cffff0000'..rand_name..'+1|r，|cff00ff00可按F4查看总量',3)  
 
 end)
 
