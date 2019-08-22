@@ -160,6 +160,7 @@ for key,value in pairs(ac.quick_arrive) do
                     --关闭刷怪
                     local crep = ac.creep[key] 
                     crep:finish(true)
+                    ac.flag_jixian[key] = nil
                     --传送英雄出去
                     -- hero:blink(ac.map.rects['主城'],true,false,true) --不需要传送出去
                 end,

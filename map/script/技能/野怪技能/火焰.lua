@@ -47,7 +47,7 @@ function mt:on_add()
 				source = hero,
 				skill = skill,
 				time =  1,
-				pulse = self.pulse,
+				-- pulse = self.pulse,
                 damage = u:get('生命上限')*self.life_rate/100,
 			}
 
@@ -94,11 +94,6 @@ function mt:on_add()
 
     --Abilities\Spells\Other\ImmolationRed\ImmolationRedDamage.mdx
     self.target:add_effect('overhead', [[Abilities\Spells\Other\ImmolationRed\ImmolationRedDamage.mdx]]):remove()
-    
-end
-
-function mt:on_remove()
-	-- self.eff:remove()
 	self.target:damage
 	{
 		source = self.source,
@@ -106,6 +101,11 @@ function mt:on_remove()
         skill = self.skill,
         real_damage = true
 	}
+    
+end
+
+function mt:on_remove()
+	-- self.eff:remove()
 end
 
 function mt:on_pulse()
