@@ -13,7 +13,7 @@ art = [[ReplaceableTextures\CommandButtons\BTNNetherDragon.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff神龙碎片超过 15 自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff神龙碎片超过 10 自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+8    杀怪加全属性|r
@@ -27,7 +27,7 @@ skin_cnt = function(self)
     return p.cus_server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 15,
+need_sp_cnt = 10,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 8,
@@ -50,7 +50,7 @@ art = [[ReplaceableTextures\CommandButtons\BTNAzureDragon.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff神龙碎片超过 75 自动获得，已拥有碎片：|r%skin_cnt% 或者
+|cff00ffff神龙碎片超过 50 自动获得，已拥有碎片：|r%skin_cnt% 或者
 |cff00ffff挖宝积分超过 1W 自动获得，已拥有积分：|r%wabao_cnt%
 
 |cffFFE799【宠物属性】：|r
@@ -72,7 +72,7 @@ wabao_cnt = function(self)
 end,
 
 --所需激活碎片
-need_sp_cnt = 75,
+need_sp_cnt = 50,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 28,
@@ -96,7 +96,7 @@ art = [[ReplaceableTextures\CommandButtons\BTNFaerieDragon.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff神龙碎片超过 300  自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff神龙碎片超过 250  自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+68  杀怪加全属性|r
@@ -112,7 +112,7 @@ skin_cnt = function(self)
     return p.cus_server[self.name..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 300,
+need_sp_cnt = 250,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 68,
@@ -197,7 +197,7 @@ art = [[ReplaceableTextures\CommandButtons\BTNChimaera.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff神龙碎片超过 400 自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff神龙碎片超过 350 自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+128    杀怪加全属性|r
@@ -275,7 +275,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
 |cff00ffff挖宝积分超过 4.5W 自动获得，已拥有积分：|r%wabao_cnt% 或者
-|cff00ffff神龙碎片超过 500  自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff神龙碎片超过 400  自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【属性】：|r
 |cff00ff00+148  杀怪加全属性|r
@@ -321,7 +321,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
 |cff00ffff挖宝积分超过 7W 自动获得，已拥有积分：|r%wabao_cnt% 或者
-|cff00ffff神龙碎片超过 650  自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff神龙碎片超过 500  自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+188  杀怪加全属性|r

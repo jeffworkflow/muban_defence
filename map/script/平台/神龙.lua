@@ -12,7 +12,7 @@ level = 0,
 art = [[ReplaceableTextures\CommandButtons\BTNNetherDragon.blp]],
 --说明
 tip = [[
-|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 15 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 10 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+8    杀怪加全属性|r
@@ -26,7 +26,7 @@ skin_cnt = function(self)
     return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 15,
+need_sp_cnt = 10,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --特效
@@ -47,7 +47,7 @@ strong_hero = 1, --作用在人身上
 art = [[ReplaceableTextures\CommandButtons\BTNAzureDragon.blp]],
 --说明
 tip = [[
-|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 75 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 50 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+28   杀怪加全属性|r
@@ -63,7 +63,7 @@ skin_cnt = function(self)
     return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 75,
+need_sp_cnt = 50,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --特效
@@ -84,7 +84,7 @@ strong_hero = 1, --作用在人身上
 art = [[ReplaceableTextures\CommandButtons\BTNFaerieDragon.blp]],
 --说明
 tip = [[
-|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 300 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 250 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+68  杀怪加全属性|r
@@ -100,7 +100,7 @@ skin_cnt = function(self)
     return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 300,
+need_sp_cnt = 250,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --特效
@@ -121,7 +121,7 @@ strong_hero = 1, --作用在人身上
 art = [[ReplaceableTextures\CommandButtons\BTNChimaera.blp]],
 --说明
 tip = [[
-|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 400 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 350 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+128    杀怪加全属性|r
@@ -137,7 +137,7 @@ skin_cnt = function(self)
     return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 400,
+need_sp_cnt = 350,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --特效
@@ -158,7 +158,7 @@ strong_hero = 1, --作用在人身上
 art = [[meiying.blp]],
 --说明
 tip = [[
-|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 500 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 400 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+148  杀怪加全属性|r
@@ -193,7 +193,7 @@ strong_hero = 1, --作用在人身上
 art = [[zsyhly.blp]],
 --说明
 tip = [[
-|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 650 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 500 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+188  杀怪加全属性|r
@@ -210,7 +210,7 @@ skin_cnt = function(self)
     return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 650,
+need_sp_cnt = 500,
 --特效
 effect = [[Hero_Phoenix_N1_purple.mdx]]
 }
@@ -228,7 +228,7 @@ level = 0,
 art = [[ReplaceableTextures\CommandButtons\BTNHeroWarden.blp]],
 --说明
 tip = [[
-|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 50 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 30 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【英雄天赋】：|r
 |cffffff00【杀怪加全属性】+50*Lv
@@ -245,7 +245,7 @@ skin_cnt = function(self)
     return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 50,
+need_sp_cnt = 30,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --特效
@@ -265,7 +265,7 @@ level = 0,
 art = [[xiaolongnv.blp]],
 --说明
 tip = [[
-|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 100 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 75 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【英雄天赋】：|r
 |cffffff00【杀怪加全属性】+100*Lv
@@ -283,7 +283,7 @@ skin_cnt = function(self)
     return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 100,
+need_sp_cnt = 75,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 
@@ -323,7 +323,7 @@ skin_cnt = function(self)
     return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 300,
+need_sp_cnt = 250,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 
@@ -345,7 +345,7 @@ level = 0,
 art = [[wuqi10.blp]],
 --说明
 tip = [[
-|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 200 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 150 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+300 杀怪加攻击|r
@@ -360,7 +360,7 @@ skin_cnt = function(self)
     return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 200,
+need_sp_cnt = 150,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 
@@ -385,7 +385,7 @@ level = 0,
 art = [[chibang2.blp]],
 --说明
 tip = [[
-|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 250 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 200 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+80     杀怪加全属性|r
@@ -400,7 +400,7 @@ skin_cnt = function(self)
     return p.cus_server[string.gsub(self.name,'挑战','')..'碎片'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 250,
+need_sp_cnt = 200,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 

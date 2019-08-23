@@ -392,7 +392,7 @@ art = [[xiaolongnv.blp]],
 tip = [[
 
 |cffffe799【获得方式】：|r
-|cffff0000达到星耀10星 且 地图等级≥6|r
+|cffff0000达到星耀5星 且 地图等级≥6|r
 
 |cffFFE799【天赋属性】：|r
 |cffffff00【杀怪加全属性】+100*Lv

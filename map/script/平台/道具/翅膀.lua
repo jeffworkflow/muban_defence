@@ -11,7 +11,7 @@ tip = [[
 
 |cffffe799【获得方式】：|r
 |cff00ffff挖宝积分超过 3W 自动获得，已拥有积分：|r%wabao_cnt% 或者
-|cff00ffff神龙碎片超过 400 自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff神龙碎片超过 200 自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+100     杀怪加全属性|r
@@ -31,7 +31,7 @@ wabao_cnt = function(self)
     return p.cus_server['挖宝积分'] or 0
 end,
 --所需激活碎片
-need_sp_cnt = 400,
+need_sp_cnt = 200,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 100,
@@ -85,7 +85,7 @@ art = [[chibang3.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff最强王者25星
+|cff00ffff王者10星
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+150    杀怪加全属性|r
@@ -118,7 +118,7 @@ art = [[chibang9.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff巅峰王者25星
+|cff00ffff巅峰王者15星
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+200  杀怪加全属性|r

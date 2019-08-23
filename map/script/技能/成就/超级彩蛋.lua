@@ -376,7 +376,7 @@ reg:event '区域-进入'(function(trg,unit,reg)
     if p.down_time_tg then 
         p.down_time_tg:remove()
     end    
-    p.down_time_tg = ac.timer(1000,30,function(t)end)
+    p.down_time_tg = ac.timer(1000,15,function(t)end)
     function p.down_time_tg:on_timeout()
         --获得彩蛋
         ac.game:event_notify('技能-插入魔法书',hero,'超级彩蛋','百鸟朝凤')

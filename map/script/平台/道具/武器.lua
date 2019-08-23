@@ -11,7 +11,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
 |cff00ffff挖宝积分超过 2W  自动获得，已拥有积分：|r%wabao_cnt% 或者
-|cff00ffff神龙碎片超过 200 自动获得，已拥有碎片：|r%skin_cnt%
+|cff00ffff神龙碎片超过 150 自动获得，已拥有碎片：|r%skin_cnt%
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+300 杀怪加攻击|r
@@ -32,7 +32,7 @@ wabao_cnt = function(self)
 end,
 
 --所需激活碎片
-need_sp_cnt = 300,
+need_sp_cnt = 150,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加攻击'] = 300,
@@ -86,7 +86,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff最强王者20星
+|cff00ffff星耀10星
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+500  杀怪加攻击|r
@@ -120,7 +120,7 @@ is_order = 1,
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff荣耀王者25星 
+|cff00ffff荣耀王者15星 
 
 |cffFFE799【神兵属性】：|r
 |cff00ff00+600  杀怪加攻击|r

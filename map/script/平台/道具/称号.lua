@@ -38,7 +38,7 @@ tip = [[
 
 |cffffe799【获得方式】：|r
 |cff00ffff挖宝积分超过 2K 自动获得，已拥有积分：|r%wabao_cnt% 或者
-|cff00ffff消耗勇士徽章 20 兑换获得
+|cff00ffff消耗勇士徽章 15 兑换获得
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+50   杀怪加攻击|r
@@ -73,7 +73,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff黄金5星 
+|cff00ffff黄金3星 
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+30    杀怪加全属性|r
@@ -102,7 +102,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff砖石10星 
+|cff00ffff砖石5星 
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+68   杀怪加全属性|r
@@ -132,7 +132,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗勇士徽章  100  兑换获得
+|cff00ffff消耗勇士徽章  75  兑换获得
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+250  杀怪加攻击|r
@@ -161,7 +161,7 @@ art = [[jstz.blp]],
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff王者15星
+|cff00ffff王者5星
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+100 杀怪加全属性|r
@@ -192,7 +192,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗勇士徽章  250  兑换获得
+|cff00ffff消耗勇士徽章  200  兑换获得
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+500  杀怪加攻击|r
@@ -221,7 +221,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗勇士徽章  500  兑换获得
+|cff00ffff消耗勇士徽章  350  兑换获得
 
 |cffFFE799【称号属性】：|r
 |cff00ff00+268  杀怪加全属性|r
