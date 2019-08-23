@@ -89,7 +89,7 @@ class.today_dpwj_panel = extends(class.panel){
     
 
     on_button_clicked = function (self,button)
-        print(123)
+        -- print(123)
         if button == self.close_button then 
             self:hide()
         end 
@@ -109,7 +109,7 @@ game_event.on_key_down = function (code)
     -- if code == KEY.F5 then 
     --     ac.player(ac.player.self.id):sendMsg('排行榜还在努力制作中，敬请期待',5)
     -- end
-    if code == KEY.F6 then 
+    if code == KEY.F67 then 
         if panel == nil then return end 
         if panel.is_show then 
             panel:hide()

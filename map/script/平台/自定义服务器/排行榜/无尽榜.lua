@@ -344,6 +344,7 @@ ac.wait(5*1000,function()
                         panel.rank[content[2]]  = {}
                     end
                     for i = 1, #data do
+                        data[i].player_name =  ZZBase64.encode(data[i].player_name)
                         table.insert(panel.rank[content[2]],data[i])
                     end  
 
@@ -378,8 +379,11 @@ local event = {
         if not panel.rank then 
             panel.rank = {}
         end    
-        local data = ui.decode(tab_str)    
-        panel.rank[str] = data 
+        local data = ui.decode(tab_str)   
+        for i = 1, #data do
+            data[i].player_name =  ZZBase64.decode(data[i].player_name)
+        end 
+        panel.rank[str] = data  
         -- print(panel.rank[str])
         -- player:event_notify('读取存档数据')
 

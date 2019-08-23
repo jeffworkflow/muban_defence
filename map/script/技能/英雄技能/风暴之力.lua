@@ -44,7 +44,7 @@ end,
     damage_type = '法术'
 }
 --分散龙卷风
-local function tornado(skill,mover,max_damage)
+local function tornado(skill,target,max_damage)
     local hero = skill.owner
     --角度
     local angle = 45
@@ -66,7 +66,7 @@ local function tornado(skill,mover,max_damage)
 			skill = skill,
 			damage = damage,
             hit_area = areaa,
-            start = mover:get_point(),
+            start = target,
             size = 0.7,
         }
         if mvr then
@@ -78,7 +78,6 @@ local function tornado(skill,mover,max_damage)
                     skill = skill,
                     damage = damage,
                     damage_type = skill.damage_type,
-                    attack = true,
                 }
             end
         end
@@ -134,12 +133,11 @@ function mt:on_add()
                 skill = self.skill,
                 damage = max_damage,
                 damage_type = skill.damage_type,
-                attack = true,
             }
         end
 
         function mvr:on_remove()
-            tornado(self.skill,mvr.mover,max_damage)
+            tornado(self.skill,mvr.mover:get_point(),max_damage)
         end
 
 

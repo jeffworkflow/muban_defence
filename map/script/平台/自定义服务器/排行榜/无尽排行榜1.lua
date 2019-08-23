@@ -102,7 +102,7 @@ game_event.on_key_down = function (code)
     -- if code == KEY.F5 then 
     --     ac.player(ac.player.self.id):sendMsg('排行榜还在努力制作中，敬请期待',5)
     -- end
-    if code == KEY.F6 then 
+    if code == KEY.F7 then 
         if panel == nil then return end 
         if panel.is_show then 
             panel:hide()

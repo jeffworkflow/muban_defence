@@ -102,6 +102,39 @@ end,
 
 }
 
+local mt = ac.skill['绝世奇才']
+mt{
+--等级
+level = 0,
+--图标
+art = [[wlgs.blp]],
+--说明
+tip = [[|cffffff00【要求地图等级>10|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff比武积分|cffff0000（武林大会模式获得）|cff00ffff超过 1000  自动获得，已拥有积分：|r%wabao_cnt%
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+88 杀怪加全属性|r
+|cff00ff00+30% 物理伤害加深|r
+|cff00ff00+15% 技能伤害加深|r
+|cff00ff00+30% 暴击加深|r
+|cff00ff00+30% 技暴加深|r
+ ]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 88,
+['物理伤害加深'] = 30,
+['技能伤害加深'] = 15,
+['暴击加深'] = 30,
+['技暴加深'] = 30,
+
+wabao_cnt = function(self)
+    local p = ac.player.self
+    return p.cus_server['比武积分'] or 0
+end,
+
+}
 
 local mt = ac.skill['武林大会']
 mt{
@@ -116,7 +149,7 @@ mt{
     
 }
 mt.skills = {
-    '江湖小虾','明日之星','武林高手'
+    '江湖小虾','明日之星','武林高手','绝世奇才'
 }
 
 

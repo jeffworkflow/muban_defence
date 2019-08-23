@@ -18,6 +18,9 @@ local cnt_ljwj_config = { --通关
     {'ljwjdpcq','斗破苍穹无尽累计'},-- 无尽层数累计值
     {'ljwjwszj','无上之境无尽累计'},-- 无尽层数累计值
 }
+local cnt_wbjf_config = {
+    {'wbjf','挖宝积分'},
+}
 
 
 local mt = ac.skill['S0赛季说明']
@@ -34,7 +37,7 @@ tip = [[
 
 |cffcccccc当前赛季 通关次数：%cnt_succ%
 |cffcccccc当前赛季 无尽累计波数: %cnt_ljwj%
-|cffcccccc当前赛季 挖宝积分: %cnt_ljwj%
+|cffcccccc当前赛季 挖宝积分: %cnt_wbjf%
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
@@ -59,7 +62,19 @@ cnt_ljwj = function(self)
     for i,data in ipairs(cnt_ljwj_config) do 
         cnt = cnt + (p.cus_server[data[2]] or 0)
     end 
-    cnt = math.min(cnt,2500,p:Map_GetMapLevel()*100)
+    cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100)
+    return cnt 
+end,
+--无尽累计 总计
+cnt_wbjf = function(self)
+    local hero = self.owner
+    local p = hero:get_owner()
+    hero = p.hero
+    local cnt = 0
+    for i,data in ipairs(cnt_wbjf_config) do 
+        cnt = cnt + (p.cus_server[data[2]] or 0)
+    end 
+    cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500)
     return cnt 
 end,
 }
