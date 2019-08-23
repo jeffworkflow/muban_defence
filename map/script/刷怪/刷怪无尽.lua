@@ -31,7 +31,7 @@ local base_attr = {
     ['生命恢复'] = 281902,
     ['魔法恢复'] = 10000,
     ['攻击距离'] = 200,
-    ['攻击速度'] = 300,
+    ['攻击速度'] = 520,
     ['暴击几率'] = 20,
     ['暴击加深'] = 20000,
     ['会心几率'] = 20,
@@ -57,7 +57,7 @@ local function change_attr(unit,index,factor)
             unit:set(key, value)
         end    
     end    
-    unit:set('移动速度', base_attr['移动速度'] + index*10) 
+    -- unit:set('移动速度', base_attr['移动速度'] + index*10) 
     if unit:get_name() =='毁灭者' then 
         unit:set('攻击减甲',0)
     end    

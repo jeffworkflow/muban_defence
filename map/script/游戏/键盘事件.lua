@@ -159,6 +159,16 @@ ac.game:event '玩家-聊天' (function(self, player, str)
 	end  
 	if str == 'jixu' then
 		player.flag_get_map_test = true 
+    end  
+    --取消扭蛋文本
+	if str == 'nd' then
+        player.flag_nd_text = not player.flag_nd_text  and true or false
+        if player.flag_nd_text then 
+            player:sendMsg('扭蛋提示|cffff0000关闭|r')
+        else
+            player:sendMsg('扭蛋提示|cffff0000开启|r')
+        end  
+
     end   
     --取消技能特效
     if str == 'tx' then

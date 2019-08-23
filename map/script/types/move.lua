@@ -6,14 +6,14 @@ local move = {}
 function move.update_speed(u, move_speed)
 	if move_speed > 522 and not move.last[u] then
 		move.add(u)
-		if u:is_hero() then 
-			return 
-		end	
-		if not u.move_trg then 
-			u.move_trg = u:event '单位-死亡' (function(_,unit,killer)
-				move.remove(u)
-			end)
-		end	
+		-- if u:is_hero() then 
+		-- 	return 
+		-- end	
+		-- if not u.move_trg then 
+		-- 	u.move_trg = u:event '单位-死亡' (function(_,unit,killer)
+		-- 		move.remove(u)
+		-- 	end)
+		-- end	
 	elseif move_speed <= 520 and move.last[u] then
 		move.remove(u)
 	end
@@ -31,7 +31,8 @@ end
 function move.remove(u)
 	move.last[u] = nil
 	for i, uu in ipairs(move.group) do
-		if u.handle == uu.handle then
+		if u == uu then
+		-- if u.num == uu.num then
 			table.remove(move.group, i)
 			if u.move_trg then
 				u.move_trg:remove() 
