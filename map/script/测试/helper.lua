@@ -834,13 +834,13 @@ function helper:tt()
 	self:add('分裂伤害',100)
 	self:add('全属性',10000000000)
 	self:add('护甲',1000000000)
-	self:add('会心伤害',10000)
+	self:add('会心伤害',10000000000)
 	-- self.flag_dodge = true --突破极限
 	self:add('闪避极限',5)
 	self:add('闪避',100)
 	self:add('免伤',90)
 	self:add('免伤几率',90)
-	self:add('全伤加深',1003000)
+	self:add('全伤加深',10030000000)
 	self:add('暴击加深',1003000)
 	self:add_wood(10000000)
 	self:add_fire_seed(10000000)
@@ -975,6 +975,20 @@ function helper:gsp()
 	ac.func_give_suipian(self:get_point())
 end
 
+--测试 魔法书功能
+function helper:test_uu()
+	print('当前怪物数量：',ac.unit_cnt)
+	for i=1,3 do 
+		local crep = ac.creep['刷怪-无尽'..i]
+		print(i,#crep.group)
+		for i,u in ipairs(crep.group) do 
+			if u:is_in_range(ac.point(0,0),500) then 
+				print(u:get_name(),'是否活着：',u:is_alive(),u:get_point())
+				break
+			end	
+		end	
+	end	
+end	
 --测试 魔法书功能
 function helper:test_b1()
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)

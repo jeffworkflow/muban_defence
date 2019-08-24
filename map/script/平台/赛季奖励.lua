@@ -22,6 +22,8 @@ local cnt_wbjf_config = {
     {'wbjf','挖宝积分'},
 }
 
+local get_season 
+local save_season 
 
 local mt = ac.skill['S0赛季说明']
 mt{
@@ -44,45 +46,33 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --通关次数 总计
 cnt_succ = function(self)
     local hero = self.owner
-    local p = hero:get_owner()
-    hero = p.hero
-    local cnt = 0
-    for i,data in ipairs(cnt_succ_config) do 
-        cnt = cnt + (p.cus_server[data[2]] or 0)
-    end 
-    cnt = math.min(cnt,500,p:Map_GetMapLevel()*25)
-    return cnt 
+    local p = hero:get_owner() 
+    local cnt = p.cus_server['S0通关次数'] 
+    cnt = math.min(cnt,500,p:Map_GetMapLevel()*25) --500，25
+    return cnt
 end,
 --无尽累计 总计
 cnt_ljwj = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    hero = p.hero
-    local cnt = 0
-    for i,data in ipairs(cnt_ljwj_config) do 
-        cnt = cnt + (p.cus_server[data[2]] or 0)
-    end 
-    cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100)
-    return cnt 
+    local cnt = p.cus_server['S0无尽累计'] 
+    cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100)--1500,100
+    return cnt
 end,
---无尽累计 总计
+--挖宝积分 总计
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    hero = p.hero
-    local cnt = 0
-    for i,data in ipairs(cnt_wbjf_config) do 
-        cnt = cnt + (p.cus_server[data[2]] or 0)
-    end 
-    cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500)
-    return cnt 
+    local cnt = p.cus_server['S0挖宝积分'] 
+    cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500)--5000,500
+    return cnt
 end,
 }
 
 local mt = ac.skill['S0赛季奖励']
 mt{
 --等级
-level = 0, --要动态插入
+level = 1, --要动态插入
 --图标
 art = [[sj01.blp]],
 --说明
@@ -96,7 +86,40 @@ tip = [[
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-need_map_level = 5,
+--通关次数 总计
+cnt_succ = function(self)
+    local hero = self.owner
+    local p = hero:get_owner() 
+    local cnt = p.cus_server['S0通关次数'] 
+    cnt = math.min(cnt,500,p:Map_GetMapLevel()*25) --500，25
+    return cnt
+end,
+--无尽累计 总计
+cnt_ljwj = function(self)
+    local hero = self.owner
+    local p = hero:get_owner()
+    local cnt = p.cus_server['S0无尽累计'] 
+    cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100)--1500,100
+    return cnt
+end,
+--挖宝积分 总计
+cnt_wbjf = function(self)
+    local hero = self.owner
+    local p = hero:get_owner()
+    local cnt = p.cus_server['S0挖宝积分'] 
+    cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500)--5000,500
+    return cnt
+end,
+
+['杀怪加力量'] =function(self)
+   return self.cnt_succ
+end,
+['攻击加力量'] =function(self)
+   return self.cnt_ljwj
+end,
+['每秒加力量'] =function(self)
+   return self.cnt_wbjf
+end,
 }
 
 
@@ -123,8 +146,14 @@ tip = [[
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-need_map_level = 5,
+['杀怪加全属性'] = 36.8,
+['攻击减甲'] = 36.8,
+['会心几率'] = 1,
+['会心伤害'] = 10,
+['全伤加深'] = 16.8
 }
+function mt:on_add()
+end    
 
 
 local mt = ac.skill['S1赛季说明']
@@ -136,13 +165,40 @@ max_level = 35,
 art = [[sj1.blp]],
 --说明
 tip = [[
-
+通关次数: %cnt_succ%
+无尽累计次数: %cnt_ljwj%
+挖宝积分: %cnt_wbjf%
 |cffffe799【赛季时间】|r|cff00ff008月25日-8月31日
 |cffffe799【赛季说明】|r|cff00ff00赛季结束时，将发放丰厚的赛季奖励
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
+--通关次数 总计
+cnt_succ = function(self)
+    local hero = self.owner
+    local p = hero:get_owner()
+    local cnt = get_season(p,'S0通关次数') - (p.cus_server['S0通关次数'] or 0)
+    cnt = math.min(cnt,500,p:Map_GetMapLevel()*25) --500，25
+    return cnt
+end,
+
+--通关次数 总计
+cnt_ljwj = function(self)
+    local hero = self.owner
+    local p = hero:get_owner()
+    local cnt = get_season(p,'S0无尽累计') - (p.cus_server['S0无尽累计'] or 0)
+    cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100) --1500,100
+    return cnt
+end,
+--通关次数 总计
+cnt_wbjf = function(self)
+    local hero = self.owner
+    local p = hero:get_owner()
+    local cnt = get_season(p,'S0挖宝积分') - (p.cus_server['S0挖宝积分'] or 0)
+    cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
+    return cnt
+end,
 }
 
 local mt = ac.skill['S1赛季奖励']
@@ -163,7 +219,6 @@ tip = [[
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 
-need_map_level = 5,
 }
 
 local mt = ac.skill['S1赛季王者']
@@ -209,16 +264,67 @@ mt.skills = {
     'S0赛季说明','S0赛季奖励','S0赛季王者',nil,
     'S1赛季说明','S1赛季奖励','S1赛季王者'
 }
+get_season = function(p,key,flag_reduce)
+    local cnt = 0
+    if key == 'S0通关次数' then 
+        for i,data in ipairs(cnt_succ_config) do 
+            cnt = cnt + (p.cus_server[data[2]] or 0)
+        end 
+    elseif  key == 'S0无尽累计' then   
+        for i,data in ipairs(cnt_ljwj_config) do 
+            cnt = cnt + (p.cus_server[data[2]] or 0)
+        end 
+    elseif  key == 'S0挖宝积分' then   
+        for i,data in ipairs(cnt_wbjf_config) do 
+            cnt = cnt + (p.cus_server[data[2]] or 0)
+        end 
+    end    
+    return cnt
+end
+
+save_season= function(p)
+    if not p.cus_server then 
+        p.cus_server = {} 
+    end    
+    --通关次数处理
+    local cnt_succ = p.cus_server['S0通关次数'] or 0
+    if cnt_succ <=0 then 
+        local cnt = get_season(p,'S0通关次数')
+        local key = ac.server.name2key('S0通关次数')
+        p:Map_SaveServerValue(key,cnt) --网易服务器
+    end    
+
+    --无尽累计波数 处理
+    local cnt_ljwj = p.cus_server['S0无尽累计'] or 0
+    if cnt_ljwj <=0 then 
+        local cnt = get_season(p,'S0无尽累计')
+        local key = ac.server.name2key('S0无尽累计')
+        p:Map_SaveServerValue(key,cnt) --网易服务器
+    end 
+
+    --挖宝积分处理
+    local cnt_wbjf = p.cus_server['S0挖宝积分'] or 0
+    if cnt_wbjf <=0 then 
+        local cnt = get_season(p,'S0挖宝积分')
+        local key = ac.server.name2key('S0挖宝积分')
+        p:Map_SaveServerValue(key,cnt) --网易服务器
+    end 
+
+end    
+
 
 function mt:on_add()
     local hero = self.owner 
     local player = hero:get_owner()
-    -- for index,name in ipairs(self.skill_name) do 
-    --     local has_mall = player.mall[name] or (player.cus_server and player.cus_server[name])
-    --     if has_mall and has_mall > 0 then 
-    --         ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',name)
-    --         local skl = hero:find_skill(name,nil,true)
-    --         skl:set_level(has_mall)
-    --     end
-    -- end 
+    --保存 网易服务器 赛季数据
+    save_season(player)
+    
+    for index,skill in ipairs(self.skill_book) do 
+        if finds(skill.name,'S0赛季王者')then 
+            local has_mall = (player.cus_server2 and player.cus_server2[skill.name])
+            if has_mall and has_mall > 0 then 
+                skill:set_level(1)
+            end
+        end    
+    end 
 end    

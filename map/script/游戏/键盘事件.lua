@@ -135,7 +135,19 @@ ac.game:event '玩家-聊天' (function(self, player, str)
         --开始清理物品
         ac.game:clear_item()
 	end  
-
+    --测试卡怪
+	if str == 'test_uu' then
+        print('当前怪物数量：',ac.unit_cnt)
+        for i=1,3 do 
+            local crep = ac.creep['刷怪-无尽'..i]
+            print(i,#crep.group)
+            for i,u in ipairs(crep.group) do 
+                if u:is_in_range(ac.point(0,0),500) then 
+                    print(u:get_name(),'是否活着：',u:is_alive(),u:get_point())
+                end	
+            end	
+        end	
+    end    
 	if str == 'qx' then
 		if not peon or not hero then return end 
 		--取消特效

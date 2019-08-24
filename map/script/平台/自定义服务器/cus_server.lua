@@ -374,7 +374,6 @@ function player.__index:sp_get_map_flag(f)
     local post = 'exec=' .. json.encode({
         sp_name = 'sp_get_map_flag'
     })
-    -- print(url,post)
     local f = f or function (retval)  end 
     post_message(url,post,function (retval)  
         if not finds(retval,'http','https','') or finds(retval,'成功')then 
@@ -382,14 +381,6 @@ function player.__index:sp_get_map_flag(f)
             -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
             if tbl and tbl.code == 0 then 
                 local flag_map = tbl.data[1][1].flag
-                -- print('打印开关：',flag_map)
-                -- ac.wait(10,function()
-                --     --同步配置数据 有问题，不用
-                --     -- local msg = {flag_map = flag_map}
-                --     -- self:SyncData(msg,function(p,message)
-                --     --     p.flag_map = tonumber(message.flag_map)
-                --     -- end)
-                -- end)
                 ac.wait(10,function()
                     local info = {
                         type = 'cus_server',
@@ -412,6 +403,8 @@ end
 -- ac.flag_map = 0
 --读取配置
 ac.player(1):sp_get_map_flag()
+
+
 
 --[[
 ===========自定义服务器 基本功能 ===================

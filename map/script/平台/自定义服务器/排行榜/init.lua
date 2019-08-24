@@ -59,7 +59,72 @@ function player.__index:sp_get_rank(key,order_by,limit_cnt,f)
         end    
     end)
 end
-  
+
+--读取s0排行榜奖励
+local ui = require 'ui.client.util'
+function player.__index:sp_get_rank_season(f)
+    if not self:is_self() then 
+        return 
+    end
+    local player_name = self:get_name()
+    local map_name = ac.server_config.map_name
+    local url = ac.server_config.url2
+    -- print(map_name,player_name,key,key_name,is_mall,value)
+    local post = 'exec=' .. json.encode({
+        sp_name = 'sp_get_rank_season',
+        para1 = map_name,
+        para2 = player_name,
+    })
+    local f = f or function (retval)  end 
+    post_message(url,post,function (retval)  
+        if not finds(retval,'http','https','') or finds(retval,'成功')then 
+            local tbl = json.decode(retval)
+            -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
+            if tbl and tbl.code == 0 then 
+                local flag_season = tbl.data[1][1].player_name
+                if flag_season then 
+                    ac.wait(10,function()
+                        local info = {
+                            type = 'rank_season',
+                            func_name = 'season',
+                            params = {
+                                [1] = flag_season,
+                            }
+                        }
+                        ui.send_message(info)
+                    end)   
+                end    
+            else
+                print(self:get_name(),post,'上传失败')
+            end         
+        else
+            print('服务器返回数据异常:',retval,post)
+        end    
+    end)
+end
+
+local ui = require 'ui.server.util'
+--处理同步请求
+local event = {
+    --从自定义服务器读取数据
+    season = function (flag_season)
+        local player = ui.player  
+        player['局内地图等级'] = (player['局内地图等级'] or 0) +1
+        if not player.cus_server2 then 
+            player.cus_server2 = {}
+        end   
+        player.cus_server2['S0赛季王者'] = 1
+        -- print('赛季王者：',player.cus_server2['S0赛季王者'])
+    end,
+}
+ui.register_event('rank_season',event)
+
+for i=1,6 do 
+    local p = ac.player(i)
+    if p:is_player() then 
+        p:sp_get_rank_season()  
+    end    
+end    
 
 require("平台.自定义服务器.排行榜.排行榜")
 require("平台.自定义服务器.排行榜.无尽榜")

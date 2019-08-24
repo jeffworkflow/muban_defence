@@ -221,6 +221,9 @@ local cus_key = {
     {'hdkj','恐惧'},
     {'hdmnlsdwx','蒙娜丽莎的微笑'},
     
+    {'S0succ','S0通关次数'},
+    {'S0ljwj','S0无尽累计'},
+    {'S0wbjf','S0挖宝积分'},
     
     
 }

@@ -110,6 +110,7 @@ for i =1,3 do
         ac.player.self:sendMsg("|cffff0000 （无尽） 第"..self.index.."波 怪物开始进攻！！！|r",5)
         -- local index = self.index
         self.creeps_datas = ac.attack_unit[math.random(#ac.attack_unit)]..'*20'
+        -- self.creeps_datas = '火凤凰*20'
         self:set_creeps_datas()
         --难度 12 （斗破苍穹） 增加技能
         if ac.rand_skill_name then 
@@ -138,11 +139,7 @@ for i =1,3 do
                             --1500码内，优先攻击英雄，英雄死亡则攻向基地点
                             unit:issue_order('attack',point)
                         elseif hero_distance <= 1500  then
-                            if ac.unit_cnt and ac.unit_cnt >60 then 
-                                unit:issue_order('move',hero:get_point())
-                            else    
-                                unit:issue_order('attack',hero)
-                            end    
+                            unit:issue_order('attack',hero)  
                         else    
                             unit:issue_order('attack',point)
                         end      
