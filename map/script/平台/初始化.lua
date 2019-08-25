@@ -85,19 +85,20 @@ for i=1,10 do
     local p = ac.player[i]  
     --皮肤道具
     if p:is_player() then 
-        for n=1,#ac.mall do
-            -- print("01",p:Map_HasMallItem(ac.mall[n][1]))
-            local need_map_level = ac.mall[n][3] or 999999999999
-            -- print(p:Map_HasMallItem(ac.mall[n][1]),ac.mall[n][1],need_map_level)
-            if     (p:Map_HasMallItem(ac.mall[n][1]) 
-                or (p:Map_GetServerValue(ac.mall[n][1]) == '1') 
-                or (p:Map_GetMapLevel() >= need_map_level) 
-                or (p.cheating)) 
-            then
-                local name = ac.mall[n][2]  
-                p.mall[name] = 1  
-            end  
-        end    
+        p:event '读取存档数据' (function()
+            for n=1,#ac.mall do
+                -- print("01",p:Map_HasMallItem(ac.mall[n][1]))
+                local need_map_level = ac.mall[n][3] or 999999999999
+                -- print(p:Map_HasMallItem(ac.mall[n][1]),ac.mall[n][1],need_map_level)
+                if     (p:Map_HasMallItem(ac.mall[n][1]) 
+                    or (p:Map_GetMapLevel() >= need_map_level) 
+                    or (p.cheating)) 
+                then
+                    local name = ac.mall[n][2]  
+                    p.mall[name] = 1  
+                end  
+            end    
+        end)    
     end    
 end 
 
@@ -115,11 +116,71 @@ end)
 
 --清理不必要的存档
 ac.wait(10,function()
-    local name = [[谜情小伙]]
-    local temp_mall = {}
+    -- local name = [[谜情小伙]]
+    local temp_mall = {
+        {'time_qt','青铜时长'},
+        {'time_by','白银时长'},
+        {'time_hj','黄金时长'},
+        {'time_bj','铂金时长'},
+        {'time_zs','钻石时长'},
+        {'time_xy','星耀时长'},
+        {'time_wz','王者时长'},
+        {'time_zqwz','最强王者时长'},
+        {'time_rywz','荣耀王者时长'},
+        {'time_dfwz','巅峰王者时长'},
+        {'time_xlms','修罗模式时长'},
+        {'time_dpcq','斗破苍穹时长'},
+        {'time_wszj','无上之境时长'},
+        {'time_pkms','武林大会时长'},
+
+        {'today_wjxlms','今日修罗模式无尽'},
+        {'today_wjxlmsrank','今日修罗模式无尽排名'},
+        {'today_wjdpcq','今日斗破苍穹无尽'},
+        {'today_wjdpcqrank','今日斗破苍穹无尽排名'},
+        {'today_wjwszj','今日无上之境无尽'},
+        {'today_wjwszjrank','今日无上之境无尽排名'},
+        
+        {'cntwb','挖宝'},
+        {'today_cntwb','今日挖宝'},
+        {'today_cntwbrank','今日挖宝排名'},
+        
+        {'cntwl','比武'},
+        {'today_cntwl','今日比武'},
+        {'today_cntwlrank','今日比武排名'},
+
+
+        --以下 网易服务器 不需要继续的存档
+        {'hdgx','高兴'},
+        {'hdfn','愤怒'},
+        {'hdyw','厌恶'},
+        {'hdkj','恐惧'},
+
+        {'hhxyj','幻海雪饮剑'},
+        {'tgcyy','天罡苍羽翼'},
+
+        {'lhcq','炉火纯青'},
+        {'sbkd','势不可挡'},
+        {'htmd','毁天灭地'},
+        {'dfty','风驰电掣'},
+        {'jstj','无双魅影'},
+        {'zzl','赵子龙'},
+        {'zsas','紫色哀伤'},
+        {'blnsy','白龙凝酥翼'},
+        {'szas','霜之哀伤'},
+        {'lhjyly','烈火金焰领域'},  
+        {'lysxy','龙吟双形翼'},
+        {'tszg','天使之光'},
+        {'byshly','白云四海领域'},
+        {'hsslly','烈火天翔领域'},
+        {'fthj','方天画戟'},
+        {'sswsj','圣神无双剑'},
+        {'jlsxy','金鳞双型翼'},
+
+    }
     for i,data in ipairs(ac.mall) do 
-        table.insert(temp_mall,data[1])
+        table.insert(temp_mall,data)
     end
+
     for i=1,10 do
         local player = ac.player[i]
         if player:is_player() --and finds(name,player:get_name())  
@@ -184,6 +245,7 @@ local star2award = {
     ['方天画戟'] = {'斗破苍穹无尽累计',500,26},
 
     ['圣神无双剑'] = {'无上之境无尽累计',150,31},
+    ['金鳞双型翼'] = {'无上之境无尽累计',500,33},
 }
 
 --保存修罗模式 星数
@@ -310,18 +372,26 @@ end)
 for i=1,10 do
     local player = ac.player[i]
     if player:is_player() then
+        if not player.cus_server then 
+            player.cus_server={}
+        end    
         player:event '读取存档数据' (function()
             for name,data in sortpairs(star2award) do 
                 --碎片相关在添加时先判断有没超过100碎片，超过完设置服务器变量为1
                 local has_item = player.cus_server and (player.cus_server[name] or 0 )
                 local dw_value = player.cus_server and (player.cus_server[data[1]] or 0 )
+                print(name,has_item,dw_value)
                 if has_item and has_item == 0 
                 and dw_value >= (data[2] or 9999999)
                 and player:Map_GetMapLevel() >= (data[3]  or 0)
                 then 
                     local key = ac.server.name2key(name)
                     -- player:SetServerValue(key,1) 自定义服务器
-                    player:Map_SaveServerValue(key,1) --网易服务器
+                    if finds(name,'Pa','小龙女','关羽') then 
+                       player:Map_SaveServerValue(key,1) --网易服务器
+                    else 
+                       player.cus_server[name] = 1
+                    end      
                     -- player:sendMsg('激活成功：'..key)
                 end   
             end   
@@ -516,49 +586,50 @@ local function wldh2award()
 end
 wldh2award()
 
-ac.wait(1300,function()
-    --开始进行地图等级集中过滤
-    ac.server.need_map_level = {}
-    local function init_need_map_level()
-        for i,data in ipairs(ac.cus_server_key) do
-            if data[3] then 
-                -- print(data[2],data[3])
-                ac.server.need_map_level[data[2]] = data[3]
-            end    
-        end
+--开始进行地图等级集中过滤
+ac.server.need_map_level = {}
+local function init_need_map_level()
+    for i,data in ipairs(ac.cus_server_key) do
+        if data[3] then 
+            -- print(data[2],data[3])
+            ac.server.need_map_level[data[2]] = data[3]
+        end    
+    end
 
-        for name,data in pairs(star2award) do
-            ac.server.need_map_level[name] = data[3]
-        end
-        for name,data in pairs(wabao2award_data) do
-            ac.server.need_map_level[name] = data[2]
-        end
-        for name,data in pairs(shenlong2award_data) do
-            ac.server.need_map_level[name] = data[2]
-        end
-        for name,data in pairs(ttxd2award1) do
-            ac.server.need_map_level[name] = data[2]
-        end
+    for name,data in pairs(star2award) do
+        ac.server.need_map_level[name] = data[3]
+    end
+    for name,data in pairs(wabao2award_data) do
+        ac.server.need_map_level[name] = data[2]
+    end
+    for name,data in pairs(shenlong2award_data) do
+        ac.server.need_map_level[name] = data[2]
+    end
+    for name,data in pairs(ttxd2award1) do
+        ac.server.need_map_level[name] = data[2]
+    end
 
-        for name,data in pairs(wldh2award_data) do
-            ac.server.need_map_level[name] = data[2]
-        end
+    for name,data in pairs(wldh2award_data) do
+        ac.server.need_map_level[name] = data[2]
+    end
 
-        for i=1,10 do 
-            local p = ac.player(i)
-            if p:is_player() then 
-                for name,val in pairs(p.cus_server) do 
-                    local real_val = (p:Map_GetMapLevel() >= (ac.server.need_map_level[name] or 0))and val or 0 
-                    if name ~= '全属性' then 
-                        -- print('地图等级',p:Map_GetMapLevel(),ac.server.need_map_level[name],val)
-                        -- print('经过地图等级之后的数据：',name,val,real_val)
-                        p.cus_server[name] = real_val
-                    end    
+    for i=1,10 do 
+        local p = ac.player(i)
+        if p:is_player() then 
+            for name,val in pairs(p.cus_server) do 
+                local real_val = (p:Map_GetMapLevel() >= (ac.server.need_map_level[name] or 0))and val or 0 
+                if name ~= '全属性' then 
+                    -- print('地图等级',p:Map_GetMapLevel(),ac.server.need_map_level[name],val)
+                    -- print('经过地图等级之后的数据：',name,val,real_val)
+                    p.cus_server[name] = real_val
                 end    
-            end   
-        end
-    end;
-    ac.init_need_map_level =init_need_map_level
+            end    
+        end   
+    end
+end;
+ac.init_need_map_level =init_need_map_level
+
+ac.wait(1300,function()
     ac.init_need_map_level()
 end)
 

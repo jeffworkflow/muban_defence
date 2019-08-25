@@ -71,7 +71,7 @@ function player.__index:clear_server(...)
     else
         for i,key in ipairs(...) do
             -- print(key,value)
-            player:Map_FlushStoredMission(key) --网易服务器
+            player:Map_FlushStoredMission(key[1]) --网易服务器
         end   
     end    
 end    

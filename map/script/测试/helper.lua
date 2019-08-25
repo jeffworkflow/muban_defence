@@ -975,7 +975,7 @@ function helper:gsp()
 	ac.func_give_suipian(self:get_point())
 end
 
---测试 魔法书功能
+--测试 
 function helper:test_uu()
 	print('当前怪物数量：',ac.unit_cnt)
 	for i=1,3 do 
@@ -984,7 +984,20 @@ function helper:test_uu()
 		for i,u in ipairs(crep.group) do 
 			if u:is_in_range(ac.point(0,0),500) then 
 				print(u:get_name(),'是否活着：',u:is_alive(),u:get_point())
-				break
+			end	
+		end	
+	end	
+end	
+--测试 
+function helper:test_uu2()
+	print('当前怪物数量：',ac.unit_cnt)
+	for i=1,3 do 
+		local crep = ac.creep['刷怪-无尽'..i]
+		print(i,#crep.group)
+		for i,u in ipairs(crep.group) do 
+			if u:is_in_range(ac.point(0,0),500) then 
+				print(u:get_name(),'是否活着：',u:is_alive(),u:get_point())
+				u:kill()
 			end	
 		end	
 	end	

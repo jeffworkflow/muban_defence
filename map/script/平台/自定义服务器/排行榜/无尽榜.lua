@@ -11,7 +11,7 @@ class.wjphb_panel = extends(class.panel){
 
         --左边菜单 
         panel.menu_titles = {
-            '无上之境无尽','斗破苍穹无尽','修罗模式无尽','挖宝',
+            '无上之境无尽','斗破苍穹无尽','修罗模式无尽','比武','挖宝',
         }
         local menu_press_status = 'image\\排行榜\\menu.tga'
         local menu_line = 'image\\排行榜\\menu_line.tga'
@@ -322,11 +322,14 @@ local rank = {
     {'wjdpcq','斗破苍穹无尽'},
     {'wjwszj','无上之境无尽'},
     {'cntwb','挖宝'},
+    {'cntwl','比武'},
+
 
     {'today_wjxlms','今日修罗模式无尽'},
     {'today_wjdpcq','今日斗破苍穹无尽'},
     {'today_wjwszj','今日无上之境无尽'},
     {'today_cntwb','今日挖宝'},
+    {'today_cntwl','今日比武'},
 }
 --处理,显示排行榜数据
 --取前10名数据

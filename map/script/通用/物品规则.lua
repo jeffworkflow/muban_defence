@@ -61,6 +61,8 @@
             --进入施法流程
             if it:_call_event 'on_cast_start' then 
                 it.owner = nil
+                --回收句柄
+                it.recycle = true
                 return true
             end    
             --使用物品，类似消耗品 通用技能→ 升级属性处理

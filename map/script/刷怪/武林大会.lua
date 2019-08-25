@@ -195,6 +195,11 @@ ac.game:event '玩家-注册英雄' (function(_, p, hero)
         p.wldh_jf = (p.wldh_jf or 0 ) + 1
         --保存比武积分
         p:Map_AddServerValue('wljf',1) --网易服务器
+        --保存到自定义服务器 暂时先保存值，后面结束时再保存到服务器
+        if not p.cus_server3 then 
+            p.cus_server3 = {} 
+        end 
+        p.cus_server3['比武'] = (p.cus_server3['比武'] or 0) + 1
         --文字提醒
         p:sendMsg('|cffffe799比武积分+1|r',5)
     end) 
@@ -235,6 +240,22 @@ function give_award()
         tip = tip..'第'..i..'名 |cff00ffff'..data.player:get_name()..'|r共获得|cffff0000'..(data.wldh_jf+jifen)..'|r积分，奖励'..it.color_name..'|r'..'\n\n'
         --保存积分
         data.player:Map_AddServerValue('wljf',jifen) --网易服务器
+        
+        --保存到自定义服务器 暂时先保存值，后面结束时再保存到服务器
+        local p = data.player
+        if not p.cus_server3 then 
+            p.cus_server3 = {} 
+        end 
+        p.cus_server3['比武'] = (p.cus_server3['比武'] or 0) + jifen
+
+        --总比武
+        p.cus_server3['总比武'] = (p.cus_server3['总比武'] or 0) + p.cus_server3['比武']
+        --自定义服务器 保存总积分 
+        p:AddServerValue('cntwl',p.cus_server3['比武'])  
+        --自定义服务器 保存今日最高积分
+        p:sp_set_rank('today_cntwl',p.cus_server3['总比武'])
+        --保存完需要清空，下次保存时才能正确增加上去
+        p.cus_server3['比武'] = 0 
     end    
     ac.player.self:sendMsg(tip)
     

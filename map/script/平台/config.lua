@@ -131,6 +131,7 @@ local cus_key = {
     {'tgcyy','天罡苍羽翼'},
     -- {'xyxyy','玄羽绣云翼',30},
     {'lysxy','龙吟双形翼'},
+    {'jlsxy','金鳞双型翼'},
     
 
     {'lhcq','炉火纯青'},
@@ -215,6 +216,10 @@ local cus_key = {
     {'today_cntwb','今日挖宝'},
     {'today_cntwbrank','今日挖宝排名'},
     
+    {'cntwl','比武'},
+    {'today_cntwl','今日比武'},
+    {'today_cntwlrank','今日比武排名'},
+
     {'hdgx','高兴'},
     {'hdfn','愤怒'},
     {'hdyw','厌恶'},

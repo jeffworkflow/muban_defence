@@ -85,7 +85,7 @@ function player.__index:sp_get_map_test(f)
                         temp_tab[data.key] = data.value
                        
                         --处理排行榜数据
-                        if finds(data.key ,'today_wjwszj','today_wjdpcq','today_wjxlms','today_cntwb') then
+                        if finds(data.key ,'today_cntwl','today_wjwszj','today_wjdpcq','today_wjxlms','today_cntwb') then
                             local new_key = data.key..'rank'
                             local new_key_name = ac.server.key2name(data.key)..'排名'
                             temp_tab[new_key] = data.rank

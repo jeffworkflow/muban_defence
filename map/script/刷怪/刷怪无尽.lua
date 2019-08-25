@@ -277,4 +277,17 @@ ac.game:event '游戏-无尽开始'(function(trg)
         end,
     }
 
+    --特殊处理卡怪问题
+    ac.loop(1000,function(t)
+        for i=1,3 do 
+            local crep = ac.creep['刷怪-无尽'..i]
+            for i,u in ipairs(crep.group) do 
+                if u:is_in_range(ac.point(0,0),500) then 
+                    print(u:get_name(),'是否活着：',u:is_alive(),u:get_point())
+                    u:kill()
+                end	
+            end	
+        end	
+    end)   
+
 end)    

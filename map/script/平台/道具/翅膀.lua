@@ -240,6 +240,39 @@ need_map_level = 29,
 effect = [[Cb_tianlongshengyiBlue.mdx]]
 }
 
+local mt = ac.skill['金鳞双型翼']
+mt{
+--等级
+level = 0,
+--图标
+art = [[lysxy.blp]],
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff无上之境25星
+
+|cffFFE799【翅膀属性】：|r
+|cff00ff00+350  杀怪加全属性|r
+|cff00ff00+350  攻击减甲|r
+|cff00ff00+3500W  初始生命|r
+|cff00ff00+3500   初始护甲|r
+|cff00ff00+5    每秒加杀敌数|r
+
+|cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 350,
+['初始生命'] = 35000000,
+['护甲'] = 3500,
+['攻击减甲'] = 350,
+['每秒加杀敌数'] = 5,
+need_map_level = 29,
+--特效
+effect = [[Cb_tianlongshengyiBlue.mdx]]
+}
+
 local mt = ac.skill['绝世阳炎翼']
 mt{
 --等级
@@ -324,7 +357,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 effect = [[chibang7.mdx]]
 }
 
-for i,name in ipairs({'梦蝶仙翼','玄羽绣云翼','天罡苍羽翼','白龙凝酥翼','天使之光','白羽金虹翼','龙吟双形翼','绝世阳炎翼','轮迴幻魔翼'}) do
+for i,name in ipairs({'梦蝶仙翼','玄羽绣云翼','天罡苍羽翼','白龙凝酥翼','天使之光','白羽金虹翼','龙吟双形翼','金鳞双型翼','绝世阳炎翼','轮迴幻魔翼'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner
