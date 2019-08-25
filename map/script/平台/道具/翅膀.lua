@@ -245,32 +245,32 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[lysxy.blp]],
+art = [[wujinleiji500.blp]],
 --说明
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff无上之境25星
+|cff00ffff无上之境|cffff0000累计|cff00ffff无尽波数=500波
 
 |cffFFE799【翅膀属性】：|r
 |cff00ff00+350  杀怪加全属性|r
 |cff00ff00+350  攻击减甲|r
-|cff00ff00+3500W  初始生命|r
-|cff00ff00+3500   初始护甲|r
-|cff00ff00+5    每秒加杀敌数|r
+|cff00ff00+25%  技能伤害加深|r
+|cff00ff00+25%  对BOSS额外伤害|r
+|cff00ff00+25%  会心伤害|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 350,
-['初始生命'] = 35000000,
-['护甲'] = 3500,
 ['攻击减甲'] = 350,
-['每秒加杀敌数'] = 5,
-need_map_level = 29,
+['技能伤害加深'] = 25,
+['对BOSS额外伤害'] = 25,
+['会心伤害'] = 25,
+need_map_level = 33,
 --特效
-effect = [[Cb_tianlongshengyiBlue.mdx]]
+effect = [[Cb_tianlongshengyi.MDX]]
 }
 
 local mt = ac.skill['绝世阳炎翼']

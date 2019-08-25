@@ -165,12 +165,14 @@ max_level = 35,
 art = [[sj1.blp]],
 --说明
 tip = [[
-通关次数: %cnt_succ%
-无尽累计次数: %cnt_ljwj%
-挖宝积分: %cnt_wbjf%
+
 |cffffe799【赛季时间】|r|cff00ff008月25日-8月31日
 |cffffe799【赛季说明】|r|cff00ff00赛季结束时，将发放丰厚的赛季奖励
 
+
+|cffcccccc当前赛季 通关次数：%cnt_succ%
+|cffcccccc当前赛季 无尽累计波数: %cnt_ljwj%
+|cffcccccc当前赛季 挖宝积分: %cnt_wbjf%
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
