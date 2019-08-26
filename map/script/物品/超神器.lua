@@ -67,7 +67,7 @@ is_skill = true,
 ['多重射'] = 3,
 ['攻击距离'] = 200,
 ['攻击速度'] = 500,
-['攻击间隔'] = -0.1,
+['攻击间隔'] = -1,
 --物品详细介绍的title
 content_tip = '|cffffe799物品说明：|r'
 }
@@ -128,7 +128,7 @@ tip = [[
 |cffcccccc经过亿万年的沉淀，死狱血海出现了一把刀状武器，散发着浓烈的血腥气，通体如红宝石一般皎洁无瑕！
 
 |cff00ff00杀怪/攻击/每秒加全属性+2500
-|cff00ffff攻击1%几率对范围的敌人，造成最大生命值8%的伤害
+|cff00ffff攻击1% 几率对范围的敌人，造成最大生命值8%的伤害
 ]],
 --最大生命值
 value = 8,
@@ -210,10 +210,10 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local p = killer:get_owner()
     p.kill_nainiu = (p.kill_nainiu or 0) +1
     local hero =p.hero
-    if p.kill_nainiu == 100 then 
+    if p.kill_nainiu == 2500 then 
          --创建 猴
         local point = hero:get_point()-{hero:get_facing(),100}--在英雄附近 100 到 400 码 随机点
-        local u = ac.player(12):create_u('超级大菠萝',point)
+        local u = ac.player(12):create_unit('超级大菠萝',point)
         u:add_buff '定身'{
             time = 2
         }
@@ -225,7 +225,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
             local rand_item = ac.god_item[math.random(#ac.god_item)]
             ac.item.create_item(rand_item,unit:get_point())
         end)    
-        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000齐天大圣|r已出现，小心他的金箍棒 ',2)
+        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000超级大菠萝|r已出现，小心他超强的攻击力和毁天灭地的魔法 ',2)
 
 
         p.kill_nainiu = 0
