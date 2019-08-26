@@ -202,12 +202,24 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     p.kill_nainiu = (p.kill_nainiu or 0) +1
     local hero =p.hero
     if p.kill_nainiu == 100 then 
-        --给随机神器
-        local rand_item = ac.god_item[math.random(#ac.god_item)]
-        hero:add_item(rand_item)
+         --创建 猴
+        local point = hero:get_point()-{hero:get_facing(),100}--在英雄附近 100 到 400 码 随机点
+        local u = ac.player(12):create_u('超级大菠萝',point)
+        u:add_buff '定身'{
+            time = 2
+        }
+        u:add_buff '无敌'{
+            time = 2
+        }
+        u:event '单位-死亡' (function(_,unit,killer) 
+            --给随机神器
+            local rand_item = ac.god_item[math.random(#ac.god_item)]
+            ac.item.create_item(rand_item,unit:get_point())
+        end)    
+        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000齐天大圣|r已出现，小心他的金箍棒 ',2)
+
 
         p.kill_nainiu = 0
-        p:sendMsg('|cffffe799获得了 超神器',3)  
     end 
 
 end)
