@@ -210,7 +210,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local p = killer:get_owner()
     p.kill_nainiu = (p.kill_nainiu or 0) +1
     local hero =p.hero
-    if p.kill_nainiu == 2500 then 
+    if p.kill_nainiu == 3250 then 
          --创建 猴
         local point = hero:get_point()-{hero:get_facing(),100}--在英雄附近 100 到 400 码 随机点
         local u = ac.player(12):create_unit('超级大菠萝',point)
