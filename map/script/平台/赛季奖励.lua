@@ -173,6 +173,7 @@ tip = [[
 |cffcccccc当前赛季 通关次数：%cnt_succ%
 |cffcccccc当前赛季 无尽累计波数: %cnt_ljwj%
 |cffcccccc当前赛季 挖宝积分: %cnt_wbjf%
+|cffcccccc当前赛季 比武积分: %cnt_wbjf%
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
@@ -216,6 +217,7 @@ tip = [[
 |cffff0000【杀怪加敏捷】|cff00ffff+1*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
 |cffff0000【攻击加敏捷】|cff00ffff+1*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
 |cffff0000【每秒加敏捷】|cff00ffff+1*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
+|cffff0000【每秒加攻击】|cff00ffff+5*当前赛季的比武积分|cffffff00（最大比武积分受限于地图等级）
 
 ]],
 --目标类型
@@ -233,7 +235,7 @@ art = [[sj12.blp]],
 tip = [[
 
 |cffFFE799【获得方式】：|r
-|cff00ff00赛季结束时，所有在 |cffff0000F5-巅峰排行榜、F5-通关时长排行榜、 F6-无尽总排行榜、F6-挖宝总排行榜 |cff00ff00上面的玩家，均可获得
+|cff00ff00赛季结束时，所有在 |cffff0000F5-巅峰排行榜、F5-通关时长排行榜、 F6-无尽总排行榜、F6-比武总排行榜、F6-挖宝总排行榜 |cff00ff00上面的玩家，均可获得
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+36.8   杀怪加全属性|r
