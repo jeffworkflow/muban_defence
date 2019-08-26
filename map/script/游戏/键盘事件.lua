@@ -216,10 +216,10 @@ ac.game:event '玩家-聊天' (function(self, player, str)
                                 skl.old_effect2 = skl.effect2
                                 skl.effect2 = ''
                             else
-                                skl.effect = skl.old_effect
-                                skl.effect1 = skl.old_effect1
-                                skl.effect2 = skl.old_effect2
-                                skl.model = skl.old_model
+                                skl.effect = skl.old_effect or skl.effect
+                                skl.effect1 = skl.old_effect1 or skl.effect1
+                                skl.effect2 = skl.old_effect2 or skl.effect2
+                                skl.model = skl.old_model or skl.model
                             end	
                         end    
                     end	

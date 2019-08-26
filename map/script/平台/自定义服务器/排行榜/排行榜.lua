@@ -72,20 +72,23 @@ class.phb_panel = extends(class.panel){
         -- panel:add_texture(img_phb_df,256,20,183,47) 
         local img_tip2 = panel:add_button(img_phb_tgsc,150+menu_width+main_box_width+off_left ,20+off_top,183,47) 
         -- panel:add_texture(img_phb_tgsc,689,20,183,47) 
+        
+        local more_tip1 = panel:add_button([[image\排行榜\icon_wenhao.blp]],440+menu_width+off_left, off_top,32,32) 
+        local more_tip2 = panel:add_button([[image\排行榜\icon_wenhao.blp]],440+menu_width+main_box_width+off_left ,off_top,32,32) 
         local info = {
-            name = '',
+            name ='',
             tip = '每小时刷新一次'
         }
-        function img_tip1:on_button_mouse_enter()
+        function more_tip1:on_button_mouse_enter()
             if info then 
-                self:tooltip(info.name,info.tip,0,200,84)
+                self:tooltip(info.name,info.tip,-1,200,84,10)
             end
-        end    
-        function img_tip2:on_button_mouse_enter()
+        end   
+        function more_tip2:on_button_mouse_enter()
             if info then 
-                self:tooltip(info.name,info.tip,0,200,84)
+                self:tooltip(info.name,info.tip,-1,200,84,10)
             end
-        end    
+        end      
 
         local texture = panel:add_texture(img_title,54+menu_width+off_left,65+off_top,366,48) 
         local text = texture:add_text('名次',30,0,30,34,10,'left')

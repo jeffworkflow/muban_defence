@@ -42,7 +42,7 @@ function mt:on_cast_start()
 
     for i=1,6 do 
         local item = hero:get_slot_item(i)
-        if item and item.item_type == '装备' and item.color ~= '黑' and item.level < (item.max_level or 999) then 
+        if item and item.item_type == '装备' and finds(item.color,'白','蓝','金','红')  and item.level < (item.max_level or 999) then 
             count = count + 1
             local info = {
                 name = "|cff"..ac.color_code[item.color or '白']..'点金 '.. item:get_name() .. '|r  (第' .. item.slot_id .. '格)',

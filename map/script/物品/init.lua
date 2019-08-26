@@ -7,6 +7,8 @@ require '物品.合成装备'
 require '物品.套装'
 require '物品.特殊处理'
 require '物品.黑色物品'
+require '物品.超神器'
+
 local unit = require 'types.unit'
 
 

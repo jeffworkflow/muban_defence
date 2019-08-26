@@ -624,30 +624,32 @@ function mt:on_cast_start()
     hero = p.hero
     -- print(ac.map.rects['奶牛区'],ac.map.rects['奶牛区']:get_point())
     hero:blink(ac.map.rects['奶牛区'],true,false,true)
-
     --开启奶牛刷怪
     for i=1,3 do 
         local crep = ac.creep['奶牛'..i]
         crep:start()
     end 
     --倒计时
-    ac.timer_ex 
+    if not ac.flag_jixian then
+        ac.flag_jixian={}
+    end    
+    if ac.flag_jixian['奶牛'] then 
+        ac.flag_jixian['奶牛']:remove()
+    end    
+    ac.flag_jixian['奶牛'] = ac.timer_ex 
     {
         time = 3*60, 
         -- time = 30,  --测试
-        title = "奶牛区关闭倒计时：",
-        func = function ()
-            --关闭刷怪
+        title = '奶牛'.."区,关闭倒计时：",
+        func = function ()--关闭刷怪
             for i=1 ,3 do 
                 local crep = ac.creep['奶牛'..i] 
                 crep:finish(true)
             end  
-            --传送英雄出去
-            hero:blink(ac.map.rects['主城'],true,false,true)
+            ac.flag_jixian['奶牛'] = nil
         end,
     }
-
-
+   
 end    
 
 local mt = ac.skill['制裁之刃']

@@ -75,7 +75,7 @@ function mt:on_cast_shot()
 	-- selected_item 白，蓝，金，红
 	for i=1,#selected_item+#selected_item do 
 		local item = selected_item[i]
-		if item then 
+		if item and item.color then 
 			table.insert(hecheng[item.color],i)
 			-- hecheng[item.color] = (hecheng[item.color] or 0 +1)
 			if #hecheng[item.color] == 4 then 
@@ -96,6 +96,9 @@ function mt:on_cast_shot()
 				--增加新物品
 				local next_color = get_next_color(item.color)
 				local list = ac.quality_item[next_color] 
+				if not list then 
+					return 
+				end 
 				local name = list[math.random(#list)]
 				local new_item = ac.item.create_item(name,self.target) --创建物品
 				table.insert(selected_item,new_item)

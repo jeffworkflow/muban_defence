@@ -249,7 +249,7 @@ local tool = {
     end,
 
 
-    tooltip = function (self,title,tip,pos,pWidth,pHeight)
+    tooltip = function (self,title,tip,pos,pWidth,pHeight,font_size)
 
         --回收掉已经在显示的tip
         class.ui_base.remove_tooltip()
@@ -287,11 +287,14 @@ local tool = {
 
         local texture = panel:add_texture('image\\提示框\\BJ.tga',5,5,panel.w-10,panel.h-10)
         local texture = panel:add_panel('image\\提示框\\BT.tga',5,5,panel.w-10,panel.h-10)
+        local th = 0
+        if title_str then 
+            local title_text = texture:add_text(title_str,0,0,texture.w,32,font_size or 12,title_align)
+            title_text:set_color(0xffe0e0e0)
+            th = 30
+        end    
 
-        local title_text = texture:add_text(title_str,0,0,texture.w,32,12,title_align)
-        title_text:set_color(0xffe0e0e0)
-
-        local tip_text = texture:add_text(tip,0,30,texture.w-20,texture.h,12,'auto_newline')
+        local tip_text = texture:add_text(tip,0,th,texture.w-20,texture.h,font_size or 12,'auto_newline')
         tip_text:set_color(0xffa0a0a0)
         tip_text:set_control_size(texture.w - 20,texture.h)
 

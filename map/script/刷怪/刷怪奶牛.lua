@@ -6,7 +6,8 @@ for i=1,3 do
     local mt = ac.creep['奶牛'..i]{    
         creeps_datas = '奶牛*15',
         region = 'nainiu1'..i,
-        cool_count = 3,
+        cool = 1,
+        create_unit_cool = 0,
     }
     function mt:on_change_creep(unit,lni_data)
         --设置搜敌范围

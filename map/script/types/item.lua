@@ -120,6 +120,7 @@ local color_code = {
     ['金'] = 'ffff00',
 	['灰'] = 'cccccc',
 	['淡黄'] = 'FFE799',
+    ['神'] = 'df19d0', --91007F 860202
 	
 }
 ac.color_code = color_code
