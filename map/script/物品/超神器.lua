@@ -1,97 +1,111 @@
 --物品名称
-local mt = ac.skill['法师流派']
+local mt = ac.skill['古代护身符']
 mt{
 --等久
 level = 1,
 --图标
-art = [[hwzj.blp]],
+art = [[gdhsf.blp]],
 --类型
 item_type = "装备",
 --品质
 color ='神',
 --模型
-specail_model = [[File00000376 - RC.mdx]],
+specail_model = [[File00000376 - Z.mdx]],
 --描述
 tip = [[
 
-|cffcccccc人不仁，无信无义。王不仁，无德无量。地不仁，无草无木。天不仁，无世间万物。万年圣物，荒芜之戒。
+|cffcccccc耶路撒冷发现的一件迷人的小护身符，是人们一直痴迷于抵御传说中的邪恶之眼
 
-|cff00ff00所有队友的攻击减甲+250
+|cff00ff00智力+35%
+|cff00ffff技暴加深+800%
+|cff00ffff会心伤害+400%
+|cff00ffff技能伤害加深+200%
+|cffffff00全伤加深+100%
+|cffffff00对BOSS额外伤害+50%
 ]],
 --物品技能
 is_skill = true,
 ['智力%'] = 35,
-['技暴加深'] = 35,
-['会心伤害'] = 35,
-['技能伤害加深'] = 35,
-['全伤加深'] = 35,
-['对BOSS额外伤害'] = 35,
+['技暴加深'] = 800,
+['会心伤害'] = 400,
+['技能伤害加深'] = 200,
+['全伤加深'] = 100,
+['对BOSS额外伤害'] = 50,
 --物品详细介绍的title
 content_tip = '|cffffe799物品说明：|r'
 }
 
-local mt = ac.skill['射手流派']
+local mt = ac.skill['太初威丸弹弓']
 mt{
 --等久
 level = 1,
 --图标
-art = [[hwzj.blp]],
+art = [[tcwwdg.blp]],
 --类型
 item_type = "装备",
 --品质
 color ='神',
 --模型
-specail_model = [[File00000376 - RC.mdx]],
+specail_model = [[File00000376 - Z.mdx]],
 --描述
 tip = [[
 
-|cffcccccc人不仁，无信无义。王不仁，无德无量。地不仁，无草无木。天不仁，无世间万物。万年圣物，荒芜之戒。
+|cffcccccc杀伤力和威慑力极大的一种新型兵器
 
-|cff00ff00所有队友的攻击减甲+250
+|cff00ff00敏捷+35%
+|cff00ffff攻击减甲+500
+|cff00ffff多重射+3
+|cffffff00攻击距离+200 
+|cffff0000极致的攻击间隔/攻击速度
 ]],
 --攻击减甲数值
 value = 250,
 --物品技能
 is_skill = true,
-['智力%'] = 35,
-['技暴加深'] = 35,
-['会心伤害'] = 35,
-['技能伤害加深'] = 35,
-['全伤加深'] = 35,
-['对BOSS额外伤害'] = 35,
+['敏捷%'] = 35,
+['攻击减甲'] = 500,
+['多重射'] = 3,
+['攻击距离'] = 200,
+['攻击速度'] = 500,
+['攻击间隔'] = -0.1,
 --物品详细介绍的title
 content_tip = '|cffffe799物品说明：|r'
 }
 
-local mt = ac.skill['杀手流派']
+local mt = ac.skill['贯月昆吾剑']
 mt{
 --等久
 level = 1,
 --图标
-art = [[hwzj.blp]],
+art = [[gykwj.blp]],
 --类型
 item_type = "装备",
 --品质
 color ='神',
 --模型
-specail_model = [[File00000376 - RC.mdx]],
+specail_model = [[File00000376 - Z.mdx]],
 --描述
 tip = [[
 
-|cffcccccc人不仁，无信无义。王不仁，无德无量。地不仁，无草无木。天不仁，无世间万物。万年圣物，荒芜之戒。
+|cffcccccc祖妖昆吾死后,全身精血骨骸凝聚成了一把剑型武器，月圆之夜就会对月咆哮，似欲贯月一般！
 
-|cff00ff00所有队友的攻击减甲+250
+|cff00ff00敏捷+35%
+|cff00ffff暴击加深+800%
+|cff00ffff会心伤害+400%
+|cff00ffff物理伤害加深+200%
+|cffffff00全伤加深+100%
+|cffffff00对BOSS额外伤害+50%
 ]],
 --攻击减甲数值
 value = 250,
 --物品技能
 is_skill = true,
-['智力%'] = 35,
-['技暴加深'] = 35,
-['会心伤害'] = 35,
-['技能伤害加深'] = 35,
-['全伤加深'] = 35,
-['对BOSS额外伤害'] = 35,
+['敏捷%'] = 35,
+['暴击加深'] = 800,
+['会心伤害'] = 400,
+['物理伤害加深'] = 200,
+['全伤加深'] = 100,
+['对BOSS额外伤害'] = 50,
 --物品详细介绍的title
 content_tip = '|cffffe799物品说明：|r'
 }
@@ -101,19 +115,20 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[hwzj.blp]],
+art = [[syzwd.blp]],
 --类型
 item_type = "装备",
 --品质
 color ='神',
 --模型
-specail_model = [[File00000376 - RC.mdx]],
+specail_model = [[File00000376 - Z.mdx]],
 --描述
 tip = [[
 
-|cffcccccc人不仁，无信无义。王不仁，无德无量。地不仁，无草无木。天不仁，无世间万物。万年圣物，荒芜之戒。
+|cffcccccc经过亿万年的沉淀，死狱血海出现了一把刀状武器，散发着浓烈的血腥气，通体如红宝石一般皎洁无瑕！
 
-|cff00ff00所有队友的攻击减甲+250
+|cff00ff00杀怪/攻击/每秒加全属性+2500
+|cff00ffff攻击1%几率对范围的敌人，造成最大生命值8%的伤害
 ]],
 --最大生命值
 value = 8,
@@ -121,12 +136,6 @@ area =300,
 chance = 1,
 --物品技能
 is_skill = true,
-['智力%'] = 35,
-['技暴加深'] = 35,
-['会心伤害'] = 35,
-['技能伤害加深'] = 35,
-['全伤加深'] = 35,
-['对BOSS额外伤害'] = 35,
 effect = [[AZ_Leviathan_V2.mdx]],
 --物品详细介绍的title
 content_tip = '|cffffe799物品说明：|r'
@@ -181,7 +190,7 @@ end
 
 
 ac.god_item = {
-    '法师流派','射手流派','杀手流派','死狱尊吾刀'
+    '古代护身符','太初威丸弹弓','贯月昆吾剑','死狱尊吾刀'
 }
 
 --吞噬丹 吞噬技能（会执行技能上面的属性和on_add）
@@ -207,7 +216,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         hero:add_item(rand_item)
 
         p.kill_nainiu = 0
-        p:sendMsg('|cffffe799获得了 超神器',3)  
+        -- p:sendMsg('|cffffe799获得了 超神器',3)  
     end 
 
 end)
