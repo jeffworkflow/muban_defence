@@ -21,6 +21,9 @@ local cnt_ljwj_config = { --通关
 local cnt_wbjf_config = {
     {'wbjf','挖宝积分'},
 }
+local cnt_wljf_config = {
+    {'wljf','比武积分'},
+}
 
 local get_season 
 local save_season 
@@ -173,7 +176,7 @@ tip = [[
 |cffcccccc当前赛季 通关次数：%cnt_succ%
 |cffcccccc当前赛季 无尽累计波数: %cnt_ljwj%
 |cffcccccc当前赛季 挖宝积分: %cnt_wbjf%
-|cffcccccc当前赛季 比武积分: %cnt_wbjf%
+|cffcccccc当前赛季 比武积分: %cnt_wljf%
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
@@ -200,6 +203,14 @@ cnt_wbjf = function(self)
     local p = hero:get_owner()
     local cnt = get_season(p,'S0挖宝积分') - (p.cus_server['S0挖宝积分'] or 0)
     cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
+    return cnt
+end,
+--通关次数 总计
+cnt_wljf = function(self)
+    local hero = self.owner
+    local p = hero:get_owner()
+    local cnt = get_season(p,'S1比武积分') --- (p.cus_server['S1比武积分'] or 0)
+    cnt = math.min(cnt,1000,p:Map_GetMapLevel()*50) --5000,500
     return cnt
 end,
 }
@@ -280,6 +291,10 @@ get_season = function(p,key,flag_reduce)
         end 
     elseif  key == 'S0挖宝积分' then   
         for i,data in ipairs(cnt_wbjf_config) do 
+            cnt = cnt + (p.cus_server[data[2]] or 0)
+        end 
+    elseif  key == 'S1比武积分' then   
+        for i,data in ipairs(cnt_wljf_config) do 
             cnt = cnt + (p.cus_server[data[2]] or 0)
         end 
     end    
