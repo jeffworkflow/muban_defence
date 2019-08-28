@@ -1381,7 +1381,6 @@ function player.__index:create_unit(id, where, face)
 	end
 	local u = ac.game:event_dispatch('单位-创建前',data,self,j_id, x, y,face)
 	if u then 
-		-- print('不往下继续创建:',u)
 		return u 
 	end	
 	ignore_flag = true
@@ -1413,6 +1412,12 @@ function player.__index:create_dummy(id, where, face)
 	if ac.player.com and ac.player.com[team] then
 		owner = ac.player.com[team]
 	end
+	--马甲模拟死亡
+	-- local u = ac.game:event_dispatch('单位-创建前',data,self,j_id, x, y,face)
+	-- if u then 
+	-- 	return u 
+	-- end	
+
 	ignore_flag = true
 	local handle = jass.CreateUnit(owner.handle, j_id, x, y, face or 0)
 	unit.remove_handle_map[handle] = nil 

@@ -71,7 +71,6 @@ local function tornado(skill,target,max_damage)
         }
         if mvr then
             function mvr:on_hit(dest)
-                local mover = mvr.mover
                 dest:damage
                 {
                     source = hero,

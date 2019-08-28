@@ -278,7 +278,7 @@ ac.game:event '游戏-开始'(function()
                     else
                         --有魔法书的情况下，升级
                         skl:upgrade(1)
-                        ac.player.self:sendMsg('|cffff0000【可存档成就】'..save_name..'+1',6) 
+                        p:sendMsg('|cffff0000【可存档成就】'..save_name..'+1',6) 
                     end   
                 else
                     p:sendMsg('|cffffe799【系统消息】|r阁下人品略低 |cffff0000超度失败',6) 

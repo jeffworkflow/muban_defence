@@ -58,8 +58,6 @@ tip = [[
 |cffffff00攻击距离+200 
 |cffff0000极致的攻击间隔/攻击速度
 ]],
---攻击减甲数值
-value = 250,
 --物品技能
 is_skill = true,
 ['敏捷%'] = 35,
@@ -96,8 +94,6 @@ tip = [[
 |cffffff00全伤加深+100%
 |cffffff00对BOSS额外伤害+50%
 ]],
---攻击减甲数值
-value = 250,
 --物品技能
 is_skill = true,
 ['敏捷%'] = 35,
@@ -189,14 +185,245 @@ function mt:on_remove()
 end 
 
 
+local mt = ac.skill['混沌太虚甲']
+mt{
+--等久
+level = 1,
+--图标
+art = [[gykwj.blp]],
+--类型
+item_type = "装备",
+--品质
+color ='神',
+--模型
+specail_model = [[File00000376 - Z.mdx]],
+--描述
+tip = [[
+
+|cffcccccc祖妖昆吾死后,全身精血骨骸凝聚成了一把剑型武器，月圆之夜就会对月咆哮，似欲贯月一般！
+
+|cff00ff00敏捷+35%
+|cff00ffff暴击加深+800%
+|cff00ffff会心伤害+400%
+|cff00ffff物理伤害加深+200%
+|cffffff00全伤加深+100%
+|cffffff00对BOSS额外伤害+50%
+]],
+--物品技能
+is_skill = true,
+['敏捷%'] = 35,
+['暴击加深'] = 800,
+['会心伤害'] = 400,
+['物理伤害加深'] = 200,
+['全伤加深'] = 100,
+['对BOSS额外伤害'] = 50,
+--物品详细介绍的title
+content_tip = '|cffffe799物品说明：|r'
+}
+
+local mt = ac.skill['盘古开天斧']
+mt{
+--等久
+level = 1,
+--图标
+art = [[gykwj.blp]],
+--类型
+item_type = "装备",
+--品质
+color ='神',
+--模型
+specail_model = [[File00000376 - Z.mdx]],
+--描述
+tip = [[
+
+|cffcccccc祖妖昆吾死后,全身精血骨骸凝聚成了一把剑型武器，月圆之夜就会对月咆哮，似欲贯月一般！
+
+|cff00ff00敏捷+35%
+|cff00ffff暴击加深+800%
+|cff00ffff会心伤害+400%
+|cff00ffff物理伤害加深+200%
+|cffffff00全伤加深+100%
+|cffffff00对BOSS额外伤害+50%
+]],
+--物品技能
+is_skill = true,
+['力量%'] = 35,
+['攻击%'] = 100,
+['分裂伤害'] = 500,
+['减少周围护甲'] = 5000,
+--物品详细介绍的title
+content_tip = '|cffffe799物品说明：|r'
+}
+
+
+local mt = ac.skill['往生女娲泪']
+mt{
+--等久
+level = 1,
+--图标
+art = [[gykwj.blp]],
+--类型
+item_type = "装备",
+--品质
+color ='神',
+--模型
+specail_model = [[File00000376 - Z.mdx]],
+--描述
+tip = [[
+
+|cffcccccc祖妖昆吾死后,全身精血骨骸凝聚成了一把剑型武器，月圆之夜就会对月咆哮，似欲贯月一般！
+
+每秒加全属性+50000
+杀怪加攻击+8888
+全伤加深+150%
+]],
+--物品技能
+is_skill = true,
+chance = 25,
+heal = 60,
+effect = [[Abilities\Spells\Human\Resurrect\ResurrectCaster.mdl]],
+--物品详细介绍的title
+content_tip = '|cffffe799物品说明：|r'
+}
+function mt:on_add()
+    local hero = self.owner
+    local p = hero:get_owner()
+    local skill = self
+    hero:add('每秒加全属性',50000)
+    hero:add('杀怪加攻击',8888)
+    hero:add('全伤加深',150)
+
+    self.trg = hero:event '单位-即将死亡' (function (_,unit,killer)
+	
+		local rand = math.random(1,100)
+        if rand <= self.chance then 
+            --目标特效
+            -- ac.effect(damage.target:get_point(),self.effect,0,4,'origin'):remove()
+            hero:add_effect('chest',self.effect):remove()
+            --目标减最大 
+            hero:heal
+            {
+                source = hero,
+                skill = skill,
+                string = '守护天使',
+                size = 10,
+                heal = hero:get('生命上限') * skill.heal/100,
+            }	
+            -- hero:add('护甲',1000000000)
+            return true
+        end
+    end)    
+
+end   
+function mt:on_remove()
+    local hero = self.owner
+    local p = hero:get_owner()
+    local skill = self
+    hero:add('每秒加全属性',-50000)
+    hero:add('杀怪加攻击',-8888)
+    hero:add('全伤加深',-150)
+    
+    if self.trg then 
+        self.trg:remove()
+        self.trg = nil 
+    end    
+    
+end    
+
+
+local mt = ac.skill['回梦昆仑镜']
+mt{
+--等久
+level = 1,
+--图标
+art = [[gykwj.blp]],
+--类型
+item_type = "装备",
+--品质
+color ='神',
+--模型
+specail_model = [[File00000376 - Z.mdx]],
+--描述
+tip = [[
+
+|cffcccccc祖妖昆吾死后,全身精血骨骸凝聚成了一把剑型武器，月圆之夜就会对月咆哮，似欲贯月一般！
+
+每秒加全属性+50000
+杀怪加攻击+8888
+全伤加深+150%
+]],
+--物品技能
+is_skill = true,
+chance = 1, --测试
+real_damage_rate = 95,
+effect = [[xrdh.mdx]],
+--物品详细介绍的title
+content_tip = '|cffffe799物品说明：|r'
+}
+function mt:on_add()
+    local hero = self.owner
+    local p = hero:get_owner()
+    local skill = self
+    hero:add('暴击加深',800)
+    hero:add('技暴加深',800)
+    hero:add('会心伤害',800)
+
+    self.trg = hero:event '造成伤害效果' (function(_,damage)
+		if not damage:is_common_attack()  then 
+			return 
+        end 
+        local str = table.concat(ac.attack_unit)
+        if not finds(str,damage.target:get_name()) then 
+            return 
+        end    
+		local rand = math.random(1,100)
+        if rand <= self.chance then 
+            --目标特效
+            ac.effect(damage.target:get_point(),self.effect,0,4,'origin'):remove()
+            -- hero:add_effect('chest',self.effect):remove()
+            --目标减最大 
+            damage.target:damage
+            {
+                source = hero,
+                damage = damage.target:get('生命')*self.real_damage_rate/100,
+                skill = skill,
+                real_damage = true --真伤
+            }
+            --传送
+            if damage.target:is_alive() then 
+                damage.target:set_position(ac.map.rects['进攻点']:get_point())
+                --目标特效
+                ac.effect(damage.target:get_point(),self.effect,0,4,'origin'):remove()
+            end    
+           
+        end
+        return true
+    end)    
+
+end   
+function mt:on_remove()
+    local hero = self.owner
+    local p = hero:get_owner()
+    local skill = self
+    hero:add('暴击加深',-800)
+    hero:add('技暴加深',-800)
+    hero:add('会心伤害',-800)
+    
+    if self.trg then 
+        self.trg:remove()
+        self.trg = nil 
+    end    
+    
+end    
+
 ac.god_item = {
-    '古代护身符','太初威丸弹弓','贯月昆吾剑','死狱尊吾刀'
+    '古代护身符','太初威丸弹弓','贯月昆吾剑','死狱尊吾刀','混沌太虚甲','盘古开天斧','往生女娲泪','回梦昆仑镜'
 }
 
 --吞噬丹 吞噬技能（会执行技能上面的属性和on_add）
 ac.wait(10,function()
     local item =[[
-死狱尊吾刀
+死狱尊吾刀 往生女娲泪 回梦昆仑镜
     ]]
     ac.tunshi_black_item =ac.tunshi_black_item .. item
 end)
