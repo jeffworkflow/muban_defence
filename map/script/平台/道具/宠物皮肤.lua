@@ -147,7 +147,7 @@ tip = [[
 |cff00ffff+35   攻击减甲|r
 |cff00ffff+15% 触发概率加成|r
 |cff00ffff-10% 技能冷却|r
-|cffffff00小悟空+骨龙激活：技能伤害加深+50%， 攻击减甲+65，触发概率加成+25%
+|cffffff00小悟空+骨龙激活：技能伤害加深+75%， 攻击减甲+100，触发概率加成+35%
 
 |cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
 --目标类型
@@ -159,7 +159,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
     local val = 35 
     local p = self.owner:get_owner()
     if (p.mall and p.mall['小悟空'] or 0) >=1 then 
-        val = val + 65
+        val = val + 100
     end    
     return val
 end,
@@ -167,7 +167,7 @@ end,
     local val = 15 
     local p = self.owner:get_owner()
     if (p.mall and p.mall['小悟空'] or 0) >=1 then 
-        val = val + 25
+        val = val + 35
     end    
     return val
 end,
@@ -175,7 +175,7 @@ end,
     local val = 0 
     local p = self.owner:get_owner()
     if (p.mall and p.mall['小悟空'] or 0) >=1 then 
-        val = val + 50
+        val = val + 75
     end    
     return val
 end,
@@ -246,7 +246,7 @@ tip = [[
 |cff00ffff+50   攻击减甲|r
 |cff00ffff+25% 触发概率加成|r
 |cff00ffff-15% 技能冷却|r
-|cffffff00小悟空+骨龙激活：技能伤害加深+50%， 攻击减甲+65，触发概率加成+25%|r
+|cffffff00小悟空+骨龙激活：技能伤害加深+75%， 攻击减甲+100，触发概率加成+35%
 
 |cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
 --目标类型
