@@ -292,27 +292,29 @@ function mt:on_add()
     hero:add('每秒加全属性',50000)
     hero:add('杀怪加攻击',8888)
     hero:add('全伤加深',150)
-
-    self.trg = hero:event '单位-即将死亡' (function (_,unit,killer)
-	
-		local rand = math.random(1,100)
-        if rand <= self.chance then 
-            --目标特效
-            -- ac.effect(damage.target:get_point(),self.effect,0,4,'origin'):remove()
-            hero:add_effect('chest',self.effect):remove()
-            --目标减最大 
-            hero:heal
-            {
-                source = hero,
-                skill = skill,
-                string = '守护天使',
-                size = 10,
-                heal = hero:get('生命上限') * skill.heal/100,
-            }	
-            -- hero:add('护甲',1000000000)
-            return true
-        end
-    end)    
+    if not hero.flag_wsnwl then 
+        hero.flag_wsnwl = true
+        self.trg = hero:event '单位-即将死亡' (function (_,unit,killer)
+        
+            local rand = math.random(1,100)
+            if rand <= self.chance then 
+                --目标特效
+                -- ac.effect(damage.target:get_point(),self.effect,0,4,'origin'):remove()
+                hero:add_effect('chest',self.effect):remove()
+                --目标减最大 
+                hero:heal
+                {
+                    source = hero,
+                    skill = skill,
+                    string = '守护天使',
+                    size = 10,
+                    heal = hero:get('生命上限') * skill.heal/100,
+                }	
+                -- hero:add('护甲',1000000000)
+                return true
+            end
+        end)    
+    end    
 
 end   
 function mt:on_remove()
@@ -322,7 +324,7 @@ function mt:on_remove()
     hero:add('每秒加全属性',-50000)
     hero:add('杀怪加攻击',-8888)
     hero:add('全伤加深',-150)
-    
+    hero.flag_wsnwl = false
     if self.trg then 
         self.trg:remove()
         self.trg = nil 
