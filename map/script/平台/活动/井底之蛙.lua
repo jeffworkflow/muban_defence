@@ -7,8 +7,8 @@ level = 1,
 art = [[jdzw.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff008月11日-8月14日
-|cffffe799【活动说明】|r|cff00ff00雨过不知龙去处，一池草色万蛙鸣。|cff00ffff这几天刮台风，基地经常出现一些青蛙，天天在那里哇哇叫。|cff00ff00还请帮忙|cffff0000把青蛙抓起来|r|cff00ff00，放到|cffffff00右边花园的井里|r
+|cffffe799【活动时间】|r|cff00ff008月29日-9月2日
+|cffffe799【活动说明】|r|cff00ff00雨过不知龙去处，一池草色万蛙鸣。|cff00ffff这几天基地里经常出现一些青蛙，天天在那里哇哇叫。|cff00ff00还请帮忙|cffff0000把青蛙抓起来|r|cff00ff00，放到|cffffff00右边花园的井里|r
 ]],
 --物品类型
 item_type = '神符',

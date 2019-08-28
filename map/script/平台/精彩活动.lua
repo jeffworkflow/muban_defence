@@ -39,7 +39,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff抓青蛙活动获得
+|cff00ffff抓青蛙活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=2
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+%杀怪加全属性%   杀怪加全属性|r
@@ -70,7 +70,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff抓青蛙活动获得
+|cff00ffff抓青蛙活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=2
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+%杀怪加全属性%   杀怪加全属性|r
