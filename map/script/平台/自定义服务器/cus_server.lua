@@ -397,8 +397,8 @@ function player.__index:sp_get_map_flag(f)
             end         
         else
             print('服务器返回数据异常:',retval,post)
-            self:sendMsg('|cffff0000读取服务器数据失败，本次冲榜可能无效!|r',10)
-            self:sendMsg('|cffff0000读取服务器数据失败，本次冲榜可能无效!|r',10)
+            -- self:sendMsg('|cffff0000读取服务器数据失败，本次冲榜可能无效!|r',10)
+            -- self:sendMsg('|cffff0000读取服务器数据失败，本次冲榜可能无效!|r',10)
         end    
     end)
 end
