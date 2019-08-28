@@ -294,7 +294,7 @@ tip = [[
 |cff00ff00+10%   免伤几率|r
 |cff00ff00+10%   对BOSS额外伤害|r
 
-|cffffff00轮迴幻魔翼+绝世阳炎翼可激活属性：全伤加深+100%
+|cffffff00轮迴幻魔翼+绝世阳炎翼可激活属性：全伤加深+100%， 会心伤害+100%
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
@@ -315,6 +315,16 @@ target_type = ac.skill.TARGET_TYPE_NONE,
     end    
     return val
 end,
+
+['会心伤害'] = function(self) 
+    local val = 0 
+    local p = self.owner:get_owner()
+    if (p.mall and p.mall['轮迴幻魔翼'] or 1) >=1 then 
+        val = 100
+    end    
+    return val
+end,
+
 --特效
 effect = [[chibang8.mdx]]
 }
@@ -340,7 +350,7 @@ tip = [[
 |cff00ff00+10%   免伤几率|r
 |cff00ff00+10%   对BOSS额外伤害|r
 
-|cffffff00轮迴幻魔翼+绝世阳炎翼可激活属性：全伤加深+100%
+|cffffff00轮迴幻魔翼+绝世阳炎翼可激活属性：全伤加深+100%， 会心伤害+100%
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],

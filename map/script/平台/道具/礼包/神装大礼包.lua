@@ -15,7 +15,7 @@ tip = [[
 |cff00ff00随机物品1个|cffff0000（纯随机，人品好直接出黑装）
 |cff00ff00吞噬丹1个 |cffff0000（可直接吞噬某件装备）
 |cff00ff00开局随机激活一套套装属性|cffff0000（不和套装洗练冲突）
-|cffffff00神装大礼包+神技大礼包激活：吞噬丹*1，点金石*10，恶魔果实*1
+|cffffff00神装大礼包+神技大礼包激活：吞噬丹*1，点金石*30，恶魔果实*1
 |cff00ff00随机套装属性：|r
 %attr_tip%
 ]],
@@ -48,7 +48,7 @@ tip = [[
 |cff00ff00随机物品1个|cffffff00（纯随机，人品好直接出黑装）
 |cff00ff00吞噬丹1个 |cffffff00可直接吞噬某件装备
 |cff00ff00开局随机激活一套套装属性|cffffff00（不和套装洗练冲突）|r
-|cffffff00神装大礼包+神技大礼包激活：吞噬丹*1，点金石*10，恶魔果实*1
+|cffffff00神装大礼包+神技大礼包激活：吞噬丹*1，点金石*30，恶魔果实*1
 随机套装属性：|r
 %attr_tip%
 ]],
@@ -108,7 +108,7 @@ function mt:on_cast_start()
         if (p.mall and p.mall['神技大礼包'] or 0) >=1 then 
             self.owner:add_item('吞噬丹',true)
             local item = ac.item.create_item('点金石',self.owner:get_point())
-            item:set_item_count(10)
+            item:set_item_count(30)
             self.owner:add_item(item,true) 
             self.owner:add_item('恶魔果实',true) 
         end 
