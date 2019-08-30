@@ -88,6 +88,7 @@ local cus_key = {
     {'cntdpcq','斗破苍穹'}, -- 星数
     {'cntpkms','武林大会'}, -- 星数
     {'cntwszj','无上之境'},
+    {'cntldms','乱斗模式'}, -- 星数
     
 
     {'wjxlms','修罗模式无尽'}, -- 无尽层数最高值

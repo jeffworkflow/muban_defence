@@ -62,6 +62,13 @@ function mt:on_cast_start()
     else
         self.wabao_auto_use = false
     end    
+    if player.peon_wabao then 
+        if player.hero.wabao_auto then 
+            self.wabao_auto_use = true
+        else
+            self.wabao_auto_use = false
+        end 
+    end    
 
     if self.eff then 
         self.eff:remove()
@@ -81,16 +88,16 @@ function mt:on_cast_start()
         if not self.trg then 
             self.trg = region:event '区域-进入' (function(trg, unit)
                 if  unit == hero then
-                    if hero.unit_type == '宠物' or hero.unit_type == '召唤物' then 
+                    if not player.peon_wabao and  (hero.unit_type == '宠物' or hero.unit_type == '召唤物') then 
                         player:sendMsg('|cff00ffff宠物不能挖图|r',3)
                         player:sendMsg('|cff00ffff宠物不能挖图|r',3)
                         return true
                     end 
                     -- print('单位进入')
                     self:on_add() 
-                    -- for i =1,100 do 
-                    self:add_content()  
-                    -- end
+                    for i =1,player.cnt_award_wabao or 1 do 
+                       self:add_content()  
+                    end
                     self:add_item_count(-1) 
                     if self.trg then 
                         self.trg:remove()
@@ -112,7 +119,7 @@ function mt:on_cast_start()
     else      
         --点在区域内
         if region < point  then
-            if hero.unit_type == '宠物' or hero.unit_type == '召唤物' then 
+            if not player.peon_wabao and  ( hero.unit_type == '宠物' or hero.unit_type == '召唤物') then 
                 player:sendMsg('|cff00ffff宠物不能挖图|r',3)
                 player:sendMsg('|cff00ffff宠物不能挖图|r',3)
                 return true
@@ -122,9 +129,9 @@ function mt:on_cast_start()
             self:on_add() 
             --添加东西给英雄
             --测试用
-            -- for i=1,100 do 
-            self:add_content()
-            -- end    
+            for i =1,player.cnt_award_wabao or 1 do 
+                self:add_content()  
+             end 
         else
             player:pingMinimap(self.random_point, 3)
         end 

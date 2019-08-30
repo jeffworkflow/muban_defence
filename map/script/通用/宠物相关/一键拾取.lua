@@ -65,7 +65,7 @@ function mt:on_cast_shot()
 		p:sendMsg('物品栏已满')
 		return 
 	end	
-
+	-- p.flag_auto_hecheng = true
     -- self.eff = ac.effect(point, self.effect, 270, 1,'origin')
 	local i = 1
     --开始选择物品
@@ -87,7 +87,7 @@ function mt:on_cast_shot()
 									--满格
 									if not slot then 
 										local it = hero:remove_item(hero.item_list[math.random(1,6)])
-										ac.wait(0,function()
+										ac.wait(10,function()
 											hero:add_item(it,true)
 										end)
 									else	

@@ -730,15 +730,13 @@ function mt:item_remove(is)
 		return
 	end	
 	
-	jass.RemoveItem(self.handle)
-	dbg.handle_unref(self.handle)
-	
 	--移除物品时，如果物品在单位身上，会触发单位丢弃物品事件，会先执行下面代码，再执行单位丢弃。
 	self.is_discard_event = true
 	if self.owner then 
 		self.owner:remove_item(self)
 	end	
-
+	jass.RemoveItem(self.handle)
+	dbg.handle_unref(self.handle)
 
 	ac.item.item_map[self.handle] = nil
 	self.handle = nil
