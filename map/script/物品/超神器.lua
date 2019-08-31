@@ -144,30 +144,33 @@ function mt:on_add()
     hero:add('攻击加全属性',2500)
     hero:add('每秒加全属性',2500)
 
-    self.trg = hero:event '造成伤害效果' (function(_,damage)
-		if not damage:is_common_attack()  then 
-			return 
-        end 
-		local rand = math.random(1,100)
-        if rand <= self.chance then 
-            --目标特效
-            ac.effect(damage.target:get_point(),self.effect,0,4,'origin'):remove()
-            --目标减最大 
-            for _,unit in ac.selector()
-            : in_range(damage.target:get_point(),self.area)
-            : is_enemy(hero)
-            : ipairs()
-            do 
-                unit:damage
-                {
-                    source = hero,
-                    damage = damage.target:get('生命上限')*self.value/100,
-                    skill = skill,
-                    real_damage = true --真伤
-                }
+    if not hero.flag_syzwd then 
+        hero.flag_syzwd = true
+        self.trg = hero:event '造成伤害效果' (function(_,damage)
+            if not damage:is_common_attack()  then 
+                return 
             end 
-		end
-    end)    
+            local rand = math.random(1,100)
+            if rand <= self.chance then 
+                --目标特效
+                ac.effect(damage.target:get_point(),self.effect,0,4,'origin'):remove()
+                --目标减最大 
+                for _,unit in ac.selector()
+                : in_range(damage.target:get_point(),self.area)
+                : is_enemy(hero)
+                : ipairs()
+                do 
+                    unit:damage
+                    {
+                        source = hero,
+                        damage = damage.target:get('生命上限')*self.value/100,
+                        skill = skill,
+                        real_damage = true --真伤
+                    }
+                end 
+            end
+        end)    
+    end    
    
 end  
 function mt:on_remove()
@@ -177,6 +180,7 @@ function mt:on_remove()
     hero:add('杀怪加全属性',-2500)
     hero:add('攻击加全属性',-2500)
     hero:add('每秒加全属性',-2500)
+    hero.flag_syzwd = false
     if self.trg then 
         self.trg:remove()
         self.trg = nil 

@@ -179,6 +179,7 @@ ac.wait(10,function()
         {'fthj','方天画戟'},
         {'sswsj','圣神无双剑'},
         {'jlsxy','金鳞双型翼'},
+        {'mszxj','灭神紫霄剑'},
 
     }
     for i,data in ipairs(ac.mall) do 

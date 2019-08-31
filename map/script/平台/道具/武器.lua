@@ -286,6 +286,42 @@ need_map_level = 31,
 effect = [[Wuqi_tianlongshengjian.mdx]]
 }
 
+local mt = ac.skill['灭神紫霄剑']
+mt{
+--等级
+level = 0,
+--图标
+art = [[ssws.blp]],
+is_order = 1,
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff无上之境|cffff0000累计|cff00ffff无尽波数=150波
+
+|cffFFE799【武器属性】：|r
+|cff00ff00+1000  杀怪加攻击|r
+|cff00ff00+250   攻击减甲|r
+|cff00ff00+50% 技暴加深|r
+|cff00ff00+50% 技能伤害加深|r
+|cff00ff00+50% 会心伤害|r
+
+|cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 1000,
+['攻击减甲'] = 250,
+['技暴加深'] = 50,
+['技能伤害加深'] = 50,
+['会心伤害'] = 50,
+
+need_map_level = 31,
+
+--特效
+effect = [[Wuqi_tianlongshengjian.mdx]]
+}
+
 
 
 local mt = ac.skill['皇帝剑']
@@ -409,7 +445,7 @@ effect = [[wuqi11.mdx]]
 }
 
 
-for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','霜之哀伤','飞星雷火剑','方天画戟','皇帝剑','皇帝刀','圣神无双剑'}) do
+for i,name in ipairs({'霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','霜之哀伤','飞星雷火剑','方天画戟','皇帝剑','皇帝刀','圣神无双剑','灭神紫霄剑'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local skill = self
