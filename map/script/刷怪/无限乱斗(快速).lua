@@ -219,7 +219,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name)
         --祝福倒计时
         ac.wait((time-5)*1000,function()
             ac.timer(1*1000,5,function(t)
-                ac.player.self:sendMsg('祝福结束倒计时:'..t.count)   
+                ac.player.self:sendMsg('|cffff0000祝福结束倒计时:'..t.count)   
             end)
         end)
 
