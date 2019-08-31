@@ -802,7 +802,7 @@ end
 --测试 暂停两次
 function helper:pause()
 	for i=1,3 do 
-		local creep = ac.creep['刷怪'..i]
+		local creep = ac.creep['刷怪-无尽'..i]
 		creep:PauseTimer(40)
 	end
 	--启用另一个计时器 显示停怪恢复倒计时	
