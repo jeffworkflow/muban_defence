@@ -75,6 +75,9 @@ local function change_attr(unit,index,factor)
     end    
 end    
 
+ac.change_attr = change_attr
+
+
 for i =1,3 do 
     local mt = ac.creep['刷怪-无尽'..i]{    
         region = 'cg'..i,

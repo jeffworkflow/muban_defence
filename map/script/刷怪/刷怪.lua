@@ -248,7 +248,10 @@ ac.wait(20,function()
                 if finds(name,'无上之境') then 
                     name = "无上之境"
                 end 
-                if not finds(name,'普通模式','武林大会','无限乱斗(快速)') then 
+                if finds(name,'无限乱斗') then 
+                    name = "无限乱斗"
+                end 
+                if not finds(name,'普通模式','武林大会','无限乱斗') then 
                     table.insert(ac.g_game_degree_list,name)
                 end    
             end  
@@ -277,7 +280,7 @@ ac.wait(20,function()
                     elseif index == 5 then 
                         ac.g_game_degree = 14
                         ac.g_game_degree_attr = 13  
-                        ac.g_game_degree_name = "无限乱斗(快速)"  
+                        ac.g_game_degree_name = "无限乱斗"  
                     elseif index == 6 then 
                         ac.g_game_degree = 15
                         ac.g_game_degree_attr = 2  

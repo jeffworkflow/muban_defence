@@ -26,7 +26,7 @@ ac.game:event '游戏-最终boss' (function(trg)
     boss:event '单位-死亡'(function(_,unit,killer) 
         ac.final_boss = nil
         ac.final_boss_death = true
-        if ac.g_game_degree_attr >= 11 and  ac.g_game_degree_name ~='无限乱斗(快速)' then 
+        if ac.g_game_degree_attr >= 11 then 
             -- print(unit:get_point())
             ac.func_give_suipian(unit:get_point()) --散落碎片
             --无尽开始

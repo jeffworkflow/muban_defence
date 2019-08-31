@@ -131,6 +131,7 @@ ac.wait(10,function()
         {'time_xlms','修罗模式时长'},
         {'time_dpcq','斗破苍穹时长'},
         {'time_wszj','无上之境时长'},
+        {'time_wxld','无限乱斗时长'},
         {'time_pkms','武林大会时长'},
 
         {'today_wjxlms','今日修罗模式无尽'},
@@ -139,6 +140,9 @@ ac.wait(10,function()
         {'today_wjdpcqrank','今日斗破苍穹无尽排名'},
         {'today_wjwszj','今日无上之境无尽'},
         {'today_wjwszjrank','今日无上之境无尽排名'},
+
+        {'today_wjwxld','今日无限乱斗无尽'},
+        {'today_wjwxldrank','今日无限乱斗无尽排名'},
         
         {'cntwb','挖宝'},
         {'today_cntwb','今日挖宝'},
@@ -196,6 +200,7 @@ local function save_today_rank()
         {'today_wjxlms','今日修罗模式无尽'},
         {'today_wjdpcq','今日斗破苍穹无尽'},
         {'today_wjwszj','今日无上之境无尽'},
+        {'today_wjwxld','今日无限乱斗无尽'},
     }
     if ac.g_game_degree_attr < 11 then 
         return 
@@ -237,6 +242,8 @@ local star2award = {
     ['霜之哀伤'] = {'修罗模式',25,16},
     ['烈火金焰领域'] = {'斗破苍穹',25,25},
     ['龙吟双形翼'] = {'无上之境',25,29},
+    ['灭神紫霄剑'] = {'无限乱斗',25,29},
+    
     
     ['天使之光'] = {'修罗模式无尽累计',150,18},
     ['白云四海领域'] = {'修罗模式无尽累计',500,22},
