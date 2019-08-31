@@ -31,25 +31,29 @@ class.player_info_panel = extends(class.panel){
         -- panel.close_button = panel:add_button('image\\操作栏\\cross.blp',panel.w - 32-5,5,32,32,true)
         panel.titles = {
             '地图等级',
-            '乱斗(无尽-最高)','无限乱斗','无上(无尽-最高)','无上之境','斗破(无尽-最高)','斗破苍穹','修罗(无尽-最高)','修罗模式',
-            '巅峰王者','荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
-            '挖宝积分',
+            '评论数',
+            '宠物等级',
             '杀猴次数',
             '神奇的五分钟',
+            '挖宝积分',
+            '勇士徽章',
+            '比武积分',
+            '乱斗(无尽-最高)','无限乱斗','无上(无尽-最高)','无上之境','斗破(无尽-最高)','斗破苍穹','修罗(无尽-最高)','修罗模式',
+            '巅峰王者','荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
+            
+            
+
+        }
+        
+        panel.titles2 = {
             '修罗(无尽-累计)',
             '斗破(无尽-累计)',
             '无上(无尽-累计)',
             '乱斗(无尽-累计)',
-            '比武积分',
-        }
-        
-        panel.titles2 = {
             '耐瑟龙碎片','Pa碎片','冰龙碎片','小龙女碎片','霸王莲龙锤碎片','梦蝶仙翼碎片','关羽碎片','精灵龙碎片', '奇美拉碎片',
             '魅影碎片',
             '紫霜幽幻龙鹰碎片',
-            '勇士徽章',
-            '宠物等级',
-            '评论数',
+    
         }
         panel.page = 1 
         local next_button = panel:add_button('image\\right.blp',773,371,64,64)
@@ -106,9 +110,9 @@ class.player_info_panel = extends(class.panel){
 
             local attr_value = panel:add_text(value,x2,y2,w2,h2,line_height2,align2)
             table.insert(panel.attrs,{attr_name,attr_value}) 
-            if i % 14 == 0 then 
+            if i % 13 == 0 then 
                 ix = ix + 2
-                base_y = cre_height *14
+                base_y = cre_height *13
             end 
             
         end 

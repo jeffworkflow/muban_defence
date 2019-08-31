@@ -188,7 +188,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name)
     --无尽怪的属性和出怪间隔 
     for i=1,3 do 
         local mt = ac.creep['刷怪-无尽'..i]
-        mt.force_cool = 15
+        mt.force_cool = 10
         --改变怪物
         function mt:on_change_creep(unit,lni_data)
             ac.change_attr(unit,self.index)
