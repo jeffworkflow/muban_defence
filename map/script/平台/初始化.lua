@@ -76,6 +76,7 @@ for i=1,10 do
         end
         ac.wait(1100,function()
             player:event_notify '读取存档数据'
+            player:event_notify '读取存档数据后'
         end)
     end
 end
