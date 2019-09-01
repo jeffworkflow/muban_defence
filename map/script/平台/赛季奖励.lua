@@ -169,7 +169,7 @@ art = [[sj1.blp]],
 --说明
 tip = [[
 
-|cffffe799【赛季时间】|r|cff00ff008月25日-8月31日
+|cffffe799【赛季时间】|r|cff00ff008月25日-9月1日
 |cffffe799【赛季说明】|r|cff00ff00赛季结束时，将发放丰厚的赛季奖励
 
 
@@ -319,13 +319,12 @@ mt{
 level = 1, --要动态插入
 max_level = 35,
 --图标
-art = [[sj1.blp]],
+art = [[S2sjsm.blp]],
 --说明
 tip = [[
 
-|cffffe799【赛季时间】|r|cff00ff008月25日-8月31日
+|cffffe799【赛季时间】|r|cff00ff009月2日-9月10日
 |cffffe799【赛季说明】|r|cff00ff00赛季结束时，将发放丰厚的赛季奖励
-
 
 |cffcccccc当前赛季 通关次数：%cnt_succ%
 |cffcccccc当前赛季 无尽累计波数: %cnt_ljwj%
@@ -374,14 +373,14 @@ mt{
 --等级
 level = 0, --要动态插入
 --图标
-art = [[sj11.blp]],
+art = [[s2sjjl.blp]],
 --说明
 tip = [[
 
 |cffFFE799【赛季奖励】：|r
-|cffff0000【杀怪加敏捷】|cff00ffff+1*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
-|cffff0000【攻击加敏捷】|cff00ffff+1*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
-|cffff0000【每秒加敏捷】|cff00ffff+1*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
+|cffff0000【杀怪加智力】|cff00ffff+1*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
+|cffff0000【攻击加智力】|cff00ffff+1*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
+|cffff0000【每秒加智力】|cff00ffff+1*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
 |cffff0000【每秒加攻击】|cff00ffff+8*当前赛季的比武积分|cffffff00（最大比武积分受限于地图等级）
 
 ]],
@@ -394,7 +393,7 @@ mt{
 --等级
 level = 0, --要动态插入
 --图标
-art = [[sj12.blp]],
+art = [[s2sjwz.blp]],
 --说明
 tip = [[
 
