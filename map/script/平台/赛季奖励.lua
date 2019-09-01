@@ -12,6 +12,8 @@ local cnt_succ_config = { --通关
     {'cntxlms','修罗模式'}, -- 星数
     {'cntdpcq','斗破苍穹'}, -- 星数
     {'cntwszj','无上之境'},
+    {'cntwxld','无限乱斗'},
+    {'cntpkms','武林大会'},
 }
 local cnt_ljwj_config = { --通关
     {'ljwjxlms','修罗模式无尽累计'},-- 无尽层数累计值
