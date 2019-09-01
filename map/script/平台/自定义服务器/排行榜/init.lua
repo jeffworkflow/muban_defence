@@ -62,7 +62,7 @@ end
 
 --读取s0排行榜奖励
 local ui = require 'ui.client.util'
-function player.__index:sp_get_rank_season(f)
+function player.__index:sp_get_rank_season1(f)
     if not self:is_self() then 
         return 
     end
@@ -71,7 +71,7 @@ function player.__index:sp_get_rank_season(f)
     local url = ac.server_config.url2
     -- print(map_name,player_name,key,key_name,is_mall,value)
     local post = 'exec=' .. json.encode({
-        sp_name = 'sp_get_rank_season',
+        sp_name = 'sp_get_rank_season1',
         para1 = map_name,
         para2 = player_name,
     })
@@ -81,19 +81,22 @@ function player.__index:sp_get_rank_season(f)
             local tbl = json.decode(retval)
             -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
             if tbl and tbl.code == 0 then 
-                local flag_season = tbl.data[1][1].player_name
-                if flag_season then 
-                    ac.wait(10,function()
-                        local info = {
-                            type = 'rank_season',
-                            func_name = 'season',
-                            params = {
-                                [1] = flag_season,
-                            }
-                        }
-                        ui.send_message(info)
-                    end)   
+                local temp_tab = {}
+                -- print_r(tbl)
+                for i,data in ipairs(tbl.data[1]) do 
+                    temp_tab[data.season] = true
                 end    
+                local tab_str = ui.encode(temp_tab)
+                ac.wait(10,function()
+                    local info = {
+                        type = 'rank_season',
+                        func_name = 'season',
+                        params = {
+                            [1] = tab_str,
+                        }
+                    }
+                    ui.send_message(info)
+                end)   
             else
                 print(self:get_name(),post,'上传失败')
             end         
@@ -107,22 +110,27 @@ local ui = require 'ui.server.util'
 --处理同步请求
 local event = {
     --从自定义服务器读取数据
-    season = function (flag_season)
+    season = function (tab_str)
         local player = ui.player  
-        player['局内地图等级'] = (player['局内地图等级'] or 0) +1
         if not player.cus_server2 then 
             player.cus_server2 = {}
         end   
-        player.cus_server2['S0赛季王者'] = 1
-        -- print('赛季王者：',player.cus_server2['S0赛季王者'])
+        -- player.cus_server2['S0赛季王者'] = 1
+
+        local data = ui.decode(tab_str) 
+        for key,val in sortpairs(data) do 
+            player.cus_server2[key..'王者'] = 1
+            player['局内地图等级'] = (player['局内地图等级'] or 0) +1
+            -- print('同步后的数据：',player:get_name(),name,player.cus_server2[name])
+        end    
     end,
 }
 ui.register_event('rank_season',event)
 
-for i=1,6 do 
+for i=1,10 do 
     local p = ac.player(i)
     if p:is_player() then 
-        p:sp_get_rank_season()  
+        p:sp_get_rank_season1()  
     end    
 end    
 

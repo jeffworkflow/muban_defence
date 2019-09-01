@@ -243,6 +243,10 @@ local cus_key = {
     {'S0ljwj','S0无尽累计'},
     {'S0wbjf','S0挖宝积分'},
     
+    {'S1succ','S1通关次数'},
+    {'S1ljwj','S1无尽累计'},
+    {'S1wbjf','S1挖宝积分'},
+    {'S1wljf','S1比武积分'},
     
 }
 ac.cus_server_key = cus_key
