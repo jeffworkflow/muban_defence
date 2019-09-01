@@ -278,32 +278,34 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[wujinleiji500.blp]],
+art = [[cmsxy.blp]],
 --说明
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff无上之境|cffff0000累计|cff00ffff无尽波数=500波
+|cff00ffff无限乱斗|cffff0000累计|cff00ffff无尽波数=300波
 
 |cffFFE799【翅膀属性】：|r
-|cff00ff00+350  杀怪加全属性|r
-|cff00ff00+350  攻击减甲|r
-|cff00ff00+25%  技能伤害加深|r
-|cff00ff00+25%  对BOSS额外伤害|r
-|cff00ff00+25%  会心伤害|r
+|cff00ff00+400  杀怪加全属性|r
+|cff00ff00+400  攻击减甲|r
+|cff00ff00+5    每秒加杀敌数|r
+|cff00ff00+15   每秒加木头|r
+|cff00ff00+25   每秒加火灵|r
+|cff00ff00+36%  全伤加深|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 350,
-['攻击减甲'] = 350,
-['技能伤害加深'] = 25,
-['对BOSS额外伤害'] = 25,
-['会心伤害'] = 25,
-need_map_level = 33,
+['杀怪加全属性'] = 400,
+['攻击减甲'] = 400,
+['每秒加杀敌数'] = 5,
+['每秒加木头'] = 15,
+['每秒加火灵'] = 25,
+['全伤加深'] = 36,
+need_map_level = 36,
 --特效
-effect = [[Cb_tianlongshengyi.MDX]]
+effect = [[Cb_tianlongshengyiBlack.MDX]]
 }
 
 
