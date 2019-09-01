@@ -41,7 +41,9 @@ mt{
     ['攻击速度'] = 500,
     ['攻击间隔'] = -1,
     ['攻击距离'] = 1000,
-    ['多重射'] = 3,
+    ['力量%'] = 100,
+    ['智力%'] = 100,
+    ['敏捷%'] = 100,
     ['攻击减甲'] = 15000,
     ['移动速度'] = 200,
 }
@@ -230,7 +232,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name)
         end    
         if name == '疾风的祝福' then
             local str = [[|cffffe799【系统消息】|r|cff00ff00新的祝福开始：|cff00ffff疾风的祝福|r|cffffe799
-【祝福属性】|cff00ff00移动速度+200 攻击减甲+15000 |cffffff00多重射+3 攻击距离+1000 |cffff0000极致的攻击速度]]
+【祝福属性】|cff00ff00全属性+100% 攻击减甲+15000 |cffffff00移动速度+200 攻击距离+1000 |cffff0000极致的攻击速度]]
             ac.player.self:sendMsg(str)    
         end    
         if name == '幽灵的祝福' then
