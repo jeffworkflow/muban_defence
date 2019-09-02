@@ -164,7 +164,7 @@ end
 local mt = ac.skill['S1赛季说明']
 mt{
 --等级
-level = 1, --要动态插入
+level = 0, --要动态插入
 max_level = 35,
 --图标
 art = [[sj1.blp]],
@@ -188,6 +188,7 @@ cnt_succ = function(self)
     local p = hero:get_owner()
     local cnt =(p.cus_server['S1通关次数'] or 0) - (p.cus_server['S0通关次数'] or 0)
     cnt = math.min(cnt,500,p:Map_GetMapLevel()*25) --500，25
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 
@@ -197,6 +198,7 @@ cnt_ljwj = function(self)
     local p = hero:get_owner()
     local cnt = (p.cus_server['S1无尽累计'] or 0)- (p.cus_server['S0无尽累计'] or 0)
     cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100) --1500,100
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 --通关次数 总计
@@ -205,6 +207,7 @@ cnt_wbjf = function(self)
     local p = hero:get_owner()
     local cnt = (p.cus_server['S1挖宝积分'] or 0)- (p.cus_server['S0挖宝积分'] or 0)
     cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 --通关次数 总计
@@ -213,6 +216,7 @@ cnt_wljf = function(self)
     local p = hero:get_owner()
     local cnt = (p.cus_server['S1比武积分'] or 0)
     cnt = math.min(cnt,1000,p:Map_GetMapLevel()*50) --5000,500
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 }
@@ -220,7 +224,7 @@ end,
 local mt = ac.skill['S1赛季奖励']
 mt{
 --等级
-level = 1, --要动态插入
+level = 0, --要动态插入
 --图标
 art = [[sj11.blp]],
 --说明
@@ -242,6 +246,7 @@ cnt_succ = function(self)
     local p = hero:get_owner()
     local cnt =(p.cus_server['S1通关次数'] or 0) - (p.cus_server['S0通关次数'] or 0)
     cnt = math.min(cnt,500,p:Map_GetMapLevel()*25) --500，25
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 
@@ -251,14 +256,17 @@ cnt_ljwj = function(self)
     local p = hero:get_owner()
     local cnt = (p.cus_server['S1无尽累计'] or 0)- (p.cus_server['S0无尽累计'] or 0)
     cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100) --1500,100
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 --通关次数 总计
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
+    -- print(p.cus_server['S1挖宝积分'],p.cus_server['S0挖宝积分'])
     local cnt = (p.cus_server['S1挖宝积分'] or 0)- (p.cus_server['S0挖宝积分'] or 0)
     cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 --通关次数 总计
@@ -267,6 +275,7 @@ cnt_wljf = function(self)
     local p = hero:get_owner()
     local cnt = (p.cus_server['S1比武积分'] or 0)
     cnt = math.min(cnt,1000,p:Map_GetMapLevel()*50) --5000,500
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 
@@ -318,7 +327,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 local mt = ac.skill['S2赛季说明']
 mt{
 --等级
-level = 1, --要动态插入
+level = 0, --要动态插入
 max_level = 35,
 --图标
 art = [[S2sjsm.blp]],
@@ -534,5 +543,8 @@ function mt:on_add()
                 skill:set_level(1)
             end
         end    
+        if finds(skill.name,'S1赛季说明','S1赛季奖励','S2赛季说明')then 
+            skill:set_level(1)
+        end   
     end 
 end    

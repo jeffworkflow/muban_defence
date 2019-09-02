@@ -7,17 +7,26 @@ local dbg = require 'jass.debug'
 3.会动态拓展单位，若地图同时在场100只，则100只无法释放单位。 --用在练功房合适
 ]]
 local unit = require("types.unit")
---根据类型取可用的handle  function player.__index:get_unit_handle(class)
+unit.simulation_units = {}
+setmetatable(unit.simulation_units, {__mode = "kv"});
+--根据类型取可用的handle  function player.__index:get_unit_handle(class) simulation
 function unit.get_unit_handle(id,class)
     if not class then return end 
     local handle
     local u 
-    for hd,j_u in pairs(unit.all_units) do 
-		if j_u.id == id and j_u:get_class() == class and j_u.removed then 
-            handle = hd
+    -- for hd,j_u in pairs(unit.all_units) do 
+	-- 	if j_u.id == id and j_u:get_class() == class and j_u.removed then 
+    --         handle = hd
+    --         u = j_u
+	-- 		break
+	-- 	end
+    -- end	 
+    for i,j_u in ipairs(unit.simulation_units) do 
+        if j_u.id == id and j_u:get_class() == class and j_u.removed then 
+            handle = j_u.handle
             u = j_u
-			break
-		end
+            break
+        end
     end	 
     return handle,u
 end
@@ -86,6 +95,17 @@ ac.game:event '单位-移除'(function(_,self)
     self.events = nil
     
     unit.remove_handle_map[self.handle] = true
+    --插入模拟死亡table
+    local flag = true
+    for i,u in ipairs(unit.simulation_units) do 
+        if u.handle == self.handle then 
+            flag = false
+            break
+        end  
+    end    
+    if flag then 
+        table.insert(unit.simulation_units,self)
+    end    
 
     --商店移除时使用
     if self.on_remove then 
@@ -135,6 +155,7 @@ function unit.__index:real_remove()
     unit.all_units[self.handle] = nil
     unit.removed_units[self] = self
     dbg.handle_unref(self.handle)
+
     --商店移除时使用
     if self.on_remove then 
         self:on_remove()
@@ -143,12 +164,19 @@ end
 --手动回收已创建过的单位。 先不写吧。基本上要一个正常流程的回收。然后一个标志去说我要回收。
 function unit.all_real_remove()
     -- print('执行手动清除')
-    for hd,j_u in pairs(unit.all_units) do 
+    -- for hd,j_u in pairs(unit.all_units) do 
+    --     if  j_u:get_class() == '模拟死亡' and j_u.removed then 
+    --         -- print('进入循环')
+    --         j_u:real_remove()
+	-- 	end
+    -- end	 
+    for i,j_u in ipairs(unit.simulation_units) do 
         if  j_u:get_class() == '模拟死亡' and j_u.removed then 
-            -- print('进入循环')
             j_u:real_remove()
-		end
-    end	 
+        end    
+    end   
+    unit.simulation_units = {}
+    -- print(#unit.simulation_units)
 end
 --5分钟清除一次 地图上的模拟死亡单位
 local time = 5*60
