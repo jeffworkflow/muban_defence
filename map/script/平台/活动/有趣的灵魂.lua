@@ -7,9 +7,9 @@ level = 1,
 art = [[zyj.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff008月16日-8月19日
+|cffffe799【活动时间】|r|cff00ff009月3日-9月7日
 |cffffe799【活动说明】|r
-|cff00ff001.时至中元，举办祭祀活动，以慰在基地游玩的众家鬼魂，并祈求大家全年的平安顺利。|cff00ff00还请少侠帮忙|cffff0000贡献一些食物|r
+|cff00ff001.这几天举办祭祀活动，以慰在基地游玩的众家鬼魂，并祈求大家全年的平安顺利。|cff00ff00还请少侠帮忙|cffff0000贡献一些食物|r
 
 |cff00ff002.好看的皮囊千篇一律，有趣的灵魂万里挑一。|cff00ffff基地经常出现一些有趣的灵魂。|cff00ff00还请少侠帮忙|cffff0000击败并超度它们|r
  ]],
@@ -22,7 +22,7 @@ cool = 1,
 --物品技能
 is_skill = true,
 store_affix = '',
-store_name = '|cffdf19d0中元节活动|r',
+store_name = '|cffdf19d0有趣的灵魂|r',
 --物品详细介绍的title
 content_tip = ''
 }

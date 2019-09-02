@@ -101,7 +101,7 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff通过中元节活动获得 |cffff0000重复超度灵魂可升级成就|r |cff00ffff最大等级=35
+|cff00ffff通过 有趣的灵魂 活动获得 |cffff0000重复超度灵魂可升级成就|r |cff00ffff最大等级=55
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+%暴击加深% |cff00ff00% |cff00ff00暴击加深
@@ -170,6 +170,7 @@ mt{
 mt.skill_name ={
     '缘定三生','井底之蛙','食物链顶端的人','有趣的灵魂','蒙娜丽莎的微笑'
 }
+
 mt.skills = {
 }
 
