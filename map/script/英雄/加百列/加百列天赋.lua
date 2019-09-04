@@ -16,27 +16,29 @@ mt{
 	passive = true,
 	--伤害
 	damage = function(self)
-  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*10+10000)* self.level
+  return ((self.owner:get('力量')+self.owner:get('智力')+self.owner:get('敏捷'))*35+10000)* self.level
 end,
 	--属性加成
- ['杀怪加全属性'] = {188,376,564,752,940},
- ['杀敌数加成'] = 75,
- ['物品获取率'] = 75,
- ['木头加成'] = 75,
- ['火灵加成'] = 75,
+ ['杀怪加全属性'] = {488,976,1464,1952,2440},
+ ['敏捷%'] = 50,
+ ['攻击减甲'] = 350,
+ ['攻击速度'] = 150,
+ ['攻击间隔'] = -0.2,
+ ['攻击距离'] = 100,
 	--介绍
-	tip = [[|cffffff00【杀怪加全属性】+188*Lv
-【杀敌数加成】+75%
-【物品获取率】+75%
-【木头加成】+75%
-【火灵加成】+75%|r
+	tip = [[|cffffff00【杀怪加全属性】+488*Lv
+【敏捷】+50%
+【攻击减甲】+350
+【攻击速度】+150%
+【攻击间隔】-0.2
+【攻击距离】+100|r
 
 |cff00bdec【被动效果】攻击10%几率造成范围技能伤害
-【伤害公式】(全属性*10+1w)*Lv
+【伤害公式】(全属性*35+1w)*Lv
 
 |cff00ff00【凌波微步】按D向鼠标方向飘逸500码距离|r]],
 	--技能图标
-	art = [[guanyu.blp]],
+	art = [[ReplaceableTextures\CommandButtons\BTNMarine.blp]],
 	--特效
 	effect = [[jn_tf2.mdx]],
 	cool = 1
