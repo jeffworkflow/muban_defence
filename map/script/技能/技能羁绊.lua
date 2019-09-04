@@ -30,13 +30,13 @@ mt{
 	--被动
 	passive = true,
 	--属性加成
-    ['生命上限%'] = 25,
+    ['生命上限%'] = 100,
 	--技能图标
     art = [[jineng\jineng019.blp]],
     --获得时给每个材料技能添加的文字
     on_add_tip = [[]],
     --发送给全部玩家的tip
-    send_tip =[[|cffffe799【系统消息】|r 恭喜获得隐藏羁绊技能|cffff0000 "血牛" |r，|cff00ff00生命上限加成+25%|r]],
+    send_tip =[[|cffffe799【系统消息】|r 恭喜获得隐藏羁绊技能|cffff0000 "血牛" |r，|cff00ff00生命上限加成+100%|r]],
 }
 
 local mt = ac.skill['为爆炸而生']
