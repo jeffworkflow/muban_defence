@@ -41,7 +41,7 @@ art = [[zhaoyun.blp]],
 tip = [[
 
 |cffffe799【获得方式】：|r
-|cffff0000达到白银3星 且 地图等级≥2|r
+|cffff0000达到白银2星 且 地图等级≥2|r
 
 |cffFFE799【天赋属性】：|r
 |cffffff00【杀怪加全属性】+35*Lv
