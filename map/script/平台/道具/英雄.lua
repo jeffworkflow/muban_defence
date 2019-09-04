@@ -340,7 +340,7 @@ tip = [[
     local val = 0 
     local p = self.owner:get_owner()
     if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
-        val = 35
+        val = 100
     end    
     return val
 end,
@@ -348,7 +348,7 @@ end,
     local val = 0 
     local p = self.owner:get_owner()
     if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
-        val = 100
+        val = 200
     end    
     return val
 end,
@@ -356,7 +356,7 @@ end,
     local val = 0 
     local p = self.owner:get_owner()
     if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
-        val = 125
+        val = 500
     end    
     return val
 end,
@@ -364,7 +364,7 @@ end,
     local val = 0 
     local p = self.owner:get_owner()
     if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
-        val = 100
+        val = 250
     end    
     return val
 end,
@@ -372,7 +372,7 @@ end,
     local val = 0 
     local p = self.owner:get_owner()
     if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
-        val = 25
+        val = 100
     end    
     return val
 end,
