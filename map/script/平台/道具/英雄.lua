@@ -535,7 +535,7 @@ item_type ='神符',
 --等级
 level = 0,
 --图标
-art = [[guangong.blp]],
+art = [[ReplaceableTextures\CommandButtons\BTNMarine.blp]],
 --说明
 tip = [[
 
