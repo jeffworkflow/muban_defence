@@ -336,6 +336,35 @@ tip = [[
 
 |cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
 ]],
+
+['力量%'] = function(self) 
+    local val = 0 
+    local p = self.owner:get_owner()
+    if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
+        val = 20
+    end    
+    return val
+end,
+
+['敏捷%'] = function(self) 
+    local val = 0 
+    local p = self.owner:get_owner()
+    if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
+        val = 20
+    end    
+    return val
+end,
+
+['智力'] = function(self) 
+    local val = 0 
+    local p = self.owner:get_owner()
+    if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
+        val = 20
+    end    
+    return val
+end,
+
+
 ['技能伤害加深'] = function(self) 
     local val = 0 
     local p = self.owner:get_owner()
@@ -348,7 +377,7 @@ end,
     local val = 0 
     local p = self.owner:get_owner()
     if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
-        val = 200
+        val = 100
     end    
     return val
 end,
@@ -356,7 +385,7 @@ end,
     local val = 0 
     local p = self.owner:get_owner()
     if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
-        val = 500
+        val = 200
     end    
     return val
 end,
@@ -364,7 +393,7 @@ end,
     local val = 0 
     local p = self.owner:get_owner()
     if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 
-        val = 250
+        val = 100
     end    
     return val
 end,
