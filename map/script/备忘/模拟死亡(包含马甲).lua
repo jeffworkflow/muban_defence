@@ -22,7 +22,7 @@ function unit.get_unit_handle(id,class)
 	-- 	end
     -- end	 
     for i,j_u in ipairs(unit.simulation_units) do 
-        if j_u.id == id and j_u:get_class() == class and j_u.removed then 
+        if j_u.id == id and j_u:get_class() and finds(j_u:get_class(),class,'马甲') and j_u.removed then 
             handle = j_u.handle
             u = j_u
             break
@@ -33,6 +33,7 @@ end
 
 ac.game:event '单位-创建'(function(_,u)
     local name = u:get_name()
+    -- print(u:get_name())
     local data = ac.table.UnitData[name]
     if data and data.class then
         u:set_class(data.class)
@@ -52,28 +53,32 @@ ac.game:event '单位-创建前'(function(_,id,self,j_id, x, y,face)
         unit.remove_handle_map[handle] = nil 
         u.removed = nil
         u._is_alive = true
-        u:remove_restriction '隐藏'
-        u:remove_restriction '定身'
-        u:remove_restriction '无敌'
-        -- u:remove_restriction '禁锢'
-        u:remove_restriction '缴械'
-        u:set('生命', u:get '生命上限')
-        ac.unit.init_attribute(u)
+        if u:get_class() ~= '马甲' then 
+            u:remove_restriction '隐藏'
+            u:remove_restriction '定身'
+            u:remove_restriction '无敌'
+            -- u:remove_restriction '禁锢'
+            u:remove_restriction '缴械'
+            u:set('生命', u:get '生命上限')
+            ac.unit.init_attribute(u)
+        end    
 
         return u
     end    
 end)
 
 ac.game:event '单位-移除'(function(_,self)
-    if self:get_class() ~= '模拟死亡' then 
+    if not self:get_class() or not finds(self:get_class(),'模拟死亡','马甲') then 
         return 
     end    
     --处理移除时，单位操作
-    self:add_restriction '隐藏'
-    self:add_restriction '定身'
-    self:add_restriction '无敌'
-    -- self:add_restriction '禁锢'
-    self:add_restriction '缴械'
+    if self:get_class() ~= '马甲' then 
+        self:add_restriction '隐藏'
+        self:add_restriction '定身'
+        self:add_restriction '无敌'
+        -- self:add_restriction '禁锢'
+        self:add_restriction '缴械'
+    end    
 
     --移除单位的所有Buff
     if self.buffs then
@@ -170,10 +175,11 @@ function unit.all_real_remove()
     --         j_u:real_remove()
 	-- 	end
     -- end	 
+
     for i,j_u in ipairs(unit.simulation_units) do 
-        if  j_u:get_class() == '模拟死亡' and j_u.removed then 
+        -- if  j_u:get_class() == '模拟死亡' and j_u.removed then 
             j_u:real_remove()
-        end    
+        -- end    
     end   
     unit.simulation_units = {}
     -- print(#unit.simulation_units)

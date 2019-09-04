@@ -1379,7 +1379,7 @@ function player.__index:create_unit(id, where, face)
 	else
 		x, y = where:get_point():get()
 	end
-	local u = ac.game:event_dispatch('单位-创建前',data,self,j_id, x, y,face)
+	local u = ac.game:event_dispatch('单位-创建前',id,self,j_id, x, y,face)
 	if u then 
 		return u 
 	end	
@@ -1413,10 +1413,18 @@ function player.__index:create_dummy(id, where, face)
 		owner = ac.player.com[team]
 	end
 	--马甲模拟死亡
-	-- local u = ac.game:event_dispatch('单位-创建前',data,self,j_id, x, y,face)
-	-- if u then 
-	-- 	return u 
-	-- end	
+	local u = ac.game:event_dispatch('单位-创建前',id,self,j_id, x, y,face)
+	if u then 
+		-- print('模拟死亡单位')
+		u._is_dummy = true
+		u._dummy_point = ac.point(x, y)
+		u._dummy_angle = face or 0
+		-- u:set_class('模拟死亡')
+		if u:getAbilityLevel 'Aloc' == 0 then
+			u:event_notify('单位-创建', u)
+		end
+		return u 
+	end	
 
 	ignore_flag = true
 	local handle = jass.CreateUnit(owner.handle, j_id, x, y, face or 0)

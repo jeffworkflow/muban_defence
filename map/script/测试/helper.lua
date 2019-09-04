@@ -1027,6 +1027,14 @@ function helper:u2()
 	ac.player(1):create_unit('甲虫',point)
 end	
 
+--测试 魔法书功能
+function helper:t_dummy()
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	local hero = p.hero
+	local u = p:create_dummy('e001',ac.point(0,0))
+	print(u:get_class())
+
+end	
 
 --打印hero键值对应的key值
 function helper:print_hero()

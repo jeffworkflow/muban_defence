@@ -208,11 +208,11 @@ function player.__index:SetServerValue(key,value,f)
                 end         
             else
                 print('返回值非json格式:',post)
-                print_r(retval)
+                -- print_r(retval)
             end    
         else
             print('服务器返回数据异常:',post)
-            print_r(retval)
+            -- print_r(retval)
         end    
     end)
 

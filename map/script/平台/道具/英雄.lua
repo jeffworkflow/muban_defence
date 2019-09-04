@@ -499,6 +499,37 @@ tip = [[
 effect = [[chibang7.mdx]]
 }
 
+local mt = ac.skill['加百列']
+mt{
+is_skill = 1,
+item_type ='神符',
+--等级
+level = 0,
+--图标
+art = [[guangong.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000地图等级≥35|r
+
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+488*Lv
+【力量】+50%
+【分裂伤害】+100%
+【减少周围护甲】+1888
+【暴击加深】+250%
+【物理伤害加深】+250%|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(全属性*35+1w)*Lv
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+--特效
+effect = [[chibang7.mdx]]
+}
+
 
 local mt = ac.skill['王昭君']
 mt{
