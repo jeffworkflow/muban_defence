@@ -19,6 +19,7 @@ local cnt_ljwj_config = { --通关
     {'ljwjxlms','修罗模式无尽累计'},-- 无尽层数累计值
     {'ljwjdpcq','斗破苍穹无尽累计'},-- 无尽层数累计值
     {'ljwjwszj','无上之境无尽累计'},-- 无尽层数累计值
+    {'ljwjwxld','无限乱斗无尽累计'},-- 无尽层数累计值
 }
 local cnt_wbjf_config = {
     {'wbjf','挖宝积分'},
