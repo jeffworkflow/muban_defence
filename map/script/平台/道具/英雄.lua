@@ -556,7 +556,7 @@ tip = [[
 |cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
 ]],
 --特效
-effect = [[chibang7.mdx]]
+effect = [[ArchAngelngelGabriel.mdx]]
 }
 
 
