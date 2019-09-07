@@ -4,13 +4,13 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[sldzx.blp]],
+art = [[shgty.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff008月22日-8月25日
-|cffffe799【活动说明】|r|cff00ff00传说，蒙娜丽莎的微笑中，含有83%的高兴、 9%的厌恶、 6%的恐惧、 2%的愤怒。 |cff00ffff最近，名画《蒙娜丽莎的微笑》又不见了，这让达芬奇头疼得很。
+|cffffe799【活动时间】|r|cff00ff009月7日-9月17日
+|cffffe799【活动说明】|r|cff00ff00年年此夜，华灯盛照，人月圆时。三界众人都忙于筹备盛宴，一时之间各地都人来人往，热闹非凡。|cff00ffff热心的各位少侠，快去三界各地帮助百姓们筹备团圆佳节宴吧！
 
-|cffff0000还请帮忙收集83个“高兴”、9个“厌恶”、6个“恐惧”、2个“愤怒”，交付于我
+|cffff0000还请帮忙收集15个“五仁月饼”、15个“大西瓜”、5个“肥美的螃蟹”，交付于我
  ]],
 --物品类型
 item_type = '神符',
@@ -21,7 +21,7 @@ cool = 1,
 --物品技能
 is_skill = true,
 store_affix = '',
-store_name = '|cffdf19d0失落的真相|r',
+store_name = '|cffdf19d0四海共团圆|r',
 --物品详细介绍的title
 content_tip = ''
 }
@@ -32,14 +32,14 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[bsdqw.blp]],
+art = [[wryb.blp]],
 --说明
 tip = [[
 
 
-|cff00ffff青蛙：|cff00ff00我感觉我还可以救一下，请将我丢进|cffff0000基地右边花园的井里|cffffff00（也可见死不救，点击左键可食用，增加10%生命上限|r）
+|cff00ff00由杏仁、桃仁、橄榄仁、芝麻仁和瓜子仁做成的月饼，|cffff0000点击左键可食用
 
-|cffcccccc抓青蛙活动物品|r]],
+|cffcccccc中秋活动物品|r]],
 --品质
 color = '紫',
 --物品类型
@@ -57,7 +57,9 @@ function mt:on_cast_start()
     local player = hero:get_owner()
     --随机装备
     local name = ac.equipment[math.random(1,#ac.equipment)]
-    hero:add_item(name,true)
+    local it = hero:add_item(name,true)
+    p:sendMsg('|cffffe799【系统消息】|r |cff00ff00这个月饼里面怎么有东西硬硬的，获得'..it.color_name..'',6) 
+    --|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开|cff00ff00'..self.name..'|r, 获得了 |cff'..ac.color_code[lni_color]..name..'|r
 end    
 
 local mt = ac.skill['大西瓜']
@@ -65,14 +67,14 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[bsdqw.blp]],
+art = [[xigua.blp]],
 --说明
 tip = [[
 
 
-|cff00ffff青蛙：|cff00ff00我感觉我还可以救一下，请将我丢进|cffff0000基地右边花园的井里|cffffff00（也可见死不救，点击左键可食用，增加10%生命上限|r）
+|cff00ff00原名叫稀瓜，意思是水多肉稀的瓜，但后来传着传着就变成了西瓜。|cffff0000点击左键可食用
 
-|cffcccccc抓青蛙活动物品|r]],
+|cffcccccc中秋活动物品|r]],
 --品质
 color = '紫',
 --物品类型
@@ -90,7 +92,8 @@ function mt:on_cast_start()
     local player = hero:get_owner()
     --随机消耗品
     local name = ac.consumable_item[math.random(1,#ac.consumable_item)]
-    hero:add_item(name,true)
+    local it = hero:add_item(name,true)
+    p:sendMsg('|cffffe799【系统消息】|r |cff00ff00这个绝对不是普通的西瓜，获得'..it.color_name..'',6) 
 end    
 
 
@@ -99,20 +102,20 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[bsdqw.blp]],
+art = [[jdldpx.blp]],
 --说明
 tip = [[
 
 
-|cff00ffff青蛙：|cff00ff00我感觉我还可以救一下，请将我丢进|cffff0000基地右边花园的井里|cffffff00（也可见死不救，点击左键可食用，增加10%生命上限|r）
+|cff00ff00听说很补？|cffff0000点击左键可食用，增加10%力量
 
-|cffcccccc抓青蛙活动物品|r]],
+|cffcccccc中秋活动物品|r]],
 --品质
 color = '紫',
 --物品类型
 item_type = '消耗品',
 ['力量%'] = 10,
-rate = 10,
+
 cool = 1,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
@@ -139,7 +142,7 @@ function mt:on_cast_start()
     local skl = hero:find_skill(save_name,nil,true) 
     if not skl  then 
         ac.game:event_notify('技能-插入魔法书',hero,'精彩活动','第一个吃螃蟹的人')
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 食用了青蛙，惊喜获得|cffff0000【可存档成就】'..save_name..'|r |cff00ff00+18.8杀怪加全属性|r |cff00ff00+18.8攻击减甲|r |cff00ff00+18.8%物品获取率|r |cff00ff00+18.8%暴击加深|r',6) 
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 食用了“肥美的螃蟹”，成为本局|cffff0000'..save_name..'（可存档成就）|r 成就属性可在“巅峰神域-精彩活动”中查看',6) 
     else
         skl:upgrade(1)
         p:sendMsg('|cffff0000【可存档成就】'..save_name..'+1',6)  
@@ -153,8 +156,8 @@ end
 -- 攻击木桩1%掉落 大西瓜
 -- 击杀武器BOSS3，35%掉落 肥美的螃蟹
 local unit_reward = { 
-    ['强盗领主'] =  {{rand = 35,     name = '五仁月饼'}},
-    ['武器boss3'] =  {{ rand = 35,     name = '肥美的螃蟹'}},
+    ['强盗领主'] =  {{rand = 30,     name = '五仁月饼'}},
+    ['武器boss3'] =  {{ rand = 40,     name = '肥美的螃蟹'}},
 }
 ac.game:event '单位-死亡' (function (_,unit,killer)
     local reward_type = unit:get_name()
@@ -172,8 +175,8 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     end
     p.max_item_fall[rand_name] = (p.max_item_fall[rand_name] or 0) + 1
     --获得最多次数
-    local yb_max_cnt = 2 
-    local px_max_cnt = 2 
+    local yb_max_cnt = 20   
+    local px_max_cnt = 20
 
     if reward_type == '强盗领主' and p.max_item_fall[rand_name] <= yb_max_cnt then 
         ac.item.create_item(rand_name,unit:get_point())
@@ -187,7 +190,7 @@ end)
 --游戏说明 攻击1%得大西瓜
 ac.game:event '游戏-开始' (function()
     local unit = ac.game.findunit_byname('游戏说明')
-    local rate = 50
+    local rate = 1
     --获得最多次数
     local dxg_max_cnt = 10
     unit:event '受到伤害效果'(function(_,damage)
@@ -256,6 +259,6 @@ reg:event '区域-进入' (function(trg,unit)
         end 
         --播放特效
         hero:add_effect('chest','Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx'):remove()
-        p:sendMsg('|cffffe799【系统消息】|r任务完成，恭喜获得|cffff0000【可存档成就】蒙娜丽莎的微笑|r 奖励 |cff00ff00+23.8杀怪加全属性|r |cff00ff00+23.8攻击减甲|r |cff00ff00+23.8%火灵加成|r |cff00ff00+23.8%全伤加深|r',6)
+        p:sendMsg('|cffffe799【系统消息】|r任务完成，恭喜获得|cffff0000【可存档成就】四海共团圆|r 奖励 |cff00ff00+26.8杀怪加全属性|r |cff00ff00+26.8攻击减甲|r |cff00ff00+26.8%杀敌数加成|r |cff00ff00+26.8%全伤加深|r',6)
     end
 end)

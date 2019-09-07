@@ -160,27 +160,27 @@ mt{
 --等级
 level = 1, --要动态插入
 --图标
-art = [[sldzx.blp]],
+art = [[shgty.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff通过 活动-失落的真相 获得
+|cff00ffff通过 中秋活动 获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+23.8   杀怪加全属性|r
-|cff00ff00+23.8   攻击减甲|r
-|cff00ff00+23.8%  火灵加成|r
-|cff00ff00+23.8%  全伤加深|r
+|cff00ff00+26.8   杀怪加全属性|r
+|cff00ff00+26.8   攻击减甲|r
+|cff00ff00+26.8%  杀敌数加成|r
+|cff00ff00+26.8%  全伤加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 23.8,
-['火灵加成'] = 23.8,
-['攻击减甲'] = 23.8,
-['全伤加深'] = 23.8,
+['杀怪加全属性'] = 26.8,
+['杀敌数加成'] = 26.8,
+['攻击减甲'] = 236.8,
+['全伤加深'] = 26.8,
 
 need_map_level = 5,
 }
@@ -189,29 +189,29 @@ local mt = ac.skill['第一个吃螃蟹的人']
 mt{
 --等级
 level = 1, 
-max_level = 20,
+max_level = 10,
 --图标
-art = [[sldzx.blp]],
+art = [[dygcpxdr.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff通过 活动-失落的真相 获得
+|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=10
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+23.8   杀怪加全属性|r
-|cff00ff00+23.8   攻击减甲|r
-|cff00ff00+23.8%  火灵加成|r
-|cff00ff00+23.8%  全伤加深|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = {1,20},
-['火灵加成'] = 23.8,
-['攻击减甲'] = 23.8,
-['全伤加深'] = 23.8,
+['杀怪加全属性'] = {2,20},
+['攻击减甲'] = {2,20},
+['物品获取率'] = {2,20},
+['全伤加深'] = {2,20},
 
 need_map_level = 5,
 }
