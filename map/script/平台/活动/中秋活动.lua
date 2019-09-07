@@ -176,7 +176,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     p.max_item_fall[rand_name] = (p.max_item_fall[rand_name] or 0) + 1
     --获得最多次数
     local yb_max_cnt = 20   
-    local px_max_cnt = 20
+    local px_max_cnt = 10
 
     if reward_type == '强盗领主' and p.max_item_fall[rand_name] <= yb_max_cnt then 
         ac.item.create_item(rand_name,unit:get_point())
@@ -192,7 +192,7 @@ ac.game:event '游戏-开始' (function()
     local unit = ac.game.findunit_byname('游戏说明')
     local rate = 1
     --获得最多次数
-    local dxg_max_cnt = 10
+    local dxg_max_cnt = 20
     unit:event '受到伤害效果'(function(_,damage)
         local p = damage.source:get_owner()
         if not p.max_item_fall then 
