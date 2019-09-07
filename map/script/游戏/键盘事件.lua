@@ -78,11 +78,15 @@ ac.game.is_in_room = function(self,it)
     -- print(it,it.name)
     return practise_room < it:get_point()
 end    
-ac.game.clear_item = function()
+ac.game.clear_item = function(self,all)
     local tbl = {}
     for _,v in pairs(ac.item.item_map) do
         if not v.owner  then 
-            if not (practise_room < v:get_point()) then 
+            if not all then
+                if not (practise_room < v:get_point()) then 
+                    table.insert(tbl,v)
+                end    
+            else 
                 table.insert(tbl,v)
             end    
         end	
@@ -257,6 +261,10 @@ ac.game:event '玩家-聊天' (function(self, player, str)
                 p:setCameraField('CAMERA_FIELD_TARGET_DISTANCE', distance)
             end    
         end  
+        if str == 'qlwp' then
+            --开始清理物品
+            ac.game:clear_item(strs[2])
+        end 
 
     end    
 

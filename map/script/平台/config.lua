@@ -243,6 +243,8 @@ local cus_key = {
     -- {'hdyw','厌恶'},
     -- {'hdkj','恐惧'},
     {'hdmnlsdwx','蒙娜丽莎的微笑'},
+    {'hdshgty','四海共团圆'},
+    {'hddygcpxdr','第一个吃螃蟹的人'},
     
     {'S0succ','S0通关次数'},
     {'S0ljwj','S0无尽累计'},

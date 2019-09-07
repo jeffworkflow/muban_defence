@@ -2,6 +2,9 @@
 --quality_item={'白' = {'新手剑','新手戒指'},'蓝' = {..}}
 local quality_item ={}
 local all_item ={}
+local equipment ={}
+local consumable_item ={}
+
 for name,data in pairs(ac.table.ItemData) do 
     local color = data.color 
     if color then 
@@ -10,7 +13,14 @@ for name,data in pairs(ac.table.ItemData) do
         table.insert(list,name)
         if finds(color,'白','蓝','金','红') then 
             table.insert(all_item,name)
+        end   
+        if data.item_type =='装备' then
+            table.insert(equipment,name)
         end    
+        if data.item_type =='消耗品' then
+            table.insert(consumable_item,name)
+        end   
+
     end 
 end 
 ac.wait(10,function()
@@ -39,6 +49,8 @@ ac.wait(10,function()
     --全局
     ac.quality_item = quality_item
     ac.all_item = all_item
+    ac.equipment = equipment
+    ac.consumable_item = consumable_item
     
 end)
 

@@ -155,6 +155,66 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
 }
 
+local mt = ac.skill['四海共团圆']
+mt{
+--等级
+level = 1, --要动态插入
+--图标
+art = [[sldzx.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff通过 活动-失落的真相 获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+23.8   杀怪加全属性|r
+|cff00ff00+23.8   攻击减甲|r
+|cff00ff00+23.8%  火灵加成|r
+|cff00ff00+23.8%  全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 23.8,
+['火灵加成'] = 23.8,
+['攻击减甲'] = 23.8,
+['全伤加深'] = 23.8,
+
+need_map_level = 5,
+}
+
+local mt = ac.skill['第一个吃螃蟹的人']
+mt{
+--等级
+level = 1, 
+max_level = 20,
+--图标
+art = [[sldzx.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff通过 活动-失落的真相 获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+23.8   杀怪加全属性|r
+|cff00ff00+23.8   攻击减甲|r
+|cff00ff00+23.8%  火灵加成|r
+|cff00ff00+23.8%  全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = {1,20},
+['火灵加成'] = 23.8,
+['攻击减甲'] = 23.8,
+['全伤加深'] = 23.8,
+
+need_map_level = 5,
+}
 local mt = ac.skill['精彩活动']
 mt{
     is_spellbook = 1,
@@ -168,7 +228,8 @@ mt{
     
 }
 mt.skill_name ={
-    '缘定三生','井底之蛙','食物链顶端的人','有趣的灵魂','蒙娜丽莎的微笑'
+    '缘定三生','井底之蛙','食物链顶端的人','有趣的灵魂',
+    '蒙娜丽莎的微笑','四海共团圆','第一个吃螃蟹的人',
 }
 
 mt.skills = {

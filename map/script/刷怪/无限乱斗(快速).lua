@@ -176,7 +176,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name)
     ac.game:event '单位-创建' (function(_,unit)
         local str = table.concat(ac.attack_boss)
         if finds(str,unit:get_name()) then
-            unit:set('移动速度',520)
+            unit:set('移动速度',519)
             unit:set('攻击间隔',0.4)
             unit:set('攻击速度',800)
             unit:set('闪避',60)
@@ -196,7 +196,7 @@ ac.game:event '选择难度' (function(_,g_game_degree_name)
             ac.change_attr(unit,self.index)
 
             --改变怪物极限属性
-            unit:set('移动速度',520)
+            unit:set('移动速度',519)
             unit:set('攻击间隔',0.4)
             unit:set('攻击速度',800)
             unit:set('闪避',60)

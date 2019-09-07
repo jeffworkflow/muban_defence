@@ -16,7 +16,7 @@ function move.update_speed(u, move_speed)
 		-- 		end	
 		-- 	end)
 		-- end	
-	elseif move_speed <= 520 and move.last[u] then
+	elseif move_speed <= 519 and move.last[u] then
 		move.remove(u)
 	end
 	--单位死亡时，要移除group table
@@ -57,7 +57,8 @@ function move.update()
 		local last = move.last[u]
 		local now = u:get_point()
 		local speed = now * last / frame
-		if speed > 520 and speed < 525 then
+		-- print(u:get_name(),speed,last,now)
+		if speed > 519 and speed < 525 then
 			--在魔兽速度520-525 之间，认为有超出520移动速度的可能性，做一次位置偏移，同时记录新的位置。
 			local target = last - {last / now, u:get('移动速度') * frame}
 			u:setPoint(target)
