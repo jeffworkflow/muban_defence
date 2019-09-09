@@ -20,8 +20,6 @@ item_type = '消耗品',
 no_use =true,
 wood = 1000,
 
-cool = 1,
-
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -48,7 +46,6 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
-cool = 1,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -74,7 +71,6 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
-cool = 1,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -100,7 +96,6 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
-cool = 1,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -125,7 +120,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
-cool = 1,
+no_use =true,
 --物品技能
 is_skill = true,
 --目标类型
@@ -236,10 +231,10 @@ end
 --获得事件
 local unit_reward = { 
     ['练功房怪'] =  {
-        { rand = 10.05,     name = '【中】'},
-        { rand = 10.05,     name = '【秋】'},
-        { rand = 10.05,     name = '【快】'},
-        { rand = 10.05,     name = '【乐】'},
+        { rand = 0.05,     name = '【中】'},
+        { rand = 0.05,     name = '【秋】'},
+        { rand = 0.05,     name = '【快】'},
+        { rand = 0.05,     name = '【乐】'},
     },
 }
 ac.game:event '单位-死亡' (function (_,unit,killer)
@@ -250,6 +245,16 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local rand_name = ac.get_reward_name(unit_reward['练功房怪'])  
     if not rand_name then 
         return 
+    end   
+
+    if not p.max_item_fall then 
+        p.max_item_fall = {}
+    end
+    p.max_item_fall[rand_name] = (p.max_item_fall[rand_name] or 0) + 1
+    --获得最多次数
+    local max_cnt = 3   
+    if p.max_item_fall[rand_name] <= max_cnt then 
+        ac.item.create_item(rand_name,unit:get_point())
     end    
-    ac.item.create_item(rand_name,unit:get_point())
+
 end)

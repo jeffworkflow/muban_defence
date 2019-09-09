@@ -226,11 +226,13 @@
             return
         end 
         --只能用兑换券 兑换的物品，没有兑换券时的处理 
-        if  fire_seeds == 0 and jifens == 0 and kill_counts == 0 and woods == 0 and golds == 0  and not has_raffle then
-            u:get_owner():sendMsg('没有兑换券 或 兑换券条件不符',3)
-            ac.game:event_notify('单位-货币不足',seller,u,it)
-            return
-        end 
+        if it.raffle then
+            if  fire_seeds == 0 and jifens == 0 and kill_counts == 0 and woods == 0 and golds == 0  and not has_raffle then
+                u:get_owner():sendMsg('没有兑换券 或 兑换券条件不符',3)
+                ac.game:event_notify('单位-货币不足',seller,u,it)
+                return
+            end 
+        end    
 
 
         --购买上限
