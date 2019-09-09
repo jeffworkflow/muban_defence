@@ -1,0 +1,243 @@
+
+local mt = ac.skill['中']
+mt{
+--等久
+level = 1,
+--图标
+art = [[wryb.blp]],
+--说明
+tip = [[
+
+
+|cff00ff00由杏仁、桃仁、橄榄仁、芝麻仁和瓜子仁做成的月饼，|cffff0000点击左键可食用
+
+|cffcccccc中秋活动物品|r]],
+--品质
+color = '紫',
+--物品类型
+item_type = '消耗品',
+cool = 1,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+}
+
+
+local mt = ac.skill['秋']
+mt{
+--等久
+level = 1,
+--图标
+art = [[wryb.blp]],
+--说明
+tip = [[
+
+
+|cff00ff00由杏仁、桃仁、橄榄仁、芝麻仁和瓜子仁做成的月饼，|cffff0000点击左键可食用
+
+|cffcccccc中秋活动物品|r]],
+--品质
+color = '紫',
+--物品类型
+item_type = '消耗品',
+cool = 1,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+}
+
+local mt = ac.skill['快']
+mt{
+--等久
+level = 1,
+--图标
+art = [[wryb.blp]],
+--说明
+tip = [[
+
+
+|cff00ff00由杏仁、桃仁、橄榄仁、芝麻仁和瓜子仁做成的月饼，|cffff0000点击左键可食用
+
+|cffcccccc中秋活动物品|r]],
+--品质
+color = '紫',
+--物品类型
+item_type = '消耗品',
+cool = 1,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+}
+
+local mt = ac.skill['乐']
+mt{
+--等久
+level = 1,
+--图标
+art = [[wryb.blp]],
+--说明
+tip = [[
+
+
+|cff00ff00由杏仁、桃仁、橄榄仁、芝麻仁和瓜子仁做成的月饼，|cffff0000点击左键可食用
+
+|cffcccccc中秋活动物品|r]],
+--品质
+color = '紫',
+--物品类型
+item_type = '消耗品',
+cool = 1,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+}
+
+
+local mt = ac.skill['博饼券']
+mt{
+--等久
+level = 1,
+--图标
+art = [[wryb.blp]],
+--说明
+tip = [[
+
+
+|cff00ff00由杏仁、桃仁、橄榄仁、芝麻仁和瓜子仁做成的月饼，|cffff0000点击左键可食用
+
+|cffcccccc中秋活动物品|r]],
+--品质
+color = '紫',
+--物品类型
+item_type = '消耗品',
+cool = 1,
+--物品技能
+is_skill = true,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+}
+
+--插入到合成表
+ac.wait(100,function()
+    table.insert(ac.streng_item_list,{'博饼券','中*1 秋*1 快*1 乐*1'})
+end)
+--奖品
+local award_list = { 
+    ['博饼券'] =  {
+        { rand = 49.65,      name = '无'},
+        { rand = 35,     name = '秀才'},
+        { rand = 8,      name = '举人'},
+        { rand = 4,      name = '进士'},
+        { rand = 2,      name = '探花'},
+        { rand = 1,      name = '榜眼'},
+        { rand = 0.35,      name = '状元'},
+    },
+}
+local name2id = {
+    ['秀才'] = 1,
+    ['举人'] = 2,
+    ['进士'] = 3,
+    ['探花'] = 4,
+    ['榜眼'] = 5,
+    ['状元'] = 6,
+}
+ac.bobing_name2id = name2id
+  
+
+local function give_award(hero) 
+    local p = hero:get_owner()
+    local player = hero:get_owner()
+    local rand_list = award_list['博饼券']
+    local rand_name,rand_rate = ac.get_reward_name(rand_list)
+    local hero = p.hero
+    -- print(rand_list,rand_name)  
+    if not rand_name then 
+        print('没有随机到任何东西')
+        return true
+    end
+    if rand_name == '无' then
+        p:sendMsg('|cffffe799【系统消息】|r 青蛙快乐地游走了',3) 
+    else
+        local key = 'bobing'
+        local server_value = p.cus_server and p.cus_server[ac.server.key2name(key)] or 0
+        local value = name2id[rand_name]
+        if value > server_value then 
+            --激活成就（存档） 
+            p:Map_SaveServerValue(key,value) --网易服务器
+            --删掉旧的
+            for key,val in sortpairs(name2id) do 
+                local skl = hero:find_skill(key,nil,true)
+                if skl then 
+                    ac.game:event_notify('技能-删除魔法书',hero,'精彩活动',skl.name)
+                end
+            end  
+            --插入新的 
+            ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',rand_name)
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r  将青蛙丢进井里，惊喜获得|cffff0000【可存档成就】'..rand_name..'|r |cff00ff00+16.8杀怪加全属性|r |cff00ff00+16.8攻击减甲|r |cff00ff00+16.8%杀敌数加成|r |cff00ff00+16.8%物理伤害加深|r',6) 
+        else
+            ac.player.self:sendMsg('博到 '..rand_name,6)  
+        end    
+    end    
+end
+
+local mt = ac.skill['博饼使我快乐']
+mt{
+--等久
+level = 1,
+--图标
+art = [[shgty.blp]],
+--说明
+tip = [[ 
+|cffffe799【活动时间】|r|cff00ff009月7日-9月17日
+|cffffe799【活动说明】|r|cff00ff00年年此夜，华灯盛照，人月圆时。三界众人都忙于筹备盛宴，一时之间各地都人来人往，热闹非凡。|cff00ffff热心的各位少侠，快去三界各地帮助百姓们筹备团圆佳节宴吧！
+
+|cffff0000还请帮忙收集15个“五仁月饼”、15个“大西瓜”、5个“肥美的螃蟹”，交付于我
+ ]],
+--物品类型
+item_type = '神符',
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+--冷却
+cool = 1,
+--物品技能
+is_skill = true,
+store_affix = '',
+store_name = '|cffdf19d0四海共团圆|r',
+--兑换材料
+raffle = '博饼券*1',
+--物品详细介绍的title
+content_tip = ''
+} 
+function mt:on_cast_start()
+    local hero = self.owner
+    give_award(hero)
+end 
+
+
+
+--获得事件
+local unit_reward = { 
+    ['练功房怪'] =  {
+        { rand = 10.05,     name = '中'},
+        { rand = 10.05,     name = '秋'},
+        { rand = 10.05,     name = '快'},
+        { rand = 10.05,     name = '乐'},
+    },
+}
+ac.game:event '单位-死亡' (function (_,unit,killer)
+    if not finds(unit:get_name(),'经验怪','金币','木头','火灵') then 
+        return
+    end    
+    local p = killer:get_owner()
+    local rand_name = ac.get_reward_name(unit_reward['练功房怪'])  
+    if not rand_name then 
+        return 
+    end    
+    ac.item.create_item(rand_name,unit:get_point())
+end)

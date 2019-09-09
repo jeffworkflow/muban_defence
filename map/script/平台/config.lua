@@ -254,6 +254,9 @@ local cus_key = {
     {'S1ljwj','S1无尽累计'},
     {'S1wbjf','S1挖宝积分'},
     {'S1wljf','S1比武积分'},
+
+
+    {'bobing','博饼'},
     
 }
 ac.cus_server_key = cus_key

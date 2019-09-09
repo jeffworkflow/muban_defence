@@ -215,6 +215,188 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 
 need_map_level = 5,
 }
+--=======================中秋活动=====================
+local mt = ac.skill['秀才']
+mt{
+--等级
+level = 1, 
+--图标
+art = [[dygcpxdr.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=10
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = {2,20},
+['攻击减甲'] = {2,20},
+['物品获取率'] = {2,20},
+['全伤加深'] = {2,20},
+
+need_map_level = 5,
+}
+local mt = ac.skill['举人']
+mt{
+--等级
+level = 1, 
+--图标
+art = [[dygcpxdr.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=10
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = {2,20},
+['攻击减甲'] = {2,20},
+['物品获取率'] = {2,20},
+['全伤加深'] = {2,20},
+
+need_map_level = 5,
+}
+local mt = ac.skill['进士']
+mt{
+--等级
+level = 1, 
+--图标
+art = [[dygcpxdr.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=10
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = {2,20},
+['攻击减甲'] = {2,20},
+['物品获取率'] = {2,20},
+['全伤加深'] = {2,20},
+
+need_map_level = 5,
+}
+
+local mt = ac.skill['探花']
+mt{
+--等级
+level = 1, 
+--图标
+art = [[dygcpxdr.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=10
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = {2,20},
+['攻击减甲'] = {2,20},
+['物品获取率'] = {2,20},
+['全伤加深'] = {2,20},
+
+need_map_level = 5,
+}
+local mt = ac.skill['榜眼']
+mt{
+--等级
+level = 1, 
+--图标
+art = [[dygcpxdr.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=10
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = {2,20},
+['攻击减甲'] = {2,20},
+['物品获取率'] = {2,20},
+['全伤加深'] = {2,20},
+
+need_map_level = 5,
+}
+
+
+local mt = ac.skill['状元']
+mt{
+--等级
+level = 1, 
+--图标
+art = [[dygcpxdr.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=10
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = {2,20},
+['攻击减甲'] = {2,20},
+['物品获取率'] = {2,20},
+['全伤加深'] = {2,20},
+
+need_map_level = 5,
+}
+local bobing_str = {
+    '秀才','举人','进士','探花','榜眼','状元'
+}
+
 local mt = ac.skill['精彩活动']
 mt{
     is_spellbook = 1,
@@ -246,4 +428,11 @@ function mt:on_add()
             skl:set_level(has_mall)
         end
     end 
+    --特殊处理 博饼活动
+    local key = 'bobing'
+    local server_value = player.cus_server and player.cus_server[ac.server.key2name(key)] or 0
+    if server_value > 0 then 
+        local name = bobing_str[server_value]
+        ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',name)
+    end
 end    

@@ -329,7 +329,7 @@ ac.game:event '游戏-回合开始'(function(trg,index, creep)
             local cus_value = tonumber((player.cus_server2 and player.cus_server2[name]) or 0)
             -- p:sp_set_rank('today_boshu',value)
             if index > cus_value then 
-                if ac.flag_map == 1 then  
+                if (ac.flag_map or 0 ) == 1 then  
                     if player:Map_GetMapLevel() >=3 then 
                         player:SetServerValue(key,index)  -- 自定义服务器 
                     end    
@@ -521,6 +521,10 @@ local ttxd2award1 = {
     ['食物链顶端的人'] = {0,5},
     ['有趣的灵魂'] = {0,5},
     ['蒙娜丽莎的微笑'] = {0,5},
+
+    ['四海共团圆'] = {0,5},
+    ['第一个吃螃蟹的人'] = {0,5},
+    ['博饼'] = {0,5},
 }    
 
 --处理替天行道 永久属性

@@ -29,7 +29,12 @@ ac.game:event '技能-获得' (function (_,hero,self)
     local skill = hero:add_skill('关闭',page_type,slots[12],{
         book = self,
     })
-    table.insert(skill_list,skill)
+
+    skill.book_slot_id = 12
+    skill_list[12] = skill
+    
+    --记录一下魔法书内技能数量
+    self.skill_count = #skill_list + 1 --吧关闭按钮也算进去
 
     --包含关闭技能的列表
     self.skill_list = skill_list
@@ -38,14 +43,25 @@ ac.game:event '技能-获得' (function (_,hero,self)
     --不包含关闭技能的列表
     self.skill_book = skill_book
 
-    for index,skill in ipairs(self.skill_list) do 
-        if not skill:is_hide() then 
-            skill:hide()
-            skill:remove_ability(skill.ability_id)
+    for i=1,12 do
+        local skill = self.skill_list[i]
+        if skill then
+            if not skill:is_hide() then 
+                skill:hide()
+                skill:remove_ability(skill.ability_id)
+            end
         end
-    end 
+    end
 end)
-
+local function get_nil_slot(tab)
+    for i=1,11 do 
+        if not tab[i]  then 
+            return i 
+        end 
+    end
+    return     
+end   
+  
 ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
     if type(book_skill) == 'string' then 
         book_skill = hero:find_skill(book_skill,nil,true)
@@ -60,15 +76,21 @@ ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
     local page_type = self:get_type() .. '_' .. string.format("%01x",book_skill.slotid)
     
     local name = skl
-    local index = #self.skill_list
+    local index = get_nil_slot(self.skill_list)
+    --判断魔法书是否满了
+    if not index then
+        print('该魔法书已满',self.name,name)
+        return
+    end
+
     local skill = hero:add_skill(name,page_type,slots[index],{
             book = self,
         })
 
     skill.book_slot_id = index
     self.skill_map[name] = skill
-    table.insert(self.skill_list,skill)
-    table.insert(self.skill_book,skill)
+    self.skill_list[index] = skill
+    self.skill_book[index] = skill
     
     local skl = hero:find_skill('关闭',hero.skill_page or '英雄')
     if not skl then
@@ -123,24 +145,22 @@ ac.game:event '技能-施法完成' (function (_,hero,self)
     end 
     local player = hero:get_owner()
     local page_type = self:get_type() .. '_' .. string.format("%01x",self.slotid)
-
     hero.skill_page = page_type
-
     self.parent_skill.hide_book = true 
     for skill in hero:each_skill(self:get_type(),true) do 
         skill:hide()
         skill:fresh()
     end 
-
-    for index,skill in ipairs(self.skill_list) do 
-        if skill:is_hide() then 
-            skill:add_ability(skill.ability_id)
-            skill:show()
+    for i=1,12 do
+        local skill = self.skill_list[i]
+        if skill then
+            if skill:is_hide() then 
+                skill:add_ability(skill.ability_id)
+                skill:show()
+            end
+            skill:fresh()
         end
-
-        skill:fresh()
-    end 
-
+    end
     if player:is_self() then 
         ClearSelection()
         SelectUnit(hero.handle,true)
@@ -157,9 +177,12 @@ ac.game:event '单位-失去技能'(function (_,hero,self)
         skl:close()
     end 
     if self.skill_list then 
-        for index,skill in ipairs(self.skill_list) do 
-            skill:remove()
-        end 
+        for i=1,12 do
+            local skill = self.skill_list[i]
+            if skill then
+                skill:remove()
+            end
+        end
         self.skill_list = nil
     end 
     self.skill_book = nil
@@ -211,16 +234,18 @@ function mt:on_cast_start()
     local book = self.book
     if book.hide_book == nil then 
         return 
-    end 
+    end
     hero.skill_page = book:get_type()
-
     book.hide_book = nil 
-    for index,skill in ipairs(book.skill_list) do 
-        if not skill:is_hide() then 
-            skill:hide()
-            skill:remove_ability(skill.ability_id)
+    for i = 1,12 do
+        local skill = book.skill_list[i]
+        if skill then
+            if not skill:is_hide() then 
+                skill:hide()
+                skill:remove_ability(skill.ability_id)
+            end
         end
-    end 
+    end
 
     for skill in hero:each_skill(book:get_type(),true) do 
         if skill:is_hide() then 
@@ -235,16 +260,18 @@ function mt:close()
     local hero = self.owner
     local player = hero:get_owner()
     local book = self.book
-    -- hero = player.selected
     if book.hide_book == nil then 
         return 
     end 
     hero.skill_page = nil
     book.hide_book = nil 
-    for index,skill in ipairs(book.skill_list) do 
-        if not skill:is_hide() then 
-            skill:hide()
-            skill:remove_ability(skill.ability_id)
+    for i = 1,12 do
+        local skill = book.skill_list[i]
+        if skill then
+            if not skill:is_hide() then 
+                skill:hide()
+                skill:remove_ability(skill.ability_id)
+            end
         end
     end
 

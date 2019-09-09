@@ -56,9 +56,9 @@ end
 
 --读取 map_test 多个个并同步
 function player.__index:sp_get_map_test(f)
-    if ac.flag_map < 1 then 
-        return 
-    end
+    -- if not ac.flag_map or ac.flag_map < 1 then 
+    --     return 
+    -- end
     if not self:is_self() then 
         return 
     end    

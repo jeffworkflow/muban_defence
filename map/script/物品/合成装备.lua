@@ -89,6 +89,7 @@ local streng_item_list = {
     {'青','青*1 青*1 青*1 技能融合*1'},
     
 }
+ac.streng_item_list = streng_item_list
 local function streng_item(alltable,unit,it)
 
     local u = unit
