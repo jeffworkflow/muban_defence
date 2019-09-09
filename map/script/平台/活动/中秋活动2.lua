@@ -1,15 +1,47 @@
 
-local mt = ac.skill['中']
+local mt = ac.skill['【中】']
 mt{
 --等久
 level = 1,
 --图标
-art = [[wryb.blp]],
+art = [[zhong.blp]],
 --说明
 tip = [[
 
 
-|cff00ff00由杏仁、桃仁、橄榄仁、芝麻仁和瓜子仁做成的月饼，|cffff0000点击左键可食用
+|cffdf19d0【中】|cff00ffff+【秋】+【快】+【乐】=【博饼券】|cff00ff00（可在“活动使者”处，进行一次博饼）
+
+|cffcccccc中秋活动物品|r]],
+--品质
+color = '紫',
+--物品类型
+item_type = '消耗品',
+
+no_use =true,
+wood = 1000,
+
+cool = 1,
+
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+--物品详细介绍的title
+content_tip = '|cffffe799使用说明：|r'
+}
+
+
+local mt = ac.skill['【秋】']
+mt{
+--等久
+level = 1,
+no_use =true,
+wood = 1000,
+--图标
+art = [[qiu.blp]],
+--说明
+tip = [[
+
+
+|cff00ffff【中】+|cffdf19d0【秋】|cff00ffff+【快】+【乐】=【博饼券】|cff00ff00（可在“活动使者”处，进行一次博饼）
 
 |cffcccccc中秋活动物品|r]],
 --品质
@@ -23,18 +55,19 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffffe799使用说明：|r'
 }
 
-
-local mt = ac.skill['秋']
+local mt = ac.skill['【快】']
 mt{
 --等久
 level = 1,
+no_use =true,
+wood = 1000,
 --图标
-art = [[wryb.blp]],
+art = [[kuai.blp]],
 --说明
 tip = [[
 
 
-|cff00ff00由杏仁、桃仁、橄榄仁、芝麻仁和瓜子仁做成的月饼，|cffff0000点击左键可食用
+|cff00ffff【中】+【秋】+|cffdf19d0【快】|cff00ffff+【乐】=【博饼券】|cff00ff00（可在“活动使者”处，进行一次博饼）
 
 |cffcccccc中秋活动物品|r]],
 --品质
@@ -48,41 +81,19 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffffe799使用说明：|r'
 }
 
-local mt = ac.skill['快']
+local mt = ac.skill['【乐】']
 mt{
 --等久
 level = 1,
+no_use =true,
+wood = 1000,
 --图标
-art = [[wryb.blp]],
+art = [[le.blp]],
 --说明
 tip = [[
 
 
-|cff00ff00由杏仁、桃仁、橄榄仁、芝麻仁和瓜子仁做成的月饼，|cffff0000点击左键可食用
-
-|cffcccccc中秋活动物品|r]],
---品质
-color = '紫',
---物品类型
-item_type = '消耗品',
-cool = 1,
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
---物品详细介绍的title
-content_tip = '|cffffe799使用说明：|r'
-}
-
-local mt = ac.skill['乐']
-mt{
---等久
-level = 1,
---图标
-art = [[wryb.blp]],
---说明
-tip = [[
-
-
-|cff00ff00由杏仁、桃仁、橄榄仁、芝麻仁和瓜子仁做成的月饼，|cffff0000点击左键可食用
+|cff00ffff【中】+【秋】+【快】+|cffdf19d0【乐】|cff00ffff=【博饼券】|cff00ff00（可在“活动使者”处，进行一次博饼）
 
 |cffcccccc中秋活动物品|r]],
 --品质
@@ -102,12 +113,12 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[wryb.blp]],
+art = [[bobingquan.blp]],
 --说明
 tip = [[
 
 
-|cff00ff00由杏仁、桃仁、橄榄仁、芝麻仁和瓜子仁做成的月饼，|cffff0000点击左键可食用
+|cff00ff00可在“活动使者”处，进行一次博饼
 
 |cffcccccc中秋活动物品|r]],
 --品质
@@ -125,7 +136,7 @@ content_tip = '|cffffe799使用说明：|r'
 
 --插入到合成表
 ac.wait(100,function()
-    table.insert(ac.streng_item_list,{'博饼券','中*1 秋*1 快*1 乐*1'})
+    table.insert(ac.streng_item_list,{'博饼券','【中】*1 【秋】*1 【快】*1 【乐】*1'})
 end)
 --奖品
 local award_list = { 
@@ -162,7 +173,7 @@ local function give_award(hero)
         return true
     end
     if rand_name == '无' then
-        p:sendMsg('|cffffe799【系统消息】|r 青蛙快乐地游走了',3) 
+        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00什么都没有博到',3) 
     else
         local key = 'bobing'
         local server_value = p.cus_server and p.cus_server[ac.server.key2name(key)] or 0
@@ -179,9 +190,9 @@ local function give_award(hero)
             end  
             --插入新的 
             ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',rand_name)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r  将青蛙丢进井里，惊喜获得|cffff0000【可存档成就】'..rand_name..'|r |cff00ff00+16.8杀怪加全属性|r |cff00ff00+16.8攻击减甲|r |cff00ff00+16.8%杀敌数加成|r |cff00ff00+16.8%物理伤害加深|r',6) 
+            p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r |cff00ff00将骰子摇了下去，好多“四”，惊喜获得|cffff0000【可存档称谓】'..rand_name..'|r |cff00ff00称谓属性可在“巅峰神域-精彩活动”中查看',6) 
         else
-            ac.player.self:sendMsg('博到 '..rand_name,6)  
+            p:sendMsg('|cffffe799【系统消息】|r|cff00ff00未博到更高级的称谓，博了个小'..rand_name,6)  
         end    
     end    
 end
@@ -191,14 +202,15 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shgty.blp]],
+art = [[bbswkl.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff009月7日-9月17日
-|cffffe799【活动说明】|r|cff00ff00年年此夜，华灯盛照，人月圆时。三界众人都忙于筹备盛宴，一时之间各地都人来人往，热闹非凡。|cff00ffff热心的各位少侠，快去三界各地帮助百姓们筹备团圆佳节宴吧！
+|cffffe799【活动时间】|r|cff00ff009月10日-9月17日
+|cffffe799【活动说明】|r|cff00ff00由郑成功发明的一种游戏，是闽南地区特有的一种中秋民俗活动。|cff00ffff相传这种游戏可以预测人未来一年内的运气。
 
-|cffff0000还请帮忙收集15个“五仁月饼”、15个“大西瓜”、5个“肥美的螃蟹”，交付于我
- ]],
+|cffffff00消耗 |cffff0000一张博饼券 |cffffff00进行一次博饼
+
+|cffcccccc(博饼有概率获得不同的“可存档称谓”，但同时只能拥有一个最高等级的称谓)]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -208,7 +220,7 @@ cool = 1,
 --物品技能
 is_skill = true,
 store_affix = '',
-store_name = '|cffdf19d0四海共团圆|r',
+store_name = '|cffdf19d0博饼使我快乐|r',
 --兑换材料
 raffle = '博饼券*1',
 --物品详细介绍的title
@@ -224,10 +236,10 @@ end
 --获得事件
 local unit_reward = { 
     ['练功房怪'] =  {
-        { rand = 10.05,     name = '中'},
-        { rand = 10.05,     name = '秋'},
-        { rand = 10.05,     name = '快'},
-        { rand = 10.05,     name = '乐'},
+        { rand = 10.05,     name = '【中】'},
+        { rand = 10.05,     name = '【秋】'},
+        { rand = 10.05,     name = '【快】'},
+        { rand = 10.05,     name = '【乐】'},
     },
 }
 ac.game:event '单位-死亡' (function (_,unit,killer)

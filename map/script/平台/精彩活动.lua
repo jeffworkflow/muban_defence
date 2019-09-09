@@ -42,10 +42,10 @@ tip = [[
 |cff00ffff抓青蛙活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=2
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+%杀怪加全属性%   杀怪加全属性|r
-|cff00ff00+%攻击减甲%   攻击减甲|r
-|cff00ff00+%杀敌数加成% %  杀敌数加成|r
-|cff00ff00+%物理伤害加深% %  物理伤害加深|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%杀敌数加成% |cff00ff00%  杀敌数加成|r
+|cff00ff00+%物理伤害加深% |cff00ff00%  物理伤害加深|r
 
 ]],
 --目标类型
@@ -179,7 +179,7 @@ tip = [[
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 26.8,
 ['杀敌数加成'] = 26.8,
-['攻击减甲'] = 236.8,
+['攻击减甲'] = 26.8,
 ['全伤加深'] = 26.8,
 
 need_map_level = 5,
@@ -221,27 +221,27 @@ mt{
 --等级
 level = 1, 
 --图标
-art = [[dygcpxdr.blp]],
+art = [[xiucai.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=10
+|cff00ffff通过 中秋活动 获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
-|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
-|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+|cff00ff00+18.8   杀怪加全属性|r
+|cff00ff00+18.8   攻击减甲|r
+|cff00ff00+18.8%  木头加成|r
+|cff00ff00+18.8%  全伤加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = {2,20},
-['攻击减甲'] = {2,20},
-['物品获取率'] = {2,20},
-['全伤加深'] = {2,20},
+['杀怪加全属性'] = 18.8,
+['攻击减甲'] = 18.8,
+['木头加成'] = 18.8,
+['全伤加深'] = 18.8,
 
 need_map_level = 5,
 }
@@ -250,27 +250,27 @@ mt{
 --等级
 level = 1, 
 --图标
-art = [[dygcpxdr.blp]],
+art = [[juren.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=10
+|cff00ffff通过 中秋活动 获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
-|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
-|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+|cff00ff00+28.8   杀怪加全属性|r
+|cff00ff00+28.8   攻击减甲|r
+|cff00ff00+28.8%  木头加成|r
+|cff00ff00+28.8%  全伤加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = {2,20},
-['攻击减甲'] = {2,20},
-['物品获取率'] = {2,20},
-['全伤加深'] = {2,20},
+['杀怪加全属性'] = 28.8,
+['攻击减甲'] = 28.8,
+['木头加成'] = 28.8,
+['全伤加深'] = 28.8,
 
 need_map_level = 5,
 }
@@ -279,27 +279,27 @@ mt{
 --等级
 level = 1, 
 --图标
-art = [[dygcpxdr.blp]],
+art = [[jinshi.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=10
+|cff00ffff通过 中秋活动 获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
-|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
-|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+|cff00ff00+38.8   杀怪加全属性|r
+|cff00ff00+38.8   攻击减甲|r
+|cff00ff00+38.8%  木头加成|r
+|cff00ff00+38.8%  全伤加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = {2,20},
-['攻击减甲'] = {2,20},
-['物品获取率'] = {2,20},
-['全伤加深'] = {2,20},
+['杀怪加全属性'] = 38.8,
+['攻击减甲'] = 38.8,
+['木头加成'] = 38.8,
+['全伤加深'] = 38.8,
 
 need_map_level = 5,
 }
@@ -309,27 +309,27 @@ mt{
 --等级
 level = 1, 
 --图标
-art = [[dygcpxdr.blp]],
+art = [[tanhua.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=10
+|cff00ffff通过 中秋活动 获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
-|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
-|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+|cff00ff00+48.8   杀怪加全属性|r
+|cff00ff00+48.8   攻击减甲|r
+|cff00ff00+48.8%  木头加成|r
+|cff00ff00+48.8%  全伤加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = {2,20},
-['攻击减甲'] = {2,20},
-['物品获取率'] = {2,20},
-['全伤加深'] = {2,20},
+['杀怪加全属性'] = 48.8,
+['攻击减甲'] = 48.8,
+['木头加成'] = 48.8,
+['全伤加深'] = 48.8,
 
 need_map_level = 5,
 }
@@ -344,21 +344,21 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=10
+|cff00ffff通过 中秋活动 获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
-|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
-|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+|cff00ff00+68.8   杀怪加全属性|r
+|cff00ff00+68.8   攻击减甲|r
+|cff00ff00+68.8%  木头加成|r
+|cff00ff00+68.8%  全伤加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = {2,20},
-['攻击减甲'] = {2,20},
-['物品获取率'] = {2,20},
-['全伤加深'] = {2,20},
+['杀怪加全属性'] = 68.8,
+['攻击减甲'] = 68.8,
+['木头加成'] = 68.8,
+['全伤加深'] = 68.8,
 
 need_map_level = 5,
 }
@@ -375,21 +375,21 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=10
+|cff00ffff通过 中秋活动 获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
-|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
-|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+|cff00ff00+88.8   杀怪加全属性|r
+|cff00ff00+88.8   攻击减甲|r
+|cff00ff00+88.8%  木头加成|r
+|cff00ff00+88.8%  全伤加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = {2,20},
-['攻击减甲'] = {2,20},
-['物品获取率'] = {2,20},
-['全伤加深'] = {2,20},
+['杀怪加全属性'] = 88.8,
+['攻击减甲'] = 88.8,
+['木头加成'] = 88.8,
+['全伤加深'] = 88.8,
 
 need_map_level = 5,
 }
