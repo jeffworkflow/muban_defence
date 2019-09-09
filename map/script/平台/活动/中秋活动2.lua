@@ -231,10 +231,10 @@ end
 --获得事件
 local unit_reward = { 
     ['练功房怪'] =  {
-        { rand = 0.05,     name = '【中】'},
-        { rand = 0.05,     name = '【秋】'},
-        { rand = 0.05,     name = '【快】'},
-        { rand = 0.05,     name = '【乐】'},
+        { rand = 0.07,     name = '【中】'},
+        { rand = 0.07,     name = '【秋】'},
+        { rand = 0.07,     name = '【快】'},
+        { rand = 0.07,     name = '【乐】'},
     },
 }
 ac.game:event '单位-死亡' (function (_,unit,killer)
