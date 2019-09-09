@@ -338,7 +338,7 @@ mt{
 --等级
 level = 1, 
 --图标
-art = [[dygcpxdr.blp]],
+art = [[bangyan.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
@@ -369,7 +369,7 @@ mt{
 --等级
 level = 1, 
 --图标
-art = [[dygcpxdr.blp]],
+art = [[zhuangyuan.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
