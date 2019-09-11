@@ -548,6 +548,7 @@ function mt:finish(is_unit_kill)
             self.group[_] = nil
             -- table.remove(self.group,_)
         end     
+        self.group = {}
     end
     --creep.all_creep[self.name] = nil
     
