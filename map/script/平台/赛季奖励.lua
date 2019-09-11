@@ -487,11 +487,11 @@ mt{
 level = 0, --要动态插入
 max_level = 35,
 --图标
-art = [[S2sjsm.blp]],
+art = [[SJ3.blp]],
 --说明
 tip = [[
 
-|cffffe799【赛季时间】|r|cff00ff009月2日-9月10日
+|cffffe799【赛季时间】|r|cff00ff009月12日-9月22日
 |cffffe799【赛季说明】|r|cff00ff00赛季结束时，将发放丰厚的赛季奖励
 
 |cffcccccc当前赛季 通关次数：%cnt_succ%
@@ -506,7 +506,7 @@ cnt_succ = function(self)
     local hero = self.owner
     local p = hero:get_owner()
     local cnt = get_season(p,'总通关次数') - (p.cus_server['S2通关次数'] or 0)
-    cnt = math.min(cnt,500,p:Map_GetMapLevel()*25) --500，25
+    cnt = math.min(cnt,250,p:Map_GetMapLevel()*25) --500，25
     return cnt
 end,
 
@@ -515,7 +515,7 @@ cnt_ljwj = function(self)
     local hero = self.owner
     local p = hero:get_owner()
     local cnt = get_season(p,'总无尽累计') - (p.cus_server['S2无尽累计'] or 0)
-    cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100) --1500,100
+    cnt = math.min(cnt,750,p:Map_GetMapLevel()*100) --1500,100
     return cnt
 end,
 --通关次数 总计
@@ -523,7 +523,7 @@ cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
     local cnt = get_season(p,'总挖宝积分') - (p.cus_server['S2挖宝积分'] or 0)
-    cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
+    cnt = math.min(cnt,2500,p:Map_GetMapLevel()*500) --5000,500
     return cnt
 end,
 --通关次数 总计
@@ -531,7 +531,7 @@ cnt_wljf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
     local cnt = get_season(p,'总比武积分') - (p.cus_server['S2比武积分'] or 0)
-    cnt = math.min(cnt,1000,p:Map_GetMapLevel()*50) --5000,500
+    cnt = math.min(cnt,2500,p:Map_GetMapLevel()*50) --5000,500
     return cnt
 end,
 }
@@ -541,14 +541,14 @@ mt{
 --等级
 level = 0, --要动态插入
 --图标
-art = [[s2sjjl.blp]],
+art = [[s3sjjl.blp]],
 --说明
 tip = [[
 
 |cffFFE799【赛季奖励】：|r
-|cffff0000【杀怪加智力】|cff00ffff+1*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
-|cffff0000【攻击加智力】|cff00ffff+1*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
-|cffff0000【每秒加智力】|cff00ffff+1*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
+|cffff0000【杀怪加全属性】|cff00ffff+1*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
+|cffff0000【攻击加全属性】|cff00ffff+1*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
+|cffff0000【每秒加全属性】|cff00ffff+1*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
 |cffff0000【每秒加攻击】|cff00ffff+8*当前赛季的比武积分|cffffff00（最大比武积分受限于地图等级）
 
 ]],
@@ -561,7 +561,7 @@ mt{
 --等级
 level = 0, --要动态插入
 --图标
-art = [[s2sjwz.blp]],
+art = [[s3sjwz.blp]],
 --说明
 tip = [[
 
@@ -587,7 +587,7 @@ local mt = ac.skill['S0赛季']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[sjjl.blp]],
+    art = [[sj0.blp]],
     title = 'S0赛季',
     tip = [[
 
@@ -602,7 +602,7 @@ local mt = ac.skill['S1赛季']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[sjjl.blp]],
+    art = [[sj1.blp]],
     title = 'S1赛季',
     tip = [[
 
@@ -617,7 +617,7 @@ local mt = ac.skill['S2赛季']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[sjjl.blp]],
+    art = [[S2sjsm.blp]],
     title = 'S2赛季',
     tip = [[
 
