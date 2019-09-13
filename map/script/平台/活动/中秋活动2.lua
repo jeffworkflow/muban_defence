@@ -136,13 +136,14 @@ end)
 --奖品
 local award_list = { 
     ['博饼券'] =  {
-        { rand = 49.65,      name = '无'},
+        { rand = 9.3,      name = '无'},
         { rand = 35,     name = '秀才'},
         { rand = 8,      name = '举人'},
         { rand = 4,      name = '进士'},
         { rand = 2,      name = '探花'},
         { rand = 1,      name = '榜眼'},
         { rand = 0.35,      name = '状元'},
+        { rand = 40.35,      name = '王昭君'},
     },
 }
 local name2id = {
@@ -169,7 +170,16 @@ local function give_award(hero)
     end
     if rand_name == '无' then
         p:sendMsg('|cffffe799【系统消息】|r|cff00ff00什么都没有博到',3) 
-    else
+    elseif rand_name == '王昭君' then
+        local has_award = p.cus_server and p.cus_server['王昭君'] or 0
+        if has_award >0 then 
+            p:sendMsg('|cffffe799【系统消息】|r|cff00ff00什么都没有博到',3) 
+        else 
+            local key = ac.server.name2key('王昭君')
+            p:Map_SaveServerValue(key,1)
+            p:sendMsg('|cffffe799【系统消息】|r|cff00ff00博到 王昭君',3) 
+        end    
+    else    
         local key = 'bobing'
         local server_value = p.cus_server and p.cus_server[ac.server.key2name(key)] or 0
         local value = name2id[rand_name]
