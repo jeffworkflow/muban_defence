@@ -6,6 +6,7 @@ local fire = {
     ['三千焱炎火'] = {'|cffff0000炼化|r 三千焱炎火',100000,'',[[huo3.blp]],[[|n可重置|cff00ff00异火品阶|r |cffff0000顶级品阶的异火|r属性很可怕|n|n|cffcccccc炼化异火不会重置异火等级|r]]},
     ['虚无吞炎'] = {'|cffff0000炼化|r 虚无吞炎',150000,'',[[huo4.blp]],[[|n可重置|cff00ff00异火品阶|r |cffff0000顶级品阶的异火|r属性很可怕|n|n|cffcccccc炼化异火不会重置异火等级|r]]}, 
     ['陀舍古帝'] = {'|cffff0000炼化|r 陀舍古帝',250000,'',[[tsgd.blp]],[[|n可重置|cff00ff00异火品阶|r |cffff0000顶级品阶的异火|r属性很可怕|n|n|cffcccccc炼化异火不会重置异火等级|r]]}, 
+    ['无尽火域'] = {'|cffff0000炼化|r 无尽火域',250000,'',[[tsgd.blp]],[[|n可重置|cff00ff00异火品阶|r |cffff0000顶级品阶的异火|r属性很可怕|n|n|cffcccccc炼化异火不会重置异火等级|r]]},
 }
 
 for key,val in pairs(fire) do 

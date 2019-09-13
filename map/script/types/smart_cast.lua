@@ -559,35 +559,35 @@ function message.hook(msg)
 			return true 
 		end 
 
-		-- 鼠标左键按下
-		if code == 1 then
-			if ability == 0 then
-				return true
-			end
+		-- 鼠标左键按下 1.24才有用，会有问题，宠物技能无法用鼠标点击
+		-- if code == 1 then
+		-- 	if ability == 0 then
+		-- 		return true
+		-- 	end
 
-			if is_select_shop() then
-				return true
-			end
+		-- 	if is_select_shop() then
+		-- 		return true
+		-- 	end
 
-			if is_book_ui() then
-				return true
-			end
-			local hero = get_select()
-			local page = hero.skill_page or '英雄'
-			for skill in hero:each_skill(page) do
-				if skill.ability_id == name then
-					name = skill.name
-					break
-				end
-			end
-			if not can_cast(name) then
-				return false
-			end
+		-- 	if is_book_ui() then
+		-- 		return true
+		-- 	end
+		-- 	local hero = get_select()
+		-- 	local page = hero.skill_page or '英雄'
+		-- 	for skill in hero:each_skill(page) do
+		-- 		if skill.ability_id == name then
+		-- 			name = skill.name
+		-- 			break
+		-- 		end
+		-- 	end
+		-- 	if not can_cast(name) then
+		-- 		return false
+		-- 	end
 			
-			if cast_spell(msg, get_select(), name) then
-				return false
-			end
-		end
+		-- 	if cast_spell(msg, get_select(), name) then
+		-- 		return false
+		-- 	end
+		-- end
 	end
 	
 	return true

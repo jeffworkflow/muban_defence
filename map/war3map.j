@@ -289,6 +289,11 @@ rect gg_rct_bncf4= null
 rect gg_rct_bncf6= null
 rect gg_rct_bncf5= null
 
+rect gg_rct_wjhy1= null
+rect gg_rct_wjhy11= null
+rect gg_rct_wjhy22= null
+rect gg_rct_wjhy33= null
+
 endglobals
 
     native DzGetMouseTerrainX takes nothing returns real
@@ -2000,6 +2005,10 @@ function CreateRegions takes nothing returns nothing
     set gg_rct_bncf4=Rect(8064.0, 3744.0, 8160.0, 3840.0)
     set gg_rct_bncf6=Rect(8352.0, 4032.0, 8448.0, 4128.0)
     set gg_rct_bncf5=Rect(8352.0, 3744.0, 8448.0, 3840.0)
+    set gg_rct_wjhy1 = Rect( 15168.0, -5216.0, 15456.0, -4992.0 )
+    set gg_rct_wjhy11 = Rect( 15168.0, -4384.0, 15392.0, -4160.0 )
+    set gg_rct_wjhy22 = Rect( 15872.0, -5408.0, 16096.0, -5184.0 )
+    set gg_rct_wjhy33 = Rect( 14496.0, -5408.0, 14720.0, -5184.0 )
 endfunction
 
 //===========================================================================

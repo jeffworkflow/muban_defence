@@ -313,12 +313,14 @@ ac.map.rects={
 	['传送-三千焱炎火'] =rect.j_rect('sqyyh1') ,
 	['传送-虚无吞炎'] =rect.j_rect('xwty1') ,
 	['传送-陀舍古帝'] =rect.j_rect('tsgd1') ,
+	['传送-无尽火域'] =rect.j_rect('wjhy1') ,
 	
 	['boss-星星之火'] =rect.j_rect('xxzh111') ,
 	['boss-陨落心炎'] =rect.j_rect('ylxy111') ,
 	['boss-三千焱炎火'] =rect.j_rect('sqyyh111') ,
 	['boss-虚无吞炎'] =rect.j_rect('xwty111') ,
 	['boss-陀舍古帝'] =rect.j_rect('tsgd11') ,
+	['boss-无尽火域'] =rect.j_rect('wjhy11') ,
 
 	--藏宝图
 	['藏宝图 '] =rect.j_rect('cbt1') ,

@@ -327,7 +327,7 @@ ac.game:event '单位-杀死单位'(function(_,killer,target)
     if not killer:is_hero() then 
         return 
     end 
-    if finds(target:get_name(),'星星之火boss','陨落心炎boss','三千焱炎火boss','虚无吞炎boss','陀舍古帝守卫') then 
+    if finds(target:get_name(),'星星之火boss','陨落心炎boss','三千焱炎火boss','虚无吞炎boss','陀舍古帝守卫','无尽火域守卫') then 
         local player = killer:get_owner()
         local hero = killer
         --概率获得成就
