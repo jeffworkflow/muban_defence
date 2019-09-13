@@ -1,10 +1,10 @@
 local config = {
-    --品阶 =  颜色,会心伤害 会心几率 全属性 每秒加护甲
+    --品阶 =  颜色,物理伤害加深 技能伤害加深 全属性% 护甲%
                 
-    ['凡'] = {'绿',50,1,6500000,10},
-    ['玄'] = {'蓝',100,2,9500000,20},
-    ['地'] = {'金',200,3,12500000,30},
-    ['天'] = {'红',400,5,15000000,50},
+    ['凡'] = {'绿',50,50,4,2},
+    ['玄'] = {'蓝',100,100,6,3},
+    ['地'] = {'金',200,200,8,4},
+    ['天'] = {'红',400,400,10,5},
 }
 
 --物品名称
@@ -18,10 +18,10 @@ mt{
 
 %xxzhtip%
 |cffFFE799【基本属性】
-|cffffff00+%会心伤害% |cffffff00% |cff00ff00会心伤害
-|cffffff00+%会心几率% |cffffff00%   |cff00ff00会心几率
-|cffffff00+%全属性% |cff00ff00全属性
-|cffffff00+%每秒加护甲% |cffffff00   |cff00ff00每秒加护甲|r
+|cffffff00+%力量%% |cffffff00% |cff00ff00全属性
+|cffffff00+%护甲%% |cffffff00%  |cff00ff00护甲
+|cffffff00+%物理伤害加深% |cffffff00% |cff00ff00物理伤害加深
+|cffffff00+%技能伤害加深% |cffffff00% |cff00ff00技能伤害加深
 ]],
     xxzhtip = function(self)
         return  '|cffffe799【品阶】|r'..'|cff'..ac.color_code[self.color or '白']..self.quality..'|r \n'
@@ -38,7 +38,7 @@ mt{
     content_tip = '|cffFF0000【点击可吞噬入体，相同异火只能吞噬一次】|r\n',
 
     --技能图标
-    art = [[tsgd.blp]],
+    art = [[wjhy.blp]],
     is_order = 1, --没显示等级，注释显示等级
     item_type ='消耗品', --
     not_use_state = true, -- 不可使用消耗品
@@ -55,19 +55,30 @@ mt{
     quality = '凡',
     --等级因素，等差数列，给出最小和最大即可
     lv_attr = {0,10,20,30,40,50,60,70,80,90,100},
-    ['会心伤害'] = function (self)
+    ['物理伤害加深'] = function (self)
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][2] 
     end,
-    ['会心几率'] = function (self)
+    ['技能伤害加深'] = function (self)
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][3] 
     end,
-    ['全属性'] = function (self)
+    ['力量%'] = function (self)
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][4] 
     end,
-    ['每秒加护甲'] = function (self)
+    ['敏捷%'] = function (self)
+        -- 等级因素 * 品阶因素
+        return (1+self.lv_attr/100) * config[self.quality][4] 
+    end,
+    ['智力%'] = function (self)
+        -- 等级因素 * 品阶因素
+        return (1+self.lv_attr/100) * config[self.quality][4] 
+    end,
+
+
+
+    ['护甲%'] = function (self)
         -- 等级因素 * 品阶因素
         return (1+self.lv_attr/100) * config[self.quality][5] 
     end,
