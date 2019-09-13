@@ -571,9 +571,20 @@ art = [[wzj.blp]],
 tip = [[
 
 |cffffe799【获得方式】：|r
-|cffff0000商城购买 “百变英雄礼包” 获得|r
+|cffff0000特殊活动获得 且 地图等级≥30|r
 
-|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+|cffFFE799【天赋属性】：|r
+|cffffff00【杀怪加全属性】+488*Lv
+【智力】+50%
+【触发概率加成】+35%
+【技能冷却】+10%
+【技暴加深】+250%
+【技能伤害加深】+250%|r
+
+|cff00bdec【被动效果】攻击10%几率造成范围技能伤害
+【伤害公式】(全属性*35+1w)*Lv
+
+|cff00ff00【凌波微步】按D向鼠标方向飘逸500码距离|r
 ]],
 --特效
 effect = [[Npc_18.mdx]]
@@ -617,6 +628,25 @@ tip = [[
 effect = [[hero_hc04.mdx]]
 }
 
+local mt = ac.skill['不朽剑圣']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+--图标
+art = [[bxjs.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cffff0000商城购买 “百变英雄礼包” 获得|r
+
+|cffff0000【点击可更换英雄外观，天赋属性开局选取后无法更换】|r
+]],
+--特效
+effect = [[121YX5HeroBladeMaster6.mdx]]
+}
+
 local mt = ac.skill['萧若兰']
 mt{
 is_skill = 1,
@@ -657,7 +687,7 @@ effect = [[HeroSpecblue.mdx]]
 
 for i,name in ipairs({
     '赵子龙','Pa','虞姬','手无寸铁的小龙女','太极熊猫','关羽','狄仁杰','伊利丹','至尊宝皮肤A','至尊宝皮肤B','鬼厉','剑仙','关公','加百列',
-    '王昭君','魔化的小龙女','雅典娜','萧若兰','复仇天神',
+    '王昭君','不朽剑圣','魔化的小龙女','雅典娜','萧若兰','复仇天神',
 }) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
@@ -671,7 +701,7 @@ for i,name in ipairs({
 
         local id 
         local new_model 
-        if not finds(target_name,'至尊宝','王昭君','魔化的小龙女','雅典娜','萧若兰','复仇天神') then 
+        if not finds(target_name,'至尊宝','王昭君','不朽剑圣','魔化的小龙女','雅典娜','萧若兰','复仇天神') then 
             id = ac.table.UnitData[target_name].id
             new_model = slk.unit[id].file
             if new_model and not getextension(new_model) then 

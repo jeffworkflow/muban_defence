@@ -136,14 +136,14 @@ end)
 --奖品
 local award_list = { 
     ['博饼券'] =  {
-        { rand = 9.3,      name = '无'},
+        { rand = 49.35,      name = '无'},
         { rand = 35,     name = '秀才'},
         { rand = 8,      name = '举人'},
         { rand = 4,      name = '进士'},
         { rand = 2,      name = '探花'},
         { rand = 1,      name = '榜眼'},
-        { rand = 0.35,      name = '状元'},
-        { rand = 40.35,      name = '王昭君'},
+        { rand = 0.4,      name = '状元'},
+        { rand = 0.25,      name = '王昭君'},
     },
 }
 local name2id = {
@@ -177,7 +177,7 @@ local function give_award(hero)
         else 
             local key = ac.server.name2key('王昭君')
             p:Map_SaveServerValue(key,1)
-            p:sendMsg('|cffffe799【系统消息】|r|cff00ff00博到 王昭君',3) 
+            p:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r |cff00ff00将骰子摇了下去，好多“四”，惊喜获得|cffff0000【可存档英雄】'..rand_name..'|r |cff00ff00激活条件可在“巅峰神域-英雄皮肤”中查看',6) 
         end    
     else    
         local key = 'bobing'
