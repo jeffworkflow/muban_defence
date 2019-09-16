@@ -539,24 +539,21 @@ is_skill = 1,
 level = 0,
 strong_hero = 1, --作用在人身上
 --图标
-art = [[tmxk.blp]],
+art = [[yutu.blp]],
 --说明
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
-|cffffe799【获得方式】：|r
-|cff00ffff挖宝积分超过 10W 自动获得，已拥有积分：|r%wabao_cnt%
+|cffffe799【成就说明】：|r
+|cff00ffff通过 中秋活动 获得
 
-|cffFFE799【宠物属性】：|r
-|cff00ff00+288  杀怪加全属性|r
-|cff00ff00+288  攻击减甲|r
-|cff00ff00+35%  技暴加深|r
-|cff00ff00+35%  技能伤害加深|r
-|cff00ff00+35%  会心伤害|r
-
-|cffffff00获得特殊技能：自动寻宝（英雄技能）|r
+|cffFFE799【成就属性】：|r
+|cff00ff00+26.8   杀怪加全属性|r
+|cff00ff00+26.8   攻击减甲|r
+|cff00ff00+26.8%  火灵加成|r
+|cff00ff00+26.8%  全伤加深|r
 
 |cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
-need_map_level = 33,
+need_map_level = 5,
 skin_cnt = function(self)
     local p = ac.player.self
     return p.cus_server[self.name..'碎片'] or 0
@@ -569,16 +566,15 @@ end,
 need_sp_cnt = 850,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 288,
-['攻击减甲'] = 288,
-['技暴加深'] = 35,
-['技能伤害加深'] = 35,
-['会心伤害'] = 35,
+['杀怪加全属性'] = 26.8,
+['攻击减甲'] = 26.8,
+['火灵加成 '] = 26.8,
+['全伤加深'] = 26.8,
 --特效
-effect = [[Pet_TMXK.mdx]],
+effect = [[RabbitGold2_BC.mdx]],
 } 
 --统一加方法
-for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫霜幽幻龙鹰','天马行空','骨龙','小悟空','齐天大圣A','齐天大圣B','玉兔'}) do
+for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫霜幽幻龙鹰','天马行空','玉兔','骨龙','小悟空','齐天大圣A','齐天大圣B'}) do
     local mt = ac.skill[name]
 
     function mt:on_cast_start()
@@ -622,7 +618,7 @@ mt{
     ]],
 }
 mt.skills = {
-    '耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫霜幽幻龙鹰','天马行空','骨龙','小悟空','齐天大圣','玉兔'
+    '耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫霜幽幻龙鹰','天马行空','玉兔','骨龙','小悟空','齐天大圣'
 }
 function mt:on_add()
     local hero = self.owner 
