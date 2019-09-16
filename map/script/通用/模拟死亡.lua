@@ -8,7 +8,7 @@ local dbg = require 'jass.debug'
 ]]
 local unit = require("types.unit")
 unit.simulation_units = {}
--- setmetatable(unit.simulation_units, {__mode = "kv"});
+setmetatable(unit.simulation_units, {__mode = "kv"});
 --根据类型取可用的handle  function player.__index:get_unit_handle(class) simulation
 function unit.get_unit_handle(id,class)
     if not class then return end 

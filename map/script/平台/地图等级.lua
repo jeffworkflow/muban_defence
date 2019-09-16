@@ -235,11 +235,7 @@ function mt:on_add()
         local skl = hero:add_skill('远影苍龙领域2','隐藏')
         skl:set_level(1)
     end 
-    if self.map_level >=50 then   
-        local skl = hero:add_skill('真龙天子2','隐藏')
-        skl:set_level(1)
-    end 
-    
+
 end    
 
 local mt = ac.skill['孤风青龙领域2']
@@ -281,46 +277,6 @@ effect = [[lingyu5.mdx]]
 }
 
 local mt = ac.skill['远影苍龙领域2']
-mt{
---等级
-level = 0,
---图标
-art = [[canglong.blp]],
---说明
-tip = [[
-
-|cffffe799【获得方式】：|r
-|cff00ffff商城购买后自动激活
-
-|cffFFE799【领域属性】：|r
-|cff00ff00+388  杀怪加全属性|r
-|cff00ff00+3880  减少周围护甲|r
-|cff00ff00+100%  木头加成|r
-|cff00ff00+100%  火灵加成|r
-|cff00ffff+388%  全伤加深|r
-|cff00ffff+5%  会心几率|r
-|cff00ffff+50%  会心伤害|r
-|cff00ffff+35%  对BOSS额外伤害|r
-|cffffff00孤风青龙领域+远影苍龙领域激活：练功房怪物数量+5！
-
-|cffff0000【点击可更换领域外观，所有领域属性可叠加】|r]],
---目标类型
-target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 388,
-['减少周围护甲'] = 3880,
-['全伤加深'] = 388,
-['会心几率'] = 5,
-['会心伤害'] = 50,
-['对BOSS额外伤害'] = 35,
-['木头加成'] = 100,
-['火灵加成'] = 100,
-
-need_map_level = 2,
---特效
-effect = [[lingyu8.mdx]]
-}
-
-local mt = ac.skill['真龙天子2']
 mt{
 --等级
 level = 0,

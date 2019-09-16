@@ -6,18 +6,6 @@
         {
             "label": "运行",
             "type": "shell",
-            "command": "D:\\fengchao\\w3x2lni_v2.4.1\\run.bat",
-            "args": [
-                "${workspaceRoot}"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        }, 
-        {
-            "label": "obj run",
-            "type": "shell",
             "command": "D:\\fengchao\\w3x2lni_v2.4.1\\build.bat",
             "args": [
                 "${workspaceRoot}"
