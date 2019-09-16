@@ -263,6 +263,8 @@ local cus_key = {
 
 
     {'bobing','博饼'},
+
+    {'hdyt','玉兔'},
     
 }
 ac.cus_server_key = cus_key
