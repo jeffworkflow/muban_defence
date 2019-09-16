@@ -181,7 +181,9 @@ local function give_award(hero)
         end    
     else    
         local key = 'bobing'
-        local server_value = p.cus_server and p.cus_server[ac.server.key2name(key)] or 0
+        -- local server_value = p.cus_server and p.cus_server[ac.server.key2name(key)] or 0 
+        -- 需要直接从服务器取，否则武林大会这边会有问题
+        local server_value = p:Map_GetServerValue(key)
         local value = name2id[rand_name]
         if value > server_value then 
             --激活成就（存档） 
