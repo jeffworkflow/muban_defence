@@ -102,7 +102,7 @@ end
 ac.game:event '游戏-开始'(function()
     -- 注册材料获得事件
     local time = 60 * 5 
-    local time = 10
+    -- local time = 10
     ac.loop(time*1000,function()
         local point = ac.rect.j_rect('sjjh2'):get_random_point()
         local unit = ac.player(16):create_unit('玉兔',point)
