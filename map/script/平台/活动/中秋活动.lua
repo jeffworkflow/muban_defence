@@ -224,7 +224,7 @@ reg:event '区域-进入' (function(trg,unit)
     local real_name ='四海共团圆'
     local has_mall = p:Map_GetServerValue(ac.server.name2key(real_name))
     --已有物品的处理
-    if has_mall > 0 then 
+    if has_mall >= 2 then 
         -- p:sendMsg('【系统消息】已有'..real_name)   
         return 
     end 
@@ -251,14 +251,17 @@ reg:event '区域-进入' (function(trg,unit)
         end   
         --保存存档
         local key = ac.server.name2key(real_name)
-        p:Map_SaveServerValue(key,1)
+        p:Map_AddServerValue(key,1)
         --当局生效
         local skl = hero:find_skill(real_name,nil,true) 
         if not skl  then 
             ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',real_name)
+            p:sendMsg('|cffffe799【系统消息】|r任务完成，恭喜获得|cffff0000【可存档成就】四海共团圆|r 奖励 |cff00ff00+26.8杀怪加全属性|r |cff00ff00+26.8攻击减甲|r |cff00ff00+26.8%杀敌数加成|r |cff00ff00+26.8%全伤加深|r',6)
+        else 
+            skl:upgrade(1)   
+            p:sendMsg('|cffff0000【可存档成就】'..real_name..'+1',6)  
         end 
         --播放特效
         hero:add_effect('chest','Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx'):remove()
-        p:sendMsg('|cffffe799【系统消息】|r任务完成，恭喜获得|cffff0000【可存档成就】四海共团圆|r 奖励 |cff00ff00+26.8杀怪加全属性|r |cff00ff00+26.8攻击减甲|r |cff00ff00+26.8%杀敌数加成|r |cff00ff00+26.8%全伤加深|r',6)
     end
 end)
