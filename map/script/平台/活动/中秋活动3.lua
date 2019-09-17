@@ -77,7 +77,7 @@ local function give_award(unit,hero)
         local list = ac.skill_list2
         --添加给购买者
         local name = list[math.random(#list)]
-        ac.item.create_item(name,unit:get_point())
+        ac.item.create_skill_item(name,unit:get_point())
         p:sendMsg('|cffffe799【系统消息】|r |cff00ff00兔子慌慌张张地跳走了，好像掉落了什么，仔细一看是|cffff0000'..name..'|r',4)
     elseif  rand_name == '玉兔' then 
         local key = ac.server.name2key(rand_name)
