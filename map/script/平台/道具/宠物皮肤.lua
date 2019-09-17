@@ -568,7 +568,7 @@ need_sp_cnt = 850,
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 26.8,
 ['攻击减甲'] = 26.8,
-['火灵加成 '] = 26.8,
+['火灵加成'] = 26.8,
 ['全伤加深'] = 26.8,
 --特效
 effect = [[RabbitGold2_BC.mdx]],
