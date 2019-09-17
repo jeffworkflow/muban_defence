@@ -159,6 +159,7 @@ local mt = ac.skill['四海共团圆']
 mt{
 --等级
 level = 1, --要动态插入
+max_level = 2,
 --图标
 art = [[shgty.blp]],
 --说明
@@ -166,21 +167,21 @@ tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff通过 中秋活动 获得
+|cff00ffff通过 中秋活动 获得，|cffff0000重复获得可升级成就|r |cff00ffff最大等级=2
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+26.8   杀怪加全属性|r
-|cff00ff00+26.8   攻击减甲|r
-|cff00ff00+26.8%  杀敌数加成|r
-|cff00ff00+26.8%  全伤加深|r
+|cff00ff00+%杀怪加全属性% |cff00ff00杀怪加全属性
+|cff00ff00+%攻击减甲% |cff00ff00攻击减甲
+|cff00ff00+%杀敌数加成% |cff00ff00% |cff00ff00杀敌数加成
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 26.8,
-['杀敌数加成'] = 26.8,
-['攻击减甲'] = 26.8,
-['全伤加深'] = 26.8,
+['杀怪加全属性'] = {26.8,36.8},
+['杀敌数加成'] = {26.8,36.8},
+['攻击减甲'] = {26.8,36.8},
+['全伤加深'] = {26.8,36.8},
 
 need_map_level = 5,
 }

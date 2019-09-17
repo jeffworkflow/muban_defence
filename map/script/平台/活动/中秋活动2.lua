@@ -212,7 +212,7 @@ level = 1,
 art = [[bbswkl.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff009月10日-9月17日
+|cffffe799【活动时间】|r|cff00ff009月10日-9月25日
 |cffffe799【活动说明】|r|cff00ff00由郑成功发明的一种游戏，是闽南地区特有的一种中秋民俗活动。|cff00ffff相传这种游戏可以预测人未来一年内的运气。
 
 |cffffff00消耗 |cffff0000一张博饼券 |cffffff00进行一次博饼
