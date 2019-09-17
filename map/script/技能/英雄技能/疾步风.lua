@@ -84,5 +84,8 @@ function mt:on_remove()
     if self.trg then self.trg:remove() self.trg = nil end
 end
 function mt:on_cover(new)
-	return new.value > self.value
+	if new.time > self:get_remaining() then
+		self:set_remaining(new.time)
+	end
+	return false
 end

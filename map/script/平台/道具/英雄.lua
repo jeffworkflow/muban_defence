@@ -355,7 +355,7 @@ end,
     return val
 end,
 
-['智力'] = function(self) 
+['智力%'] = function(self) 
     local val = 0 
     local p = self.owner:get_owner()
     if p.mall and (p.mall['鬼厉'] or 0 >=1) and (p.mall['至尊宝'] or 0 >=1) then 

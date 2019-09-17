@@ -159,6 +159,7 @@ D:\one-map\muban_defence\map\script\平台\活动\init.lua
 D:\one-map\muban_defence\map\script\平台\活动\七夕.lua
 D:\one-map\muban_defence\map\script\平台\活动\中秋活动.lua
 D:\one-map\muban_defence\map\script\平台\活动\中秋活动2.lua
+D:\one-map\muban_defence\map\script\平台\活动\中秋活动3.lua
 D:\one-map\muban_defence\map\script\平台\活动\井底之蛙.lua
 D:\one-map\muban_defence\map\script\平台\活动\失落的真相.lua
 D:\one-map\muban_defence\map\script\平台\活动\暑期活动.lua

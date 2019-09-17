@@ -37,8 +37,8 @@ local award_list = {
         { rand = 6, name = '黑暗项链'},
         { rand = 6, name = '最强生物心脏'},
         { rand = 6, name = '白胡子的大刀'},
-        { rand = 40, name = '玉兔'},
-        { rand = 0, name = '无'},
+        { rand = 6, name = '玉兔'},
+        { rand = 34, name = '无'},
     },
 }
 
