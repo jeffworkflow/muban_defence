@@ -325,7 +325,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['暴击加深'] = 25,
 ['技暴加深'] = 25,
 ['会心伤害'] = 25,
-need_map_level = 38,
+need_map_level = 37,
 --特效
 effect = [[Rune Red.mdx]]
 }
