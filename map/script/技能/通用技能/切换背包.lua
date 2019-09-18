@@ -73,7 +73,7 @@ function mt:on_cast_start()
     local b = a + 5
     for i=a,b do
         local item = hero.item_list[i]
-        if item then
+        if item and item.handle then
             --不响应获得物品 移动物品 事件
             item.is_pickup_event = true
             local handle = item.handle
