@@ -6,7 +6,7 @@ level = 0,
 --图标
 art = [[jhxx.blp]],
 --说明
-tip = [[|cffffff00【要求地图等级>3|cffffff00】|r
+tip = [[|cffffff00【要求地图等级>=3|cffffff00】|r
 
 |cffffe799【获得方式】：|r
 |cff00ffff比武积分|cffff0000（武林大会模式获得）|cff00ffff超过 250  自动获得，已拥有积分：|r%wabao_cnt%
@@ -41,7 +41,7 @@ level = 0,
 --图标
 art = [[mrzx.blp]],
 --说明
-tip = [[|cffffff00【要求地图等级>6|cffffff00】|r
+tip = [[|cffffff00【要求地图等级>=6|cffffff00】|r
 
 |cffffe799【获得方式】：|r
 |cff00ffff比武积分|cffff0000（武林大会模式获得）|cff00ffff超过 500  自动获得，已拥有积分：|r%wabao_cnt%
@@ -75,7 +75,7 @@ level = 0,
 --图标
 art = [[wlgs.blp]],
 --说明
-tip = [[|cffffff00【要求地图等级>10|cffffff00】|r
+tip = [[|cffffff00【要求地图等级>=8|cffffff00】|r
 
 |cffffe799【获得方式】：|r
 |cff00ffff比武积分|cffff0000（武林大会模式获得）|cff00ffff超过 1000  自动获得，已拥有积分：|r%wabao_cnt%
@@ -109,7 +109,7 @@ level = 0,
 --图标
 art = [[jsqc.blp]],
 --说明
-tip = [[|cffffff00【要求地图等级>10|cffffff00】|r
+tip = [[|cffffff00【要求地图等级>=10|cffffff00】|r
 
 |cffffe799【获得方式】：|r
 |cff00ffff比武积分|cffff0000（武林大会模式获得）|cff00ffff超过 1500  自动获得，已拥有积分：|r%wabao_cnt%

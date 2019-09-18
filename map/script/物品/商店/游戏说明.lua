@@ -26,6 +26,30 @@ mt{
 |cffFFE799修罗模式25星|r 奖励 |cffFF0000【神器】霜之哀伤
 |cffFFE799斗破苍穹25星|r 奖励 |cffFF0000【领域】烈火金焰
 |cffFFE799无上之境25星|r 奖励 |cffFF0000【翅膀】龙吟双形翼
+|cffFFE799无限乱斗25星|r 奖励 |cffFF0000【神器】灭神紫霄剑
+ ]],
+}
+
+local mt = ac.skill['无尽挑战说明']
+mt{
+    --类型
+    item_type = "神符",
+    art = [[xsgl.blp]],
+    --物品技能
+    is_skill = true,
+    content_tip = '',
+    store_affix ='',
+    tip = [[ 
+游戏中有四个难度（无限乱斗\无上之境\斗破苍穹\修罗模式)，通关后会进入“无尽挑战”
+
+|cffFFE799修罗模式|cffff0000累计|cffFFE799无尽波数=150波|r 奖励 |cff00ff00【翅膀】天使之光
+|cffFFE799修罗模式|cffff0000累计|cffFFE799无尽波数=500波|r 奖励 |cff00ff00【领域】白云四海领域
+|cffFFE799斗破苍穹|cffff0000累计|cffFFE799无尽波数=150波|r 奖励 |cff00ffff【领域】烈火天翔领域
+|cffFFE799斗破苍穹|cffff0000累计|cffFFE799无尽波数=500波|r 奖励 |cff00ffff【神器】方天画戟
+|cffFFE799无上之境|cffff0000累计|cffFFE799无尽波数=150波|r 奖励 |cffffff00【神器】圣神无双剑
+|cffFFE799无上之境|cffff0000累计|cffFFE799无尽波数=500波|r 奖励 |cffffff00【翅膀】金鳞双型翼
+|cffFFE799无限乱斗|cffff0000累计|cffFFE799无尽波数=300波|r 奖励 |cffff0000【翅膀】赤魔双形翼
+|cffFFE799无限乱斗|cffff0000累计|cffFFE799无尽波数=800波|r 奖励 |cffff0000【领域】真武青焰领域
  ]],
 }
 
@@ -272,6 +296,8 @@ mt{
 |cffffE799比武积分超过250|r 奖励 |cff00ff00【成就】江湖小虾（价值28元）
 |cffffE799比武积分超过500|r 奖励 |cff00ffff【成就】明日之星（价值58元）
 |cffffE799比武积分超过1000|r 奖励 |cffffff00【成就】武林高手（价值88元）
+|cffffE799比武积分超过1500|r 奖励 |cffffff00【成就】绝世奇才（价值128元）
+|cffffE799比武积分超过2000|r 奖励 |cffffff00【成就】威震三界（价值158元）
  ]],
 }
 
