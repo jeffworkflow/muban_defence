@@ -269,10 +269,10 @@ function mt:start(player)
 end
 --暂停计时
 function mt:PauseTimer(time)
-    if not self.force_timer then 
+    if not self.timerdialog then 
         return 
     end
-    self.force_timer:PauseTimer() 
+    self.timerdialog:PauseTimer() 
     if time then 
         self.remaining_time = (self.remaining_time or 0) + time
         if not self.flag_pause then  
@@ -289,16 +289,16 @@ function mt:PauseTimer(time)
             end)
         end    
     end    
-    return self.force_timer
+    return self.timerdialog
 end    
 
 --恢复计时
 function mt:ResumeTimer()
-    if not self.force_timer then 
+    if not self.timerdialog then 
         return 
     end
-    self.force_timer:ResumeTimer()   
-    return self.force_timer
+    self.timerdialog:ResumeTimer()   
+    return self.timerdialog
 end  
 
 function mt:next()
@@ -314,13 +314,13 @@ function mt:next()
         self:finish() 
         return
     end    
-    -- if self.force_timer then 
-    --     self.force_timer:remove()
-    --     self.force_timer = nil
+    -- if self.timerdialog then 
+    --     self.timerdialog:remove()
+    --     self.timerdialog = nil
     -- end    
     if  self.force_cool then 
         --创建计时器窗口
-        self.force_timer = ac.timer_ex 
+        self.timerdialog = ac.timer_ex 
         {
             time = self.force_cool,
             title = self.timer_ex_title ,
@@ -439,7 +439,7 @@ function mt:next()
                     return 
                 end    
                 --防守时刷怪倒计时，如果怪物全杀死也不进入下一波
-                if self.force_timer then 
+                if self.timerdialog then 
                     return 
                 end    
                 --如果有刷新时间配置 则 按照时间等待后刷新，没有的话立即刷新
@@ -509,9 +509,9 @@ function mt:finish(is_unit_kill)
         self.timer:remove()
         self.timer = nil
     end
-    if  self.force_timer then 
-        self.force_timer:remove()
-        self.force_timer = nil
+    if  self.timerdialog then 
+        self.timerdialog:remove()
+        self.timerdialog = nil
     end
     if self.event_region then 
         self.event_region:remove()

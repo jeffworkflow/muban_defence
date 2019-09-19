@@ -800,15 +800,15 @@ function helper:pk(flag)
 	end	 
 end	
 --测试 暂停两次
-function helper:pause()
+function helper:pause(num)
 	for i=1,3 do 
 		local creep = ac.creep['刷怪-无尽'..i]
-		creep:PauseTimer(40)
+		creep:PauseTimer(tonumber(num) or 40)
 	end
 	--启用另一个计时器 显示停怪恢复倒计时	
 	ac.main_stop_timer = ac.timer_ex
 	{
-		 time = 40,
+		 time = tonumber(num) or 40,
 		 title = '停怪还剩：',
 		 func = function()
 			 ac.player.self:sendMsg('|cffff0000停怪结束！！！ 请注意进攻怪来袭。|r')
@@ -1199,8 +1199,18 @@ end
 --测试副本
 function helper:wj(str)
 	for i=1,3 do 
+		local creep = ac.creep['刷怪'..i]
+		if creep then 
+			creep:finish()
+		end	
+	end	
+	for i=1,3 do 
 		local creep = ac.creep['刷怪-无尽'..i]
 		creep.index = tonumber(str) - 1
+		if creep.timerdialog then 
+			creep.timerdialog:remove()
+			creep.timerdialog = nil
+		end	
 		if creep.has_started  then 
 			creep:next()
 		else
