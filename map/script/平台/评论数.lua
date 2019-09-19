@@ -187,6 +187,38 @@ need_map_level = 10,
 
 }
 
+local mt = ac.skill['洞天真相']
+mt{
+--等级
+level = 0,
+--图标
+art = [[psxk.blp]],
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff在平台上，本地图的全部评论数超过 |cffff000016.5W |cff00ffff自动激活
+
+|cffFFE799【奖励属性】：|r
+|cff00ff00+75 攻击减甲
++60% 暴击加深
++35% 技暴加深
++20% 会心伤害
++60% 物理伤害加深
++35% 技能伤害加深
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['攻击减甲'] = 75,
+['暴击加深'] = 60,
+['技暴加深'] = 35,
+['会心伤害'] = 20,
+['物理伤害加深'] = 60,
+['技能伤害加深'] = 35,
+need_map_level = 10,
+
+}
 local mt = ac.skill['全服奖励']
 mt{
     is_spellbook = 1,
@@ -200,7 +232,7 @@ mt{
     
 }
 mt.skills = {
-    '评论礼包',nil,nil,nil,'日益精进','勇攀新高','扶摇直上','平步青云','破碎虚空'
+    '评论礼包',nil,nil,nil,'日益精进','勇攀新高','扶摇直上','平步青云','破碎虚空','洞天真相'
 }
 
 function mt:on_add()
@@ -228,6 +260,7 @@ local condition = {
     ['扶摇直上'] = {100000,10},
     ['平步青云'] = {130000,10},
     ['破碎虚空'] = {165000,10},
+    ['洞天真相'] = {205000,12},
 }
 
 for name,data in pairs(condition) do 
