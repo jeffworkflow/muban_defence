@@ -140,27 +140,27 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[jsqc.blp]],
+art = [[wzsj.blp]],
 --说明
-tip = [[|cffffff00【要求地图等级>=10|cffffff00】|r
+tip = [[|cffffff00【要求地图等级>=12|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff比武积分|cffff0000（武林大会模式获得）|cff00ffff超过 1500  自动获得，已拥有积分：|r%wabao_cnt%
+|cff00ffff比武积分|cffff0000（武林大会模式获得）|cff00ffff超过 2000  自动获得，已拥有积分：|r%wabao_cnt%
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+128 杀怪加全属性|r
-|cff00ff00+35% 物理伤害加深|r
-|cff00ff00+20% 技能伤害加深|r
-|cff00ff00+35% 暴击伤害加深|r
-|cff00ff00+35% 技暴伤害加深|r
+|cff00ff00+158 杀怪加全属性|r
+|cff00ff00+45% 物理伤害加深|r
+|cff00ff00+25% 技能伤害加深|r
+|cff00ff00+45% 暴击伤害加深|r
+|cff00ff00+45% 技暴伤害加深|r
  ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 128,
-['物理伤害加深'] = 35,
-['技能伤害加深'] = 20,
-['暴击加深'] = 35,
-['技暴加深'] = 35,
+['杀怪加全属性'] = 158,
+['物理伤害加深'] = 45,
+['技能伤害加深'] = 25,
+['暴击加深'] = 45,
+['技暴加深'] = 45,
 
 wabao_cnt = function(self)
     local p = ac.player.self
