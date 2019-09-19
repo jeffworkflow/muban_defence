@@ -195,8 +195,8 @@ ac.game:event '选择难度' (function(_,g_game_degree_name)
         function mt:on_change_creep(unit,lni_data)
             ac.change_attr(unit,self.index)
 
-            --改变怪物极限属性
-            unit:set('移动速度',519)
+            --改变怪物极限属性 再设置一次移速会导致泄漏，原因未知
+            -- unit:set('移动速度',519)
             unit:set('攻击间隔',0.4)
             unit:set('攻击速度',800)
             unit:set('闪避',60)

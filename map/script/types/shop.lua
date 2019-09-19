@@ -4,7 +4,7 @@ local unit = require 'types.unit'
 local shop = {}
 local mt = {}
 ac.shop = shop
-
+-- setmetatable(shop, shop)
 shop.__index = mt
 setmetatable(mt, unit)
 
