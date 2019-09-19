@@ -25,6 +25,7 @@
 	local response	= require 'types.response'
 	local record	= require 'types.record'
 	local smart_cast	= require 'types.smart_cast'
+	require 'types.effect_ex'
 	
     
     

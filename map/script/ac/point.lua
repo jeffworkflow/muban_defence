@@ -19,7 +19,7 @@ point.__index = mt
 
 --类型
 mt.type = 'point'
-mt.offsetZ = -256 --modify by jeff ,每个地图的初始地面高度都不一致，默认是0.有些会降低，有些隆起
+mt.offsetZ = -0 --modify by jeff ,每个地图的初始地面高度都不一致，默认是0.有些会降低，有些隆起
 
 --坐标
 mt[1] = 0
@@ -249,6 +249,10 @@ function mt:effect(data)
 	return ac.point_effect(self, data)
 end
 
+function mt:effect_ex(data)
+	data.point = self
+	return ac.effect_ex(data)
+end
 --移动点
 	--按照直角坐标系移动(point + {x, y})
 	--	@新点
