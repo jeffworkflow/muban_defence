@@ -136,14 +136,14 @@ end)
 --奖品
 local award_list = { 
     ['博饼券'] =  {
-        { rand = 49.35,      name = '无'},
+        { rand = 49.25,      name = '无'},
         { rand = 35,     name = '秀才'},
         { rand = 8,      name = '举人'},
         { rand = 4,      name = '进士'},
         { rand = 2,      name = '探花'},
         { rand = 1,      name = '榜眼'},
-        { rand = 0.4,      name = '状元'},
-        { rand = 0.25,      name = '王昭君'},
+        { rand = 0.45,      name = '状元'},
+        { rand = 0.3,      name = '王昭君'},
     },
 }
 local name2id = {
