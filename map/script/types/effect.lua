@@ -30,6 +30,20 @@ mt.socket = 'origin'
 --点(创建在哪个点上)
 mt.point = nil
 
+--设置生命周期
+--	时间
+--	[是否立即移除]
+function mt:set_time(time, immediately)
+	if self.life_timer then
+		self.life_timer:remove()
+		self.life_timer = nil
+	end
+	self.life_timer = ac.wait(time * 1000, function ()
+		self:remove(immediately)
+	end)
+end
+
+
 local function point_effect_simple(self, point)
 	self.point = point
 	self.handle = jass.AddSpecialEffect(self.model, point:get())
@@ -56,6 +70,12 @@ local function point_effect_simple(self, point)
 	function self:set_height(h)
     	japi.EXSetEffectZ(self.handle, h + self.point:getZ() + self.high or 0)
 	end
+
+	function self:add_high(h)
+
+	end
+
+
 	function self:set_point(loc)
     	japi.EXSetEffectXY(self.handle, loc[1],loc[2])
     	if loc[3] then
@@ -70,7 +90,7 @@ local function point_effect_simple(self, point)
 		self.scale = scale
     	japi.EXEffectMatScale(self.handle, self.scale[1], self.scale[2], self.scale[3])
 	end
-	
+
 	--point
 	--model
 	--rotate
@@ -132,7 +152,7 @@ local function point_effect_ex(self, point)
 	else
 		self.dummy:set_animation 'birth'
 	end
-	
+
 	function self:kill()
 		if not self._has_animation then
 			self.dummy:set_animation 'death'
@@ -145,7 +165,7 @@ local function point_effect_ex(self, point)
 		self.dummy:remove()
 		self.removed = true
 	end
-	
+
 	return setmetatable(self, effect)
 end
 
@@ -201,7 +221,7 @@ local function point_effect_elevation(self, point)
 		self.dummy:remove()
 		self.removed = true
 	end
-	
+
 	return self
 end
 
@@ -228,28 +248,29 @@ function ac.point_effect(point, data)
 			return point_effect_ex(data, point)
 		end
 	else
-		return point_effect_simple(data, point)
+		local effect = point_effect_simple(data, point)
+		return effect
 	end
 end
+--
+--ac.effect_ex = function(data)
+----point
+----rotate
+----model
+----size
+----speed
+----time
+--	local effect = point_effect_simple(data, data.point)
+--	if data.time then
+--		ac.timer(data.time*1000,1,function()
+--			if effect then
+--				effect:remove()
+--			end
+--		end)
+--	end
+--	return effect
+--end
 
-ac.effect_ex = function(data)
---point
---rotate
---model
---size
---speed
---time
-	local effect = point_effect_simple(data, data.point)
-	if data.time then
-		ac.timer(data.time*1000,1,function()
-			if effect then
-				effect:remove()
-			end
-		end)
-	end
-	return effect
-end
-	
 --绑在单位身上
 function ac.unit_effect(unit, data)
 	local effect
@@ -322,11 +343,24 @@ function mt:remove()
 	if self.removed then
 		return
 	end
+
+	--判断绑在单位身上的特效
+	if self.UnitEffectData then
+		if self.UnitEffectData[self.socket..self.model].num > 1 then
+			self.UnitEffectData[self.socket..self.model].num = self.UnitEffectData[self.socket..self.model].num - 1
+		else
+			self.UnitEffectData[self.socket..self.model] = nil
+			jass.DestroyEffect(self.handle)
+			dbg.handle_unref(self.handle)
+			self.handle = nil
+		end
+	else
+		jass.DestroyEffect(self.handle)
+		dbg.handle_unref(self.handle)
+		self.handle = nil
+	end
+
 	self.removed = true
-	
-	jass.DestroyEffect(self.handle)
-	dbg.handle_unref(self.handle)
-	self.handle = nil
 
 	--从单位身上删除记录
 	if self.unit then
@@ -337,6 +371,10 @@ function mt:remove()
 			end
 		end
 	end
+	if self.follow_timer then
+		self.follow_timer:remove()
+		self.follow_timer = nil
+	end
 end
 
 function mt:kill()
@@ -344,7 +382,7 @@ function mt:kill()
 end
 
 --创建一个马甲特效
-function ac.effect(where, model, face, size, attachment)
+function ac.effect(where, model, face, size, attachment,height)
 	local angle
 	if type(face) == 'table' then
 		angle = face[2]
@@ -366,19 +404,56 @@ function ac.effect(where, model, face, size, attachment)
 		local r = math.floor((angle % 360) / 3.6)
 		u:set_animation(r)
 	end
-	
+
+	self.unit:set_high(height or 0)
+
 	function self:remove()
 		effect.remove(self)
 		self.unit:kill()
 	end
-	
+
+	return self
+end
+function ac.effect_time(time,where, model, face, size, attachment)
+	local angle
+	if type(face) == 'table' then
+		angle = face[2]
+		face = face[1]
+	end
+	local u
+	if angle and angle ~= 0 then
+		u = ac.player[16]:create_dummy(effect.UNIT_ID1, where, face or 270)
+	else
+		u = ac.player[16]:create_dummy(effect.UNIT_ID2, where, face or 270)
+	end
+	local self = u:add_effect(attachment or 'chest', model) --附着点 attachment
+	self.unit = u
+	--支持缩放
+	u:set_size(size or 1)
+	if angle and angle ~= 0 then
+		jass.SetUnitBlendTime(u.handle, 0)
+		-- 与xy平面的夹角
+		local r = math.floor((angle % 360) / 3.6)
+		u:set_animation(r)
+	end
+
+	function self:remove()
+		effect.remove(self)
+		self.unit:kill()
+	end
+
+	u:wait(time*1000,function()
+		if self then
+			self:remove()
+		end
+	end)
 	return self
 end
 
 function effect.init()
 	effect.UNIT_ID1 = 'e001'
-	effect.UNIT_ID2 = 'e001'
-	effect.UNIT_ID = 'e001'
+	effect.UNIT_ID2 = 'e00P'
+	effect.UNIT_ID = 'e00R'
 end
 
 return effect

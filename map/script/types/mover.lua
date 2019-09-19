@@ -95,7 +95,7 @@ mover.__index = {
 
 	--需要显示仰角
 	need_elevation = true,
-	
+
 	--运动计数
 	move_count = 0,
 
@@ -128,7 +128,7 @@ mover.__index = {
 
 	--已经变化了的高度(线性)
 	height_l = 0,
-	
+
 	--移动进度
 	moved_progress = 0,
 
@@ -158,7 +158,7 @@ mover.__index = {
 
 	--移除运动方程
 	remove = function(self, skip_remove)
-		
+
 		if self.removed then
 			return
 		end
@@ -174,15 +174,15 @@ mover.__index = {
 		if not self.missile and self.do_reset_high then
 			self.mover:add_high(- self.height_c - self.height_l)
 		end
-		
+
 		if self.missile and self.model then
 			self.mover:set_animation(0)
 		end
-		
+
 		if self.on_remove then
 			self:on_remove(self.mover)
 		end
-		
+
 		if mover.mover_group[self] then
 			mover.mover_group[self] = nil
 			mover.count = mover.count - 1
@@ -207,6 +207,7 @@ mover.__index = {
 			self:remove()
 			return
 		end
+
 
 		--运动方程更新
 		self:next()
@@ -264,7 +265,7 @@ mover.__index = {
 		else
 			progress = speed / self.distance
 		end
-		
+
 		--线性
 		local target_high = self.target_high
 		local height_n = (target_high - self.high) * progress
@@ -276,13 +277,13 @@ mover.__index = {
 		self.high = self.high + height_n
 		height = height + height_n
 		self.height_l = self.height_l + height_n
-		
+
 		--抛物线
 		if self.height then
 			--全局移动进度
 			local progress = (1 - self.moved_progress) * progress
 			self.moved_progress = self.moved_progress + progress
-			
+
 			local height_n = 4 * self.height * self.moved_progress * (1 - self.moved_progress)
 			height = height + height_n - self.height_c
 			self.height_c = height_n
@@ -309,7 +310,7 @@ mover.__index = {
 				if not self.hited_units then
 					self.hited_units = {}
 				end
-				
+
 				if self.hited_units[u] then
 					return
 				end
@@ -366,7 +367,7 @@ mover.__index = {
 		if not self.start then
 			self.start = self.mover or self.source
 		end
-		
+
 		if not self.high then
 			self.high = self.start[3] or 0
 		end
@@ -376,7 +377,7 @@ mover.__index = {
 		else
 			self.high = self.high + self.start:get_high()
 		end
-		
+
 		self.selector = ac.selector():is_not(self.source)
 
 		if self.hit_type == '敌人' then
@@ -384,51 +385,62 @@ mover.__index = {
 		elseif self.hit_type == '友方' then
 			self.selector:is_ally(self.source)
 		end
-		
+
 		return self:create()
 	end,
 
 	--发射
 	launch = function(self)
-		
+
 		if self.mover and self.mover.type == 'unit' and (self.mover:has_restriction '禁锢' or self.mover._follow_data) then
 			return
 		end
 
 		--初始化一下数据
 		self:init()
-
-		if not self.mover then
-			if self.id then
-				self.mover = ac.player[16]:create_dummy(self.id, self.start, self.face or self.angle or 0)
+		if not self.mover then 
+			if  self.mover_type ~= 'unit' then --self.distance < 2100 and
+				self.mover = ac.effect_ex
+				{
+					model = self.model,
+					rotate = {0,0,self.face or self.angle or 0},
+					point = self.start:get_point(),
+					size = self.size,
+					high = self.high,
+					--self.start:get_point() or self.source:get_point(),
+				}
+				self.flag_effect_mover = true 
 			else
-				self.mover = ac.player[16]:create_dummy(mover.UNIT_ID, self.start, self.face or self.angle or 0)
+				if self.id then
+					self.mover = ac.player[16]:create_dummy(self.id, self.start, self.face or self.angle or 0)
+				else
+					self.mover = ac.player[16]:create_dummy(mover.UNIT_ID, self.start, self.face or self.angle or 0)
+				end
+				jass.SetUnitBlendTime(self.mover.handle, 0)
 			end
+			
+			--辨识为投射物
 			self.missile = true
 			if self.super == nil then
 				self.super = true
 			end
-			jass.SetUnitBlendTime(self.mover.handle, 0)
 		end
-
-		self.mover:set_high(self.high)
-
+		if not self.flag_effect_mover then 
+			self.mover:set_high(self.high)
+			if self.model then
+				if ac.low then
+					self.effect = self.mover:add_effect('origin', ac.low_effect_model)
+				else
+					self.effect = self.mover:add_effect('origin', self.model)
+				end
+			end
+			if self.size then
+				self.mover:set_size(self.size)
+			end
+		end	
 		if self.skill == nil then
 			print '============================'
 			print(debug.traceback '运动没有关联技能!')
-		end
-
-		if self.model then
-			self.effect = self.mover:add_effect('origin', self.model)
-		end
-
-		if self.size then
-			self.mover:set_size(self.size)
-		end
-
-		--设置缩放
-		if self.size then
-			self.mover:set_size(self.size)
 		end
 		
 		mover.add(self)
@@ -440,7 +452,7 @@ mover.__index = {
 		if self.mover:is_pause_mover() then
 			self:pause()
 		end
-		
+
 		return self
 	end,
 
@@ -504,10 +516,10 @@ end
 function mover.init()
 	--投射物的单位id
 	mover.UNIT_ID = 'e001'
-	
+
 	require 'types.mover.target'
 	require 'types.mover.line'
-	
+
 	--无限循环
 	mover.mover_group = {}
 	mover.removed_mover = setmetatable({}, { __mode = 'kv' })

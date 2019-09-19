@@ -64,9 +64,9 @@ function mt:atk_pas_shot(damage)
 		size = 1,
 	}
 	if mvr then
-		for key,value in sortpairs(skill.effect_data) do 
-			mvr.mover:add_effect(key,value)
-		end	
+		-- for key,value in sortpairs(skill.effect_data) do 
+		-- 	mvr.mover:add_effect(key,value)
+		-- end	
 		function mvr:on_hit(u)
 			u:damage
 			{
@@ -89,10 +89,10 @@ function mt:on_add()
 		if not damage:is_common_attack()  then 
 			return 
 		end 
-		--添加效果
-		for key,value in sortpairs(skill.effect_data) do 
-			hero:add_effect(key,value):remove()
-		end	
+		-- --添加效果
+		-- for key,value in sortpairs(skill.effect_data) do 
+		-- 	hero:add_effect(key,value):remove()
+		-- end	
 	
 		--技能是否正在CD
         if skill:is_cooling() then
