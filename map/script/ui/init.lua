@@ -1,5 +1,6 @@
 mtp_tip ={}
 require 'ui.base'
+require 'ui.base_ex'
 require 'ui.client'
 require 'ui.server'
 

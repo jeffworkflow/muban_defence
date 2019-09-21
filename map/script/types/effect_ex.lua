@@ -194,6 +194,7 @@ end
 
 local function point_effect_simple(self, point)
     self.point = point
+    self.model = (self.model == '' or not self.model) and  [[arrow.mdl]] or self.model
     if ac.low == true then
         self.handle = jass.AddSpecialEffect(ac.low_effect_model,point:get())
     else

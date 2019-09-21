@@ -28,7 +28,10 @@ mt{
 	--技能类型
 	skill_type = "被动,敏捷",
 	--冷却时间
-    cool = 5,
+	cool = 5,
+	--被动
+    passive = true,
+	ignore_cool_save = true,
 	--技能目标类型 无目标
 	target_type = ac.skill.TARGET_TYPE_NONE,
 	--特效模型
