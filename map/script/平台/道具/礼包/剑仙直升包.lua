@@ -35,7 +35,7 @@ function mt:on_add()
     if not hero.weapon then 
         hero.weapon = {}
     end    
-    hero.weapon['弹道速度'] = 3000
+    hero.weapon['弹道速度'] = 30000
 end    
 
 ac.game:event '玩家-注册英雄后'(function(_, _, hero)

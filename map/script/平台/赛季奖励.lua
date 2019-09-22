@@ -539,7 +539,7 @@ cnt_wljf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
     local cnt = (p.cus_server['S3比武积分'] or 0)- (p.cus_server['S2比武积分'] or 0)
-    cnt = math.min(cnt,1000,p:Map_GetMapLevel()*50) --5000,500
+    cnt = math.min(cnt,2500,p:Map_GetMapLevel()*50) --5000,500
     cnt = cnt > 0 and cnt or 0
     return cnt
 end,
@@ -596,17 +596,17 @@ cnt_wljf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
     local cnt = (p.cus_server['S3比武积分'] or 0)- (p.cus_server['S2比武积分'] or 0)
-    cnt = math.min(cnt,500,p:Map_GetMapLevel()*50) --5000,500
+    cnt = math.min(cnt,2500,p:Map_GetMapLevel()*50) --5000,500
     cnt = cnt > 0 and cnt or 0
     return cnt
 end,
-['杀怪加智力'] =function(self)
+['杀怪加全属性'] =function(self)
     return self.cnt_succ
  end,
- ['攻击加智力'] =function(self)
+ ['攻击加全属性'] =function(self)
     return self.cnt_ljwj
  end,
- ['每秒加智力'] =function(self)
+ ['每秒加全属性'] =function(self)
     return self.cnt_wbjf
  end,
  ['每秒加攻击'] =function(self)
