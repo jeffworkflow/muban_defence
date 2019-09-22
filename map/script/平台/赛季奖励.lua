@@ -511,7 +511,7 @@ cnt_succ = function(self)
     local hero = self.owner
     local p = hero:get_owner()
     local cnt =(p.cus_server['S3通关次数'] or 0) - (p.cus_server['S2通关次数'] or 0)
-    cnt = math.min(cnt,500,p:Map_GetMapLevel()*25) --500，25
+    cnt = math.min(cnt,250,p:Map_GetMapLevel()*25) --500，25
     cnt = cnt > 0 and cnt or 0
     return cnt
 end,
@@ -521,7 +521,7 @@ cnt_ljwj = function(self)
     local hero = self.owner
     local p = hero:get_owner()
     local cnt = (p.cus_server['S3无尽累计'] or 0)- (p.cus_server['S2无尽累计'] or 0)
-    cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100) --1500,100
+    cnt = math.min(cnt,750,p:Map_GetMapLevel()*100) --1500,100
     cnt = cnt > 0 and cnt or 0
     return cnt
 end,
@@ -530,7 +530,7 @@ cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
     local cnt = (p.cus_server['S3挖宝积分'] or 0)- (p.cus_server['S2挖宝积分'] or 0)
-    cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
+    cnt = math.min(cnt,2500,p:Map_GetMapLevel()*500) --5000,500
     cnt = cnt > 0 and cnt or 0
     return cnt
 end,
