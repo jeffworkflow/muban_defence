@@ -240,6 +240,38 @@ effect = [[vip.mdx]]
 }
 
 
+local mt = ac.skill['九洲帝王']
+mt{
+--等级
+level = 0, 
+--图标
+art = [[zhuangyuan.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff通过 中秋活动 获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+88.8   杀怪加全属性|r
+|cff00ff00+88.8   攻击减甲|r
+|cff00ff00+88.8%  木头加成|r
+|cff00ff00+88.8%  全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 88.8,
+['攻击减甲'] = 88.8,
+['木头加成'] = 88.8,
+['全伤加深'] = 88.8,
+
+need_map_level = 5,
+--特效
+effect = [[vip.mdx]]
+}
+
 local mt = ac.skill['真龙天子']
 mt{
 --等级
@@ -391,7 +423,7 @@ end
 
 
 
-for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','真龙天子','独孤求败'}) do
+for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','真龙天子','九洲帝王','独孤求败'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

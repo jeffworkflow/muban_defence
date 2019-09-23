@@ -270,6 +270,10 @@ local cus_key = {
     {'bobing','博饼'},
 
     {'hdyt','玉兔'},
+    {'jzdw','九洲帝王'},
+    {'qspt','庆生蟠桃'},
+    {'ydn','雅典娜'},
+    
     
 }
 ac.cus_server_key = cus_key

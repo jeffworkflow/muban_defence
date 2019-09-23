@@ -286,10 +286,11 @@ function mt:on_remove()
 end
 
 --散落碎片
-ac.func_give_suipian = function(start)
+ac.func_give_suipian = function(start,tab)
     local cnt = math.random(5,10)
+    local tab = tab or ac.shenlong_suipin
     for i=1,cnt do 
-        local item_name = ac.shenlong_suipin[math.random(1,#ac.shenlong_suipin)]
+        local item_name = tab[math.random(1,#tab)]
         local point = ac.map.rects['藏宝区']:get_random_point(true)
         --运动
         local mvr = ac.mover.target

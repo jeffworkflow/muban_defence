@@ -116,7 +116,9 @@ class.text = extends(class.panel){
     end,
 
     set_text = function (self,text)
-        japi.FrameSetText(self.id,text)
+        if text ~= self:get_text() then 
+            japi.FrameSetText(self.id,text)
+        end    
     end,
 
     get_text = function (self)
