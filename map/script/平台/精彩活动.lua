@@ -402,16 +402,16 @@ local bobing_str = {
 local mt = ac.skill['我爱养花种树']
 mt{
 --等级
-level = 1, 
-max_level = 20,
+level = 0, 
+
 --图标
-art = [[dygcpxdr.blp]],
+art = [[wayhzs.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=20
+|cff00ffff国庆活动获得
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
@@ -422,86 +422,88 @@ tip = [[
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = {2,40},
-['攻击减甲'] = {2,40},
-['物品获取率'] = {2,40},
-['全伤加深'] = {2,40},
-need_guoshi = 30,
-need_map_level = 5,
+['杀怪加全属性'] = 8.8,
+['攻击减甲'] = 8.8,
+['物品获取率'] = 8.8,
+['全伤加深'] = 8.8,
+need_guoshi = 50,
+need_map_level = 3,
 }
 
 local mt = ac.skill['果实累累']
 mt{
 --等级
-level = 1, 
-max_level = 20,
+level = 0, 
+
 --图标
-art = [[dygcpxdr.blp]],
+art = [[gsll.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=20
+|cff00ffff国庆活动获得
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
 |cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
+|cff00ff00+%木头加成% |cff00ff00% |cff00ff00木头加成|r
 |cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = {2,40},
-['攻击减甲'] = {2,40},
-['物品获取率'] = {2,40},
-['全伤加深'] = {2,40},
-need_guoshi = 50,
+['杀怪加全属性'] = 16.8,
+['攻击减甲'] = 16.8,
+['木头加成'] = 16.8,
+['全伤加深'] = 16.8,
+
+need_guoshi = 150,
 
 need_map_level = 5,
 }
 local mt = ac.skill['辛勤的园丁']
 mt{
 --等级
-level = 1, 
-max_level = 20,
+level = 0, 
+
 --图标
-art = [[dygcpxdr.blp]],
+art = [[xqdyd.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff中秋活动期间，每局第一个食用“肥美的螃蟹”的玩家可获得 |cffff0000重复获得成就可升级成就|r |cff00ffff最大等级=20
+|cff00ffff国庆活动获得
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
 |cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%物品获取率% |cff00ff00% |cff00ff00物品获取率|r
+|cff00ff00+%火灵加成% |cff00ff00% |cff00ff00火灵加成|r
 |cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = {2,40},
-['攻击减甲'] = {2,40},
-['物品获取率'] = {2,40},
-['全伤加深'] = {2,40},
+['杀怪加全属性'] = 26.8,
+['攻击减甲'] = 26.8,
+['火灵加成'] = 26.8,
+['全伤加深'] = 26.8,
 
-need_guoshi = 100,
-need_map_level = 5,
+need_guoshi = 350,
+
+need_map_level = 7,
 }
 
 local mt = ac.skill['庆生蟠桃 ']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[jchd.blp]],
-    title = '庆生蟠桃',
+    art = [[shoutao.blp]],
+    title = '蟠桃成就',
     tip = [[
 
-查看庆生蟠桃
+查看蟠桃成就
     ]],
     
 }
@@ -523,12 +525,7 @@ function mt:on_add()
             skill:set_level(1)
         end
     end 
-
-    --特殊处理
-    if has_mall >=1000 then 
-        local key =ac.server.name2key('雅典娜')
-        p:Map_SaveServerValue(key,1)
-    end    
+ 
 
 end    
 
@@ -559,7 +556,12 @@ function mt:on_add()
     local player = hero:get_owner()
     for i=1,#self.skill_name do 
         local name = self.skill_name[i]
-        local has_mall = player.mall[name] or (player.cus_server and player.cus_server[name])
+        local has_mall
+        if  name == '庆生蟠桃 ' then 
+            has_mall = player.mall['庆生蟠桃'] or (player.cus_server and player.cus_server['庆生蟠桃'])
+        else 
+            has_mall = player.mall[name] or (player.cus_server and player.cus_server[name])
+        end
         if has_mall and has_mall > 0 then 
             ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',name)
             local skl = hero:find_skill(name,nil,true)

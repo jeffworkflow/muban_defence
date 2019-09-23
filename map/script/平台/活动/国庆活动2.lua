@@ -4,14 +4,18 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[shgty.blp]],
+art = [[shoutao.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff009月7日-9月25日
-|cffffe799【活动说明】|r|cff00ff00年年此夜，华灯盛照，人月圆时。三界众人都忙于筹备盛宴，一时之间各地都人来人往，热闹非凡。|cff00ffff热心的各位少侠，快去三界各地帮助百姓们筹备团圆佳节宴吧！
+|cffffe799【活动时间】|r|cff00ff009月25日-10月9日
+|cffffe799【活动说明】|r|cff00ff00华诞盛典普天同庆！从天而降的“庆生蟠桃”散落在三界各地，收集尽量多的蟠桃可激活丰厚奖励！
 
-|cffff0000还请帮忙收集15个“五仁月饼”、15个“大西瓜”、5个“肥美的螃蟹”，交付于我
- ]],
+|cffffe799“庆生蟠桃”超过50个|r 奖励 |cff00ff00【成就】我爱养花种树|r 
+|cffffe799“庆生蟠桃”超过150个|r 奖励 |cff00ffff【成就】果实累累
+|cffffe799“庆生蟠桃”超过350个|r 奖励 |cffffff00【成就】辛勤的园丁
+|cffffe799“庆生蟠桃”超过1000个|r 奖励 |cffff0000【英雄】雅典娜
+
+|cffcccccc（可在 F4-可存档面板中，查看“庆生蟠桃”数量）]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -21,7 +25,7 @@ cool = 1,
 --物品技能
 is_skill = true,
 store_affix = '',
-store_name = '|cffdf19d0四海共团圆|r',
+store_name = '|cffdf19d0寿桃庆生辰|r',
 --物品详细介绍的title
 content_tip = ''
 }
@@ -32,14 +36,14 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[bsdqw.blp]],
+art = [[zhongzi.blp]],
 --说明
 tip = [[
 
 
-|cff00ffff青蛙：|cff00ff00我感觉我还可以救一下，请将我丢进|cffff0000基地右边花园的井里|cffffff00（也可见死不救，点击左键可食用，增加10%生命上限|r）
+|cff00ffff在地上，埋下一颗蟠桃种子，数千年后可以收取蟠桃
 
-|cffcccccc抓青蛙活动物品|r]],
+|cffcccccc国庆活动物品|r]],
 --品质
 color = '紫',
 --物品类型
@@ -84,15 +88,15 @@ level = 1,
 art = [[bsdqw.blp]],
 --说明
 tip = [[
-
-
-|cff00ffff青蛙：|cff00ff00我感觉我还可以救一下，请将我丢进|cffff0000基地右边花园的井里|cffffff00（也可见死不救，点击左键可食用，增加10%生命上限|r）
-
-|cffcccccc抓青蛙活动物品|r]],
+|cffcccccc国庆活动物品|r]],
 --品质
 color = '紫',
 --物品类型
 item_type = '神符',
+specail_model = [[Objects\InventoryItems\Shimmerweed\Shimmerweed.mdl]],
+model_size = 1.5,
+
+
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -104,7 +108,13 @@ function mt:on_cast_start()
     local player = hero:get_owner()
     local key = ac.server.name2key(self.name)
     p:Map_AddServerValue(key,1)
-    p:sendMsg('蟠桃+1',5) 
+    p:sendMsg('|cffffe799【系统消息】|r|cff00ff00庆生蟠桃+1，总量可在“F4-可存档面板”查看',5) 
+    --特殊处理
+    local has_mall = p.cus_server['庆生蟠桃'] or 0
+    if has_mall >=1000 then 
+        local key =ac.server.name2key('雅典娜')
+        p:Map_SaveServerValue(key,1)
+    end   
 end   
 
 
@@ -125,11 +135,12 @@ local function give_seed()
         end
     end
 end    
-ac.game:event '游戏开始'(function()
+ac.game:event '游戏-开始'(function()
     --1.每5分钟给一个
     local time = 5*60
-    ac.loop(time1*1000,function()
+    ac.wait(time*1000,function()
         give_seed()
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ff00盛世耀华夏，神州共欢腾！百花仙子大发慈悲，给所有玩家发放了一枚|cffff0000蟠桃种子|r',5) 
     end)
     
     --2.每8分钟随机创建一个在地上
@@ -164,12 +175,17 @@ end)
 local temp = {'蟠桃种子'}
 ac.game:event '挖图成功'(function(trg,hero)
     local p = hero:get_owner()
+  
+
     local rate = 0.75
     -- local rate = 10 --测试
     if math.random(10000)/100 <= rate then 
         if not ac.flag_ptzj then 
             ac.func_give_suipian(hero:get_point(),temp)
             ac.flag_ptzj = true 
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r 在挖宝时挖塌了|cffff0000种子幼儿园|r，一大堆种子散落|cffff0000老家周围|r，大家快去抢啊|r',5) 
+
+           
         end    
     end    
 end)

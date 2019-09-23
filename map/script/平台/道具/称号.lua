@@ -245,31 +245,32 @@ mt{
 --等级
 level = 0, 
 --图标
-art = [[zhuangyuan.blp]],
+art = [[jzdw.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff通过 中秋活动 获得
+|cff00ffff通过 国庆活动 获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+88.8   杀怪加全属性|r
-|cff00ff00+88.8   攻击减甲|r
-|cff00ff00+88.8%  木头加成|r
-|cff00ff00+88.8%  全伤加深|r
+|cff00ff00+26.8   杀怪加全属性|r
+|cff00ff00+26.8   攻击减甲|r
+|cff00ff00+26.8%  杀敌数加成|r
+|cff00ff00+26.8%  全伤加深|r
 
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 88.8,
-['攻击减甲'] = 88.8,
-['木头加成'] = 88.8,
-['全伤加深'] = 88.8,
+['杀怪加全属性'] = 26.8,
+['攻击减甲'] = 26.8,
+['杀敌数加成'] = 26.8,
+['全伤加深'] = 26.8,
 
 need_map_level = 5,
 --特效
-effect = [[vip.mdx]]
+effect = [[fm_jzdwch.mdx]]
 }
 
 local mt = ac.skill['真龙天子']
