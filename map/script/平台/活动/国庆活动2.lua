@@ -156,7 +156,6 @@ ac.game:event '单位-死亡'(function(_,unit,killer)
     if unit:get_name() ~='食人魔' then 
         return 
     end
-    print('1213131')
     --概率  
     local rate = 35 
     local max_cnt = 5 --每人一局最大掉落次数
