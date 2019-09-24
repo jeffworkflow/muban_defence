@@ -38,7 +38,8 @@ local award_list = {
         { rand = 4, name = '最强生物心脏'},
         { rand = 4, name = '白胡子的大刀'},
         { rand = 4, name = '九洲帝王'},
-        { rand = 56, name = '无'},
+        { rand = 4, name = '蟠桃种子'},
+        { rand = 52, name = '无'},
     },
 }
 --掉落在地上
@@ -52,8 +53,11 @@ local function give_award(hero,unit)
     if not rand_name then 
         return true
     end
+
+
     if rand_name == '无' then
         p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，只见天空中出现了八个大字：|cffffff00盛世嘉年，普天同庆|cff00ff00!',3) 
+
     elseif  finds(rand_name,'格里芬','黑暗项链','最强生物心脏','白胡子的大刀') then
         --满时，掉在地上
         if unit then 
@@ -73,7 +77,7 @@ local function give_award(hero,unit)
             it = hero:add_item(name,true)
         end      
         p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..it.color_name..'|r',4)
-    elseif finds(rand_name,'点金石','恶魔果实','吞噬丹')  then
+    elseif finds(rand_name,'点金石','恶魔果实','吞噬丹','蟠桃种子')  then
         --满时，掉在地上
         local it 
         if unit then  

@@ -151,7 +151,17 @@ ac.game:event '玩家-聊天' (function(self, player, str)
                 end	
             end	
         end	
-    end    
+    end  
+    --测试卡怪
+	if str == '盛世嘉年，普天同庆' then
+        -- print('当前怪物数量：',ac.unit_cnt)
+        if not p.flag_pttq then 
+            p.flag_pttq = true
+            local it = hero:add_item('蟠桃种子',true)
+            p:sendMsg('|cffffe799【系统消息】|r |cff00ff00恭喜获得|cffff0000蟠桃种子|r',4)
+        end    
+    end      
+
 	if str == 'qx' then
 		if not peon or not hero then return end 
 		--取消特效
