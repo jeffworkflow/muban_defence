@@ -521,7 +521,8 @@ function mt:on_add()
 
     for index,skill in ipairs(self.skill_book) do 
         local need_guoshi = skill.need_guoshi
-        if has_mall and has_mall >= need_guoshi then 
+        local map_level = player:Map_GetMapLevel()
+        if has_mall and has_mall >= need_guoshi and map_level>=skill.need_map_level then 
             skill:set_level(1)
         end
     end 
