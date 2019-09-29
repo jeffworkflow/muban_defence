@@ -495,6 +495,72 @@ need_guoshi = 350,
 need_map_level = 7,
 }
 
+local mt = ac.skill['冷月葬花魂']
+mt{
+--等级
+level = 0, 
+
+--图标
+art = [[lyzhh.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff国庆活动获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%杀敌数加成% |cff00ff00% |cff00ff00杀敌数加成|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 32.8,
+['攻击减甲'] = 32.8,
+['杀敌数加成'] = 32.8,
+['全伤加深'] = 32.8,
+
+need_guoshi = 650,
+
+need_map_level = 10,
+}
+
+local mt = ac.skill['园艺大师']
+mt{
+--等级
+level = 0, 
+
+--图标
+art = [[yyds.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff国庆活动获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%木头加成% |cff00ff00% |cff00ff00木头加成|r
+|cff00ff00+%全伤加深% |cff00ff00% |cff00ff00全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 36.8,
+['攻击减甲'] = 36.8,
+['木头加成'] = 36.8,
+['全伤加深'] = 36.8,
+
+need_guoshi = 1350,
+
+need_map_level = 13,
+}
+
 local mt = ac.skill['庆生蟠桃 ']
 mt{
     is_spellbook = 1,
@@ -511,6 +577,8 @@ mt.skills = {
     '我爱养花种树',
     '果实累累',
     '辛勤的园丁',
+    '冷月葬花魂',
+    '园艺大师',
 }
 function mt:on_add()
     local hero = self.owner 

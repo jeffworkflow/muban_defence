@@ -291,7 +291,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ff00+5    每秒加杀敌数|r
 |cff00ff00+15   每秒加木头|r
 |cff00ff00+25   每秒加火灵|r
-|cff00ff00+36%  全伤加深|r
+|cff00ff00+40%  全伤加深|r
 
 |cffff0000【点击可更换翅膀外观，所有翅膀属性可叠加】|r
 ]],
@@ -302,7 +302,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 ['每秒加杀敌数'] = 5,
 ['每秒加木头'] = 15,
 ['每秒加火灵'] = 25,
-['全伤加深'] = 36,
+['全伤加深'] = 40,
 need_map_level = 36,
 --特效
 effect = [[Cb_tianlongshengyiBlack.MDX]]

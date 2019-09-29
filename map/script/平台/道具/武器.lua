@@ -300,7 +300,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 |cff00ffff无限乱斗25星 
 
 |cffFFE799【武器属性】：|r
-|cff00ff00+1200  杀怪加攻击|r
+|cff00ff00+1250  杀怪加攻击|r
 |cff00ff00+275   攻击减甲|r
 |cff00ff00+50% 分裂伤害|r
 |cff00ff00+50% 暴击加深|r
@@ -311,7 +311,7 @@ tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 1200,
+['杀怪加攻击'] = 1250,
 ['攻击减甲'] = 275,
 ['分裂伤害'] = 50,
 ['暴击加深'] = 50,
