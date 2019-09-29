@@ -239,6 +239,10 @@ function mt:on_add()
         local skl = hero:add_skill('真龙天子2','隐藏')
         skl:set_level(1)
     end 
+    if self.map_level >=55 then   
+        local skl = hero:add_skill('齐天大圣B2','隐藏')
+        skl:set_level(1)
+    end 
     
 end    
 
@@ -350,4 +354,47 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 2,
 --特效
 effect = [[lingyu8.mdx]]
+}
+
+local mt = ac.skill['齐天大圣B2']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+strong_hero = 1, --作用在人身上
+title ='齐天大圣B（新版）',
+--图标
+art = [[cwqtds.blp]],
+--说明
+tip = [[
+
+|cffffe799【获得方式】：|r
+|cff00ffff商城购买后自动激活
+
+|cffFFE799【宠物属性】：|r
+|cff00ff00+488  杀怪加全属性|r
+|cff00ff00+488  攻击减甲|r
+|cff00ff00+488%  全伤加深|r
+|cff00ffff+5%   会心几率|r
+|cff00ffff+50%  会心伤害|r
+|cffff0000+40 每秒加护甲|r
+|cffff0000杀敌数额外+1|r
+|cffff0000练功房怪物数量+3|r
+
+|cffdf19d0【唯一被动】每秒减少宠物周围敌人血量的5%（对BOSS无效）
+
+|cffffff00齐天大圣+真龙天子激活：攻击减甲+288，全伤加深+288%
+
+|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 488,
+['攻击减甲'] = 488,
+['全伤加深'] = 488,
+['会心几率'] = 5,
+['会心伤害'] = 150,
+['每秒加护甲'] = 40,
+['额外杀敌数'] = 1,  
+--特效
+effect = [[qtds.mdx]],
 }
