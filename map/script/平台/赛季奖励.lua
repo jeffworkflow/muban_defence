@@ -763,14 +763,14 @@ cnt_wljf = function(self)
     cnt = cnt > 0 and cnt or 0
     return cnt
 end,
-['杀怪加全属性'] =function(self)
-    return self.cnt_succ
+['杀怪加力量'] =function(self)
+    return self.cnt_succ * 2
  end,
- ['攻击加全属性'] =function(self)
-    return self.cnt_ljwj
+ ['攻击加力量'] =function(self)
+    return self.cnt_ljwj * 2
  end,
- ['每秒加全属性'] =function(self)
-    return self.cnt_wbjf
+ ['每秒加力量'] =function(self)
+    return self.cnt_wbjf * 2
  end,
  ['每秒加攻击'] =function(self)
     return self.cnt_wljf * 8
@@ -816,11 +816,11 @@ mt{
 level = 0, --要动态插入
 max_level = 35,
 --图标
-art = [[SJ4.blp]],
+art = [[SJ5.blp]],
 --说明
 tip = [[
 
-|cffffe799【赛季时间】|r|cff00ff009月23日-10月6日
+|cffffe799【赛季时间】|r|cff00ff0010月7日-10月17日
 |cffffe799【赛季说明】|r|cff00ff00赛季结束时，将发放丰厚的赛季奖励
 
 |cffcccccc当前赛季 通关次数：%cnt_succ%
@@ -870,14 +870,14 @@ mt{
 --等级
 level = 0, --要动态插入
 --图标
-art = [[s4sjjl.blp]],
+art = [[s5sjjl.blp]],
 --说明
 tip = [[
 
 |cffFFE799【赛季奖励】：|r
-|cffff0000【杀怪加力量】|cff00ffff+2*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
-|cffff0000【攻击加力量】|cff00ffff+2*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
-|cffff0000【每秒加力量】|cff00ffff+2*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
+|cffff0000【杀怪加敏捷】|cff00ffff+2*当前赛季的通关次数|cffffff00（最大通关次数受限于地图等级）
+|cffff0000【攻击加敏捷】|cff00ffff+2*当前赛季的无尽累计波数|cffffff00（最大累计波数受限于地图等级）
+|cffff0000【每秒加敏捷】|cff00ffff+2*当前赛季的挖宝积分|cffffff00（最大挖宝积分受限于地图等级）
 |cffff0000【每秒加攻击】|cff00ffff+8*当前赛季的比武积分|cffffff00（最大比武积分受限于地图等级）
 
 ]],
@@ -890,7 +890,7 @@ mt{
 --等级
 level = 0, --要动态插入
 --图标
-art = [[s4sjwz.blp]],
+art = [[s5sjwz.blp]],
 --说明
 tip = [[
 
@@ -981,7 +981,7 @@ local mt = ac.skill['S4赛季']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[Sj3.blp]],
+    art = [[SJ4.blp]],
     title = 'S4赛季',
     tip = [[
 
