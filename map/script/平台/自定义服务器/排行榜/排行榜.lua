@@ -11,7 +11,7 @@ class.phb_panel = extends(class.panel){
 
         --左边菜单 
         panel.menu_titles = {
-            '无限乱斗','无上之境','斗破苍穹','修罗模式', '巅峰王者', '荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
+            '深渊乱斗','无限乱斗','无上之境','斗破苍穹','修罗模式', '巅峰王者', '荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
         }
         local menu_press_status = 'image\\排行榜\\menu.tga'
         local menu_line = 'image\\排行榜\\menu_line.tga'
@@ -335,6 +335,7 @@ local rank = {
     {'cntdpcq','斗破苍穹'},
     {'cntwszj','无上之境'},
     {'cntwxld','无限乱斗'},
+    {'cntsyld','深渊乱斗'},
 
     
     {'time_qt','青铜时长'},
@@ -351,6 +352,7 @@ local rank = {
     {'time_dpcq','斗破苍穹时长'},
     {'time_wszj','无上之境时长'},
     {'time_wxld','无限乱斗时长'},
+    {'time_syld','深渊乱斗时长'},
 }
 --处理,显示排行榜数据
 --取前10名数据
@@ -373,8 +375,8 @@ ac.wait(5*1000,function()
                     end  
 
                     --首次刷新最强王者
-                    if finds(content[2] ,'无限乱斗') then 
-                        panel:fresh('无限乱斗')
+                    if finds(content[2] ,'深渊乱斗') then 
+                        panel:fresh('深渊乱斗')
                     end   
 
                     --发起同步请求

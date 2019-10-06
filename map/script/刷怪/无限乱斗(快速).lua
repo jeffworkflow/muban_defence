@@ -141,7 +141,7 @@ end
 
 
 ac.game:event '选择难度' (function(_,g_game_degree_name)
-    if g_game_degree_name ~= '无限乱斗' then 
+    if not finds(g_game_degree_name,'乱斗') then 
         return
     end    
     --初始化属性

@@ -97,7 +97,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
 	--停止运动
 	local group = {}
 	for mvr in pairs(mover.mover_group) do
-		mvr.mover:set_animation_speed(0)
+		-- mvr.mover:set_animation_speed(0)
 		mvr.hit_area = nil
 		mvr.distance = 99999999
 		table.insert(group, mvr.mover)

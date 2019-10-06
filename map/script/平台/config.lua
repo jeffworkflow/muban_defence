@@ -91,7 +91,8 @@ local cus_key = {
     {'cntdpcq','斗破苍穹'}, -- 星数
     {'cntpkms','武林大会'}, -- 星数
     {'cntwszj','无上之境'},
-    {'cntwxld','无限乱斗'}, -- 星数
+    {'cntwxld','无限乱斗'}, 
+    {'cntsyld','深渊乱斗'}, 
     
 
     {'wjxlms','修罗模式无尽'}, -- 无尽层数最高值
@@ -106,6 +107,9 @@ local cus_key = {
     {'wjwxld','无限乱斗无尽'}, -- 无尽层数最高值
     {'ljwjwxld','无限乱斗无尽累计'},-- 无尽层数累计值
     
+    {'wjsyld','深渊乱斗无尽'}, -- 无尽层数最高值
+    {'ljwjsyld','深渊乱斗无尽累计'},-- 无尽层数累计值
+
     {'time_qt','青铜时长'},
     {'time_by','白银时长'},
     {'time_hj','黄金时长'},
@@ -120,6 +124,7 @@ local cus_key = {
     {'time_dpcq','斗破苍穹时长'},
     {'time_wszj','无上之境时长'},
     {'time_wxld','无限乱斗时长'},
+    {'time_syld','深渊乱斗时长'},
     {'time_pkms','武林大会时长'},
 
     
@@ -132,6 +137,9 @@ local cus_key = {
 
     {'today_wjwxld','今日无限乱斗无尽'},
     {'today_wjwxldrank','今日无限乱斗无尽排名'},
+
+    {'today_wjsyld','今日深渊乱斗无尽'},
+    {'today_wjsyldrank','今日深渊乱斗无尽排名'},
 
     {'bwllc','霸王莲龙锤'},
     {'hhxyj','幻海雪饮剑'},
@@ -266,6 +274,11 @@ local cus_key = {
     {'S3ljwj','S3无尽累计'},
     {'S3wbjf','S3挖宝积分'},
     {'S3wljf','S3比武积分'},
+
+    {'S4succ','S4通关次数'},
+    {'S4ljwj','S4无尽累计'},
+    {'S4wbjf','S4挖宝积分'},
+    {'S4wljf','S4比武积分'},
 
     {'bobing','博饼'},
 
