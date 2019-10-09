@@ -9,20 +9,27 @@ function move.update_speed(u, move_speed)
 		if u:is_hero() then 
 			return 
 		end	
-		if not u.move_trg then 
-			u.move_trg = u:event '单位-死亡' (function(_,unit,killer)
+		print('插入速度表',u,u.handle,u:get_point(),u:is_alive(),#move.group)
+		if not u.on_remove then 
+			u.on_remove = function(self)
 				if move.last[u] then 
+					-- print('移除单位1',u,u.handle)
 					move.remove(u)
 				end	
-			end)
+			end
 		end	
+		-- if not u.move_trg then 
+		-- 	print('插入速度表',u,u.handle,u:get_point(),u:is_alive())
+		-- 	u.move_trg = u:event '单位-移除' (function(_,unit,killer)
+		-- 		if move.last[u] then 
+		-- 			-- print('移除单位1',u,u.handle)
+		-- 			move.remove(u)
+		-- 		end	
+		-- 	end)
+		-- end	
 	elseif move_speed <= 519 and move.last[u] then
 		move.remove(u)
-	end
-	--单位死亡时，要移除group table
-	-- if not u:is_alive() and move.last[u] then
-	-- 	move.remove(u)
-	-- end	
+	end	
 end
 
 function move.add(u)
@@ -47,6 +54,7 @@ end
 
 function move.init()
 	move.last = setmetatable({}, { __mode = 'k' })
+	-- move.last = {}
 	move.group = {}
 end
 

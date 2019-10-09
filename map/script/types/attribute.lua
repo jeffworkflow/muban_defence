@@ -391,19 +391,19 @@ get['力量'] = function(self)
 	end	
 end
 
-set['力量'] = function(self, val)
-	if self.setStr then 	
-		--力量上限 21亿
-		if val >= 2100000000 then 
-			val = 2100000000
-		end	
-		if val >= 1 then
-			self:setStr(val)
-		else
-			self:setStr(1)
-		end
-	end	
-end
+-- set['力量'] = function(self, val)
+-- 	if self.setStr then 	
+-- 		--力量上限 21亿
+-- 		if val >= 2100000000 then 
+-- 			val = 2100000000
+-- 		end	
+-- 		if val >= 1 then
+-- 			self:setStr(val)
+-- 		else
+-- 			self:setStr(1)
+-- 		end
+-- 	end	
+-- end
 
 on_set['全属性'] = function(self)
     -- print("新值：",self:get '力量', "老值：",old_value)
@@ -446,19 +446,19 @@ get['敏捷'] = function(self)
 	end	
 end
 
-set['敏捷'] = function(self, val)
-	if self.setAgi then 
-		--敏捷上限 21亿
-		if val >= 2100000000 then 
-			val = 2100000000
-		end	
-		if val >= 1 then
-			self:setAgi(val)
-		else
-			self:setAgi(1)
-		end
-	end	
-end
+-- set['敏捷'] = function(self, val)
+-- 	if self.setAgi then 
+-- 		--敏捷上限 21亿
+-- 		if val >= 2100000000 then 
+-- 			val = 2100000000
+-- 		end	
+-- 		if val >= 1 then
+-- 			self:setAgi(val)
+-- 		else
+-- 			self:setAgi(1)
+-- 		end
+-- 	end	
+-- end
 
 on_set['敏捷'] = function(self,old_value)
 	local old_value =  self:get '敏捷' --老值
@@ -492,19 +492,19 @@ get['智力'] = function(self)
 	
 end
 
-set['智力'] = function(self, val)
-	if self.setInt then 
-		--敏捷上限 21亿
-		if val >= 2100000000 then 
-			val = 2100000000
-		end	
-		if val >= 1 then
-			self:setInt(val)
-		else
-			self:setInt(1)
-		end
-	end	
-end
+-- set['智力'] = function(self, val)
+-- 	if self.setInt then 
+-- 		--敏捷上限 21亿
+-- 		if val >= 2100000000 then 
+-- 			val = 2100000000
+-- 		end	
+-- 		if val >= 1 then
+-- 			self:setInt(val)
+-- 		else
+-- 			self:setInt(1)
+-- 		end
+-- 	end	
+-- end
 
 on_set['智力'] = function(self,old_value)
 
@@ -635,40 +635,40 @@ on_set['魔法上限'] = function(self)
 		self:set('魔法', self:get '魔法上限' * rate)
 	end
 end
+--不刷新到魔兽端
+-- get['攻击'] = function(self)
+-- 	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x10), 1)
+-- 	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x11), 1)
+-- 	return japi.GetUnitState(self.handle, jass.ConvertUnitState(0x12)) + 1
+-- end
 
-get['攻击'] = function(self)
-	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x10), 1)
-	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x11), 1)
-	return japi.GetUnitState(self.handle, jass.ConvertUnitState(0x12)) + 1
-end
+-- set['攻击'] = function(self, attack)
+-- 	if attack <= 1 then 
+-- 		attack = 2
+-- 	end	
+-- 	--攻击上限 21亿
+-- 	if attack >= 2100000000 then 
+-- 		attack = 2100000000
+-- 	end	
+-- 	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x12), attack - 1)
+-- 	if self.freshDamageInfo then
+-- 		self:freshDamageInfo()
+-- 	end
+-- end
 
-set['攻击'] = function(self, attack)
-	if attack <= 1 then 
-		attack = 2
-	end	
-	--攻击上限 21亿
-	if attack >= 2100000000 then 
-		attack = 2100000000
-	end	
-	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x12), attack - 1)
-	if self.freshDamageInfo then
-		self:freshDamageInfo()
-	end
-end
+-- get['护甲'] = function(self)
+-- 	return japi.GetUnitState(self.handle, jass.ConvertUnitState(0x20))
+-- end
 
-get['护甲'] = function(self)
-	return japi.GetUnitState(self.handle, jass.ConvertUnitState(0x20))
-end
-
-set['护甲'] = function(self, defence)
-	if defence >= 2100000000 then 
-		defence = 2100000000
-	end	
-	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x20), defence)
-	if self.freshDefenceInfo then
-		self:freshDefenceInfo()
-	end
-end
+-- set['护甲'] = function(self, defence)
+-- 	if defence >= 2100000000 then 
+-- 		defence = 2100000000
+-- 	end	
+-- 	japi.SetUnitState(self.handle, jass.ConvertUnitState(0x20), defence)
+-- 	if self.freshDefenceInfo then
+-- 		self:freshDefenceInfo()
+-- 	end
+-- end
 
 on_set['护甲'] =  function(self)
     -- print("新值：",self:get '力量', "老值：",old_value)

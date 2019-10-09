@@ -850,6 +850,8 @@ function helper:tt()
 	self:add('免伤几率',90)
 	self:add('全伤加深',10030000000)
 	self:add('暴击加深',1003000)
+	self:add('攻击速度',500)
+	self:add('攻击间隔',-1)
 	self:add_wood(10000000)
 	self:add_fire_seed(10000000)
 	-- if not ac.wtf then
