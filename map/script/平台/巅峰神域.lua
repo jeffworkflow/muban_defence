@@ -137,8 +137,21 @@ mt{
     
 }
 mt.skills = {
-    '炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','九洲帝王','独孤求败','真龙天子',
+    '炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','独孤求败','真龙天子','称号-下一页'
 }
+
+local mt = ac.skill['称号-下一页']
+mt{
+    art = [[ReplaceableTextures\CommandButtons\BTNReplay-Play.blp]],
+    title = '下一页',
+    tip = [[
+
+查看 下一页
+    ]], 
+    is_spellbook = 1,
+    is_order = 2,
+}
+mt.skills = {'九洲帝王','逆天改命',}
 
 local mt = ac.skill['英雄']
 mt{
@@ -181,8 +194,20 @@ mt{
     
 }
 mt.skills = {
-    '血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','白云四海领域','烈火金焰领域','烈火天翔领域','赤霞万象领域','真武青焰领域','孤风青龙领域','远影苍龙领域'
+    '血雾领域','龙腾领域','飞沙热浪领域','灵霄烟涛领域','白云四海领域','烈火金焰领域','烈火天翔领域','赤霞万象领域','孤风青龙领域','远影苍龙领域','神圣领域-下一页'
 }
+local mt = ac.skill['神圣领域-下一页']
+mt{
+    art = [[ReplaceableTextures\CommandButtons\BTNReplay-Play.blp]],
+    title = '下一页',
+    tip = [[
+
+查看 下一页
+    ]], 
+    is_spellbook = 1,
+    is_order = 2,
+}
+mt.skills = {'真武青焰领域','罗刹夜舞领域',}
 --循环遍历 skill_book 的技能
 local function upgrade_skill(player,skill)
     local self = skill
@@ -227,7 +252,7 @@ local function upgrade_skill(player,skill)
         end    
     end    
 end    
-
+ac.upgrade_skill = upgrade_skill
 for i,name in ipairs({'礼包','武器','翅膀','称号','神圣领域','英雄','游戏说明','武林大会'}) do
     local mt = ac.skill[name]
     function mt:on_add()

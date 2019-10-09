@@ -573,8 +573,51 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --特效
 effect = [[RabbitGold2_BC.mdx]],
 } 
+
+local mt = ac.skill['七彩凤凰']
+mt{
+is_skill = 1,
+--等级
+level = 0,
+strong_hero = 1, --作用在人身上
+--图标
+art = [[yutu.blp]],
+--说明
+tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff通过 中秋活动 获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+26.8   杀怪加全属性|r
+|cff00ff00+26.8   攻击减甲|r
+|cff00ff00+26.8%  火灵加成|r
+|cff00ff00+26.8%  全伤加深|r
+
+|cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
+need_map_level = 5,
+skin_cnt = function(self)
+    local p = ac.player.self
+    return p.cus_server[self.name..'碎片'] or 0
+end,
+wabao_cnt = function(self)
+    local p = ac.player.self
+    return p.cus_server['挖宝积分'] or 0
+end,
+--所需激活碎片
+need_sp_cnt = 850,
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 26.8,
+['攻击减甲'] = 26.8,
+['火灵加成'] = 26.8,
+['全伤加深'] = 26.8,
+--特效
+effect = [[RabbitGold2_BC.mdx]],
+} 
+
 --统一加方法
-for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫霜幽幻龙鹰','天马行空','玉兔','骨龙','小悟空','齐天大圣A','齐天大圣B'}) do
+for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫霜幽幻龙鹰','天马行空','玉兔','七彩凤凰','骨龙','小悟空','齐天大圣A','齐天大圣B'}) do
     local mt = ac.skill[name]
 
     function mt:on_cast_start()
@@ -618,7 +661,7 @@ mt{
     ]],
 }
 mt.skills = {
-    '耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫霜幽幻龙鹰','天马行空','玉兔','骨龙','小悟空','齐天大圣'
+    '耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫霜幽幻龙鹰','天马行空','玉兔','骨龙','齐天大圣','宠物皮肤-下一页'
 }
 function mt:on_add()
     local hero = self.owner 
@@ -638,3 +681,27 @@ function mt:on_add()
 end  
 
 
+local mt = ac.skill['宠物皮肤-下一页']
+mt{
+    art = [[ReplaceableTextures\CommandButtons\BTNReplay-Play.blp]],
+    title = '下一页',
+    tip = [[
+
+查看 下一页
+    ]], 
+    is_spellbook = 1,
+    is_order = 2,
+}
+mt.skills = {'小悟空','七彩凤凰',}
+
+function mt:on_add()
+    local hero = self.owner 
+    local player = hero:get_owner()
+    -- print('打开魔法书')
+    for index,skill in ipairs(self.skill_book) do 
+        local has_mall = player.mall[skill.name] or (player.cus_server and player.cus_server[skill.name])
+        if has_mall and has_mall > 0 then 
+            skill:set_level(1)
+        end
+    end 
+end  

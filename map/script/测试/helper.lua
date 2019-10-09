@@ -673,6 +673,14 @@ function helper:ads(str)
 	end				
 end
 
+--给进攻怪增加技能 
+function helper:ads_u(unit,str)
+	for key,val in pairs(ac.unit.all_units) do 
+		if val:get_name() == unit then 
+			val:add_skill(str,'英雄')
+		end	
+	end	
+end
 --增加 属性
 function helper:add(str,cnt)
 	print(self:add(str,tonumber(cnt)))
