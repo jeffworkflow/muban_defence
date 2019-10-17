@@ -834,8 +834,9 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 cnt_succ = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = get_season(p,'总通关次数') - (p.cus_server['S4通关次数'] or 0)
+    local cnt = (p.cus_server['S5通关次数'] or 0) - (p.cus_server['S4通关次数'] or 0)
     cnt = math.min(cnt,500,p:Map_GetMapLevel()*25) --500，25
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 
@@ -843,24 +844,27 @@ end,
 cnt_ljwj = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = get_season(p,'总无尽累计') - (p.cus_server['S4无尽累计'] or 0)
+    local cnt = (p.cus_server['S5无尽累计'] or 0) - (p.cus_server['S4无尽累计'] or 0)
     cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100) --1500,100
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 --通关次数 总计
 cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = get_season(p,'总挖宝积分') - (p.cus_server['S4挖宝积分'] or 0)
+    local cnt = (p.cus_server['S5挖宝积分'] or 0)- (p.cus_server['S4挖宝积分'] or 0)
     cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 --通关次数 总计
 cnt_wljf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = get_season(p,'总比武积分') - (p.cus_server['S4比武积分'] or 0)
+    local cnt =  (p.cus_server['S5比武积分'] or 0) - (p.cus_server['S4比武积分'] or 0)
     cnt = math.min(cnt,2500,p:Map_GetMapLevel()*50) 
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 }
@@ -883,6 +887,55 @@ tip = [[
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
+--通关次数 总计
+cnt_succ = function(self)
+    local hero = self.owner
+    local p = hero:get_owner()
+    local cnt = (p.cus_server['S5通关次数'] or 0) - (p.cus_server['S4通关次数'] or 0)
+    cnt = math.min(cnt,500,p:Map_GetMapLevel()*25) --500，25
+    cnt = cnt > 0 and cnt or 0
+    return cnt
+end,
+
+--通关次数 总计
+cnt_ljwj = function(self)
+    local hero = self.owner
+    local p = hero:get_owner()
+    local cnt = (p.cus_server['S5无尽累计'] or 0) - (p.cus_server['S4无尽累计'] or 0)
+    cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100) --1500,100
+    cnt = cnt > 0 and cnt or 0
+    return cnt
+end,
+--通关次数 总计
+cnt_wbjf = function(self)
+    local hero = self.owner
+    local p = hero:get_owner()
+    local cnt = (p.cus_server['S5挖宝积分'] or 0)- (p.cus_server['S4挖宝积分'] or 0)
+    cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
+    cnt = cnt > 0 and cnt or 0
+    return cnt
+end,
+--通关次数 总计
+cnt_wljf = function(self)
+    local hero = self.owner
+    local p = hero:get_owner()
+    local cnt =  (p.cus_server['S5比武积分'] or 0) - (p.cus_server['S4比武积分'] or 0)
+    cnt = math.min(cnt,2500,p:Map_GetMapLevel()*50) 
+    cnt = cnt > 0 and cnt or 0
+    return cnt
+end,
+['杀怪加力量'] =function(self)
+    return self.cnt_succ * 2
+ end,
+ ['攻击加力量'] =function(self)
+    return self.cnt_ljwj * 2
+ end,
+ ['每秒加力量'] =function(self)
+    return self.cnt_wbjf * 2
+ end,
+ ['每秒加攻击'] =function(self)
+    return self.cnt_wljf * 8
+ end,
 }
 
 local mt = ac.skill['S5赛季王者']
@@ -943,6 +996,7 @@ cnt_succ = function(self)
     local p = hero:get_owner()
     local cnt = get_season(p,'总通关次数') - (p.cus_server['S5通关次数'] or 0)
     cnt = math.min(cnt,500,p:Map_GetMapLevel()*25) --500，25
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 
@@ -952,6 +1006,7 @@ cnt_ljwj = function(self)
     local p = hero:get_owner()
     local cnt = get_season(p,'总无尽累计') - (p.cus_server['S5无尽累计'] or 0)
     cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100) --1500,100
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 --通关次数 总计
@@ -960,6 +1015,7 @@ cnt_wbjf = function(self)
     local p = hero:get_owner()
     local cnt = get_season(p,'总挖宝积分') - (p.cus_server['S5挖宝积分'] or 0)
     cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 --通关次数 总计
@@ -968,6 +1024,7 @@ cnt_wljf = function(self)
     local p = hero:get_owner()
     local cnt = get_season(p,'总比武积分') - (p.cus_server['S5比武积分'] or 0)
     cnt = math.min(cnt,2500,p:Map_GetMapLevel()*50) 
+    cnt = cnt > 0 and cnt or 0
     return cnt
 end,
 }
@@ -990,6 +1047,7 @@ tip = [[
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
+
 }
 
 local mt = ac.skill['S6赛季王者']
@@ -1340,6 +1398,38 @@ save_season= function(p)
         local key = ac.server.name2key('S4比武积分')
         p:Map_SaveServerValue(key,cnt) --网易服务器
     end 
+    -----------S5赛季相关-----------------
+    --通关次数处理
+    local cnt_succ = p.cus_server['S5通关次数'] or 0
+    if cnt_succ <=0 then 
+        local cnt = get_season(p,'总通关次数')
+        local key = ac.server.name2key('S5通关次数')
+        p:Map_SaveServerValue(key,cnt) --网易服务器
+    end    
+
+    --无尽累计波数 处理
+    local cnt_ljwj = p.cus_server['S5无尽累计'] or 0
+    if cnt_ljwj <=0 then 
+        local cnt = get_season(p,'总无尽累计')
+        local key = ac.server.name2key('S5无尽累计')
+        p:Map_SaveServerValue(key,cnt) --网易服务器
+    end 
+
+    --挖宝积分处理
+    local cnt_wbjf = p.cus_server['S5挖宝积分'] or 0
+    if cnt_wbjf <=0 then 
+        local cnt = get_season(p,'总挖宝积分')
+        local key = ac.server.name2key('S5挖宝积分')
+        p:Map_SaveServerValue(key,cnt) --网易服务器
+    end 
+    
+    --挖宝积分处理
+    local cnt_wbjf = p.cus_server['S5比武积分'] or 0
+    if cnt_wbjf <=0 then 
+        local cnt = get_season(p,'总比武积分')
+        local key = ac.server.name2key('S5比武积分')
+        p:Map_SaveServerValue(key,cnt) --网易服务器
+    end 
 end    
 
 
@@ -1356,7 +1446,7 @@ function mt:on_add()
         --         skill:set_level(1)
         --     end
         -- end    
-        if finds(skill.name,'S5赛季说明')then 
+        if finds(skill.name,'S6赛季说明')then 
             skill:set_level(1)
         end   
     end 
