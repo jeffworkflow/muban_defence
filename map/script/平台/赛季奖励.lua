@@ -924,13 +924,13 @@ cnt_wljf = function(self)
     cnt = cnt > 0 and cnt or 0
     return cnt
 end,
-['杀怪加力量'] =function(self)
+['杀怪加敏捷'] =function(self)
     return self.cnt_succ * 2
  end,
- ['攻击加力量'] =function(self)
+ ['攻击加敏捷'] =function(self)
     return self.cnt_ljwj * 2
  end,
- ['每秒加力量'] =function(self)
+ ['每秒加敏捷'] =function(self)
     return self.cnt_wbjf * 2
  end,
  ['每秒加攻击'] =function(self)
