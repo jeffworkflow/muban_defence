@@ -421,7 +421,7 @@ on_set['力量'] = function(self)
 	
 	return function()
 		local value = self:get '力量' - old_value
-		if self.main_attribute and self.main_attribute == '力量' then
+		if self.data.main_attribute and self.data.main_attribute == '力量' then
 			-- 增加攻击
 			self:add('攻击', value * main_attribute_value)
 		end	
@@ -464,7 +464,7 @@ on_set['敏捷'] = function(self,old_value)
 	local old_value =  self:get '敏捷' --老值
 	return function()
 		local value =  self:get '敏捷' - old_value
-		if self.main_attribute and self.main_attribute == '敏捷' then
+		if self.data.main_attribute and self.data.main_attribute == '敏捷' then
 			-- 增加攻击
 			self:add('攻击', value * main_attribute_value)
 		end	
@@ -511,9 +511,9 @@ on_set['智力'] = function(self,old_value)
 	local old_value =  self:get '智力' --老值
 	return function()
 		local value =  self:get '智力' - old_value
-		if self.main_attribute and self.main_attribute == '智力' then
+		if self.data.main_attribute and self.data.main_attribute == '智力' then
 			-- 增加攻击
-			-- print('主属性为',self.main_attribute,self:get '智力',old_value,main_attribute_value)
+			-- print('主属性为',self.data.main_attribute,self:get '智力',old_value,main_attribute_value)
 			self:add('攻击', value * main_attribute_value)
 		end	
 		-- 增加魔法上限
