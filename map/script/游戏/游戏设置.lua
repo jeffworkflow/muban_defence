@@ -76,8 +76,8 @@ function player.__index:add_fire_seed(fire_seed, where, flag)
 			return
 		end
 	end
-	local x, y = where:get_point():get()
-	local z = where:get_point():getZ()
+	local x, y,z = where:get_point():get()
+	-- local z = where:get_point():getZ()
 	local position = ac.point(x - 30, y, z + 30)
 	--modify by jeff 金币小于0 也显示文字出来
 	local str = nil

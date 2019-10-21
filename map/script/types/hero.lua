@@ -75,8 +75,8 @@ function mt:addXp(xp)
 	self.xp = jass.GetHeroXP(self.handle);
 
 	--显示文字
-	local x, y = self:get_point():get()
-	local z = self:get_point():getZ()
+	local x, y,z = self:get_point():get()
+	-- local z = self:get_point():getZ()
 	local position = ac.point(x - 30, y, z + 30)
 	--modify by jeff 经验小于0 也显示文字出来
 	local str = nil

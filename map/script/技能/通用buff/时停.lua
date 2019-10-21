@@ -9,8 +9,8 @@ mt.model = [[]]
 
 local function on_texttag(time,hero,xoffset,zoffset)
 	local target = hero
-	local x, y = target:get_point():get()
-	local z = target:get_point():getZ()
+	local x, y,z = target:get_point():get()
+	-- local z = target:get_point():getZ()
 	local tag = ac.texttag
 	{
 		string = tostring(time),

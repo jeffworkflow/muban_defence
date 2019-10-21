@@ -32,8 +32,8 @@ local function text(heal)
 	if heal.target ~= ac.player.self.hero then
 		return
 	end
-	local x, y = heal.target:get_point():get()
-	local z = heal.target:get_point():getZ()
+	local x, y,z = heal.target:get_point():get()
+	-- local z = heal.target:get_point():getZ()
 	-- while true do
 	-- 	angle = math.random(45,135)
 	-- 	if  angle < 80  or  angle > 100 then

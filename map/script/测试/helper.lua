@@ -510,8 +510,8 @@ end
 function helper:show()
 	local function text(damage)
 		local size = 20
-		local x, y = damage.target:get_point():get()
-		local z = damage.target:get_point():getZ()
+		local x, y,z = damage.target:get_point():get()
+		-- local z = damage.target:get_point():getZ()
 		local tag = ac.texttag
 		{
 			string = ('%d'):format(math.floor(damage:get_current_damage())),

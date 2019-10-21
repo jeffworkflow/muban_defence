@@ -20,8 +20,8 @@ mt.page_stack = nil
 --文字显示
 local function on_texttag(string,hero,zoffset,xoffset,yoffset)
 	local target = hero
-	local x, y = target:get_point():get()
-	local z = target:get_point():getZ()
+	local x, y,z = target:get_point():get()
+	-- local z = target:get_point():getZ()
 	local tag = ac.texttag
 	{
 		string = string,

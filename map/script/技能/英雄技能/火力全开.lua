@@ -39,8 +39,8 @@ mt{
 
 local function on_texttag(self,hero)
 	local target = hero
-	local x, y = target:get_point():get()
-	local z = target:get_point():getZ()
+	local x, y,z = target:get_point():get()
+	-- local z = target:get_point():getZ()
 	local tag = ac.texttag
 	{
 		string = self:get_stack(),

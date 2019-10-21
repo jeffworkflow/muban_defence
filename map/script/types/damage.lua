@@ -229,8 +229,8 @@ end
 
 local function show_block(u,str)
 	local str = str or '格挡!'
-	local x, y = u:get_point():get()
-	local z = u:get_point():getZ()
+	local x, y,z = u:get_point():get()
+	-- local z = u:get_point():getZ()
 	ac.texttag
 	{
 		string = str,
@@ -491,8 +491,8 @@ local function on_texttag(self)
 		str = str..(' %.0f'):format(self.current_damage)
 	end
 
-	local x, y = self.target:get_point():get()
-	local z = self.target:get_point():getZ()
+	local x, y,z = self.target:get_point():get()
+	-- local z = self.target:get_point():getZ()
 	-- print(self.target:get_name(),z)
 	local tag = ac.texttag
 	{
