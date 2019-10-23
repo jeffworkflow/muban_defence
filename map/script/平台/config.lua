@@ -93,6 +93,7 @@ local cus_key = {
     {'cntwszj','无上之境'},
     {'cntwxld','无限乱斗'}, 
     {'cntsyld','深渊乱斗'}, 
+    {'cntmjld','梦境乱斗'}, 
     
 
     {'wjxlms','修罗模式无尽'}, -- 无尽层数最高值
@@ -110,6 +111,9 @@ local cus_key = {
     {'wjsyld','深渊乱斗无尽'}, -- 无尽层数最高值
     {'ljwjsyld','深渊乱斗无尽累计'},-- 无尽层数累计值
 
+    {'wjmjld','梦境乱斗无尽'}, -- 无尽层数最高值
+    {'ljwjmjld','梦境乱斗无尽累计'},-- 无尽层数累计值
+
     {'time_qt','青铜时长'},
     {'time_by','白银时长'},
     {'time_hj','黄金时长'},
@@ -125,6 +129,7 @@ local cus_key = {
     {'time_wszj','无上之境时长'},
     {'time_wxld','无限乱斗时长'},
     {'time_syld','深渊乱斗时长'},
+    {'time_mjld','梦境乱斗时长'},
     {'time_pkms','武林大会时长'},
 
     
@@ -140,6 +145,9 @@ local cus_key = {
 
     {'today_wjsyld','今日深渊乱斗无尽'},
     {'today_wjsyldrank','今日深渊乱斗无尽排名'},
+
+    {'today_wjmjld','今日梦境乱斗无尽'},
+    {'today_wjmjldrank','今日梦境乱斗无尽排名'},
 
     {'bwllc','霸王莲龙锤'},
     {'hhxyj','幻海雪饮剑'},

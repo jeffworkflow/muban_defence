@@ -14,6 +14,7 @@ local cnt_succ_config = { --通关
     {'cntwszj','无上之境'},
     {'cntwxld','无限乱斗'},
     {'cntsyld','深渊乱斗'},
+    {'cntmjld','梦境乱斗'},
     {'cntpkms','武林大会'},
 }
 local cnt_ljwj_config = { --通关
@@ -22,6 +23,7 @@ local cnt_ljwj_config = { --通关
     {'ljwjwszj','无上之境无尽累计'},-- 无尽层数累计值
     {'ljwjwxld','无限乱斗无尽累计'},-- 无尽层数累计值
     {'ljwjsyld','深渊乱斗无尽累计'},-- 无尽层数累计值
+    {'ljwjmjld','梦境乱斗无尽累计'},-- 无尽层数累计值
 }
 local cnt_wbjf_config = {
     {'wbjf','挖宝积分'},

@@ -234,6 +234,8 @@ local function upgrade_skill(player,skill)
                         or
                         ((player.cus_server2['今日深渊乱斗无尽排名'] or 0) >0 and (player.cus_server2['今日深渊乱斗无尽排名'] or 0) <= 10)
                         or
+                        ((player.cus_server2['今日梦境乱斗无尽排名'] or 0) >0 and (player.cus_server2['今日梦境乱斗无尽排名'] or 0) <= 10)
+                        or
                         ((player.cus_server2['今日挖宝排名'] or 0) >0 and (player.cus_server2['今日挖宝排名'] or 0) <= 10)
                         or
                         ((player.cus_server2['今日比武排名'] or 0) >0 and (player.cus_server2['今日比武排名'] or 0) <= 10)

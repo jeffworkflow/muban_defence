@@ -38,19 +38,20 @@ class.player_info_panel = extends(class.panel){
             '比武积分',
             '杀猴次数',
             '神奇的五分钟',
+            '梦境乱斗',
             '深渊乱斗',
             '无限乱斗','无上之境','斗破苍穹','修罗模式',
             '巅峰王者','荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
             
-            '深渊(无尽-最高)','乱斗(无尽-最高)','无上(无尽-最高)',
+           
             
             
 
         }
         
         panel.titles2 = {
-            '斗破(无尽-最高)','修罗(无尽-最高)',
-            '深渊(无尽-累计)','乱斗(无尽-累计)','无上(无尽-累计)','斗破(无尽-累计)','修罗(无尽-累计)',
+            '梦境(无尽-最高)','深渊(无尽-最高)','乱斗(无尽-最高)','无上(无尽-最高)','斗破(无尽-最高)','修罗(无尽-最高)',
+            '梦境(无尽-累计)','深渊(无尽-累计)','乱斗(无尽-累计)','无上(无尽-累计)','斗破(无尽-累计)','修罗(无尽-累计)',
 
             '耐瑟龙碎片','Pa碎片','冰龙碎片','小龙女碎片','霸王莲龙锤碎片','梦蝶仙翼碎片','关羽碎片','精灵龙碎片', '奇美拉碎片',
             '魅影碎片',
@@ -158,7 +159,7 @@ class.player_info_panel = extends(class.panel){
                     elseif name =='小龙女碎片' then
                         name = '手无寸铁的小龙女碎片' 
                         new_value = string.format("%.f",player.cus_server[name] or 0)  
-                    elseif finds(name,'深渊乱斗','无限乱斗','无上之境','斗破苍穹','修罗模式','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜') then
+                    elseif finds(name,'梦境乱斗','深渊乱斗','无限乱斗','无上之境','斗破苍穹','修罗模式','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜') then
                         new_value = string.format("%.f",player.cus_server[name] or 0)
                         new_value = new_value..' 星'
                     elseif name =='杀猴次数' then
@@ -205,6 +206,14 @@ class.player_info_panel = extends(class.panel){
                         new_value = new_value..' 波'
                     elseif name =='深渊(无尽-累计)' then
                         name = '深渊乱斗无尽累计' 
+                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = new_value..' 波'
+                    elseif name =='梦境(无尽-最高)' then
+                        name = '梦境乱斗无尽' 
+                        new_value = string.format("%.f",player.cus_server[name] or 0)  
+                        new_value = new_value..' 波'
+                    elseif name =='梦境(无尽-累计)' then
+                        name = '梦境乱斗无尽累计' 
                         new_value = string.format("%.f",player.cus_server[name] or 0)  
                         new_value = new_value..' 波'
                     elseif name =='评论数' then

@@ -219,6 +219,7 @@ ac.wait(20,function()
                 { name = "无上之境(无尽)" },
                 { name = "无限乱斗(快速)" },
                 { name = "深渊乱斗(快速)" },
+                { name = "梦境乱斗(快速)" },
                 { name = "武林大会(可PK)" },
             }
             local list2 = {
@@ -255,7 +256,10 @@ ac.wait(20,function()
                 if finds(name,'深渊乱斗') then 
                     name = "深渊乱斗"
                 end
-                if not finds(name,'普通模式','武林大会','无限乱斗','深渊乱斗') then 
+                if finds(name,'梦境乱斗') then 
+                    name = "梦境乱斗"
+                end
+                if not finds(name,'普通模式','武林大会','无限乱斗','深渊乱斗','梦境乱斗') then 
                     table.insert(ac.g_game_degree_list,name)
                 end    
             end  
@@ -291,6 +295,10 @@ ac.wait(20,function()
                         ac.g_game_degree_name = "深渊乱斗"  
                     elseif index == 7 then 
                         ac.g_game_degree = 16
+                        ac.g_game_degree_attr = 16  
+                        ac.g_game_degree_name = "梦境乱斗"  
+                    elseif index == 8 then 
+                        ac.g_game_degree = 17
                         ac.g_game_degree_attr = 2  
                         ac.g_game_degree_name = "武林大会"  
                     end    
