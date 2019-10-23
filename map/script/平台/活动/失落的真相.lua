@@ -239,8 +239,8 @@ reg:event '区域-进入' (function(trg,unit)
     local real_name ='蒙娜丽莎的微笑'
     local has_mall = p:Map_GetServerValue(ac.server.name2key(real_name))
     --已有物品的处理
-    if has_mall > 0 then 
-        -- p:sendMsg('【系统消息】已有'..real_name)   
+    if has_mall >= ac.skill[real_name].max_level then 
+        p:sendMsg('【系统消息】已有'..real_name)   
         return 
     end 
     local temp = {
@@ -265,14 +265,18 @@ reg:event '区域-进入' (function(trg,unit)
         end   
         --保存存档
         local key = ac.server.name2key(real_name)
-        p:Map_SaveServerValue(key,1)
+        p:Map_AddServerValue(key,1)
         --当局生效
         local skl = hero:find_skill(real_name,nil,true) 
         if not skl  then 
             ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',real_name)
+            p:sendMsg('|cffffe799【系统消息】|r任务完成，恭喜获得|cffff0000【可存档成就】蒙娜丽莎的微笑|r 奖励 |cff00ff00+23.8杀怪加全属性|r |cff00ff00+23.8攻击减甲|r |cff00ff00+23.8%火灵加成|r |cff00ff00+23.8%全伤加深|r',6)
+        else
+            p:sendMsg('|cffffe799'..real_name..' +1 |r',6)
+            skl:upgrade(1)    
         end 
         --播放特效
         hero:add_effect('chest','Abilities\\Spells\\Human\\HolyBolt\\HolyBoltSpecialArt.mdx'):remove()
-        p:sendMsg('|cffffe799【系统消息】|r任务完成，恭喜获得|cffff0000【可存档成就】蒙娜丽莎的微笑|r 奖励 |cff00ff00+23.8杀怪加全属性|r |cff00ff00+23.8攻击减甲|r |cff00ff00+23.8%火灵加成|r |cff00ff00+23.8%全伤加深|r',6)
+        
     end
 end)
