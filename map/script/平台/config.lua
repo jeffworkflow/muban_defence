@@ -310,6 +310,9 @@ local cus_key = {
     {'qcfh','七彩凤凰'},
     {'lsywly','罗刹夜舞领域'},
     
+    {'rylxj','熔岩流星剑'},
+    {'sz','神猪'},
+    {'zswd','战神无敌'},
     
 }
 ac.cus_server_key = cus_key

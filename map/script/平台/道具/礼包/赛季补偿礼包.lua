@@ -37,12 +37,14 @@
 for i=1,10 do
     local p = ac.player[i]  
     --皮肤道具
-    if p:is_player() then 
-        p:event '读取存档数据后' (function()
-            if p.mall and p.mall['赛季补偿礼包'] and p.mall['赛季补偿礼包'] >=1 then 
-                -- hero:add_skill('赛季补偿礼包','隐藏')
-                p['局内地图等级'] = (p['局内地图等级'] or 0) +1
-            end    
-        end)
+    if p:is_player() then  
+        if     (p:Map_HasMallItem('SJBCLB') 
+            or (p:Map_GetMapLevel() >= need_map_level) 
+            or (p.cheating)) 
+        then
+            local name = '赛季补偿礼包'  
+            p.mall[name] = 1  
+            p['局内地图等级'] = (p['局内地图等级'] or 0) +1
+        end    
     end
 end            

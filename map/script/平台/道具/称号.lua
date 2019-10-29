@@ -455,9 +455,41 @@ need_map_level = 17,
 effect = [[CH_nitiangaiming.mdx]]
 }
 
+local mt = ac.skill['战神无敌']
+mt{
+--等级
+level = 0, 
+--图标
+art = [[ntgm.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff深渊乱斗25星
+
+|cffFFE799【称号属性】：|r
+|cff00ff00+1250 杀怪加攻击|r
+|cff00ff00+50% 技暴加深|r
+|cff00ff00+50% 技能伤害加深|r
+|cff00ff00+50% 会心伤害|r
+
+|cffff0000【点击可更换称号外观，所有称号属性可叠加】|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加攻击'] = 1250,
+['技暴加深'] = 50,
+['技能伤害加深'] = 50,
+['会心伤害'] = 50,
+
+need_map_level = 17,
+--特效
+effect = [[CH_nitiangaiming.mdx]]
+}
 
 
-for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','真龙天子','九洲帝王','独孤求败','逆天改命'}) do
+for i,name in ipairs({'炉火纯青','势不可挡','毁天灭地','风驰电掣','君临天下','无双魅影','神帝','傲世天下','真龙天子','九洲帝王','独孤求败','逆天改命','战神无敌'}) do
     local mt = ac.skill[name]
     function mt:on_cast_start()
         local hero = self.owner

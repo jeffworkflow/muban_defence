@@ -105,8 +105,21 @@ mt{
     
 }
 mt.skills = {
-    '霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','霜之哀伤','飞星雷火剑','方天画戟','圣神无双剑','灭神紫霄剑','皇帝剑','皇帝刀'
+    '霸王莲龙锤','惊虹奔雷剑','幻海雪饮剑','紫色哀伤','霜之哀伤','飞星雷火剑','方天画戟','圣神无双剑','皇帝剑','皇帝刀','武器-下一页'
 }
+local mt = ac.skill['武器-下一页']
+mt{
+    art = [[ReplaceableTextures\CommandButtons\BTNReplay-Play.blp]],
+    title = '下一页',
+    tip = [[
+
+查看 下一页
+    ]], 
+    is_spellbook = 1,
+    is_order = 2,
+}
+mt.skills = {'灭神紫霄剑','熔岩流星剑',}
+
 
 local mt = ac.skill['翅膀']
 mt{
@@ -151,7 +164,7 @@ mt{
     is_spellbook = 1,
     is_order = 2,
 }
-mt.skills = {'九洲帝王','逆天改命',}
+mt.skills = {'九洲帝王','逆天改命','战神无敌',}
 
 local mt = ac.skill['英雄']
 mt{

@@ -75,6 +75,10 @@ for i=1,10 do
             -- print('存档数据:',key,key_name,val)
         end
         ac.wait(1100,function()
+            -- print(player:Map_GetMapLevel())
+            -- ac.wait(1000,function()
+            --     print(player:Map_GetMapLevel())
+            -- end)
             player:event_notify '读取存档数据'
             player:event_notify '读取存档数据后'
         end)
@@ -195,6 +199,9 @@ ac.wait(10,function()
         {'qcfh','七彩凤凰'},
         {'lsywly','罗刹夜舞领域'},
 
+        {'rylxj','熔岩流星剑'},
+        {'sz','神猪'},
+        {'zswd','战神无敌'},
 
     }
     for i,data in ipairs(ac.mall) do 
@@ -278,6 +285,11 @@ local star2award = {
     ['逆天改命'] = {'深渊乱斗',25,17},
     ['七彩凤凰'] = {'深渊乱斗无尽累计',300,38},
     ['罗刹夜舞领域'] = {'深渊乱斗无尽累计',800,42},
+
+    ['熔岩流星剑'] = {'梦境乱斗',25,20},
+    ['神猪'] = {'梦境乱斗无尽累计',300,44},
+    ['战神无敌'] = {'梦境乱斗无尽累计',800,48},
+    
 }
 
 --保存修罗模式 星数
