@@ -329,37 +329,33 @@ mt{
 --等级
 level = 0,
 --图标
-art = [[mszxj.blp]],
+art = [[rllxj.blp]],
 is_order = 1,
 --说明
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff无限乱斗25星 
+|cff00ffff梦境乱斗25星 
 
 |cffFFE799【武器属性】：|r
-|cff00ff00+1250  杀怪加攻击|r
-|cff00ff00+275   攻击减甲|r
-|cff00ff00+50% 分裂伤害|r
-|cff00ff00+50% 暴击加深|r
-|cff00ff00+50% 物理伤害加深|r
-|cff00ff00+50% 会心伤害|r
+|cff00ff00+1500  杀怪加攻击|r
+|cff00ff00+300    攻击减甲|r
+|cff00ff00+50%  全伤加深|r
+|cff00ff00+50%  会心伤害|r
 
 |cffff0000【点击可更换神兵外观，所有神兵属性可叠加】|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加攻击'] = 1250,
-['攻击减甲'] = 275,
-['分裂伤害'] = 50,
-['暴击加深'] = 50,
-['物理伤害加深'] = 50,
+['杀怪加攻击'] = 1500,
+['攻击减甲'] = 300,
+['全伤加深'] = 50,
 ['会心伤害'] = 50,
 
-need_map_level = 15,
+need_map_level = 20,
 
 --特效
-effect = [[Wuqi_leiguanglanjian.mdx]]
+effect = [[xyj.mdx]]
 }
 
 

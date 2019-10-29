@@ -617,33 +617,31 @@ is_skill = 1,
 level = 0,
 strong_hero = 1, --作用在人身上
 --图标
-art = [[qcfh.blp]],
+art = [[jinzhu.blp]],
 --说明
 tip = [[|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff深渊乱斗|cffff0000累计|cff00ffff无尽波数=300波
+|cff00ffff梦境乱斗|cffff0000累计|cff00ffff无尽波数=300波
 
 |cffFFE799【宠物属性】：|r
 |cff00ff00+288  杀怪加全属性|r
 |cff00ff00+288  攻击减甲|r
-|cff00ff00+35%  暴击加深|r
-|cff00ff00+35%  物理伤害加深|r
-|cff00ff00+35%  会心伤害|r
+|cff00ff00+35%  木头加成|r
+|cff00ff00+35%  全伤加深|r
 
 |cffff0000【点击可更换宠物外观，所有宠物属性可叠加】|r]],
-need_map_level = 38,
+need_map_level = 44,
 
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = 288,
 ['攻击减甲'] = 288,
-['暴击加深'] = 35,
-['物理伤害加深'] = 35,
-['会心伤害'] = 35,
+['木头加成'] = 35,
+['全伤加深'] = 35,
 
 --特效
-effect = [[FH.mdx]],
+effect = [[Txxxxxx (2).mdx]],
 } 
 --统一加方法
 for i,name in ipairs({'耐瑟龙','冰龙','精灵龙','奇美拉','魅影','紫霜幽幻龙鹰','天马行空','玉兔','七彩凤凰','神猪','骨龙','小悟空','齐天大圣A','齐天大圣B'}) do
