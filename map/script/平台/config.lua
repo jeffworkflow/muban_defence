@@ -293,6 +293,11 @@ local cus_key = {
     {'S5wbjf','S5挖宝积分'},
     {'S5wljf','S5比武积分'},
 
+    {'S6succ','S6通关次数'},
+    {'S6ljwj','S6无尽累计'},
+    {'S6wbjf','S6挖宝积分'},
+    {'S6wljf','S6比武积分'},
+
     {'bobing','博饼'},
 
     {'hdyt','玉兔'},
