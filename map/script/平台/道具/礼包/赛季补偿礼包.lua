@@ -39,7 +39,6 @@ for i=1,10 do
     --皮肤道具
     if p:is_player() then  
         if     (p:Map_HasMallItem('SJBCLB') 
-            or (p:Map_GetMapLevel() >= need_map_level) 
             or (p.cheating)) 
         then
             local name = '赛季补偿礼包'  

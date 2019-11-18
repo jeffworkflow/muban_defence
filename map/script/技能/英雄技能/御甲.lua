@@ -32,20 +32,12 @@ end,
 
 	--cd
 	cool = 1,
-
-    --连锁数量
-    count = 5,
-
     --图标
     art = [[yujia.blp]],
 	--爆炸半径
-    hit_area = function(self,hero)
-        if hero then 
-            return 100 + hero:get '额外范围'
-        else 
-            return 100
-        end        
-    end,
+    hit_area = 150,
+    --连锁数量
+    count = 5,
     --模型
     model = [[AZ_[Sepll]LinaSun _T2_Blast.MDX]],
 	--伤害类型
