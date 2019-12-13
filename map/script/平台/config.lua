@@ -319,6 +319,9 @@ local cus_key = {
     {'sz','神猪'},
     {'zswd','战神无敌'},
     
+    {'szdct','傻子的春天'},
+    {'bxqy','冰雪奇缘'},
+    
 }
 ac.cus_server_key = cus_key
 
