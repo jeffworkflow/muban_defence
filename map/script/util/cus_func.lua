@@ -144,3 +144,20 @@ function bignum2string(value)
         return value % 100000000 == 0 and ('%.0f'):format(value/100000000)..'亿' or ('%.1f'):format(value/100000000)..'亿'
     end
 end
+
+--二进制开关，是否拥有***
+function has_flag(flag, bit)
+	return flag % (bit * 2) - flag % bit == bit
+end
+
+--输入10,去转为二进制后，最大的数
+function maxbit2num(n)
+	for i=100,0,-1 do 
+		local t = math.floor(n / 2^i)
+		if t >0 then 
+			return tonumber(string.format("%.f",2^i))
+		else 	
+    		n = n % 2^i
+		end	
+	end	
+end	

@@ -321,6 +321,11 @@ local cus_key = {
     
     {'szdct','傻子的春天'},
     {'bxqy','冰雪奇缘'},
+
+    {'wxboss','无限BOSS'},
+    {'today_wxboss','今日无限BOSS'},
+    {'today_wxbossrank','今日无限BOSS排名'},
+    {'jsmj','绝世魔剑'},
     
 }
 ac.cus_server_key = cus_key

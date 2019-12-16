@@ -45,8 +45,12 @@ ac.game:event '游戏-开始' (function()
         local player = ac.player[i]
         if player:is_player() then
             if player:is_self() then 
-                local key = ac.server.name2key(ac.g_game_degree_name)
-                player:GetServerValue(key)
+                if finds(ac.g_game_degree_name,'无限BOSS') then 
+                    player:GetServerValue('wxboss')
+                else
+                    local key = ac.server.name2key(ac.g_game_degree_name)
+                    player:GetServerValue(key)
+                end    
 
                 local key = ac.server.name2key(ac.g_game_degree_name..'无尽')
                 if key then 
@@ -379,36 +383,85 @@ end)
 ac.game:event '游戏-结束' (function(trg,flag)
     if not flag then 
         return 
-    end    
+    end  
+    --获取是否可以存到自定义服务器里面，只要有玩家通过所选难度的上一个难度即可全部存。
+    local temp_tab = {}  
+    local ok
+    if ac.g_game_degree>1 then 
+        for i=1,10 do
+            local player = ac.player[i]
+            if player:is_player() then
+                -- local bit_val = 2^(ac.g_game_degree-3)
+                local val = ac.g_game_degree-1
+                if player.cus_server2['无限BOSS'] >=val then 
+                    ok = true 
+                    break
+                end  
+            end    
+        end    
+    else 
+        ok = true 
+    end        
+
     for i=1,10 do
         local player = ac.player[i]
         if player:is_player() then
-            --保存星数
-            local name = ac.g_game_degree_name
-            local key = ac.server.name2key(name)
-            
-            if player:Map_GetMapLevel() >=3 then 
-                player:AddServerValue(key,1)  -- 自定义服务器
-            end    
-            player:Map_AddServerValue(key,1) --网易服务器
+            --无限BOSS相关
+            if finds(ac.g_game_degree_name,'难') then
+                local key = ac.server.name2key('无限BOSS')
 
-            player:sendMsg('【游戏胜利】|cffff0000'..name..'星数+1|r')
-
-            --保存游戏时长 只保存自定义服务器
-            local name = name..'时长'
-            local key = ac.server.name2key(name)
-            local cus_value = tonumber((player.cus_server2 and player.cus_server2[name]) or 99999999)
-            --游戏时长 < 存档时间 
-            if os.difftime(cus_value,ac.g_game_time) > 0 then 
-                if player:Map_GetMapLevel() >=3 then 
-                    player:SetServerValue(key,ac.g_game_time) --自定义服务器
+                local bit_val = 0
+                for i = 1,ac.g_game_degree do 
+                    bit_val = bit_val + 2^(i-1)
                 end    
-                -- player:Map_SaveServerValue(key,ac.g_game_time) --网易服务器
+                local _,bit = math.frexp(player.cus_server['无限BOSS'] or 0)
+                if ac.g_game_degree > bit then
+                    player:Map_SaveServerValue(key,bit_val) --网易服务器
+                end 
+
+                --自定义服务器
+                if ok then 
+                    if ac.g_game_degree > (player.cus_server2['无限BOSS'] or 0) then
+                        player:SetServerValue(key,ac.g_game_degree) 
+                    end    
+                    --今日榜
+                    player:sp_set_rank('today_wxboss',ac.g_game_degree)
+                end    
+
+                --魔剑相关的存档
+                local key = ac.server.name2key('绝世魔剑')
+                local ok = ac.g_game_degree - (player.cus_server['绝世魔剑'] or 0) >0
+                if ok then 
+                    player:Map_AddServerValue(key,1) --网易服务器
+                end    
+
+            else
+                --保存星数
+                local name = ac.g_game_degree_name
+                local key = ac.server.name2key(name)
+                
+                if player:Map_GetMapLevel() >=3 then 
+                    player:AddServerValue(key,1)  -- 自定义服务器
+                end    
+                player:Map_AddServerValue(key,1) --网易服务器
+
+                player:sendMsg('【游戏胜利】|cffff0000'..name..'星数+1|r')
+
+                --保存游戏时长 只保存自定义服务器
+                local name = name..'时长'
+                local key = ac.server.name2key(name)
+                local cus_value = tonumber((player.cus_server2 and player.cus_server2[name]) or 99999999)
+                --游戏时长 < 存档时间 
+                if os.difftime(cus_value,ac.g_game_time) > 0 then 
+                    if player:Map_GetMapLevel() >=3 then 
+                        player:SetServerValue(key,ac.g_game_time) --自定义服务器
+                    end    
+                    -- player:Map_SaveServerValue(key,ac.g_game_time) --网易服务器
+                end    
+                --文字提醒
+                local str = os.date("!%H:%M:%S",tonumber(ac.g_game_time)) 
+                player:sendMsg('【游戏胜利】|cffff0000本次通关时长：'..str..'|r')
             end    
-            --文字提醒
-            local str = os.date("!%H:%M:%S",tonumber(ac.g_game_time)) 
-            player:sendMsg('【游戏胜利】|cffff0000本次通关时长：'..str..'|r')
-            
         end
     end
 end)    

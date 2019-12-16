@@ -25,6 +25,7 @@ require '平台.重置版奖励'
 
 require '平台.赛季奖励'
 
+require '平台.绝世魔剑'
 
 
 

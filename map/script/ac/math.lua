@@ -39,3 +39,17 @@ local atan = math.atan
 function math.atan(v1, v2)
 	return atan(v1, v2) * deg
 end
+
+function math.frexp(n)
+	if n == 0 then 
+		return 0,0
+	end	
+	for i=64,0,-1 do 
+		local t = math.floor(n / 2^i)
+		if t >0 then 
+			return tonumber(string.format("%.f",n/2^(i+1))),i+1
+		else 	
+			n = n % 2^i
+		end	
+	end	
+end	

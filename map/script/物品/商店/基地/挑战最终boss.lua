@@ -37,7 +37,7 @@ function mt:on_cast_start()
     local hero = self.owner
     local p = hero:get_owner()
     
-    if not ac.final_boss and not ac.final_boss_death then 
+    if not ac.final_boss then 
         for i=1,3 do 
             ac.creep['刷怪'..i]:finish()
         end    

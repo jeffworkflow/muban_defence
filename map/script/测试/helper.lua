@@ -1084,6 +1084,10 @@ function helper:never_dead(flag)
 	end
 end
 
+function helper:save1()
+	local p = self and self:get_owner() or ac.player(ac.player.self.id)
+	p:Map_SaveServerValue('wxboss',2^100) --网易服务器
+end	
 ac.test_unit ={}
 function helper:cr1()
 	-- if str =='1' then 

@@ -14,6 +14,7 @@ require '刷怪.武林大会'
 require '刷怪.随机神符'
 require '刷怪.刷怪奶牛'
 require '刷怪.无限乱斗(快速)'
+require '刷怪.无限BOSS'
 
 
 

@@ -56,12 +56,12 @@ class.player_info_panel = extends(class.panel){
             '耐瑟龙碎片','Pa碎片','冰龙碎片','小龙女碎片','霸王莲龙锤碎片','梦蝶仙翼碎片','关羽碎片','精灵龙碎片', '奇美拉碎片',
             '魅影碎片',
             '紫霜幽幻龙鹰碎片',
-            '庆生蟠桃',
-            '高兴',
-            '愤怒',
-            '厌恶',
-            '恐惧',
-            
+            -- '庆生蟠桃',
+            -- '高兴',
+            -- '愤怒',
+            -- '厌恶',
+            -- '恐惧',
+            '无限BOSS难度',
     
         }
         panel.page = 1 
@@ -172,6 +172,10 @@ class.player_info_panel = extends(class.panel){
                     elseif name =='神奇的五分钟' then
                         name = '攻击减甲' 
                         new_value = string.format("%.f",player.cus_server[name] or 0)  
+                    elseif name =='无限BOSS难度' then
+                        name = '无限BOSS' 
+                        local _,bit = math.frexp((player.cus_server['无限BOSS'] or 0))
+                        new_value = string.format("%.f",bit)  
                     elseif name =='修罗(无尽-最高)' then
                         name = '修罗模式无尽' 
                         new_value = string.format("%.f",player.cus_server[name] or 0)  

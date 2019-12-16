@@ -30,8 +30,11 @@ function mt:on_add()
     --设置属性
 	if self.attribute then
 		for k, v in sortpairs(self.attribute) do
-			-- print('召唤物属性',k,v)
-			self.target:set(k, v)
+			local val = v
+			if type(v) == 'function' then 
+				val = v()
+			end	
+			self.target:set(k, val)
 		end
 	end
 	--调整属性加成
@@ -108,6 +111,18 @@ function mt:on_remove()
 		end	
 	end		
 end
+function mt:on_pulse()
+    --设置属性
+	if self.attribute then
+		for k, v in sortpairs(self.attribute) do
+			local val = v
+			if type(v) == 'function' then 
+				val = v()
+				self.target:set(k, val)
+			end	
+		end
+	end
+end
 
 function mt:on_cover(new)
 	if new.time > self:get_remaining() then
@@ -130,5 +145,18 @@ function mt:on_pulse()
 	local target = self.target
 	local hero = self.hero
 	local point = hero:get_point() - {math.random(0,360),math.random(100,300)}
-    target:issue_order('attack',point)
+	if target:get_point() * hero:get_point() >1500 then 
+		
+		target:add_buff '淡化*改'
+		{
+			source_alpha = 0,
+			target_alpha = 100,
+			time = 0.5,
+			remove_when_hit = false,
+			
+		}
+		target:blink(hero:get_point())
+	end 	
+	target:issue_order('attack',point)
+	
 end

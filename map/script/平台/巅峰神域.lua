@@ -12,9 +12,26 @@ mt{
     
 }
 mt.skills = {
-    '游戏说明','礼包','称号','武器','翅膀','神圣领域','英雄','全服奖励','武林大会','精彩活动','赛季奖励'
+    '游戏说明','礼包','称号','武器','翅膀','神圣领域','英雄','绝世魔剑','精彩活动','赛季奖励','巅峰-下一页'
 } 
--- function mt:on_add()
+
+local mt = ac.skill['巅峰-下一页']
+mt{
+    is_spellbook = 1,
+    is_order = 2,
+    art = [[sffl.blp]],
+    title = '下一页',
+    tip = [[
+
+查看礼包
+    ]],
+    
+}
+mt.skills = {
+    '全服奖励','武林大会'
+}
+
+-- function mt:on_add() '全服奖励','武林大会'
 --     local hero = self.owner 
 --     local player = hero:get_owner()
 --     -- print('打开魔法书')
@@ -252,6 +269,8 @@ local function upgrade_skill(player,skill)
                         ((player.cus_server2['今日挖宝排名'] or 0) >0 and (player.cus_server2['今日挖宝排名'] or 0) <= 10)
                         or
                         ((player.cus_server2['今日比武排名'] or 0) >0 and (player.cus_server2['今日比武排名'] or 0) <= 10)
+                        or
+                        ((player.cus_server2['今日无限BOSS排名'] or 0) >0 and (player.cus_server2['今日无限BOSS排名'] or 0) <= 10)
                     then 
                         skill:set_level(1)
                     end
