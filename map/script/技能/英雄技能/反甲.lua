@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 5,
     --触发几率
-   chance = function(self) return 5*(1+self.owner:get('触发概率加成')/100) end,
+   chance = function(self) return (self.level+5)*(1+self.owner:get('触发概率加成')/100) end,
     --伤害范围
    damage_area = 500,
 	--技能类型
@@ -16,19 +16,18 @@ mt{
 	passive = true,
 	--介绍
     tip = [[
-        
-|cff00bdec
-护甲+1000/2000/3000/4000/5000；
-被攻击时5%几率对敌人造成额外伤害
-伤害公式：敌人攻击*5/6/7/8/10%
 
-|r
+|cffffff00【护甲】+1500*Lv|r
+
+|cff00bdec【被动效果】被攻击（5+Lv%）几率对敌人造成额外伤害
+【伤害公式】（敌人攻击*7%+100W）*Lv
 
 ]],
+
 	--技能图标
-    art = [[xwsy.blp]],
-    ['护甲'] ={1000,5000},
-    damage_rate = {5,10},
+    art = [[ReplaceableTextures\PassiveButtons\PASBTNThornShield.blp]],
+    ['护甲'] ={1500,7500},
+    damage_rate = {7,35},
 	--特效
     effect = [[Abilities\Spells\Human\DivineShield\DivineShieldTarget.mdl]],
     -- cool = 1,
@@ -46,7 +45,7 @@ function mt:on_add()
             damage.source:damage
             {
                 source = damage.source,
-                damage = damage.source:get('攻击')*skill.damage_rate/100,
+                damage = (damage.source:get('攻击')*skill.damage_rate/100+1000000)* self.level,
                 -- damage = damage.source:get('攻击'),
                 skill = skill
             }
@@ -54,6 +53,7 @@ function mt:on_add()
         end    
     end)    
 end
+
 function mt:on_remove()
     local hero = self.owner
     if self.trg then

@@ -7,7 +7,7 @@ mt{
     --最大等级
    max_level = 5,
     --触发几率
-   chance = function(self) return 5*(1+self.owner:get('触发概率加成')/100) end,
+	chance = function(self) return (self.level+5)*(1+self.owner:get('触发概率加成')/100) end,
    passive = true,
     --伤害范围
    damage_area = 500,
@@ -15,25 +15,21 @@ mt{
 	skill_type = "被动,无敌",
 	--介绍
     tip = [[
-|cff00bdec被攻击时5%几率召唤出一只会吸血的蝗虫攻击敌人，持续时间10/11/12/13/15秒；内置CD1秒
 
-【蝗虫属性】
-单位继承ID：uloc
-攻击敌人一次后回到英雄身边，并回复血量=英雄攻击力
-移动速度500，攻击间隔=0.75
-攻击力=100%/125%/150%/175%/200%人物攻击力
-继承英雄暴击几率/暴击加深/物理伤害加深/全伤加深
-|r
+|cffffff00【被动效果】被攻击（5+Lv%）几率召唤一群蝗虫攻击敌人
+
+|cff00bdec【蝗虫攻击力】=英雄攻击力*50%*Lv，并继承英雄暴击几率/暴击加深/物理伤害加深/全伤加深
+
 ]],
 	--技能图标
-	art = [[xwsy.blp]],
+	art = [[huangchong.blp]],
 	--伤害
 	damage = function(self)
-  return self.owner:get('攻击')*(1+0.25* (self.level-1))
+  return self.owner:get('攻击')*(0.5*self.level)
 end,
 	--特效
-	effect = [[units\undead\Locust\Locust.mdl]],
-	time =15,--持续时间
+	effect = [[locust.mdx]],
+	time = 15,--持续时间
     cool = 15,
 }
 local mvr_list = {}
