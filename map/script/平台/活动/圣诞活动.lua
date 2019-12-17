@@ -3,12 +3,13 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[xique.blp]],
+art = [[xueren.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff008月6日-8月8日
-|cffffe799【活动说明】|r|cff00ff00金风玉露一相逢，便胜却人间无数。年年岁岁架鹊桥，牛郎织女偷相会。少侠既然也是有心之人，还请帮忙收集|cffffff00喜鹊翎毛|r|cffcccccc（挖宝掉落）
-]],
+|cffffe799【活动时间】|r|cff00ff0012月19日-12月31日
+|cffffe799【活动说明】|r|cff00ff00又逢圣诞佳节，在这元旦前夕，让我们在这个温暖、温馨、欢乐的日子里，向家人、向朋友、向全世界献上我们的祝福吧！|cffffff00祝大家圣诞节快乐！
+
+|cff00ffff少侠既然也是有心之人，还请帮忙收集点|cffffff00雪糕|r|cffcccccc（挖宝掉落）]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -35,7 +36,7 @@ art = [[item\shou204.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000一根喜鹊翎毛|r 兑换 |cff00ff00点金石|r
+消耗 |cffff0000两根雪糕|r 兑换 |cff00ff00点金石|r
 ]],
 --物品类型
 item_type = '神符',
@@ -44,7 +45,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need = 1,
+need = 2,
 max_cnt = 99999,
 }   
 
@@ -58,7 +59,7 @@ art = [[icon\tunshi.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000十根喜鹊翎毛|r 兑换 |cff00ff00吞噬丹|r
+消耗 |cffff0000十五根雪糕|r 兑换 |cff00ff00吞噬丹|r
 ]],
 --物品类型
 item_type = '神符',
@@ -67,7 +68,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need = 10,
+need = 15,
 max_cnt = 99999,
 }  
 local mt = ac.skill['兑换-恶魔果实']
@@ -80,7 +81,7 @@ art = [[guoshi.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000十五根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实|r
+消耗 |cffff0000二十根雪糕|r 兑换 |cff00ff00恶魔果实|r
 ]],
 --物品类型
 item_type = '神符',
@@ -89,7 +90,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need = 15,
+need = 20,
 max_cnt = 99999,
 }  
 local mt = ac.skill['兑换-格里芬']
@@ -102,7 +103,7 @@ art = [[gelifen.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实合成材料-格里芬|r
+消耗 |cffff0000五根雪糕|r 兑换 |cff00ff00恶魔果实合成材料-格里芬|r
 
 |cffdf19d0格里芬|cff00ffff+黑暗项链+最强生物心脏+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
 ]],
@@ -113,7 +114,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need = 4,
+need = 5,
 max_cnt = 99999,
 }  
 
@@ -127,7 +128,7 @@ art = [[heianxianglian.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实合成材料-黑暗项链|r
+消耗 |cffff0000五根雪糕|r 兑换 |cff00ff00恶魔果实合成材料-黑暗项链|r
 
 |cff00ffff格里芬+|cffdf19d0黑暗项链|cff00ffff+最强生物心脏+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
 ]],
@@ -138,7 +139,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need = 4,
+need = 5,
 max_cnt = 99999,
 }  
 
@@ -152,7 +153,7 @@ art = [[zqswxz.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实合成材料-最强生物心脏|r
+消耗 |cffff0000五根雪糕|r 兑换 |cff00ff00恶魔果实合成材料-最强生物心脏|r
 
 |cff00ffff格里芬+黑暗项链+|cffdf19d0最强生物心脏|cff00ffff+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
 ]],
@@ -163,7 +164,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need = 4,
+need = 5,
 max_cnt = 99999,
 }  
 
@@ -177,7 +178,7 @@ art = [[zhidao.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根喜鹊翎毛|r 兑换 |cff00ff00恶魔果实合成材料-白胡子的大刀|r
+消耗 |cffff0000五根雪糕|r 兑换 |cff00ff00恶魔果实合成材料-白胡子的大刀|r
 
 |cff00ffff格里芬+黑暗项链+最强生物心脏+|r|cffdf19d0白胡子的大刀|r|cff00ffff=恶魔果实（食用后可以获得惊人能力！)|r
 ]],
@@ -188,7 +189,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need = 4,
+need = 5,
 max_cnt = 99999,
 }  
 
@@ -198,17 +199,17 @@ mt{
 level = 1,
 store_name = '兑换-冰雪奇缘',
 --图标
-art = [[ydss.blp]],
+art = [[bingxueqiyuan.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000三十根喜鹊翎毛|r 兑换 |cff00ff00可存档成就-冰雪奇缘|r
+消耗 |cffff0000四十五根雪糕|r 兑换 |cff00ff00可存档成就-冰雪奇缘|r |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
 
 |cffFFE799【成就属性】|r
-|cff00ff00杀怪加全属性 +13.8
-攻击减甲 +13.8
-木头加成 +13.8%
-会心伤害 +13.8%
+|cff00ff00杀怪加全属性 +8.8*Lv
+攻击减甲 +8.8*Lv
+木头加成 +8.8%*Lv
+会心伤害 +8.8%*Lv
 
 |cffcccccc【要求地图等级>5】|r]],
 --物品类型
@@ -218,7 +219,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 content_tip = '|cffFFE799【兑换说明】：|r\n',
 --物品技能
 is_skill = true,
-need = 30,
+need = 45,
 max_cnt = 99999,
 }  
 
@@ -262,7 +263,7 @@ for i,name in ipairs({'兑换-格里芬','兑换-黑暗项链','兑换-最强生
                     local skl = hero:find_skill(real_name,nil,true) 
                     if not skl  then 
                         ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',real_name)
-                        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 食用了青蛙，惊喜获得|cffff0000【可存档成就】'..save_name..'|r |cff00ff00+18.8杀怪加全属性|r |cff00ff00+18.8攻击减甲|r |cff00ff00+18.8%物品获取率|r |cff00ff00+18.8%暴击加深|r',6) 
+                        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r |cff00ff00不知道从哪里弄来了这么多的雪糕，在活动使者处兑换了|cffffff00【可存档成就】'..real_name..'|r',6) 
                     elseif skl.level<skl.max_level then
                         --激活成就（存档） 
                         p:Map_AddServerValue(key,1) --网易服务器
@@ -306,23 +307,30 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[lushui.blp]],
+art = [[xuegao.blp]],
 --说明
 tip = [[
 
-|cff00ff00传说七夕节时的露水是牛郎织女相会时的眼泪,如抹在眼上和手上,可使人眼明手快。|cffffff00使用后增加10%攻速|r
+|cff00ff00看起来很美味的样子，可前往|cffffff00活动使者处（基地右下角）|cff00ff00兑换奖励！|cff00ffff点击可食用，食用后攻击速度+10%|r
 
-|cffcccccc七夕活动物品|r]],
+|cffcccccc圣诞活动物品|r]],
 --品质
+
+--，系统提示，这么冷的天还吃雪糕，怕是疯了吧。
+
 color = '紫',
 --物品类型
 item_type = '消耗品',
-cool = 1,
+cool = 0.2,
+specail_model = [[AZ_AAChristmas_C1_Snowman.mdx]],
+model_size = 0.3,
+size = 0.3,
+
 ['攻击速度'] = 10,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --几率
-rate =30,
+rate =3,
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -333,6 +341,7 @@ function mt:on_cast_start()
     local player = hero:get_owner()
     hero = p.hero
     local save_name = '傻子的春天'
+    p:sendMsg('|cffffe799【系统消息】|cff00ff00食用|r|cffffff00雪糕|cff00ff00成功|r',6)  
     -- print(self.rate)
     if math.random(100) <= self.rate then 
         local key = ac.server.name2key(save_name)
@@ -343,7 +352,7 @@ function mt:on_cast_start()
         local skl = hero:find_skill(save_name,nil,true) 
         if not skl  then 
             ac.game:event_notify('技能-插入魔法书',hero,'精彩活动','傻子的春天')
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 食用了青蛙，惊喜获得|cffff0000【可存档成就】'..save_name..'|r |cff00ff00+18.8杀怪加全属性|r |cff00ff00+18.8攻击减甲|r |cff00ff00+18.8%物品获取率|r |cff00ff00+18.8%暴击加深|r',6) 
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r |cff00ff00这么冷的天还在吃雪糕，怕是疯了吧。惊喜获得|cffff0000【可存档成就】'..save_name..'|r |cff00ff00成就属性可在巅峰神域-精彩活动中查看',6) 
         else
             skl:upgrade(1)
             p:sendMsg('|cffff0000【可存档成就】'..save_name..'+1',6)  
@@ -358,8 +367,8 @@ end
 
 ac.game:event '游戏-开始'(function()
     -- 注册材料获得事件
-    -- local time = 60 * 5 
-    local time = 5
+    local time = 60 * 5 
+    -- local time = 5
     ac.loop(time*1000,function()
         local max_cnt = math.floor(get_player_count()/2) + 1
         for i=1,max_cnt do 
@@ -375,7 +384,7 @@ ac.game:event '挖图成功'(function(trg,hero)
         p.max_cnt = {}
     end  
 
-    local rate = 10
+    local rate = 12
     local max_cnt = 30
     local name ='雪糕'
     -- local rate = 10 --测试

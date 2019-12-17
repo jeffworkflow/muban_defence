@@ -73,53 +73,54 @@ local mt = ac.skill['绝世魔剑1']
 mt{
 --等级
 level = 0, --要动态插入
-title = '绝世魔剑1',
+title = '魔剑获得（N1）',
 --图标
-art = [[ydss.blp]],
+art = [[jueshimojian.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗 |cffff0000三十根喜鹊翎毛|r |cff00ffff兑换获得
+|cff00ff00无限BOSS模式下，通关|cffffff00难1|cff00ff00获得
 
-|cffFFE799【成就属性】：|r
-|cff00ff00+13.8   杀怪加全属性|r
-|cff00ff00+13.8   攻击减甲|r
-|cff00ff00+13.8%  木头加成|r
-|cff00ff00+13.8%  会心伤害|r
-
-]],
+|cffFFE799【魔剑属性】：|r
+|cff00ff00获得一个随从-绝世魔剑
+|cff00ffff魔剑攻击力=100%英雄攻击力
+|cffffff00魔剑攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*2）
+|cffff0000继承英雄暴击几率/加深，会心几率/加深，物伤/全伤加深]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-need_map_level = 5,
+need_map_level = 3,
 attack = 100,
-attack_gap = 0.5,
-skill_attack = 10,
+attack_gap = 1,
+skill_attack = 2,
 }
+
 local mt = ac.skill['绝世魔剑2']
 mt{
 --等级
 level = 0, --要动态插入
-title = '绝世魔剑2',
+title = '魔剑升级（N2）',
 --图标
-art = [[ydss.blp]],
+art = [[jueshimojian.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-杀怪加全属性+38*Lv
-获得一个随从-绝世魔剑，攻击间隔=0.95
-魔剑攻击力=150%任务攻击力
-魔剑攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*4）
-继承英雄暴击几率/暴击加深/物理伤害加深/全伤加深
 
-]],
+|cffffe799【获得方式】：|r
+|cff00ff00无限BOSS模式下，通关|cffffff00难2|cff00ff00获得|cffff0000（如果之前的魔剑未激活，将先激活之前的魔剑存档）
+
+|cffFFE799【魔剑属性】：|r
+|cff00ff00获得一个随从-绝世魔剑
+|cff00ffff魔剑攻击力=150%英雄攻击力
+|cffffff00魔剑攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*4）
+|cffff0000继承英雄暴击几率/加深，会心几率/加深，物伤/全伤加深]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
-attack = 200,
-attack_gap = 0.5,
-skill_attack = 20,
+attack = 150,
+attack_gap = 0.95,
+skill_attack = 4,
 }
 
 local mt = ac.skill['绝世魔剑3']
@@ -127,27 +128,27 @@ mt{
 --等级
 level = 0, --要动态插入
 --图标
-art = [[ydss.blp]],
+title = '魔剑升级（N3）',
+--图标
+art = [[jueshimojian.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗 |cffff0000三十根喜鹊翎毛|r |cff00ffff兑换获得
+|cff00ff00无限BOSS模式下，通关|cffffff00难3|cff00ff00获得|cffff0000（如果之前的魔剑未激活，将先激活之前的魔剑存档）
 
-|cffFFE799【成就属性】：|r
-|cff00ff00+13.8   杀怪加全属性|r
-|cff00ff00+13.8   攻击减甲|r
-|cff00ff00+13.8%  木头加成|r
-|cff00ff00+13.8%  会心伤害|r
-
-]],
+|cffFFE799【魔剑属性】：|r
+|cff00ff00获得一个随从-绝世魔剑
+|cff00ffff魔剑攻击力=200%英雄攻击力
+|cffffff00魔剑攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*6）
+|cffff0000继承英雄暴击几率/加深，会心几率/加深，物伤/全伤加深]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-need_map_level = 5,
-attack = 300,
-attack_gap = 0.5,
-skill_attack = 30,
+need_map_level = 7,
+attack = 200,
+attack_gap = 0.9,
+skill_attack = 6,
 }
 
 local mt = ac.skill['绝世魔剑4']
@@ -155,24 +156,190 @@ mt{
 --等级
 level = 0, --要动态插入
 --图标
-art = [[ydss.blp]],
+title = '魔剑升级（N4）',
+--图标
+art = [[jueshimojian.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-【魔剑属性】
-杀怪加全属性+38*Lv
-获得一个随从-绝世魔剑，攻击间隔=0.5
-魔剑攻击力=600%任务攻击力
-魔剑攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*20）
-继承英雄暴击几率/暴击加深/物理伤害加深/全伤加深
 
-]],
+|cffffe799【获得方式】：|r
+|cff00ff00无限BOSS模式下，通关|cffffff00难4|cff00ff00获得|cffff0000（如果之前的魔剑未激活，将先激活之前的魔剑存档）
+
+|cffFFE799【魔剑属性】：|r
+|cff00ff00获得一个随从-绝世魔剑
+|cff00ffff魔剑攻击力=250%英雄攻击力
+|cffffff00魔剑攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*8）
+|cffff0000继承英雄暴击几率/加深，会心几率/加深，物伤/全伤加深]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-need_map_level = 5,
-attack = 600,
-attack_gap = 0.5,
-skill_attack = 40,
+need_map_level = 9,
+attack = 250,
+attack_gap = 0.85,
+skill_attack = 8,
+}
+
+local mt = ac.skill['绝世魔剑5']
+mt{
+--等级
+level = 0, --要动态插入
+--图标
+title = '魔剑升级（N5）',
+--图标
+art = [[jueshimojian.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00无限BOSS模式下，通关|cffffff00难5|cff00ff00获得|cffff0000（如果之前的魔剑未激活，将先激活之前的魔剑存档）
+
+|cffFFE799【魔剑属性】：|r
+|cff00ff00获得一个随从-绝世魔剑
+|cff00ffff魔剑攻击力=300%英雄攻击力
+|cffffff00魔剑攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*10）
+|cffff0000继承英雄暴击几率/加深，会心几率/加深，物伤/全伤加深]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 11,
+attack = 300,
+attack_gap = 0.8,
+skill_attack = 10,
+}
+local mt = ac.skill['绝世魔剑6']
+mt{
+--等级
+level = 0, --要动态插入
+--图标
+title = '魔剑升级（N6）',
+--图标
+art = [[jueshimojian.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00无限BOSS模式下，通关|cffffff00难6|cff00ff00获得|cffff0000（如果之前的魔剑未激活，将先激活之前的魔剑存档）
+
+|cffFFE799【魔剑属性】：|r
+|cff00ff00获得一个随从-绝世魔剑
+|cff00ffff魔剑攻击力=350%英雄攻击力
+|cffffff00魔剑攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*12）
+|cffff0000继承英雄暴击几率/加深，会心几率/加深，物伤/全伤加深]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 13,
+attack = 350,
+attack_gap = 0.75,
+skill_attack = 12,
+}
+local mt = ac.skill['绝世魔剑7']
+mt{
+--等级
+level = 0, --要动态插入
+--图标
+title = '魔剑升级（N7）',
+--图标
+art = [[jueshimojian.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00无限BOSS模式下，通关|cffffff00难7|cff00ff00获得|cffff0000（如果之前的魔剑未激活，将先激活之前的魔剑存档）
+
+|cffFFE799【魔剑属性】：|r
+|cff00ff00获得一个随从-绝世魔剑
+|cff00ffff魔剑攻击力=400%英雄攻击力
+|cffffff00魔剑攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*14）
+|cffff0000继承英雄暴击几率/加深，会心几率/加深，物伤/全伤加深]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 15,
+attack = 400,
+attack_gap = 0.7,
+skill_attack = 14,
+}
+local mt = ac.skill['绝世魔剑8']
+mt{
+--等级
+level = 0, --要动态插入
+--图标
+title = '魔剑升级（N8）',
+--图标
+art = [[jueshimojian.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00无限BOSS模式下，通关|cffffff00难8|cff00ff00获得|cffff0000（如果之前的魔剑未激活，将先激活之前的魔剑存档）
+
+|cffFFE799【魔剑属性】：|r
+|cff00ff00获得一个随从-绝世魔剑
+|cff00ffff魔剑攻击力=450%英雄攻击力
+|cffffff00魔剑攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*16）
+|cffff0000继承英雄暴击几率/加深，会心几率/加深，物伤/全伤加深]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 17,
+attack = 450,
+attack_gap = 0.65,
+skill_attack = 16,
+}
+local mt = ac.skill['绝世魔剑9']
+mt{
+--等级
+level = 0, --要动态插入
+--图标
+title = '魔剑升级（N9）',
+--图标
+art = [[jueshimojian.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00无限BOSS模式下，通关|cffffff00难9|cff00ff00获得|cffff0000（如果之前的魔剑未激活，将先激活之前的魔剑存档）
+
+|cffFFE799【魔剑属性】：|r
+|cff00ff00获得一个随从-绝世魔剑
+|cff00ffff魔剑攻击力=500%英雄攻击力
+|cffffff00魔剑攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*18）
+|cffff0000继承英雄暴击几率/加深，会心几率/加深，物伤/全伤加深]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 19,
+attack = 500,
+attack_gap = 0.6,
+skill_attack = 18,
+}
+local mt = ac.skill['绝世魔剑10']
+mt{
+--等级
+level = 0, --要动态插入
+--图标
+title = '魔剑升级（N10）',
+--图标
+art = [[jueshimojian.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ff00无限BOSS模式下，通关|cffffff00难10|cff00ff00获得|cffff0000（如果之前的魔剑未激活，将先激活之前的魔剑存档）
+
+|cffFFE799【魔剑属性】：|r
+|cff00ff00获得一个随从-绝世魔剑
+|cff00ffff魔剑攻击力=550%英雄攻击力
+|cffffff00魔剑攻击5%概率造成范围物理伤害（伤害公式：英雄攻击力*20）
+|cffff0000继承英雄暴击几率/加深，会心几率/加深，物伤/全伤加深]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+need_map_level = 21,
+attack = 550,
+attack_gap = 0.55,
+skill_attack = 20,
 }
 
 for i=1,11 do 
@@ -184,21 +351,23 @@ for i=1,11 do
         if p.id >10 then return end 
         
         local attribute ={
-            ['攻击'] = function() return hero:get('攻击')*skill.attack end,
-            ['攻击间隔'] = function() return hero:get('攻击间隔')*skill.attack_gap end,
+            ['攻击'] = function() return hero:get('攻击')*skill.attack*0.01 end,
+            ['攻击间隔'] = function() return skill.attack_gap end,
             ['攻击速度'] = function() return hero:get('攻击速度') end,
             ['生命上限'] = function() return hero:get('生命上限') end,
             ['魔法上限'] = function() return hero:get('魔法上限') end,
             ['生命恢复'] = function() return hero:get('生命恢复') end,
             ['魔法恢复'] = function() return hero:get('魔法恢复') end,
-            ['移动速度'] = function() return hero:get('移动速度') end,
+            ['移动速度'] = 522,
 
-            ['分裂伤害'] = function() return hero:get('分裂伤害') end,
-            ['攻击减甲'] = function() return hero:get('攻击减甲') end,
+            
+            
             ['暴击几率'] = function() return hero:get('暴击几率') end,
             ['暴击伤害'] = function() return hero:get('暴击伤害') end,
             ['会心几率'] = function() return hero:get('会心几率') end,
             ['会心伤害'] = function() return hero:get('会心伤害') end,
+            ['物理伤害加深'] = function() return hero:get('物理伤害加深') end,
+            ['全伤加深'] = function() return hero:get('全伤加深') end,
 
             ['物品获取率'] = function() return hero:get('物品获取率') end,
             ['木头加成'] = function() return hero:get('木头加成') end,
@@ -249,19 +418,19 @@ local mt = ac.skill['绝世魔剑']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[jchd.blp]],
+    art = [[jueshimojian.blp]],
     title = '绝世魔剑',
     tip = [[
 
-查看精彩活动
+查看绝世魔剑
     ]],
     
 }
 
 mt.skills = {
     '绝世魔剑1','绝世魔剑2','绝世魔剑3','绝世魔剑4',
-    -- '绝世魔剑5','绝世魔剑6','绝世魔剑7','绝世魔剑8',
-    -- '绝世魔剑9','绝世魔剑10','绝世魔剑11',
+    '绝世魔剑5','绝世魔剑6','绝世魔剑7','绝世魔剑8',
+    '绝世魔剑9','绝世魔剑10',
 }
 
 function mt:on_add()

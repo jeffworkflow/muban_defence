@@ -19,11 +19,11 @@ local mt = ac.skill['巅峰-下一页']
 mt{
     is_spellbook = 1,
     is_order = 2,
-    art = [[sffl.blp]],
+    art = [[ReplaceableTextures\CommandButtons\BTNReplay-Play.blp]],
     title = '下一页',
     tip = [[
 
-查看礼包
+查看 下一页
     ]],
     
 }

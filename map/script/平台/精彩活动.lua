@@ -605,27 +605,28 @@ mt{
 level = 1, --要动态插入
 max_level = 5, --要动态插入
 --图标
-art = [[ydss.blp]],
+art = [[bingxueqiyuan.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗 |cffff0000三十根喜鹊翎毛|r |cff00ffff兑换获得
+|cff00ffff圣诞活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+13.8   杀怪加全属性|r
-|cff00ff00+13.8   攻击减甲|r
-|cff00ff00+13.8%  木头加成|r
-|cff00ff00+13.8%  会心伤害|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%木头加成% |cff00ff00% |cff00ff00木头加成|r
+|cff00ff00+%会心伤害% |cff00ff00% |cff00ff00会心伤害|r
 
 ]],
+
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 13.8,
-['木头加成'] = 13.8,
-['攻击减甲'] = 13.8,
-['会心伤害'] = 13.8,
+['杀怪加全属性'] = {8.8,17.6,26.4,35.2,44},
+['木头加成'] = {8.8,17.6,26.4,35.2,44},
+['攻击减甲'] = {8.8,17.6,26.4,35.2,44},
+['会心伤害'] = {8.8,17.6,26.4,35.2,44},
 need_map_level = 5,
 }
 
@@ -633,28 +634,28 @@ local mt = ac.skill['傻子的春天']
 mt{
 --等级
 level = 1, --要动态插入
+max_level = 5,
 --图标
-art = [[ydss.blp]],
+art = [[szdct.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff消耗 |cffff0000三十根喜鹊翎毛|r |cff00ffff兑换获得
+|cff00ffff圣诞活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+13.8   杀怪加全属性|r
-|cff00ff00+13.8   攻击减甲|r
-|cff00ff00+13.8%  木头加成|r
-|cff00ff00+13.8%  会心伤害|r
-
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%物品获取率% %  |cff00ff00物品获取率|r
+|cff00ff00+%暴击加深% %  |cff00ff00暴击加深|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 13.8,
-['木头加成'] = 13.8,
-['攻击减甲'] = 13.8,
-['会心伤害'] = 13.8,
+['杀怪加全属性'] = {8.8,17.6,26.4,35.2,44},
+['物品获取率'] = {8.8,17.6,26.4,35.2,44},
+['攻击减甲'] = {8.8,17.6,26.4,35.2,44},
+['暴击加深'] = {8.8,17.6,26.4,35.2,44},
 need_map_level = 5,
 }
 
