@@ -437,7 +437,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
                 if ok2 then 
                     player:Map_AddServerValue(key,1) --网易服务器
                 end    
-                player:sendMsg('【系统消息】恭喜通关激活魔剑，下一个难度等着你来挑战！',5)
+                player:sendMsg('|cffffe799【系统消息】|cff00ff00恭喜通关激活魔剑，下一个难度等着你来挑战！')
 
             else
                 --保存星数
