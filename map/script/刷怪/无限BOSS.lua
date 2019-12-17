@@ -2,7 +2,11 @@ ac.game:event '选择难度' (function(_,g_game_degree_name,g_game_degree)
     if not finds(g_game_degree_name,'无限BOSS') then 
         return
     end    
- 
+    --发送文字提醒
+    ac.player.self:sendMsg('【无限BOSS】选择了 难'..g_game_degree..' ，当前难度通关后，即可选择下一个难度！')
+    ac.player.self:sendMsg('【无限BOSS】通关后可激活“绝世魔剑”存档，属性在巅峰神域-绝世魔剑中查看！')
+    ac.player.self:sendMsg('【无限BOSS】【无限BOSS】按F6查看无限BOSS难度排行榜！')
+    
     --改变怪物出怪间隔
     for i=1,3 do 
         local mt = ac.creep['刷怪'..i]

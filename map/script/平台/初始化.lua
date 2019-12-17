@@ -9,7 +9,10 @@ for i=1,10 do
     end  
     if not p.cus_server then 
         p.cus_server ={}
-    end    
+    end 
+    if not p.cus_server2 then 
+        p.cus_server2 ={}
+    end 
     if not p.mall_flag then 
         p.mall_flag = {}
     end  
@@ -430,10 +433,11 @@ ac.game:event '游戏-结束' (function(trg,flag)
 
                 --魔剑相关的存档
                 local key = ac.server.name2key('绝世魔剑')
-                local ok = ac.g_game_degree - (player.cus_server['绝世魔剑'] or 0) >0
-                if ok then 
+                local ok2 = ac.g_game_degree - (player.cus_server['绝世魔剑'] or 0) >0
+                if ok2 then 
                     player:Map_AddServerValue(key,1) --网易服务器
                 end    
+                player:sendMsg('【系统消息】恭喜通关激活魔剑，下一个难度等着你来挑战！',5)
 
             else
                 --保存星数
