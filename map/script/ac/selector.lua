@@ -410,6 +410,14 @@ function api:random()
 	end
 end
 
+--选取第一个
+function api:get_first()
+	local g = self:get()
+	if #g > 0 then
+		return g[1]
+	end
+end
+
 function ac.selector()
 	return setmetatable({filters = {}}, mt)
 end
