@@ -20,7 +20,8 @@
 			--检查是否击中目标
 			checkHit = function(self)
 				if self.target._class == '模拟死亡' and not self.target:is_alive() then
-					self:remove()
+					-- self:remove()
+					self.target = self.target:get_point()
 					-- mover.on_finish(self)
 				end	
 				local hit_range = self.target.type == 'unit' and self.target:get_selected_radius() or 0
