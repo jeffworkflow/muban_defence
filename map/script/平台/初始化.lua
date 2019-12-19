@@ -396,7 +396,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
             if player:is_player() then
                 -- local bit_val = 2^(ac.g_game_degree-3)
                 local val = ac.g_game_degree-1
-                if player.cus_server2['无限BOSS'] >=val then 
+                if (player.cus_server2['无限BOSS'] or 0) >=val then 
                     ok = true 
                     break
                 end  

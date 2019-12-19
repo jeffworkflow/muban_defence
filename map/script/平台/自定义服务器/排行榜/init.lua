@@ -81,6 +81,7 @@ function player.__index:sp_get_rank_season1(f)
             local tbl = json.decode(retval)
             -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
             if tbl and tbl.code == 0 then 
+                if not tbl.data[1] then return end
                 local temp_tab = {}
                 -- print_r(tbl)
                 for i,data in ipairs(tbl.data[1]) do 

@@ -363,6 +363,7 @@ ac.wait(5*1000,function()
         local p = ac.player(1);
         ac.wait(200*i,function()
             p:sp_get_rank(content[1],'rank',10,function(data)
+                if not data then return end
                 -- print_r(data)
                 ac.wait(10,function()
                     if not panel.rank then 

@@ -407,7 +407,7 @@ for i=1,11 do
             skl = p.unit_mojian:add_skill('魔剑攻击','隐藏')
             skl.skill_attack = self.skill_attack
         else 
-            print(skl.skill_attack,self.skill_attack)
+            -- print(skl.skill_attack,self.skill_attack)
             skl.skill_attack = self.skill_attack
         end   
         --  

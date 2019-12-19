@@ -262,6 +262,8 @@ for i,name in ipairs({'兑换-格里芬','兑换-黑暗项链','兑换-最强生
                     --动态插入魔法书
                     local skl = hero:find_skill(real_name,nil,true) 
                     if not skl  then 
+                        --激活成就（存档） 
+                        p:Map_AddServerValue(key,1) --网易服务器
                         ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',real_name)
                         ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r |cff00ff00不知道从哪里弄来了这么多的雪糕，在活动使者处兑换了|cffffff00【可存档成就】'..real_name..'|r',6) 
                     elseif skl.level<skl.max_level then

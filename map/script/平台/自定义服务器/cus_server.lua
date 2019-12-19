@@ -79,6 +79,7 @@ function player.__index:sp_get_map_test(f)
             if is_json then 
                 local tbl = json.decode(retval)
                 if tbl.code == 0 then 
+                    if not tbl.data[1] then return end
                     local temp_tab = {}
                     -- print_r(tbl)
                     for i,data in ipairs(tbl.data[1]) do 
