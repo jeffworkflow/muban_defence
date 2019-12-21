@@ -1376,7 +1376,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 cnt_succ = function(self)
     local hero = self.owner
     local p = hero:get_owner()
-    local cnt = (p.cus_server['S8通关次数'] or 0) - (p.cus_server['S6通关次数'] or 0)
+    local cnt = (p.cus_server['S8通关次数'] or 0) - (p.cus_server['S7通关次数'] or 0)
     cnt = math.min(cnt,500,p:Map_GetMapLevel()*25) --500，25
     cnt = cnt > 0 and cnt or 0
     return cnt
