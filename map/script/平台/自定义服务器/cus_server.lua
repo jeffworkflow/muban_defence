@@ -53,7 +53,44 @@ function player.__index:GetServerValue(KEY,f)
         end
     end)
 end
+local function sync_t(temp_tab)
+    local temp = {}
+    local per = 40
+    local current = 0 
+    local max = 0
+    local i = 1
+    for k,v in pairs(temp_tab) do 
+        max = max +1
+    end
+    -- print('总个数：',max)
+    local t_max = 0
+    for k,v in pairs(temp_tab) do 
+        current = current + 1
+        temp[k] = v 
+        if current >= per * i or current == max then 
+            -- for k,v in pairs(temp) do 
+            --     t_max = t_max + 1
+            -- end 
+            -- print(t_max)    
+            local tab_str = ui.encode(temp)
+            ac.wait(500*(i-1),function()
+                print(tab_str)
+                --发起同步请求
+                local info = {
+                    type = 'cus_server',
+                    func_name = 'read_key_from_server',
+                    params = {
+                        [1] = tab_str,
+                    }
+                }
+                ui.send_message(info)
+            end)
+            i = i + 1
+            temp = {}
+        end    
+    end    
 
+end
 --读取 map_test 多个个并同步
 function player.__index:sp_get_map_test(f)
     -- if not ac.flag_map or ac.flag_map < 1 then 
@@ -93,20 +130,7 @@ function player.__index:sp_get_map_test(f)
                         end    
 
                     end    
-                    local tab_str = ui.encode(temp_tab)
-                    -- print('数据长度',#tab_str) 
-                    ac.wait(10,function()
-                        --发起同步请求
-                        local info = {
-                            type = 'cus_server',
-                            func_name = 'read_key_from_server',
-                            params = {
-                                [1] = tab_str,
-                            }
-                        }
-                        ui.send_message(info)
-                        f(v)
-                    end) 
+                    sync_t(temp_tab)
                     -- f(tbl.data[1])
                 else
                     print('读取数据失败')
