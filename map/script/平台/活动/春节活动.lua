@@ -204,7 +204,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     if  unit.unit_type ~= 'boss' then 
         return
     end    
-    local rate = 80 
+    local rate = 10 
     local rand = math.random(10000)/100 
     if rand < rate then 
         ac.item.create_item('新春爆竹',unit:get_point())
@@ -228,7 +228,8 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '神符',
-special_model = [[Objects\InventoryItems\BundleofLumber\BundleofLumber.mdx]],
+specail_model = [[Objects\InventoryItems\BundleofLumber\BundleofLumber.mdx]],
+
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -261,7 +262,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
-special_model = [[faguangzi.mdx]],
+specail_model = [[faguangzi.mdx]],
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -294,8 +295,8 @@ end
 --注册捣乱的年兽 生成事件
 ac.game:event '游戏-开始'(function()
     -- 注册材料获得事件
-    -- local time = 60 * 10 
-    local time = 10
+    local time = 60 * 10 
+    -- local time = 10
     ac.loop(time*1000,function()
         local online_cnt = get_player_count()
         local cnt = math.floor(online_cnt/2) + 1 

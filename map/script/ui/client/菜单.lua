@@ -76,7 +76,7 @@ local ui_info = {
         -- key = 'F3', 
         tip = "|cff00ff00开局五分钟自动获得|cffff0000攻击减甲+1 （可存档）|r|n|cffcccccc上限受地图等级影响|r",
         x = 1800,
-        y = 638
+        y = 538
     },
 
 }

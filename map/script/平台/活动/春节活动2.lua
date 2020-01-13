@@ -3,14 +3,14 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[yanhua.blp]],
+art = [[fuqi.blp]],
 --说明
 tip = [[ 
-    活动时间：1月17日-1月31日
-    集五福瓜分100亿的可存档全属性，活动结束后，按每个人的集齐次数进行瓜分发放！
-    你的 五福集齐次数：%wufu%（集齐次数上限说明=15*地图等级）
-    世界 五福集齐次数：%sj_wufu%
- ]],
+|cffffe799【活动时间】|r|cff00ff001月17日-1月31日
+|cffffe799【活动说明】|r|cff00ff00集五福瓜分|cffffff00100亿的可存档全属性|cff00ff00，活动结束后，按每个人的集齐次数进行瓜分发放！
+
+|cffcccccc你的 五福集齐次数：%wufu%|cffffff00（最大集齐次数受限于地图等级）
+|cffcccccc世界 五福集齐次数：%sj_wufu%]],
 --物品类型
 item_type = '神符',
 --目标类型
@@ -32,19 +32,19 @@ content_tip = ''
 }
 
 
-local mt = ac.skill['【和谐福】']
+local mt = ac.skill['【和谐】']
 mt{
 --等久
 level = 1,
 --图标
-art = [[zhong.blp]],
+art = [[hexie.blp]],
 --说明
 tip = [[
 
 
-|cffdf19d0【和谐福】|cff00ffff+【爱国】+【敬业】+【友善】=【五福】|cff00ff00（可在“活动使者”处，进行一次博饼）
+|cffdf19d0【和谐】|cff00ffff+【爱国】+【敬业】+【友善】+【富强】=【五福】|cff00ff00（使用可增加五福集齐次数，活动结束后可瓜分百亿属性！）
 
-|cffcccccc中秋活动物品|r]],
+|cffcccccc春节活动物品|r]],
 --品质
 color = '紫',
 --物品类型
@@ -67,14 +67,14 @@ level = 1,
 no_use =true,
 wood = 1000,
 --图标
-art = [[qiu.blp]],
+art = [[aiguo.blp]],
 --说明
 tip = [[
 
 
-|cff00ffff【和谐福】+|cffdf19d0【爱国】|cff00ffff+【敬业】+【友善】=【五福】|cff00ff00（可在“活动使者”处，进行一次博饼）
+|cff00ffff【和谐】+|cffdf19d0【爱国】|cff00ffff+【敬业】+【友善】+【富强】=【五福】|cff00ff00（使用可增加五福集齐次数，活动结束后可瓜分百亿属性！）
 
-|cffcccccc中秋活动物品|r]],
+|cffcccccc春节活动物品|r]],
 --品质
 color = '紫',
 --物品类型
@@ -92,14 +92,14 @@ level = 1,
 no_use =true,
 wood = 1000,
 --图标
-art = [[kuai.blp]],
+art = [[jingye.blp]],
 --说明
 tip = [[
 
 
-|cff00ffff【和谐福】+【爱国】+|cffdf19d0【敬业】|cff00ffff+【友善】=【五福】|cff00ff00（可在“活动使者”处，进行一次博饼）
+|cff00ffff【和谐】+【爱国】+|cffdf19d0【敬业】|cff00ffff+【友善】+【富强】=【五福】|cff00ff00（使用可增加五福集齐次数，活动结束后可瓜分百亿属性！）
 
-|cffcccccc中秋活动物品|r]],
+|cffcccccc春节活动物品|r]],
 --品质
 color = '紫',
 --物品类型
@@ -117,14 +117,14 @@ level = 1,
 no_use =true,
 wood = 1000,
 --图标
-art = [[le.blp]],
+art = [[youshan.blp]],
 --说明
 tip = [[
 
 
-|cff00ffff【和谐福】+【爱国】+【敬业】+|cffdf19d0【友善】|cff00ffff=【五福】|cff00ff00（可在“活动使者”处，进行一次博饼）
+|cff00ffff【和谐】+【爱国】+【敬业】+|cffdf19d0【友善】|cff00ffff+【富强】=【五福】|cff00ff00（使用可增加五福集齐次数，活动结束后可瓜分百亿属性！）
 
-|cffcccccc中秋活动物品|r]],
+|cffcccccc春节活动物品|r]],
 --品质
 color = '紫',
 --物品类型
@@ -142,14 +142,14 @@ level = 1,
 no_use =true,
 wood = 1000,
 --图标
-art = [[le.blp]],
+art = [[fuqiang.blp]],
 --说明
 tip = [[
 
 
-|cff00ffff【和谐福】+【爱国】+【敬业】+【友善】+|cffdf19d0【富强】|cff00ffff=【五福】|cff00ff00（可在“活动使者”处，进行一次博饼）
+|cff00ffff【和谐】+【爱国】+【敬业】+【友善】+|cffdf19d0【富强】|cff00ffff=【五福】|cff00ff00（使用可增加五福集齐次数，活动结束后可瓜分百亿属性！）
 
-|cffcccccc中秋活动物品|r]],
+|cffcccccc春节活动物品|r]],
 --品质
 color = '紫',
 --物品类型
@@ -170,9 +170,9 @@ art = [[bobingquan.blp]],
 tip = [[
 
 
-|cff00ff00可在“活动使者”处，进行一次博饼
+|cff00ff00点击获得一个五福集齐次数|cffffff00(集齐次数可在NPC“活动使者”处查看)|cff00ff00，活动结束后可瓜分百亿属性！
 
-|cffcccccc中秋活动物品|r]],
+|cffcccccc春节活动物品|r]],
 --品质
 color = '紫',
 --物品类型
@@ -188,7 +188,7 @@ function mt:on_cast_start()
     local hero = self.owner
     local p = hero.owner 
     --发送信息
-    p:sendMsg('恭喜收集五福',2)
+    p:sendMsg('|cffffe799【系统消息】|cff00ff00恭喜集齐五福，集齐次数可在|cffffff00NPC“活动使者”|cff00ff00处查看',2)
     local key =ac.server.name2key('五福')
     --网易服务器存档
     p:Map_AddServerValue(key,1) --网易服务器
@@ -200,7 +200,7 @@ function mt:on_cast_start()
 end
 --插入到合成表
 ac.wait(100,function()
-    table.insert(ac.streng_item_list,{'【五福】','【和谐福】*1 【爱国】*1 【敬业】*1 【友善】*1'})
+    table.insert(ac.streng_item_list,{'【五福】','【和谐】*1 【爱国】*1 【敬业】*1 【友善】*1 【富强】*1'})
 end)
 
 
