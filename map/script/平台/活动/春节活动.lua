@@ -164,6 +164,7 @@ function mt:on_cast_start()
     local skill = self
     local hero = self.owner 
     local p = hero:get_owner()
+    hero = p.hero
     local player = hero:get_owner()
     local eff = ac.effect(hero:get_point(),self.effect,0,1.5,'overhead',350):remove()
     give_award(hero)
@@ -197,6 +198,18 @@ function mt:on_cast_start()
         }
     end  
 end   
+
+--注册新春爆竹 掉落
+ac.game:event '单位-死亡' (function (_,unit,killer)
+    if  unit.unit_type ~= 'boss' then 
+        return
+    end    
+    local rate = 80 
+    local rand = math.random(10000)/100 
+    if rand < rate then 
+        ac.item.create_item('新春爆竹',unit:get_point())
+    end
+end)
 
 
 
