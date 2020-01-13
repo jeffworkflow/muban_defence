@@ -166,6 +166,7 @@ function mt:on_cast_start()
     local skill = self
     local hero = self.owner 
     local p = hero:get_owner()
+    hero = p.hero
     local player = hero:get_owner()
     local eff = ac.effect(hero:get_point(),self.effect,0,1.5,'overhead',350):remove()
     give_award(hero)
