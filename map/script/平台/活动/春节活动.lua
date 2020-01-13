@@ -206,9 +206,15 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     if  unit.unit_type ~= 'boss' then 
         return
     end    
+    local p = killer:get_owner()
+    if not p.max_item_fall then 
+        p.max_item_fall = {}
+    end
     local rate = 80 
     local rand = math.random(10000)/100 
-    if rand < rate then 
+    local max_cnt =20
+    if rand < rate and (p.max_item_fall['新春爆竹'] or 0) <=20 then 
+        p.max_item_fall['新春爆竹'] = (p.max_item_fall['新春爆竹'] or 0) + 1
         ac.item.create_item('新春爆竹',unit:get_point())
     end
 end)
