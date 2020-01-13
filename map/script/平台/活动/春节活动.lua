@@ -200,6 +200,18 @@ function mt:on_cast_start()
     end  
 end   
 
+--注册新春爆竹 掉落
+ac.game:event '单位-死亡' (function (_,unit,killer)
+    if  unit.unit_type ~= 'boss' then 
+        return
+    end    
+    local rate = 80 
+    local rand = math.random(10000)/100 
+    if rand < rate then 
+        ac.item.create_item('新春爆竹',unit:get_point())
+    end
+end)
+
 
 
 local mt = ac.skill['木材堆']
