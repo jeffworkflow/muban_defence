@@ -659,6 +659,63 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 need_map_level = 5,
 }
 
+local mt = ac.skill['兽魂之佑']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 5,
+--图标
+art = [[szdct.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff圣诞活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%物品获取率% %  |cff00ff00物品获取率|r
+|cff00ff00+%暴击加深% %  |cff00ff00暴击加深|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = {8.8,17.6,26.4,35.2,44},
+['物品获取率'] = {8.8,17.6,26.4,35.2,44},
+['攻击减甲'] = {8.8,17.6,26.4,35.2,44},
+['暴击加深'] = {8.8,17.6,26.4,35.2,44},
+need_map_level = 5,
+}
+
+local mt = ac.skill['放炮小达人']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 5,
+--图标
+art = [[szdct.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff圣诞活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%物品获取率% %  |cff00ff00物品获取率|r
+|cff00ff00+%暴击加深% %  |cff00ff00暴击加深|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = {8.8,17.6,26.4,35.2,44},
+['物品获取率'] = {8.8,17.6,26.4,35.2,44},
+['攻击减甲'] = {8.8,17.6,26.4,35.2,44},
+['暴击加深'] = {8.8,17.6,26.4,35.2,44},
+need_map_level = 5,
+}
 
 
 local mt = ac.skill['精彩活动']
@@ -675,8 +732,8 @@ mt{
 }
 mt.skill_name ={
     '缘定三生','井底之蛙','食物链顶端的人','有趣的灵魂',
-    '蒙娜丽莎的微笑','四海共团圆','第一个吃螃蟹的人',
-    '庆生蟠桃 ','傻子的春天','冰雪奇缘'
+    '蒙娜丽莎的微笑','四海共团圆','第一个吃螃蟹的人','庆生蟠桃 ',
+    '傻子的春天','冰雪奇缘','兽魂之佑','放炮小达人'
 }
 
 mt.skills = {

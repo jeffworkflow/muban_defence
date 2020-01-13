@@ -161,3 +161,18 @@ function maxbit2num(n)
 		end	
 	end	
 end	
+--把换行 换成 空格
+function tran_space(s) 
+	return (string.gsub(s, "[\r\n]+", " "))
+end
+
+--取得 table key 最大的数
+function table.maxnum(tab) 
+	local max_cnt =0
+	for k,v in pairs(tab) do 
+		if type(k) == 'number' and k>=max_cnt then 
+			max_cnt = k
+		end
+	end
+	return max_cnt
+end

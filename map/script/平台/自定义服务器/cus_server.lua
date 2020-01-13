@@ -14,7 +14,7 @@ function player.__index:GetServerValue(KEY,f)
     -- if not ac.flag_map or ac.flag_map  < 1 then 
     --     return 
     -- end
-    if not self:is_self() then 
+    if not self:is_self() and self.id < 11 then 
         return 
     end    
     local player_name = self:get_name()
@@ -49,7 +49,7 @@ function player.__index:GetServerValue(KEY,f)
         else 
             f(false)
             print('数据读取失败')
-            ac.wait(10,function()print(retval)end)
+            -- ac.wait(10,function()print(retval)end)
         end
     end)
 end
@@ -96,9 +96,9 @@ function player.__index:sp_get_map_test(f)
     -- if not ac.flag_map or ac.flag_map < 1 then 
     --     return 
     -- end
-    if not self:is_self() then 
+    if not self:is_self() and self.id < 11 then 
         return 
-    end    
+    end     
     local player_name = self:get_name()
     local map_name = ac.server_config.map_name
     local url = ac.server_config.url2
@@ -134,11 +134,11 @@ function player.__index:sp_get_map_test(f)
                     -- f(tbl.data[1])
                 else
                     print('读取数据失败')
-                    print_r(tbl)
+                    -- print_r(tbl)
                 end  
             end 
         else
-            print('服务器返回数据异常:',post)
+            -- print('服务器返回数据异常:',post)
             if retval and #retval<1000 then 
                 print(retval)
             end   
@@ -183,6 +183,9 @@ local event = {
         if not player.cus_server2 then 
             player.cus_server2 = {}
         end    
+        if not ac.player(11).cus_server2 then 
+            ac.player(11).cus_server2 = {}
+        end    
         local data = ui.decode(tab_str) 
         for key,val in sortpairs(data) do 
             local name = ac.server.key2name(key)
@@ -191,7 +194,10 @@ local event = {
             -- print('同步后的数据：',player:get_name(),name,player.cus_server2[name])
             if key =='jifen' then 
                 player.jifen =  tonumber(val)
-            end    
+            end   
+            if name == '世界五福' then 
+                ac.player(11).cus_server2[name] = tonumber(val)
+            end
         end    
         -- player:event_notify('读取存档数据')
 
@@ -202,9 +208,9 @@ ui.register_event('cus_server',event)
 --保存到 map_test 
 -- 保存本局数据 p.cus_server[key] = value
 function player.__index:SetServerValue(key,value,f)
-    if not self:is_self() then 
+    if not self:is_self() and self.id < 11 then 
         return 
-    end    
+    end     
     local player_name = self:get_name()
     local map_name = config.map_name
     local url = config.url2
@@ -229,14 +235,14 @@ function player.__index:SetServerValue(key,value,f)
                 if tbl and tbl.code == 0 then 
                     f(tbl)
                 else
-                    print(self:get_name(),post,'上传失败')
+                    -- print(self:get_name(),post,'上传失败')
                 end         
             else
-                print('返回值非json格式:',post)
+                -- print('返回值非json格式:',post)
                 -- print_r(retval)
             end    
         else
-            print('服务器返回数据异常:',post)
+            -- print('服务器返回数据异常:',post)
             -- print_r(retval)
         end    
     end)
@@ -252,9 +258,9 @@ end
 --增加数据到 map_test 
 -- 保存本局数据 p.cus_server[key] = value
 function player.__index:AddServerValue(key,value,f)
-    if not self:is_self() then 
+    if not self:is_self() and self.id < 11 then 
         return 
-    end    
+    end     
     if not self.cus_server2 then 
         self.cus_server2 ={}
     end    
@@ -266,7 +272,7 @@ function player.__index:AddServerValue(key,value,f)
 end
 --初始化自定义服务器的数据 暂时不用字段太多。
 function player.__index:initCusServerValue()
-    if not self:is_self() then 
+    if not self:is_self() and self.id < 11 then 
         return 
     end    
     for i,v in ipairs(ac.cus_server_key) do 
@@ -317,7 +323,7 @@ ac.server.init = init
 --===============网易数据与自定义服务器数据交互===========================
 --copy 网易数据 到 map_test 
 function player.__index:CopyServerValue(key,f)
-    if not self:is_self() then 
+    if not self:is_self() and self.id < 11 then 
         return 
     end    
     local player_name = self:get_name()
@@ -344,10 +350,10 @@ function player.__index:CopyServerValue(key,f)
             if tbl and tbl.code == 0 then 
                 f(tbl)
             else
-                print(self:get_name(),post,'上传失败')
+                -- print(self:get_name(),post,'上传失败')
             end         
         else
-            print('服务器返回数据异常:',retval,post)
+            -- print('服务器返回数据异常:',retval,post)
             -- ac.wait(10,function()
             --     print(retval)
             -- end)
@@ -366,7 +372,7 @@ end
 
 --保存玩家名 记录审核人员
 function player.__index:sp_save_player()
-    if not self:is_self() then 
+    if not self:is_self() and self.id < 11 then 
         return 
     end    
     local player_name = self:get_name()
@@ -418,10 +424,10 @@ function player.__index:sp_get_map_flag(f)
                 end)   
                 f(tbl)
             else
-                print(self:get_name(),post,'上传失败')
+                -- print(self:get_name(),post,'上传失败')
             end         
         else
-            print('服务器返回数据异常:',retval,post)
+            -- print('服务器返回数据异常:',retval,post)
             -- self:sendMsg('|cffff0000读取服务器数据失败，本次冲榜可能无效!|r',10)
             -- self:sendMsg('|cffff0000读取服务器数据失败，本次冲榜可能无效!|r',10)
         end    
