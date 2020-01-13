@@ -3,13 +3,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[yanhua.blp]],
+art = [[ruishou.blp]],
 --说明
 tip = [[ 
-    活动时间：1月17日-1月31日
-    集五福瓜分100亿的可存档全属性，活动结束后，按每个人的集齐次数进行瓜分发放！
-    你的 五福集齐次数：X（集齐次数上限说明=15*地图等级）
-    世界 五福集齐次数：X
+|cffffe799【活动时间】|r|cff00ff001月17日-1月31日
+|cffffe799【活动说明】|r|cff00ff00爆竹声中一岁除，春风送暖入屠苏。春风送暖，旭日初升，家家户户点燃爆竹，热火朝天地迎接着春节的到来，|cffffff00各位少侠快去凑个热闹吧！
  ]],
 --物品类型
 item_type = '神符',
@@ -51,8 +49,8 @@ local award_list = {
         { rand = 4, name = '黑暗项链'},
         { rand = 4, name = '最强生物心脏'},
         { rand = 4, name = '白胡子的大刀'},
-        { rand = 54, name = '放炮小达人'},
-        { rand = 2, name = '无'},
+        { rand = 4, name = '放炮小达人'},
+        { rand = 56, name = '无'},
     },
 }
 --掉落在地上
@@ -68,7 +66,7 @@ local function give_award(hero,unit)
     end
 
     if rand_name == '无' then
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，只见天空中出现了八个大字：|cffffff00盛世嘉年，普天同庆|cff00ff00!',3) 
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00鞭炮点燃后，只见天空中出现了八个大字：|cffffff00盛世嘉年，新春快乐|cff00ff00!',3) 
 
     elseif  finds(rand_name,'格里芬','黑暗项链','最强生物心脏','白胡子的大刀') then
         --满时，掉在地上
@@ -77,7 +75,7 @@ local function give_award(hero,unit)
         else 
             hero:add_item(rand_name,true)
         end        
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..rand_name..'|r',4) 
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00鞭炮点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..rand_name..'|r',4) 
     elseif  finds('红 金',rand_name) then   
         local list = ac.quality_item[rand_name]
         local name = list[math.random(#list)]
@@ -88,7 +86,7 @@ local function give_award(hero,unit)
         else 
             it = hero:add_item(name,true)
         end      
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..it.color_name..'|r',4)
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00鞭炮点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..it.color_name..'|r',4)
     elseif finds(rand_name,'点金石','恶魔果实','吞噬丹')  then
         --满时，掉在地上
         local it 
@@ -97,7 +95,7 @@ local function give_award(hero,unit)
         else 
             it = hero:add_item(rand_name,true)
         end  
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..rand_name..'|r',4)
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00鞭炮点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..rand_name..'|r',4)
     elseif finds(rand_name,'随机技能书')  then    
         local rand_list = ac.unit_reward['商店随机技能']
         local rand_name = ac.get_reward_name(rand_list)
@@ -113,7 +111,7 @@ local function give_award(hero,unit)
         else 
             ac.item.add_skill_item(name,hero)
         end  
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..name..'|r',4)
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00鞭炮点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..name..'|r',4)
     elseif  rand_name == '放炮小达人' then 
         local key = ac.server.name2key(rand_name)
         --动态插入魔法书
@@ -122,7 +120,7 @@ local function give_award(hero,unit)
             --激活成就（存档） 
             p:Map_AddServerValue(key,1) --网易服务器
             ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',rand_name)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r |cff00ff00不知道从哪里弄来了这么多的雪糕，在活动使者处兑换了|cffffff00【可存档成就】'..rand_name..'|r',6) 
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r |cff00ff00放炮一时爽，一直放炮一直爽，惊喜获得|cffffff00【可存档成就】'..rand_name..'|r',6) 
         elseif skl.level<skl.max_level then
             --激活成就（存档） 
             p:Map_AddServerValue(key,1) --网易服务器
@@ -146,9 +144,9 @@ art = [[bianpao.blp]],
 tip = [[
 
 
-|cff00ff00燃放绚丽烟花，庆祖国华诞！
+|cff00ff00轰然一响，万山齐应，如闻霹雳声|cffffff00(可驱除捣乱的年兽)
 
-|cffcccccc国庆活动物品|r]],
+|cffcccccc春节活动物品|r]],
 --品质
 color = '紫',
 --物品类型
@@ -211,13 +209,13 @@ wood = 1000,
 art = [[qiu.blp]],
 --说明
 tip = [[
-使用增加 1000 木头
+木头+1000
 ]],
 --品质
 color = '紫',
 --物品类型
 item_type = '神符',
-special_model = [[Objects\InventoryItems\BundleofLumber\BundleofLumber.mdl]],
+special_model = [[Objects\InventoryItems\BundleofLumber\BundleofLumber.mdx]],
 --物品详细介绍的title
 content_tip = '|cffffe799使用说明：|r'
 }
@@ -226,18 +224,25 @@ function mt:on_cast_start()
     hero:add_wood(self.wood)
 end
 
-local mt = ac.skill['兽魂之佑1']
+local mt = ac.skill['兽魂之佑 ']
 mt{
 --等久
 level = 1,
-wood = 1000,
-title = '兽魂之佑',
+-- wood = 1000,
 --图标
-art = [[qiu.blp]],
+art = [[ruishou.blp]],
 title = [[兽魂之佑]],
 --说明
 tip = [[
-使用增加 1000 木头
+
+|cffffff00点击激活可存档成就【兽魂之佑】，激活后可在成长之路-精彩活动中查看
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+|cffffff008.8   |cff00ff00杀怪加全属性|r
+|cff00ff00+|cffffff008.8   |cff00ff00攻击减甲|r
+|cff00ff00+|cffffff008.8 |cff00ff00%  |cff00ff00杀敌数加成|r
+|cff00ff00+|cffffff008.8 |cff00ff00%  |cff00ff00暴击加深|r
+
 ]],
 --品质
 color = '紫',
@@ -260,7 +265,7 @@ function mt:on_cast_start()
         --激活成就（存档） 
         p:Map_AddServerValue(key,1) --网易服务器
         ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',real_name)
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r |cff00ff00不知道从哪里弄来了这么多的雪糕，在活动使者处兑换了|cffffff00【可存档成就】'..real_name..'|r',6) 
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r |cff00ff00击败了捣乱的年兽，惊喜获得|cffffff00【可存档成就】'..real_name..'|r',6) 
     elseif skl.level<skl.max_level then
         --激活成就（存档） 
         p:Map_AddServerValue(key,1) --网易服务器
@@ -276,7 +281,7 @@ end
 --注册捣乱的年兽 生成事件
 ac.game:event '游戏-开始'(function()
     -- 注册材料获得事件
-    local time = 60 * 6 
+    -- local time = 60 * 10 
     local time = 10
     ac.loop(time*1000,function()
         local online_cnt = get_player_count()
@@ -287,7 +292,7 @@ ac.game:event '游戏-开始'(function()
             local unit = ac.player(16):create_unit('捣乱的年兽',point)
 
             unit:add_buff '随机逃跑' {}
-            ac.nick_name('捣捣捣捣捣',unit,250)
+            -- ac.nick_name('捣捣捣捣捣',unit,250)
             unit:event '受到伤害开始' (function(_,damage)
                 if damage.skill and type(damage.skill) =='table' and damage.skill.name =='新春爆竹' then 
                     return 
@@ -314,7 +319,7 @@ local unit_reward = {
         { rand = 20,     name = '木材堆*3'},
         { rand = 20,     name = '吞噬丹*1'},
         { rand = 20,     name = '恶魔果实*1'},
-        { rand = 20,     name = '兽魂之佑1*1'},
+        { rand = 20,     name = '兽魂之佑 *1'},
     },
 }
 

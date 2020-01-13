@@ -647,8 +647,9 @@ tip = [[
 |cffFFE799【成就属性】：|r
 |cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
 |cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%物品获取率% %  |cff00ff00物品获取率|r
-|cff00ff00+%暴击加深% %  |cff00ff00暴击加深|r
+|cff00ff00+%物品获取率% |cff00ff00%  |cff00ff00物品获取率|r
+|cff00ff00+%暴击加深% |cff00ff00%  |cff00ff00暴击加深|r
+
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
@@ -665,24 +666,25 @@ mt{
 level = 1, --要动态插入
 max_level = 5,
 --图标
-art = [[szdct.blp]],
+art = [[ruishou.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff圣诞活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
+|cff00ffff春节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
 |cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%物品获取率% %  |cff00ff00物品获取率|r
-|cff00ff00+%暴击加深% %  |cff00ff00暴击加深|r
+|cff00ff00+%杀敌数加成% |cff00ff00%  |cff00ff00杀敌数加成|r
+|cff00ff00+%暴击加深% |cff00ff00%  |cff00ff00暴击加深|r
+
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = {8.8,17.6,26.4,35.2,44},
-['物品获取率'] = {8.8,17.6,26.4,35.2,44},
+['杀敌数加成'] = {8.8,17.6,26.4,35.2,44},
 ['攻击减甲'] = {8.8,17.6,26.4,35.2,44},
 ['暴击加深'] = {8.8,17.6,26.4,35.2,44},
 need_map_level = 5,
@@ -694,26 +696,27 @@ mt{
 level = 1, --要动态插入
 max_level = 5,
 --图标
-art = [[szdct.blp]],
+art = [[zhadanren.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【获得方式】：|r
-|cff00ffff圣诞活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
+|cff00ffff春节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
 
 |cffFFE799【成就属性】：|r
 |cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
 |cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%物品获取率% %  |cff00ff00物品获取率|r
-|cff00ff00+%暴击加深% %  |cff00ff00暴击加深|r
+|cff00ff00+%火灵加成% |cff00ff00%  |cff00ff00火灵加成|r
+|cff00ff00+%技暴加深% |cff00ff00%  |cff00ff00技暴加深|r
+
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 ['杀怪加全属性'] = {8.8,17.6,26.4,35.2,44},
-['物品获取率'] = {8.8,17.6,26.4,35.2,44},
+['火灵加成'] = {8.8,17.6,26.4,35.2,44},
 ['攻击减甲'] = {8.8,17.6,26.4,35.2,44},
-['暴击加深'] = {8.8,17.6,26.4,35.2,44},
+['技暴加深'] = {8.8,17.6,26.4,35.2,44},
 need_map_level = 5,
 }
 
