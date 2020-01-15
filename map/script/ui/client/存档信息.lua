@@ -31,7 +31,6 @@ class.player_info_panel = extends(class.panel){
         -- panel.close_button = panel:add_button('image\\操作栏\\cross.blp',panel.w - 32-5,5,32,32,true)
         panel.titles = {
             '地图等级',
-            '评论数',
             '宠物等级',
             '挖宝积分',
             '勇士徽章',
@@ -44,11 +43,11 @@ class.player_info_panel = extends(class.panel){
             '无限乱斗','无上之境','斗破苍穹','修罗模式',
             '巅峰王者','荣耀王者','最强王者','王者','星耀','钻石','铂金','黄金','白银','青铜',
             '梦境(无尽-最高)',
-           
-            
+ 
             
 
         }
+        -- '评论数',
         
         panel.titles2 = {
             '深渊(无尽-最高)',

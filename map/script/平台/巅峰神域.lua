@@ -28,8 +28,10 @@ mt{
     
 }
 mt.skills = {
-    '全服奖励','武林大会'
+    '武林大会'
 }
+
+--'全服奖励',
 
 -- function mt:on_add() '全服奖励','武林大会'
 --     local hero = self.owner 
