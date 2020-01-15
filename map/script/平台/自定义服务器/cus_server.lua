@@ -31,21 +31,26 @@ function player.__index:GetServerValue(KEY,f)
     post_message(url,post,function (retval)  
 
         if not finds(retval,'http','https','') or not finds(retval,'error_code')then 
-            local tbl = json.decode(retval)
-            for k, v in ipairs(tbl) do
-                -- --发起同步请求
-                ac.wait(10,function()
-                    local info = {
-                        type = 'cus_server',
-                        func_name = 'on_get',
-                        params = {
-                            [1] = KEY,
-                            [2] = tonumber(v.value),
+            local is_json = json.is_json(retval)
+            if is_json then 
+                local tbl = json.decode(retval)
+                for k, v in ipairs(tbl) do
+                    -- --发起同步请求
+                    ac.wait(0,function()
+                        local info = {
+                            type = 'cus_server',
+                            func_name = 'on_get',
+                            params = {
+                                [1] = KEY,
+                                [2] = tonumber(v.value),
+                            }
                         }
-                    }
-                    ui.send_message(info)
-                end)   
-            end
+                        ui.send_message(info)
+                    end)   
+                end
+                local data = {key = KEY, val = tonumber(tbl[1] and tbl[1].value)} 
+                f(true,data)
+            end    
         else 
             f(false)
             print('数据读取失败')
@@ -257,18 +262,39 @@ end
 
 --增加数据到 map_test 
 -- 保存本局数据 p.cus_server[key] = value
-function player.__index:AddServerValue(key,value,f)
+function player.__index:AddServerValue(key,value,re_read,f)
     if not self:is_self() and self.id < 11 then 
         return 
-    end     
+    end    
     if not self.cus_server2 then 
         self.cus_server2 ={}
     end    
-    --保存
-    local key_name = ac.server.key2name(key)
-    -- print(key_name,self.cus_server2[key_name])
-    self.cus_server2[key_name] = (self.cus_server2[key_name] or 0 ) + tonumber(value)
-    self:SetServerValue(key,self.cus_server2[key_name])
+    if re_read then 
+        self:GetServerValue(key,function(ok,data)
+            -- print_r(data)
+            if ok and data then 
+                local key_name = ac.server.key2name(data.key)
+                self.cus_server2[key_name] = data.val or 0
+                --保存
+                local key_name = ac.server.key2name(key)
+                -- print(22,key_name,data.key,data.val)
+                -- print(key_name,self.cus_server2[key_name])  
+                self.cus_server2[key_name] = (self.cus_server2[key_name] or 0 ) + tonumber(value)
+                self:SetServerValue(key,self.cus_server2[key_name])
+            end
+        end)
+    else
+        --保存
+        local key_name = ac.server.key2name(key)
+        -- print(key_name,self.cus_server2[key_name])
+        if not self.cus_server2[key_name] then 
+            print('读取存档不成功，中断保存！')
+            self:sendMsg('读取存档不成功，中断保存！',5)
+            return 
+        end    
+        self.cus_server2[key_name] = (self.cus_server2[key_name] or 0 ) + tonumber(value)
+        self:SetServerValue(key,self.cus_server2[key_name])
+    end
 end
 --初始化自定义服务器的数据 暂时不用字段太多。
 function player.__index:initCusServerValue()

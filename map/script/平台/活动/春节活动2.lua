@@ -195,7 +195,7 @@ function mt:on_cast_start()
 
     --自己服务器存档
     local key = ac.server.name2key('世界五福')
-    ac.player(11):AddServerValue(key,1)
+    ac.player(11):AddServerValue(key,1,true) --重新从服务器读取数据并保存
     ac.player.self.cus_server2['世界五福'] = ac.player(11).cus_server2['世界五福']
 end
 --插入到合成表
