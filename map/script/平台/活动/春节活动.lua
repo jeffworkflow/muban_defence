@@ -244,10 +244,11 @@ function mt:on_cast_start()
     hero:add_wood(self.wood)
 end
 
-local mt = ac.skill['兽魂之佑 ']
+local mt = ac.skill['兽魂之佑1']
 mt{
 --等久
 level = 1,
+title ='兽魂之佑',
 -- wood = 1000,
 --图标
 art = [[ruishou.blp]],
@@ -339,7 +340,7 @@ local unit_reward = {
         { rand = 20,     name = '木材堆*3'},
         { rand = 20,     name = '吞噬丹*1'},
         { rand = 20,     name = '恶魔果实*1'},
-        { rand = 20,     name = '兽魂之佑 *1'},
+        { rand = 20,     name = '兽魂之佑1*1'},
     },
 }
 

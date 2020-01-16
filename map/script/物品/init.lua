@@ -24,6 +24,7 @@ function ac.item.create_skill_item(name,poi,is)
     item.gold = skill.gold
     skill:remove()
 
+    item.name = name
     item:set_name(name) 
     item.skill_name = name
     item.tip =  (tip or '') .. '|cff808080当技能学满后，点击可替换已学技能|r' 

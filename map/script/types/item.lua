@@ -182,7 +182,7 @@ end
 
 --设置物品名 增加显示等级
 function mt:set_name(name)
-	self.name = name
+	-- self.name = name
 	local id = self.type_id
 	local color = color_code[self.color or '白']
 	local show_lv = ''
@@ -1173,7 +1173,8 @@ function item.create_item(name,poi,is)
 	items.not_dis = true
 	-- print(items.name,items.item_type,items._count)
 	--设置物品名
-	items:set_name(name)
+	items.name = name 
+	items:set_name(items.title or name)
 	-- print(items.tip)
 	--设置tip
 	items:set_tip(items:get_tip())
@@ -1247,7 +1248,7 @@ function item.create(name,pos,seller)
 
 	items.handle = item_handle
 	--设置物品名
-	items:set_name(name)
+	items:set_name(items.title or name)
 	--设置贴图
 	items:set_art(items.art)
 	--技能处理
