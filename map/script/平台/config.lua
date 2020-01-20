@@ -308,6 +308,11 @@ local cus_key = {
     {'S8wbjf','S8挖宝积分'},
     {'S8wljf','S8比武积分'},
 
+    {'S9succ','S9通关次数'},
+    {'S9ljwj','S9无尽累计'},
+    {'S9wbjf','S9挖宝积分'},
+    {'S9wljf','S9比武积分'},
+
     {'bobing','博饼'},
 
     {'hdyt','玉兔'},
