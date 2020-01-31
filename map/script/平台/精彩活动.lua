@@ -405,140 +405,140 @@ mt{
 --等级
 level = 1, 
 --图标
-art = [[zhuangyuan.blp]],
+art = [[yuanxiao1.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff通过 中秋活动 获得
+|cff00ffff通过 元宵活动 获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+88.8   杀怪加全属性|r
-|cff00ff00+88.8   攻击减甲|r
-|cff00ff00+88.8%  木头加成|r
-|cff00ff00+88.8%  全伤加深|r
+|cff00ff00+16.8   杀怪加全属性|r
+|cff00ff00+16.8   攻击减甲|r
+|cff00ff00+16.8%  杀敌数加成|r
+|cff00ff00+16.8%  全伤加深|r
 
 ]],
 need_map_level = 5,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 88.8,
-['攻击减甲'] = 88.8,
-['木头加成'] = 88.8,
-['全伤加深'] = 88.8,
+['杀怪加全属性'] = 16.8,
+['攻击减甲'] = 16.8,
+['杀敌数加成'] = 16.8,
+['全伤加深'] = 16.8,
 }
 local mt = ac.skill['津津有味']
 mt{
 --等级
 level = 1, 
 --图标
-art = [[zhuangyuan.blp]],
+art = [[yuanxiao2.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff通过 中秋活动 获得
+|cff00ffff通过 元宵活动 获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+88.8   杀怪加全属性|r
-|cff00ff00+88.8   攻击减甲|r
-|cff00ff00+88.8%  木头加成|r
-|cff00ff00+88.8%  全伤加深|r
+|cff00ff00+26.8   杀怪加全属性|r
+|cff00ff00+26.8   攻击减甲|r
+|cff00ff00+26.8%  杀敌数加成|r
+|cff00ff00+26.8%  全伤加深|r
 
 ]],
 need_map_level = 5,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 88.8,
-['攻击减甲'] = 88.8,
-['木头加成'] = 88.8,
-['全伤加深'] = 88.8,
+['杀怪加全属性'] = 26.8,
+['攻击减甲'] = 26.8,
+['杀敌数加成'] = 26.8,
+['全伤加深'] = 26.8,
 }
 local mt = ac.skill['吃元宵不吐元宵皮']
 mt{
 --等级
 level = 1, 
 --图标
-art = [[zhuangyuan.blp]],
+art = [[yuanxiao3.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff通过 中秋活动 获得
+|cff00ffff通过 元宵活动 获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+88.8   杀怪加全属性|r
-|cff00ff00+88.8   攻击减甲|r
-|cff00ff00+88.8%  木头加成|r
-|cff00ff00+88.8%  全伤加深|r
+|cff00ff00+36.8   杀怪加全属性|r
+|cff00ff00+36.8   攻击减甲|r
+|cff00ff00+36.8%  杀敌数加成|r
+|cff00ff00+36.8%  全伤加深|r
 
 ]],
 need_map_level = 5,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 88.8,
-['攻击减甲'] = 88.8,
-['木头加成'] = 88.8,
-['全伤加深'] = 88.8,
+['杀怪加全属性'] = 36.8,
+['攻击减甲'] = 36.8,
+['杀敌数加成'] = 36.8,
+['全伤加深'] = 36.8,
 }
 local mt = ac.skill['饥不择食']
 mt{
 --等级
 level = 1, 
 --图标
-art = [[zhuangyuan.blp]],
+art = [[yuanxiao4.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff通过 中秋活动 获得
+|cff00ffff通过 元宵活动 获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+88.8   杀怪加全属性|r
-|cff00ff00+88.8   攻击减甲|r
-|cff00ff00+88.8%  木头加成|r
-|cff00ff00+88.8%  全伤加深|r
+|cff00ff00+46.8   杀怪加全属性|r
+|cff00ff00+46.8   攻击减甲|r
+|cff00ff00+46.8%  杀敌数加成|r
+|cff00ff00+46.8%  全伤加深|r
 
 ]],
 need_map_level = 5,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 88.8,
-['攻击减甲'] = 88.8,
-['木头加成'] = 88.8,
-['全伤加深'] = 88.8,
+['杀怪加全属性'] = 46.8,
+['攻击减甲'] = 46.8,
+['杀敌数加成'] = 46.8,
+['全伤加深'] = 46.8,
 }
 local mt = ac.skill['狼吞虎咽']
 mt{
 --等级
 level = 1, 
 --图标
-art = [[zhuangyuan.blp]],
+art = [[yuanxiao5.blp]],
 --说明
 tip = [[
 |cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
 
 |cffffe799【成就说明】：|r
-|cff00ffff通过 中秋活动 获得
+|cff00ffff通过 元宵活动 获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+88.8   杀怪加全属性|r
-|cff00ff00+88.8   攻击减甲|r
-|cff00ff00+88.8%  木头加成|r
-|cff00ff00+88.8%  全伤加深|r
+|cff00ff00+66.8   杀怪加全属性|r
+|cff00ff00+66.8   攻击减甲|r
+|cff00ff00+66.8%  杀敌数加成|r
+|cff00ff00+66.8%  全伤加深|r
 
 ]],
 need_map_level = 5,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
-['杀怪加全属性'] = 88.8,
-['攻击减甲'] = 88.8,
-['木头加成'] = 88.8,
-['全伤加深'] = 88.8,
+['杀怪加全属性'] = 66.8,
+['攻击减甲'] = 66.8,
+['杀敌数加成'] = 66.8,
+['全伤加深'] = 66.8,
 }
 local yuanxiao_str = {
     '细嚼慢咽','津津有味','吃元宵不吐元宵皮','饥不择食','狼吞虎咽'
@@ -873,20 +873,16 @@ level = 1, --要动态插入
 max_level = 1,
 title ='五福活动奖励',
 --图标
-art = [[zhadanren.blp]],
+art = [[fuqi.blp]],
 --说明
-tip = [[
-|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
-
-|cffffe799【获得方式】：|r
-|cff00ffff春节活动获得 
-个人五福： %wufu%
-世界五福： 927783
+tip = [[ 
+|cffffe799【成就说明】：|r
+|cff00ff00通过|cffffff00“五福四海过福年”活动|cff00ff00获得，|cff00ff00集五福瓜分100亿的可存档全属性
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+%全属性%   |cff00ff00全属性|r
+|cff00ff00+%全属性% |cff00ff00全属性|r
 
-]],
+|cffcccccc您集齐了%wufu%|cffcccccc次五福，世界一共集齐|cffffff00952038|cffcccccc次五福]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 wufu = function(self)
@@ -894,7 +890,7 @@ wufu = function(self)
     return math.min(p.cus_server['五福'],15*p:Map_GetMapLevel())
 end,
 ['全属性'] = function(self)
-    local v = math.floor( 10000000000 / 927783 )
+    local v = math.floor( 10000000000 / 952038 )
     return self.wufu * v
 end,
 need_map_level = 5,
