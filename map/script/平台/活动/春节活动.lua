@@ -304,7 +304,7 @@ ac.game:event '游戏-开始'(function()
     -- 注册材料获得事件
     local time = 60 * 10 
     -- local time = 10
-    ac.loop(time*1000,function()
+    ac.timer(time*1000,10,function()
         local online_cnt = get_player_count()
         local cnt = math.floor(online_cnt/2) + 1 
 

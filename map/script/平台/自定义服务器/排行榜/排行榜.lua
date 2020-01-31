@@ -358,7 +358,7 @@ local rank = {
 }
 --处理,显示排行榜数据
 --取前10名数据
-ac.wait(5*1000,function() 
+ac.wait(60*1000,function() 
     for i,content in ipairs(rank) do
         local p = ac.player(1);
         ac.wait(200*i,function()

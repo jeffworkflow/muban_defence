@@ -511,6 +511,7 @@ local function format_number(v)
 	end
 	return math_tointeger(v) or ('%.2f'):format(v)
 end
+ac.format_number = format_number
 
 -- 0000→W 00000000→亿
 local function format_number_tip(v) 
@@ -615,7 +616,7 @@ local function format_string(self, str, hero, level, need_level)
 		end
 		if vt == 'number' then
 			-- v = format_number(v)
-			v = format_number_tip(v)
+			v = self.is_small_num and format_number(v) or format_number_tip(v)
 			color_flag = true
 		elseif vt == 'string' then
 			v = format_string(self, v, hero, level, need_level)

@@ -23,6 +23,7 @@ end,
 sj_wufu = function()
     return ac.player.self.cus_server2 and ac.player.self.cus_server2['世界五福']
 end,
+is_small_num = true,
 --物品技能
 is_skill = true,
 store_affix = '',

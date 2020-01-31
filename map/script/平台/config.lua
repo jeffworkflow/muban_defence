@@ -345,6 +345,7 @@ local cus_key = {
     {'fpxdr','放炮小达人'},--
     
     
+    {'yuanxiao','元宵'},
 }
 ac.cus_server_key = cus_key
 

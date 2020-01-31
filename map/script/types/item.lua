@@ -450,7 +450,7 @@ function mt:get_item_lni_tip(str)
 		if tp == 'function' then
 			return value(data)
 		elseif tp =='number' then 
-			value = ac.format_number_tip(value)
+			value = self.is_small_num and ac.format_number(value) or ac.format_number_tip(value)
 		end
 		return '|cff'..color_code['金']..tostring(value)..'|r'
 	end)

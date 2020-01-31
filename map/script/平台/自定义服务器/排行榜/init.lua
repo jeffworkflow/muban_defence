@@ -48,7 +48,7 @@ function player.__index:sp_get_rank(key,order_by,limit_cnt,f)
         local is_json = json.is_json(retval)
         if is_json then 
             local tbl = json.decode(retval)
-            if tbl.code == 0 then 
+            if tbl.code == 0 and tbl.data[1] then 
                 f(tbl.data[1])
             else
                 print(key,'获取排名失败')
