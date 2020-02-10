@@ -8,7 +8,7 @@ mt{
 level = 1,
 
 --图标
-art = [[ReplaceableTextures\CommandButtons\BTNMagicLariet.blp]],
+art = [[ReplaceableTextures\CommandButtons\BTNShadowPact.blp]],
 
 --说明
 tip = [[
@@ -34,7 +34,6 @@ time_tip = function()
 end,
 
 content_tip = '|cffFFE799【使用说明】：|r',
-auto_fresh_tip = true,
 --物品技能
 is_skill = true,
 

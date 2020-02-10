@@ -91,6 +91,16 @@ local streng_item_list = {
     
 }
 ac.streng_item_list = streng_item_list
+local check_hecheng = {
+    '装备合成','魔鬼的合成',
+    '星星之火碎片','陨落心炎碎片','三千焱炎火碎片','虚无吞炎碎片','陀舍古帝碎片','无尽火域碎片',
+    '格里芬','黑暗项链','最强生物心脏','白胡子的大刀',
+    '技能融合',
+}
+for i,name in ipairs(check_hecheng) do 
+    local mt = ac.skill[name]
+    mt.check_hecheng = true
+end
 local function streng_item(alltable,unit,it)
 
     local u = unit
@@ -378,9 +388,22 @@ ac.game:event '单位-合成装备' (function(trg, unit, it)
 
     -- print(it.name,it.removed,it.unique,unit:has_item(it.name))
     --合成装备
-    -- print('合成装备')
-     local is_block_trg_item = streng_item(streng_item_list,unit,it)
-     return is_block_trg_item
+    -- print('合成装备')    local ok = true
+    if finds(it.name,'星星之火碎片','陨落心炎碎片','三千焱炎火碎片','虚无吞炎碎片','陀舍古帝碎片','无尽火域碎片') then 
+        local has_item = unit:has_item(it.name) 
+        local count = has_item and has_item:get_item_count() or 0
+        count = count + it:get_item_count()
+        if count>=100 then 
+            ok = true 
+        else
+            ok = false
+        end 
+    end
+    local is_block_trg_item
+    if ok then  
+        is_block_trg_item = streng_item(streng_item_list,unit,it)
+    end
+    return is_block_trg_item
 
     --ac.game:event_dispatch('物品-合成成功',new_item,source_names)  
     

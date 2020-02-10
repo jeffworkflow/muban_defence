@@ -66,7 +66,7 @@ local function sync_t(temp_tab)
     end
     -- print('总个数：',max)
     local t_max = 0
-    for k,v in pairs(temp_tab) do 
+    for k,v in sortpairs(temp_tab) do 
         current = current + 1
         temp[k] = v 
         if current >= per * i or current == max then 

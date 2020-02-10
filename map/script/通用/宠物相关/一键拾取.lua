@@ -62,7 +62,7 @@ function mt:on_cast_shot()
 	local slot = hero:get_nil_slot()
 	--满格
 	if not slot then 
-		p:sendMsg('物品栏已满')
+		p:sendMsg('物品栏已满',5)
 		return 
 	end	
 	-- p.flag_auto_hecheng = true
@@ -75,9 +75,9 @@ function mt:on_cast_shot()
         if not v.owner  then 
 			-- print(v.name,v._eff)
 			if v._eff then 
-				local item_unit = v._eff.unit
-				if item_unit then 
-					if item_unit:is_in_range(hero,self.area) then 
+				local item_point = v:get_point()
+				if item_point then 
+					if item_point:is_in_range(hero,self.area) then 
 						ac.wait(0,function()
 							if v.name =='学习技能' then 
 								ac.item.add_skill_item(v,hero)

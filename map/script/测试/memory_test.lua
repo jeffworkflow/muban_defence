@@ -5,6 +5,7 @@ local collectgarbage = collectgarbage
 local unit = require 'types.unit'
 local mover = require 'types.mover'
 local effect = require 'types.effect'
+local item = require 'types.item'
 local math = math
 local table = table
 
@@ -70,6 +71,16 @@ ac.loop(30 * 1000, function()
 		count2 = count2 + 1
 	end
 	print((('运动器 正常[%d],等待释放[%d]'):format(count1, count2)))
+	
+	local item_normal_count = 0
+	for _, it in pairs(item.item_map) do
+		item_normal_count = item_normal_count + 1
+	end
+	local item_removed_count = 0
+	for u in pairs(item.removed_items) do
+		item_removed_count = item_removed_count + 1
+	end
+	print((('物品 正常[%d],等待释放[%d]'):format(item_normal_count, item_removed_count)))
 	print(('-----------------------------------------------------------'))
 end)
 
@@ -98,6 +109,12 @@ function effect:__gc()
 		self.unit and self.unit:get_name(),
 		self.model
 	))
+end
+function item:__gc()
+	if self.has_removed then
+		return
+	end
+	log.warn(('[物品]失去引用但是没有被移除:[%s]'):format(self.name))
 end
 
 --function trigger:__gc()
@@ -148,10 +165,19 @@ ac.game:event '游戏-结束' (function()
 				end
 			end
 		end
+		
+		print( '==========================')
+		print( '统计已经被移除但是依然被引用的物品')
+		for self in pairs(item.removed_items) do
+			local x,y =self:get_point():get()
+			print((('++++物品[%s][%s][x:%s y:%s]'):format(self.name, self.type_id,x,y)))
+			print(('所有者:' .. (self.owner and self.owner:get_name() or '无')))
+		end
 	end
 
 	unit.__gc = nil
 	mover.__gc = nil
 	effect.__gc = nil
+	item.__gc = nil
 	--trigger.__gc = nil
 end)

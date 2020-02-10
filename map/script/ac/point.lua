@@ -245,6 +245,11 @@ function mt:findMoveablePoint(r, angle, other)
 	end
 end
 
+--是否在指定位置附近(计算碰撞)
+function mt:is_in_range(p, radius)
+	return self:get_point() * p:get_point()<= radius
+end
+
 function mt:effect(data)
 	return ac.point_effect(self, data)
 end
