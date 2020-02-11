@@ -248,7 +248,9 @@ end
 		end	
 
 		self:removeAllEffects()
-
+		if self:has_restriction '隐藏' then 
+			self:remove_restriction '隐藏'
+		end	
 		--移除单位的所有Buff
 		if self.buffs then
 			local buffs = {}

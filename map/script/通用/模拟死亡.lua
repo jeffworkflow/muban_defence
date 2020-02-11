@@ -117,6 +117,9 @@ end)
 function unit.__index:real_remove()
     self._last_point = ac.point(jass.GetUnitX(self.handle), jass.GetUnitY(self.handle))
     self:removeAllEffects()
+    if self:has_restriction '隐藏' then 
+        self:remove_restriction '隐藏'
+    end	
     --移除单位的所有Buff
     if self.buffs then
         local buffs = {}
