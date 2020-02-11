@@ -388,7 +388,8 @@ ac.game:event '单位-合成装备' (function(trg, unit, it)
 
     -- print(it.name,it.removed,it.unique,unit:has_item(it.name))
     --合成装备
-    -- print('合成装备')    local ok = true
+    -- print('合成装备')    
+    local ok = true
     if finds(it.name,'星星之火碎片','陨落心炎碎片','三千焱炎火碎片','虚无吞炎碎片','陀舍古帝碎片','无尽火域碎片') then 
         local has_item = unit:has_item(it.name) 
         local count = has_item and has_item:get_item_count() or 0
