@@ -416,7 +416,7 @@ store_name = '挑战 手无寸铁的小龙女',
 --等级
 level = 0,
 --图标
-art = [[xiaolongnv.blp]],
+art = [[huolinger.blp]],
 --说明
 tip = [[
 

@@ -6,7 +6,7 @@ local suipian ={
     {'精灵龙碎片',[[ReplaceableTextures\CommandButtons\BTNFaerieDragon.blp]]},
     {'奇美拉碎片',[[ReplaceableTextures\CommandButtons\BTNChimaera.blp]]},
     {'Pa碎片',[[ReplaceableTextures\CommandButtons\BTNHeroWarden.blp]]},
-    {'手无寸铁的小龙女碎片',[[xiaolongnv.blp]]},
+    {'手无寸铁的小龙女碎片',[[huolinger.blp]]},
     {'关羽碎片',[[guanyu.blp]]},
     {'霸王莲龙锤碎片',[[wuqi10.blp]]},
     {'梦蝶仙翼碎片',[[chibang2.blp]]},

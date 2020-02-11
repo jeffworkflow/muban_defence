@@ -262,7 +262,7 @@ content_tip = '|cffFFE799\n【任务说明】：|r\n',
 --等级
 level = 0,
 --图标
-art = [[xiaolongnv.blp]],
+art = [[huolinger.blp]],
 --说明
 tip = [[
 |cff00ffff挑战Boss并获得|cff00ff00可存档的碎片（数量=游戏难度）|r |cff00ffff神龙碎片超过|cffffff00 75 |cff00ffff自动获得，已拥有碎片：|r%skin_cnt%
@@ -288,7 +288,7 @@ need_sp_cnt = 75,
 target_type = ac.skill.TARGET_TYPE_NONE,
 
 --特效
-effect = [[xiaobailong.mdx]]
+effect = [[xiaolongnv1.mdx]]
 }
 
 local mt = ac.skill['挑战关羽']

@@ -34,7 +34,7 @@ end,
 
 |cff00ff00【凌波微步】按D向鼠标方向飘逸500码距离|r]],
 	--技能图标
-	art = [[xiaolongnv.blp]],
+	art = [[huolinger.blp]],
 	--特效
 	effect = [[jn_tf3.mdx]],
 	cool=1,
