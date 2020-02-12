@@ -3,12 +3,12 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[xique.blp]],
+art = [[meigui.blp]],
 store_name = '玫瑰物语',
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff008月6日-8月8日
-|cffffe799【活动说明】|r|cff00ff00金风玉露一相逢，便胜却人间无数。年年岁岁架鹊桥，牛郎织女偷相会。少侠既然也是有心之人，还请帮忙收集|cffffff00玫瑰物语|r|cffcccccc（挖宝掉落）
+|cffffe799【活动时间】|r|cff00ff002月13日-2月21日
+|cffffe799【活动说明】|r|cff00ff00相聚有缘，相逢有期。千里姻缘一线牵，甜蜜爱意如何传达？你有|cffffff00娇艳的玫瑰|cff00ff00吗?|cffcccccc（挖宝掉落）
 ]],
 --物品类型
 item_type = '神符',
@@ -36,7 +36,7 @@ art = [[item\shou204.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000一根玫瑰物语|r 兑换 |cff00ff00点金石|r
+消耗 |cffff0000一朵娇艳的玫瑰|r 兑换 |cff00ff00点金石|r
 ]],
 --物品类型
 item_type = '神符',
@@ -59,7 +59,7 @@ art = [[icon\tunshi.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000十根玫瑰物语|r 兑换 |cff00ff00吞噬丹|r
+消耗 |cffff0000十朵娇艳的玫瑰|r 兑换 |cff00ff00吞噬丹|r
 ]],
 --物品类型
 item_type = '神符',
@@ -81,7 +81,7 @@ art = [[guoshi.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000十五根玫瑰物语|r 兑换 |cff00ff00恶魔果实|r
+消耗 |cffff0000十五朵娇艳的玫瑰|r 兑换 |cff00ff00恶魔果实|r
 ]],
 --物品类型
 item_type = '神符',
@@ -103,7 +103,7 @@ art = [[gelifen.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根玫瑰物语|r 兑换 |cff00ff00恶魔果实合成材料-格里芬|r
+消耗 |cffff0000四朵娇艳的玫瑰|r 兑换 |cff00ff00恶魔果实合成材料-格里芬|r
 
 |cffdf19d0格里芬|cff00ffff+黑暗项链+最强生物心脏+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
 ]],
@@ -128,7 +128,7 @@ art = [[heianxianglian.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根玫瑰物语|r 兑换 |cff00ff00恶魔果实合成材料-黑暗项链|r
+消耗 |cffff0000四朵娇艳的玫瑰|r 兑换 |cff00ff00恶魔果实合成材料-黑暗项链|r
 
 |cff00ffff格里芬+|cffdf19d0黑暗项链|cff00ffff+最强生物心脏+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
 ]],
@@ -153,7 +153,7 @@ art = [[zqswxz.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根玫瑰物语|r 兑换 |cff00ff00恶魔果实合成材料-最强生物心脏|r
+消耗 |cffff0000四朵娇艳的玫瑰|r 兑换 |cff00ff00恶魔果实合成材料-最强生物心脏|r
 
 |cff00ffff格里芬+黑暗项链+|cffdf19d0最强生物心脏|cff00ffff+白胡子的大刀=恶魔果实（食用后可以获得惊人能力！)|r
 ]],
@@ -178,7 +178,7 @@ art = [[zhidao.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000四根玫瑰物语|r 兑换 |cff00ff00恶魔果实合成材料-白胡子的大刀|r
+消耗 |cffff0000四朵娇艳的玫瑰|r 兑换 |cff00ff00恶魔果实合成材料-白胡子的大刀|r
 
 |cff00ffff格里芬+黑暗项链+最强生物心脏+|r|cffdf19d0白胡子的大刀|r|cff00ffff=恶魔果实（食用后可以获得惊人能力！)|r
 ]],
@@ -199,17 +199,17 @@ mt{
 level = 1,
 store_name = '兑换-九亿少女的梦',
 --图标
-art = [[ydss.blp]],
+art = [[shaonvmeng.blp]],
 --说明
 tip = [[
 
-消耗 |cffff0000三十根玫瑰物语|r 兑换 |cff00ff00可存档成就-九亿少女的梦|r
+消耗 |cffff0000三十朵娇艳的玫瑰|r 兑换 |cff00ff00可存档成就-九亿少女的梦|r
 
 |cffFFE799【成就属性】|r
-|cff00ff00杀怪加全属性 +13.8
-攻击减甲 +13.8
-木头加成 +13.8%
-会心伤害 +13.8%
+|cff00ff00每秒加全属性 +88
+攻击减甲    +8.8
+杀敌数加成  +8.8%
+会心伤害    +8.8%
 
 |cffcccccc【要求地图等级>5】|r]],
 --物品类型
@@ -238,9 +238,9 @@ for i,name in ipairs({'兑换-格里芬','兑换-黑暗项链','兑换-最强生
         local real_name = string.gsub(self.name,'兑换%-','')
 
         --先扣当前消费者的勋章数，不足的话扣除单位下的另一个人的勋章
-        local first_item = self.owner:has_item('玫瑰物语','all')
+        local first_item = self.owner:has_item('娇艳的玫瑰','all')
         local unit = (self.owner == hero and p.peon or hero )
-        local second_item = unit:has_item('玫瑰物语','all')
+        local second_item = unit:has_item('娇艳的玫瑰','all')
 
         local has_cnt = (first_item and first_item._count or 0) + (second_item and  second_item._count or 0 )
 
@@ -300,13 +300,13 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[lushui.blp]],
+art = [[qiaokeli.blp]],
 --说明
 tip = [[
 
-|cff00ff00传说七夕节时的巧克力是牛郎织女相会时的眼泪,如抹在眼上和手上,可使人眼明手快。|cffffff00使用后增加10%攻速|r
+|cff00ff00在浪漫的情人节，它是表达爱情少不了的主角。|cffffff00食用后+10%会心伤害|r
 
-|cffcccccc七夕活动物品|r]],
+|cffcccccc情人节最佳礼物|r]],
 --品质
 color = '紫',
 --物品类型
@@ -314,7 +314,7 @@ item_type = '消耗品',
 cool = 0.5,
 ['会心伤害'] = 10,
 --概率
-rate = 50,
+rate = 2,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -336,7 +336,7 @@ function mt:on_cast_start()
         local skl = hero:find_skill(save_name,nil,true) 
         if not skl  then 
             ac.game:event_notify('技能-插入魔法书',hero,'精彩活动','纵享丝滑')
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 食用了青蛙，惊喜获得|cffff0000【可存档成就】'..save_name..'|r |cff00ff00+18.8杀怪加全属性|r |cff00ff00+18.8攻击减甲|r |cff00ff00+18.8%物品获取率|r |cff00ff00+18.8%暴击加深|r',6) 
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 不断地吃巧克力，惊喜获得|cffff0000【可存档成就】'..save_name..'|r |cff00ff00+88每秒加全属性|r |cff00ff00+1每秒加木头|r |cff00ff00+38减少周围护甲|r |cff00ff00+8.8%会心伤害|r',6) 
         else
             skl:upgrade(1)
             p:sendMsg('|cffff0000【可存档成就】'..save_name..'+1',6)  
@@ -345,7 +345,7 @@ function mt:on_cast_start()
     end    
 end    
 
-local mt = ac.skill['玫瑰物语']
+local mt = ac.skill['娇艳的玫瑰']
 mt{
 --等久
 level = 1,
@@ -356,7 +356,7 @@ tip = [[
 
 |cff00ff00可前往活动使者处（基地右下角）兑换奖励
 
-|cffcccccc七夕活动物品|r]],
+|cffcccccc情人节活动物品|r]],
 --品质
 color = '紫',
 --物品类型
@@ -407,14 +407,14 @@ ac.game:event '挖图成功'(function(trg,hero)
 
     local rate = 10
     local max_cnt = 30
-    local name ='玫瑰物语'
+    local name ='娇艳的玫瑰'
     -- local rate = 10 --测试
     local rand = math.random(10000)/100
     if rand <= rate then 
         if (p.max_cnt[name] or 0 ) < max_cnt then 
             hero:add_item(name,true)
             p.max_cnt[name] = (p.max_cnt[name] or 0) + 1
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r 使用|cff00ff00藏宝图|r 惊喜获得 |cffff0000玫瑰物语|r',6) 
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r|cff00ffff'..p:get_name()..'|r 使用|cff00ff00藏宝图|r 惊喜获得 |cffff0000娇艳的玫瑰|r',6) 
         end    
     end  
 
