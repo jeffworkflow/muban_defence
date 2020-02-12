@@ -343,9 +343,12 @@ local cus_key = {
 
     {'shzy','兽魂之佑'},--
     {'fpxdr','放炮小达人'},--
-    
-    
     {'yuanxiao','元宵'},
+    
+    {'jysndm','九亿少女的梦'},
+    {'zxsh','纵享丝滑'},
+    
+    
 }
 ac.cus_server_key = cus_key
 

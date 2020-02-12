@@ -896,6 +896,67 @@ end,
 need_map_level = 5,
 }
 
+local mt = ac.skill['九亿少女的梦']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 5,
+--图标
+art = [[zhadanren.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff春节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   |cff00ff00杀怪加全属性|r
+|cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
+|cff00ff00+%火灵加成% |cff00ff00%  |cff00ff00火灵加成|r
+|cff00ff00+%技暴加深% |cff00ff00%  |cff00ff00技暴加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = {8.8,17.6,26.4,35.2,44},
+['火灵加成'] = {8.8,17.6,26.4,35.2,44},
+['攻击减甲'] = {8.8,17.6,26.4,35.2,44},
+['技暴加深'] = {8.8,17.6,26.4,35.2,44},
+need_map_level = 5,
+}
+
+local mt = ac.skill['纵享丝滑']
+mt{
+--等级
+level = 1, 
+max_level = 5, 
+--图标
+art = [[swldd.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff抓青蛙活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=3
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%杀怪加全属性%   杀怪加全属性|r
+|cff00ff00+%攻击减甲%   攻击减甲|r
+|cff00ff00+%物品获取率% %  物品获取率|r
+|cff00ff00+%暴击加深% %  暴击加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = {18.8,37.6,46.6},
+['物品获取率'] = {18.8,37.6,46.6},
+['攻击减甲'] = {18.8,37.6,46.6},
+['暴击加深'] = {18.8,37.6,46.6},
+need_map_level = 5,
+}
+
+
 
 local mt = ac.skill['精彩活动']
 mt{
@@ -912,7 +973,8 @@ mt{
 mt.skill_name ={
     '缘定三生','井底之蛙','食物链顶端的人','有趣的灵魂',
     '蒙娜丽莎的微笑','四海共团圆','第一个吃螃蟹的人','庆生蟠桃 ',
-    '傻子的春天','冰雪奇缘','兽魂之佑','放炮小达人','五福'
+    '傻子的春天','冰雪奇缘','兽魂之佑','放炮小达人','五福',
+    '九亿少女的梦','纵享丝滑',
 }
 
 mt.skills = {
