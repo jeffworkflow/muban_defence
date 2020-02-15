@@ -240,9 +240,9 @@ local function is_select_off_line_hero()
 	if not u then
 		return false
 	end
-	if not u:is_hero() then
-		return false
-	end
+	-- if not u:is_hero() then
+	-- 	return false
+	-- end
 	if u == ac.player.self.hero then
 		return false
 	end
@@ -296,8 +296,24 @@ function message.hook(msg)
 	if msg.type == 'key_down' then
 		local code = msg.code
 		local state = msg.state
-		--'Z','X','C','V','Q', 'W', 'E', 'R','D', 'F', 'G', 
-		local list = {'Q', 'W', 'E', 'R', 'A','S', 'F', 'G','Z','X','C','V','H','Esc'}
+		--D 凌波微步
+		if code == keyboard['D'] then
+			if is_select_hero() then 
+				local hero = select_hero()
+				if not hero then
+					return true
+				end
+
+				--本地发布技能指令
+				if cast_spell(msg, hero, '凌波微步',true) then
+					return false
+				end
+				
+				return true
+			end
+		end
+
+		local list = {'Q', 'W', 'E', 'R', 'A','S','D', 'F', 'G','Z','X','C','V','H','Esc'}
 		-- 技能快捷键
 		for index, key in ipairs(list) do
 			if code == keyboard[key] then
@@ -406,7 +422,7 @@ function message.hook(msg)
 
 		--F2 练功房
 		if code == keyboard['F2'] then
-			local hero = is_select_off_line_hero() or select_hero()
+			local hero = select_hero()
 			if not hero then
 				return true
 			end
@@ -421,7 +437,7 @@ function message.hook(msg)
 
 		--F3 回城
 		if code == keyboard['F3'] then
-			local hero = is_select_off_line_hero() or select_hero()
+			local hero = select_hero()
 			if not hero then
 				return true
 			end
@@ -434,20 +450,6 @@ function message.hook(msg)
 			return true
 		end
 
-		--D 凌波微步
-		if code == keyboard['D'] then
-			local hero = is_select_off_line_hero() or select_hero()
-			if not hero then
-				return true
-			end
-
-			--本地发布技能指令
-			if cast_spell(msg, hero, '凌波微步',true) then
-				return false
-			end
-			
-			return true
-		end
 
 
 		--空格
@@ -459,9 +461,9 @@ function message.hook(msg)
 
 		--tab
 		if code == 515 then
-			--if poi.multiboard then
-			--	poi.multiboard:minimize(false)
-			--end
+			-- if poi.multiboard then
+			-- 	poi.multiboard:minimize(false)
+			-- end
 			return false
 		end
 	end
@@ -484,9 +486,9 @@ function message.hook(msg)
 
 		--tab
 		if code == 515 then
-			--if poi.multiboard then
-			--	poi.multiboard:minimize(true)
-			--end
+			-- if poi.multiboard then
+			-- 	poi.multiboard:minimize(true)
+			-- end
 			return false
 		end
 		

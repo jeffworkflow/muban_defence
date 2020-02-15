@@ -43,9 +43,9 @@ function mt:on_cast_shot()
         if not v.owner  then 
 			-- print(v.name,v._eff)
 			if v._eff then 
-				local item_unit = v._eff.unit
-				if item_unit then 
-					if item_unit:is_in_range(self.target ,self.area) then 
+				local item_point = v:get_point()
+				if item_point then 
+					if item_point:is_in_range(self.target ,self.area) then 
 						if finds(v.item_type,'装备','消耗品') and v.color and finds(v.color,'白','蓝','金')  then 
 							table.insert(selected_item,v)
 						end	
