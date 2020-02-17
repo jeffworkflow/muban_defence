@@ -913,8 +913,8 @@ tip = [[
 |cffFFE799【成就属性】：|r
 |cff00ff00+%每秒加全属性%   |cff00ff00每秒加全属性|r
 |cff00ff00+%攻击减甲%   |cff00ff00攻击减甲|r
-|cff00ff00+%杀敌数加成% %  |cff00ff00杀敌数加成|r
-|cff00ff00+%会心伤害% %  |cff00ff00会心伤害|r
+|cff00ff00+%杀敌数加成% |cffffff00%  |cff00ff00杀敌数加成|r
+|cff00ff00+%会心伤害% |cffffff00%  |cff00ff00会心伤害|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
@@ -942,8 +942,8 @@ tip = [[
 |cffFFE799【成就属性】：|r
 |cff00ff00+%每秒加全属性%   |cff00ff00每秒加全属性|r
 |cff00ff00+%减少周围护甲%   |cff00ff00减少周围护甲|r
-|cff00ff00+%每秒加木头% %  |cff00ff00每秒加木头|r
-|cff00ff00+%会心伤害% %  |cff00ff00会心伤害|r
+|cff00ff00+%每秒加木头%   |cff00ff00每秒加木头|r
+|cff00ff00+%会心伤害% |cffffff00%  |cff00ff00会心伤害|r
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
