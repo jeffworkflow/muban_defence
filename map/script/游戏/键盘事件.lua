@@ -215,37 +215,34 @@ ac.game:event '玩家-聊天' (function(self, player, str)
             for i=1,10 do 
                 local hero = ac.player(i).hero 
                 if hero then 
+                    if player.flag_qxtx then 
+                        ac.low = true 
+                        ac.low_effect_model=[[]]
+                    else
+                        ac.low = false 
+                    end
                     --干掉英雄身上的技能特效
-                    for skl in hero:each_skill() do  
-                        local allstr = table.concat(ac.skill_list2) .. table.concat(ac.skill_list4)..table.concat(ac.skill_list6)
-                        if finds(allstr,skl.name) then
-                            if player.flag_qxtx then 
-                                skl.old_model = skl.model
-                                skl.model = ''
-                                -- print(skl.name,skl.model,skl.old_model)
-                                skl.old_effect = skl.effect
-                                skl.effect = ''
-                                skl.old_effect1 = skl.effect1
-                                skl.effect1 = ''
-                                skl.old_effect2 = skl.effect2
-                                skl.effect2 = ''
-                            else
-                                skl.effect = skl.old_effect or skl.effect
-                                skl.effect1 = skl.old_effect1 or skl.effect1
-                                skl.effect2 = skl.old_effect2 or skl.effect2
-                                skl.model = skl.old_model or skl.model
-                            end	
-                        end    
-                    end	
-                    --干掉 英雄的弹道模型
-                    -- if hero.weapon then 
-                    --     if player.flag_qxtx then 
-                    --         hero.old_weapon1 = hero.weapon['弹道模型']
-                    --         hero.weapon['弹道模型'] = ''
-                    --     else
-                    --         hero.weapon['弹道模型'] = hero.old_weapon1
+                    -- for skl in hero:each_skill() do  
+                    --     local allstr = table.concat(ac.skill_list2) .. table.concat(ac.skill_list4)..table.concat(ac.skill_list6)
+                    --     if finds(allstr,skl.name) then
+                    --         if player.flag_qxtx then 
+                    --             skl.old_model = skl.model
+                    --             skl.model = ''
+                    --             -- print(skl.name,skl.model,skl.old_model)
+                    --             skl.old_effect = skl.effect
+                    --             skl.effect = ''
+                    --             skl.old_effect1 = skl.effect1
+                    --             skl.effect1 = ''
+                    --             skl.old_effect2 = skl.effect2
+                    --             skl.effect2 = ''
+                    --         else
+                    --             skl.effect = skl.old_effect or skl.effect
+                    --             skl.effect1 = skl.old_effect1 or skl.effect1
+                    --             skl.effect2 = skl.old_effect2 or skl.effect2
+                    --             skl.model = skl.old_model or skl.model
+                    --         end	
                     --     end    
-                    -- end  
+                    -- end	 
                 end    
             end    
             

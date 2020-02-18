@@ -400,6 +400,7 @@ function mt:show(is)
 		self._eff = ac.effect_ex{
 			point = self:get_point(),
 			model =self._model,
+			item_show = true, --异步展示特效时，物品依旧显示
 		   size = self.model_size or 1,
 		   angle = 270
 	   }

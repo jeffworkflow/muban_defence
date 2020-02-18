@@ -45,6 +45,9 @@ end
 
 
 local function point_effect_simple(self, point)
+	if ac.low then
+		self.model = ac.low_effect_model
+	end
 	self.point = point
 	self.handle = jass.AddSpecialEffect(self.model, point:get())
 	dbg.handle_ref(self.handle)
@@ -393,6 +396,9 @@ function ac.effect(where, model, face, size, attachment,height)
 		u = ac.player[16]:create_dummy(effect.UNIT_ID1, where, face or 270)
 	else
 		u = ac.player[16]:create_dummy(effect.UNIT_ID2, where, face or 270)
+	end
+	if ac.low then
+		model = ac.low_effect_model
 	end
 	local self = u:add_effect(attachment or 'chest', model) --附着点 attachment
 	self.unit = u
