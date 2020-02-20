@@ -399,7 +399,7 @@ mover.__index = {
 		--初始化一下数据
 		self:init()
 		if not self.mover then 
-			if  self.mover_type ~= 'unit' then --self.distance < 2100 and
+			if  self.mover_type ~= 'unit' and self.distance < 2100  then --self.distance < 2100 and
 				self.mover = ac.effect_ex
 				{
 					model = self.model,

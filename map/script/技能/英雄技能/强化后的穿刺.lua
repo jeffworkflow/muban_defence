@@ -88,7 +88,7 @@ function mt:on_add()
 			-- 	: ipairs()
 			-- do
 				local u = dest
-				u:add_effect('origin',skill.effect):remove()
+				-- u:add_effect('origin',skill.effect):remove()
 				u:add_buff '晕眩'
 				{
 					time = skill.time,

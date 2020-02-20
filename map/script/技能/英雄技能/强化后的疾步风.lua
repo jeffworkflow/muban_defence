@@ -36,6 +36,7 @@ mt{
 	
 function mt:on_add()
 	local hero = self.owner 
+	local skill = self 
     self.trg = hero:event '造成伤害效果' (function(_,damage)
 		if not damage:is_common_attack()  then 
 			return 

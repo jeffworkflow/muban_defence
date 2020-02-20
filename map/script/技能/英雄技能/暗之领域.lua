@@ -67,10 +67,12 @@ local mt = ac.buff['暗之领域']
 mt.cover_type = 1
 mt.cover_max = 1
 -- mt.keep = true
+mt.effect = [[Abilities\Spells\NightElf\FaerieFire\FaerieFireTarget.mdl]]
 
 function mt:on_add()
     local target = self.target
     local hero = self.target
+    self.eff = target:add_effect('overhead',self.effect)
     target:add('护甲%',-self.value)   
 end
 

@@ -616,7 +616,7 @@ function mt:kill()
 	local target = self.target
 	if target:has_restriction '免死' then
 		-- print('理应免死')
-		target:set('生命', 0) --谨慎使用，生命上限100亿时，设置生命0会导致魔兽端死亡,英萌端认为还是活着。
+		-- target:set('生命', 0) --谨慎使用，生命上限100亿时，设置生命0会导致魔兽端死亡,英萌端认为还是活着。
 		return false
 	end
 	if target:event_dispatch('单位-即将死亡', self.target,self.source) then

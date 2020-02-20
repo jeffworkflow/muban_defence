@@ -19,8 +19,6 @@ mt{
    cool = 1,
    ignore_cool_save = true,
 
-	--冷却时间
-    cool = 20,
     title = "|cffdf19d0强化后的不灭佛隐|r",
 	--介绍
     tip = [[
