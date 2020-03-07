@@ -262,7 +262,7 @@ ac.wait(20,function()
             }
             local list3 = {
             }
-            local _,bit = math.frexp((ac.player(1).cus_server['无限BOSS'] or 0))
+            local bit =ac.player(1).cus_server['无限BOSS'] or 0
             -- print(ac.player(1).cus_server['无限BOSS'],_,bit)
             local max_degree = bit + 1
             for i=1,max_degree do 
