@@ -87,6 +87,9 @@ for i=1,10 do
                     player:Map_SaveServerValue(key,val)
                 end
             end
+            if val < 0 then 
+                val = 0
+            end
             player.cus_server[key_name] = val
             -- print('存档数据:',key,key_name,val)
         end

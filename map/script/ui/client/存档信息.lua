@@ -175,7 +175,7 @@ class.player_info_panel = extends(class.panel){
                         new_value = string.format("%.f",player.cus_server[name] or 0)  
                     elseif name =='无限BOSS难度' then
                         name = '无限BOSS' 
-                        local _,bit = math.frexp((player.cus_server['无限BOSS'] or 0))
+                        local bit = (player.cus_server['无限BOSS'] or 0)
                         new_value = string.format("%.f",bit)  
                     elseif name =='修罗(无尽-最高)' then
                         name = '修罗模式无尽' 
