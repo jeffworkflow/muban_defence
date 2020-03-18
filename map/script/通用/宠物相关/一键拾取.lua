@@ -78,29 +78,13 @@ function mt:on_cast_shot()
 				local item_point = v:get_point()
 				if item_point then 
 					if item_point:is_in_range(hero,self.area) then 
-						ac.wait(0,function()
-							if v.name =='学习技能' then 
-								ac.item.add_skill_item(v,hero)
-							else 
-								if p.flag_auto_hecheng then 
-									local slot = hero:get_nil_slot()
-									--满格
-									if not slot then 
-										local it = hero:remove_item(hero.item_list[math.random(1,6)])
-										ac.wait(10,function()
-											hero:add_item(it,true)
-										end)
-									else	
-										hero:add_item(v,true)
-									end	
-									if not hero:has_item('红') then
-										hero:add_item('装备合成')
-									end	
-								else
-									hero:add_item(v,true)
-								end	
-							end
-						end)
+						-- ac.wait(0,function()
+						if v.name =='学习技能' then 
+							ac.item.add_skill_item(v,hero)
+						else 
+							hero:add_item(v,true)
+						end
+						-- end)
 						i=i+1
 					end    
 				end    
