@@ -31,10 +31,11 @@ local function hide_page(hero,page_type,page_id)
     page_id = page_id or 0 
 
     local page = page_type
-    if page_id > 1 then 
+    if page_id > 0 then 
         page = page_type .. '_0' .. page_id
     end
 
+    -- print('隐藏页面：',page)
     for i = 1, 12 do 
         local skill = hero:find_skill(slots[i],page,true)
         if skill then 
@@ -50,7 +51,7 @@ local function show_page(hero,page_type,page_id)
     if page_id > 0 then 
         page = page_type .. '_0' .. page_id
     end
-
+    -- print('显示页面：',page)
     for i = 1, 12 do 
         local skill = hero:find_skill(slots[i],page,true)
         if skill then 
@@ -59,36 +60,34 @@ local function show_page(hero,page_type,page_id)
     end
 
 end
-local function upgrade_last_skill(hero,page_type,page_id,book)
-
-    page_id = page_id or 0 
-
+local function update_last_skill(hero,page_type,current_page,book)
+    current_page = current_page or 0 
     local page = page_type
-    if page_id > 0 then 
-        page = page_type .. '_0' .. page_id
+    if current_page > 0 then 
+        page = page_type .. '_0' .. current_page
     end
 
     local skill = hero:find_skill(slots[12],page,true)
     if skill then 
         skill:remove()
     end
+    local max_page_count = math.max(math.modf((table.maxnum(book.skill_list)-1) / 12),0)
     local end_name = '下一页'
-    local max_page_count = math.modf( table.maxnum(book.skills)/11 )
-    local old_max_page2 = math.max(math.modf((table.maxnum(book.skill_list)-1) / 12),0)
-    
-    if page_id == max_page_count or (page_id+1)*11 == table.maxnum(book.skills) then 
+    if current_page == max_page_count then 
         end_name = '关闭'
     end
-    -- print('改变了了最后一个技能：',end_name,page_id)
+    -- print('改变了了最后一个技能：',end_name,page,current_page,max_page_count)
     local skl = hero:add_skill(end_name,page,slots[12],{
         book = book,
-        page_count = old_max_page2,
-        current_page = page_id,
+        page_count = max_page_count,
+        current_page = current_page,
     })
-    if not book.hide_book then 
+    if not book.is_opening  --or (hero.book_page ~= current_page) 
+    then
         hide(skl)
     end
-    book.skill_list[(page_id+1)*12] = skl 
+    --当前页从0开始
+    book.skill_list[(current_page+1)*12] = skl 
     return skl
 end 
 
@@ -101,7 +100,7 @@ ac.game:event '技能-获得' (function (_,hero,self)
     local page_type = self:get_type() .. '_' .. string.format("%01x",self.slotid)
     local skill_book = {}
     local max_page_count = math.modf(table.maxnum(self.skills) / 11)
-    local real_page_count = math.max(math.modf((table.maxnum(skill_list)-1) / 12),0)
+    local real_max_page_count = math.max(math.modf((table.maxnum(skill_list)-1) / 12),0)
     local page = page_type
 
     for page_id = 0,max_page_count do 
@@ -114,7 +113,7 @@ ac.game:event '技能-获得' (function (_,hero,self)
             if name then 
                 local skill = hero:add_skill(name,page,slots[i],{
                     book = self,
-                    page_count = real_page_count,
+                    page_count = real_max_page_count,
                     current_page = page_id,
                 })
                 skill_list[page_id * 12 + i ] = skill 
@@ -128,7 +127,7 @@ ac.game:event '技能-获得' (function (_,hero,self)
         -- print('魔法书，最后一个技能名，页面',self.name,end_name,page)
         local skill = hero:add_skill(end_name,page,slots[12],{
             book = self,
-            page_count = real_page_count,
+            page_count = real_max_page_count,
             current_page = page_id,
         })
         hide(skill)
@@ -169,41 +168,42 @@ ac.game:event '技能-插入魔法书' (function (_,hero,book_skill,skl)
     local player = hero:get_owner()
     local page_type = self:get_type() .. '_' .. string.format("%01x",book_skill.slotid)
     
-    local old_max_page = math.modf(table.maxnum(self.skills)/ 11)
-    local old_max_page2 = math.max(math.modf((table.maxnum(self.skill_list)-1) / 12),0)
     local name = skl
-    local index = get_nil_slot(self.skills)
-    self.skills[index] = name
-    local max_page_count = math.modf(table.maxnum(self.skills)/ 11)
+    local old_max_page = math.max(math.modf((table.maxnum(self.skill_list)-1) / 12),0)
+    local index = get_nil_slot(self.skill_list)
+    self.skill_list[index] = name
+    --最大页数
+    local new_max_page = math.max(math.modf((table.maxnum(self.skill_list)-1) / 12),0)
 
-    local page_id = math.modf((index+old_max_page)/ 12)
+    --当前页面
+    local current_page = math.modf(index/ 12)
     local page = page_type
-    if page_id > 0 then 
-        page = page_type .. '_0' .. page_id
+    if current_page > 0 then 
+        page = page_type .. '_0' .. current_page
     end 
-    local i = index - page_id * 12 + old_max_page 
-    -- print('插入魔法书',index,index + old_max_page,name,page_id,max_page_count)
+    local i = index - current_page * 12
+    -- print('插入魔法书',index,page,current_page,old_max_page,new_max_page)
     local skill = hero:add_skill(name,page,slots[i],{
         book = self,
-        page_count = old_max_page2,
-        current_page = page_id,
+        page_count = new_max_page,
+        current_page = current_page,
     })
 
     skill.book_slot_id = i
-    self.skill_list[index + old_max_page] = skill
-    self.skill_book[index + old_max_page] = skill
+    self.skill_list[index] = skill
+    self.skill_book[index] = skill
     --改变当前页最后一个按钮
-    upgrade_last_skill(hero,page_type,page_id,self)
+    update_last_skill(hero,page_type,current_page,self)
     --当前页 >老的最大页。 
-    if page_id > old_max_page2 then 
+    if current_page > old_max_page then 
         --改变上一页最后一个按钮
-        upgrade_last_skill(hero,page_type,page_id -1,self)
+        update_last_skill(hero,page_type,current_page -1,self)
     end 
-
-    if not self.hide_book then
+    --如果魔法书是打开状态 且 英雄当前选择的页面和即将插入的魔法书的页面一致时，显示该技能
+    if not self.is_opening --or (hero.book_page ~= current_page)  
+    then
         hide(skill)
     end
-
     ac.game:event_notify('技能-插入魔法书后',hero,book_skill,skl)
     return skill
 end)
@@ -238,10 +238,9 @@ ac.game:event '技能-删除魔法书' (function (_,hero,book_skill,skl)
     local skills_slot = slot - page_count
     -- local slot = skl.book_slot_id
     -- skl.book_slot_id = nil
-    print('删除魔法书：',slot,skills_slot,page_id,page_count)
+    -- print('删除魔法书：',slot,skills_slot,page_id,page_count)
     self.skill_list[slot] = nil
     self.skill_book[slot] = nil
-    self.skills[skills_slot] = nil
     
     skl:remove()
 
@@ -259,7 +258,8 @@ ac.game:event '技能-施法完成' (function (_,hero,self)
         page_type = self:get_type() .. '_0' .. string.format("%01x",self.slotid)
     end
     hero.skill_page = page_type
-    self.parent_skill.hide_book = true 
+    hero.book_page = 0
+    self.parent_skill.is_opening = true 
     hide_page(hero,self:get_type(),0)
     show_page(hero,page_type,0)
     update_page(hero)
@@ -305,13 +305,14 @@ function mt:on_cast_start()
     local hero = self.owner
     local player = hero:get_owner()
     local book = self.book
-    -- print(self.book.name,self.name,self.hide_book)
-    if book.hide_book == nil then 
+    -- print(self.book.name,self.name,self.is_opening)
+    if book.is_opening == nil then 
         return 
     end 
     hero.skill_page = book:get_type()
+    hero.book_page = nil
 
-    book.hide_book = nil 
+    book.is_opening = nil 
     for i=1,table.maxnum(book.skill_list) do 
         local skill = book.skill_list[i]
         if skill then 
@@ -328,11 +329,12 @@ function mt:close()
     local hero = self.owner
     local player = hero:get_owner()
     local book = self.book
-    if book.hide_book == nil then 
+    if book.is_opening == nil then 
         return 
     end 
     hero.skill_page = nil
-    book.hide_book = nil 
+    hero.book_page = nil
+    book.is_opening = nil 
 
     for i=1,table.maxnum(book.skill_list) do 
         local skill = book.skill_list[i]
@@ -354,13 +356,14 @@ function mt:on_cast_start()
     local player = hero:get_owner()
     local book = self.book
     
-    if book.hide_book == nil then 
+    if book.is_opening == nil then 
         return 
     end 
-
+    hero.book_page = hero.book_page + 1
     local page_type = book:get_type() .. '_' .. string.format("%01x",book.slotid)
     local current_page = self.current_page
     hide_page(hero,page_type,current_page)
+    hide_page(hero,page_type,current_page + 1)
     show_page(hero,page_type,current_page + 1)
     hero.skill_page = page_type .. '_0' .. current_page + 1
 end 

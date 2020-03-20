@@ -353,6 +353,8 @@ local cus_key = {
     {'jysndm','九亿少女的梦'},
     {'zxsh','纵享丝滑'},
     
+    {'sysg','四月傻瓜'},
+    {'dzry','大智若鱼'},
     
 }
 ac.cus_server_key = cus_key

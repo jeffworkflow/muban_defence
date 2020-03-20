@@ -955,6 +955,67 @@ need_map_level = 5,
 }
 
 
+local mt = ac.skill['四月傻瓜']
+mt{
+--等级
+level = 1, 
+max_level = 5, 
+--图标
+art = [[zongxiang.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff情人节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%每秒加全属性%   |cff00ff00每秒加全属性|r
+|cff00ff00+%减少周围护甲%   |cff00ff00减少周围护甲|r
+|cff00ff00+%每秒加木头%   |cff00ff00每秒加木头|r
+|cff00ff00+%会心伤害% |cffffff00%  |cff00ff00会心伤害|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['每秒加全属性'] = {88,188,288,388,488},
+['每秒加木头'] = {1,2,3,4,5},
+['减少周围护甲'] = {38,68,98,128,158},
+['会心伤害'] = {8.8,13.8,18.8,23.8,28.8},
+need_map_level = 5,
+}
+
+
+
+local mt = ac.skill['大智若鱼']
+mt{
+--等级
+level = 1, 
+max_level = 5, 
+--图标
+art = [[zongxiang.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【获得方式】：|r
+|cff00ffff情人节活动获得 |cffff0000重复完成可升级成就|r |cff00ffff最大等级=5
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%每秒加全属性%   |cff00ff00每秒加全属性|r
+|cff00ff00+%减少周围护甲%   |cff00ff00减少周围护甲|r
+|cff00ff00+%每秒加木头%   |cff00ff00每秒加木头|r
+|cff00ff00+%会心伤害% |cffffff00%  |cff00ff00会心伤害|r
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['每秒加全属性'] = {88,188,288,388,488},
+['每秒加木头'] = {1,2,3,4,5},
+['减少周围护甲'] = {38,68,98,128,158},
+['会心伤害'] = {8.8,13.8,18.8,23.8,28.8},
+need_map_level = 5,
+}
+
+
 
 local mt = ac.skill['精彩活动']
 mt{
@@ -972,7 +1033,7 @@ mt.skill_name ={
     '缘定三生','井底之蛙','食物链顶端的人','有趣的灵魂',
     '蒙娜丽莎的微笑','四海共团圆','第一个吃螃蟹的人','庆生蟠桃 ',
     '傻子的春天','冰雪奇缘','兽魂之佑','放炮小达人','五福',
-    '九亿少女的梦','纵享丝滑',
+    '九亿少女的梦','纵享丝滑','四月傻瓜','大智若鱼'
 }
 
 mt.skills = {
