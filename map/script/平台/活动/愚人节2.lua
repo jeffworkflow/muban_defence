@@ -7,7 +7,7 @@ level = 1,
 art = [[yurenjiadao.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff009月24日-10月9日
+|cffffe799【活动时间】|r|cff00ff003月26日-4月5日
 |cffffe799【活动说明】|r|cff00ff00鱼人总管携带奇妙的|cff00ffff鱼人宝盒|cff00ff00来到三界，每一个宝盒都带有独特的功效，可是居家旅行、杀人越货，啊不，快乐整蛊的必备之物呢！各位少侠快快去让欢乐布满三界吧！
  ]],
 --物品类型
@@ -37,10 +37,10 @@ local award_list = {
         { rand = 3, name = '神技大礼包'},
         { rand = 2, name = '永久超级赞助'},
         { rand = 2, name = '百变英雄礼包'},
-        { rand = 0.1, name = '满赞'},
-        { rand = 0.1, name = '肝帝'},
+        { rand = 0.2, name = '满赞'},
+        { rand = 0.2, name = '肝帝'},
         { rand = 10, name = '大智若鱼'},
-        { rand = 39.8, name = '无'},
+        { rand = 39.6, name = '无'},
     },
 }
 local temp = {
@@ -151,7 +151,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local p = killer:get_owner()
     local hero = p.hero
     local rate = 0.01 --概率
-    rate = 20
+    -- rate = 2
     if math.random(10000)/100 < rate then   
         local point = hero:get_point()-{hero:get_facing(),100}--在英雄附近 100 到 400 码 随机点
         local u = ac.player(12):create_unit('鱼人',point)
@@ -159,13 +159,13 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
             time = 2
         }
         u:add_buff '无敌'{
-            time = 2
+            time = 3
         }
         u:event '单位-死亡' (function(_,unit,killer) 
             ac.item.create_item('鱼人宝盒',unit:get_point())
-            p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000吞噬丹+1 物品吞噬极限+1|r',6)
+            -- p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000吞噬丹+1 物品吞噬极限+1|r',6)
         end)    
-        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000极限BOSS|r已出现，请尽快击杀',2)
+        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000鱼人大总管|r已出现，请尽快击杀',2)
     end 
 
 end)
