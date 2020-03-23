@@ -4,11 +4,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[yanhua.blp]],
+art = [[yurenjiadao.blp]],
 --说明
 tip = [[ 
 |cffffe799【活动时间】|r|cff00ff009月24日-10月9日
-|cffffe799【活动说明】|r|cff00ff00盛世嘉年，普天同庆，三界上下将举行烟花盛典庆贺祖国华诞。
+|cffffe799【活动说明】|r|cff00ff00鱼人总管携带奇妙的|cff00ffff鱼人宝盒|cff00ff00来到三界，每一个宝盒都带有独特的功效，可是居家旅行、杀人越货，啊不，快乐整蛊的必备之物呢！各位少侠快快去让欢乐布满三界吧！
  ]],
 --物品类型
 item_type = '神符',
@@ -19,7 +19,7 @@ cool = 1,
 --物品技能
 is_skill = true,
 store_affix = '',
-store_name = '|cffdf19d0鱼人驾到|r',
+store_name = '|cffdf19d0鱼人驾到|r', 
 --物品详细介绍的title
 content_tip = ''
 }
@@ -40,7 +40,7 @@ local award_list = {
         { rand = 0.1, name = '满赞'},
         { rand = 0.1, name = '肝帝'},
         { rand = 10, name = '大智若鱼'},
-        { rand = 39.2, name = '无'},
+        { rand = 39.8, name = '无'},
     },
 }
 local temp = {
@@ -72,7 +72,7 @@ local function give_award(hero,unit)
     end
 
     if rand_name == '无' then
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00烟花点燃后，只见天空中出现了八个大字：|cffffff00盛世嘉年，普天同庆|cff00ff00!',3) 
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00仿佛是上帝和你开了一个玩笑，宝盒里面|cffffff00 什么都没有 ',3) 
     elseif  rand_name == '大智若鱼' then 
         local key = ac.server.name2key(rand_name)
         if p:Map_GetServerValue(key) < ac.skill[rand_name].max_level  then 
@@ -82,7 +82,7 @@ local function give_award(hero,unit)
             local skl = hero:find_skill(rand_name,nil,true) 
             if not skl  then 
                 ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',rand_name)
-                ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 超度了一个灵魂，获得|cffff0000【可存档成就】'..rand_name..'|r，成就属性可在“巅峰神域-精彩活动”中查看',6) 
+                ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..player:get_name()..'|r 打开了宝盒，惊喜获得|cffff0000【可存档成就】'..rand_name..'|r，成就属性可在“巅峰神域-精彩活动”中查看',6) 
             else
                 --有魔法书的情况下，升级
                 skl:upgrade(1)
@@ -101,7 +101,7 @@ local function give_award(hero,unit)
         if p.mall[rand_name] > 0 then 
             skl:set_level(1)
         end
-        p:sendMsg(rand_name..' 激活: '..p.mall[rand_name])
+        p:sendMsg('|cffffe799【系统消息】|r|cff00ff00仿佛是上帝和你开了一个玩笑，你身上的 |cffff0000'..rand_name..' |cff00ff00的能力发生了变化，可在“巅峰神域-礼包”中查看',4)
 
     end    
 
@@ -113,14 +113,14 @@ mt{
     --等久
     level = 1,
     --图标
-    art = [[yanhua1.blp]],
+    art = [[yurenbaoxiang.blp]],
     --说明
     tip = [[
+
+
+|cff00ff00每一个宝盒都带有|cff00ffff独特的功效|cff00ff00，可是居家旅行、杀人越货，啊不，快乐整蛊的必备之物呢！
     
-    
-    |cff00ff00燃放绚丽烟花，庆祖国华诞！
-    
-    |cffcccccc国庆活动物品|r]],
+|cffcccccc愚人节活动物品|r]],
     --品质
     color = '紫',
     --物品类型
