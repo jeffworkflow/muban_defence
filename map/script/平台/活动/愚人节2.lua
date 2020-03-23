@@ -143,29 +143,29 @@ end
 
 
 --获得事件
-local unit_reward = { 
-    ['练功房怪'] =  {
-        { rand = 0.05,     name = '鱼人宝盒'},
-    },
-}
+
 ac.game:event '单位-死亡' (function (_,unit,killer)
     if not finds(unit:get_name(),'经验怪','金币','木头','火灵') then 
         return
     end    
     local p = killer:get_owner()
-    local rand_name = ac.get_reward_name(unit_reward['练功房怪'])  
-    if not rand_name then 
-        return 
-    end   
-
-    if not p.max_item_fall then 
-        p.max_item_fall = {}
-    end
-    p.max_item_fall[rand_name] = (p.max_item_fall[rand_name] or 0) + 1
-    --获得最多次数
-    local max_cnt = 20   
-    if p.max_item_fall[rand_name] <= max_cnt then 
-        ac.item.create_item(rand_name,unit:get_point())
-    end    
+    local hero = p.hero
+    local rate = 0.01 --概率
+    rate = 20
+    if math.random(10000)/100 < rate then   
+        local point = hero:get_point()-{hero:get_facing(),100}--在英雄附近 100 到 400 码 随机点
+        local u = ac.player(12):create_unit('鱼人',point)
+        u:add_buff '定身'{
+            time = 2
+        }
+        u:add_buff '无敌'{
+            time = 2
+        }
+        u:event '单位-死亡' (function(_,unit,killer) 
+            ac.item.create_item('鱼人宝盒',unit:get_point())
+            p:sendMsg('|cffFFE799【系统消息】|r|cff00ff00恭喜挑战成功|r，奖励 |cffff0000吞噬丹+1 物品吞噬极限+1|r',6)
+        end)    
+        p:sendMsg('|cffFFE799【系统消息】|r|cffff0000极限BOSS|r已出现，请尽快击杀',2)
+    end 
 
 end)
