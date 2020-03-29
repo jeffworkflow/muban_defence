@@ -75,6 +75,12 @@ function mt:on_cast_shot()
         if not v.owner  then 
 			-- print(v.name,v._eff)
 			if v._eff then 
+				local slot = hero:get_nil_slot()
+				--满格
+				if not slot then 
+					p:sendMsg('物品栏已满',5)
+					return 
+				end	
 				local item_point = v:get_point()
 				if item_point then 
 					if item_point:is_in_range(hero,self.area) then 

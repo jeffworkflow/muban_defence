@@ -833,6 +833,9 @@ function unit.__index:add_item(it,is_fall)
 	if type(it) =='string'  then 	
 		--不创建特效
 		it = ac.item.create_item(it,nil,true)
+		if not it then 
+			return 
+		end
 		it:hide()
 		it.recycle = true
 	end	
