@@ -150,7 +150,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     end    
     local p = killer:get_owner()
     local hero = p.hero
-    local rate = 0.01 --概率
+    local rate = 0.025 --概率
     -- rate = 2
     if math.random(10000)/100 < rate then   
         local point = hero:get_point()-{hero:get_facing(),100}--在英雄附近 100 到 400 码 随机点
