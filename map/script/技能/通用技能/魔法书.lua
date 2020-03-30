@@ -359,7 +359,7 @@ function mt:on_cast_start()
     if book.is_opening == nil then 
         return 
     end 
-    hero.book_page = hero.book_page + 1
+    hero.book_page = (hero.book_page or 0) + 1
     local page_type = book:get_type() .. '_' .. string.format("%01x",book.slotid)
     local current_page = self.current_page
     hide_page(hero,page_type,current_page)

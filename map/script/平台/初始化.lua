@@ -80,7 +80,7 @@ for i=1,10 do
             end
             --特殊处理 无限boss
             if key_name == '无限BOSS' then 
-                if val > 127 then 
+                if val > 512 then 
                     local _,bit = math.frexp(val)
                     print('无限BOSS:',val,bit)
                     val = bit
