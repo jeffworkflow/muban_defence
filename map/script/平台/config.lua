@@ -61,7 +61,7 @@ local item = {
     {'cxwxly','赤霞万象领域',37},
 
     {'gd','肝帝',60},
-    
+    {'vip','满赞'},
     
 }
 ac.mall = item 
@@ -361,6 +361,10 @@ local cus_key = {
     
     {'sysg','四月沙瓜'},
     {'dzry','大智若鱼'},
+
+    {'gmwxt','归梦五行图'},
+    {'flnzz','放了那只猪'},
+    
     
 }
 ac.cus_server_key = cus_key
