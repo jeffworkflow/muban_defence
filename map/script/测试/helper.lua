@@ -322,10 +322,10 @@ function helper:save(key,value)
 	if key == 'all' then 
 		for i,data in ipairs(ac.cus_server_key) do 
 			local key = data[1]
-			p:Map_SaveServerValue(key,tonumber(value) or 1) --网易服务器
+			p:Map_SaveServerValue(key,tonumber(value)) --网易服务器
 		end		
 	else	
-		p:Map_SaveServerValue(key,tonumber(value) or 1) --网易服务器
+		p:Map_SaveServerValue(key,tonumber(value)) --网易服务器
 	end	
 end	
 --服务器清空档案

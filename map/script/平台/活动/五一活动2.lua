@@ -3,11 +3,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[ruishou.blp]],
+art = [[mengchong.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff001月17日-2月12日
-|cffffe799【活动说明】|r|cff00ff00爆竹声中一岁除，春风送暖入屠苏。春风送暖，旭日初升，家家户户点燃爆竹，热火朝天地迎接着春节的到来，|cffffff00各位少侠快去凑个热闹吧！
+|cffffe799【活动时间】|r|cff00ff004月23日-5月13日
+|cffffe799【活动说明】|r|cff00ff00劳动节期间，农牧天官给每一位少侠带来了一只可爱的小猪仔，希望小猪仔能被|cff00fffff充满爱心的你|cff00ff00好好照料！
  ]],
 --物品类型
 item_type = '神符',
@@ -28,16 +28,19 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[bianpao.blp]],
+art = [[huaxinluobo.blp]],
 --说明
 tip = [[
 
 
-|cff00ff00轰然一响，万山齐应，如闻霹雳声|cffffff00(可驱除捣乱的年兽)
+|cff00ff00在皑皑白雪的土地上
+光鲜嫩绿
+眉飞色舞
+无人知道它内心的虚与空|cffffff00(可用来喂猪)
 
-|cffcccccc春节活动物品|r]],
+|cffcccccc劳动节活动物品|r]],
 --品质
-color = '紫',
+-- color = '紫',
 --物品类型
 item_type = '消耗品',
 cool = 0.5,
@@ -79,9 +82,9 @@ function mt:on_cast_start()
 
     --小猪仔变大
     local size = target:get_size()
-    target:set_size(size + 0.1)
+    target:set_size(size + 0.15)
    
-    p:sendMsg('小猪仔变大一圈，恭喜获得',5)
+    p:sendMsg('|cffffe799【系统消息】|cff00ff00喂猪成功，恭喜获得|cffffff00会心几率+1%，会心伤害+10%',5)
 
     --小猪飞了
     if hero.xzz_cnt == 10 then 
@@ -95,7 +98,7 @@ function mt:on_cast_start()
             --激活成就（存档） 
             p:Map_AddServerValue(key,1) --网易服务器
             ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',save_name)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r |cff00ff00放炮一时爽，一直放炮一直爽，惊喜获得|cffffff00【可存档成就】'..save_name..'|r',6) 
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r |cff00ff00的小猪已经成年，回归了大自然，惊喜获得|cffffff00【可存档成就】'..save_name..'|r |cff00ff00属性可在巅峰神域-精彩活动中查看',6) 
         elseif skl.level<skl.max_level then
             --激活成就（存档） 
             p:Map_AddServerValue(key,1) --网易服务器
@@ -115,7 +118,7 @@ ac.game:event '游戏-开始'(function()
             local u = p:create_unit('小猪仔',point)
             -- u:add_buff '无敌'{}
             u:add_buff '隐身'{ 
-                alpha = 100
+                alpha = 50
             }
             u:add_buff '随机逃跑'{
                 pulse = 5
@@ -132,7 +135,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     local p = killer:get_owner()
     local hero = p.hero
     local rate = 0.03 --概率
-    -- rate = 2
+    -- local rate = 50.03 --测试
     local rand_name ='花心萝卜'
     if math.random(100000)/1000 <= rate then   
         if not p.max_item_fall then 

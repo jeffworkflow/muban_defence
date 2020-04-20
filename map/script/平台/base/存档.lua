@@ -104,8 +104,7 @@ end
 function player.__index:Map_GetServerValue(key)
     local handle = self.handle
     local value = japi.DzAPI_Map_GetServerValue(handle,key)
-    
-    if not value or value == '' or value == "" then
+    if not value or value == '' or value == "" or value == 'nil' then
         value = 0
     else
         value = value

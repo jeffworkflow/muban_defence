@@ -3,11 +3,11 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[ruishou.blp]],
+art = [[wuxingtu.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff001月17日-2月12日
-|cffffe799【活动说明】|r|cff00ff00爆竹声中一岁除，春风送暖入屠苏。春风送暖，旭日初升，家家户户点燃爆竹，热火朝天地迎接着春节的到来，|cffffff00各位少侠快去凑个热闹吧！
+|cffffe799【活动时间】|r|cff00ff004月23日-5月13日
+|cffffe799【活动说明】|r|cff00ff00时值暮春初夏之交，不少怪物已变异为五行怪物，它们身上藏着的“五行图卷”，据说有着不可思议的宝藏。|cffffff00各位少侠快去凑个热闹吧！
  ]],
 --物品类型
 item_type = '神符',
@@ -39,18 +39,20 @@ content_tip = ''
 --奖品
 local award_list = { 
     ['五行图卷'] =  {
-        { rand = 4, name = '金'},
-        { rand = 4, name = '红'},
-        { rand = 4, name = '随机技能书'},
-        { rand = 4, name = '点金石'},
-        { rand = 4, name = '恶魔果实'},
-        { rand = 4, name = '吞噬丹'},
-        { rand = 4, name = '格里芬'},
-        { rand = 4, name = '黑暗项链'},
-        { rand = 4, name = '最强生物心脏'},
-        { rand = 4, name = '白胡子的大刀'},
-        { rand = 4, name = '归梦五行图'},
-        { rand = 56, name = '无'},
+        { rand = 5, name = '金'},
+        { rand = 5, name = '红'},
+        { rand = 5, name = '随机技能书'},
+        { rand = 5, name = '点金石'},
+        { rand = 5, name = '点金石*5'},
+        { rand = 5, name = '点金石*10'},
+        { rand = 5, name = '恶魔果实'},
+        { rand = 5, name = '吞噬丹'},
+        { rand = 5, name = '格里芬'},
+        { rand = 5, name = '黑暗项链'},
+        { rand = 5, name = '最强生物心脏'},
+        { rand = 5, name = '白胡子的大刀'},
+        { rand = 5, name = '归梦五行图'},
+        { rand = 35, name = '无'},
     },
 }
 --掉落在地上
@@ -66,7 +68,7 @@ local function give_award(hero,unit)
     end
 
     if rand_name == '无' then
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00鞭炮点燃后，只见天空中出现了八个大字：|cffffff00盛世嘉年，新春快乐|cff00ff00!',3) 
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00什么都没有！',3) 
 
     elseif  finds(rand_name,'格里芬','黑暗项链','最强生物心脏','白胡子的大刀') then
         --满时，掉在地上
@@ -75,7 +77,7 @@ local function give_award(hero,unit)
         else 
             hero:add_item(rand_name,true)
         end        
-        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00鞭炮点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..rand_name..'|r',4) 
+        ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ff00对准位置挖了下去，里面金光闪闪，原来是|cffff0000'..rand_name..'|r',4) 
     elseif  finds('红 金',rand_name) then   
         local list = ac.quality_item[rand_name]
         local name = list[math.random(#list)]
@@ -86,8 +88,8 @@ local function give_award(hero,unit)
         else 
             it = hero:add_item(name,true)
         end      
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00鞭炮点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..it.color_name..'|r',4)
-    elseif finds(rand_name,'点金石','恶魔果实','吞噬丹')  then
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00对准位置挖了下去，里面金光闪闪，原来是|cffff0000'..it.color_name..'|r',4)
+    elseif finds(rand_name,'恶魔果实','吞噬丹')  then
         --满时，掉在地上
         local it 
         if unit then  
@@ -95,7 +97,28 @@ local function give_award(hero,unit)
         else 
             it = hero:add_item(rand_name,true)
         end  
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00鞭炮点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..rand_name..'|r',4)
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00对准位置挖了下去，里面金光闪闪，原来是|cffff0000'..rand_name..'|r',4)
+    elseif rand_name =='点金石'  then
+        --满时，掉在地上
+        local it 
+        it = ac.item.create_item('点金石',hero:get_point())
+        it:set_item_count(1)
+        it = hero:add_item(it,true) 
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00对准位置挖了下去，里面金光闪闪，原来是|cffff0000'..rand_name..'|r',4)
+    elseif rand_name =='点金石*5'  then
+        --满时，掉在地上
+        local it 
+        it = ac.item.create_item('点金石',hero:get_point())
+        it:set_item_count(5)
+        it = hero:add_item(it,true)
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00对准位置挖了下去，里面金光闪闪，原来是|cffff0000'..rand_name..'|r',4)
+    elseif rand_name =='点金石*10'  then
+        --满时，掉在地上
+        local it 
+        it = ac.item.create_item('点金石',hero:get_point())
+        it:set_item_count(10)
+        it = hero:add_item(it,true)
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00对准位置挖了下去，里面金光闪闪，原来是|cffff0000'..rand_name..'|r',4)
     elseif finds(rand_name,'随机技能书')  then    
         local rand_list = ac.unit_reward['商店随机技能']
         local rand_name = ac.get_reward_name(rand_list)
@@ -111,7 +134,7 @@ local function give_award(hero,unit)
         else 
             ac.item.add_skill_item(name,hero)
         end  
-        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00鞭炮点燃后，一道绚丽的光芒闪过，好像掉落了什么，仔细一看是|cffff0000'..name..'|r',4)
+        p:sendMsg('|cffffe799【系统消息】|r |cff00ff00对准位置挖了下去，里面金光闪闪，原来是|cffff0000'..name..'|r',4)
     elseif  rand_name == '归梦五行图' then 
         local key = ac.server.name2key(rand_name)
         --动态插入魔法书
@@ -120,7 +143,7 @@ local function give_award(hero,unit)
             --激活成就（存档） 
             p:Map_AddServerValue(key,1) --网易服务器
             ac.game:event_notify('技能-插入魔法书',hero,'精彩活动',rand_name)
-            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r |cff00ff00放炮一时爽，一直放炮一直爽，惊喜获得|cffffff00【可存档成就】'..rand_name..'|r',6) 
+            ac.player.self:sendMsg('|cffffe799【系统消息】|r |cff00ffff'..p:get_name()..'|r |cff00ff00对准位置挖了下去，惊喜获得|cffffff00【可存档成就】'..rand_name..'|r |cff00ff00属性可在巅峰神域-精彩活动中查看',6) 
         elseif skl.level<skl.max_level then
             --激活成就（存档） 
             p:Map_AddServerValue(key,1) --网易服务器
@@ -140,16 +163,16 @@ mt{
 --等久
 level = 1,
 --图标
-art = [[bianpao.blp]],
+art = [[wuxingtu.blp]],
 --说明
 tip = [[
 
 
-|cff00ff00轰然一响，万山齐应，如闻霹雳声|cffffff00(可驱除捣乱的年兽)
+|cff00ff00根据提示，到指定地点，挖开即可获得 |cffdf19d0 不可思议的宝藏 |r
 
-|cffcccccc春节活动物品|r]],
+|cffcccccc劳动节活动物品|r]],
 --品质
-color = '紫',
+-- color = '紫',
 --物品类型
 item_type = '消耗品',
 cool = 0.5,
@@ -221,7 +244,7 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     if not p.max_item_fall then 
         p.max_item_fall = {}
     end
-    local rate = 100 
+    local rate = 10 
     local rand = math.random(10000)/100 
     local max_cnt =15
     if rand < rate and (p.max_item_fall['五行图卷'] or 0) <=20 then 
