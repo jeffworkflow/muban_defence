@@ -89,7 +89,7 @@ function mt:on_cast_start()
     --小猪飞了
     if hero.xzz_cnt == 10 then 
         target:remove()
-        print('小猪飞了')
+        -- print('小猪飞了')
         local save_name = '放了那只猪'
         local key = ac.server.name2key(save_name)
         --动态插入魔法书

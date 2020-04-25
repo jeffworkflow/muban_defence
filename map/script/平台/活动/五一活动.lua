@@ -223,7 +223,8 @@ function mt:on_cast_start()
             player:sendMsg('|cff00ffff宠物不能挖宝|r',3)
             return true
         end    
-        
+        self.eff:remove()
+        region:remove()
         self:add_item_count(-1) 
         --改变下一次随机点
         self:on_add() 
