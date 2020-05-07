@@ -142,6 +142,7 @@ end)
 ac.wait(10,function()
     -- local name = [[谜情小伙]]
     local temp_mall = {
+        --自定义服务器
         {'time_qt','青铜时长'},
         {'time_by','白银时长'},
         {'time_hj','黄金时长'},
@@ -183,13 +184,13 @@ ac.wait(10,function()
         {'cntwl','比武'},
         {'today_cntwl','今日比武'},
         {'today_cntwlrank','今日比武排名'},
-
+        {'sjwf','世界五福'},--世界五福收集次数
 
         --以下 网易服务器 不需要继续的存档
-        -- {'hdgx','高兴'},
-        -- {'hdfn','愤怒'},
-        -- {'hdyw','厌恶'},
-        -- {'hdkj','恐惧'},
+        {'hdgx','高兴'},
+        {'hdfn','愤怒'},
+        {'hdyw','厌恶'},
+        {'hdkj','恐惧'},
 
         {'hhxyj','幻海雪饮剑'},
         {'tgcyy','天罡苍羽翼'},
@@ -204,6 +205,9 @@ ac.wait(10,function()
         {'blnsy','白龙凝酥翼'},
         {'szas','霜之哀伤'},
         {'lhjyly','烈火金焰领域'},  
+        {'xwly','血雾领域'},
+        {'zwqyly','真武青焰领域'},
+
         {'lysxy','龙吟双形翼'},
         {'tszg','天使之光'},
         {'byshly','白云四海领域'},
@@ -221,7 +225,14 @@ ac.wait(10,function()
         {'rylxj','熔岩流星剑'},
         {'sz','神猪'},
         {'zswd','战神无敌'},
-
+        
+        {'jhxx','江湖小虾'},
+        {'mrzx','明日之星'},
+        {'wlgs','武林高手'},
+        {'jsqc','绝世奇才'},
+        {'wzsj','威震三界'},
+    
+        {'tmxk','天马行空'},
     }
     for i,data in ipairs(ac.mall) do 
         table.insert(temp_mall,data)
@@ -331,6 +342,7 @@ ac.game:event '游戏-无尽开始'(function(trg)
                 local name = name..'时长'
                 local key = ac.server.name2key(name)
                 local cus_value = tonumber((player.cus_server2 and player.cus_server2[name]) or 99999999)
+                cus_value = cus_value > 0 and cus_value or 99999999
                 --游戏时长 < 存档时间 
                 if os.difftime(cus_value,ac.g_game_time) > 0 then 
                     if player:Map_GetMapLevel() >=3 then 
@@ -461,6 +473,7 @@ ac.game:event '游戏-结束' (function(trg,flag)
                 local name = name..'时长'
                 local key = ac.server.name2key(name)
                 local cus_value = tonumber((player.cus_server2 and player.cus_server2[name]) or 99999999)
+                cus_value = cus_value > 0 and cus_value or 99999999
                 --游戏时长 < 存档时间 
                 if os.difftime(cus_value,ac.g_game_time) > 0 then 
                     if player:Map_GetMapLevel() >=3 then 
@@ -539,8 +552,8 @@ local function wabao2award()
                         and player:Map_GetMapLevel() >= (data[2]  or 9999999)
                         then 
                             local key = ac.server.name2key(name)
-                            -- player:SetServerValue(key,1) 自定义服务器
-                            player:Map_SaveServerValue(key,1) --网易服务器
+                            player.cus_server[name] = 1
+                            -- player:Map_SaveServerValue(key,1) --网易服务器
                             -- player:sendMsg('激活成功：'..key)
                         end    
                     end    
@@ -707,8 +720,9 @@ local function wldh2award()
                     and player:Map_GetMapLevel() >= (data[2]  or 9999999)
                     then 
                         local key = ac.server.name2key(name)
+                        player.cus_server[name] = 1
                         -- player:SetServerValue(key,1) 自定义服务器
-                        player:Map_SaveServerValue(key,1) --网易服务器
+                        -- player:Map_SaveServerValue(key,1) --网易服务器
                         -- player:sendMsg('激活成功：'..key)
                     end    
                 end   
