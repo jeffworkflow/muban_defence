@@ -554,9 +554,9 @@ end
 function helper:power()
 	helper.move(self)
 	helper.lv(self, 100)
-	if not ac.wtf then
-		helper.wtf(self)
-	end
+	-- if not ac.wtf then
+	-- 	helper.wtf(self)
+	-- end
 	local player = self:get_owner()
 	self:add_restriction '免死'
 	player:addGold(599999)
