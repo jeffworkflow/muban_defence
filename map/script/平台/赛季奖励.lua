@@ -2271,7 +2271,7 @@ art = [[SJ114.blp]],
 --说明
 tip = [[
 
-|cffffe799【赛季时间】|r|cff00ff005月26日-6月26日
+|cffffe799【赛季时间】|r|cff00ff005月26日-7月26日
 |cffffe799【赛季说明】|r|cff00ff00赛季结束时，将发放丰厚的赛季奖励
 
 |cffcccccc当前赛季 通关次数：%cnt_succ%
@@ -2286,7 +2286,7 @@ cnt_succ = function(self)
     local hero = self.owner
     local p = hero:get_owner()
     local cnt = get_season(p,'总通关次数') - (p.cus_server['S13通关次数'] or 0)
-    cnt = math.min(cnt,500,p:Map_GetMapLevel()*25) --500，25
+    cnt = math.min(cnt,1000,p:Map_GetMapLevel()*25) --500，25
     cnt = cnt > 0 and cnt or 0
     return cnt
 end,
@@ -2296,7 +2296,7 @@ cnt_ljwj = function(self)
     local hero = self.owner
     local p = hero:get_owner()
     local cnt = get_season(p,'总无尽累计') - (p.cus_server['S13无尽累计'] or 0)
-    cnt = math.min(cnt,1500,p:Map_GetMapLevel()*100) --1500,100
+    cnt = math.min(cnt,3000,p:Map_GetMapLevel()*100) --1500,100
     cnt = cnt > 0 and cnt or 0
     return cnt
 end,
@@ -2305,7 +2305,7 @@ cnt_wbjf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
     local cnt = get_season(p,'总挖宝积分') - (p.cus_server['S13挖宝积分'] or 0)
-    cnt = math.min(cnt,5000,p:Map_GetMapLevel()*500) --5000,500
+    cnt = math.min(cnt,10000,p:Map_GetMapLevel()*500) --5000,500
     cnt = cnt > 0 and cnt or 0
     return cnt
 end,
@@ -2314,7 +2314,7 @@ cnt_wljf = function(self)
     local hero = self.owner
     local p = hero:get_owner()
     local cnt = get_season(p,'总比武积分') - (p.cus_server['S13比武积分'] or 0)
-    cnt = math.min(cnt,2500,p:Map_GetMapLevel()*50) 
+    cnt = math.min(cnt,5000,p:Map_GetMapLevel()*50) 
     cnt = cnt > 0 and cnt or 0
     return cnt
 end,
@@ -2354,20 +2354,20 @@ tip = [[
 |cff00ff00赛季结束时，所有在 |cffff0000F5-巅峰排行榜、F5-通关时长排行榜、 F6-无尽总排行榜、F6-比武总排行榜、F6-挖宝总排行榜 |cff00ff00上面的玩家，均可获得
 
 |cffFFE799【成就属性】：|r
-|cff00ff00+36.8   杀怪加全属性|r
-|cff00ff00+36.8   攻击减甲|r
-|cff00ff00+1%     会心几率|r
-|cff00ff00+10%    会心伤害|r
-|cff00ff00+16.8%  全伤加深|r
-|cffff0000局内地图等级+1
+|cff00ff00+66   杀怪加全属性|r
+|cff00ff00+66   攻击减甲|r
+|cff00ff00+2%   会心几率|r
+|cff00ff00+20%  会心伤害|r
+|cff00ff00+30%  全伤加深|r
+|cffff0000局内地图等级+2
 
 ]],
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 
 need_map_level = 5,
-['杀怪加全属性'] = 36.8,
-['攻击减甲'] = 36.8,
+['杀怪加全属性'] = 66,
+['攻击减甲'] = 66,
 ['会心几率'] = 1,
 ['会心伤害'] = 10,
 ['全伤加深'] = 16.8
