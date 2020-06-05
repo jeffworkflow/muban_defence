@@ -74,7 +74,7 @@ ac.game:event '游戏-开始' (function()
             creeps_datas = key..'*1',
             -- boss重生时间
             cool = val[5] or 15,
-            creep_player = ac.player(15),
+            creep_player = ac.player(13),
         }  
         --进攻怪刷新时的初始化
         function mt:on_start()

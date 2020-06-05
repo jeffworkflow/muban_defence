@@ -76,7 +76,7 @@ function creeps.start()
                     --     -- print('打印创建单位的id',data.id)
                     -- end
                     -- print('测试11111111:',name,id)
-                    local u = ac.player(15):create_unit(name, point, 270)
+                    local u = ac.player(13):create_unit(name, point, 270)
                     -- print(u)
                     -- u:add_ability 'A00V'
                     u:set_class('模拟死亡') --设置为模拟死亡

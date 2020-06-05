@@ -739,6 +739,34 @@ function helper:add_item(str,cnt)
 		self:add_item(str,true)
 	end	
 end
+
+--模糊添加物品
+function helper:ai(str,cnt)
+	if not str or str =='' then 
+		return 
+	end	
+	local ok 
+	for name,data in pairs(ac.table.ItemData) do 
+		if finds(name,str) and data.category ~='商品' then 
+			ok = true
+			for i=1,tonumber(cnt) or 1 do 
+				self:add_item(name,true)
+			end	
+		end	
+	end	
+	if not ok then 
+		for i,data in pairs(ac.skill) do 
+			if type(data) == 'table' then 
+				if finds(data.name,str) then 
+					for i=1,tonumber(cnt) or 1 do 
+						self:add_item(data.name,true)
+					end	
+				end	
+			end	
+		end	
+	end
+
+end
 --增加套装 可能掉线
 function helper:add_suit(str)
 	local cnt = 5 
