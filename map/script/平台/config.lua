@@ -375,6 +375,7 @@ local cus_key = {
     {'gmwxt','归梦五行图'},
     {'flnzz','放了那只猪'},
     
+    {'level','地图等级'},--自定义服务器
     
 }
 ac.cus_server_key = cus_key

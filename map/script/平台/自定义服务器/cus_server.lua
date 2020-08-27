@@ -456,9 +456,12 @@ function player.__index:sp_save_player()
     local map_name = config.map_name
     local url = config.url2
     -- print(map_name,player_name,key,key_name,is_mall,value)
+    local map_level = math.max(japi.DzAPI_Map_GetMapLevel(self.handle),1)
     local post = 'exec=' .. json.encode({
         sp_name = 'sp_save_player',
-        para1 = player_name,
+        para1 = map_name,
+        para2 = player_name,
+        para3 = map_level
     })
     -- print(url,post)
     local f = f or function (retval)  end
@@ -468,7 +471,11 @@ end
 for i=1,10 do
     local p = ac.player(i)
     if p:is_player() then 
+        --保存玩家名
         p:sp_save_player()
+        --保存地图等级
+        local map_level = math.max(japi.DzAPI_Map_GetMapLevel(p.handle),1)
+        p:SetServerValue('level',map_level)
     end
 end      
 
