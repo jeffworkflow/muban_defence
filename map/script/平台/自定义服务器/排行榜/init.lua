@@ -121,7 +121,11 @@ local event = {
         local data = ui.decode(tab_str) 
         for key,val in sortpairs(data) do 
             player.cus_server2[key..'王者'] = 1
-            player['局内地图等级'] = (player['局内地图等级'] or 0) +1
+            local val = 1
+            if ac.skill[key..'王者']['局内地图等级'] then 
+                val = ac.skill[key..'王者']['局内地图等级']
+            end
+            player['局内地图等级'] = (player['局内地图等级'] or 0) +val
             -- print('同步后的数据：',player:get_name(),name,player.cus_server2[name])
         end    
     end,

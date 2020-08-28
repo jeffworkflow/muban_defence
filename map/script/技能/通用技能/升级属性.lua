@@ -22,28 +22,29 @@ ac.game:event '技能-升级' (function (_,hero,self)
 	--单位的属性表
 	local data = ac.unit.attribute
     for key in sortpairs(data) do 
-        --处理基础值
-        local value = self[key]
-        local old_value = self.old_status[key]
-        if old_value then 
-            hero:add_tran(key,-old_value)
-		end 
-		if value then 
-            hero:add_tran(key,value)
-        end 
-        self.old_status[key] = value
-        --处理%值
-		key = key..'%'
-		value = self[key]
-        old_value = self.old_status[key]
-		if old_value then 
-            hero:add_tran(key,-old_value)
-		end 
-		if value then 
-            hero:add_tran(key,value)
-        end 
-        self.old_status[key] = value
-
+        if key ~='局内地图等级' then
+            --处理基础值
+            local value = self[key]
+            local old_value = self.old_status[key]
+            if old_value then 
+                hero:add_tran(key,-old_value)
+            end 
+            if value then 
+                hero:add_tran(key,value)
+            end 
+            self.old_status[key] = value
+            --处理%值
+            key = key..'%'
+            value = self[key]
+            old_value = self.old_status[key]
+            if old_value then 
+                hero:add_tran(key,-old_value)
+            end 
+            if value then 
+                hero:add_tran(key,value)
+            end 
+            self.old_status[key] = value
+        end
         -- self:set('old_status',self.old_status)
 	end
 end)
@@ -62,18 +63,20 @@ ac.game:event '技能-失去' (function (_,hero,self)
 	--单位的属性表
 	local data = ac.unit.attribute
     for key in sortpairs(data) do 
-        --处理基础值
-        local value = self[key]
-		if value then 
-            hero:add_tran(key,-value)
-        end 
+        if key ~='局内地图等级' then
+            --处理基础值
+            local value = self[key]
+            if value then 
+                hero:add_tran(key,-value)
+            end 
 
-        --处理%值
-		key = key..'%'
-		value = self[key]
-		if value then 
-            hero:add_tran(key,-value)
-        end 
+            --处理%值
+            key = key..'%'
+            value = self[key]
+            if value then 
+                hero:add_tran(key,-value)
+            end 
+        end
 	end
 end)    
 

@@ -199,6 +199,18 @@ local event = {
             player.jifen = tonumber(val)
         end    
     end,
+    
+    map_level = function (val)
+        local player = ui.player 
+        player.cl_map_level = val
+        player.mall = player.mall or {}
+        player.mall['魔灵地图等级'] = val
+        print('获取魔灵地图等级：',val)
+        if val >= 7 then 
+            player.mall['魔灵限定'] = 1
+        end
+        -- print('同步后的数据',ac.flag_map)
+    end,
     --从自定义服务器读取数据
      --从自定义服务器读取数据
      read_key_from_server = function (tab_str)
@@ -446,7 +458,46 @@ function player.__index:CopyAllServerValue()
         end)    
     end    
 end   
-
+local ui = require 'ui.client.util'
+--读取 赤灵传说 地图等级
+function player.__index:sp_get_player()
+    if not self:is_self() and self.id < 11 then 
+        return 
+    end    
+    local player_name = self:get_name()
+    local map_name = '魔灵降世'
+    local url = config.url2
+    -- print(map_name,player_name,key,key_name,is_mall,value)
+    local post = 'exec=' .. json.encode({
+        sp_name = 'sp_get_player',
+        para1 = map_name,
+        para2 = player_name
+    })
+    -- print(url,post)
+    local f = f or function (retval)  end
+    post_message(url,post,function (retval)  
+        if not finds(retval,'http','https','') or finds(retval,'成功')then 
+            local tbl = json.decode(retval)
+            -- print(type(tbl.code),tbl.code,tbl.code == '0',tbl.code == 0)
+            if tbl and tbl.data[1] and tbl.data[1][1] then 
+                local map_level = tbl.data[1][1].level
+                ac.wait(10,function()
+                    local info = {
+                        type = 'cus_server',
+                        func_name = 'map_level',
+                        params = {
+                            [1] = tonumber(map_level),
+                        }
+                    }
+                    ui.send_message(info)
+                end)   
+                f(tbl)
+            else
+                -- print(self:get_name(),post,'上传失败')
+            end    
+        end    
+    end)
+end
 --保存玩家名 记录审核人员
 function player.__index:sp_save_player()
     if not self:is_self() and self.id < 11 then 
@@ -471,11 +522,13 @@ end
 for i=1,10 do
     local p = ac.player(i)
     if p:is_player() then 
+        --读取魔灵地图等级数据
+        p:sp_get_player()
         --保存玩家名
         p:sp_save_player()
         --保存地图等级
-        local map_level = math.max(japi.DzAPI_Map_GetMapLevel(p.handle),1)
-        p:SetServerValue('level',map_level)
+        -- local map_level = math.max(japi.DzAPI_Map_GetMapLevel(p.handle),1)
+        -- p:SetServerValue('level',map_level)
     end
 end      
 

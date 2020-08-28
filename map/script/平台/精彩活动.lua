@@ -2,6 +2,7 @@ local mt = ac.skill['缘定三生']
 mt{
 --等级
 level = 1, --要动态插入
+max_level = 5,
 --图标
 art = [[ydss.blp]],
 --说明
