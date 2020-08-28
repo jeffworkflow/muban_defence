@@ -44,6 +44,8 @@ for i=1,10 do
             local name = '赛季补偿礼包'  
             p.mall[name] = 1  
             p['局内地图等级'] = (p['局内地图等级'] or 0) +1
-        end    
+        end   
+        --S14赛季补偿
+        p['局内地图等级'] = (p['局内地图等级'] or 0) + 1 
     end
 end            
