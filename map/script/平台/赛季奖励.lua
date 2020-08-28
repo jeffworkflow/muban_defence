@@ -2422,6 +2422,28 @@ need_map_level = 5,
 ['局内地图等级'] = 2
 }
 
+local mt = ac.skill['S14赛季补偿']
+mt{
+--等级
+level = 1, --要动态插入
+--图标
+art = [[sj114.blp]],
+--说明
+tip = [[
+
+|cffFFE799【获得方式】：|r
+|cff00ff00S14赛季时间出错，所有玩家均可获得补偿
+
+|cffFFE799【成就属性】：|r
+|cffff0000局内地图等级+1
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+
+need_map_level = 5,
+}
+
 local mt = ac.skill['S15赛季说明']
 mt{
 --等级
@@ -2767,7 +2789,7 @@ mt{
 }
 
 mt.skills = {
-    'S15赛季说明','S15赛季王者',nil,nil,
+    'S15赛季说明','S15赛季王者','S14赛季补偿',nil,
     'S0赛季','S1赛季','S2赛季','S3赛季',
     'S4赛季','S5赛季','赛季-下一页',
 }
