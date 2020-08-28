@@ -3,7 +3,7 @@ mt{
 --等久
 level = 0,
 --图标
-art = [[chilingxianding.blp]],
+art = [[moshen.blp]],
 is_order = 1,
 --说明
 tip = [[
