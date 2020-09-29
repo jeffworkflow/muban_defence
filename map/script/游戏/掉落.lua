@@ -242,6 +242,21 @@ local reward = {
             hero:add_item(name,true)    
         end 
     end,
+    ['级物品'] = function (player,hero,unit,is_on_hero,str)
+        local lv = tonumber(string.sub(str,1,1))
+        local color = ac.get_reward_name(ac.unit_reward['存档物品'])
+        if not color then 
+            return 
+        end    
+        local rand = math.random(#ac.save_item[lv][color])
+        local name = ac.save_item[lv][color][rand]
+        --掉落运动 
+        ac.fall_move{
+            name = name ,
+            source = unit:get_point() ,
+            model = ac.table.ItemData[name].specail_model ,
+        }
+    end,
 
 
 }
@@ -296,7 +311,14 @@ local unit_reward = {
         {rand =0.3,name = '高级扭蛋券(十连抽)'},
         {rand =0.3,name = '高级扭蛋券(百连抽)'},
     },
-
+    ['难1'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
+    ['难2'] =  {{ rand = 1.5, name = {{ rand = 90,   name = '1级物品'},{ rand = 10,   name = '2级物品'}}}},
+    ['难3'] =  {{ rand = 1.5, name = {{ rand = 85,   name = '1级物品'},{ rand = 15,   name = '2级物品'}}}},
+    ['难4'] =  {{ rand = 1.5, name = {{ rand = 75,   name = '1级物品'},{ rand = 20,   name = '2级物品'},{ rand = 5,   name = '3级物品'}}}},
+    ['难5'] =  {{ rand = 1.5, name = {{ rand = 65,   name = '1级物品'},{ rand = 25,   name = '2级物品'},{ rand = 10,   name = '3级物品'}}}},
+    ['难6'] =  {{ rand = 1.5, name = {{ rand = 55,   name = '1级物品'},{ rand = 30,   name = '2级物品'},{ rand = 15,   name = '3级物品'}}}},
+    ['难7'] =  {{ rand = 1.5, name = {{ rand = 45,   name = '1级物品'},{ rand = 35,   name = '2级物品'},{ rand = 20,   name = '3级物品'}}}},
+   
     
     ['进攻怪'] =  {
         -- { rand = 97.5,         name = '无'},
@@ -733,6 +755,24 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
         local fall_rate = unit.fall_rate *( 1 + dummy_unit:get('物品获取率')/100 )
         -- print('装备掉落概率：',fall_rate,unit.fall_rate)
         hero_kill_unit(player,killer,unit,fall_rate)
+        
+        --存档型装备处理
+        local str = ac.attack_boss and table.concat( ac.attack_boss, " ")
+        if finds(str,unit:get_name()) then
+            local fall_save_rate =unit.fall_save_rate and unit.fall_save_rate *( 1 + more_rate/100 ) or 0
+            
+            -- fall_save_rate = 80 --测试存档物品
+            
+            --多次获得
+            local cnt = math.floor(3+get_player_count()/2)
+            ac.timer(200,cnt,function()
+                print('存档物品掉落：',fall_save_rate)
+                local degree = ac.g_game_degree_attr 
+                if unit_reward['难'..degree] then 
+                    hero_kill_unit(unit_reward['难'..degree],player,killer,unit,fall_save_rate)
+                end
+            end)
+        end
     end
 
     --boss 额外掉落物品
