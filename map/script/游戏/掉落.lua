@@ -318,6 +318,10 @@ local unit_reward = {
     ['难5'] =  {{ rand = 1.5, name = {{ rand = 65,   name = '1级物品'},{ rand = 25,   name = '2级物品'},{ rand = 10,   name = '3级物品'}}}},
     ['难6'] =  {{ rand = 1.5, name = {{ rand = 55,   name = '1级物品'},{ rand = 30,   name = '2级物品'},{ rand = 15,   name = '3级物品'}}}},
     ['难7'] =  {{ rand = 1.5, name = {{ rand = 45,   name = '1级物品'},{ rand = 35,   name = '2级物品'},{ rand = 20,   name = '3级物品'}}}},
+    ['难8'] =  {{ rand = 1.5, name = {{ rand = 30,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 25,   name = '3级物品'},{ rand = 5,   name = '4级物品'}}}},
+    ['难9'] =  {{ rand = 1.5, name = {{ rand = 20,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 30,   name = '3级物品'},{ rand = 10,   name = '4级物品'}}}},
+    ['难10'] =  {{ rand = 1.5, name = {{ rand = 10,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 35,   name = '3级物品'},{ rand = 15,   name = '4级物品'}}}},
+    ['难11'] =  {{ rand = 1.5, name = {{ rand = 0,   name = '1级物品'},{ rand = 40,   name = '2级物品'},{ rand = 40,   name = '3级物品'},{ rand = 20,   name = '4级物品'}}}},
    
     
     ['进攻怪'] =  {

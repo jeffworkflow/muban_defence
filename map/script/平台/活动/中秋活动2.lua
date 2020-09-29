@@ -136,14 +136,14 @@ end)
 --奖品
 local award_list = { 
     ['博饼券'] =  {
-        { rand = 49.25,      name = '无'},
+        { rand = 49.1,      name = '无'},
         { rand = 35,     name = '秀才'},
         { rand = 8,      name = '举人'},
         { rand = 4,      name = '进士'},
         { rand = 2,      name = '探花'},
         { rand = 1,      name = '榜眼'},
         { rand = 0.45,      name = '状元'},
-        { rand = 0.45,      name = '王中王'},
+        { rand = 0.15,      name = '王中王'},
         { rand = 0.3,      name = '王昭君'},
     },
 }
@@ -214,7 +214,7 @@ level = 1,
 art = [[bbswkl.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff009月10日-9月25日
+|cffffe799【活动时间】|r|cff00ff009月30日-10月15日
 |cffffe799【活动说明】|r|cff00ff00由郑成功发明的一种游戏，是闽南地区特有的一种中秋民俗活动。|cff00ffff相传这种游戏可以预测人未来一年内的运气。
 
 |cffffff00消耗 |cffff0000一张博饼券 |cffffff00进行一次博饼
