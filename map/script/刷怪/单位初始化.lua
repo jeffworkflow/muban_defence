@@ -31,6 +31,7 @@ local function init_attribute(unit)
     unit.fire_seed= data.fire_seed
     unit.exp= data.exp
     unit.fall_rate= data.fall_rate
+    unit.fall_save_rate= data.fall_save_rate
 
     --设置搜敌范围
     unit:set_search_range(800)

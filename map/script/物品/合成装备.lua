@@ -7,7 +7,7 @@ local consumable_item ={}
 
 for name,data in pairs(ac.table.ItemData) do 
     local color = data.color 
-    if color then 
+    if color and data.category ~= '存档' then 
         local list = quality_item[color] or {}
         quality_item[color] = list 
         table.insert(list,name)

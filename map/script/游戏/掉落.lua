@@ -251,11 +251,11 @@ local reward = {
         local rand = math.random(#ac.save_item[lv][color])
         local name = ac.save_item[lv][color][rand]
         --掉落运动 
-        ac.fall_move{
-            name = name ,
-            source = unit:get_point() ,
-            model = ac.table.ItemData[name].specail_model ,
-        }
+        -- ac.fall_move{
+        --     name = name ,
+        --     source = unit:get_point() ,
+        --     model = ac.table.ItemData[name].specail_model ,
+        -- }
     end,
 
 
@@ -310,6 +310,12 @@ local unit_reward = {
         {rand =0.3,name = '高级扭蛋券'},
         {rand =0.3,name = '高级扭蛋券(十连抽)'},
         {rand =0.3,name = '高级扭蛋券(百连抽)'},
+    },
+    ['存档物品'] = {
+        { rand = 65,      name = '白'},
+        { rand = 25,      name = '蓝'},
+        { rand = 8,      name = '金'},
+        { rand = 2,      name = '暗金'},
     },
     ['难1'] =  {{ rand = 1.5, name = {{ rand = 95,   name = '1级物品'},{ rand = 5,   name = '2级物品'}}}},
     ['难2'] =  {{ rand = 1.5, name = {{ rand = 90,   name = '1级物品'},{ rand = 10,   name = '2级物品'}}}},
@@ -722,21 +728,23 @@ end
 ac.get_reward_name_list = get_reward_name_list
 
 
-local function hero_kill_unit(player,hero,unit,fall_rate,is_on_hero)
 
-    local change_unit_reward = unit_reward['进攻怪']
-    --吞噬丹几率过高
+local function hero_kill_unit(tab,player,hero,unit,fall_rate,is_on_hero)
+
+    local change_unit_reward = tab or unit_reward['进攻怪']
     change_unit_reward[1].rand = fall_rate
-    -- for index,info in ipairs(change_unit_reward) do 
-    --     change_unit_reward[1].rand = fall_rate
-    -- end    
     local name = get_reward_name(change_unit_reward)
     if name then 
-        -- print('掉落物品类型',name)
-        local func = reward[name]
+        local func
+        for key,val in pairs(reward) do 
+            if finds(name,key) then 
+                func = reward[key]
+                break
+            end  
+        end 
         if func then 
-            -- print('掉落',name)
-            func(player,hero,unit,is_on_hero)
+            print('掉落',name)
+            func(player,hero,unit,is_on_hero,name)
         end 
     end 
     return name 
@@ -758,19 +766,19 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
     if unit.category and unit.category =='进攻怪' or unit.category =='boss'  then
         local fall_rate = unit.fall_rate *( 1 + dummy_unit:get('物品获取率')/100 )
         -- print('装备掉落概率：',fall_rate,unit.fall_rate)
-        hero_kill_unit(player,killer,unit,fall_rate)
+        hero_kill_unit(unit_reward['进攻怪'],player,killer,unit,fall_rate)
         
         --存档型装备处理
         local str = ac.attack_boss and table.concat( ac.attack_boss, " ")
         if finds(str,unit:get_name()) then
-            local fall_save_rate =unit.fall_save_rate and unit.fall_save_rate *( 1 + more_rate/100 ) or 0
+            local fall_save_rate =unit.fall_save_rate and unit.fall_save_rate *( 1 + dummy_unit:get('物品获取率')/100 ) or 0
             
             -- fall_save_rate = 80 --测试存档物品
             
             --多次获得
             local cnt = math.floor(3+get_player_count()/2)
             ac.timer(200,cnt,function()
-                print('存档物品掉落：',fall_save_rate)
+                print('存档物品掉落：',fall_save_rate,unit.fall_save_rate)
                 local degree = ac.g_game_degree_attr 
                 if unit_reward['难'..degree] then 
                     hero_kill_unit(unit_reward['难'..degree],player,killer,unit,fall_save_rate)
@@ -804,26 +812,6 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
 
 end)
 
---物品掉落，主动发起掉落而不是单位死亡时掉落 。
--- 应用：张全蛋技能 妙手空空
-ac.game:event '物品-偷窃' (function (_,unit,killer)
-    if unit.category ~='进攻怪' or (unit.data and unit.data.type =='boss' ) then
-		return
-    end
-    ac.game['偷窃'] = true
-    -- print('触发 物品-偷窃')
-    local player = killer:get_owner()
-    local dummy_unit = player.hero or ac.dummy
-    local fall_rate = unit.fall_rate *( 1 + dummy_unit:get('物品获取率')/100 )
-    -- print('装备掉落概率：',killer,fall_rate,unit.fall_rate)
-    -- 最后一个参数，直接掉人身上
-    local name = hero_kill_unit(player,killer,unit,fall_rate,true)
-    if not name  then 
-        on_texttag('未获得','红',killer)
-    end
-    ac.game['偷窃'] = false
-
-end)
 
 --物品掉落，直接获得随机装备
 -- 应用： 摔破罐子
