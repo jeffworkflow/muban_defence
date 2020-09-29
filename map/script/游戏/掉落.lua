@@ -251,17 +251,51 @@ local reward = {
         local rand = math.random(#ac.save_item[lv][color])
         local name = ac.save_item[lv][color][rand]
         --掉落运动 
-        -- ac.fall_move{
-        --     name = name ,
-        --     source = unit:get_point() ,
-        --     model = ac.table.ItemData[name].specail_model ,
-        -- }
+        ac.fall_move{
+            name = name ,
+            source = unit:get_point() ,
+            model = ac.table.ItemData[name].specail_model ,
+        }
     end,
 
 
 }
 ac.reward = reward
 
+local function fall_move(data)
+    local it_name = data.name
+    local where = data.source
+    local point = data.target or (where:get_point() - {math.random(360),math.random(200,500)})
+    local model = data.model
+    local is_skill = data.is_skill
+    local owner_ship = data.owner
+    --运动
+    local mvr = ac.mover.target
+    {
+        source = where:get_point(),
+        target = point,
+        model = model or [[Objects\InventoryItems\TreasureChest\treasurechest.mdl]],
+        height = 400,
+        speed = 300,
+        skill = '掉落运动'
+    }
+    if not mvr then
+        return
+    end
+    function mvr:on_finish()
+        local it 
+        if is_skill then 
+            it = ac.item.create_skill_item(it_name,point)
+        else
+            it = ac.item.create_item(it_name,point)
+        end
+        
+        if it.owner_ship then 
+            it.owner_ship = player
+        end  
+    end
+end    
+ac.fall_move = fall_move
 
 local unit_reward = {
     ['武器boss1'] = {{rand =100,name = '凝脂剑'}},
