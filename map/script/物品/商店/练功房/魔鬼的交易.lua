@@ -828,6 +828,16 @@ ac.game:event '单位-创建商店'(function(trg,shop)
     -- 1 2  3  4
     add_skill_by_lv(shop,1,true)
 
+    ac.wait(30*1000,function()
+        local p = shop.owner 
+        if p and p:Map_GetMapLevel() >=3 then 
+            local skl = shop:find_skill('一键修炼',nil,true)
+            if not skl then 
+                shop:add_skill('一键修炼','英雄',4)
+            end
+        end
+    end)
+    ac.mgdjy_unit = shop
 end)
 
 

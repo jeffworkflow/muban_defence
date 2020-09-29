@@ -24,6 +24,7 @@ setmetatable(mt, skill)
 item.item_map = {}
 item.shop_item_map = {}
 item.removed_items = setmetatable({}, { __mode = 'kv' })
+
 --类型
 mt.type = 'item'
 
@@ -97,7 +98,8 @@ local blend_file = {
     ['棕'] = nil,
     ['粉'] = nil,
     ['白'] = 'bai',
-    ['黑'] = nil,
+	['黑'] = nil,
+	['暗金'] = 'anjin',
     ['金'] = 'huang',
 	['灰'] = nil,
 	['淡黄'] = nil,	
@@ -109,7 +111,6 @@ local color_code = {
     ['红'] = 'ff0000',
     ['绿'] = '00ff00', 
     ['蓝'] = '00bdec',--浅蓝
-    ['黄'] = 'ffff00',
     ['青'] = '00ffff',
     ['紫'] = 'df19d0',
     ['橙'] = 'FFCC00',
@@ -117,10 +118,25 @@ local color_code = {
     ['粉'] = 'bc8f8f',
     ['白'] = 'ffffff',
     ['黑'] = '883A00',
+    ['暗金'] = '883A00',
     ['金'] = 'ffff00',
+    ['黄'] = 'ffff00',--白
 	['灰'] = 'cccccc',
 	['淡黄'] = 'FFE799',
-    ['神'] = 'df19d0', --91007F 860202
+	['神'] = 'df19d0', --91007F 860202
+
+    ['真神阶'] = 'bc8f8f',--紫
+	['神阶'] = 'bc8f8f',--紫
+	['真天赋'] = 'df19d0',--紫
+    ['天赋'] = 'df19d0',--紫
+    ['真天阶'] = 'df19d0',--紫
+    ['天阶'] = 'ff0000',--红
+    ['地阶'] = 'ffff00',--金
+    ['玄阶'] = '00bdec',--浅蓝
+    ['黄阶'] = 'ffffff',--白
+	
+    ['魔阶'] = '883A00',--紫
+    ['半魔阶'] = '883A00',--紫
 	
 }
 ac.color_code = color_code
@@ -133,6 +149,7 @@ local color_model = {
     ['红'] = [[faguanghong.mdx]],
     ['绿'] = [[faguanglv.mdx]],
     ['紫'] = [[faguangzi.mdx]],
+	['黑'] = [[File00000376 - RC.mdx]],
 }
 
 --颜色模型 目前应用于装备
@@ -141,10 +158,27 @@ local zb_color_model = {
     ['蓝'] = [[File00000376 - B.mdx]],
     ['金'] = [[File00000376 - Y.mdx]],
     ['红'] = [[File00000376 - R.mdx]],
-    ['绿'] = [[File00000376 - G.mdx]],
+	['绿'] = [[File00000376 - G.mdx]],
+	['黑'] = [[File00000376 - RC.mdx]],
     ['书'] = [[ArcaneTome.mdx]],
 }
 ac.zb_color_model = zb_color_model
+
+--技能model
+local skill_model = {
+    ['真神阶'] = 'zibianshu.mdx',--紫
+    ['神阶'] = 'zibianshu.mdx',--紫
+    ['天赋'] = 'zibianshu.mdx',--紫
+    ['真天阶'] = 'zibianshu.mdx',--紫
+    ['天阶'] = 'hongbianshu.mdx',--红
+    ['地阶'] = 'zongbianshu.mdx',--金
+    ['玄阶'] = 'lanbianshu.mdx',--浅蓝
+	['黄阶'] = 'huibianshu.mdx',--白
+	
+    ['魔阶'] = 'zongbianshu.mdx',
+    ['半魔阶'] = 'lanbianshu.mdx',
+}
+ac.skill_model = skill_model
 
 
 local drop_flag = false
@@ -193,22 +227,30 @@ function mt:set_name(name)
 			show_lv = 'Lv'..self.level 
 		end		
 	end	
+	local suit_name =''
 	if self.suit_type then 
-		color = color_code['绿']
+		for n1,n2 in name:gmatch('(【[^\r\n]+】)([^\r\n]+)') do
+			suit_name = n1
+			name = n2
+		end
+		suit_name = '|cff'..color_code['绿']..suit_name..'|r'
 	end	
 
-	local str = '|cff'..color..tostring(name)..show_lv..'|r'
+	local str = suit_name..'|cff'..(color or '')..tostring(name)..show_lv..'|r'
 	if not self.store_name then 
-		self.store_name = str
-	end	
-	if not self.color_name then 
-		self.color_name = str
-	end	
+		self.store_name= str
+	end
+	self.color_name = str
 	japi.EXSetItemDataString(base.string2id(id),4,str)
 end
 --获取商店物品显示名字
 function mt:get_store_name()
-	return self.store_name or self.name or ''
+	local name = self.store_name
+	if type(self.store_name) =='function' then 
+		name = self:store_name()
+	end
+	name = name ..self:get_hotkey_tip(hero)
+	return name or self.name or ''
 end
 --设置物品说明
 --物品掉落地上时，点击物品的说明
@@ -220,7 +262,8 @@ end
 --设置物品描述
 function mt:set_tip(str)
 	local id = self.type_id
-	japi.EXSetItemDataString(base.string2id(id),3,str)
+	--已经用自定义ui模拟
+	-- japi.EXSetItemDataString(base.string2id(id),3,str)
 	japi.EXSetItemDataString(base.string2id(id),5,str)
 end
 
@@ -241,6 +284,13 @@ function mt:setPoint(point)
 	return true
 end
 
+--设置位置
+function mt:set_point(point)
+	local x, y = point:get()
+	jass.SetItemPosition(self.handle, x, y) --设置物品的位置
+	self:show(true)
+	return true
+end
 --设置是否可丢弃
 function mt:disable_drop(is)
 	jass.SetItemDroppable(self.handle, is)
@@ -248,7 +298,8 @@ end
 
 --获取购买价格
 function mt:buy_price()
-	return self.gold or 0,(self.show_gold or 0),self.player_gold and self.player_gold[ac.player.self] 
+	local gold = (self.player_gold and self.player_gold[ac.player.self]) and self.player_gold[ac.player.self] or (self.gold or 0)
+	return self.gold or 0,gold,self.player_gold and self.player_gold[ac.player.self] 
 end
 
 --获取出售价格
@@ -264,7 +315,8 @@ end
 
 --获取购买木头
 function mt:buy_wood()
-	return self.wood or 0,(self.show_wood or 0),self.player_wood and self.player_wood[ac.player.self] 
+	local gold = (self.player_wood and self.player_wood[ac.player.self]) and self.player_wood[ac.player.self] or (self.wood or 0)
+	return self.wood or 0,gold,self.player_wood and self.player_wood[ac.player.self] 
 end
 
 --获取出售木头
@@ -332,7 +384,7 @@ end
 
 --获取购买火灵
 function mt:buy_fire_seed()
-	local gold = (self.player_fire and self.player_fire[ac.player.self]) and self.player_fire[ac.player.self] or (self.fire_seed or 0)
+	local gold = (self.player_fire_seed and self.player_fire_seed[ac.player.self]) and self.player_fire_seed[ac.player.self] or (self.fire_seed or 0)
 	-- self.fire_seed = gold
 	self.fire_seed = self.fire_seed or 0 
 	for i=1,10 do
@@ -341,7 +393,7 @@ function mt:buy_fire_seed()
 		end	
 	end
 	self.show_fire_seed = gold
-	return self.fire_seed,self.show_fire_seed,self.player_fire and self.player_fire[ac.player.self] 
+	return self.fire_seed,self.show_fire_seed,self.player_fire_seed and self.player_fire_seed[ac.player.self] 
 end
 
 --获取出售火灵
@@ -366,7 +418,6 @@ function mt:set_item_count(count)
 	self._count = count
 	if count > 0 then 
 		jass.SetItemCharges(self.handle,count)
-		self:set_tip(self:get_tip())
 	else 
 		self:item_remove()	
 	end	
@@ -385,25 +436,28 @@ function mt:show(is)
 	local handle = self.handle
 	jass.SetItemVisible(handle,true)
 	if is then
-        -- self.recycle = false
+		-- self.recycle = false
+		--已经有物品的话，不删除，设置位置
 		if self._eff then
-			self._eff:remove()
-			self._eff = nil
+			-- self._eff:remove() 
+			-- self._eff = nil
+			self._eff:set_position(self:get_point())
+		else 
+			self._eff = ac.effect_ex{
+				point = self:get_point(),
+				model =self._model,
+				size = self.model_size or 1,
+				item_show = true,
+				angle = 270
+			}
 		end
-		-- print(self:get_point())
+		-- -- print(self:get_point())
 		-- self._eff = ac.effect(self:get_point(),self._model,270,1,'origin')
 		
 		-- --设置物品模型 套装 模型大小
 		-- if self.model_size and self._eff then 
 		-- 	self._eff.unit:set_size(self.model_size )
 		-- end
-		self._eff = ac.effect_ex{
-			point = self:get_point(),
-			model =self._model,
-			item_show = true, --异步展示特效时，物品依旧显示
-		   size = self.model_size or 1,
-		   angle = 270
-	   }
 	end
 end
 
@@ -422,6 +476,14 @@ function mt:is_show()
 	return ((jass.IsItemVisible(self.handle) == true))
 end
 
+--单位改变模型
+function mt:set_model(model)
+	local model = model or self._model
+	if self._eff then 
+		japi.SetUnitModel(self._eff.unit.handle,model)
+		self._model = model
+	end		
+end
 --获取物品在地上的坐标
 function mt:get_point()
 	local x,y = jass.GetItemX(self.handle),jass.GetItemY(self.handle)
@@ -448,12 +510,19 @@ function mt:item_init_skill()
 	-- end
 	-- 用 item.not_dis = true 替换
 	japi.EXSetAbilityDataReal(self:get_handle(), 1, 0x69, self.cool or 0)
-	-- self.is_skill_init = true
+	self.is_skill_init = true
 end
 function mt:get_item_lni_tip(str)
 	local item_tip = str or (self.lni_data and self.lni_data.tip ) or ''
 	item_tip = item_tip:gsub('%%([%S_]*)%%', function(k)
 		local value = self[k]
+		local dv = self.data[k]
+		-- 如果表里的这项是函数或表,则总是以表里的为准
+		local dvt = type(dv)
+		if not value or dvt == 'function' or dvt == 'table' then
+			value = dv
+		end
+		-- local value = self[k]
 		local tp = type(value)
 		local color_flag
 		if tp == 'function' then
@@ -495,9 +564,9 @@ function mt:get_tip()
 	end	
 	--如果物品tip和技能tip一致，不添加技能tip
 	--去掉颜色代码
-	local t_str = skill_tip:gsub('|[cC]%w%w%w%w%w%w%w%w(.-)|[rR]','%1'):gsub('|n','\n'):gsub('\r','\n')
-	local s_str = item_tip:gsub('|[cC]%w%w%w%w%w%w%w%w(.-)|[rR]','%1'):gsub('|n','\n'):gsub('\r','\n')
-	-- print(t_str,s_str)
+	local t_str = clean_color(skill_tip)
+	local s_str = clean_color(item_tip)
+	-- print('地图等级：',t_str,s_str)
 	-- print(self.color)
 	if self.color then 
 		color_tip = '|cff'..ac.color_code['淡黄'].. '品质：|R|cff'..ac.color_code[self.color]..self.color..'|r\n'
@@ -508,12 +577,12 @@ function mt:get_tip()
 
 	if owner then
 		--有所属单位则说明物品在身上
-		if self:sell_price() > 0 then 
-			gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_price()..'|r|n'
-		end	
-		if self:sell_wood() > 0 then 
-			gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_wood()..'(木头)|r|n'
-		end	
+		-- if self:sell_price() > 0 then 
+		-- 	gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_price()..'|r|n'
+		-- end	
+		-- if self:sell_wood() > 0 then 
+		-- 	gold = '|cff'..ac.color_code['淡黄']..'售价：|R'..self:sell_wood()..'(木头)|r|n'
+		-- end	
 		if self.get_sell_tip then 
 			gold = self.get_sell_tip
 		end	
@@ -537,12 +606,8 @@ function mt:get_tip()
 	
 	
 	tip = store_title..gold..color_tip..item_type_tip..content_tip.. item_tip
-	-- print(item_tip,skill_tip)
 	if skill_tip and t_str ~= s_str then 
-	    if item_tip ~='' then  
-			local temp_tip = '|cff'..color_code['灰']..'技能：'..'|r'..'\n' 
-		end	
-		tip = tip..(temp_tip or '')..skill_tip..'\n'
+		tip = tip..skill_tip..'\n'
 	end	
 	-- 物品最后一行换行 
 	-- items.lni_data = data
@@ -571,7 +636,7 @@ local function register_item_destroy_event(item_handle)
 	end)
 	
 end
-
+	
 --单位获得物品 添加属性
 function mt:on_add_state()
 	local hero = self.owner
@@ -654,7 +719,7 @@ function mt:on_use_state()
 	end	
 	hero.use_item[self.name] = (hero.use_item[self.name] or 0) + 1
 	if hero.use_item[self.name] > self.max_use_count then 
-		hero:get_owner():sendMsg('|cffFFE799【系统消息】|r|cffff0000操作失败|r '..self.color_name..'已被激活，可以在神器系统中查看',2)
+		-- hero:get_owner():sendMsg('|cffebb608【系统】|r|cffff0000操作失败|r '..self.color_name..'已被激活，可以在神器系统中查看',2)
 		return 
 	end	
 	--播放特效
@@ -666,18 +731,9 @@ function mt:on_use_state()
 
 	--单位的属性表
 	local data = ac.unit.attribute
-
 	local state = {}
 	for key in sortpairs(data) do 
-		local value 
-		if self.random then 
-			value = self.randm_data[key]
-			if value then 
-				value = math.random(value[1],value[2])
-			end 
-		else 
-			value = self[key]
-		end 
+		local value = self[key]
 		if value then 
 			table.insert(state,{name = key,value = value})
 		end 
@@ -691,26 +747,37 @@ function mt:on_use_state()
 		return a.name < b.name
 	end) 
 
-	local is_show_text = self:get_type() == '神符'
 	for index,value in ipairs(state) do 
-		if is_show_text then 
-			ac.texttag
-			{
-				string = value.name .. ' +' .. value.value,
-				size = 10,
-				position = hero:get_point(),
-				speed = 86,
-				red = (self.color[1] / 255 * 100),
-				green = (self.color[2] / 255 * 100),
-				blue = (self.color[3] / 255 * 100),
-				player = hero:get_owner()
-			}
-		end
 		if self.item_type == '消耗品' or self.item_type == '神符' then
-			-- print('使用物品,增加属性：',name,value.name,value.value)
 			hero:add_tran(value.name,value.value)
 		end	
 	end 
+	
+	--单位的属性表
+	local data = ac.player_attr or {}
+	local state = {}
+	for i,key in ipairs(data) do 
+		local value = self[key]
+		if value then 
+			table.insert(state,{name = key,value = value})
+		end 
+		key = key..'%'
+		value = self[key]
+		if value then 
+			table.insert(state,{name = key,value = value})
+		end 
+	end
+	table.sort(state,function (a,b)
+		return a.name < b.name
+	end) 
+
+	for index,value in ipairs(state) do 
+        -- print('玩家属性',value.name,value.value)
+		if self.item_type == '消耗品' or self.item_type == '神符' then
+			hero.owner:add_tran(value.name,value.value)
+		end	
+	end 
+
 	self:set_tip(self:get_tip())
 
 end
@@ -738,6 +805,14 @@ function mt:on_remove_state()
 	end
 end
 
+--物品 回收或显示在获得者脚下
+function mt:on_recycle(where)
+	if self.recycle then
+		self:item_remove()
+	elseif not self:is_show() then 
+		self:setPoint(where:get_point())
+	end
+end
 --删除物品
 function mt:item_remove(is)
 	-- print('即将移除物品：',self.slot_id,self.name,self.handle)
@@ -746,7 +821,6 @@ function mt:item_remove(is)
 	if not self.handle then 
 		return
 	end	
-	
 	self.has_removed = true
 	--移除物品时，如果物品在单位身上，会触发单位丢弃物品事件，会先执行下面代码，再执行单位丢弃。
 	self.is_discard_event = true
@@ -755,6 +829,7 @@ function mt:item_remove(is)
 	end	
 	jass.RemoveItem(self.handle)
 	dbg.handle_unref(self.handle)
+
 
 	ac.item.item_map[self.handle] = nil
 	ac.item.removed_items[self] = self
@@ -827,12 +902,11 @@ end
 --添加物品
 --true,满格掉地上。默认是阻止添加。
 --应用： 合成装备时，满格掉落地上,给与装备，满格掉落
-function unit.__index:add_item(it,is_fall)
-
+function unit.__index:add_item(it,is_fall,p)
 	--如果没有初始化则创建
 	if type(it) =='string'  then 	
 		--不创建特效
-		it = ac.item.create_item(it,nil,true)
+		it = ac.item.create_item(it,nil,true,p)
 		if not it then 
 			return 
 		end
@@ -848,6 +922,11 @@ function unit.__index:add_item(it,is_fall)
 		it.is_discard_event = false 
 		return 
 	end
+	--获得物品前，如果该物品有指定map_level ，则改变物品类型为神符
+	local p = self.owner
+	if it.map_level and p:Map_GetMapLevel()>=it.map_level and it:get_item_count() == 1 then 
+		it.item_type = '神符'
+	end
 	-- 统一修复，如果英雄死亡时给与，统一掉地上。
 	if not self:is_alive() then 
 		it:setPoint(self:get_point())
@@ -860,29 +939,26 @@ function unit.__index:add_item(it,is_fall)
 		return it
 	end	
 	--如果物品指定所有者，不是所有者就返回
-	if it.owner_ship and it.owner_ship:get_owner() ~= self:get_owner() then 
-	   self.owner:showSysWarning('不是你的')
-	   return 
+	if it.owner_ship and type(it.owner_ship)=='table' and it.owner_ship ~= self:get_owner() then 
+	   self.owner:showSysWarning('|cffff0000这东西不属于你')
+	   it.recycle = false 
+	   it:on_recycle(self)
+	   return it
 	end   	
 	--为了合成装备
 	-- print('装备2',it)
+	--获取一个空槽位
 	if it.check_hecheng then 
+		print('检测合成',it.name)
 		if self:event_dispatch('单位-合成装备', self, it) then
 			self.buy_suc = true 
-			return 
+			return it
 		end
 	end
 	
 	if self:event_dispatch('单位-即将获得物品', self, it) then
-		--装备唯一时，要求掉落在地上 如果代码直接添加，无法被加在地上。
-		-- if is_fall then
-		-- 	it:setPoint(self:get_point())
-		-- end	
-		--消耗品 就算 掉地上也要回收
-		if it.recycle then
-			it:item_remove()
-		end	
-		 
+
+		it:on_recycle(self)
 		--给与 时的处理逻辑
 		-- 唯一装备可能要处理下。
 		if it.geiyu then
@@ -893,22 +969,16 @@ function unit.__index:add_item(it,is_fall)
 				it.recycle = false
 			end	
 		end 
-		return
+		return it
 	end
 	
 	--获取一个空槽位
 	local slot = self:get_nil_slot()
 	if not slot then
-		self.owner:showSysWarning('物品栏已满')
-		--满格时，掉落地上
-		if is_fall then
-			it:setPoint(self:get_point())
-			it.recycle = false
-		elseif it.recycle then
-			--物品栏已满，需要回收
-			-- @应用在 购买商店物品 、 代码直接添加物品给英雄
-			it:item_remove()
-		end		
+		-- self.owner:showSysWarning('物品栏已满')
+		self.owner:sendMsg('|cffebb608物品栏已满|r',5)
+		it.recycle = false
+		it:on_recycle(self)
 		return it
 	end
 	--单位真正获得物品时的处理
@@ -929,17 +999,23 @@ function unit.__index:add_item(it,is_fall)
 	it.is_discard_event = false 
 
 	-- print(it.owner,self.handle,it.is_skill_init)
-	-- if not it.is_skill_init then
-	it:item_init_skill()
+	if not it.is_skill_init then
+		it:item_init_skill()
 	-- else
 	-- 	it:_call_event 'on_add'
-	-- end
+	-- 	it:_call_event 'on_upgrade'	
+	-- 	--显示冷却
+	-- 	-- if it.passive then 
+	-- 		it:set_show_cd() 
+		-- end
+		-- ac.game:event_notify('技能-升级',self,it) --属性（刷新）
+	end
 			
 	-- it:on_add_state() 
 
-	ac.wait(10,function()
+	-- ac.wait(10,function()
 		it:hide()
-	end)
+	-- end)
 	--刷新 当前选择的单位的tip
 	if it.auto_fresh_tip then
 		ac.loop(1000, function(t)
@@ -949,19 +1025,9 @@ function unit.__index:add_item(it,is_fall)
 			end
 			--设置tip
 			it:set_tip(it:get_tip())
-			--刷新货币
-			-- it:buy_price()
-			-- it:buy_wood()
-			-- it:buy_kill_count()
-			-- it:buy_jifen()
-			-- it:buy_fire_seed()
 		end)
 	end
 	self:event_notify('单位-获得物品后',self, it)
-	-- self:print_item(true)
-	--刷新tip
-	-- it:fresh_tip()
-	-- print(it:get_tip())
 	return it
 end
 --打印单位身上的物品 ，打印全部 或是 当前页
@@ -999,6 +1065,11 @@ function unit.__index:remove_item(it)
 	--移除技能
 	if it.owner then 
 		it:_call_event 'on_remove'
+		
+		if it.ability_id and not it.no_ability then
+			it.owner:remove_ability(it.ability_id)
+		end
+		it.is_skill_init = false
 	end	
 
 	--神符类的物品，有所有者，但是没有slot_id 所以，需要做一重判断
@@ -1019,7 +1090,10 @@ function unit.__index:remove_item(it)
 	--触发丢弃物品时，没有马上返回物品位置。
 	ac.wait(0,function()
 		-- print(it:get_point())
-		it:show(true)
+		--等待0秒后，如果有owner,证明在人身上，不需要显示
+		if not it.owner then 
+			it:show(true)
+		end
 	end)   
 	
 	jass.UnitRemoveItem(self.handle,it.handle)
@@ -1101,26 +1175,35 @@ function unit.__index:get_type_count(it)
 	return false
 end
 
+local item_dummy
+ac.wait(0,function() 
+	item_dummy= ac.item.create_item('物品模板',ac.point(0,0),true)
+end)
 
+function item.j_item(handle)
+	return ac.item.item_map[handle]
+end
 --创建物品
 --物品名称
 --位置
 --是否创建特效，默认创建,true 不创建， false 创建
-function item.create_item(name,poi,is)
+function item.create_item(name,poi,hide,p)
 	--创建一个物品
 	local items = setmetatable({},item)
 	
 	--在继承skill的属性(如果带技能的话,不存在技能时遍历一下也无所谓)
-	-- local data = ac.skill[name]
-	-- for k, v in pairs(data) do
-	-- 	items[k] = v
-	-- end	
-	local skl = ac.dummy:add_skill(name,'英雄')
-	for k, v in sortpairs(skl) do
+	local data = ac.skill[name]
+	data.owner = ac.dummy
+	data:update_data()
+	for k, v in pairs(data) do
 		items[k] = v
-	end
+	end	
+	-- local skl = ac.dummy:add_skill(name,'英雄')
+	-- for k, v in sortpairs(skl) do
+	-- 	items[k] = v
+	-- end
 	items.owner = nil
-	skl:remove()
+	-- skl:remove()
 	-- print_r(items.old_status or {})
 	--如果存在lni则继承lni的属性
 	local data = ac.table.ItemData[name]
@@ -1134,13 +1217,12 @@ function item.create_item(name,poi,is)
 		items.old_status = nil 
 	end
 	-- print(items['全属性'])
-	
 
 	--读取一个句柄
 	local type_id = ac.get_item_handle()
 	if not type_id then 
-		ac.player.self:sendMsg('|cffff0000物品超出上限，请及时清理地上物品!|r',10)
-		return 
+		ac.player.self:sendMsg('|cffebb608【系统】|r|cffff0000物品超出上限，请及时清理地上物品!|r',10)
+		return item_dummy
 	end	
 	items.type_id = type_id
 	--如果有坐标，则说明创建在地上的
@@ -1148,6 +1230,8 @@ function item.create_item(name,poi,is)
 	-- print('指定坐标创建物品',poi)
 	if poi then
 		x,y = poi:get()
+	else
+		hide = true --不指定位置的话，默认不显示物品
 	end
 	
 	--创建一个实例物品
@@ -1179,12 +1263,8 @@ function item.create_item(name,poi,is)
 	if items.specail_model then 
 		items._model = items.specail_model
 	end	
-	if not is then 
-		-- items._eff = ac.effect(ac.point(x,y),items._model,270,1,'origin')
-		-- --设置物品模型 套装 模型大小
-		-- if items.model_size and items._eff then 
-		-- 	items._eff.unit:set_size(items.model_size )
-		-- end
+	items:hide()--默认hide
+	if not hide then 
 		items:show(true)
 	end
 	
@@ -1199,9 +1279,8 @@ function item.create_item(name,poi,is)
 	items.not_dis = true
 	-- print(items.name,items.item_type,items._count)
 	--设置物品名
-	items.name = name
+	items.name = name 
 	items:set_name(items.title or name)
-	-- print(items.tip)
 	--设置tip
 	items:set_tip(items:get_tip())
 	--设置贴图
@@ -1224,7 +1303,9 @@ function item.create_item(name,poi,is)
 
 	local skill_id = items:get_item_skillid()
 	items.ability_id = skill_id
-
+	if p then 
+		items.owner_ship = p 
+	end
 	--绑定 物品被A时，地上特效删除 的事件
 	-- 会引起掉线 不用
 	-- register_item_destroy_event(item_handle)
@@ -1239,15 +1320,17 @@ end
 --创建物品 - 商店使用
 --@商品位置 必填
 function item.create(name,pos,seller)
-	-- if ac.item.shop_item_map[name] then 
-	-- 	return ac.item.shop_item_map[name]
-	-- end
+	if ac.item.shop_item_map[name] then 
+		return ac.item.shop_item_map[name]
+	end
 	--创建一个物品
 	local items = setmetatable({},item)
 
 
 	--在继承skill的属性(如果带技能的话,不存在技能时遍历一下也无所谓)
 	local data = ac.skill[name]
+	data.owner = ac.dummy
+	data:update_data()
 	for k, v in sortpairs(data) do
 		items[k] = v
 	end	
@@ -1278,20 +1361,10 @@ function item.create(name,pos,seller)
 	items.handle = item_handle
 	--设置物品名
 	items.name = name
-	items:set_name(items.title or name)
+	items:set_name(name)
 	--设置贴图
 	items:set_art(items.art)
-	--技能处理
-	-- local flag 
-	-- for i,v in ipairs(ac.skill_list2) do
-	-- 	if v == items.name then 
-	-- 		flag = true
-	-- 		break
-	-- 	end    
-	-- end 
-	-- if flag then 
-	-- 	items.color = '紫'
-	-- end	
+	
 	--混合图标处理
 	local blend = items.blend or blend_file[items.color or 'nil'] 
 	if blend then 
@@ -1318,8 +1391,9 @@ end
 
 --商店标题
 function mt:set_store_title(title)
-	local title = (self.store_affix or '购买 ')..title..'|r'
-	japi.EXSetItemDataString(base.string2id(self.type_id), 2,title)
+	--已经用自定义ui模拟，不需要刷新到魔兽端
+	-- local title = (self.store_affix or '购买 ')..title..'|r'
+	-- japi.EXSetItemDataString(base.string2id(self.type_id), 2,title)
 end
 
 --更新商店信息
@@ -1381,6 +1455,99 @@ function mt:conditions(skills,target)
 end
 
 
-	
+
+function mt:set_show_cd()
+	if not self:is_visible() then
+		return
+	end
+	if self.cooldown_mode == 1 then
+		if self.spell_stack < self.last_min_stack then
+			self:set('last_min_stack', self.spell_stack)
+		elseif self.spell_stack >= self.cost_stack then
+			self:set('last_min_stack', self.cost_stack)
+		end
+	end
+	local cool, max_cool = self:get_show_cd()
+	if self.show_cd == 1 then
+		japi.EXSetAbilityDataReal(self:get_handle(), 1, 0x69, max_cool)
+		japi.EXSetAbilityState(self:get_handle(), 0x01, cool)
+		japi.EXSetAbilityDataReal(self:get_handle(), 1, 0x69, 0)
+	end
+end
+
+--暂停cd
+function mt:pause_cool()
+	if self.pause_count == 1 and self.cool_timer then
+		self.cool_timer:pause()
+		japi.EXSetAbilityState(self:get_handle(), 0x01, 0)
+		japi.EXSetAbilityDataReal(self:get_handle(), 1, 0x69, 300)
+		if self.pause_timer then
+			self.pause_timer:remove()
+		end
+		local time = self:get_cd() / self:get_max_cd() * 300
+		self.pause_timer = ac.loop(1000, function(t)
+			if self.pause_count > 0 then
+				japi.EXSetAbilityState(self:get_handle(), 0x01, time)
+			else
+				t:remove()
+			end
+		end)
+		ac.wait(0, function()
+			self.pause_timer:on_timer()
+		end)
+		return true
+	end
+	return false
+end
+
+	--暂停cd 参数 true 暂停冷却 false 继续冷却效果
+function mt:pause(flag)
+	if flag == nil then
+		flag = true
+	end
+	if flag then
+		self.pause_count = self.pause_count + 1
+		self:pause_cool()
+	else
+		self.pause_count = self.pause_count - 1
+		if self.pause_count == 0 and self.cool_timer then
+			japi.EXSetAbilityState(self:get_handle(), 0x01, 0)
+			self:set_show_cd()
+		end
+	end
+end
+
+--拾取物品相关的优化。
+-- ac.game:event '单位-发布指令' (function(trg, unit, order, target, player_order, order_id)
+
+-- 	if unit._item_order_timer then
+-- 		unit._item_order_timer:remove()
+-- 		unit._item_order_timer = nil
+-- 	end
+
+-- 	local item = target
+-- 	-- print(unit, order, target, player_order, order_id)
+-- 	--满格拾取符文
+-- 	if order == 'smart' and target and ac.item.item_map[item.handle]  then
+-- 		local list = unit.item_list or {}
+
+-- 		if #list == 6 then
+-- 			unit:issue_order('move',item:get_point())
+-- 			unit._item_order_timer = ac.loop(300,function ()
+-- 				if unit:get_point() * item:get_point() < 250 then
+-- 					-- item.owner = unit
+-- 					unit:add_item(item)
+
+-- 					if unit._item_order_timer then
+-- 						unit._item_order_timer:remove()
+-- 						unit._item_order_timer = nil
+-- 					end
+-- 					unit:issue_order('stop')
+-- 				end
+-- 			end)
+-- 		end
+
+-- 	end
+-- end)	
 return item
 

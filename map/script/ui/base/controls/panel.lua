@@ -1,71 +1,120 @@
 require 'ui.base.controls.class'
 
 class.panel = extends(class.ui_base){
+--static
+    object_map = {}, --存放所有存活的panel 对象
 
-    --背景 类型 和基类
-    _type  = 'panel',
-    _base  = 'BACKDROP',
+--public
+    normal_image = '', --图像背景
 
-    panel_map = {},
+    is_scroll = false, -- 是否是滚动面板
 
-    new = function (parent,image_path,x,y,width,height,scroll)
-        local ui = class.ui_base.create('panel',x,y,width,height)
+    scroll_y = 0, --滚动面板的y轴d
 
-        ui.scroll_y = 0
-        ui.enable_scroll = scroll or false 
-       
+--private
+    _type  = 'panel', --fdf 中的模板类型
+
+    _base  = 'BACKDROP', --fdf 中的控件类型
+
+
+    --构造器
+    builder = function (control_class, param)
+        --创建实例对象
+        local control = class.ui_base.create(param._type or control_class._type, 0, 0, 32, 32)
         
-        ui.__index = class.panel
-      
+        --设置元方法
+        for name, meta_method in pairs(control_class) do 
+            if name:sub(1, 2) == '__' then 
+                control[name] = meta_method
+            end 
+        end 
+        --实例对象绑定控件类
+        control.__index = control_class
 
-        if ui.panel_map[ui._name] ~= nil then 
-            class.ui_base.destroy(ui)
-            log.error('创建背景失败 字符串id已存在')
+        for name, value in pairs(param) do 
+            control[name] = value
+        end 
+        local parent = param.parent
+        if parent then 
+            if param.w == nil then  control.w = parent.w  end 
+            if param.h == nil then  control.h = parent.h  end 
+        end 
+        local object = control:build()
+
+        if object == nil then 
             return 
         end 
-
         if parent then 
-            ui.id = japi.CreateFrameByTagName( ui._base, ui._name, parent.id, ui._type,0)
+            table.insert(parent.children, object)
+        end 
+        for name, value in pairs(param) do 
+            if name ~= 'parent' and type(value) == 'table' and value.type then 
+                local child_class = rawget(class, value.type)
+                if child_class then 
+                    value.parent = object
+                    object[name] = child_class:builder(value)
+                end 
+            end 
+        end 
+        return object
+    end,
+
+    --构造
+    build = function (self)
+        self.scroll_y = 0
+
+        if self.parent then 
+            self._id = japi.CreateFrameByTagName( self._base, self._name, self.parent._id, self._type,0)
         else 
-            ui.id = japi.CreateFrameByTagName( ui._base, ui._name, game_ui, ui._type,0)
+            self._id = japi.CreateFrameByTagName( self._base, self._name, game_ui, self._type,0)
         end 
      
-        if ui.id == nil or ui.id == 0 then 
-            class.ui_base.destroy(ui)
+        if self._id == nil or self._id == 0 then 
+            class.ui_base.destroy(self)
             log.error('创建背景失败')
             return 
         end
    
-        ui.panel_map[ui.id] = ui
-        ui.parent = parent
-        
-        ui:set_position(x,y)
-        ui:set_control_size(width,height)
-        ui:set_normal_image(image_path)
-        if scroll then 
-            --添加一个滚动条
-            ui:add_scroll_button()
-        end 
+        self.object_map[self._id] = self
 
-        return ui
+        self:init()
+
+        if rawget(self, 'normal_image') then 
+            self:update_normal_image()
+        end 
+        if self.is_scroll then 
+            --添加一个滚动条
+            self:add_scroll_button()
+        end 
+        return self
+    end,
+
+    new = function (parent,image_path,x,y,width,height,scroll)
+        local control = class.panel:builder
+        {
+            parent = parent,
+            normal_image = image_path,
+            x = x,
+            y = y,
+            w = width,
+            h = height,
+            is_scroll = scroll,
+        }
+        return control
     end,
 
     destroy = function (self)
-        if self.id == nil or self.id == 0 then 
+        if self._id == nil or self._id == 0 then 
             return 
         end
 
-        self.panel_map[self.id] = nil 
-        self.panel_map[self._name] = nil
+        self.object_map[self._id] = nil 
 
         class.ui_base.destroy(self)
     end,
 
-
     add = function (self,class,...)
-        local child = class.add_child(self,...)
-        table.insert(self.children,child)
-        return child
+        return class.add_child(self,...)
     end,
 
      --添加一个可以拖动的标题 来拖动整个界面
@@ -175,15 +224,15 @@ class.panel = extends(class.ui_base){
         self.scroll_button = button 
     end,
 
-    --移动动画 x y 是移动到目标的位置 value 为正数是 变大 负数是缩小 当小于0.01的时候就会隐藏value指变大或缩小百分比，target_size 为到某个程度后停止变大或缩小
-    -- move_animation = function (self,tx,ty,value,target_value)
+    --移动动画 x y 是移动到目标的位置 value 为正数是 变大 负数是缩小 当小于0.01的时候就会隐藏
+    --move_animation = function (self,tx,ty,value)
     --    local size = self.relative_size or 1  
     --    local interval = math.abs(value) * 2
     --    game.loop(33,function (timer)
-           
+    --        
     --        local sx,sy = self:get_real_position()
     --        local x,y = self.x,self.y 
-       
+    --    
     --        local exit = 0 
     --        if math.abs(sx - tx) > interval then 
     --            if sx > tx then 
@@ -203,32 +252,26 @@ class.panel = extends(class.ui_base){
     --        else 
     --            exit = exit + 1
     --        end 
-
+--
     --        if value > 0 then 
     --            self:show()
     --        end 
     --        if exit == 2 then 
-    --            if size < 0.1 then 
+    --            if value < 0 then 
     --                self:hide()
     --            end 
-              
+    --           
     --            timer:remove()
     --        else 
     --            self:set_position(x,y)
-           
+    --        
     --            size = size + (value / 100)
-    --            if size > 0.1 and size < 10  then 
-    --                 if target_size then
-    --                     if ((value > 0 and size< target_size) or (value<0 and size > target_size)) then
-    --                         self:set_relative_size(size)
-    --                     end    
-    --                 else    
-    --                     self:set_relative_size(size)
-    --                 end    
+    --            if size > 0.1 and size < 10 then 
+    --                self:set_relative_size(size)
     --            end 
     --        end 
     --    end)
-    -- end,
+    --end,
 
 
 
@@ -246,8 +289,17 @@ class.panel = extends(class.ui_base){
     ]]
 
     __tostring = function (self)
-        local str = string.format('面板 %d',self.id or 0)
+        local str = string.format('面板 %d',self._id or 0)
         return str
-    end
+    end,
+
+    child_builder = function (self, param)
+        
+        local class = class[param.type or ''] or self:get_this_class()
+        if class then 
+            param.parent = self 
+            return class:builder(param)
+        end 
+    end,
 }
 

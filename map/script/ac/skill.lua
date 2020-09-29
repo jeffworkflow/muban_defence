@@ -42,7 +42,7 @@ mt.type = 'skill'
 mt.name = ''
 
 --最大等级
-mt.max_level = 10
+mt.max_level = 100
 
 --等级（等级为0时表示技能无效）
 mt.level = 1
@@ -512,7 +512,6 @@ local function format_number(v)
 	return math_tointeger(v) or ('%.2f'):format(v)
 end
 ac.format_number = format_number
-
 -- 0000→W 00000000→亿
 local function format_number_tip(v) 
 	if type(v) ~= 'number' then
@@ -545,7 +544,7 @@ local function format_table(self, data, hero, level, need_level)
 		end
 		return table_concat(t, '/') .. '|r'
 	else
-		local v = format_number(data[level]) or 0
+		local v = format_number(data[level]) or format_number(data[1]) or 0
 		return '|cffffcc00' .. v .. '|r'
 	end
 end
@@ -651,6 +650,20 @@ function mt:get_simple_tip(hero, level, need_level)
 	end
 	return tip
 end
+--create by jeff 使通过get_key 读取到类似和tip一样的数据
+function mt:get_key(key,hero, level, need_level)
+	if not level then
+		level = self.level
+	end
+	local tip = self[key] 
+	if type(tip) == 'function' then
+		tip = format_function(self, tip, hero, level, need_level)
+	end
+	if type(tip) =='string' then
+		tip = format_string(self, tip, hero, level, need_level)
+	end
+	return tip
+end
 
 function mt:get_tip(hero, level, need_level)
 	if self.is_order then
@@ -689,7 +702,8 @@ function mt:get_title(hero)
 	if self.is_order then
 		return  (title or '') .. self:get_hotkey_tip(hero)
 	end
-	title = (title or '') .. self:get_hotkey_tip(hero) .. self:get_level_tip(hero)
+	local str = self.color and '|cff'..ac.color_code[self.color or '白']..'['..self.color ..']|r' or ''
+	title = (title or '')..str.. self:get_hotkey_tip(hero) .. self:get_level_tip(hero)
 	return title
 end
 
@@ -2291,10 +2305,12 @@ end
 function mt:cast_force(target, data)
 	local hero = self.owner
 	local self = self:create_cast(data)
+	-- print('技能-强制施法', self.name)
 	self.target = target
 	if self.instant == 0 then
 		local skills = hero._casting_list
 		if skills then
+			-- print('技能-强制施法1', self.name)
 			local wait
 			for _, skill in ipairs(skills) do
 				if skill.instant == 0 then
@@ -2305,12 +2321,14 @@ function mt:cast_force(target, data)
 						end
 						table_insert(wait, skill)
 					else
+						-- print('技能-强制施法2', self.name)
 						return false
 					end
 				end
 			end
 			if wait then
 				for _, skill in ipairs(wait) do
+					-- print('技能-强制施法3', self.name)
 					skill:stop()
 				end
 			end
@@ -2331,6 +2349,7 @@ function mt:cast_force(target, data)
 		end
 	end
 	
+	-- print('技能-强制施法4', self.name)
 	self:_change_step 'start'
 	ac.wait(0, function()
 		hero:set('魔法', hero:get '魔法')
@@ -2593,7 +2612,17 @@ local function init()
 				break
 			end
 		end
-
+		--处理物品相关
+		local item_cast
+		if hero.item_list then 
+			for i,it in sortpairs(hero.item_list) do
+				if it.ability_id == ability_id then 
+					skill = it 
+					item_cast = true
+					break
+				end
+			end
+		end
 		if not skill then
 			return
 		end
@@ -2635,7 +2664,13 @@ local function init()
 				return
 			end
 		end
-		skill:cast_by_client(target)
+		--物品或是技能 各自进入自己的施法流程
+		if item_cast and ac.item_cast then 
+			skill.target = target
+			ac.item_cast(hero,skill)
+		else
+			skill:cast_by_client(target)
+		end
 	end)
 	for i = 1, 13 do
 		jass.TriggerRegisterPlayerUnitEvent(j_trg, ac.player[i].handle, jass.EVENT_PLAYER_UNIT_SPELL_CHANNEL, nil)

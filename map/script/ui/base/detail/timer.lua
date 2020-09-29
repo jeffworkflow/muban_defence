@@ -155,9 +155,9 @@ end
 
 function game.timer(timeout, count, on_timer)
 	if count == 0 then
-		return ac.loop(timeout, on_timer)
+		return game.loop(timeout, on_timer)
 	end
-	local t = ac.loop(timeout, function(t)
+	local t = game.loop(timeout, function(t)
 		t.count = count - 1
 		on_timer(t)
 		count = count - 1

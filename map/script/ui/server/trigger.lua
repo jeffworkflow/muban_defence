@@ -1,23 +1,41 @@
 local ui = require 'ui.server.util'
 local unit = require 'types.unit'
+local japi = require 'jass.japi'
 local trg = CreateTrigger()
---注册同步事件
--- japi.RegisterMessageEvent(trg)
--- local function action() 
---     local message = japi.GetTriggerMessage()
---     local player = japi.GetMessagePlayer()
---     print(message:len(),message,player)
---     -- ac.player(GetPlayerId(player) + 1)
---     ui.on_custom_ui_event(ac.player(player + 1),message)
--- end
 
--- TriggerAddAction(trg,action)
+register_japi[[
+    native DzTriggerRegisterSyncData takes trigger trig, string prefix, boolean server returns nothing
+    native DzSyncData takes string prefix, string data returns nothing
+    native DzGetTriggerSyncData takes nothing returns string
+    native DzGetTriggerSyncPlayer takes nothing returns player
+]]
 
---注册同步事件
-japi.DzTriggerRegisterSyncData(trg,"ui",false)
-TriggerAddAction(trg,function ()
-    local message = japi.DzGetTriggerSyncData()
-    local player = japi.DzGetTriggerSyncPlayer()
-    -- print(message:len(),message,player)
-    ui.on_custom_ui_event(ac.player(GetPlayerId(player) + 1),message)
-end)
+if japi.GetGameVersion() >= 7000 and japi.DzTriggerRegisterSyncData then 
+
+    local SendCustomMessage = japi.SendCustomMessage
+
+    rawset(japi,'SendCustomMessage', function (msg)
+        japi.DzSyncData('ui', msg)
+    end)
+
+    japi.DzTriggerRegisterSyncData(trg, 'ui', false)
+    TriggerAddAction(trg,function ()
+        local message = japi.DzGetTriggerSyncData()
+        local player = japi.DzGetTriggerSyncPlayer()
+        -- print('网易同步',GetPlayerId(player) + 1, message)
+        ui.on_custom_ui_event(player,message)
+    end)
+
+else 
+    --注册同步事件
+    japi.RegisterMessageEvent(trg)
+    TriggerAddAction(trg,function ()
+        local message = japi.GetTriggerMessage()
+        local player = japi.GetMessagePlayer()
+        -- print('自定义同步',GetPlayerId(player) + 1, message)
+        ui.on_custom_ui_event(player,message)
+      
+    end)
+end 
+
+

@@ -1,4 +1,5 @@
 
+
 local ui = {}
 
 
@@ -10,16 +11,19 @@ ui.hashtable = {}
 ui.init = function () --预存数据表里的物的名字
     for file_type,file_data in pairs(ac.table) do
         for name,value in pairs(file_data) do
-            local hash = ui.get_hash(name)
-            local value = ui.hashtable[hash]   
-            if value ~= nil and value ~= name then 
-                print('哈希值发生碰撞了',name,value)
-            else 
-                ui.hashtable[hash] = name
-            end
+            ui.add_str(name)
         end
     end
 end
+ui.add_str = function (str)
+    local hash = ui.get_hash(str)
+    local value = ui.hashtable[hash]   
+    if value ~= nil and value ~= str then 
+        print('哈希值发生碰撞了',str,value)
+    else 
+        ui.hashtable[hash] = str
+    end
+end 
 
 ui.get_str = function (hash)
     return ui.hashtable[hash]
@@ -63,8 +67,7 @@ ui.send_message = function (info)
         print("字符串太长了",msg,debug.traceback())
         return
     end 
-    japi.DzSyncData("ui",msg)
-    -- japi.SendCustomMessage(msg)
+    japi.SendCustomMessage(msg)
 end
 
 ui.on_custom_ui_event = function (message)
@@ -80,7 +83,7 @@ ui.on_custom_ui_event = function (message)
         if event_table ~= nil then
             local func = event_table[func_name]
             if func ~= nil then
-                ui.player = player
+                ui.player = ac.player(GetPlayerId(player) + 1)
                 if params == nil then
                     func()
                 else
@@ -92,21 +95,15 @@ ui.on_custom_ui_event = function (message)
 
 end
 
-ui.get_mouse_pos = function ()
-    local x = japi.GetMouseVectorX() / 1024
-    local y = (-(japi.GetMouseVectorY() - 768)) / 768 
-    x = x * 1920
-    y = y * 1080
-    return x,y
-end
+ui.get_mouse_pos = game.get_mouse_pos
 
-ui.set_mouse_pos = function (x,y)
-    x = x / 1920 * 1024
-    y = 768 - y / 1080 * 768
-    japi.SetMousePos(x,y)
-end 
+ui.set_mouse_pos = game.set_mouse_pos
 
---将lua表编码成字符串
+ui.world_to_screen = game.world_to_screen
+
+ui.screen_to_world = game.screen_to_world
+
+--将lua表编码成字符串 有改动过
 ui.encode = function (tbl)
     local type = type
     local pairs = pairs
@@ -139,7 +136,7 @@ ui.encode = function (tbl)
                     buf[#buf+1] = format('[%s]=', k)
                 end 
             elseif tp == 'string' then
-                if find(k, '[^%w_]') then
+                if find(k, '[^%w_]') or find(k,'[%d*]')  then
                     buf[#buf+1] = format('[%q]=', k)
                 else
                     buf[#buf+1] = k..'='
@@ -166,7 +163,7 @@ ui.encode = function (tbl)
     dump(tbl)
     return table.concat(buf)
 end
-ac.encode = ui.encode
+
 --将字符串 加载为lua表
 ui.decode = function (buf)
     local f, err = load('return '..buf)
@@ -181,7 +178,6 @@ ui.decode = function (buf)
     end
     return res
 end
-ac.decode = ui.decode
 
 ui.copy_table = function (old)
     local new = {}

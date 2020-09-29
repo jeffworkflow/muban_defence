@@ -354,17 +354,17 @@ end
 function helper:get_server(key)
 	local p = self and self:get_owner() or ac.player(ac.player.self.id)
 	if key == 'all' then 
-		for name,val in pairs(p.server) do
+		for name,val in pairs(p.cus_server) do
 			local key = ac.server.name2key(name)
 			print('服务器存档:'..key,p:Map_GetServerValue(key))
 			print('自定义服务器存档:'..key,p.cus_server[name])
-			print('游戏中存档:',key,p.server[name])
+			print('游戏中存档:',key,p.cus_server[name])
 		end
 	else		
 		local name = ac.server.key2name(key)	
 		print('服务器存档:'..key,p:Map_GetServerValue(key))
 		print('自定义服务器存档:'..key,p.cus_server[name])
-		print('游戏中存档:'..key,p.server[name])
+		print('游戏中存档:'..key,p.cus_server[name])
 	end	
 end	
 
@@ -437,7 +437,7 @@ function helper:test_n2()
 		p:Map_SaveServerValue('ltc',1) --网易服务器
 		p:Map_SaveServerValue('xkwz',1) --网易服务器
 		p:Map_SaveServerValue('ty',1) --网易服务器
-		p.server['吕布'] = 1
+		p.cus_server['吕布'] = 1
 
 	end
 end	
@@ -470,8 +470,8 @@ function helper:test_n3()
 		p:Map_SaveServerValue('ltc',2) --网易服务器
 		p:Map_SaveServerValue('xkwz',2) --网易服务器
 		p:Map_SaveServerValue('ty',2) --网易服务器
-		p.server['吕布'] = 1
-		p.server['熊灵分裂'] = 1
+		p.cus_server['吕布'] = 1
+		p.cus_server['熊灵分裂'] = 1
 
 		p.mall['金币礼包'] = 1
 		p.mall['木材礼包'] = 1
@@ -518,16 +518,16 @@ function helper:test_n4()
 		p:Map_SaveServerValue('ltc',3) --网易服务器
 		p:Map_SaveServerValue('xkwz',3) --网易服务器
 		p:Map_SaveServerValue('ty',3) --网易服务器
-		p.server['吕布'] = 1
-		p.server['熊灵分裂'] = 1
-		p.server['鬼剑愁'] = 3
+		p.cus_server['吕布'] = 1
+		p.cus_server['熊灵分裂'] = 1
+		p.cus_server['鬼剑愁'] = 3
 
-		p.server['绝世魔剑'] = 3
-		p.server['书呆子'] = 3
-		p.server['剑瞎子'] = 3
-		p.server['扭蛋人生'] = 3
-		p.server['血羽之心'] = 3
-		p.server['天神之息'] = 3
+		p.cus_server['绝世魔剑'] = 3
+		p.cus_server['书呆子'] = 3
+		p.cus_server['剑瞎子'] = 3
+		p.cus_server['扭蛋人生'] = 3
+		p.cus_server['血羽之心'] = 3
+		p.cus_server['天神之息'] = 3
 
 		p.mall['金币礼包'] = 1
 		p.mall['木材礼包'] = 1
@@ -574,17 +574,17 @@ function helper:test_n5()
 		p:Map_SaveServerValue('ltc',4) --网易服务器
 		p:Map_SaveServerValue('xkwz',4) --网易服务器
 		p:Map_SaveServerValue('ty',4) --网易服务器
-		p.server['吕布'] = 1
-		p.server['熊灵分裂'] = 1
-		p.server['鬼剑愁'] = 1
-		p.server['爱国者导弹'] = 1
+		p.cus_server['吕布'] = 1
+		p.cus_server['熊灵分裂'] = 1
+		p.cus_server['鬼剑愁'] = 1
+		p.cus_server['爱国者导弹'] = 1
 		
-		p.server['绝世魔剑'] = 4
-		p.server['书呆子'] = 4
-		p.server['剑瞎子'] = 4
-		p.server['扭蛋人生'] = 4
-		p.server['血羽之心'] = 4
-		p.server['天神之息'] = 4
+		p.cus_server['绝世魔剑'] = 4
+		p.cus_server['书呆子'] = 4
+		p.cus_server['剑瞎子'] = 4
+		p.cus_server['扭蛋人生'] = 4
+		p.cus_server['血羽之心'] = 4
+		p.cus_server['天神之息'] = 4
 
 		p.mall['金币礼包'] = 1
 		p.mall['木材礼包'] = 1
@@ -665,18 +665,18 @@ function helper:test_n6()
 		p:Map_SaveServerValue('ltc',5) --网易服务器
 		p:Map_SaveServerValue('xkwz',5) --网易服务器
 		p:Map_SaveServerValue('ty',5) --网易服务器
-		p.server['吕布'] = 1
-		p.server['熊灵分裂'] = 1
-		p.server['鬼剑愁'] = 1
-		p.server['爱国者导弹'] = 1
-		p.server['张飞'] = 1
+		p.cus_server['吕布'] = 1
+		p.cus_server['熊灵分裂'] = 1
+		p.cus_server['鬼剑愁'] = 1
+		p.cus_server['爱国者导弹'] = 1
+		p.cus_server['张飞'] = 1
 		
-		p.server['绝世魔剑'] = 5
-		p.server['书呆子'] = 5
-		p.server['剑瞎子'] = 5
-		p.server['扭蛋人生'] = 5
-		p.server['血羽之心'] = 5
-		p.server['天神之息'] = 5
+		p.cus_server['绝世魔剑'] = 5
+		p.cus_server['书呆子'] = 5
+		p.cus_server['剑瞎子'] = 5
+		p.cus_server['扭蛋人生'] = 5
+		p.cus_server['血羽之心'] = 5
+		p.cus_server['天神之息'] = 5
 
 		p.mall['金币礼包'] = 1
 		p.mall['木材礼包'] = 1
@@ -757,19 +757,19 @@ function helper:test_n7()
 		p:Map_SaveServerValue('ltc',6) --网易服务器
 		p:Map_SaveServerValue('xkwz',6) --网易服务器
 		p:Map_SaveServerValue('ty',6) --网易服务器
-		p.server['吕布'] = 1
-		p.server['熊灵分裂'] = 1
-		p.server['鬼剑愁'] = 1
-		p.server['爱国者导弹'] = 1
-		p.server['张飞'] = 1
-		p.server['熊灵攻击减甲'] = 1
+		p.cus_server['吕布'] = 1
+		p.cus_server['熊灵分裂'] = 1
+		p.cus_server['鬼剑愁'] = 1
+		p.cus_server['爱国者导弹'] = 1
+		p.cus_server['张飞'] = 1
+		p.cus_server['熊灵攻击减甲'] = 1
 		
-		p.server['绝世魔剑'] = 6
-		p.server['书呆子'] = 6
-		p.server['剑瞎子'] = 6
-		p.server['扭蛋人生'] = 6
-		p.server['血羽之心'] = 6
-		p.server['天神之息'] = 6
+		p.cus_server['绝世魔剑'] = 6
+		p.cus_server['书呆子'] = 6
+		p.cus_server['剑瞎子'] = 6
+		p.cus_server['扭蛋人生'] = 6
+		p.cus_server['血羽之心'] = 6
+		p.cus_server['天神之息'] = 6
 
 		p.mall['金币礼包'] = 1
 		p.mall['木材礼包'] = 1
@@ -856,20 +856,20 @@ function helper:test_n8()
 		p:Map_SaveServerValue('ltc',7) --网易服务器
 		p:Map_SaveServerValue('xkwz',7) --网易服务器
 		p:Map_SaveServerValue('ty',7) --网易服务器
-		p.server['吕布'] = 1
-		p.server['熊灵分裂'] = 1
-		p.server['鬼剑愁'] = 1
-		p.server['爱国者导弹'] = 1
-		p.server['张飞'] = 1
-		p.server['熊灵攻击减甲'] = 1
-		p.server['金克丝'] = 1
+		p.cus_server['吕布'] = 1
+		p.cus_server['熊灵分裂'] = 1
+		p.cus_server['鬼剑愁'] = 1
+		p.cus_server['爱国者导弹'] = 1
+		p.cus_server['张飞'] = 1
+		p.cus_server['熊灵攻击减甲'] = 1
+		p.cus_server['金克丝'] = 1
 		
-		p.server['绝世魔剑'] = 7
-		p.server['书呆子'] = 7
-		p.server['剑瞎子'] = 7
-		p.server['扭蛋人生'] = 7
-		p.server['血羽之心'] = 7
-		p.server['天神之息'] = 7
+		p.cus_server['绝世魔剑'] = 7
+		p.cus_server['书呆子'] = 7
+		p.cus_server['剑瞎子'] = 7
+		p.cus_server['扭蛋人生'] = 7
+		p.cus_server['血羽之心'] = 7
+		p.cus_server['天神之息'] = 7
 
 		p.mall['金币礼包'] = 1
 		p.mall['木材礼包'] = 1
@@ -964,21 +964,21 @@ function helper:test_n9()
 		p:Map_SaveServerValue('ltc',8) --网易服务器
 		p:Map_SaveServerValue('xkwz',8) --网易服务器
 		p:Map_SaveServerValue('ty',8) --网易服务器
-		p.server['吕布'] = 1
-		p.server['熊灵分裂'] = 1
-		p.server['鬼剑愁'] = 1
-		p.server['爱国者导弹'] = 1
-		p.server['张飞'] = 1
-		p.server['熊灵攻击减甲'] = 1
-		p.server['金克丝'] = 1
-		p.server['炮台多重射'] = 1
+		p.cus_server['吕布'] = 1
+		p.cus_server['熊灵分裂'] = 1
+		p.cus_server['鬼剑愁'] = 1
+		p.cus_server['爱国者导弹'] = 1
+		p.cus_server['张飞'] = 1
+		p.cus_server['熊灵攻击减甲'] = 1
+		p.cus_server['金克丝'] = 1
+		p.cus_server['炮台多重射'] = 1
 		
-		p.server['绝世魔剑'] = 8
-		p.server['书呆子'] = 8
-		p.server['剑瞎子'] = 8
-		p.server['扭蛋人生'] = 8
-		p.server['血羽之心'] = 8
-		p.server['天神之息'] = 8
+		p.cus_server['绝世魔剑'] = 8
+		p.cus_server['书呆子'] = 8
+		p.cus_server['剑瞎子'] = 8
+		p.cus_server['扭蛋人生'] = 8
+		p.cus_server['血羽之心'] = 8
+		p.cus_server['天神之息'] = 8
 
 		p.mall['金币礼包'] = 1
 		p.mall['木材礼包'] = 1
@@ -1076,38 +1076,38 @@ function helper:test_n10()
 		p:Map_SaveServerValue('sldbp',100000) --网易服务器
 		p:Map_SaveServerValue('sldytz',100000) --网易服务器
 
-		p.server['吕布'] = 1
-		p.server['熊灵分裂'] = 1
-		p.server['鬼剑愁'] = 1
-		p.server['爱国者导弹'] = 1
-		p.server['张飞'] = 1
-		p.server['熊灵攻击减甲'] = 1
-		p.server['金克丝'] = 1
-		p.server['炮台多重射'] = 1
-		p.server['貂蝉'] = 1
+		p.cus_server['吕布'] = 1
+		p.cus_server['熊灵分裂'] = 1
+		p.cus_server['鬼剑愁'] = 1
+		p.cus_server['爱国者导弹'] = 1
+		p.cus_server['张飞'] = 1
+		p.cus_server['熊灵攻击减甲'] = 1
+		p.cus_server['金克丝'] = 1
+		p.cus_server['炮台多重射'] = 1
+		p.cus_server['貂蝉'] = 1
 		
-		p.server['我是大魔头'] = 9
-		p.server['黄金矿工'] = 9
-		p.server['书呆子'] = 9
-		p.server['剑瞎子'] = 9
-		p.server['采蘑菇的小姑娘'] = 9
-		p.server['扭蛋人生'] = 9
-		p.server['du徒'] = 9
-		p.server['强悍之人'] = 9
-		p.server['血牛'] = 9
-		p.server['一出门就被秒'] = 9
-		p.server['绝世魔剑'] = 9 
+		p.cus_server['我是大魔头'] = 9
+		p.cus_server['黄金矿工'] = 9
+		p.cus_server['书呆子'] = 9
+		p.cus_server['剑瞎子'] = 9
+		p.cus_server['采蘑菇的小姑娘'] = 9
+		p.cus_server['扭蛋人生'] = 9
+		p.cus_server['du徒'] = 9
+		p.cus_server['强悍之人'] = 9
+		p.cus_server['血牛'] = 9
+		p.cus_server['一出门就被秒'] = 9
+		p.cus_server['绝世魔剑'] = 9 
 
-		p.server['番天印'] = 9 
-		p.server['战舰之舵'] = 9 
-		p.server['量天尺'] = 9 
-		p.server['虚空王座'] = 9 
-		p.server['天眼'] = 9 
-		p.server['血羽之心'] = 9 
-		p.server['天神之息'] = 9 
-		p.server['灭世者'] = 9 
-		p.server['宇宙之心'] = 9
-		p.server['太初锁灵鼓'] = 9  
+		p.cus_server['番天印'] = 9 
+		p.cus_server['战舰之舵'] = 9 
+		p.cus_server['量天尺'] = 9 
+		p.cus_server['虚空王座'] = 9 
+		p.cus_server['天眼'] = 9 
+		p.cus_server['血羽之心'] = 9 
+		p.cus_server['天神之息'] = 9 
+		p.cus_server['灭世者'] = 9 
+		p.cus_server['宇宙之心'] = 9
+		p.cus_server['太初锁灵鼓'] = 9  
 
 		p.mall['金币礼包'] = 1
 		p.mall['木材礼包'] = 1

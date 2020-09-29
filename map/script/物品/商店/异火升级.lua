@@ -55,10 +55,10 @@ for key,val in pairs(fire) do
             shop_item.player_fire ={}
         end
         --限定购买次数
-        if not shop_item.player_buy_cnt then 
-            shop_item.player_buy_cnt = {}
-        end
-        shop_item.player_buy_cnt[player] = (shop_item.player_buy_cnt[player] or 1) + 1
+        -- if not shop_item.player_buy_cnt then 
+        --     shop_item.player_buy_cnt = {}
+        -- end
+        -- shop_item.player_buy_cnt[player] = (shop_item.player_buy_cnt[player] or 1) + 1
 
         --改变价格
         shop_item.player_fire[player] = (shop_item.player_fire[player] or self.fire_seed ) + self.cre

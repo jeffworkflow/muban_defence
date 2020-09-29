@@ -14,6 +14,7 @@ require 'types'
 require 'ac'
 -- print(4)
 require 'ui'
+require '界面'
 -- print(5)
 require '通用'
 require '平台'

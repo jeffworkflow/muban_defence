@@ -4,7 +4,7 @@ require 'ui.base.controls.panel'
 local font = [[
     Frame "TEXT" "text%d" {
         LayerStyle "IGNORETRACKEVENTS",
-        FrameFont "resource\fonts\fonts.ttf", %f, "", 
+        FrameFont "resource\fonts\fonts.TTF", %f, "", 
     }
 ]]
 
@@ -23,16 +23,35 @@ end
 
 
 class.text = extends(class.panel){
+--private
 
-    --文字 类型 和 基类
-    _type   = 'text',
-    _base   = 'TEXT',
+    _type   = 'text',--fdf 中的模板类型
 
-    text_map = {},
+    _base   = 'TEXT', --fdf 中的Frame类型
 
+--public
+
+    text = '', --文本内容
+
+    align = 0, --对齐方式
+
+    font_size = 16, --字体大小
+
+    normal_image = '', --文本背景
+
+    color = nil, -- 文本颜色
+
+--static
+
+    text_map = {}, --存放所有存活的文本控件对象
+
+    --对齐方式的对照表
     align_map = {
         --自动换行
         auto_newline     = -1,
+        auto_size        = -2,
+        auto_width       = -3,
+        auto_height      = -4,
 
         topleft         = 0,
         top             = 1,
@@ -45,125 +64,197 @@ class.text = extends(class.panel){
         bottomright     = 8,
     },
 
-    -- parent 当 create的时候是空值 add_text的时候是父控件
-    -- text 字符串 文本值
-    -- x,y,w,h 坐标位置
-    -- font_size 字体大小
-    -- align 
-    new = function (parent,text,x,y,width,height,font_size,align)
-        font_size = font_size or 16
-        local ui = class.ui_base.create('text',x,y,width,height)
 
-        ui.align = align or 0
-        ui.font_size = font_size
-        ui.__index = class.text
+    --构建
+    build = function (self)
+        self.align = class.text.align_map[self.align or ''] or self.align or 0
 
-        if ui.text_map[ui._name] ~= nil then 
-            class.ui_base.destroy(ui)
-            print('文字创建失败 字符串id已经存在')
-            return 
-        end 
-
-        local panel = class.panel.new(parent,'',0,0,width,height)
+        local panel = class.panel.new(self.parent,self.normal_image, 0, 0, self.w, self.h)
 
         if panel == nil then 
             print('文字背景创建失败')
             return
         end
-        panel._control = ui
-        ui._panel = panel 
+        panel._control = self
+        self._panel = panel 
 
+        if self.font_size == nil then 
+            self.font_size = 16
+        end 
         
-        if type(font_size) == 'boolean' then 
-            ui._type = 'old_text'
+        if type(self.font_size) == 'boolean' then 
+            self._type = 'old_text'
         else
-            load_font(font,font_size)
-            ui._type = string.format('%s%d',ui._type,font_size)
+            load_font(font,self.font_size)
+            self._type = string.format('%s%d',self._type,self.font_size)
         end
-        --ui._type = string.format('%s%d',ui._type,font_size)
-
-
-        ui.id = japi.CreateFrameByTagName( ui._base, ui._name, panel.id, ui._type,align or 0)
-        if ui.id == nil or ui.id == 0 then 
+ 
+        self._id = japi.CreateFrameByTagName( self._base, self._name, panel._id, self._type,math.max(0,self.align))
+        if self._id == nil or self._id == 0 then 
             panel:destroy()
-            class.ui_base.destroy(ui)
+            class.ui_base.destroy(self)
             print('创建文字失败')
             return 
         end
+        self.text_map[self._id] = self
 
-        ui.text_map[ui._name] = ui
-        ui.text_map[ui.id] = ui
-        ui.parent = parent
+        self:init()
+        self:set_text(self.text)
+        if self.color then 
+            self:set_color(self.color)
+        end 
+        return self
+    end,
 
-        
-        ui:set_text(text)
-        --ui:set_size(1)
-        ui:set_position(x,y)
-        ui:set_control_size(width,height)
-        return ui
+    -- parent 当 create的时候是空值 add_text的时候是父控件
+    -- text 字符串 文本值_addr
+    -- x,y,w,h 坐标位置
+    -- font_size 字体大小
+    -- align 
+    new = function (parent,text,x,y,width,height,font_size,align)
+        local control = class.text:builder
+        {
+            parent = parent,
+            text = text,
+            x = x,
+            y = y,
+            w = width,
+            h = height,
+            font_size = font_size,
+            align = align,
+        }
+        return control
     end,
 
     destroy = function (self)
-        if self.id == nil or self.id == 0 then 
-            return 
+        if self._id == nil or self._id == 0 then 
+            return _id
         end
         self._panel:destroy()
  
-        self.text_map[self.id] = nil 
-        self.text_map[self._name] = nil
+        self.text_map[self._id] = nil 
 
         class.ui_base.destroy(self)
     end,
 
+    show = function (self)
+        self._panel:show()
+        class.ui_base.show(self)
+    end,
+
+    hide = function (self)
+        self._panel:hide()
+        class.ui_base.hide(self)
+    end,
+
+    get_width = function (self)
+        return japi.FrameGetTextWidth(self._id) / 0.8 * 1920
+    end,
+
+    get_height = function (self)
+        return japi.FrameGetTextHeight(self._id) / 0.6 * 1080
+    end,
+
     set_text = function (self,text)
-        if text ~= self:get_text() then 
-            japi.FrameSetText(self.id,text)
-        end    
+        if self:get_text() == text then 
+            return 
+        end
+        japi.FrameSetText(self._id,text)
+
+        if self.align < -1 then 
+            local _id = self._panel._id 
+
+            local width = self:get_width() + self.x + 8
+            local height = self:get_height() + self.y + 6
+            if self.align == -3 then 
+                height = self.h
+            elseif self.align == -4 then 
+                width = self.w 
+            end 
+            if width > 0 and height > 0 then
+                self:set_width(width - self.font_size * 2) 
+                self:set_control_size(width,height)
+                if self.parent then 
+                    self.parent:set_control_size(width,height)
+                end 
+            end 
+        elseif self.normal_image ~= 'Transparent.tga' then
+            --game.wait(100, function ()
+            --    if self._id then 
+            --        local width = self:get_width()
+            --        local height = self:get_height()
+            --        if width > 0 and height > 0 then 
+            --            self:set_control_size(width,height)
+            --        end 
+            --    end 
+            --end)
+        end 
     end,
 
     get_text = function (self)
-        return japi.FrameGetText(self.id)
+        return japi.FrameGetText(self._id)
     end,
 
     --设置间距 
     set_spacing = function (self,spacing)
-        japi.FrameSetTextFontSpacing(self.id,spacing)
+        japi.FrameSetTextFontSpacing(self._id,spacing)
     end,
 
     set_size = function (self,size,path)
-        local real_size = size * self.font_size * (self.relative_size or 1)
+ 
+        local real_size = size * self.font_size * (self.relative_size or 1) * (self.default_size or 1)
         self.size = size 
+
         path = path or 'C:\\Windows\\Fonts\\simhei.ttf'
+
+        if self._real_size == real_size and self.path == path then 
+            return 
+        end
+
+        self._real_size = real_size 
+        self.font_path = path 
         --path = path or 'resource\\Fonts\\FZHTJW.ttf'
-        japi.FrameSetTextFont(self.id,path,real_size / 1000)
-        self:set_spacing(0.05)
+  
+        japi.FrameSetTextFont(self._id,path,real_size / 1000)
     end,
 
     set_color = function (self,...)
         local arg = {...}
-        local color =0
-        if #arg == 1 then 
-            color = arg[1]
-            local a = (color << 32) >> 56
-            local r = (color << 40) >> 56
-            local g = (color << 48) >> 56
-            local b = (color << 56) >> 56
-            self.color = {r = r,g = g,b = b,a = a/0xff}
+        local color = 0
+        if #arg == 1 then
+            local param = arg[1]
+            if type(param) == 'table' then 
+                self.color = param
+                color = 255 * 0x1000000 + param.r * 0x10000 + param.g * 0x100 + param.b
+                self._panel:set_alpha(param.a)
+            else
+                color = param
+                local a = (color << 32) >> 56
+                local r = (color << 40) >> 56
+                local g = (color << 48) >> 56
+                local b = (color << 56) >> 56
+                self.color = {r = r,g = g,b = b,a = a/0xff}
+            end 
         else 
             local r,g,b,a = table.unpack(arg)
             self._panel:set_alpha(a)
             self.color = {r = r,g = g,b = b,a = a}            
             color = 255 * 0x1000000 + r * 0x10000 + g * 0x100 + b
         end
-        japi.FrameSetTextColor(self.id,color)
+        japi.FrameSetTextColor(self._id,color)
     end,
 
     set_alpha = function (self,alpha)
         local r,g,b = 255,255,255
-        if self.color then 
+        if type(self.color) == 'table' then 
            r = self.color.r 
            g = self.color.g 
            b = self.color.b 
+        elseif self.color then 
+            color = self.color
+            r = (color << 40) >> 56
+            g = (color << 48) >> 56
+            b = (color << 56) >> 56
         end 
         if alpha < 0 then 
             alpha = 0 
@@ -171,10 +262,9 @@ class.text = extends(class.panel){
         self:set_color(r,g,b,alpha)
     end,
     set_control_size = function (self,width,height)
-        
         self.w = width 
         self.h = height
-        if self.align == -1 or self.align == 'auto_newline' then 
+        if self.align == -1 then 
             class.panel.set_control_size(self,width,height)
         end
         self._panel:set_control_size(width,height)
@@ -189,11 +279,9 @@ class.text = extends(class.panel){
         self._panel:set_normal_image(path,flag)
     end,
 
+    __tostring = function (self)
+        local str = string.format('文本 %d',self._id or 0)
+        return str
+    end
 }
-local mt = getmetatable(class.text)
-
-mt.__tostring = function (self)
-    local str = string.format('文本 %d',self.id or 0)
-    return str
-end
 

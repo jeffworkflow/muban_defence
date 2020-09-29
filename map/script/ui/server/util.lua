@@ -4,43 +4,6 @@ local client = require 'ui.client.util'
 local ui = extends(client){}
 
 
-ui.hashtable = {}
-
-ui.init = function () --预存数据表里的物的名字
-    for file_type,file_data in pairs(ac.table) do
-        for name,value in pairs(file_data) do
-            local hash = ui.get_hash(name)
-            local value = ui.hashtable[hash]   
-            if value ~= nil and value ~= name then 
-                print('哈希值发生碰撞了',name,value)
-            else 
-                ui.hashtable[hash] = name
-            end
-        end
-    end
-end
-
-ui.get_str = function (hash)
-    return ui.hashtable[hash]
-end
-
-ui.to_hash = function (str)
-    local function uint32_t (int)
-        return int & 0xffffffff
-    end
-    local hash = uint32_t(5381)
-    local length = str:len()
-    for i = 1,length do
-        local byte = str:sub(i,i):byte()
-        hash = uint32_t(uint32_t(uint32_t(hash << 5) + hash) + byte)
-    end
-    return hash
-end
-
-ui.get_hash = function (str)
-    return ui.to_hash(str)
-    --return string.pack("I4",ui.to_hash(str))
-end
 
 ui.event = {}
 
@@ -87,7 +50,7 @@ ui.on_custom_ui_event = function (player,message)
         if event_table ~= nil then
             local func = event_table[func_name]
             if func ~= nil then
-                ui.player = player
+                ui.player = ac.player(GetPlayerId(player) + 1)
                 if params == nil then
                     func()
                 else
@@ -119,18 +82,5 @@ ui.print = function (player,...)
 end
 
 
-ui.copy_table = function (old)
-    local new = {}
-    for key,value in pairs(old) do
-        if type(value) == 'table' then
-            new[key] = ui.copy_table(value)
-        else
-            new[key] = value
-        end
-    end
-    return new
-end
-
-ui.init()
 
 return ui

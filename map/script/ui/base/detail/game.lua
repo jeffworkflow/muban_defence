@@ -1,61 +1,40 @@
 local hook = require 'jass.hook'
 local japi = require 'jass.japi'
+local message = require 'jass.message'
 local error_handle = require('jass.runtime').error_handle
 local dbg = require 'jass.debug'
 
 local base
-local left_is_down = false
-local right_is_down = false
-local is_active = true
+
+
 local width,height = 0,0
 local pointer
 
+--鼠标按下的时候 把响应的按钮收集起来 以便弹起的时候 来响应弹起事件
+local left_is_down = false
+local left_button_list = {}
+
+local right_button_list = {}
+local right_is_down = false
+
+local button_enter_event_list = {}
+local button_leave_event_list = {}
+
+local is_active = true
+local clock = os.clock()
+
+--创建一个按钮 用来当做拖拽时的影子
+local texture = nil
 
 local game_event = {}
 
+--绑定世界坐标的控件
+local world_controls = {}
 
---事件函数名
-local event_name = nil
-
---条件函数表 如果逻辑不成立 事件将不转发
-local event_boolexpr = {}
---回调的事件表
-local callback_table = nil
+local ht = InitHashtable()
 
 
---事件回调
-game_event_callback = function (name,...)
-
-    local hash_table = {}
-    for index,event_table in ipairs(game_event) do
-        local func = event_table[name]
-        if func ~= nil then 
-            func(...)
-        end 
-    end
-end
-
-game = {}
-game.register_event = function(module)
-    table.insert(game_event, module)
-end
-game.get_mouse_pos = function ()
-    local x = japi.GetMouseVectorX() / 1024
-    local y = (-(japi.GetMouseVectorY() - 768)) / 768 
-    x = x * 1920
-    y = y * 1080
-    return x,y
-end
-
-game.set_mouse_pos = function (x,y)
-    x = x / 1920 * 1024
-    y = 768 - y / 1080 * 768
-    japi.SetMousePos(x,y)
-end 
-
-
-
-function get_handle_type (handle)
+local function get_handle_type (handle)
     if handle == nil or handle == 0 then 
         return nil
     end 
@@ -76,18 +55,84 @@ function get_handle_type (handle)
     return retval
 end
 
-ht = InitHashtable()
+--全局事件回调
+local function game_event_callback(name,...)
 
---创建一个异步运行的计时器 用来检测拖拽时间
-local timer_handle = CreateTimer()
-TimerStart(timer_handle,0,false,function ()
+    local hash_table = {}
+    local ret = false 
+    for index,event_table in ipairs(game_event) do
+        local func = event_table[name]
+        if func ~= nil then 
+            ret = ret or func(...)
+        end 
+    end
+
+    return ret
+end
+
+--同步队列
+game.sync_queue = {}
+
+game.register_event = function(module)
+    table.insert(game_event, module)
+end
+
+
+game.get_mouse_pos = function ()
+    local x = japi.GetMouseVectorX() / 1024
+    local y = (-(japi.GetMouseVectorY() - 768)) / 768 
+    x = x * 1920
+    y = y * 1080
+    return x,y
+end
+
+game.set_mouse_pos = function (x,y)
+    x = x / 1920 * 1024
+    y = 768 - y / 1080 * 768
+    japi.SetMousePos(x,y)
+end 
+
+
+--最后一个参数默认不用填
+game.world_to_screen = function (x, y, z)
+    local screen_x, screen_y, scale = message.world_to_screen(x, y, z)
+    if  screen_x and screen_y then 
+        return screen_x * 1920 / 0.8, screen_y * 1080 / 0.6, scale
+    end 
+end
+
+game.screen_to_world = function (x, y)
+    local screen_x, screen_y = x / 1920 * 0.8, y / 1080 * 0.6
+    return message.screen_to_world(x, y)
+end
+
+
+game.bind_world = function (control, enable)
+    if enable then 
+        world_controls[control] = true
+    else 
+        world_controls[control] = nil
+    end 
+end 
+
+game.add_event_sync = function (control, event_name, ...)
+    --保存其他控件事件以及参数
+    table.insert(game.sync_queue, {
+        control = control,
+        event_name = event_name,
+        args = {...},
+        count = select('#', ...)
+    })
+end 
+
+
+game.wait(0,function ()
     base.on_init()
 end)
 
 
---创建一个同步的计时器 来检测 窗口是否被激活
---如果不为激活 则响应鼠标弹起事件
-TimerStart(CreateTimer(),0.03,true,function ()
+--计时器检测事件
+game.loop(0.03,function ()
     local object = japi.GetTargetObject()
     if object ~= nil then 
         if object ~= pointer  then 
@@ -122,20 +167,6 @@ TimerStart(CreateTimer(),0.03,true,function ()
 end)
 
 
---鼠标按下的时候 把响应的按钮收集起来 以便弹起的时候 来响应弹起事件
-local left_button_list = {}
-local right_button_list = {}
-
-local event = {}
-
-local function register_event(event_id,callback)
-    event[event_id] = callback
-end
-
-
-
---创建一个按钮 用来当做拖拽时的影子
-local texture = nil
 base = {
     
     on_mouse_down = function ()
@@ -143,15 +174,21 @@ base = {
         local button = class.button.button_map[id]
 
         left_is_down = true
+
         if button ~= nil then
+            button.is_down = true
+            if button.active_image and button.active_image ~= '' then
+                button:set_active_image(button.active_image)
+            end
             
-            event_callback('on_button_mousedown',button)
+            button:event_notify('on_button_mousedown')
+            
             table.insert(left_button_list,button)
 
             if button.is_drag == true then 
                 
                 width,height = button.w,button.h
-                TimerStart(timer_handle,0.15,false,function ()
+                game.wait(0.15,function ()
                     if left_is_down == true then 
                         if texture ~= nil then 
                             base.on_mouse_up()
@@ -159,19 +196,38 @@ base = {
 
                         local x = japi.GetMouseVectorX() / 1024 * 1920
                         local y = (-(japi.GetMouseVectorY() - 768)) / 768 * 1080
-                        x = x - button.w / 2
-                        y = y - button.h / 2
-                        texture = class.texture.create(button.normal_image,x,y,width,height)
+                        texture = class.texture:builder
+                        {
+                            parent_id = second_ui,
+                            x = x - button.w / 2,
+                            y = y - button.h / 2,
+                            w = width,
+                            h = height,
+                            normal_image = button.normal_image,
+                            alpha = 0.8,
+                        }
                         texture.button = button
-                        texture:set_alpha(100)
-                        event_callback('on_button_begin_drag',button)
+                        --button:set_position(x,y)
+
+                        button:event_notify('on_button_begin_drag')
                     end
                 end)
 
             end
         end
 
-        game_event_callback('on_mouse_down') 
+        local ret = game_event_callback('on_mouse_down')
+        local handle = japi.GetTargetObject()
+        local type = get_handle_type(handle)
+        
+        if type == 1 then 
+            ret = game_event_callback('on_item_mouse_down',handle) or ret
+        elseif type == 2 then 
+            ret = game_event_callback('on_unit_mouse_down',handle) or ret
+        end
+
+        
+        return ret 
     end,
 
     on_mouse_up = function ()
@@ -181,39 +237,51 @@ base = {
         left_is_down = false
         if texture ~= nil then 
             if button == texture.button then 
-                event_callback('on_button_drag_and_drop',texture.button)
+                texture.button:event_notify('on_button_drag_and_drop')
             else
-                event_callback('on_button_drag_and_drop',texture.button,button)
+                texture.button:event_notify('on_button_drag_and_drop',button)
             end
             texture:destroy()
             texture = nil
         end 
         for index,object in ipairs(left_button_list) do
+            object.is_down = nil
+            if object.is_enter and object.hover_image and object.hover_image ~= '' then
+                object:set_hover_image(object.hover_image)
+            else
+                object:set_normal_image(object.normal_image)
+            end
+
             if object ~= button then 
-                event_callback('on_button_mouseup',object)
+                object:event_notify('on_button_mouseup')
             else
                 if object.is_enable then
-                    event_callback('on_button_clicked',object)
+                    object:event_notify('on_button_clicked')
                     local time = os.clock()
                     if object._click_time and time - object._click_time <= 0.3 then 
-                        event_callback('on_button_double_clicked',object)
+                        object:event_notify('on_button_double_clicked')
                     end 
                     object._click_time = time
                 end
-                event_callback('on_button_mouseup',object)
+                object:event_notify('on_button_mouseup')
             end
-            table.remove(left_button_list,index)
         end
+        left_button_list = {}
+
+        local ret = game_event_callback('on_mouse_up')
 
         local handle = japi.GetTargetObject()
         local type = get_handle_type(handle)
+
         if type == 1 then 
-            game_event_callback('on_item_clicked',handle)
+            ret = game_event_callback('on_item_mouse_up',handle) or ret
+            ret = game_event_callback('on_item_clicked',handle) or ret
         elseif type == 2 then 
-            game_event_callback('on_unit_clicked',handle)
+            ret = game_event_callback('on_unit_mouse_up',handle) or ret
+            ret = game_event_callback('on_unit_clicked',handle) or ret
         end
 
-        game_event_callback('on_mouse_up') 
+        return ret 
     end,
 
     on_mouse_right_down = function ()
@@ -223,10 +291,11 @@ base = {
         right_is_down = true
 
         if button ~= nil then 
-            event_callback('on_button_right_mousedown',button)
+            button:event_notify('on_button_right_mousedown')
             table.insert(right_button_list,button)
         end 
 
+        return game_event_callback('on_mouse_right_down')
     end,
 
     on_mouse_right_up = function ()
@@ -237,22 +306,25 @@ base = {
 
         for index,object in ipairs(right_button_list) do
             if object ~= button then 
-                event_callback('on_button_right_mouseup',object)
+                object:event_notify('on_button_right_mouseup')
             else
-                event_callback('on_button_right_mouseup',object)
-                event_callback('on_button_right_clicked',button)
+                object:event_notify('on_button_right_mouseup')
+                button:event_notify('on_button_right_clicked')
             end
-            table.remove(right_button_list,index)
         end
+        right_button_list = {}
+
+        local ret 
 
         local handle = japi.GetTargetObject()
         local type = get_handle_type(handle)
         if type == 1 then 
-            game_event_callback('on_item_right_clicked',handle)
+            ret = game_event_callback('on_item_right_clicked',handle) or ret
         elseif type == 2 then 
-            game_event_callback('on_unit_right_clicked',handle)
+            ret = game_event_callback('on_unit_right_clicked',handle) or ret
         end
-
+        ret = game_event_callback('on_mouse_right_up') or ret 
+        return ret
     end,
 
     on_mouse_move = function ()
@@ -264,7 +336,7 @@ base = {
         if texture ~= nil then 
             local button = texture.button
             texture:set_position(x - texture.w / 2,y - texture.h / 2)
-            event_callback('on_button_update_drag',button,texture,x - button.w / 2,y - button.h / 2)
+            button:event_notify('on_button_update_drag',texture,x - button.w / 2,y - button.h / 2)
         end 
 
         for id,button in pairs(class.button.button_map) do
@@ -273,34 +345,62 @@ base = {
             if x >= ox and  y >= oy and x <= ox + button.w and y <= oy + button.h then
                 local is_show = button:get_is_show() ~= false
                 if button.is_enter == nil and is_show then 
-                    event_callback('on_button_mouse_enter',button)
                     button.is_enter = true
+                    table.insert(button_enter_event_list, button)
                 end
 
                 if button.is_enter and is_show and button.is_move_event then 
-                    event_callback('on_button_mouse_move',button,x,y)
+                    button:event_notify('on_button_mouse_move',x,y)
                 end 
             elseif button.is_enter == true then 
-                class.ui_base.remove_tooltip()
-                event_callback('on_button_mouse_leave',button)
+                table.insert(button_leave_event_list, button)
                 button.is_enter = nil
             end
-            
         end
+
+        --先处理离开事件， 再派发进入事件
+        if #button_leave_event_list > 0 then 
+            class.ui_base.remove_tooltip()
+        end 
+        for i = #button_leave_event_list, 1, -1 do
+            local button = button_leave_event_list[i]
+            button:event_notify('on_button_mouse_leave')
+            table.remove(button_leave_event_list, i)
+
+            if button.is_down and button.active_image and button.active_image ~= '' then
+                button:set_active_image(button.active_image)
+            else
+                button:set_normal_image(button.normal_image)
+            end 
+        end
+
+        for i = #button_enter_event_list, 1, -1 do
+            local button = button_enter_event_list[i]
+            button:event_notify('on_button_mouse_enter')
+            table.remove(button_enter_event_list, i)
+
+            if button.hover_image and button.hover_image ~= '' then
+                button:set_hover_image(button.hover_image)
+            else
+                button:set_normal_image(button.normal_image)
+            end 
+        end 
+
+        game_event_callback('on_mouse_move')
     end,
 
     on_mouse_wheeldelta = function ()
-        game_event_callback('on_mouse_wheeldelta',japi.GetWheelDelta() > 0)
+        
 
         local x = japi.GetMouseVectorX() / 1024
         local y = (-(japi.GetMouseVectorY() - 768)) / 768 
         x = x * 1920
         y = y * 1080
 
-        for id,panel in pairs(class.panel.panel_map) do
+        for id,panel in pairs(class.panel.object_map) do
             local ox,oy = panel:get_real_position()
         
-            if panel.enable_scroll 
+            if panel.is_scroll 
             and x >= ox and  y >= oy 
             and x <= ox + panel.w and y <= oy + panel.h 
             then
@@ -316,19 +416,54 @@ base = {
                     end 
                 end 
                 panel.scroll_y = y
-                event_callback('on_panel_scroll',panel,bool)
-                event_callback('on_panel_scroll_fix',panel,bool)
+                panel:event_notify('on_panel_scroll',bool)
+                panel:event_notify('on_panel_scroll_fix',bool)
                 
             end 
         end 
+
+        return game_event_callback('on_mouse_wheeldelta',japi.GetWheelDelta() > 0)
     end,
 
     on_key_down = function ()
-        game_event_callback('on_key_down',japi.GetTriggerKey()) 
+        local code = japi.GetTriggerKey()
+        local str = KEY_STR[code]
+        
+
+        if str then 
+            for id,button in pairs(class.button.button_map) do
+                if button.is_enable and button.keys and button:get_is_show() then
+                    for index, key in ipairs(button.keys) do 
+                        if key == str then 
+                            button:event_notify('on_button_key_down', str)
+                            break
+                        end 
+                    end 
+                end
+            end
+        end 
+
+       return game_event_callback('on_key_down', code) 
     end,
 
     on_key_up = function ()
-        game_event_callback('on_key_up',japi.GetTriggerKey())
+        local code = japi.GetTriggerKey()
+        local str = KEY_STR[code]
+        
+        if str then 
+            for id,button in pairs(class.button.button_map) do
+                if button.is_enable and button.keys and button:get_is_show() then
+                    for index, key in ipairs(button.keys) do 
+                        if key == str then 
+                            button:event_notify('on_button_key_up', str)
+                            break
+                        end 
+                    end 
+                end
+            end 
+        end 
+
+        return game_event_callback('on_key_up',code)
     end,
 
     --指向物品事件
@@ -363,8 +498,60 @@ base = {
 
     
     on_update = function ()
+        local c = os.clock()
+        local delta = c - clock 
+        clock = c 
+
         base.on_mouse_move()
-        game_event_callback('on_update')
+        game_event_callback('on_update', delta)
+
+        local center = ac.player.self:getCamera()
+
+        for control in pairs(world_controls) do 
+            local unit = control.world_unit 
+            local x, y, z 
+            if unit then 
+                if unit.removed then
+                    if control.world_auto_remove then 
+                        control:destroy()
+                    else 
+                        control:hide()
+                    end
+                    goto continue
+                else 
+                    if  unit.hide_life_bar or not unit:is_alive() or unit:has_restriction '隐藏' or not unit:is_visible(ac.player.self) then 
+                        control:hide()
+                        goto continue
+                    else 
+                        local p = unit:get_point()
+                        if center * p > 4000 then 
+                            control:hide()
+                            goto continue
+                        end 
+                        x, y = p:get()
+                        z = p:getZ()
+                        z = z + unit:get_high()
+                        z = z + message.unit_overhead(unit.handle)
+                    end 
+                end 
+            else 
+                x, y, z = control.world_x, control.world_y, control.world_z
+            end 
+            local screen_x, screen_y, scale = game.world_to_screen(x, y, z)
+            
+            if screen_x == nil or screen_x < 0 or screen_y < 32 or screen_x > 1920 or screen_y > 1080 then 
+                control:hide()
+            else 
+                control:show()
+                local x = screen_x - control.w + (control.offect_x or 0)
+                local y = screen_y - control.h + (control.offect_y or 0)
+                control:set_real_position(x, y, control.world_anchor)
+                
+                --control:set_relative_size(scale, false)
+            end 
+
+            ::continue::
+        end 
     end,
 
 
@@ -374,46 +561,48 @@ base = {
 
 }
 
-register_event(1,base.on_mouse_down)
-register_event(2,base.on_mouse_up)
-register_event(3,base.on_mouse_right_down)
-register_event(4,base.on_mouse_right_up)
-register_event(5,base.on_mouse_move)
-register_event(6,base.on_mouse_wheeldelta)
-register_event(7,base.on_key_down)
-register_event(8,base.on_key_up)
-register_event(9,base.on_update_window_size)
-register_event(10,base.on_update)
 
 
+local event = {
+    base.on_mouse_down,
+    base.on_mouse_up,
+    base.on_mouse_right_down,
+    base.on_mouse_right_up,
+    base.on_mouse_move,
+    base.on_mouse_wheeldelta,
+    base.on_key_down,
+    base.on_key_up,
+    base.on_update_window_size,
+    base.on_update,
+}
 
-
+--窗口消息事件
 function WindowEventCallBack(event_id)
-
     if event[event_id] ~= nil then 
-        xpcall(event[event_id],error_handle)
+        local bool, ret = xpcall(event[event_id],error_handle)
+        return ret
     end 
+    return false
 end
-
 
 
 local frame_event = {
     --文本框更新事件
     [9] = function (frame,id)
-        local input = input_class.input_map[frame]
-        if input == nil then 
+        local edit = edit_class.edit_map[frame]
+        if edit == nil then 
             return 
         end 
 
-        local text = input:get_text()
-        if input.text ~= text then 
-            local old_text = input.text
-            input.text = text
-            event_callback('on_input_text_changed',input,text,old_text)
+        local text = edit:get_text()
+        if edit.text ~= text then 
+            local old_text = edit.text
+            edit.text = text
+            edit:event_notify('on_edit_text_changed',text,old_text)
         end 
     end,
 }
-
+--魔兽自带的控件消息事件
 function FrameEventCallBack(frame,id)
     if frame_event[id] then 
         xpcall(frame_event[id],runtime.error_handle,frame,id)

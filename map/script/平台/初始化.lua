@@ -233,6 +233,60 @@ ac.wait(10,function()
         {'wzsj','威震三界'},
     
         {'tmxk','天马行空'},
+
+        {'S0succ','S0通关次数'},
+        {'S0ljwj','S0无尽累计'},
+        {'S0wbjf','S0挖宝积分'},
+        
+        {'S1succ','S1通关次数'},
+        {'S1ljwj','S1无尽累计'},
+        {'S1wbjf','S1挖宝积分'},
+        {'S1wljf','S1比武积分'},
+
+        {'S2succ','S2通关次数'},
+        {'S2ljwj','S2无尽累计'},
+        {'S2wbjf','S2挖宝积分'},
+        {'S2wljf','S2比武积分'},
+
+        {'S3succ','S3通关次数'},
+        {'S3ljwj','S3无尽累计'},
+        {'S3wbjf','S3挖宝积分'},
+        {'S3wljf','S3比武积分'},
+
+        {'S4succ','S4通关次数'},
+        {'S4ljwj','S4无尽累计'},
+        {'S4wbjf','S4挖宝积分'},
+        {'S4wljf','S4比武积分'},
+
+        {'S5succ','S5通关次数'},
+        {'S5ljwj','S5无尽累计'},
+        {'S5wbjf','S5挖宝积分'},
+        {'S5wljf','S5比武积分'},
+
+        {'S6succ','S6通关次数'},
+        {'S6ljwj','S6无尽累计'},
+        {'S6wbjf','S6挖宝积分'},
+        {'S6wljf','S6比武积分'},
+
+        {'S7succ','S7通关次数'},
+        {'S7ljwj','S7无尽累计'},
+        {'S7wbjf','S7挖宝积分'},
+        {'S7wljf','S7比武积分'},
+
+        {'S8succ','S8通关次数'},
+        {'S8ljwj','S8无尽累计'},
+        {'S8wbjf','S8挖宝积分'},
+        {'S8wljf','S8比武积分'},
+
+        {'S9succ','S9通关次数'},
+        {'S9ljwj','S9无尽累计'},
+        {'S9wbjf','S9挖宝积分'},
+        {'S9wljf','S9比武积分'},
+
+        {'S10succ','S10通关次数'},
+        {'S10ljwj','S10无尽累计'},
+        {'S10wbjf','S10挖宝积分'},
+        {'S10wljf','S10比武积分'},
     }
     for i,data in ipairs(ac.mall) do 
         table.insert(temp_mall,data)

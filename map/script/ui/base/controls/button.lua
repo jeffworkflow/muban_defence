@@ -3,94 +3,126 @@ require 'ui.base.controls.panel'
 
 class.button = extends(class.panel){
 
-    --按钮 类型 和 基类
-    _type   = 'TestButton',
-    _base   = 'GLUETEXTBUTTON',
+--static
+    button_map = {}, --存放所有存活的按钮控件
 
-    button_map = {},
+--public
+    is_enable = true, --当前按钮是否启用状态  false为禁用
 
-    new = function (parent,image_path,x,y,width,height,has_ani)
-        local ui = class.ui_base.create('button',x,y,width,height)
+    has_ani = false, --是否带缩放动画效果
 
-        ui.is_enable = true 
-        ui.normal_image = image_path
+    normal_image = '', -- 按钮背景图片
 
-        ui.__index = class.button
+    hover_image = '', --进入时的图像
 
-        if ui.button_map[ui._name] ~= nil then 
-            class.ui_base.destroy(ui)
-            log.error('创建按钮失败 字符串id已存在')
-            return 
-        end 
-        if parent then 
-            ui.id = japi.CreateFrameByTagName( ui._base, ui._name, parent.id, ui._type,0)
+    active_image = '', --左键按下激活时的图像
+
+--private
+    _type   = 'button',  --fdf 中的模板类型
+
+    _base   = 'GLUETEXTBUTTON', --fdf 中的控件类型
+
+
+    --构建
+    build = function (self)
+        if self.parent then 
+            self._id = japi.CreateFrameByTagName( self._base, self._name, self.parent._id, self._type,0)
         else 
-            ui.id = japi.CreateFrameByTagName( ui._base, ui._name, game_ui, ui._type,0)
+            self._id = japi.CreateFrameByTagName( self._base, self._name, game_ui, self._type,0)
         end 
 
-        if ui.id == nil or ui.id == 0 then 
-            class.ui_base.destroy(ui)
+        if self._id == nil or self._id == 0 then 
+            class.ui_base.destroy(self)
             log.error('创建按钮失败')
             return 
         end
 
-        local panel = ui:add_panel(image_path,0,0,width,height)
+        local panel = self:add_panel(self.normal_image, 0, 0, self.w, self.h)
         if panel == nil then 
-            ui:destroy()
+            self:destroy()
             log.error('按钮背景创建失败')
             return
         end
-        panel._control = ui
-        ui._panel = panel
-        ui.button_map[ui._name] = ui
-        ui.button_map[ui.id] = ui
-        ui.parent = parent
-        
-        ui:set_position(x,y)
-        ui:set_control_size(width,height)
-        japi.FrameSetEnable(ui.id,false)
+        panel._control = self
+        self._panel = panel
+        self.button_map[self._id] = self
 
-        if has_ani then 
-            function ui:on_button_mouse_enter()
-                self._ = {
-                    x = self.x,
-                    y = self.y,
-                    w = self.w,
-                    h = self.h 
-                }
-                self:set_position(self.x,self.y - self.h * 0.2)
-                self:set_control_size(self.w * 1.2, self.h * 1.2)
-            end 
-    
-            function ui:on_button_mouse_leave()
-                self:set_position(self._.x,self._.y)
-                self:set_control_size(self._.w,self._.h)
-            end 
-    
-            function ui:on_button_mousedown()
-                self:on_button_mouse_leave()
-            end 
-            function ui:on_button_mouseup()
-                local x,y = game.get_mouse_pos()
-                if self:point_in_rect(x,y) and self:get_is_show() then 
-                    self:on_button_mouse_enter()
-                else 
-                    self:on_button_mouse_leave()
-                end 
-            end 
+        japi.FrameSetEnable(self._id, false)
+        self:init()
+
+        if self.has_ani then 
+            self:add_traceable_animation()
         end 
+        return self
+    end,
+
+    new = function (parent,image_path,x,y,width,height,has_ani)
+        local ui = class.button:builder
+        {
+            parent = parent,
+            normal_image = image_path,
+            x = x,
+            y = y,
+            w = width,
+            h = height,
+            has_ani = has_ani,
+        }
         return ui
     end,
 
     destroy = function (self)
-        if self.id == nil or self.id == 0 then 
+        if self._id == nil or self._id == 0 then 
             return 
         end
-        self.button_map[self.id] = nil 
-        self.button_map[self._name] = nil
+        self._panel:destroy()
+
+        self.button_map[self._id] = nil 
 
         class.ui_base.destroy(self)
 
+    end,
+
+
+    add_traceable_animation = function (self)
+        function self:on_button_mouse_enter()
+            if not self._is_ani then 
+                self._is_ani = true 
+  
+                local w, h = self.w, self.h 
+                self._scale = 1.2
+                self:set_relative_size(self.relative_size or 1)
+                self:set_position(self.x - (self.w - w) / 2 ,self.y - (self.h - h) / 2)
+            end
+
+            
+        end 
+
+        function self:on_button_mouse_leave()
+            if self._is_ani then 
+                
+                local w, h = self.w, self.h
+                self._scale = 1
+                self:set_relative_size(self.relative_size or 1)
+                self:set_position(self.x - (self.w - w) / 2 ,self.y - (self.h - h) / 2)
+                self._is_ani = false
+            end 
+
+            
+        end 
+
+        function self:on_button_mousedown()
+            
+            self:on_button_mouse_leave()
+        end 
+
+        function self:on_button_mouseup()
+            local x,y = game.get_mouse_pos()
+            if self:point_in_rect(x,y) and self:get_is_show() then 
+                self:on_button_mouse_enter()
+            else 
+                self:on_button_mouse_leave()
+            end 
+        end 
     end,
 
     --添加cd动画
@@ -128,9 +160,8 @@ class.button = extends(class.panel){
 
                 button._cd = button._cd - 0.05
                
-                hide_event_callback(
+                button:event_callback(
                     'on_button_update_cooldown',
-                    button,
                     math.max(button._cd,0),
                     button._max_cd
                 )
@@ -153,7 +184,7 @@ class.button = extends(class.panel){
                         button.is_cooldown = nil
                         texture:hide()
         
-                        hide_event_callback('on_button_cooldown_end',button)
+                        button:event_callback('on_button_cooldown_end')
                         timer:remove()
                     end 
                 end
@@ -205,9 +236,34 @@ class.button = extends(class.panel){
         self.is_move_event = enable
     end,
 
+    --正常状态下的图形
     set_normal_image = function (self,image_path,flag)
         self.normal_image = image_path
         self._panel:set_normal_image(image_path,flag)
+    end,
+
+    --进入时图形
+    set_hover_image = function (self, image_path)
+
+        self.hover_image = image_path
+        if image_path == '' then 
+            image_path = 'Transparent.tga'
+        end 
+        if self.is_enter then
+            self._panel:set_normal_image(image_path)
+        end 
+    end,
+
+    --点击激活时的图像
+    set_active_image = function (self, image_path)
+
+        self.active_image = image_path
+        if image_path == '' then 
+            image_path = 'Transparent.tga'
+        end 
+        if self.is_enter then
+            self._panel:set_normal_image(image_path)
+        end 
     end,
 
     set_control_size = function (self,width,height)
@@ -217,12 +273,22 @@ class.button = extends(class.panel){
         end
     end,
 
+
     set_alpha = function (self,alpha)
         self.alpha = alpha
         self._panel:set_alpha(alpha)
     end,
 
+    set_level = function (self, level)
+        class.panel.set_level(self,level)
+        self._panel:set_level(level)
+    end,
 
+
+    __tostring = function (self)
+        local str = string.format('按钮 %d',self._id or 0)
+        return str
+    end
     -----------------所有按钮事件------------------
 
     --[[
@@ -266,6 +332,16 @@ class.button = extends(class.panel){
         print('鼠标离开',tostring(self))
     end,
 
+    --当用户按下 self.keys = {'Q','W','E','R'} 中的按键时 才会响应
+    on_button_key_down = function (self, str)
+
+    end,
+
+    --当用户弹起 self.keys = {'Q','W','E','R'} 中的按键时 才会响应
+    on_button_key_up = function (self, str)
+
+    end,
+
     --开始拖拽按钮
     on_button_begin_drag = function (self)
         print('开始拖拽按钮',tostring(self))
@@ -295,11 +371,5 @@ class.button = extends(class.panel){
 
     ]]
 
+   
 }
-
-local mt = getmetatable(class.button)
-
-mt.__tostring = function (self)
-    local str = string.format('按钮 %d',self.id or 0)
-    return str
-end
