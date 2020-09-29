@@ -41,6 +41,7 @@ D:\one-map\muban_defence\map\script\types\attribute.lua
 D:\one-map\muban_defence\map\script\types\circle.lua
 D:\one-map\muban_defence\map\script\types\damage.lua
 D:\one-map\muban_defence\map\script\types\effect.lua
+D:\one-map\muban_defence\map\script\types\effect_ex.lua
 D:\one-map\muban_defence\map\script\types\fogmodifier.lua
 D:\one-map\muban_defence\map\script\types\follow.lua
 D:\one-map\muban_defence\map\script\types\game.lua
@@ -84,6 +85,8 @@ D:\one-map\muban_defence\map\script\ui\base\detail\game.lua
 D:\one-map\muban_defence\map\script\ui\base\detail\init.lua
 D:\one-map\muban_defence\map\script\ui\base\detail\keyboard.lua
 D:\one-map\muban_defence\map\script\ui\base\detail\timer.lua
+D:\one-map\muban_defence\map\script\ui\base_ex\init.lua
+D:\one-map\muban_defence\map\script\ui\base_ex\sendmsg.lua
 D:\one-map\muban_defence\map\script\ui\client\actor.lua
 D:\one-map\muban_defence\map\script\ui\client\init.lua
 D:\one-map\muban_defence\map\script\ui\client\sendmsg.lua
@@ -126,6 +129,7 @@ D:\one-map\muban_defence\map\script\刷怪\刷怪奶牛.lua
 D:\one-map\muban_defence\map\script\刷怪\刷怪无尽.lua
 D:\one-map\muban_defence\map\script\刷怪\单位初始化.lua
 D:\one-map\muban_defence\map\script\刷怪\境界.lua
+D:\one-map\muban_defence\map\script\刷怪\无限BOSS.lua
 D:\one-map\muban_defence\map\script\刷怪\无限乱斗(快速).lua
 D:\one-map\muban_defence\map\script\刷怪\最终boss.lua
 D:\one-map\muban_defence\map\script\刷怪\杀鸡敬猴.lua
@@ -133,6 +137,7 @@ D:\one-map\muban_defence\map\script\刷怪\武林大会.lua
 D:\one-map\muban_defence\map\script\刷怪\游戏结束.lua
 D:\one-map\muban_defence\map\script\刷怪\野怪.lua
 D:\one-map\muban_defence\map\script\刷怪\随机神符.lua
+D:\one-map\muban_defence\map\script\备忘\二进制开关表示.lua
 D:\one-map\muban_defence\map\script\备忘\弱值.lua
 D:\one-map\muban_defence\map\script\备忘\模拟死亡(包含马甲).lua
 D:\one-map\muban_defence\map\script\平台\config.lua
@@ -149,6 +154,7 @@ D:\one-map\muban_defence\map\script\平台\武林大会.lua
 D:\one-map\muban_defence\map\script\平台\碎片.lua
 D:\one-map\muban_defence\map\script\平台\神龙.lua
 D:\one-map\muban_defence\map\script\平台\精彩活动.lua
+D:\one-map\muban_defence\map\script\平台\绝世魔剑.lua
 D:\one-map\muban_defence\map\script\平台\评论数.lua
 D:\one-map\muban_defence\map\script\平台\赛季奖励.lua
 D:\one-map\muban_defence\map\script\平台\重置版奖励.lua
@@ -160,8 +166,19 @@ D:\one-map\muban_defence\map\script\平台\活动\七夕.lua
 D:\one-map\muban_defence\map\script\平台\活动\中秋活动.lua
 D:\one-map\muban_defence\map\script\平台\活动\中秋活动2.lua
 D:\one-map\muban_defence\map\script\平台\活动\中秋活动3.lua
+D:\one-map\muban_defence\map\script\平台\活动\五一活动.lua
+D:\one-map\muban_defence\map\script\平台\活动\五一活动2.lua
 D:\one-map\muban_defence\map\script\平台\活动\井底之蛙.lua
+D:\one-map\muban_defence\map\script\平台\活动\元宵.lua
+D:\one-map\muban_defence\map\script\平台\活动\国庆活动.lua
+D:\one-map\muban_defence\map\script\平台\活动\国庆活动2.lua
+D:\one-map\muban_defence\map\script\平台\活动\圣诞活动.lua
 D:\one-map\muban_defence\map\script\平台\活动\失落的真相.lua
+D:\one-map\muban_defence\map\script\平台\活动\情人节.lua
+D:\one-map\muban_defence\map\script\平台\活动\愚人节.lua
+D:\one-map\muban_defence\map\script\平台\活动\愚人节2.lua
+D:\one-map\muban_defence\map\script\平台\活动\春节活动.lua
+D:\one-map\muban_defence\map\script\平台\活动\春节活动2.lua
 D:\one-map\muban_defence\map\script\平台\活动\暑期活动.lua
 D:\one-map\muban_defence\map\script\平台\活动\有趣的灵魂.lua
 D:\one-map\muban_defence\map\script\平台\自定义服务器\cus_server.lua
@@ -201,6 +218,7 @@ D:\one-map\muban_defence\map\script\平台\道具\礼包\赛季补偿礼包.lua
 D:\one-map\muban_defence\map\script\平台\道具\礼包\金币礼包.lua
 D:\one-map\muban_defence\map\script\平台\道具\礼包\限量首充.lua
 D:\one-map\muban_defence\map\script\平台\道具\礼包\首充大礼包.lua
+D:\one-map\muban_defence\map\script\平台\道具\礼包\魔灵限定.lua
 D:\one-map\muban_defence\map\script\技能\init.lua
 D:\one-map\muban_defence\map\script\技能\技能事件.lua
 D:\one-map\muban_defence\map\script\技能\技能总览.lua
@@ -246,6 +264,7 @@ D:\one-map\muban_defence\map\script\技能\英雄技能\刀刃旋风.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\分裂伤害.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\剑刃风暴.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\剑空破.lua
+D:\one-map\muban_defence\map\script\技能\英雄技能\反甲.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\吸血鬼.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\嗜血术.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\回旋刃.lua
@@ -264,6 +283,7 @@ D:\one-map\muban_defence\map\script\技能\英雄技能\强化后的死亡脉冲.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\强化后的水疗术.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\强化后的水舞.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\强化后的渡业妖爆.lua
+D:\one-map\muban_defence\map\script\技能\英雄技能\强化后的火力支援.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\强化后的狂龙爆.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\强化后的疾步风.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\强化后的痛苦尖叫.lua
@@ -288,6 +308,8 @@ D:\one-map\muban_defence\map\script\技能\英雄技能\死亡脉冲.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\水疗术.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\水舞.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\渡业妖爆.lua
+D:\one-map\muban_defence\map\script\技能\英雄技能\火力全开.lua
+D:\one-map\muban_defence\map\script\技能\英雄技能\火力支援.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\火焰雨.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\炎爆术.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\狂龙爆.lua
@@ -304,7 +326,9 @@ D:\one-map\muban_defence\map\script\技能\英雄技能\红莲爆.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\绝对领域.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\缠绕.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\群体风暴之锤.lua
+D:\one-map\muban_defence\map\script\技能\英雄技能\群星陨落.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\蚀魂魔舞.lua
+D:\one-map\muban_defence\map\script\技能\英雄技能\蝗虫群.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\血焰神脂.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\血雾神隐.lua
 D:\one-map\muban_defence\map\script\技能\英雄技能\财富.lua
@@ -346,6 +370,7 @@ D:\one-map\muban_defence\map\script\技能\通用技能\多重射.lua
 D:\one-map\muban_defence\map\script\技能\通用技能\拾取.lua
 D:\one-map\muban_defence\map\script\技能\通用技能\被动图标.lua
 D:\one-map\muban_defence\map\script\技能\通用技能\闪烁.lua
+D:\one-map\muban_defence\map\script\技能\通用技能\魔法书.1.lua
 D:\one-map\muban_defence\map\script\技能\通用技能\魔法书.lua
 D:\one-map\muban_defence\map\script\技能\通用技能\魔法书demo.lua
 D:\one-map\muban_defence\map\script\技能\野怪光环\init.lua
@@ -409,6 +434,7 @@ D:\one-map\muban_defence\map\script\技能\野怪技能\BOSS技能\龙破斩.lua
 D:\one-map\muban_defence\map\script\测试\helper.lua
 D:\one-map\muban_defence\map\script\测试\init.lua
 D:\one-map\muban_defence\map\script\测试\memory_test.lua
+D:\one-map\muban_defence\map\script\测试\memory_test2.lua
 D:\one-map\muban_defence\map\script\测试\游戏模块.lua
 D:\one-map\muban_defence\map\script\游戏\init.lua
 D:\one-map\muban_defence\map\script\游戏\多面板.lua
@@ -443,6 +469,7 @@ D:\one-map\muban_defence\map\script\物品\商店\基地\兑换10W金币.lua
 D:\one-map\muban_defence\map\script\物品\商店\基地\兑换10木头.lua
 D:\one-map\muban_defence\map\script\物品\商店\基地\兑换1W金币.lua
 D:\one-map\muban_defence\map\script\物品\商店\基地\兑换1木头.lua
+D:\one-map\muban_defence\map\script\物品\商店\基地\加速出怪.lua
 D:\one-map\muban_defence\map\script\物品\商店\基地\基地无敌.lua
 D:\one-map\muban_defence\map\script\物品\商店\基地\基地重生.lua
 D:\one-map\muban_defence\map\script\物品\商店\基地\强化基地.lua
@@ -493,11 +520,7 @@ D:\one-map\muban_defence\map\script\物品\消耗品\神兵神甲.lua
 D:\one-map\muban_defence\map\script\物品\消耗品\藏宝图.lua
 D:\one-map\muban_defence\map\script\物品\消耗品\随机技能书.lua
 D:\one-map\muban_defence\map\script\物品\消耗品\魔法药水.lua
-D:\one-map\muban_defence\map\script\物品\神符\init.lua
-D:\one-map\muban_defence\map\script\物品\神符\传送点\init.lua
-D:\one-map\muban_defence\map\script\物品\神符\传送点\练功房.lua
 D:\one-map\muban_defence\map\script\物品\装备\init.lua
-D:\one-map\muban_defence\map\script\物品\装备\五色飞石.1.lua
 D:\one-map\muban_defence\map\script\物品\装备\五色飞石.lua
 D:\one-map\muban_defence\map\script\物品\装备\勇气之证.lua
 D:\one-map\muban_defence\map\script\物品\装备\懒人的智慧鞋.lua
@@ -553,6 +576,8 @@ D:\one-map\muban_defence\map\script\英雄\赵子龙\init.lua
 D:\one-map\muban_defence\map\script\英雄\赵子龙\赵子龙天赋.lua
 D:\one-map\muban_defence\map\script\英雄\阿尔塞斯\init.lua
 D:\one-map\muban_defence\map\script\英雄\阿尔塞斯\阿尔塞斯天赋.lua
+D:\one-map\muban_defence\map\script\英雄\雅典娜\init.lua
+D:\one-map\muban_defence\map\script\英雄\雅典娜\雅典娜天赋.lua
 D:\one-map\muban_defence\map\script\英雄\鬼厉\init.lua
 D:\one-map\muban_defence\map\script\英雄\鬼厉\鬼厉天赋.lua
 D:\one-map\muban_defence\map\script\通用\init.lua
@@ -563,6 +588,7 @@ D:\one-map\muban_defence\map\script\通用\模拟死亡.lua
 D:\one-map\muban_defence\map\script\通用\物品规则.lua
 D:\one-map\muban_defence\map\script\通用\过场动画.lua
 D:\one-map\muban_defence\map\script\通用\宠物相关\init.lua
+D:\one-map\muban_defence\map\script\通用\宠物相关\一键丢弃.lua
 D:\one-map\muban_defence\map\script\通用\宠物相关\一键出售.lua
 D:\one-map\muban_defence\map\script\通用\宠物相关\一键合成.lua
 D:\one-map\muban_defence\map\script\通用\宠物相关\一键拾取.lua

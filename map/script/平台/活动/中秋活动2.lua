@@ -143,6 +143,7 @@ local award_list = {
         { rand = 2,      name = '探花'},
         { rand = 1,      name = '榜眼'},
         { rand = 0.45,      name = '状元'},
+        { rand = 0.45,      name = '王中王'},
         { rand = 0.3,      name = '王昭君'},
     },
 }
@@ -153,6 +154,7 @@ local name2id = {
     ['探花'] = 4,
     ['榜眼'] = 5,
     ['状元'] = 6,
+    ['王中王'] = 7,
 }
 ac.bobing_name2id = name2id
   

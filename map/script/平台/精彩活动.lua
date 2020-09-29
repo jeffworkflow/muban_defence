@@ -396,8 +396,37 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 
 need_map_level = 5,
 }
+local mt = ac.skill['王中王']
+mt{
+--等级
+level = 1, 
+--图标
+art = [[zhuangyuan.blp]],
+--说明
+tip = [[
+|cffffff00【要求地图等级>%need_map_level%|cffffff00】|r
+
+|cffffe799【成就说明】：|r
+|cff00ffff通过 中秋活动 获得
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+88.8   杀怪加全属性|r
+|cff00ff00+88.8   攻击减甲|r
+|cff00ff00+88.8%  木头加成|r
+|cff00ff00+88.8%  全伤加深|r
+
+]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+['杀怪加全属性'] = 88.8,
+['攻击减甲'] = 88.8,
+['木头加成'] = 88.8,
+['全伤加深'] = 88.8,
+
+need_map_level = 5,
+}
 local bobing_str = {
-    '秀才','举人','进士','探花','榜眼','状元'
+    '秀才','举人','进士','探花','榜眼','状元','王中王'
 }
 
 
