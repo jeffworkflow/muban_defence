@@ -224,7 +224,7 @@ reg:event '区域-进入' (function(trg,unit)
     local real_name ='四海共团圆'
     local has_mall = p:Map_GetServerValue(ac.server.name2key(real_name))
     --已有物品的处理
-    if has_mall >= 2 then 
+    if has_mall >= 5 then 
         -- p:sendMsg('【系统消息】已有'..real_name)   
         return 
     end 
