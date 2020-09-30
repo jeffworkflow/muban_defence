@@ -16,6 +16,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
+check_hecheng = true,
 
 no_use =true,
 wood = 1000,
@@ -46,6 +47,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
+check_hecheng = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -71,6 +73,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
+check_hecheng = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -96,6 +99,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
+check_hecheng = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title

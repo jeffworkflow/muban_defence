@@ -17,7 +17,7 @@ for i=1,10 do
         p.mall_flag = {}
     end  
     local cheating = [[
-        后山一把刀 卡卡发动机  蜗牛互娱 特朗普领航
+        后山一把刀 卡卡发动机  蜗牛互娱 特朗普领航 卡卡发动机2
     ]]
     -- 作弊
     if finds(cheating,p:get_name()) then 

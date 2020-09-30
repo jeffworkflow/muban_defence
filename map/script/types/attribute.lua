@@ -111,6 +111,7 @@ local attribute = {
 
 	
 	['全伤加深'] = true, --默认表示为%
+	['全伤加深系数'] = true, --默认表示为%
 	['物品获取率'] = true,--默认表示为% 怪物物品掉落率加成
 	['技能伤害加深'] = true, --默认表示为% 技能的法术伤害加成
 	['召唤物'] = true, --默认表示为基础值,召唤物数量
@@ -527,6 +528,9 @@ on_set['智力'] = function(self,old_value)
 	end
 end
 
+on_get['全伤加深'] = function(self, all_damage)
+	return all_damage * (1+self:get('全伤加深系数')/100)
+end
 
 get['生命'] = function(self)
 	return jass.GetWidgetLife(self.handle)
