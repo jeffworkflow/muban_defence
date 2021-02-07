@@ -6,7 +6,7 @@ level = 1,
 art = [[fuqi.blp]],
 --说明
 tip = [[ 
-|cffffe799【活动时间】|r|cff00ff001月17日-1月31日
+|cffffe799【活动时间】|r|cff00ff002月9日-2月28日
 |cffffe799【活动说明】|r|cff00ff00集五福瓜分|cffffff00100亿的可存档全属性|cff00ff00，活动结束后，按每个人的集齐次数进行瓜分发放！
 
 |cffcccccc你的 五福集齐次数：%wufu%|cffffff00（最大集齐次数受限于地图等级）
