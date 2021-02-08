@@ -5,16 +5,16 @@ require '平台.活动.暑期活动'
 
 
 -- require '平台.活动.失落的真相'
-require '平台.活动.中秋活动'
-require '平台.活动.中秋活动2'
+-- require '平台.活动.中秋活动'
+-- require '平台.活动.中秋活动2'
 -- require '平台.活动.中秋活动3'
 
 -- require '平台.活动.国庆活动'
 -- require '平台.活动.国庆活动2'
 
 -- require '平台.活动.圣诞活动'
--- require '平台.活动.春节活动'
--- require '平台.活动.春节活动2'
+require '平台.活动.春节活动'
+require '平台.活动.春节活动2'
 -- require '平台.活动.元宵'
 -- require '平台.活动.情人节'
 

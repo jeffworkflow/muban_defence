@@ -18,7 +18,7 @@ target_type = ac.skill.TARGET_TYPE_NONE,
 --冷却
 cool = 1,
 wufu = function()
-    return math.min(ac.player.self.cus_server['五福'],15*ac.player.self:Map_GetMapLevel())
+    return math.min(ac.player.self.cus_server['五福2'],15*ac.player.self:Map_GetMapLevel())
 end,
 sj_wufu = function()
     return ac.player.self.cus_server2 and ac.player.self.cus_server2['世界五福']
@@ -54,6 +54,8 @@ item_type = '消耗品',
 no_use =true,
 wood = 1000,
 
+check_hecheng = true,
+
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -80,6 +82,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
+check_hecheng = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -105,6 +108,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
+check_hecheng = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -130,6 +134,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
+check_hecheng = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -155,6 +160,7 @@ tip = [[
 color = '紫',
 --物品类型
 item_type = '消耗品',
+check_hecheng = true,
 --目标类型
 target_type = ac.skill.TARGET_TYPE_NONE,
 --物品详细介绍的title
@@ -176,6 +182,8 @@ tip = [[
 |cffcccccc春节活动物品|r]],
 --品质
 color = '紫',
+--CD
+cool = 5,
 --物品类型
 item_type = '消耗品',
 --物品技能
@@ -190,7 +198,7 @@ function mt:on_cast_start()
     local p = hero.owner 
     --发送信息
     p:sendMsg('|cffffe799【系统消息】|cff00ff00恭喜集齐五福，集齐次数可在|cffffff00NPC“活动使者”|cff00ff00处查看',2)
-    local key =ac.server.name2key('五福')
+    local key =ac.server.name2key('五福2')
     --网易服务器存档
     p:Map_AddServerValue(key,1) --网易服务器
 
@@ -238,6 +246,6 @@ ac.game:event '单位-死亡' (function (_,unit,killer)
 end)
 
 --等待1秒读取
-ac.wait(1000,function()
+ac.wait(30*1000,function()
     ac.player(11):sp_get_map_test()
 end)

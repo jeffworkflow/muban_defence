@@ -840,7 +840,7 @@ local mt = ac.skill['兽魂之佑']
 mt{
 --等级
 level = 1, --要动态插入
-max_level = 10,
+max_level = 5,
 --图标
 art = [[ruishou.blp]],
 --说明
@@ -870,7 +870,7 @@ local mt = ac.skill['放炮小达人']
 mt{
 --等级
 level = 1, --要动态插入
-max_level = 10,
+max_level = 5,
 --图标
 art = [[zhadanren.blp]],
 --说明
@@ -921,6 +921,35 @@ wufu = function(self)
 end,
 ['全属性'] = function(self)
     local v = math.floor( 10000000000 / 952038 )
+    return self.wufu * v
+end,
+need_map_level = 5,
+}
+local mt = ac.skill['五福2']
+mt{
+--等级
+level = 1, --要动态插入
+max_level = 1,
+title ='五福活动奖励',
+--图标
+art = [[fuqi.blp]],
+--说明
+tip = [[ 
+|cffffe799【成就说明】：|r
+|cff00ff00通过|cffffff00“五福四海过福年”活动|cff00ff00获得，|cff00ff00集五福瓜分100亿的可存档全属性
+
+|cffFFE799【成就属性】：|r
+|cff00ff00+%全属性% |cff00ff00全属性|r
+
+|cffcccccc您集齐了%wufu%|cffcccccc次五福，世界一共集齐|cffffff001103643|cffcccccc次五福]],
+--目标类型
+target_type = ac.skill.TARGET_TYPE_NONE,
+wufu = function(self)
+    local p = self.owner.owner
+    return math.min(p.cus_server['五福2'],15*p:Map_GetMapLevel())
+end,
+['全属性'] = function(self)
+    local v = math.floor( 10000000000 / 1103643 )
     return self.wufu * v
 end,
 need_map_level = 5,

@@ -91,7 +91,7 @@ local function task_sjjh(skill)
                 unit:event '单位-死亡' (function(_,unit,killer) 
                     local item = ac.item.create_item(self.award_item)
                     local player = hero:get_owner()
-                    item.owner_ship = hero 
+                    item.owner_ship = player 
                     hero:add_item(item,true)
                     --保存到服务器存档
                     hero:add('杀怪加全属性',1)

@@ -4,8 +4,8 @@ local player = require 'ac.player'
 
 local config = {
     map_name = '赤灵传说',
-    url = 'www.91wnhy.com/api/maptest' , --类似官方对战平台的服务器存档
-    url2 = 'www.91wnhy.com/api/mapdb' --统一存储过程入口
+    url = 'www.91mtp.com/api/maptest' , --类似官方对战平台的服务器存档
+    url2 = 'www.91mtp.com/api/mapdb' --统一存储过程入口
 }
 ac.server_config = config
 
